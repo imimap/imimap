@@ -16,25 +16,23 @@ module DockerTool
 
     @@root = File.dirname(File.expand_path(__FILE__))
 
-    desc "build", "builds the development environment"
+    desc "build", "builds the specified environment"
     def build
       say "Building environment: #{environment}", :green
       in_environment(environment) do
         system_call "docker-compose -f #{path(@@root, "docker-compose-#{environment}.yml")} build"
       end
+
+      confirm(question: "Do yout want to start the #{environment} environment now?", color: :green, exit_code: 0) do
+        start
+      end
     end
 
     desc "start", "starts the development environment"
     def start
+      detached = false
       say "Starting environment: #{environment}", :green
-      if environment == :development
-        in_environment(environment, "docker-sync.yml") do
-          # put correct docker-machine ip into docker-sync config
-          `sed -i '' 's/sync_host_ip:.*/sync_host_ip: '$(docker-machine ip development)'/g\' docker-sync.yml`
-          system_call "docker-sync-stack clean"
-          system_call "docker-sync-stack start"
-        end
-      elsif environment == :test
+      if environment == :test
         exit_status = 1
         in_environment(environment) do
          system("docker-compose -f docker-compose-#{environment}.yml run imimaps bundle exec rake spec")
@@ -45,15 +43,51 @@ module DockerTool
         exit exit_status
       else
         in_environment(environment) do
-          system_call "docker-compose -f docker-compose-#{environment}.yml up"
+          detached = confirm(question: "Do yout want to run the containers in detached mode?", color: :green, exit_code: 0, exit_on_no: false) do
+            true
+          end
+
+          system_call "docker-compose -f docker-compose-#{environment}.yml up #{detached ? '-d' : ''}"
+        end
+      end
+
+      if not detached
+        confirm(question: "Do yout want to stop the containers of the #{environment} environment now?", color: :green, exit_code: 0) do
+          stop
+        end
+      end
+    end
+
+    desc "stop", "stops the specified environment"
+    def stop
+      say "Stopping environment: #{environment}", :green
+      in_environment(environment) do
+        system_call "docker-compose -f #{path(@@root, "docker-compose-#{environment}.yml")} kill", suppress: true
+      end
+    end
+
+    desc "test", "runs the test suite in  the specified environment"
+    def test
+      say "Testing environment: #{environment}", :green
+      in_environment(environment) do
+        if !`docker ps | grep imimaps-#{environment}`.empty?
+          exec "docker exec -ti imimaps-#{environment} bundle exec rake spec"
+        else
+          say "The Docker environment #{environment} is not running.", :red
+          say "Please start the environment before trying to test.", :red
         end
       end
     end
 
     desc "enter", "enters a bash shell in the development environment"
     def enter
-      say "Entering environment: #{environment}", :green
-      exec "docker exec -ti imimaps-#{environment} bash"
+        if !`docker ps | grep imimaps-#{environment}`.empty?
+          say "Entering environment: #{environment}", :green
+          exec "docker exec -ti imimaps-#{environment} bash"
+        else
+          say "The Docker environment #{environment} is not running.", :red
+          say "Please start the environment before trying to enter a container", :red
+        end
     end
 
     private

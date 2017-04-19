@@ -19,7 +19,7 @@ RUN set -ex \
 # build deps
 RUN set -ex \
   && apk add --no-cache --virtual .builddeps linux-headers libpq build-base postgresql-dev imagemagick-dev \
-  && bundle install --without test \
+  && bundle install \
   && apk del .builddeps
 
 ENTRYPOINT ["/docker-entrypoint.sh"]

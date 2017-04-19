@@ -41,7 +41,6 @@ module CICD
         ].concat(extra_files)
 
         environment_files.each do |file|
-          puts "copying #{file} to root"
           `cp #{path('.docker', environment.to_s, file)} #{File.dirname(File.expand_path(File.join(__FILE__, '..')))}`
         end
 
@@ -50,7 +49,6 @@ module CICD
         rescue
         ensure
           environment_files.each do |file|
-            puts "removing #{file}"
             `rm #{path(file)}`
           end
         end
@@ -62,10 +60,24 @@ module CICD
       end
 
 
-      def system_call(command)
-        PTY.spawn(command) do |stdout, stdin, pid|
-          stdout.each do |line|
-            puts line
+      def system_call(command, suppress: false)
+        begin
+          PTY.spawn(command) do |stdout, stdin, pid|
+            stdout.each do |line|
+              puts line unless suppress
+            end
+          end
+        rescue Exception
+        end
+      end
+
+      def confirm(question:, color:, exit_on_no: true, exit_code: 1)
+        if ask(question, color, limited_to: ["yes", "no"]) == "yes"
+          yield if block_given?
+        else
+          if exit_on_no
+            say "Exiting.", :green
+            exit exit_code
           end
         end
       end

@@ -23,11 +23,8 @@ services:
     depends_on:
       - postgresql
     volumes:
-      - imimaps-sync:/usr/src/app:rw
+      - .:/usr/src/app
     links:
       - postgresql
     ports:
-      - 80:80
-volumes:
-  imimaps-sync:
-    external: true
+      - 8080:80
