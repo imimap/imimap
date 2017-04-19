@@ -27,4 +27,3 @@ $ ./docker-tool development start
 
 # Open the application in your browser
 $ open http://localhost:8080
-
