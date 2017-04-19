@@ -11,8 +11,8 @@ Zum lokalen entwickeln muss folgende Software installiert werden:
 - [Homebrew](http://brew.sh/)
 
 ```
-# Install Dependencies (for running tests without Docker)
-$ brew update && brew install imagemagick@6 node openssl rbenv ruby-build
+# Install Dependencies (for running rails commands)
+$ brew update && brew install imagemagick@6 node openssl rbenv ruby-build postgresql
 
 # Install the ruby version required by the application
 $ cd /path/to/imimaps
@@ -20,6 +20,7 @@ $ rbenv install 2.1.5
 $ rbenv global 2.1.5 (optional, if you want to set 2.1.5 as your default Ruby version)
 $ echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 $ source ~/.bashrc
+$ bundle install
 $ gem install thor
 
 # start the development environment
