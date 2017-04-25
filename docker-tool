@@ -28,7 +28,7 @@ module DockerTool
       end
     end
 
-    desc "start", "starts the development environment"
+    desc "start", "starts the specified environment"
     def start
       detached = false
       say "Starting environment: #{environment}", :green
@@ -66,7 +66,7 @@ module DockerTool
       end
     end
 
-    desc "test", "runs the test suite in  the specified environment"
+    desc "test", "runs the test suite in the specified environment"
     def test
       say "Testing environment: #{environment}", :green
       in_environment(environment) do
@@ -79,7 +79,7 @@ module DockerTool
       end
     end
 
-    desc "enter", "enters a bash shell in the development environment"
+    desc "enter", "enters a bash shell in the specified environment"
     def enter
         if !`docker ps | grep imimaps-#{environment}`.empty?
           say "Entering environment: #{environment}", :green
