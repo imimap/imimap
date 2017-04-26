@@ -10,9 +10,14 @@
 - pip:
     name: docker-compose
 
-
 - name: "Add {{ ansible_user }} to docker group"
   user:
     name: "{{ ansible_user }}"
     group: docker
     append: yes
+
+- name: "Add cicd pubkey to authorized keys of {{ ansible_user }}"
+  authorized_key:
+    user: "{{ ansible_user }}"
+    key: "{{ cicd_pubkey }}"
+  when: "'vagrant' not in group_names"
