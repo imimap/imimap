@@ -50,3 +50,5 @@ coverage
 /docker-entrypoint.sh
 playbook.retry
 /docker-sync.yml
+/.vagrant
+.log

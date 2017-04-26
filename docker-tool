@@ -23,7 +23,7 @@ module DockerTool
         system_call "docker-compose -f #{path(@@root, "docker-compose-#{environment}.yml")} build"
       end
 
-      confirm(question: "Do yout want to start the #{environment} environment now?", color: :green, exit_code: 0) do
+      confirm(question: "Do you want to start the #{environment} environment now?", color: :green, exit_code: 0) do
         start
       end
     end
@@ -43,7 +43,7 @@ module DockerTool
         exit exit_status
       else
         in_environment(environment) do
-          detached = confirm(question: "Do yout want to run the containers in detached mode?", color: :green, exit_code: 0, exit_on_no: false) do
+          detached = confirm(question: "Do you want to run the containers in detached mode?", color: :green, exit_code: 0, exit_on_no: false) do
             true
           end
 
@@ -52,7 +52,7 @@ module DockerTool
       end
 
       if not detached
-        confirm(question: "Do yout want to stop the containers of the #{environment} environment now?", color: :green, exit_code: 0) do
+        confirm(question: "Do you want to stop the containers of the #{environment} environment now?", color: :green, exit_code: 0) do
           stop
         end
       end
