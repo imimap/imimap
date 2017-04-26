@@ -1,3 +1,4 @@
 ansible_user: "docker-deploy"
 nginx_host_name: imimaps-production.dev-sector.net
 application_port: 4000
+cicd_pubkey: "{{ vault_cicd_pubkey }}"

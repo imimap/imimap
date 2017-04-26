@@ -51,4 +51,4 @@ coverage
 playbook.retry
 /docker-sync.yml
 /.vagrant
-.log
+*.log
