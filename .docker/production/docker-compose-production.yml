@@ -9,6 +9,8 @@ services:
       - POSTGRES_DB=imimaps
     ports:
       - 5432:5432
+    volumes:
+      - ./postgresql/data:/var/lib/postgresql/data
 
   imimaps:
     image: imimaps/production:${TAG}
@@ -23,3 +25,5 @@ services:
       - postgresql
     ports:
       - 4000:80
+    volumes:
+      - ./rails/public/uploads:/usr/src/app/public/uploads
