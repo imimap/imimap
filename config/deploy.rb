@@ -1,3 +1,6 @@
+# DEPRECATED DEPLOYMENT
+# with Capistrano, in use 2014-April 2017
+# This file can be deleted after docker-deployment is in place in production.
 require "bundler/capistrano"
 load "config/recipes/uploads"
 
