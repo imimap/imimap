@@ -11,14 +11,21 @@ module CICD
 
     def initialize
       @root = File.dirname(File.expand_path(File.join(__FILE__, '..')))
+
+      @deployment_user = "docker-deploy"
+
+      @hosts = {
+        staging: "imimaps-staging.dev-sector.net",
+        production: "imimaps-production.dev-sector.net"
+      }
     end
 
     def start
       if environment = is_release
         puts "Building image for environment: #{environment} with tag #{tag}"
         in_environment(environment) do
-          deploy_command = "scp -i id_rsa_#{environment} -o StrictHostKeyChecking=no docker-compose-#{environment}.yml docker-deploy@imimaps-#{environment}.dev-sector.net:~  && \
-            ssh  -i id_rsa_#{environment} -o StrictHostKeyChecking=no docker-deploy@imimaps-#{environment}.dev-sector.net \"export TAG=#{tag}; docker-compose -f ~/docker-compose-#{environment}.yml\" up -d"
+          deploy_command = "scp -i id_rsa_#{environment} -o StrictHostKeyChecking=no docker-compose-#{environment}.yml #{@deployment_user}@#{@hosts[environment]}:~  && \
+            ssh  -i id_rsa_#{environment} -o StrictHostKeyChecking=no #{@deployment_user}@#{@hosts[environment]} \"export TAG=#{tag}; docker-compose -f ~/docker-compose-#{environment}.yml\" up -d"
             system(deploy_command)
         end
       else

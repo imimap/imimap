@@ -6,7 +6,6 @@ apt_repository: deb https://apt.dockerproject.org/repo {{ ansible_lsb.id | lower
 
 packages:
   - docker-engine
-  #- docker-compose
 
 dependencies:
   - apt-transport-https

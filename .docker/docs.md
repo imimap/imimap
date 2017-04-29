@@ -4,9 +4,26 @@ dabei unterstützt, Praktika im Ausland zu finden.
 
 Die Applikation wurde im Rahmen einer Veranstaltung des Studiengangs Internationale Medieninformatik entwickelt.
 
-## TL;DR Setup (Development)
+## Setup mit Vagrant
 Zum lokalen entwickeln muss folgende Software installiert werden:
 - [VirtualBox](https://www.virtualbox.org/)
+- [Vagrant](https://www.vagrantup.com/)
+
+```
+  cd /path/to/imimaps
+  vagrant up
+  vagrant ssh
+
+  # innerhalb der VM
+  cd /vagrant
+  ./docker-tool development start
+```
+
+Die Applikation ist dann via [http://192.168.33.10](http://192.168.33.10) erreichbar. Die Migrations sowie Seeds der Datenbank
+sind bereits ausgeführt.
+
+## Setup ohne Vagrant (hauptsächlich MacOS)
+Zum lokalen entwickeln muss folgende Software installiert werden:
 - [Docker](https://www.docker.com/)
 - [Homebrew](http://brew.sh/)
 
@@ -29,7 +46,10 @@ $ ./docker-tool development start
 # Open the application in your browser
 $ open http://localhost:8080
 
-# For setting up production and staging hosts:
+```
+
+## Setup für Production- und Staging-Hosts
+```
 $ brew install ansible
 
 # A user with password-less sudo has to be present on the hosts
@@ -41,12 +61,50 @@ imimaps-production.dev-sector.net ansible_user=your_user_name
 [staging]
 imimaps-staging.dev-sector.net ansible_user=your_user_name
 
-# Customize bootstrap_host/group_vars/{production.ym,staging.yml} to fit your user name
+# Customize bootstrap_host/group_vars/{production.yml,staging.yml}
+# to fit your user name and desired hostname
 
-# bootstrap the host for production and staging
-$ ansible-playbook -i inventory -l staging  playbook.yml
+# Create encrypted files containing the public ssh deploy key
+# bootstrap_host/group_vars{production,staging}/vault
 
+# Contents:
+vault_cicd_pubkey: your_cicd_pubkey_here
+
+# Encrypt the vault files
+$ ansible-vault encrypt bootstrap_host/group_vars/staging/vault
+$ ansible-vault encrypt bootstrap_host/group_vars/production/vault
+# Store your vault password in a safe place
+
+# bootstrap the host for staging
+$ ansible-playbook -i inventory -l staging  playbook.yml --ask-vault-pass
+
+# or: boostrap both hosts:
+$ ansible-playbook -i inventory playbook.yml --ask-vault-pass
 ```
+
+Nachdem die Production- und Staging-Hosts aufgesetzt sind, ist es notwendig, die Variablen `@deployment_user` und
+`@hosts` in der Datei `ci-cd/docker-deploy.rb` anzupassen.
+
+### Travis Deploy-Keys
+Damit Travis Zugang zu den Staging- und Production-Hosts gewährt werden kann, werden zwei SSH-Key-Paare benötigt.
+Diese sollten mit dem Befehl `ssh-keygen` jeweils ohne Passwort mit den Namen `id_rsa_production` und `id_rsa_staging` im selben Verzeichnis generiert werden.
+Das Verzeichnis sollte wiefolgt aussehen:
+```
+➜  imimaps_keys tree
+.
+|-- id_rsa_production
+|-- id_rsa_production.pub
+|-- id_rsa_staging
+`-- id_rsa_staging.pub
+```
+Hat man die Keys generiert, werden diese mittels `tar cvf ssh_keys.tar` in ein Tar-Archiv gepackt,
+welches dann mit dem Command
+```
+travis encrypt-file -r "imimaps/imimaps" ssh_keys.tar
+```
+von Travis spezifisch für das Git-Repository verschlüsselt wird. Die resultierende Datei `ssh_keys.tar.enc` muss dann committet werden.
+
+**Achtung:** Weder die Keys selbst noch das unverschlüsselte Tar-Archiv dürfen nach GitHub gelangen, da das Repository öffentlich zugänglich ist.
 
 ## Status Quo (vor dem IC)
 Der Zustand sowie die Deployment-Infrastuktur der IMI Map vor der Durchführung des Independent Courseworks war wiefolgt:
@@ -198,24 +256,25 @@ Dieses integriert sich problemlos in Railsapplikationen.
 Zum Zeitpunkt des Erstellens dieser Dokumentation hat die IMI-Map laut `SimpleCov` eine Test-Coverage
 von rund **100%** bei durchschnittlich 5.08 hits per line.
 
-TODO: bild
-
 ## Deployment
 In den folgenden Abschnitten sollen die für das Deployment der Applikation genutzten Werkzeuge sowie
 das Tooling um diese vorgestellt werden.
 
 ## Infrastruktur
-- docker-engine
-- docker-compose
-- nginx als reverse proxy
-- managed via ansible
+Mit der Ansible-Konfiguration können, wie bereits im Setup beschrieben, Hosts für Staging und Production aufgesetzt werden.
+Ansible setzt Folgendes auf:
+- docker-engine und docker-compose
+- einen Nginx-Webserver als Reverse Proxy vor der Rails-Applikation
+- den SSH Key für das Continuous Deployment für den Deployment-User
+
+Soll die Konfiguration von Nginx angepasst werden, muss die Datei `bootstrap_host/roles/nginx/templates/default.conf.j2` bearbeitet werden.
 
 ## Docker
 Docker ist eine quelloffenes Projekt, welches es ermöglicht, beliebige Applikationen in sogenannten Containern zu deployen.
 Hierzu nutzt Docker Virtualisierungs-Features auf Betriebssystemebene, sowie Ressourcenisolationsfeatures des Linux-Kernels.
 
 Durch die Nutzung dieser Features fällt der Overhead, welcher beim Starten einer virtuellen Maschine anfällt, weg, da kein
-weiteres Betriebssystem gestarten werden muss, sondern die Container über Dockers Bibliotheken den Kernel des Hostsystems selbst nutzen.
+weiteres Betriebssystem gestartet werden muss, sondern die Container über Dockers Bibliotheken den Kernel des Hostsystems selbst nutzen.
 Container sind dabei völlig unabhängig und voneinander und laufen in ihrem eigenen isolierten Kontext.
 
 Einer der größten Vorteile von Docker-basierten Deployments ist, dass sämtliche Softwareabhängigkeiten, die eine Applikation hat, zusammen mit der Applikation
@@ -334,7 +393,7 @@ Das Docker-Tooling um die Rails-Applikation definiert aktuell vier unterschiedli
 - Test
 
 Wie der Name vermuten lässt, sollte die Umgebung `development` zum lokalen Entwickeln an der Applikation gestartet sein.
-Alle anderen Umgebungen sind relevant für Continuous Integration und Continuuous Delivery.
+Alle anderen Umgebungen sind relevant für Continuous Integration und Continuous Delivery.
 
 Der Hauptunterschied zwischen der Entwicklungsumgebung und den anderen drei Umgebungen ist, dass bei dieser der Quelltext der Applikation nicht
 in das Image kopiert wird, sondern als Volume in den Container eingehängt wird. Dies hat zum Vorteil, dass Änderungen am Code direkt im Browser ersichtlich werden
@@ -367,7 +426,7 @@ Deployment der Applikation erstellt.
 Die Bestandteile dieser Pipeline sollen im Folgenden erläutert werden.
 
 ### GitHub und Git Workflow
-Der Quelltext der IMI-Map liegt in einem Git-Repository, welches auf GitHub gehostet ist. Das Reposiory ist auf GitHub so eingerichtet,
+Der Quelltext der IMI-Map liegt in einem Git-Repository, welches auf GitHub gehostet ist. Das Repository ist auf GitHub so eingerichtet,
 dass es nicht möglich ist, direkt Code in den Branch `master` einzufügen.
 
 Neuer Code oder Änderungen an bestehendem Code müssen in Feature-Branches entwickelt werden. Sollen Änderungen aus einem Feature-Branch
@@ -409,13 +468,13 @@ Weitere Information zu Verschlüsselung von Daten mit Travis in der Dokumentatio
 - [Verschlüsselung für Umgebungsvariablen](https://docs.travis-ci.com/user/encryption-keys/)
 
 #### Travis Builds und Deployments
-Für die von Travis durchgeführten Builds wuerde Tooling in Ruby geschrieben. Die Tools sind im Ordner `ci-cd` zu finden.
+Für die von Travis durchgeführten Builds wurde Tooling in Ruby geschrieben. Die Tools sind im Ordner `ci-cd` zu finden.
 Der Ablauf der Builds ist wiefolgt:
 1. Entschlüsseln der SSH Deployment-Keys für Staging und Production
 2. Korrigieren der Berechtigungen der Keys auf `0600`
 3. Starten der Docker-Umgebung `test` mittels `docker-tool`. Die Tests werden hierbei innerhalb der Docker-Umgebung durchgeführt.
 
-Die drei oben beschriebenen Schritte werden von Travis bei jeder Interaktion mit dem Git-Reposiory durchgeführt. Die nachfolgenden Schritte
+Die drei oben beschriebenen Schritte werden von Travis bei jeder Interaktion mit dem Git-Repository durchgeführt. Die nachfolgenden Schritte
 werden nur ausgeführt, falls die Umgebung des Travis-Builds entweder ein [Tagged Release](https://help.github.com/articles/working-with-tags/) oder ein Commit in den
 Master-Branch ist. Zusätzlich hierzu müssen die Tests in Schritt 3 erfolreich gewesen sein.
 
@@ -428,116 +487,137 @@ Staging-System.
 
 
 ## Improvements
-- viele Dinge koennen an der applikation verbessert werden
-- diese dinge sollen hier aufgefuehrt werden.
+Auch am Zustand der IMI-Map nach der Durchführung des IC können noch viele Dinge verbessert werden. Die folgenden Abschnitte
+schlagen einige Verbesserungen vor.
 
-- Rails upgrade
-  - spring application loader
-  - tests brauchen ewig: der komplette rails stack muss jedes mal geladen werden
-  - spring haelt die app im speicher vor.
-  - strong parameters in rails 4. siehe unten
-  - Migration guides:
-  - http://guides.rubyonrails.org/upgrading_ruby_on_rails.html
-  - durch die Testcoverage sollte das "relativ" einfach gehen
+
+### Rails upgrade
+Aktuell ist die Rails-Version der IMI-Map 3.2.13. Es empfiehlt sich ein Upgrade auf eine höhere Version, da dies unter anderem
+die Performance aller `rake`-Commands erhöhen würde. Dies begründet sich darauf, dass ab Rails 4 [Spring](https://github.com/rails/spring),
+ein Application Preloader direkt in Rails integriert ist. Der Vorteil ist, dass Spring die Applikation im Hintergrund am Laufen hält, sodass nicht
+für jeden `rake`-Command der komplette Rails-Stack neu gestartet werden muss.
+
+Der generelle Upgrade-Prozess für Rails-Applikationen ist in den [Rails Upgrade Guides](http://guides.rubyonrails.org/upgrading_ruby_on_rails.html) beschrieben.
+Durch die aktuell gegebene Testabdeckung sollte es relativ einfach sein, ein Upgrade durchzuführen.
 
 ### Remove Hardcoding
-Beispiele:
-LDAP Host
-- https://github.com/imimaps/imimaps/blob/master/app/controllers/user_verifications_controller.rb#L11
-Translations:
-- https://github.com/imimaps/imimaps/blob/master/app/controllers/user_verifications_controller.rb#L16
-Downloads:
-https://github.com/imimaps/imimaps/blob/master/app/views/download/index.html.erb#L12-L15
-https://github.com/imimaps/imimaps/blob/master/app/views/general/index.html.erb
+Die aktuelle Codebase weist an einigen stellen Hardcoding auf.
 
-### Single table inheritance
-- xxx_state models
-- attributes: name, name_de
-- has_many: internships
-- certificate_state, contract_state, internship_state, payment_state, registration_state, report_state
-- Single Table. Validations auf base model.
-- Alle anderen Models erben
-- Reduziert komplexitaet. sollte nur genutzt werden, wenn die models so einfach bleiben, wie sie aktuell sind.
+Beispiele:
+- [LDAP Host](https://github.com/imimaps/imimaps/blob/master/app/controllers/user_verifications_controller.rb#L11)
+- [Translations](https://github.com/imimaps/imimaps/blob/master/app/controllers/user_verifications_controller.rb#L16)
+- [Downloads 1](https://github.com/imimaps/imimaps/blob/master/app/views/download/index.html.erb#L12-L15)
+- [Downloads 2](https://github.com/imimaps/imimaps/blob/master/app/views/general/index.html.erb)
+
+Dieses Hardcoding sollte entfernt und durch Konfigurationsdateien in `config/` ersetzt werden, um die Applikation wartbarer zu machen.
+
+### Single Table Inheritance
+Es gibt einige sehr ähnliche Models in der IMI-Map:
+- `CertificateState`
+- `ContractState`
+- `InternshipState`
+- `PaymentState`
+- `RegistrationState`
+- `ReportState`
+
+Alle diese Models definieren exakt zwei Attribute (`name`, `name_de`) sowie eine `has_many`-Relation zum `Internships`-Model.
+Es wäre möglich, diese Komplexität durch [Single Table Inheritance](http://api.rubyonrails.org/classes/ActiveRecord/Inheritance.html) zu reduzieren.
+Validiierungen könnten dann auf dem Basis-Model ausgeführt werden. Alle anderen Models würden dann nur noch von diesem Basis-Model erben.
+Single Table Inheritance sollte nur dann genutzt werden, wenn sich die oben genannten Models nicht in absehbarer Zeit ändern werden.
 
 ### Proper naming
-- https://github.com/imimaps/imimaps/blob/master/db/seeds.rb#L149-L161
-- versteht kein mensch
+Es sollte beim Entwickeln darauf geachtet werden, dass Variablen vernünftige Namen erhalten. Andernfalls ist es für einen Entwickler schwierig,
+den Code anderer Entwickler zügig zu verstehen.
 
-### reduce complexity of methods
-- einige methoden sind unverstaendlich.
-- macht testing schwierig
-- macht maintainability weg
-- https://github.com/imimaps/imimaps/blob/master/app/controllers/quicksearches_controller.rb#L3
+Ein Beispiel für schlechte Benennung von Variablen findet sich [hier](https://github.com/imimaps/imimaps/blob/master/db/seeds.rb#L149-L161)
+
+### Reduce complexity of methods
+Einige Methoden sind in ihrem aktuellen Zustand eher schwer zu verstehen. Ein Beispiel für eine eher komplexe Methode findet sich
+[hier](https://github.com/imimaps/imimaps/blob/master/app/controllers/quicksearches_controller.rb#L3).
+
+Hohe Methodenkomplexität erschwert das Maintainen des Codes sowie das Erstellen von Tests für den Code. Aus diesem Grunde sollten Methoden einfach und präzise
+sein. Siehe [KISS](https://en.wikipedia.org/wiki/KISS_principle).
 
 ### ElasticSearch als Search-Backend
-- elasticsearch + example
-- um die komplexitaet wie in  quicksearches_controller zu vermeiden
-- https://github.com/elastic/elasticsearch-rails
-- passt sich gut in active model ein
-- queries verstaendlicher
+Es wäre möglich, die IMI-Map mit dem [elasticsearch-rails](https://github.com/elastic/elasticsearch-rails)-Gem relativ einfach an ElasticSearch anzubinden.
+Dieses Gem bietet eine einfache DSL für die Interaktion mit ElasticSearch und passt sich gut in ActiveModel bzw. ActiveRecord ein.
+
+Vorteilhaft an der Verwendung des `elasticsearch-rails`-Gems wäre zum einen, dass beispielsweise die Komplexität von `QuicksearchesController`
+deutlich reduziert werden könnte und zum anderen, dass die Search-Queries deutlich verständlicher wären.
 
 ### Routes
-- Viele routes ungenutzt.
-- Viele Controller als RESTful resource deklariert, obwohl nur eine methode genutzt wird
-- https://github.com/imimaps/imimaps/blob/master/config/routes.rb
+Im [Routing](https://github.com/imimaps/imimaps/blob/master/config/routes.rb) der IMI-Map befinden sich aktuell viele Routes, die nicht genutzt werden.
+Viele Controller werden als RESTful Resources deklariert, obwohl sie dies überhaupt nicht sind.
+Es bietet sich an, RESTful Routes, die nicht genutzt werden, gar nicht erst anzulegen und generell ungenutzte Routes zu entfernen.
 
 ### gmaps4rails
-- faq_controller
-- general_controller
-- es besteht kein grund, diese Controller als restful routes zu deklarieren
-- entweder limit nutzen oder named routes auf die jeweilige methode
+Das `gmaps4rails`-Gem benötigt ein Update. In der aktuellen Version versucht das Gem im View-Layer der Applikation externe JavaScript- sowie CSS-Assets
+zu laden, welche nicht existieren. Das hat zur Folge, dass die GoogleMaps-Integration der IMI-Map aktuell nicht funktionieren kann.
 
 ### Rubocop
-- enforce code style
-- linting
-- http://rubocop.readthedocs.io/en/latest/cops/
-- performance
+Um den gewünschten Code-Stil zu forcieren, Code-Linting zu betreiben oder Empfehlungen bezüglich Code-Performance zu erhalten,
+wäre es eventuell sinnvoll, [Rubocop](http://rubocop.readthedocs.io/en/latest/cops/) in die Codebase einzubinden.
+
+Tut man dies, wäre es ebenfalls möglich, Rubocop in der Continuous Integration laufen zu lassen und über deren Erfolg oder Misserfolg entscheiden zu lassen.
 
 ### Unused code, Unused Files, Unused Gems
-- remove unused code + unused methods
-- remove unused file
-- remove unused gems
+Es befinden sich in der aktuellen Codebase nicht genutzter Code, nicht genutzte Dateien sowie nicht genutzte Gems.
+Es wäre empfehlenswert jeglichen ungenutzten Code aus der Applikation zu entfernen.
 
-### strong parameters
-- all user input is evil
-- Loesung: explizites whitelisting von parametern beim interagieren imt ActiveModel Mass assignments
-- https://github.com/rails/strong_parameters
-- http://guides.rubyonrails.org/action_controller_overview.html#strong-parameters
-- Referenzen:
+### Strong Parameters
+Sämtlicher Input, den eine Applikation von Benutzerseite bekommt, ist als potenziell gefährlich zu betrachten.
+Aktuell findet in den Controllern der Applikation kein Filtering oder Sanitizing von Parametern an die Controller statt.
+
+Genau dieses Filtering sollte durch die Nutzung von [Strong Parameters](https://github.com/rails/strong_parameters) eingeführt werden.
+Dokumentation hierzu findet sich auch in den [Rails Guides](http://guides.rubyonrails.org/action_controller_overview.html#strong-parameters).
+
+Referenzen:
   - https://xkcd.com/327/
   - http://www.codemag.com/article/0705061
 
 
 ### Erweiterung der Test-Suite
-- Cucumber (https://cucumber.io/)
-- Capybara (https://github.com/teamcapybara/capybara)
-- Vorzugsweise mit Poltergeist / Capybara-webkit aus performance-gruenden und integration mit CI
-- https://en.wikipedia.org/wiki/Cucumbersoftware
+Die aktuelle Test-Suite könnte um weitere Tests sowie Test-Arten erweitert werden
 
-### Validations in models
-Viele models testen nur auf presence von attributes
-es ist aktuell ohne probleme moeglich sich mit invaliden email-adressen anzumelden, Vorname und Nachname sind nicht validiert. etc.
+Mögliche Frameworks, welche zusätzlich zum bereits im Projekt befindlichen RSpec eingesetzt werden könnten sind:
+- [Cucumber](https://cucumber.io/)
+- [Capybara](https://github.com/teamcapybara/capybara)
 
-### Database Seeds mit `factory_girl`
-- Seeds mit FactoryGirl
-- Bietet sich an, weli die Factories sowieso schon bestehen.
-- schneller
-- uebersichtlicher
+Sollte Capybara zum Einsatz kommen, solle es aus Gründen der Performance vorzugsweise mit Poltergeist oder capybara-webkit verwendet werden.
+
+### Validations in Models
+Viele Models der IMI-Map validieren nur, ob ihre Attribute vorhanden sind oder nicht. Dies ist zwar für die Validierung
+von Model-Objekten ein notwendiger Schritt, er ist aber in keiner Weise hinreichend:
+
+Es ist aktuell ohne Probleme möglich sich mit Email-Adressen zu registrieren, die aufgrund ihres Formates überhaupt nicht existieren können.
+Ebenfalls werden könnte sich ein Nutzer mit dem Vornamen C3PO anmelden, ohne dass die Validierung der Models fehlschlagen würde.
+
+Alle Attribute aller Models sollten mit Validierungen versehen werden.
+
+### Database Seeds mit FactoryGirl
+Da FactoryGirl in der Test-Suite bereits eingesetzt wird und Factories für alle Models bestehen, bietet es sich an, diese Factories
+auch für die Seeds der Datenbank zu nutzen. Dies würde die Datei `seeds.rb` deutlich verkürzen und übersichtlicher machen.
+
+### SSL
+Es ist aus Gründen der Datensicherheit zu empfehlen, dass die Kommunikation zwischen Applikation und Benutzer über einen sicheren Kanal verläuft.
+Deswegen sollte die Nginx-Konfiguration - zumindest für das Produktivsystem - so erweitert werden, dass der virtuelle Host zur Kommunikation SSL verwendet.
 
 ## Lessons learned
-- Problems
-  - FactoryGirl => 1:1 relationship
-  - ImageMagick
-  - JSON Gem
-  - Travis secrets
+Ich persönlich habe in dem IC einige Dinge gelernt. So war mir beispielsweise das oben beschriebene Problem mit FactoryGirl, welches durch die 1:1-Beziehung zwischen
+Student-Model und User-Model entstand, nicht bekannt.
+
+Weiterhin habe ich in meinem beruflichen Umfeld zwar bereits mit den in den eingesetzten Tools Docker, Docker Compose, Travis und Ansible gearbeitet, allerdings war es für mich
+durchaus eine Herausforderung, eine CI/CD Pipeline auf Basis dieser Tools selbst von Grund auf neu aufzusetzen, da ich bis jetzt immer mit bereits bestehenden Systemen gearbeitet habe.
+
+Ich habe den Eindruck, dass ich durch die Durchführung des Independent Coursework ein deutlich tieferes Verständnis der oben genannten Werkzeuge erlangt habe,
+gerade deswegen, weil ich nicht mit einem bereits bestehenden System gearbeitet, sondern ein neues erstellt habe.
+
+Dies wird mir in meiner weiteren beruflichen Laufbahn sicherlich erlauben, mit den Tools der DevOps-Toolchain souveräner umzugehen als es vor dem Independent Coursework der Fall war.
 
 ## References
-- Docker
-- Thor
-- Docker-Machine
-- Docker-Compose
-- Travis
-  - encryption
-  - deployment
-  - services
-- Markdown to pdf
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+- [Thor](http://whatisthor.com/)
+- [Travis](https://travis-ci.org/)
+- [Ansible](https://www.ansible.com/)
+- [Vagrant](https://www.vagrantup.com/)
