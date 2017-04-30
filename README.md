@@ -23,6 +23,10 @@ The [IMI Map](http://imi-map.f4.htw-berlin.de) supports students at the Universi
 
 The project was developed as part of the study of international media and computer sience.
 
+# Development Documentation
+
+* [Local Setup for Development](doc/local-setup.md)
+* 
 ## Development Setup
 Zum lokalen entwickeln muss folgende Software installiert werden:
 - [Docker](https://www.docker.com/)
