@@ -25,28 +25,6 @@ The project was developed as part of the study of international media and comput
 
 # Development Documentation
 
-* [Local Setup for Development](doc/local-setup.md)
-* 
 ## Development Setup
-Zum lokalen entwickeln muss folgende Software installiert werden:
-- [Docker](https://www.docker.com/)
-- [Homebrew](http://brew.sh/)
 
-```
-# Install Dependencies (for running rails commands)
-$ brew update && brew install imagemagick@6 node openssl rbenv ruby-build postgresql
-
-# Install the ruby version required by the application
-$ cd /path/to/imimaps
-$ rbenv install 2.1.5
-$ rbenv global 2.1.5 (optional, if you want to set 2.1.5 as your default Ruby version)
-$ echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-$ source ~/.bashrc
-$ bundle install
-$ gem install thor
-
-# start the development environment
-$ ./docker-tool development start
-
-# Open the application in your browser
-$ open http://localhost:8080
+see .docker/docs.md
