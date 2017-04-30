@@ -98,7 +98,7 @@ Semester.where(name: "WS 11/12", id:4).first_or_create
 
 InternshipRating.destroy_all
 InternshipRating.create(:appreciation => 4, :atmosphere => 4, :supervision => 4, :tasks => 4, :training_success => 4)
-#AdminUser.create(:email => "admin@imi-map.f4.htw-berlin.de", :password => 'bastiSchokolade', :password_confirmation => 'bastiSchokolade')
+#AdminUser.create(:email => "admin@imimaps", :password => 'geheim', :password_confirmation => 'geheim')
 
 ReadingProf.where(name: "Busch").first_or_create
 ReadingProf.where(name: "Barthel").first_or_create
@@ -118,7 +118,7 @@ iR = InternshipRating.first
 Internship.destroy_all
 
 n=1
-10.times do 
+10.times do
 	r = rand(countries.size)
 	Student.where(
        import_id: n,
@@ -126,7 +126,7 @@ n=1
        first_name: "Klaus",
        last_name: "Peter",
        email: "klaus@peter.com",
-       birthday: Time.at(rand*Time.now.to_f).to_date, 
+       birthday: Time.at(rand*Time.now.to_f).to_date,
        birthplace: hash[countries[rand(countries.size)]]).first_or_create!
 
   r_employees = rand(500)
@@ -135,7 +135,7 @@ n=1
 	Company.where(street: "a", zip: "1", name: "Company#{n}", number_employees: r_employees, city: hash[countries[r]],
        country: countries[r], phone: r_phone.to_s, blacklisted: false, import_id: n, website: "www.google.com").first_or_create!
 
-	semester = Semester.find(rand(Semester.count)+1) 
+	semester = Semester.find(rand(Semester.count)+1)
   reading_prof = ReadingProf.find(rand(ReadingProf.count)+1)
   company = Company.last
   student = Student.last
