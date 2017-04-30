@@ -1,10 +1,10 @@
 # Database configuration for IMI-Maps
 # The default is to use SQLite; if the Postgres configuration should be
-# used set the environment variable DATABASE to postgres. This is done
+# used set the environment variable IMIMAPS_ENVIRONMENT to docker. This is done
 # in Dockerfile for the docker deployments.
-# export set DATABASE=postgres
+# export set IMIMAPS_ENVIRONMENT=docker
 
-<% if ENV['DATABASE'] == "postgres" %>
+<% if ENV['IMIMAPS_ENVIRONMENT'] == "docker" %>
 
 development:
   adapter: postgresql
@@ -38,7 +38,7 @@ production:
 
 
 <% else
-  puts "WARNING: ENV['DATABASE'] not set to \"postgres\", using default: SQLITE"
+  puts "WARNING: ENV['IMIMAPS_ENVIRONMENT'] not set to \"docker\", using default: SQLITE"
 %>
 
 development:

@@ -51,12 +51,12 @@ end
 gem 'factory_girl_rails'
 
 # database gem
-install_if -> { ENV['DATABASE'] == "postgres" } do
+install_if -> { ENV['IMIMAPS_ENVIRONMENT'] == "docker" } do
   gem "pg"
 end
 
 group :development, :test do
-  install_if -> { ENV['DATABASE'] != "postgres" } do
+  install_if -> { ENV['IMIMAPS_ENVIRONMENT'] != "docker" } do
     gem 'sqlite3', '~> 1.3.7'
   end
 end

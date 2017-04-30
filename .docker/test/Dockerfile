@@ -3,7 +3,7 @@ FROM ruby:2.1-alpine
 ENV APP_HOME /usr/src/app
 ENV RAILS_ENV test
 ENV RACK_ENV test
-ENV DATABASE postgres
+ENV IMIMAPS_ENVIRONMENT docker
 
 EXPOSE 80
 
