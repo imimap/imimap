@@ -1,5 +1,7 @@
+
 #!/usr/bin/env bash
 # travis env set DEPLOYMENT_PIPELINE dev-sector
+
 if [ -z "$DEPLOYMENT_PIPELINE" ]; then
     echo "no DEPLOYMENT_PIPELINE set, skipping/not decripting ssh keys"
 else
@@ -13,3 +15,7 @@ else
       echo "DEPLOYMENT_PIPELINE ${DEPLOYMENT_PIPELINE} not recognized"
   fi
 fi
+
+./ci-cd/docker-build.rb
+./ci-cd/docker-push.rb
+./ci-cd/docker-deploy.rb
