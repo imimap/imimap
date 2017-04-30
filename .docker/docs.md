@@ -136,8 +136,8 @@ just create a new branch and push:
 
 ## cleaning your docker environment
 
-Alle Container entfernen: docker ps -aq | xargs docker rm -f
-Alle IMI-Maps-Images entfernen: docker images | grep imi | xargs docker rmi -f
+Alle Container entfernen: ```docker ps -aq | xargs docker rm -f```
+Alle Images entfernen: ```docker images -qa | grep imi | xargs docker rmi -f```
 
 
 # Setup der Deployment Pipeline
