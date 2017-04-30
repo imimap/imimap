@@ -51,12 +51,14 @@ end
 gem 'factory_girl_rails'
 
 # database gem
-install_if -> { ENV['POSTGRES_USER'] } do
+install_if -> { ENV['DATABASE'] == "postgres" } do
   gem "pg"
 end
 
 group :development, :test do
-  gem 'sqlite3', '~> 1.3.7'
+  install_if -> { ENV['DATABASE'] != "postgres" } do
+    gem 'sqlite3', '~> 1.3.7'
+  end
 end
 
 group :development, :test do

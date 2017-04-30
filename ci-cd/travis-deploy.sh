@@ -2,6 +2,10 @@
 #!/usr/bin/env bash
 # travis env set DEPLOYMENT_PIPELINE dev-sector
 
+if [ "$DATABASE" != "postgres"]; then
+  echo "DATABASE is set to ${DATABASE}, skipping deployment"
+else
+
 if [ -z "$DEPLOYMENT_PIPELINE" ]; then
     echo "no DEPLOYMENT_PIPELINE set, skipping/not decripting ssh keys"
 else
@@ -14,6 +18,7 @@ else
   else
       echo "DEPLOYMENT_PIPELINE ${DEPLOYMENT_PIPELINE} not recognized"
   fi
+fi
 fi
 
 ./ci-cd/docker-build.rb
