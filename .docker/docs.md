@@ -4,7 +4,18 @@ dabei unterstützt, Praktika im Ausland zu finden.
 
 Die Applikation wurde im Rahmen einer Veranstaltung des Studiengangs Internationale Medieninformatik entwickelt.
 
+# Local Setup on Development Machine
+
+Für das lokale Setup gibt es drei Möglichkeiten, rails auszuführen:
+- mit [Docker](#setup-mit-docker)
+- mit Docker in einer virtuellen Maschine über Vagrant [Vagrant](#setup-mit-vagrant)
+- [lokal mit SQLite](#lokales-setup)
+
 ## Setup mit Vagrant
+IMI-Maps läuft in Docker in einer VM über Vagrant.
+Vorteil: wie Docker, lokal wenig Installation notwendig. Empfehlenswert für Windows.
+Nachteil: 1 Tool mehr
+
 Zum lokalen entwickeln muss folgende Software installiert werden:
 - [VirtualBox](https://www.virtualbox.org/)
 - [Vagrant](https://www.vagrantup.com/)
@@ -22,7 +33,14 @@ Zum lokalen entwickeln muss folgende Software installiert werden:
 Die Applikation ist dann via [http://192.168.33.10](http://192.168.33.10) erreichbar. Die Migrations sowie Seeds der Datenbank
 sind bereits ausgeführt.
 
-## Setup ohne Vagrant (hauptsächlich MacOS)
+## Setup mit Docker
+IMI-Maps läuft in Docker.
+Vorteil: Konfiguration wie auf Staging/Production Maschinen.
+Nachteil: Mehr Komplexität, gerade für Rails-Neulinge noch unübersichtlicher.
+
+Hier beschrieben für MacOS (Package Manager Homebrew), für andere OS z.B.
+Linux sind die dependencies mit anderem Package Manger zu installieren.
+
 Zum lokalen entwickeln muss folgende Software installiert werden:
 - [Docker](https://www.docker.com/)
 - [Homebrew](http://brew.sh/)
@@ -48,7 +66,87 @@ $ open http://localhost:8080
 
 ```
 
-## Setup für Production- und Staging-Hosts
+## Lokales Setup
+
+Ohne Docker, mit SQLite
+
+TBD (BK)
+
+# Development Process and Deployment Pipeline
+
+## Committing Changes to the Mainline
+
+## CI Builds
+
+
+## Automated Deployment to Staging
+
+If the travis build was succesfull, an automated deployment is triggered.
+
+This is governed by the method is_release in ci-cd/helpers.rb and only happens
+if the DEPLOYMENT_PIPELINE environment variable is set in travis. You can
+do this with the travis cli, eg.
+
+    travis env set DEPLOYMENT_PIPELINE dev-sector
+    travis env set DEPLOYMENT_PIPELINE heroku
+
+(added by BK to enable forks on github without deployment pipeline and also
+  successfull checks for pull-requests from these repositories)
+
+## Production Deployments
+
+Deployments auf das Produktivsystem
+werden durch [Tags](https://help.github.com/articles/working-with-tags/) auf GitHub getriggert.
+Legt ein_e Entwickler_in einen neuen Tag bzw. ein neues Release an, stößt diese einen Travis-Build an. Ist dieser erfolgreich, wird die Applikation automatisch auf das Produktivsystem deployed.
+
+# Development Workflow
+
+- create a feature branch
+- edit files in app
+- run and test the app in docker container
+- see ./docker-tool development --help
+
+    ./docker-tool development build (builds docker image, only needs to be redone after changes to Gemfile)
+    ./docker-tool development start
+    ./docker-tool development test
+
+- changes should always be tested locally before committing/pushing.
+- push changes to github
+- if desirable (and checks are green), create pull request and merge / rebase and merge if possible.
+- pull master branch from github and repeat
+
+### oops, forgot to branch
+
+If you accidentially work on the master branch, you'll get an error when
+trying to push your changes:
+```
+remote: Resolving deltas: 100% (6/6), completed with 6 local objects.
+remote: error: GH006: Protected branch update failed for refs/heads/master.
+remote: error: Required status check "continuous-integration/travis-ci" is expected.
+```
+
+just create a new branch and push:
+
+    git checkout -b typos
+    git push origin typos
+
+## cleaning your docker environment
+
+Alle Container entfernen: docker ps -aq | xargs docker rm -f
+Alle IMI-Maps-Images entfernen: docker images | grep imi | xargs docker rmi -f
+
+
+# Setup der Deployment Pipeline
+
+### Github setup
+Restrictions on Master Branch are set via github branch configuration page
+ https://github.com/imimaps/imimaps/settings/branches/master
+### Setup für Production- und Staging-Hosts
+
+- BK: brew is not available on linux machines, or should it?
+- Copy your ssh public key  - who is "you" in this context?
+
+
 ```
 $ brew install ansible
 
@@ -106,8 +204,11 @@ von Travis spezifisch für das Git-Repository verschlüsselt wird. Die resultier
 
 **Achtung:** Weder die Keys selbst noch das unverschlüsselte Tar-Archiv dürfen nach GitHub gelangen, da das Repository öffentlich zugänglich ist.
 
+
+
+# Background
 ## Status Quo (vor dem IC)
-Der Zustand sowie die Deployment-Infrastuktur der IMI Map vor der Durchführung des Independent Courseworks war wiefolgt:
+Der Zustand sowie die Deployment-Infrastuktur der IMI Map vor der Durchführung des Independent Courseworks war wie folgt:
 
 Die Applikation war zu großen Teilen ungetestet. Laut [SimpleCov](https://github.com/colszowka/simplecov), einer Library zu Analyase
 von Ruby-Code, lag die Code Coverage der vorhandenen Tests bei etwa 50 Prozent. Das heißt, dass auf Basis der vorhandenen Tests
@@ -142,7 +243,7 @@ erreicht werden sollte. Die Tests sollen automatisch in einem Continuous Integra
 **Continuous Delivery**
 
 Für den Fall dass Builds der Continuous Integration erfolgreich sind, soll die Applikation automatisch ausgerollt werden.
-Dabei soll jeder Build der Staging-Umgebung auf das Staging-System ausgerollt werden. Deployments auf das Produktivsystem
+Dabei soll jeder erfolgreiche CI-Build auf das Staging-System ausgerollt werden. Deployments auf das Produktivsystem
 sollen durch [Tags](https://help.github.com/articles/working-with-tags/) auf GitHub getriggert werden.
 Legt ein Developer einen neuen Tag bzw. ein neues Release an, stößt diese einen Travis-Build an. Ist dieser erfolgreich, wird
 die Applikation automatisch auf das Produktivsystem deployed.
