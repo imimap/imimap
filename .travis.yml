@@ -11,12 +11,8 @@ script:
 - echo "Build start"
 - ./docker-tool test start
 - echo "Build done"
-before_install:
-  - "./ci-cd/travis-before-install.sh"
 after_success:
-- "./ci-cd/docker-build.rb"
-- "./ci-cd/docker-push.rb"
-- "./ci-cd/docker-deploy.rb"
+  - "./ci-cd/travis-deploy.sh"
 env:
   global:
     # DOCKER_USERNAME
