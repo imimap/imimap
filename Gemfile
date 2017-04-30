@@ -50,7 +50,19 @@ end
 
 gem 'factory_girl_rails'
 
+# database gem
+install_if -> { ENV['IMIMAPS_ENVIRONMENT'] == "docker" } do
+  gem "pg"
+end
+
 group :development, :test do
+  install_if -> { ENV['IMIMAPS_ENVIRONMENT'] != "docker" } do
+    gem 'sqlite3', '~> 1.3.7'
+  end
+end
+
+group :development, :test do
+
   gem 'rspec-rails', '~> 3.5'
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -63,9 +75,7 @@ group :development, :test do
   gem "simplecov", require: false
 end
 
-group :production do
-  gem 'pg'
-end
+
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
@@ -79,6 +89,3 @@ gem 'unicorn'
 
 # Deploy with Capistrano
 gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'

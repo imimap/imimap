@@ -69,8 +69,12 @@ $ open http://localhost:8080
 ## Lokales Setup
 
 Ohne Docker, mit SQLite
+SQLite is now the default used both in Gemfile as well as config/database.yml
 
-TBD (BK)
+Run tests:
+
+    rake db:migrate RAILS_ENV=test
+
 
 # Development Process and Deployment Pipeline
 
