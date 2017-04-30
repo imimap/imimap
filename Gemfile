@@ -8,7 +8,7 @@ gem 'gmaps4rails'
 gem 'nested_form'
 gem "country-select"
 
-gem 'activeadmin'
+gem 'activeadmin', "~> 0.6"
 
 gem "rmagick", "~> 2.13.1"
 gem "paperclip", "~> 2.7"
