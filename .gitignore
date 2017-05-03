@@ -52,3 +52,7 @@ playbook.retry
 /docker-sync.yml
 /.vagrant
 *.log
+
+# ignore metadata for rubymine
+
+/.idea
