@@ -9,7 +9,7 @@ ImiMaps::Application.configure do
   config.action_controller.perform_caching = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
-  config.serve_static_assets = true
+  config.serve_static_assets = false
 
   # Compress JavaScripts and CSS
   config.assets.compress = true
@@ -25,7 +25,7 @@ ImiMaps::Application.configure do
 
   # Specifies the header that your server uses for sending files
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
-  config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
+  # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -47,35 +47,9 @@ ImiMaps::Application.configure do
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
-  config.assets.precompile << Proc.new do |path|
-    if path =~ /\.(css|js)\z/
-      full_path = Rails.application.assets.resolve(path).to_path
-      app_assets_path = Rails.root.join('app', 'assets').to_path
-      if full_path.starts_with? app_assets_path
-        puts "including asset: " + full_path
-        true
-      else
-        puts "excluding asset: " + full_path
-        false
-      end
-    else
-      false
-    end
-  end
 
   # Disable delivery errors, bad email addresses will be ignored
-  config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: "imi-map.f4.htw-berlin.de" }
-  config.action_mailer.smtp_settings = {
-    host: "smtp.gmail.com",
-    port: "587",
-    domain: "gmail.com",
-    user_name: ENV['GMAIL_USERNAME'],
-    password: ENV['GMAIL_PASSWORD'],
-    authentication: :plain,
-    enable_starttls_auto: true
-  }
+  # config.action_mailer.raise_delivery_errors = false
 
   # Enable threaded mode
   # config.threadsafe!
