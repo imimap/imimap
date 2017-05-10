@@ -8,14 +8,8 @@
 
 This deploys every successful build to
 
-- [http://imimaps-production.dev-sector.net](http://imimaps-production.dev-sector.net)
+- [http://imimaps-staging.dev-sector.net](http://imimaps-staging.dev-sector.net)
 - and every version tag to [http://imimaps-production.dev-sector.net](http://imimaps-production.dev-sector.net)
-
-
-
-#### Temporary fork (will be thrown away):
-* [https://github.com/bkleinen/imimaps](https://github.com/bkleinen/imimaps)
-* [![Build Status](https://travis-ci.org/bkleinen/imimaps.svg?branch=master)](https://travis-ci.org/bkleinen/imimaps)
 
 
 ## General Project Info
