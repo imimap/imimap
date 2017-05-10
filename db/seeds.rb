@@ -98,7 +98,7 @@ Semester.where(name: "WS 11/12", id:4).first_or_create
 
 InternshipRating.destroy_all
 InternshipRating.create(:appreciation => 4, :atmosphere => 4, :supervision => 4, :tasks => 4, :training_success => 4)
-#AdminUser.create(:email => "admin@imimaps", :password => 'geheim', :password_confirmation => 'geheim')
+#AdminUser.create(:email => "admin@imimaps", :password => 'geheim123', :password_confirmation => 'geheim123')
 
 ReadingProf.where(name: "Busch").first_or_create
 ReadingProf.where(name: "Barthel").first_or_create
