@@ -1,5 +1,9 @@
 require File.expand_path('../boot', __FILE__)
 
+# this will include raise/test_unit again, which was excluded in the
+# original IMI-Map. Probably eases further upgrades.
+# TBD: exclude test_unit again after final Rails version is reached.
+
 require 'rails/all'
 
 if defined?(Bundler)
@@ -11,6 +15,15 @@ end
 
 module ImiMaps
   class Application < Rails::Application
+
+    # IMI-Map settings
+    config.active_record.observers = :user_comment_observer, :answer_observer, :internship_observer, :user_observer
+    config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    config.i18n.default_locale = :de
+    # required by heroku. http://guides.rubyonrails.org/v3.2.8/asset_pipeline.html
+    config.assets.initialize_on_precompile = false
+    # IMI-Map settings end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
