@@ -40,7 +40,7 @@ RSpec.describe Internship, :type => :model do
 
   describe "#enrolment_number" do
     it 'should return the correct enrolment_number' do
-      expect(internship.enrolment_number).to eq("enrollment number")
+      expect(internship.enrolment_number).to eq(internship.student.enrolment_number)
     end
   end
 

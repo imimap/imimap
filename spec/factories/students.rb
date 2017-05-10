@@ -1,10 +1,10 @@
 FactoryGirl.define do
   factory :student do
-    first_name "Foo"
-    last_name "Bar"
-    enrolment_number "enrollment number"
+    first_name "Tuennes"
+    last_name "Schael"
+    enrolment_number "123456"
     birthday DateTime.now.to_date
-    birthplace "birthplace"
+    birthplace "Cologne"
     email "foo@bar.com"
     #user
     after(:build) do |student|

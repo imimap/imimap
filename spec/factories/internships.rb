@@ -5,7 +5,7 @@ FactoryGirl.define do
     internship_rating
     company
     user
-    title "internshipt title"
+    title "The Main Example Intership"
     recommend true
     orientation
     email_public true
