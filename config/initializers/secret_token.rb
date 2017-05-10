@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-ImiMaps::Application.config.secret_token = '5dbe6b3e371631852eb8b940429e277b564bbd5fad9b910b44601f28cfd35a664beede75bdb8cb1cbda48da2b898ef6554cefa66becd9f28a3879b10d328120f'
+ImiMaps::Application.config.secret_token = '3d19a296d2bf8410146025df1a968d929763628d4512c2787c4a52a1f5645b16d612b3bcc1ca4d37c5699b93f3179b89c0b3b564b4f1767b102657b3a8b798b0'
