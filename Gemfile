@@ -12,7 +12,6 @@ gem 'activeadmin', "~> 0.6"
 
 gem "rmagick", "~> 2.13.1"
 gem "paperclip", "~> 2.7"
-gem "date-input-rails"
 
 gem 'chosen-rails'
 
