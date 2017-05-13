@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe LdapAuthentication, :type => :model do
   let(:ldap_authentication) {
-    LdapAuthentication.new("host", "port", "username", "password")
+    LdapAuthentication.new("username", "password")
   }
 
   it 'should create a new instance' do
@@ -11,7 +11,7 @@ RSpec.describe LdapAuthentication, :type => :model do
 
   describe "#authorized?"  do
     it 'should be authorized' do
-      expect(ldap_authentication.authorized?).to eq false
+      expect(ldap_authentication.authorized?).to eq true
     end
   end
 end
