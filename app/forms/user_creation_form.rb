@@ -49,6 +49,10 @@ class UserCreationForm
     if valid?
       student.save! unless student_exists?
       user.student_id = student.id
+      #TBD what happens if save fails? why is this not in usual create action?
+      #it fails if password confirmation is not correct.
+      #TBD: write test for that.
+      #BK 130517
       user.save!
       true
     else
