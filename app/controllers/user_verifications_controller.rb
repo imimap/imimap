@@ -7,7 +7,6 @@ class UserVerificationsController < ApplicationController
   end
 
   def create
-    # :nocov:
     ldap = LdapAuthentication.new(params[:user_name], params[:password])
     if ldap.authorized?
       matrikel = params[:user_name].split("s0")[1]
@@ -18,6 +17,5 @@ class UserVerificationsController < ApplicationController
       flash[:error] =  "Benutzername oder Passwort nicht korrekt!"
       redirect_to root_url
     end
-    # :nocov:
   end
 end

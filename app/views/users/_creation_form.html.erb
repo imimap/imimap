@@ -85,14 +85,14 @@
       <div class="field" id="field-titles">
         <%= f.label t "users.attributes.mailnotif1"  %>
         <%= f.check_box :mailnotif %>
-      </div> 
+      </div>
 
   </div>
 </div>
 <div class="row">
-  <div class="span1 offset7"> 
+  <div class="span1 offset7">
    <div class="actions" style="float: right; margin-right: 46px; margin-top: 20px;">
-    <%= f.submit t(params[:action] == 'new' ? 'users.create' : 'users.update'), class: "btn btn-success" %>
+    <%= f.submit t(params[:action] == 'new' ? 'users.create' : 'users.update'), class: "btn btn-success", id: 'submit' %>
   </div>
 
 </div>

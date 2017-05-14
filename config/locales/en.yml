@@ -2,6 +2,10 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  sign_up:
+    here: "Sign up here"
+    username: "Username (e.g. s05xxxxx)"
+    password: "Password"
   noti:
     report: "You can create your internship report now!"
     comment: "Someone commented on your internship"
@@ -52,7 +56,7 @@ en:
       long: ! '%B %d, %Y %H:%M'
       short: ! '%d %b %H:%M'
     pm: pm
-  choose: 
+  choose:
     country: "Choose a country"
     orientation: "Choose an orientation"
     semester: "Choose a semester"
@@ -71,7 +75,7 @@ en:
     general: "General Info"
     favorite: "Favorite"
     tabtitle: "IMI Map | University of Applied Sciences"
- 
+
   search:
     explanation:
       html: "The diagrams give you an overview of the most common criteria for internships. </br> Simply click the bars to add the criteria to your search"
@@ -111,7 +115,7 @@ en:
     edit:
       editcompany: "Editing Company"
     new:
-      newcompany: "New Company"  
+      newcompany: "New Company"
     attributes:
       rating: "Average Rating"
       name: "Company name"
@@ -123,7 +127,7 @@ en:
       industry: "Industry"
       main_language: "Main Language"
       website: "Website"
-      address: "Address"  
+      address: "Address"
       recommended: "Recommended"
       not_recommended: "Not Recommended"
 
@@ -138,9 +142,9 @@ en:
     index:
       title: "Listing internships"
     edit:
-      editinternship: "Editing Internship" 
+      editinternship: "Editing Internship"
     new:
-      newinternship: "New Internship"   
+      newinternship: "New Internship"
     attributes:
       description: "Description"
       semester: "Semester/Year"
@@ -175,11 +179,11 @@ en:
     index:
       title: "Listing Users"
     edit:
-      edituser: "Editing User"  
+      edituser: "Editing User"
     new:
-      newuser: "New User"  
+      newuser: "New User"
     show:
-       favorites_title: "My Favorites"       
+       favorites_title: "My Favorites"
     sign_up: "Thank you for signing up!"
     attributes:
       email: "Email"
@@ -189,8 +193,8 @@ en:
       password1: "Password *"
       password_confirmation: "Password confirmation"
       password_confirmation1: "Password confirmation *"
-      mailnotif: "Receive Email-Notification?"  
-      mailnotif1: "Receive Email-Notification? *" 
+      mailnotif: "Receive Email-Notification?"
+      mailnotif1: "Receive Email-Notification? *"
 
   students:
     attributes:
@@ -210,12 +214,12 @@ en:
   comments:
     singular: "Comment"
     plural: "Comments"
-    attributes: 
+    attributes:
       body: "Your comment:"
 
   answers:
     from: "Reply from"
-    attributes: 
+    attributes:
       body: "Reply"
 
   active_admin:
@@ -312,8 +316,8 @@ en:
       block: "List"
       grid: "Grid"
       blog: "Blog"
-  
-  
+
+
 
   faq:
     title: "FAQs"
@@ -325,16 +329,16 @@ en:
     frage3:
       html: "<p><b>Where do I register for the internship accompanying courses?</b></p><p>In LSF. Note that the courses are always offered during the semester breaks.</br>Apart from AEP, they can also be attended before the placement.</p>"
     frage4:
-      html: "<p><b>When should I start looking for internships?</b></p><p>As soon as possible. It is important to have enough time to search for suitable internships and to apply. </br>Especially in countries for which a visa is required and / or if you want to apply for scholarships.</p>"     
+      html: "<p><b>When should I start looking for internships?</b></p><p>As soon as possible. It is important to have enough time to search for suitable internships and to apply. </br>Especially in countries for which a visa is required and / or if you want to apply for scholarships.</p>"
     title3: "IMI Map FAQs"
     frageI1:
       html: "<p><b>Can I edit my internship-review after it has been submitted?</b></p><p>Yes, you can edit your internship review after it has been submited. Follow these steps: 'Account' → 'Internship Report' → 'Edit'.</p>"
     frageI2:
-       html: "<p><b>How do I post a second intership-review?</b></p><p>If you have completed your internship in several companies, you can create one experience report for each company.</br> For this you have to write a mail to the person responsible (mail), which unlocks it for you.</br> After activation, the button 'Create review' under 'Account' will appear.</p>"  
+       html: "<p><b>How do I post a second intership-review?</b></p><p>If you have completed your internship in several companies, you can create one experience report for each company.</br> For this you have to write a mail to the person responsible (mail), which unlocks it for you.</br> After activation, the button 'Create review' under 'Account' will appear.</p>"
 
 
 
-   
+
   download:
     form: "Forms"
     text1: "The required forms are listed below for download:"
@@ -355,9 +359,9 @@ en:
     text4: "fully completed and signed internship application form in the original"
     text5: "printed LSF-certificate, prooving that you passed all the courses of the 1st and 2nd semester"
     text6: "the contract with the company in the original"
-    text7:  
+    text7:
      html: "These documents remain at the HTW. If you need copies for BaföG, semester ticket refund or scholarships, you have to prepare those yourself and get them signed by the internship coordinator. If you want to keep an original copy of the placement agreement, please ask the compan yourself, to provide enough originals (usually three: one for the company, one for you and one for the HTW Berlin).</br></br>All these documents should be handed in before the end of lectures of the semester prior to the semester in which you plan to conduct your internship. As long as the idocuments are not complete or not handed in in original you can not be admitted to the internship.</br></br> In order to receive a refund for the semester ticket fee, you have to fill in the request (only available in german) and send it to the semester ticket office before the start of the internship semester. "
-    text8: 
+    text8:
      html: ""
     text9:
      html: "<h3><b>Approval of the internship</b></h3>The fully completed certificate of internship completion (signed and stamped by the company) and the internship report must be handed  in to the internship coordinator and the compulsory course AEP — Auswertung von Erfahrungen am Arbeitsplatz — must be completed successfully. Only then the internship can be approved. "
@@ -369,7 +373,7 @@ en:
     text1:
       html: "<h3><strong>Which ways of fundings are available?</strong></h3>An internship abroad should be well planned. Although some internships are paid, the living costs are often much higher than here. Additionally you may have to pay things like:  travel costs and insurance. Therefore, please inform yourself - also two to three semesters prior to the planned internship. The sooner you begin to prepare your internship, the more options are open to you. Please note the application deadlines for various scholarship programs and the long processing time for Auslands-BAföG. For some scholarship programs you have to apply about ten months prior to starting, but at this time you don't need to have a placement promise. The International Office of HTW Berlin offers advice on funding opportunities of internships and also provides detailed information online about this topic."
     text2: "You can find a more detailed list of funding programs here:"
-    text3:  
+    text3:
       html: "<p>Auslands-BAföG is the great financial support for an entire study, part-study internship or a student exchange in European and non-European countries! If you receive Bafög here, you sure get AUslandsbafög, if you get no Bafög here, you can still get Auslands-BAföG! Due to the higher costs abroad Auslands-Bafög come to question for a lot more of you.</p>"
     text4: "more Information"
     text5:
@@ -407,7 +411,7 @@ en:
     column1: "First Internship"
     column2: "Second Internship"
     column3: "Third Internship"
-    
+
   msg:
     logout: "You have successfully logged out"
     invalid: "Password or email is invalid"
@@ -422,8 +426,8 @@ en:
    registerRequest:
     html: "</br>You completed your internship at the HTW succesfully. </br> We kindly remind you to register (if you haven't yet)and complete your internship experience report on IMI Map: imi-map.f4.htw-berlin.de </br> "
    registerRequestSubject: "Come and join IMI-Map. IMI internship experience report"
-   forgotPsw: 
-    html: "</br>Forgot you password? </br> Please click on the link below to request a new password:</br>" 
+   forgotPsw:
+    html: "</br>Forgot you password? </br> Please click on the link below to request a new password:</br>"
    forgotPswSubject: "You requested a new password on IMI Map"
    goodbye:
     html: "</br>Kind Regards. </br> IMI Map Team"

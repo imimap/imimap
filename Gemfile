@@ -68,6 +68,8 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'pry'
   gem 'capybara'
+  gem 'poltergeist'
+  gem 'launchy'
   gem 'rack-mini-profiler'
 
   gem 'railroady'
