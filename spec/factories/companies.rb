@@ -1,18 +1,16 @@
 FactoryGirl.define do
   factory :company do
-    name "company name"
+    name "The IMI-Map Company"
     number_employees 2
-    industry "company industry"
-    website "company website"
-    latitude 128.0
-    longitude 128.0
-    city "company city"
-    country "company country"
-    street "company street"
-    zip "company zip"
-    main_language "company main language"
-    phone "company phone"
-    fax "company fax"
+    industry "IT"
+    website "http://htw-berlin.de"
+    city "Berlin"
+    country "Germany"
+    street "Wilhelminenhofstr. 75 A"
+    zip "12459"
+    main_language "German"
+    phone "+49123456789"
+    fax "+49123456789"
     blacklisted false
     import_id 1
   end

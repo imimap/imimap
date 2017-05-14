@@ -12,6 +12,8 @@ class Company < ActiveRecord::Base
  # #validates :website, :presence => true, :allow_blank => false
 
   geocoded_by :address
+  # TBD: geocoding should only happen if necessary, see
+  # https://github.com/alexreisner/geocoder#avoiding-unnecessary-api-requests
   after_validation :geocode
   acts_as_gmappable :process_geocoding => false
 
