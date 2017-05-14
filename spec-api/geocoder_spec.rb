@@ -5,6 +5,7 @@ describe "how we expect to use the geocoder gem" do
   # https://github.com/alexreisner/geocoder
   before :each do
     @company = build :company
+
     @is24 = build :is24
     Geocoder.configure({:lookup => :google, :timeout => 100})
     Geocoder.configure(lookup: :google)
@@ -20,6 +21,7 @@ describe "how we expect to use the geocoder gem" do
       expect(@company.latitude).to eq 52.4577228
 
     end
+
     it 'geocodes IS24' do
       @is24.valid?
       # now it shoud be geocoded, that is, have lat and long set:
@@ -33,6 +35,7 @@ describe "how we expect to use the geocoder gem" do
 end
 
 # to try it out in rails console:
+
 
 # Geocoder.configure(:timeout => 100)
 # Geocoder.search("Wilhelminenhofstr. 75 A, 12459, Berlin, Germany")

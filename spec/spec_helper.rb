@@ -169,6 +169,7 @@ Geocoder::Lookup::Test.add_stub(
     }
   ]
 )
+
 Geocoder::Lookup::Test.add_stub(
   "Andreasstr. 10, 10243, Berlin, Germany", [
     {
@@ -178,18 +179,3 @@ Geocoder::Lookup::Test.add_stub(
     }
   ]
 )
-
-# example from the documentation
-#Geocoder::Lookup::Test.add_stub(
-#  "New York, NY", [
-#    {
-#      'latitude'     => 40.7143528,
-#      'longitude'    => -74.0059731,
-#      'address'      => 'New York, NY, USA',
-#      'state'        => 'New York',
-#      'state_code'   => 'NY',
-#      'country'      => 'United States',
-#      'country_code' => 'US'
-#    }
-#  ]
-#)
