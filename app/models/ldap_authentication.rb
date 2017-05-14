@@ -27,9 +27,12 @@ class LdapAuthentication
   def authorized?
     begin
       return true if @@mode == :test
+      # thus, this is not tested automatically:
+      # :nocov:
       ldap.bind(method: :simple, username: "uid=#{username}, ou=Users, o=f4, dc=htw-berlin, dc=de", password: password)
     rescue
       false
+      # :nocov:
     end
   end
 end
