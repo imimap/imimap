@@ -146,3 +146,31 @@ RSpec.configure do |config|
 
   config.include ControllerTestHelper, type: :controller
 end
+
+require 'geocoder'
+Geocoder.configure(:lookup => :test)
+Geocoder::Lookup::Test.add_stub(
+  "Wilhelminenhofstr. 75 A, 12459, Berlin, Germany", [
+    {
+      'latitude'     => 52.4577228,
+      'longitude'    => 13.5261362,
+      'address'      => "HTW Berlin - Gebäude C, Wilhelminenhofstraße 75A, 12459 Berlin, Germany"
+    }
+  ]
+)
+
+# example from the documentation
+
+Geocoder::Lookup::Test.add_stub(
+  "New York, NY", [
+    {
+      'latitude'     => 40.7143528,
+      'longitude'    => -74.0059731,
+      'address'      => 'New York, NY, USA',
+      'state'        => 'New York',
+      'state_code'   => 'NY',
+      'country'      => 'United States',
+      'country_code' => 'US'
+    }
+  ]
+)
