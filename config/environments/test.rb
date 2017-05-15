@@ -36,5 +36,10 @@ ImiMaps::Application.configure do
   config.active_support.deprecation = :stderr
 
   config.action_mailer.default_url_options = { :host => "localhost:3000" }
+
+  # TBD40: move this into rails configuration http://guides.rubyonrails.org/configuring.html#custom-configuration
+  # for some reason, this doesn't work in tests.
+  #config.imi_maps.ldap = :test
 end
+
 LdapAuthentication.configure(mode: :test)

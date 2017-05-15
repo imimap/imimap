@@ -17,6 +17,14 @@ RUN chmod +x /docker-entrypoint.sh
 RUN set -ex \
   && apk add --no-cache libpq imagemagick nodejs bash
 
+# poltergeist, see https://github.com/Overbryd/docker-phantomjs-alpine/releases
+RUN apk update && apk add --no-cache fontconfig curl && \
+  mkdir -p /usr/share && \
+  cd /usr/share \
+  && curl -L https://github.com/Overbryd/docker-phantomjs-alpine/releases/download/2.11/phantomjs-alpine-x86_64.tar.bz2 | tar xj \
+  && ln -s /usr/share/phantomjs/phantomjs /usr/bin/phantomjs \
+  && phantomjs --version
+
 # build deps
 RUN set -ex \
   && apk add --no-cache --virtual .builddeps linux-headers libpq build-base postgresql-dev imagemagick-dev \
@@ -24,4 +32,6 @@ RUN set -ex \
   && apk del .builddeps
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD export QMAKE=/usr/lib/qt5/bin/qmake
+CMD export PATH=/usr/lib/qt5/bin/qmake:$PATH
 CMD ["bundle", "exec", "unicorn", "--port", "80"]

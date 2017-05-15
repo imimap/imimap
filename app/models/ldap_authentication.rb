@@ -1,35 +1,43 @@
+# TBD: This is a hack and will/needs to be replaced by ldap/devise.
 class LdapAuthentication
   require 'net/ldap'
   # TBD40: move this into rails configuration http://guides.rubyonrails.org/configuring.html#custom-configuration
   @@host = "141.45.146.101"
   @@port = 389
-
-  attr_reader :host, :port, :username, :password
-  attr_accessor :ldap
+  @@mode = :ldap
 
   def self.configure(options = {})
-    # TBD40: move this into rails configuration http://guides.rubyonrails.org/configuring.html#custom-configuration
     @@mode = options[:mode] # test
   end
-
-  def initialize(username, password)
-    @host = host
-    @port = port
-    @username = username
-    @password = password
-    establish_connection
+  def self.mode
+    @@mode
   end
 
-  def establish_connection
-    @ldap = Net::LDAP.new(host: @@host, port: @@port)
-  end
-
-  def authorized?
-    begin
-      return true if @@mode == :test
-      ldap.bind(method: :simple, username: "uid=#{username}, ou=Users, o=f4, dc=htw-berlin, dc=de", password: password)
-    rescue
-      false
+  def self.authorized?(username,password)
+    authorized = false
+    if in_test_mode?
+      authorized = @@mode != :test_fail
+    else
+      # thus, this is not tested automatically:
+      # :nocov:
+      begin
+        ldap = Net::LDAP.new(host: @@host, port: @@port)
+        puts "querying ldap..."
+        authorized = ldap.bind(method: :simple, username: "uid=#{username}, ou=Users, o=f4, dc=htw-berlin, dc=de", password: password)
+      rescue
+        authorized = false
+        # :nocov:
+      end
     end
+    authorized
+  end
+
+  def self.in_test_mode?
+       # TBD40: move this into rails configuration http://guides.rubyonrails.org/configuring.html#custom-configuration
+      return true if @@mode == :test || @@mode == :test_fail
+      # :nocov:
+      #return true if Rails.configuration.imi-maps.ldap == :test
+      return false
+    # :nocov:
   end
 end

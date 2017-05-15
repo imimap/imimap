@@ -61,7 +61,7 @@ ImiMaps::Application.routes.draw do
 
 	end
 
-  root to: 'sessions#new'
+  #root to: 'sessions#new'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

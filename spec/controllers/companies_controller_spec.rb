@@ -10,6 +10,7 @@ RSpec.describe CompaniesController, :type => :controller do
   describe "GET #index" do
     before :each do
       @company = create :company
+      @company2 = create :is24
     end
 
     it 'render the index template' do
@@ -25,7 +26,7 @@ RSpec.describe CompaniesController, :type => :controller do
 
     it 'assigns @companies' do
       get :index
-      expect(assigns(:companies)).to eq([@company])
+      expect(assigns(:companies)).to eq([@company,@company2])
     end
 
   end
@@ -33,10 +34,16 @@ RSpec.describe CompaniesController, :type => :controller do
   describe "GET #show" do
     before :each do
       @company = create :company
+      @company2 = create :is24
     end
 
     it 'renders the show template' do
       get :show, id: @company
+      expect(response).to render_template :show
+    end
+
+    it 'renders the show template for a company without http in website name' do
+      get :show, id: @company2
       expect(response).to render_template :show
     end
 

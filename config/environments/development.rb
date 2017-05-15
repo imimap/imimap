@@ -36,5 +36,6 @@ ImiMaps::Application.configure do
   config.assets.debug = false
 
   config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  #config.imi_maps.ldap = :test
 end
 LdapAuthentication.configure(mode: :test)

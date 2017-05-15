@@ -6,7 +6,19 @@ RSpec.describe SessionsController, :type => :controller do
     context 'when not logged in ' do
       it "returns http success" do
         create :internship, completed: true
-        company = create :company, website: "http"
+        company = create :company, website: "foo.bar"
+        create :internship, completed: true, company: company
+        create :internship, completed: true, company: company
+        get :new
+        expect(response).to have_http_status(:success)
+      end
+
+      it "returns http success - 2 " do
+        # TBD this is a variation of 'returns http success' to gain 100% coverage
+        # as the href is computed in the controller. Can be removed after this is moved to a model method.
+
+        create :internship, completed: true
+        company = create :company, website: "http://foo.bar"
         create :internship, completed: true, company: company
         create :internship, completed: true, company: company
         get :new
