@@ -26,11 +26,14 @@ require 'capybara/rspec'
 
 #https://github.com/teampoltergeist/poltergeist
 require 'capybara/poltergeist'
-Capybara.javascript_driver = :poltergeist
+
 Capybara.register_driver :poltergeist do |app|
-  options = {js_errors: false}
+  options = {js_errors: false, timeout: 30}
   Capybara::Poltergeist::Driver.new(app, options)
 end
+Capybara.javascript_driver = :poltergeist
+# see https://github.com/teamcapybara/capybara#asynchronous-javascript-ajax-and-friends
+Capybara.default_max_wait_time = 60
 
 
 

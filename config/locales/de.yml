@@ -1,6 +1,8 @@
 # Sample localization file for German. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 de:
+  ldap:
+    authorization_failed: "Benutzername oder Passwort nicht korrekt!"
   sign_up:
     here: "Neu anmelden"
     username: "Username (e.g. s05xxxxx)"
@@ -355,6 +357,7 @@ de:
       title_content: "Kommentare (%{count})"
       errors:
         empty_text: "Der Kommentar wurde nicht gespeichert, da der Text fehlt."
+
     devise:
       login:
         title: "Login"

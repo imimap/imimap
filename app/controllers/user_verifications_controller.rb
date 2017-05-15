@@ -7,14 +7,14 @@ class UserVerificationsController < ApplicationController
   end
 
   def create
-    ldap = LdapAuthentication.new(params[:user_name], params[:password])
-    if ldap.authorized?
+    authorized = LdapAuthentication.authorized?(params[:user_name], params[:password])
+    if authorized
       matrikel = params[:user_name].split("s0")[1]
       matrikel = matrikel.nil? ? "n/a" : matrikel
       session[:enrolment_number] = matrikel
       redirect_to new_user_path
     else
-      flash[:error] =  "Benutzername oder Passwort nicht korrekt!"
+      flash[:error] =  I18n.t('ldap.authorization_failed')
       redirect_to root_url
     end
   end
