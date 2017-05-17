@@ -98,7 +98,7 @@ Semester.where(name: "WS 11/12", id:4).first_or_create
 
 InternshipRating.destroy_all
 InternshipRating.create(:appreciation => 4, :atmosphere => 4, :supervision => 4, :tasks => 4, :training_success => 4)
-#AdminUser.create(:email => "admin@imimaps", :password => 'geheim123', :password_confirmation => 'geheim123')
+AdminUser.create(:email => "admin@imimaps.de", :password => 'geheim123', :password_confirmation => 'geheim123')
 
 ReadingProf.where(name: "Busch").first_or_create
 ReadingProf.where(name: "Barthel").first_or_create
@@ -124,7 +124,7 @@ n=1
        import_id: n,
        enrolment_number: (500000+n).to_s,
        first_name: "Klaus",
-       last_name: "Peter",
+       last_name: "Muster",
        email: "klaus@peter.com",
        birthday: Time.at(rand*Time.now.to_f).to_date,
        birthplace: hash[countries[rand(countries.size)]]).first_or_create!
