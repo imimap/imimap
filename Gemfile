@@ -21,6 +21,12 @@ gem 'devise', ' ~> 3.5'
 #  `attr_accessible` is extracted out of Rails into a gem. Please use new recommended protection model for params(strong_parameters) or add `protected_attributes` to your Gemfile to use old one.
 gem 'protected_attributes'
 
+# TBD Update: Observers have been removed in 4.0
+# replace with ActiveRecord callbacks, maybe refactor as aspect
+# as described in http://stackoverflow.com/questions/15165260/rails-observer-alternatives-for-4-0
+gem 'rails-observers'
+
+
 gem "rmagick", "~> 2.13.1"
 gem "paperclip", "~> 2.7"
 
