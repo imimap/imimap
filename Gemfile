@@ -7,7 +7,7 @@ gem 'carrierwave'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'nested_form'
-gem "country-select"
+gem "country_select",  git: 'git@github.com:bkleinen/country_select.git', tag: 'v2.5.1'
 
 # TBD ActiveAdminActivation
 # TBD no active admin version for rails 4.0
