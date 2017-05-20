@@ -37,7 +37,6 @@ de:
       admin_user:
         one: Administrator
         other: Administratoren
-    bla: "hullu"
     errors:
       models:
         user:
