@@ -12,7 +12,7 @@ RSpec.describe AnswersController, :type => :controller do
     it 'creates a new Answer' do
       user_comment = create :user_comment
       expect {
-        post :create, answer: attributes_for(:answer, user_comment_id: user_comment.id, internship_id: user_comment.internship_id)
+        post :create, answer: attributes_for(:answer, user_comment_id: user_comment.id, internship_id: user_comment.internship_id), format: :js
       }.to change(Answer, :count).by(1)
     end
   end
@@ -33,7 +33,7 @@ RSpec.describe AnswersController, :type => :controller do
 
     context 'with an invalid parameters' do
       it 'refuses to update the answer' do
-        put :update, xhr: true, id: @answer, answer: attributes_for(:answer, body: ""), format: :js
+        put :update, xhr: true, id: @answer, answer: attributes_for(:answer, body: ""), format: :json
         @answer.reload
         expect(@answer.body).to eq("foo")
       end
@@ -42,7 +42,7 @@ RSpec.describe AnswersController, :type => :controller do
     describe "DELETE #destroy" do
       it 'destroys the specified answer' do
         expect {
-          delete :destroy, id: @answer.id
+          delete :destroy, id: @answer.id, format: :js
         }.to change(Answer, :count).by(-1)
       end
     end
