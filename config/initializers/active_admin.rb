@@ -1,6 +1,8 @@
 # TBD ActiveAdminActivation: remove this dummy
 
 module ActiveAdmin
+  def self.register(clazz)
+  end
   def method_missing(method_name, *arguments, &block)
     puts "ActiveAdmin method#{method_name} called"
   end

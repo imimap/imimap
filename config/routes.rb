@@ -64,7 +64,8 @@ ImiMaps::Application.routes.draw do
   #root to: 'sessions#new'
 
   # TBD ActiveAdminActivation: uncomment those two lines
-  #devise_for :admin_users, ActiveAdmin::Devise.config
+  #devise_for :admin_users , ActiveAdmin::Devise.config
+  #devise_for :admin_users, {:path=>:admin, :controllers=>{:sessions=>"active_admin/devise/sessions", :passwords=>"active_admin/devise/passwords", :unlocks=>"active_admin/devise/unlocks"}, :path_names=>{:sign_in=>"login", :sign_out=>"logout"}, :sign_out_via=>[:delete, :get]}
   #ActiveAdmin.routes(self)
   # TBD ActiveAdminActivation: uncomment those two lines
 
@@ -76,5 +77,5 @@ ImiMaps::Application.routes.draw do
   #match 'en', to: redirect("/en/sessions#new")
   #match 'id', to: redirect("/id/sessions#new")
 
-  match "*path", to: "errors#not_found"
+  #match "*path", to: "errors#not_found"
 end
