@@ -1,6 +1,8 @@
-<%= gmaps4rails(@pins) %> 
+<% # gmaps4rails(@pins) %>
+ markers = handler.addMarkers(<%=raw @pins.to_json %>);
+
 <%= yield :scripts %>
-<br/> 
+<br/>
 <%= form_tag(quicksearches_path, :method => 'get', :remote => true) do %>
 
 <p>Search Query<br /> </p>
@@ -38,10 +40,10 @@
     <td><%= company.industry %></td>
     <td><%= company.main_language %></td>
     <td><%= link_to company.name, (
-            if company.website.starts_with?'http' 
-                company.website  
-            else 
-                "http://"+company.website 
+            if company.website.starts_with?'http'
+                company.website
+            else
+                "http://"+company.website
             end), target: "_blank" %></td>
     <td><%= link_to (t "buttons.show"), company, class: "btn btn-inverse pull-right" %></td>
     <td><%= link_to (t "buttons.edit"), edit_company_path(company), class: "btn btn-inverse pull-right" %></td>

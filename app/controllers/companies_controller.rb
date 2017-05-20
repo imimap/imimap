@@ -7,7 +7,7 @@ class CompaniesController < ApplicationController
   def index
     @companies = Company.all
 
-    @pins = @companies.to_gmaps4rails do |company, marker |
+    @pins = Gmaps4rails.build_markers(@companies) do |company, marker |
 
       href =  if company.website.starts_with?'http'
               company.website
@@ -30,7 +30,7 @@ class CompaniesController < ApplicationController
   def show
     @company = Company.find(params[:id])
 
-    @pins = @company.to_gmaps4rails do |company, marker |
+    @pins = Gmaps4rails.build_markers(@companies) do |company, marker |
 
       href =  if company.website.starts_with?'http'
               company.website

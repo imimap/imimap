@@ -21,6 +21,9 @@
 //= require stupidtable.min
 //= require bootstrap
 //= require bootstrap.min
+// for gmaps4rails:
+// require underscore (was not found)
+//= require gmaps/google
 
 $(window).load(function () {
       $(".alert-info").animate({opacity: 1.0}, 5000).fadeOut('slow');

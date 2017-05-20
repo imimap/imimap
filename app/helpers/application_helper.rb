@@ -36,4 +36,10 @@ module ApplicationHelper
     Notification.where(:user_id => current_user.try(:id)).order("created_at DESC")
   end
 
+  # TBD Update gmaps4rails: this should return appropriate
+  # javascript to include the map.
+  def gmaps(hash={})
+    "MAP WAS HERE"
+  end
+
 end
