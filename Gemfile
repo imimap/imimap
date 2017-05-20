@@ -19,6 +19,8 @@ gem 'devise', ' ~> 3.5'
 
 # TBD Update: replace by new mechanism
 #  `attr_accessible` is extracted out of Rails into a gem. Please use new recommended protection model for params(strong_parameters) or add `protected_attributes` to your Gemfile to use old one.
+# "Rails 4.0 has removed attr_accessible and attr_protected feature in favor of Strong Parameters. You can use the Protected Attributes gem for a smooth upgrade path."
+# "If you are not using Protected Attributes, you can remove any options related to this gem such as whitelist_attributes or mass_assignment_sanitizer options."
 gem 'protected_attributes'
 
 # TBD Update: Observers have been removed in 4.0
