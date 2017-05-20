@@ -23,9 +23,11 @@ describe "ActiveAdmin Student CRUD" do
   context "not logged in" do
     describe "show student" do
       it "shows unauthenticated failure" do
+        I18n.locale = "de"
+        expected_text = I18n.t('devise.failure.admin_user.unauthenticated')
         student = create(:student)
         visit admin_student_path(student)
-        expect(page).to have_content I18n.t('devise.failure.admin_user.unauthenticated')
+        expect(page).to have_content expected_text
       end
     end
   end
