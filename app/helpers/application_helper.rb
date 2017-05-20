@@ -42,4 +42,8 @@ module ApplicationHelper
     "MAP WAS HERE"
   end
 
+  def gmaps4rails(pins)
+    "MAP WAS HERE"
+  end
+
 end

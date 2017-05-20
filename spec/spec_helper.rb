@@ -12,6 +12,7 @@ require 'simplecov'
  end
 
  require 'factory_girl_rails'
+ require 'database_cleaner'
 
  module ControllerTestHelper
    def login

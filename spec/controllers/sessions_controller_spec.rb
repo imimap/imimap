@@ -46,7 +46,7 @@ RSpec.describe SessionsController, :type => :controller do
 
     context 'with successful authentication' do
       it "redirects to overview#index" do
-        user = create :user, password: "foofoofoo", email: "foo@bar.com"
+        user = create :user, password: "foofoofoo", password_confirmation: "foofoofoo", email: "foo@bar.com"
         post :create, email: user.email, password: "foofoofoo"
         expect(response).to redirect_to(:overview_index)
       end
