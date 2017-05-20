@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-#gem 'rails', '~> 4.0.13'
-gem 'rails', '~> 3.2.22'
+gem 'rails', '~> 4.0.13'
+#gem 'rails', '~> 3.2.22'
 gem 'bootstrap-sass', '2.1'
 gem 'carrierwave'
 gem 'geocoder'
@@ -9,7 +9,7 @@ gem 'gmaps4rails'
 gem 'nested_form'
 gem "country-select"
 
-gem 'activeadmin', "0.6.6"
+# gem 'activeadmin', "0.6.6"
 
 gem "rmagick", "~> 2.13.1"
 gem "paperclip", "~> 2.7"
@@ -33,10 +33,10 @@ gem 'jquery-rails', '2.2.1'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  #gem 'jquery-ui-rails'
-  #gem 'sass-rails',   '~> 3.2.3'
-  #gem 'coffee-rails', '~> 3.2.1'
-  #gem 'font-awesome-sass-rails'
+  gem 'jquery-ui-rails'
+  gem 'sass-rails',   '~> 4.0'
+  gem 'coffee-rails', '~> 4.0'
+  gem 'font-awesome-sass-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
