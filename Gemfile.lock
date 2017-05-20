@@ -32,8 +32,10 @@ GEM
     arel (4.0.2)
     bcrypt (3.1.11)
     bcrypt (3.1.11-x86-mingw32)
-    bcrypt-ruby (3.0.1)
-    bcrypt-ruby (3.0.1-x86-mingw32)
+    bcrypt-ruby (3.1.5)
+      bcrypt (>= 3.1.3)
+    bcrypt-ruby (3.1.5-x86-mingw32)
+      bcrypt (>= 3.1.3)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -244,7 +246,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  bcrypt-ruby (~> 3.0.0)
+  bcrypt-ruby (~> 3)
   better_errors
   binding_of_caller
   bootstrap-sass (= 2.1)
