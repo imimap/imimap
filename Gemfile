@@ -9,7 +9,15 @@ gem 'gmaps4rails'
 gem 'nested_form'
 gem "country-select"
 
+# TBD ActiveAdminActivation
+# TBD no active admin version for rails 4.0
 # gem 'activeadmin', "0.6.6"
+# install its dependencies nonetheless
+gem 'formtastic', "~> 3"
+gem 'devise', ' ~> 3.5'
+# TBD ActiveAdminActivation
+
+
 
 gem "rmagick", "~> 2.13.1"
 gem "paperclip", "~> 2.7"
