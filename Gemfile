@@ -17,7 +17,9 @@ gem 'formtastic', "~> 3"
 gem 'devise', ' ~> 3.5'
 # TBD ActiveAdminActivation
 
-
+# TBD Update: replace by new mechanism
+#  `attr_accessible` is extracted out of Rails into a gem. Please use new recommended protection model for params(strong_parameters) or add `protected_attributes` to your Gemfile to use old one.
+gem 'protected_attributes'
 
 gem "rmagick", "~> 2.13.1"
 gem "paperclip", "~> 2.7"

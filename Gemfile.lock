@@ -146,6 +146,8 @@ GEM
       capybara (~> 2.1)
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
+    protected_attributes (1.1.4)
+      activemodel (>= 4.0.1, < 5.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -267,6 +269,7 @@ DEPENDENCIES
   paperclip (~> 2.7)
   pg
   poltergeist
+  protected_attributes
   pry
   rack-mini-profiler
   railroady
