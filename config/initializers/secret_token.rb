@@ -1,7 +1,12 @@
 # Be sure to restart your server when you modify this file.
 
-# Your secret key for verifying the integrity of signed cookies.
+# Your secret key is used for verifying the integrity of signed cookies.
 # If you change this key, all old signed cookies will become invalid!
+
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-ImiMaps::Application.config.secret_token = '3d19a296d2bf8410146025df1a968d929763628d4512c2787c4a52a1f5645b16d612b3bcc1ca4d37c5699b93f3179b89c0b3b564b4f1767b102657b3a8b798b0'
+# You can use `rake secret` to generate a secure secret key.
+
+# Make sure your secret_key_base is kept private
+# if you're sharing your code publicly.
+ImiMaps::Application.config.secret_key_base = 'f6b1202b9699f75779f8f03d669b0c9fce73ad617eb54edf4983ef5e4ce8b996fba971679ac7af2940d3a103879f25c83aec4c0c8c20a181fea4c3405f7cafdf'
