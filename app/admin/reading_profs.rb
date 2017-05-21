@@ -1,8 +1,7 @@
-ActiveAdmin.register ProgrammingLanguage do
-  config.sort_order = "id_asc"
+ActiveAdmin.register ReadingProf do
   filter :name
-  
-  index do
+
+	index do
 		column :name
 		column :internships do |n|
       a = n.internships.map(&:id)
@@ -12,16 +11,16 @@ ActiveAdmin.register ProgrammingLanguage do
       end
       str.html_safe
     end
-    default_actions
+    actions
 	end
 
-	show do |language|
+  show do |prof|
       attributes_table do
         row :id
         row :name
 
         row :internships do |n|
-          a = language.internships.map(&:id)
+          a = prof.internships.map(&:id)
           str = ""
           a.each do |x|
             str += link_to x, "/admin/internships/#{x}"

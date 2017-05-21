@@ -22,7 +22,11 @@ require 'simplecov'
      user
    end
  end
-
+module I18nTestHelper
+  def t(label)
+    I18n.t(label)
+  end
+end
 require 'capybara/rspec'
 
 #https://github.com/teampoltergeist/poltergeist
@@ -157,6 +161,7 @@ RSpec.configure do |config|
   end
 
   config.include ControllerTestHelper, type: :controller
+  config.include I18nTestHelper
 end
 
 require 'geocoder'

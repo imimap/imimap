@@ -1,7 +1,8 @@
-ActiveAdmin.register Orientation do
+ActiveAdmin.register ProgrammingLanguage do
+  config.sort_order = "id_asc"
   filter :name
 
-	index do
+  index do
 		column :name
 		column :internships do |n|
       a = n.internships.map(&:id)
@@ -11,16 +12,16 @@ ActiveAdmin.register Orientation do
       end
       str.html_safe
     end
-    default_actions
+    actions
 	end
 
-  show do |orientation|
+	show do |language|
       attributes_table do
         row :id
         row :name
 
         row :internships do |n|
-          a = orientation.internships.map(&:id)
+          a = language.internships.map(&:id)
           str = ""
           a.each do |x|
             str += link_to x, "/admin/internships/#{x}"
@@ -30,5 +31,5 @@ ActiveAdmin.register Orientation do
       end
       active_admin_comments
     end
-  
+
 end

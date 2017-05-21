@@ -16,16 +16,16 @@ ActiveAdmin.register Internship do
     column :report_state
     column :certificate_state
     column :reading_prof
-    default_actions
+    actions
 
   end
 
 
   form do |f|
-    f.inputs "Student" do 
+    f.inputs "Student" do
       f.input :student_id, as: :select, collection: Student.order(:last_name).collect { |s| ["#{s.enrolment_number}, #{s.last_name}, #{s.first_name}", s.id] }
     end
-    f.inputs "Company" do 
+    f.inputs "Company" do
       f.input :company_id, as: :select, collection: Company.order(:name).collect { |c| ["#{c.name}, #{c.city}, #{c.country}", c.id] }
     end
     f.inputs "Internship" do

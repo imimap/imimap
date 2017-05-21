@@ -8,7 +8,7 @@ ActiveAdmin.register User do
     column :publicmail
     column :mailnotif
     column :email
-    default_actions
+    actions
   end
 
   form do |f|
@@ -33,7 +33,7 @@ ActiveAdmin.register User do
       row :internship_authorization
       row :publicmail
       row :mailnotif
-      row :email    
+      row :email
     end
     active_admin_comments
   end

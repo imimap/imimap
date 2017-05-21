@@ -1,4 +1,4 @@
-ActiveAdmin.register Semester do
+ActiveAdmin.register Orientation do
   filter :name
 
 	index do
@@ -11,16 +11,16 @@ ActiveAdmin.register Semester do
       end
       str.html_safe
     end
-    default_actions
+    actions
 	end
 
-  show do |semester|
+  show do |orientation|
       attributes_table do
         row :id
         row :name
 
         row :internships do |n|
-          a = semester.internships.map(&:id)
+          a = orientation.internships.map(&:id)
           str = ""
           a.each do |x|
             str += link_to x, "/admin/internships/#{x}"
@@ -30,5 +30,5 @@ ActiveAdmin.register Semester do
       end
       active_admin_comments
     end
-  
+
 end

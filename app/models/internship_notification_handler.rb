@@ -15,12 +15,12 @@ class InternshipNotificationHandler
 
 private
     def send_notification
-      user.notifications.create(text: "noti.report", link: Rails.application.routes.url_helpers.edit_internship_path(internship, locale: I18n.locale))
+      user.notifications.create(text: "noti.report", link: Rails.application.routes.url_helpers.edit_internship_url(internship, locale: I18n.locale))
     end
 
     def send_email
       if user && user.mailnotif
-        InternshipMailer.internship_ready(internship, user).deliver
+        InternshipMailer.internship_ready(internship, user).deliver_now
       end
     end
 end

@@ -1,0 +1,28 @@
+en:
+  devise:
+    failure:
+      admin_user:
+        invalid: Admin user name or password not recognized.
+        unauthenticated: Please log in as an Administrator.
+    sessions:
+      admin_user:
+        signed_in: Successfully logged in as Administrator.
+      login:
+      title: "Login"
+      remember_me: "Remember me"
+      submit: "Login"
+    reset_password:
+      title: "Forgot your password?"
+      submit: "Reset My Password"
+    change_password:
+      title: "Change your password"
+      submit: "Change my password"
+    unlock:
+      title: "Resend unlock instructions"
+      submit: "Resend unlock instructions"
+    links:
+      sign_in: "Sign in"
+      forgot_your_password: "Forgot your password?"
+      sign_in_with_omniauth_provider: "Sign in with %{provider}"
+    access_denied:
+      message: "You are not authorized to perform this action."

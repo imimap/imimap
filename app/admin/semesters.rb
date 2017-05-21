@@ -1,6 +1,6 @@
-ActiveAdmin.register ReadingProf do
+ActiveAdmin.register Semester do
   filter :name
-	
+
 	index do
 		column :name
 		column :internships do |n|
@@ -11,16 +11,16 @@ ActiveAdmin.register ReadingProf do
       end
       str.html_safe
     end
-    default_actions
+    actions
 	end
 
-  show do |prof|
+  show do |semester|
       attributes_table do
         row :id
         row :name
 
         row :internships do |n|
-          a = prof.internships.map(&:id)
+          a = semester.internships.map(&:id)
           str = ""
           a.each do |x|
             str += link_to x, "/admin/internships/#{x}"
