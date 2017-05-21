@@ -15,10 +15,7 @@ RSpec.describe User, :type => :model do
       expect(user.save).to be_falsy
     end
 
-# TBD Update: devise hooks into the user model and setting
-# the password to nil doesn't work anymore.
     it 'rejects empty passwords' do
-      pending
       user.password = nil
       expect(user.save).to be_falsy
     end
