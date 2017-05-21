@@ -1,4 +1,4 @@
-FROM ruby:2.1-alpine
+FROM ruby:2.3-alpine
 
 ENV APP_HOME /usr/src/app
 ENV RAILS_ENV development

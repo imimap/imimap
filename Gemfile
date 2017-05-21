@@ -9,7 +9,7 @@ gem 'nested_form'
 gem "country_select"
 
 # see https://github.com/tzinfo/tzinfo/wiki/Resolving-TZInfo::DataSourceNotFound-Errors
-# gem 'tzinfo-data'
+gem 'tzinfo-data'
 
 # TBD ActiveAdminActivation
 # TBD no active admin version for rails 4.0

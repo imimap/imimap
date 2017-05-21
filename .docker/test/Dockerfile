@@ -1,4 +1,4 @@
-FROM ruby:2.1-alpine
+FROM ruby:2.3-alpine
 
 ENV APP_HOME /usr/src/app
 ENV RAILS_ENV test
@@ -36,7 +36,8 @@ RUN set -ex \
        build-base \
        postgresql-dev \
        imagemagick-dev \
-       libffi-dev \ # not in dev??
+       # only in test env, maybe remove?
+       libffi-dev \
   && bundle install \
   && apk del .builddeps
 
