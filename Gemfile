@@ -62,7 +62,10 @@ gem 'uglifier', '>= 1.0.3'
 
 gem 'factory_girl_rails'
 
-gem 'spring', group: :development
+group :development do
+  gem 'web-console', '~> 2.0'
+  gem 'spring'
+end
 
 # database gem
 install_if -> { ENV['IMIMAPS_ENVIRONMENT'] == "docker" } do
