@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
     generate_token(:password_reset_token)
     self.password_reset_sent_at = Time.zone.now
     self.save(:validate => false)
-    UserMailer.forgot_pwd(self).deliver
+    UserMailer.forgot_pwd(self).deliver_later
   end
 
   def generate_token(column)
