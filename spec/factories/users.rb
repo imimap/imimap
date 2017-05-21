@@ -3,7 +3,7 @@ FactoryGirl.define do
     email "foo@bar.com"
     password "foofoo"
     password_confirmation "foofoo"
-    publicmail "public_foo@bar.com"
+    publicmail true
     mailnotif true
     after(:build) do |user|
       user.student ||= FactoryGirl.build(:student, user: user)
