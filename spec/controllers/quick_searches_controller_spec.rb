@@ -5,7 +5,7 @@ RSpec.describe QuicksearchesController, :type => :controller do
 
   describe "GET index" do
     it 'renders the index template' do
-      get :index, xhr: true, format: :js
+      xhr :get, :index, format: :js
       expect(response).to render_template(:index)
     end
 
@@ -15,7 +15,7 @@ RSpec.describe QuicksearchesController, :type => :controller do
       @programming_language_b = create :programming_language
       @internship.programming_languages << [@programming_language_a, @programming_language_b]
 
-      get(:index, xhr: true, format: :js,
+      xhr(:get, :index, format: :js,
           semester: [@internship.semester.id.to_s],
           programming_language_ids: [@programming_language_a.id.to_s, @programming_language_b.id.to_s]
       )
@@ -24,7 +24,7 @@ RSpec.describe QuicksearchesController, :type => :controller do
       @internship.company.website = "http://foo"
       @internship.company.save
 
-      get(:index, xhr: true, format: :js,
+      xhr(:get, :index, format: :js,
           semester: [@internship.semester.id.to_s],
           programming_language_ids: [@programming_language_a.id.to_s, @programming_language_b.id.to_s]
       )
@@ -38,7 +38,7 @@ RSpec.describe QuicksearchesController, :type => :controller do
       @programming_language_b = create :programming_language
       @internship.programming_languages << [@programming_language_a, @programming_language_b]
 
-      get(:index, xhr: true, format: :js,
+      xhr(:get, :index, format: :js,
           semester: [@internship.semester.id.to_s],
           programming_language_ids: [@programming_language_a.id.to_s, @programming_language_b.id.to_s]
       )
@@ -47,7 +47,7 @@ RSpec.describe QuicksearchesController, :type => :controller do
       @internship.company.website = "foo.bar"
       @internship.company.save
 
-      get(:index, xhr: true, format: :js,
+      xhr(:get, :index, format: :js,
           semester: [@internship.semester.id.to_s],
           programming_language_ids: [@programming_language_a.id.to_s, @programming_language_b.id.to_s]
       )

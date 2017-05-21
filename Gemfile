@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.0.13'
-#gem 'rails', '~> 3.2.22'
+gem 'rails', '~> 4.1.16'
 gem 'bootstrap-sass', '2.1'
 gem 'carrierwave'
 gem 'geocoder'
@@ -9,12 +8,15 @@ gem 'gmaps4rails'
 gem 'nested_form'
 gem "country_select"
 
+# see https://github.com/tzinfo/tzinfo/wiki/Resolving-TZInfo::DataSourceNotFound-Errors
+gem 'tzinfo-data'
+
 # TBD ActiveAdminActivation
 # TBD no active admin version for rails 4.0
 # gem 'activeadmin', "0.6.6"
 # install its dependencies nonetheless
 gem 'formtastic', "~> 3"
-gem 'devise', ' ~> 3.5'
+gem 'devise', ' ~> 4.3'
 # TBD ActiveAdminActivation
 
 # TBD Update: replace by new mechanism
@@ -60,6 +62,8 @@ gem 'uglifier', '>= 1.0.3'
 
 gem 'factory_girl_rails'
 
+gem 'spring', group: :development
+
 # database gem
 install_if -> { ENV['IMIMAPS_ENVIRONMENT'] == "docker" } do
   gem "pg"
@@ -90,7 +94,7 @@ end
 
 
 # To use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3'
+gem 'bcrypt', '~> 3'
 
 
 # To use Jbuilder templates for JSON

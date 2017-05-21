@@ -1,4 +1,4 @@
-FROM ruby:2.1-alpine
+FROM ruby:2.3-alpine
 
 ENV APP_HOME /usr/src/app
 ENV RAILS_ENV development
@@ -27,7 +27,13 @@ RUN apk update && apk add --no-cache fontconfig curl && \
 
 # build deps
 RUN set -ex \
-  && apk add --no-cache --virtual .builddeps linux-headers libpq build-base postgresql-dev imagemagick-dev \
+  && apk add --no-cache --virtual .builddeps \
+       linux-headers \
+       libpq \
+       tzdata \
+       build-base \
+       postgresql-dev \
+       imagemagick-dev \
   && bundle install \
   && apk del .builddeps
 

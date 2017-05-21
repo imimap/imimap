@@ -5,7 +5,7 @@ RSpec.describe UserVerificationsController, :type => :controller do
 
   describe "GET #new" do
     it 'renders the new template' do
-      get :new, xhr: true, format: :js
+      xhr :get, :new, format: :js
       expect(response).to render_template :new
     end
   end
