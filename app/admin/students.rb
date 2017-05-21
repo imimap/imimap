@@ -30,7 +30,7 @@ ActiveAdmin.register Student do
       f.input :first_name
       f.input :last_name
       f.input :birthplace
-      f.input :birthday, :as => :date, :as => :date, :start_year => Time.now.year - 100, :end_year => Time.now.year
+      f.input :birthday, :as => :date, :start_year => Time.now.year - 100, :end_year => Time.now.year
       f.input :email
     end
     f.actions
