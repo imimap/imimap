@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.1.16'
+gem 'rails', '~> 4.2.8'
 gem 'bootstrap-sass', '2.1'
 gem 'carrierwave'
 gem 'geocoder'
