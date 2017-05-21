@@ -10,16 +10,16 @@ module ImiMaps
   class Application < Rails::Application
     # IMI-Map settings
     config.active_record.observers = :user_comment_observer, :answer_observer, :internship_observer, :user_observer
-    config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**/*.{rb,yml}').to_s]
     config.i18n.default_locale = :de
     # required by heroku. http://guides.rubyonrails.org/v3.2.8/asset_pipeline.html
     config.assets.initialize_on_precompile = false
-   
+
     # TBD Update: distribute this over the environments with appropriate settings from ENV variable
     config.action_mailer.default_url_options = { :host => "localhost" }
     # IMI-Map settings end
-   
-   
+
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
