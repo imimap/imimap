@@ -11,13 +11,9 @@ gem "country_select"
 # see https://github.com/tzinfo/tzinfo/wiki/Resolving-TZInfo::DataSourceNotFound-Errors
 gem 'tzinfo-data'
 
-# TBD ActiveAdminActivation
-# TBD no active admin version for rails 4.0
-# gem 'activeadmin', "0.6.6"
-# install its dependencies nonetheless
-gem 'formtastic', "~> 3"
+gem 'activeadmin', "~> 1.0"
+#gem 'formtastic', "~> 3"
 gem 'devise', ' ~> 4.3'
-# TBD ActiveAdminActivation
 
 # TBD Update: replace by new mechanism
 #  `attr_accessible` is extracted out of Rails into a gem. Please use new recommended protection model for params(strong_parameters) or add `protected_attributes` to your Gemfile to use old one.
