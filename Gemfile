@@ -9,14 +9,14 @@ gem 'nested_form'
 gem "country_select"
 
 # see https://github.com/tzinfo/tzinfo/wiki/Resolving-TZInfo::DataSourceNotFound-Errors
-# gem 'tz-info'
+# gem 'tzinfo-data'
 
 # TBD ActiveAdminActivation
 # TBD no active admin version for rails 4.0
 # gem 'activeadmin', "0.6.6"
 # install its dependencies nonetheless
 gem 'formtastic', "~> 3"
-gem 'devise', ' ~> 3.5'
+gem 'devise', ' ~> 4.3'
 # TBD ActiveAdminActivation
 
 # TBD Update: replace by new mechanism
@@ -94,7 +94,7 @@ end
 
 
 # To use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3'
+gem 'bcrypt', '~> 3'
 
 
 # To use Jbuilder templates for JSON

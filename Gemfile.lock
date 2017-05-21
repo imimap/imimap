@@ -34,10 +34,6 @@ GEM
     arel (5.0.1.20140414130214)
     bcrypt (3.1.11)
     bcrypt (3.1.11-x86-mingw32)
-    bcrypt-ruby (3.1.5)
-      bcrypt (>= 3.1.3)
-    bcrypt-ruby (3.1.5-x86-mingw32)
-      bcrypt (>= 3.1.3)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -90,12 +86,11 @@ GEM
       railties (>= 3.1)
     database_cleaner (1.6.1)
     debug_inspector (0.0.3)
-    devise (3.5.10)
+    devise (4.3.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
-      railties (>= 3.2.6, < 5)
+      railties (>= 4.1.0, < 5.2)
       responders
-      thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.3)
     docile (1.1.5)
@@ -275,7 +270,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  bcrypt-ruby (~> 3)
+  bcrypt (~> 3)
   better_errors
   binding_of_caller
   bootstrap-sass (= 2.1)
@@ -287,7 +282,7 @@ DEPENDENCIES
   country_select
   d3-rails
   database_cleaner
-  devise (~> 3.5)
+  devise (~> 4.3)
   factory_girl_rails
   font-awesome-sass-rails
   formtastic (~> 3)
