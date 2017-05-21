@@ -33,7 +33,7 @@ RSpec.describe AnswersController, :type => :controller do
 
     context 'with an invalid parameters' do
       it 'refuses to update the answer' do
-        put :update, xhr: true, id: @answer, answer: attributes_for(:answer, body: ""), format: :json
+        xhr :put, :update, id: @answer, answer: attributes_for(:answer, body: ""), format: :json
         @answer.reload
         expect(@answer.body).to eq("foo")
       end
