@@ -1,9 +1,9 @@
-en:
+de:
   devise:
     failure:
       admin_user:
-        invalid: Admin user name or password not recognized.
-        unauthenticated: Please log in as an Administrator.
+        invalid: Admin Login oder passwort nicht erkannt.
+        unauthenticated: Bitte melden Sie sich als Administrator an.
     sessions:
       admin_user:
         signed_in: Successfully logged in as Administrator.
@@ -13,7 +13,7 @@ en:
       submit: "Login"
     reset_password:
       title: "Forgot your password?"
-      submit: "Reset My Password"
+      submit: "Passwort zurücksetzen"
     change_password:
       title: "Change your password"
       submit: "Change my password"
@@ -26,7 +26,6 @@ en:
       sign_in_with_omniauth_provider: "Sign in with %{provider}"
     access_denied:
       message: "You are not authorized to perform this action."
-
   devise:
     confirmations:
       confirmed: "Your account was successfully confirmed. You are now signed in."
