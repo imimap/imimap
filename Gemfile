@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.0.13'
+gem 'rails', '~> 4.1.16'
 #gem 'rails', '~> 3.2.22'
 gem 'bootstrap-sass', '2.1'
 gem 'carrierwave'
