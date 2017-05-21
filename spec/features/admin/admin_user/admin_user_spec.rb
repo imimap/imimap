@@ -10,8 +10,9 @@ describe "ActiveAdmin Admin User" do
     end
     describe "pages" do
       it "index" do
-        visit admin_user_path(@admin_user)
-        expect(page).to have_content @admin_user.name
+        visit admin_admin_users_path
+        expect(page).to have_content @admin_user.email
+        expect(page).to have_content I18n.t('activerecord.models.admin_user.other')
       end
     end
   end
