@@ -21,7 +21,7 @@ ActiveAdmin.register Student do
     column :birthday
     column :birthplace
     column :email
-    default_actions
+    actions
   end
 
   form do |f|

@@ -11,7 +11,7 @@ ActiveAdmin.register Semester do
       end
       str.html_safe
     end
-    default_actions
+    actions
 	end
 
   show do |semester|
@@ -30,5 +30,5 @@ ActiveAdmin.register Semester do
       end
       active_admin_comments
     end
-  
+
 end

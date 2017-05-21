@@ -11,7 +11,7 @@ ActiveAdmin.register Orientation do
       end
       str.html_safe
     end
-    default_actions
+    actions
 	end
 
   show do |orientation|
@@ -30,5 +30,5 @@ ActiveAdmin.register Orientation do
       end
       active_admin_comments
     end
-  
+
 end

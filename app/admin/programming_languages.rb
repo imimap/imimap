@@ -1,7 +1,7 @@
 ActiveAdmin.register ProgrammingLanguage do
   config.sort_order = "id_asc"
   filter :name
-  
+
   index do
 		column :name
 		column :internships do |n|
@@ -12,7 +12,7 @@ ActiveAdmin.register ProgrammingLanguage do
       end
       str.html_safe
     end
-    default_actions
+    actions
 	end
 
 	show do |language|

@@ -22,7 +22,7 @@ ActiveAdmin.register Company do
     column :phone
     column :fax
     column :blacklisted
-    default_actions
+    actions
   end
 
 	show do |company|

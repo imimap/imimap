@@ -1,6 +1,6 @@
 ActiveAdmin.register ReadingProf do
   filter :name
-	
+
 	index do
 		column :name
 		column :internships do |n|
@@ -11,7 +11,7 @@ ActiveAdmin.register ReadingProf do
       end
       str.html_safe
     end
-    default_actions
+    actions
 	end
 
   show do |prof|
