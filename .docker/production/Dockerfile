@@ -1,4 +1,4 @@
-FROM ruby:2.3-alpine
+FROM ruby:2.4-alpine
 
 ENV APP_HOME /usr/src/app
 ENV RAILS_ENV production
@@ -24,7 +24,6 @@ RUN set -ex \
   && apk add --no-cache --virtual .builddeps \
   linux-headers \
   libpq \
-  tzdata \
   build-base \
   postgresql-dev \
   imagemagick-dev \
