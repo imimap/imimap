@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/bkleinen/country_select.git
+  remote: https://github.com/bkleinen/country_select.git
   revision: 327775252b15ea07263d2a78e6b20909589546b3
   tag: v2.5.1
   specs:
