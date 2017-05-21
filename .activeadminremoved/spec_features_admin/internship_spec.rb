@@ -29,9 +29,12 @@ describe "ActiveAdmin Internship CRUD" do
   context "not logged in" do
     describe "show internship" do
       it "shows unauthenticated failure" do
+        # TBD: handle locale settings more gracefully (visit changes locale)
+        I18n.locale = "de"
+        expected_text = I18n.t('devise.failure.admin_user.unauthenticated')
         internship = create(:internship)
         visit admin_internship_path(internship)
-        expect(page).to have_content I18n.t('devise.failure.admin_user.unauthenticated')
+        expect(page).to have_content expected_text
       end
     end
   end

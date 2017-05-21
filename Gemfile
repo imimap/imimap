@@ -1,18 +1,36 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 3.2.22'
+gem 'rails', '~> 4.0.13'
+#gem 'rails', '~> 3.2.22'
 gem 'bootstrap-sass', '2.1'
 gem 'carrierwave'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'nested_form'
-gem "country-select"
+gem "country_select"
 
-gem 'activeadmin', "~> 0.6"
+# TBD ActiveAdminActivation
+# TBD no active admin version for rails 4.0
+# gem 'activeadmin', "0.6.6"
+# install its dependencies nonetheless
+gem 'formtastic', "~> 3"
+gem 'devise', ' ~> 3.5'
+# TBD ActiveAdminActivation
+
+# TBD Update: replace by new mechanism
+#  `attr_accessible` is extracted out of Rails into a gem. Please use new recommended protection model for params(strong_parameters) or add `protected_attributes` to your Gemfile to use old one.
+# "Rails 4.0 has removed attr_accessible and attr_protected feature in favor of Strong Parameters. You can use the Protected Attributes gem for a smooth upgrade path."
+# "If you are not using Protected Attributes, you can remove any options related to this gem such as whitelist_attributes or mass_assignment_sanitizer options."
+gem 'protected_attributes'
+
+# TBD Update: Observers have been removed in 4.0
+# replace with ActiveRecord callbacks, maybe refactor as aspect
+# as described in http://stackoverflow.com/questions/15165260/rails-observer-alternatives-for-4-0
+gem 'rails-observers'
+
 
 gem "rmagick", "~> 2.13.1"
 gem "paperclip", "~> 2.7"
-gem "date-input-rails"
 
 gem 'chosen-rails'
 
@@ -27,26 +45,18 @@ gem "net-ldap"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'jquery-rails', '2.2.1'
+gem 'jquery-rails', '3.1.4'
 
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'jquery-ui-rails'
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'font-awesome-sass-rails'
+gem 'jquery-ui-rails'
+gem 'sass-rails',   '~> 4.0'
+gem 'coffee-rails', '~> 4.0'
+gem 'font-awesome-sass-rails'
+gem 'uglifier', '>= 1.0.3'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
 
-  gem 'uglifier', '>= 1.0.3'
-
-  #gem "therubyracer"
-  #gem "less-rails"
-  #gem 'twitter-bootstrap-rails'
-end
 
 gem 'factory_girl_rails'
 
@@ -80,7 +90,7 @@ end
 
 
 # To use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3'
 
 
 # To use Jbuilder templates for JSON

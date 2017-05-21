@@ -21,7 +21,7 @@ class Internship < ActiveRecord::Base
   belongs_to :reading_prof
 
 
-  has_and_belongs_to_many :programming_languages, :uniq => true
+  has_and_belongs_to_many :programming_languages, -> { uniq }
   has_many :user_comments, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
 

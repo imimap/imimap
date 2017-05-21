@@ -11,14 +11,15 @@
  *= require_self
  *= require_tree .
  *= require chosen
- *= require jquery.ui.slider
+ *= require jquery-ui
+ *= require jquery-ui/slider
  *= repeat bootstrap-responsive.min
- 
+
  */
- 
+
  #en {
   background-image: url('images/en.gif');
-  background-repeat:repeat-y; 
+  background-repeat:repeat-y;
  }
 
 

@@ -11,7 +11,8 @@ describe "ActiveAdmin Student creation" do
   end
   describe "login" do
     it "logs in a user" do
-      pending "ActiveAdmin"
+
+
       visit admin_root_path
       login_t = I18n.t('active_admin.devise.login.title')
       email_t = I18n.t('activerecord.attributes.admin_user.email')

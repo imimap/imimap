@@ -40,7 +40,7 @@
 
       <div class="field" id="field-titles">
         <%= f.label t "students.attributes.birthday1" %>
-        <%= f.date_field :birthday, :readonly => @user_creation_form.student_exists? %>
+        <%= date_select :user, :birthday ,:readonly => @user_creation_form.student_exists?  %>
       </div>
 
       <div class="field" id="field-titles">

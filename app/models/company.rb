@@ -15,7 +15,7 @@ class Company < ActiveRecord::Base
   # TBD: geocoding should only happen if necessary, see
   # https://github.com/alexreisner/geocoder#avoiding-unnecessary-api-requests
   after_validation :geocode
-  acts_as_gmappable :process_geocoding => false
+  #acts_as_gmappable :process_geocoding => false
 
   #associations
   has_many :internships

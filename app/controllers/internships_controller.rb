@@ -79,7 +79,9 @@ class InternshipsController < ApplicationController
 
     @user_comments = @internship.user_comments.order("created_at DESC")
 
-    @pins = @internship.company.to_gmaps4rails
+    Gmaps4rails.build_markers(@internship.company) do |company, marker |
+       marker.infowindow ("Company")
+     end
 
     respond_with(@internship)
   end

@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 
     @companies = @internships.collect do |i| i.company end
 
-    @pins = @companies.to_gmaps4rails do |company, marker |
+    @pins = Gmaps4rails.build_markers(@companies) do |company, marker |
 
       n=0
       s=""

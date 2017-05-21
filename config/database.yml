@@ -38,7 +38,7 @@ production:
 
 
 <% else
-  puts "WARNING: ENV['IMIMAPS_ENVIRONMENT'] not set to \"docker\", using default: SQLITE"
+  puts "ENV['IMIMAPS_ENVIRONMENT'] not set to \"docker\", using default: SQLITE"
 %>
 
 development:

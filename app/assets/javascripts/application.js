@@ -11,6 +11,8 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery-ui
+//= require jquery-ui/widgets/slider
 //= require jquery_ujs
 //= require jquery_nested_form
 //= require_tree .
@@ -19,6 +21,9 @@
 //= require stupidtable.min
 //= require bootstrap
 //= require bootstrap.min
+// for gmaps4rails:
+// require underscore (was not found)
+//= require gmaps/google
 
 $(window).load(function () {
       $(".alert-info").animate({opacity: 1.0}, 5000).fadeOut('slow');
@@ -32,7 +37,7 @@ $(window).load(function () {
         $('.msgbox').hide();
     } else {
         $('.msgbox').click();
-    }   
+    }
 
     $(".edit-rating .rating_star").click(function() {
       var val = $(this).attr('data-rating-id');
@@ -47,7 +52,7 @@ $(window).load(function () {
       var currentId = $(this).attr('data-rating-id');
       if (currentId <= val)
         $(this).addClass('on')
-      else 
+      else
         $(this).removeClass('on')
     })
   }
@@ -96,7 +101,7 @@ $(document).ready(function() {
       $(this).toggleClass( "red-thumb" );
       toggle_value("#user_mailnotif");
   });
-  
+
   toggle_value = function(id) {
     var elem =  $(id);
     var value = elem.val();
@@ -115,7 +120,3 @@ click_reset = function() {
   $(".search-choice").remove();
   $("#search_button").click();
 }
-
-
-
- 
