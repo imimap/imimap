@@ -28,4 +28,5 @@ jobs:
     - stage: deploy
       script: "./ci-cd/travis-deploy.sh"
       env: "IMIMAPS_ENVIRONMENT=docker"
+      rvm: 2.4.1
 # https://docs.travis-ci.com/user/build-stages
