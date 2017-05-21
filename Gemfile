@@ -60,6 +60,8 @@ gem 'uglifier', '>= 1.0.3'
 
 gem 'factory_girl_rails'
 
+gem 'spring', group: :development
+
 # database gem
 install_if -> { ENV['IMIMAPS_ENVIRONMENT'] == "docker" } do
   gem "pg"

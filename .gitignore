@@ -26,7 +26,7 @@
 #.ruby-gemset
 
 # Ignore Rbenv specific files
-/bin
+# /bin - this would ignore all scripts, spring could not be activated
 
 # Ignore public uploads
 /public/uploads
