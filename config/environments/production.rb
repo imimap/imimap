@@ -94,6 +94,7 @@ Rails.application.configure do
       authentication: :plain,
       enable_starttls_auto: true
     }
+    #TBD Environment variable for HOST name Staging and Production
     Rails.application.routes.default_url_options[:host] = "imi-map.f4.htw-berlin.de"
   # IMI-Map specific End
 

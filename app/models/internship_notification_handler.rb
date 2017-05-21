@@ -20,7 +20,7 @@ private
 
     def send_email
       if user && user.mailnotif
-        InternshipMailer.internship_ready(internship, user).deliver
+        InternshipMailer.internship_ready(internship, user).deliver_now
       end
     end
 end
