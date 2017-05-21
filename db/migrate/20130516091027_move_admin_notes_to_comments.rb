@@ -14,7 +14,9 @@ class MoveAdminNotesToComments < ActiveRecord::Migration
     #2.1.10 :001 > ActiveAdmin.application.default_namespace => :admin
     name_space = defined? ActiveAdmin ? ActiveAdmin.application.default_namespace : :admin
     say "Updating any existing comments to the #{name_space} namespace."
-    comments_table_name = ActiveRecord::Migrator.proper_table_name("active_admin_comments")
+    #comments_table_name = ActiveRecord::Migrator.proper_table_name("active_admin_comments")
+    # removed in rails 4.2
+    comments_table_name = "active_admin_comments"
     execute "UPDATE #{comments_table_name} SET namespace='#{name_space}'"
   end
 
