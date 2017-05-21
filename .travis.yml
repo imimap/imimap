@@ -3,7 +3,6 @@ sudo: required
 services:
 - docker
 rvm:
-  - 2.2.6
   - 2.3.3
   - 2.4.1
 before_install:
@@ -29,9 +28,7 @@ env:
     - secure: "rZmvyQpRNNpU3yE1L3MzGZOA6Kdy10GJtq+wv1Tp24zwB2dRcPrm3uKNIuJeLxY7JVbuwi+swquMxAmBtl+14h5YFrmNysNp84gynr0D5vO9u8RwPo2ghlxINLWors03u2whGKne83SxE5iW7P16iP09Wvmv5JhUhlDlnFLlhzSISEPrch+wh7Vp8IoKfaHKkk4ERvCsjxKRtbUARCGjelZT7m4zUwFpl5QiXmWpayA48kzKzCx5SAODgyQXp6spbtFP+QafTgTQQmhbdnKKQxBPEAGSEN1/uXRhl3y7LTBmikbZXKPmPUndgtZgwZumDRSGtCNp58Q6y2ImrJxd0xtCJ6VNTFREKjeUduZMeOSL9oZxoFdQ5A11K7+KwB6KeKtr4RKGp6Z0BRL15FtiKw7yMrDFcUlQd5zaa4bMk+92A7QQw78z+eji3ub6YCBfVqTZ5coga911Vsd1VBiagY2kgzsKgBWdqFHfiTaccxk5TEy+23hcNlg3wnOe9vR4kAWH16tUBQkqTcHC3/kxoDfnp1FZUMBMwFYhWExpVyOWbKZJzT+hw3ChizZb4NSC0ujycoqruTYGQzbsFFFJqTIzRlAIdZbmcHmOacc/oUDsPuO5VqTmUyIWLqNdkNZ4ZlHf/iqlrgt5DRVFuWBVMNR/g1yfSsHNCfVTwICBJRw="
 matrix:
   exclude:
-  - rvm: 2.2.6
-    env: IMIMAPS_ENVIRONMENT=docker
-  - rvm: 2.3.3
-    env: IMIMAPS_ENVIRONMENT=docker
   - rvm: 2.4.1
     env: IMIMAPS_ENVIRONMENT=docker
+  allow_failures:
+  - rvm: 2.4.1
