@@ -32,7 +32,7 @@ RUN set -ex \
   && apk add --no-cache --virtual .builddeps \
        linux-headers \
        libpq \
-       tzdata \
+#       tzdata \
        build-base \
        postgresql-dev \
        imagemagick-dev \
