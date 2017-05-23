@@ -43,7 +43,7 @@ gem "net-ldap"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'jquery-rails', '3.1.4'
+gem 'jquery-rails', '~>4.3'
 
 
 # Gems used only for assets and not required
