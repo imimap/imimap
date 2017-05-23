@@ -177,7 +177,7 @@ n=1
 
 end
 
-InternshipOffer.create(title: "Java in Barcelona", text: "come to Barcelona and do some Java Programming with us!")
+InternshipOffer.create(title: "Java in Barcelona", body: "come to Barcelona and do some Java Programming with us!")
 
 User.destroy_all
 User.create!(password: "testmap", email: "test@imimaps.com", student_id: 1)
