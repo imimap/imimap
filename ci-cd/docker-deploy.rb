@@ -12,11 +12,11 @@ module CICD
     def initialize
       @root = File.dirname(File.expand_path(File.join(__FILE__, '..')))
 
-      @deployment_user = "docker-deploy"
+      @deployment_user = "deployment"
 
       @hosts = {
-        staging: "imimaps-staging.dev-sector.net",
-        production: "imimaps-production.dev-sector.net"
+        staging: "imi-map-staging.f4.htw-berlin.de",
+        production: "imi-map-production.f4.htw-berlin.de"
       }
     end
 
