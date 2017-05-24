@@ -12,7 +12,7 @@ module CICD
     def initialize
       @root = File.dirname(File.expand_path(File.join(__FILE__, '..')))
 
-      @deployment_user = "deployment"
+      @deployment_user = "deployer"
 
       @hosts = {
         staging: "imi-map-staging.f4.htw-berlin.de",

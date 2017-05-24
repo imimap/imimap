@@ -17,10 +17,10 @@ else
 
   if [ $DEPLOYMENT_PIPELINE == "dev-sector" ]; then
       echo "DEPLOYMENT_PIPELINE dev-sector, decrypting ssh keys"
-      openssl aes-256-cbc -K $encrypted_473888976053_key -iv $encrypted_473888976053_iv -in ssh_keys.tar.enc -out ssh_keys.tar -d
+      openssl aes-256-cbc -K $encrypted_f259336567b4_key -iv $encrypted_f259336567b4_iv -in ssh_keys.tar.enc -out ssh_keys.tar -d
       tar xvf ssh_keys.tar
       chmod 0600 id_rsa*
-      
+
       # todo for heroku: split these steps.
 
       ./ci-cd/docker-push.rb

@@ -71,6 +71,9 @@ welches dann mit dem Command
 travis encrypt-file -r "imimaps/imimaps" ssh_keys.tar
 ```
 
+https://docs.travis-ci.com/user/encrypting-files/
+
+
 (travis is the cli for travis, see https://github.com/travis-ci/travis.rb#installation)
 
 von Travis spezifisch für das Git-Repository verschlüsselt wird. Die resultierende Datei `ssh_keys.tar.enc` muss dann committet werden.
