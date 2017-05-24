@@ -1,4 +1,4 @@
 [production]
-imimaps-production.dev-sector.net ansible_user=docker-deploy
+imi-map-production.f4.htw-berlin.de ansible_user=deployer
 [staging]
-imimaps-staging.dev-sector.net ansible_user=docker-deploy
+imi-map-staging.f4.htw-berlin.de ansible_user=deployer
