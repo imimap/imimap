@@ -7,6 +7,8 @@ module CICD
     module Travis
       # determines, whether the current build is a tagged release or not
       def is_release
+        # hack to always deploy
+        return :staging
         if ENV["TRAVIS_TAG"] && ENV["TRAVIS_BRANCH"] == "master"
           :staging
         elsif ENV["TRAVIS_TAG"] && (ENV["TRAVIS_BRANCH"] == ENV["TRAVIS_TAG"])

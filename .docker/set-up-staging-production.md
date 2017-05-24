@@ -70,6 +70,9 @@ welches dann mit dem Command
 ```
 travis encrypt-file -r "imimaps/imimaps" ssh_keys.tar
 ```
+
+(travis is the cli for travis, see https://github.com/travis-ci/travis.rb#installation)
+
 von Travis spezifisch für das Git-Repository verschlüsselt wird. Die resultierende Datei `ssh_keys.tar.enc` muss dann committet werden.
 
 **Achtung:** Weder die Keys selbst noch das unverschlüsselte Tar-Archiv dürfen nach GitHub gelangen, da das Repository öffentlich zugänglich ist.
