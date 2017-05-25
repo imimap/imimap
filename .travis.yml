@@ -34,7 +34,6 @@ jobs:
       script: "./ci-cd/travis-deploy.sh staging"
       env: "IMIMAPS_ENVIRONMENT=docker"
       rvm: 2.4.1
-
     - stage: deploy to production
       script: "./ci-cd/travis-deploy.sh production"
       env: "IMIMAPS_ENVIRONMENT=docker"
@@ -49,4 +48,6 @@ jobs:
     - stage: deploy to production
       env: "IMIMAPS_ENVIRONMENT=docker"
       rvm: 2.4.1
+# how to allow failures in stages:
 # https://github.com/backspace/travixperiments-redux/blob/primary/.travis.yml
+# https://github.com/travis-ci/beta-features/issues/11#issuecomment-301310134
