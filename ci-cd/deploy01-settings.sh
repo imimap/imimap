@@ -25,6 +25,12 @@ if [ -z "TRAVIS_TAG" ]; then
 fi
 
 if [ "$DEPLOYMENT_ENVIRONMENT" == "staging" ]; then
+
+  #TBD testing on branch
+  export set DEPLOYMENT_SHOULD_RUN=true
+  exit 0
+
+
   if [ "$TRAVIS_BRANCH" != "master" ]; then
     echo "staging will only deploy if on master branch"
     export set DEPLOYMENT_SHOULD_RUN=false
