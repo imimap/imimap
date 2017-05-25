@@ -26,6 +26,7 @@ env:
 jobs:
   include:
     - stage: decrypt keys
+      install: true # hopefully skips install
       script: ci-cd/deploy03-travis-decrypt-keys.sh
       env: "IMIMAPS_ENVIRONMENT=docker"
       rvm: 2.4.1

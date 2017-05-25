@@ -5,6 +5,18 @@
 Restrictions on Master Branch are set via github branch configuration page
  https://github.com/imimaps/imimaps/settings/branches/master
 
+### Docker Hub Setup
+
+during the deployment process docker images are built and pushed to docker-hub.
+The credentials are stored in travis environment variables.
+
+if this needs to be changed, the according docker credentials have to be made available by encrypting them and adding them to .travis.yml
+
+travis encrypt DOCKER_USERNAME= --add
+travis encrypt DOCKER_PASSWORD= --add
+
+Currently, the organisation "imimaps" on docker hub is used, created by Simon Albrecht.
+
 
 ### Setup für Production- und Staging-Hosts
 
@@ -54,9 +66,13 @@ Nachdem die Production- und Staging-Hosts aufgesetzt sind, ist es notwendig, die
 `@hosts` in der Datei `ci-cd/docker-deploy.rb` anzupassen.
 
 ### Travis Deploy-Keys
+
 Damit Travis Zugang zu den Staging- und Production-Hosts gewährt werden kann, werden zwei SSH-Key-Paare benötigt.
 Diese sollten mit dem Befehl `ssh-keygen` jeweils ohne Passwort mit den Namen `id_rsa_production` und `id_rsa_staging` im selben Verzeichnis generiert werden.
 Das Verzeichnis sollte wiefolgt aussehen:
+
+    ssh-keygen
+
 ```
 ➜  imimaps_keys tree
 .
@@ -65,17 +81,37 @@ Das Verzeichnis sollte wiefolgt aussehen:
 |-- id_rsa_staging
 `-- id_rsa_staging.pub
 ```
-Hat man die Keys generiert, werden diese mittels `tar cvf ssh_keys.tar` in ein Tar-Archiv gepackt,
-welches dann mit dem Command
+Hat man die Keys generiert, werden diese  in ein Tar-Archiv gepackt:
+
+`tar cvf ssh_keys.tar *`
+
+welches dann mit dem Kommando (! try out --add next time)
+
 ```
 travis encrypt-file -r "imimaps/imimaps" ssh_keys.tar
 ```
 
-https://docs.travis-ci.com/user/encrypting-files/
-
-
-(travis is the cli for travis, see https://github.com/travis-ci/travis.rb#installation)
-
 von Travis spezifisch für das Git-Repository verschlüsselt wird. Die resultierende Datei `ssh_keys.tar.enc` muss dann committet werden.
 
+dabei wird das Kommando zum entschlüsseln generiert, das in .travis.yml eingefügt werden muss.
+    openssl aes-256-cbc -K $encrypted_473888976053_key -iv $encrypted_473888976053_iv -in ssh_keys.tar.enc -out ssh_keys.tar -d
+
+
+### Notes
+ * sie auch  https://docs.travis-ci.com/user/encrypting-files/
+ * `travis` is the cli for travis, see https://github.com/travis-ci/travis.rb#installation
+
+
 **Achtung:** Weder die Keys selbst noch das unverschlüsselte Tar-Archiv dürfen nach GitHub gelangen, da das Repository öffentlich zugänglich ist.
+
+
+### Testing the deployment script
+
+# to test this script: put id_rsa keys in root (don't forget to delete them later!)
+# and set the following environment variables:
+export IMIMAPS_ENVIRONMENT=docker  # set by travis
+export DEPLOYMENT_PIPELINE=HTW # set by travis
+export DOCKER_USERNAME=
+export DOCKER_PASSWORD=
+export TRAVIS_TAG=
+export TRAVIS_BRANCH=

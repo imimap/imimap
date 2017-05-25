@@ -56,3 +56,7 @@ playbook.retry
 # ignore metadata for rubymine
 
 /.idea
+
+# ignore server keys
+id_rsa_production
+id_rsa_staging

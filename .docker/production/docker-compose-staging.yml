@@ -13,7 +13,7 @@ services:
       - ./postgresql/data:/var/lib/postgresql/data
 
   imimaps:
-    image: imimaps/staging:${TAG}
+    image: imimapshtw/staging:${TAG}
     container_name: imimaps-staging
     depends_on:
       - postgresql
