@@ -18,16 +18,15 @@ if [ -z "$DEPLOYMENT_PIPELINE" ]; then
     export DEPLOYMENT_SHOULD_RUN=false
 else
 
-# TBD testing deployment
-# if [ "$DEPLOYMENT_ENVIRONMENT" == "staging" ] && [ "$TRAVIS_BRANCH" != "master" ]; then
-if [ $false ]; then
+#if [ $false ]; then
+if [ "$DEPLOYMENT_ENVIRONMENT" == "staging" ] && [ "$TRAVIS_BRANCH" != "master" ]; then
+
   echo "staging will only deploy if on master branch"
   export DEPLOYMENT_SHOULD_RUN=false
 else
 
-# TBD testing deployment
-if [ $false ]; then
-#if [ "$DEPLOYMENT_ENVIRONMENT" == "production" ] && [ "$TRAVIS_BRANCH" != "$TRAVIS_TAG" ]; then
+#if [ $false ]; then
+if [ "$DEPLOYMENT_ENVIRONMENT" == "production" ] && [ "$TRAVIS_BRANCH" != "$TRAVIS_TAG" ]; then
     echo "production will only deploy from tag"
     echo "got TRAVIS_BRANCH [$TRAVIS_BRANCH] and TRAVIS_TAG [$TRAVIS_TAG]"
     export DEPLOYMENT_SHOULD_RUN=false
@@ -41,12 +40,14 @@ else
 fi
 
 export DEPLOYMENT_DOCKER_ORGANISATION=imimapshtw
+export DEPLOYMENT_SHOULD_RUN=true
+
 echo "all environment checks passed:"
 echo "DEPLOYMENT_ENVIRONMENT: $DEPLOYMENT_ENVIRONMENT"
 echo "DEPLOYMENT_TAG: $DEPLOYMENT_TAG"
 echo "DEPLOYMENT_DOCKER_ORGANISATION: $DEPLOYMENT_DOCKER_ORGANISATION"
 
-export DEPLOYMENT_SHOULD_RUN=true
+
 fi
 fi
 fi
