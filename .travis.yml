@@ -11,9 +11,7 @@ install:
 - echo "Install task"
 - gem install thor
 script:
-- echo "Build start"
-- "./ci-cd/travis-build.sh"
-- echo "Build done"
+- "./ci-cd/travis-test.sh"
 env:
   matrix:
   - "IMIMAPS_ENVIRONMENT=docker"

@@ -9,26 +9,26 @@ echo "TRAVIS [${TRAVIS}]"
 
 
 if [ "$IMIMAPS_ENVIRONMENT" != "docker" ]; then
-  echo "IMIMAPS_ENVIRONMENT is set to ${IMIMAPS_ENVIRONMENT}, skipping deployment"
+  echo "DEPLOYMENT: IMIMAPS_ENVIRONMENT is set to ${IMIMAPS_ENVIRONMENT}, skipping deployment"
     export DEPLOYMENT_SHOULD_RUN=false
 else
 
 if [ -z "$DEPLOYMENT_PIPELINE" ]; then
-    echo "no DEPLOYMENT_PIPELINE set, skipping deployment"
+    echo "DEPLOYMENT: no DEPLOYMENT_PIPELINE set, skipping deployment"
     export DEPLOYMENT_SHOULD_RUN=false
 else
 
 #if [ $false ]; then
 if [ "$DEPLOYMENT_ENVIRONMENT" == "staging" ] && [ "$TRAVIS_BRANCH" != "master" ]; then
 
-  echo "staging will only deploy if on master branch"
+  echo "DEPLOYMENT: staging will only deploy on master branch"
   export DEPLOYMENT_SHOULD_RUN=false
 else
 
 #if [ $false ]; then
 if [ "$DEPLOYMENT_ENVIRONMENT" == "production" ] && [ "$TRAVIS_BRANCH" != "$TRAVIS_TAG" ]; then
-    echo "production will only deploy from tag"
-    echo "got TRAVIS_BRANCH [$TRAVIS_BRANCH] and TRAVIS_TAG [$TRAVIS_TAG]"
+    echo "DEPLOYMENT: production will only deploy from tag"
+    echo "DEPLOYMENT: got TRAVIS_BRANCH [$TRAVIS_BRANCH] and TRAVIS_TAG [$TRAVIS_TAG]"
     export DEPLOYMENT_SHOULD_RUN=false
 else
 
