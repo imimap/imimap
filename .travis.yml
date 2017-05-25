@@ -30,19 +30,27 @@ jobs:
       script: ci-cd/deploy03-travis-decrypt-keys.sh
       env: "IMIMAPS_ENVIRONMENT=docker"
       rvm: 2.4.1
+
     - stage: deploy to staging
       script: "./ci-cd/travis-deploy.sh staging"
       env: "IMIMAPS_ENVIRONMENT=docker"
       rvm: 2.4.1
-#      branches:
-#        only:
-#        - master
+
     - stage: deploy to production
       script: "./ci-cd/travis-deploy.sh production"
       env: "IMIMAPS_ENVIRONMENT=docker"
       rvm: 2.4.1
-#      branches:
-#        only:
-#        - master
+
 
 # https://docs.travis-ci.com/user/build-stages
+matrix:
+  allow_failures:
+    - stage: decrypt keys
+      env: "IMIMAPS_ENVIRONMENT=docker"
+      rvm: 2.4.1
+    - stage: deploy to staging
+      env: "IMIMAPS_ENVIRONMENT=docker"
+      rvm: 2.4.1
+    - stage: deploy to production
+      env: "IMIMAPS_ENVIRONMENT=docker"
+      rvm: 2.4.1
