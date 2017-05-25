@@ -13,8 +13,8 @@ if [ -z $DEPLOYMENT_ENVIRONMENT ]; then
 fi
 
 . ./ci-cd/deploy01-settings.sh
-echo "DEPLOYMENT_SHOULD_RUN $DEPLOYMENT_SHOULD_RUN"
-echo "DEPLOYMENT_TAG $DEPLOYMENT_TAG"
+. ./ci-cd/deploy00-echo-settings.sh
+
 if [ $DEPLOYMENT_SHOULD_RUN != "true" ]; then
   echo "SKIPPING DEPLOYMENT"
   echo "end $0"
@@ -23,7 +23,7 @@ fi
 
 if [ $DEPLOYMENT_PIPELINE == "HTW" ]; then
       ./ci-cd/deploy02-docker-build.rb
-      ./ci-cd/deploy03-travis-decrypt-keys.sh
+    #  ./ci-cd/deploy03-travis-decrypt-keys.sh
       . ./ci-cd/deploy04-docker-push.sh
       . ./ci-cd/deploy05-docker-deploy.sh
 else
