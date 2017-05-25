@@ -20,7 +20,7 @@ else
 
 # TBD testing deployment
 # if [ "$DEPLOYMENT_ENVIRONMENT" == "staging" ] && [ "$TRAVIS_BRANCH" != "master" ]; then
-
+if [ $false ]; then
   echo "staging will only deploy if on master branch"
   export DEPLOYMENT_SHOULD_RUN=false
 else
