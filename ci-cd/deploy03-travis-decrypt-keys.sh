@@ -1,0 +1,19 @@
+
+if [ -z $TRAVIS ]; then
+  echo "$0: TRAVIS not set, skipping"
+  exit 0
+fi
+if [ $TRAVIS == "true" ]; then
+  echo "$0: decrypting ssh keys"
+  openssl aes-256-cbc -K $encrypted_f259336567b4_key -iv $encrypted_f259336567b4_iv -in ssh_keys.tar.enc -out ssh_keys.tar -d
+  tar xvf ssh_keys.tar
+  chmod 0600 id_rsa*
+
+
+   ssh  -i id_rsa_staging -o StrictHostKeyChecking=no deployer@imi-map-staging.f4.htw-berlin.de "pwd ; echo $hostname ; exit"
+
+   ssh  -i id_rsa_production -o StrictHostKeyChecking=no deployer@imi-map-production.f4.htw-berlin.de "pwd ; echo $hostname ; exit"
+
+else
+  echo "$0: TRAVIS not set, skipping"
+fi

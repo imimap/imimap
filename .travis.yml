@@ -20,19 +20,22 @@ env:
   - "IMIMAPS_ENVIRONMENT=local"
   global:
     # DOCKER_USERNAME
-    - secure:  "MOQjdz+V+VcdrA3P0L/EXGf8Y7Xb7q8cqNMVc95lz3q2VshHQFlB087GCtpRdYbscveGSkkq6hCnbjCa0r2fZ4EMBkcRtF/SzPzrShudc40sbZO87FLAeKdFpceYuc8cVhbu9VUMTXECafi+eLDToI1PwbMFfxh5HzWoHraXFvGuQx/EdeWMfbjPohttICQ2gwv1Ty0EfqLbSDEwFuqTSSrDbwUeiIt+s7AZxLyF33g7aPlI/+aTJI/XouRkooHxh1F0wsxb/iJYSlNYp3vZnQ8uneFCVz49EQ2+DYf59E53qU/xtnd+LF9NTpzKkfXkThUAbmT3SaNJM1wOV5IXfUMHIRZ568Nd7+1ctlCMkfouuI4foECcRNa7IwRjB/lJLMCzcnPMFeFQJxQJHVVL5Ud9euaI8DEBy20+NRGvngRCgu7s6Kt1Z+uZayp5Lte1iELxaAlmGGQDRAB4izpm1MIbjJ06yJqBNfKbatXdOo6G93SJNlffqvRaK2P08Ur0EdOXUI1kyOaiQnDJUrwcl3FmWE0ei9YP6anFFiCDHtjASTNPuKJotPj1KAH5pa0Z5z9oKBy6iccRFDL9DstMd4XO4KMGVtAyYSC89zHF6xhyFmUUiBsJYz7aGzbob9/qRDjcUVlU3jW+4uZahpnxGDD6Q7KLTs0fFeQ1zfrKjcU="
+    - secure: "V5HR+I5Owf+zkjEZuzuhelwLagmGLlFns/Z1Oec5NBq3EoTek9rKT5hDMDZT81wrgFVInAdEKUNW3iQ2bIGDB4AkTa9Db2KtYzkeHG1rniHkc7n3GA8IxlR1NtKxZKwAWQr3Mf1hcUFWJWsQJymJK/FKaitfL6DT7nKuovKFfruX5mhW283q7lSKQm3kWewq1q2HKXJuJVo6TJCHDhwwebbmphDfp1X2ATgq2xQjpxrBjJGT5ysdC9THWHRpx1FAvfSg+aOLBs+STsB4YeUfGnaKwcUdV5LZIwJoG4qxtnooUDHXBtSvfifdy05kGXpVTMgFDvdYlXjrtgm++0ZC8jrXQUNX+CZ7ituX3Q3UwCeJVVVSMMW2KfdhMbKW3YMrlLnGgN5U9GH4af2v54Hi6im5lMA2zddqValT/SH3WEv28wU2FoDviZlHv4YIk5byNrX6kQfnvydURcar3hzllCc2dQ46KYFB301GtSRB7sbPrq+icsLokj8zpTxFt4BbC0jTLGMmGclX8JYrbVpU3AbGPWaqi/3DSAjEnCKfc5yV0Z+WKlbwcSG3mTTSDe94rb8N0hgfyql/kFQmxYPZoWnT4ssdcJLeuMloxhWwDojUOVrDmGirKG7JNnMxz8l4nU6F18vVxYB8zr1Xti6Za4zC6S/TOZdhHs1/C9jZ4Ho="
     # DOCKER_PASSWORD
-    - secure: "rZmvyQpRNNpU3yE1L3MzGZOA6Kdy10GJtq+wv1Tp24zwB2dRcPrm3uKNIuJeLxY7JVbuwi+swquMxAmBtl+14h5YFrmNysNp84gynr0D5vO9u8RwPo2ghlxINLWors03u2whGKne83SxE5iW7P16iP09Wvmv5JhUhlDlnFLlhzSISEPrch+wh7Vp8IoKfaHKkk4ERvCsjxKRtbUARCGjelZT7m4zUwFpl5QiXmWpayA48kzKzCx5SAODgyQXp6spbtFP+QafTgTQQmhbdnKKQxBPEAGSEN1/uXRhl3y7LTBmikbZXKPmPUndgtZgwZumDRSGtCNp58Q6y2ImrJxd0xtCJ6VNTFREKjeUduZMeOSL9oZxoFdQ5A11K7+KwB6KeKtr4RKGp6Z0BRL15FtiKw7yMrDFcUlQd5zaa4bMk+92A7QQw78z+eji3ub6YCBfVqTZ5coga911Vsd1VBiagY2kgzsKgBWdqFHfiTaccxk5TEy+23hcNlg3wnOe9vR4kAWH16tUBQkqTcHC3/kxoDfnp1FZUMBMwFYhWExpVyOWbKZJzT+hw3ChizZb4NSC0ujycoqruTYGQzbsFFFJqTIzRlAIdZbmcHmOacc/oUDsPuO5VqTmUyIWLqNdkNZ4ZlHf/iqlrgt5DRVFuWBVMNR/g1yfSsHNCfVTwICBJRw="
-jobs:
+    - secure: "rhiUywSLbmsruuAG2AN21wGjBVwBZdx6cpxCg1Qx2GAVHKbLp3FrLh3ndKL6yFmx/1yrj1ljemf0XhGaGF1xbq43kigTmXsGTDG5KSwxeyZ/ZhNEsghu6+vyTSbhyaFzi0+8+Gcon6D3b/Mhy8SVdAk717n7eLrOTQrj+KoRPcGtOf9k5vNtcYVKkTnd8Hccf0GjPpPHJLKp4y83bwLw2HqGjDdrpoaOnv3DAZavoZAR/pMDGmImaY0AGrVAxryo/7G6IcagfgF5sf5DPQJfQ8DpiiOLtmnKkWPvFhYYs3zsYVs/0EfZuvZXaeBp5Y80uC1LHXvQHk9oqYSo439gNXyU9KsBTpwFbUu9VrUfwnPu9Lk79B/I2cGJyHbi7cVH3yFFKxW7Kg9sX8N9UlWnv0aB3dky0yqo+3aqurk3qJRBprTnxP2QH5LCWAYxuWBsHo/cJ6hRUZk1x/3B/x6mWXxLr6t1kU6dMTIvavfIz7KbFwFcmDkAAgc5IFae0xDFAy1n2okC4BztdJtni/S22IugL7D7LMqph35exKrb/UjeJ3zR/WpjBAZvd6r4zDYcMWEqPd80iXeSPDV6dYXxXnpzkgy48ENO1PC96N/7VHSe2AuaBUd+fTvseYIyHoUncBlpiP228AMYeo8swHOIBcS4yqdwxpaukriSMxfWSpw="jobs:
   include:
-    - stage: deploy staging
+    - stage: decrypt keys
+      script: ci-cd/deploy03-travis-decrypt-keys.sh
+      env: "IMIMAPS_ENVIRONMENT=docker"
+      rvm: 2.4.1
+    - stage: deploy to staging
       script: "./ci-cd/travis-deploy.sh staging"
       env: "IMIMAPS_ENVIRONMENT=docker"
       rvm: 2.4.1
 #      branches:
 #        only:
 #        - master
-    - stage: deploy production
+    - stage: deploy to production
       script: "./ci-cd/travis-deploy.sh production"
       env: "IMIMAPS_ENVIRONMENT=docker"
       rvm: 2.4.1
