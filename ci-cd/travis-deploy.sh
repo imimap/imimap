@@ -23,7 +23,7 @@ fi
 
 if [ $DEPLOYMENT_PIPELINE == "HTW" ]; then
       ./ci-cd/deploy02-docker-build.rb
-    #  ./ci-cd/deploy03-travis-decrypt-keys.sh
+      ./ci-cd/deploy03-travis-decrypt-keys.sh
       . ./ci-cd/deploy04-docker-push.sh
       . ./ci-cd/deploy05-docker-deploy.sh
 else

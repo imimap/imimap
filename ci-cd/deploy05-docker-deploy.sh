@@ -12,8 +12,7 @@ fi
 if [ $DEPLOYMENT_ENVIRONMENT == "production" ]; then
   export DEPLOYMENT_HOST="imi-map-production.f4.htw-berlin.de"
 fi
-echo "in dir"
-pwd
+
 echo "copying docker-compose file to $DEPLOYMENT_HOST"
 scp -i id_rsa_$DEPLOYMENT_ENVIRONMENT -o StrictHostKeyChecking=no .docker/$DEPLOYMENT_ENVIRONMENT/docker-compose-$DEPLOYMENT_ENVIRONMENT.yml $DEPLOMENT_USER@$DEPLOYMENT_HOST:~
 echo "sshing to $DEPLOYMENT_HOST and calling docker-compose"
