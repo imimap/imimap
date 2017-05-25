@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-echo "starting travis-build.sh for IMIMAPS_ENVIRONMENT ${IMIMAPS_ENVIRONMENT}"
+echo "$0: starting build for IMIMAPS_ENVIRONMENT ${IMIMAPS_ENVIRONMENT}"
+
 if [ "$IMIMAPS_ENVIRONMENT" == "docker" ]; then
   ./docker-tool test start
 else

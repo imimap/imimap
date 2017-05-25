@@ -13,7 +13,7 @@ services:
       - ./postgresql/data:/var/lib/postgresql/data
 
   imimaps:
-    image: imimaps/production:${TAG}
+    image: imimapshtw/production:${TAG}
     container_name: imimaps-production
     environment:
       - POSTGRES_USER=imimaps

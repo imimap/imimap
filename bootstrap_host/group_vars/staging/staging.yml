@@ -1,4 +1,4 @@
-ansible_user: "docker-deploy"
-nginx_host_name: imimaps-staging.dev-sector.net
+ansible_user: "deployer"
+nginx_host_name: imi-map-staging.f4.htw-berlin.de
 application_port: 4000
 cicd_pubkey: "{{ vault_cicd_pubkey }}"

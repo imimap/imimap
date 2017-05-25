@@ -5,11 +5,7 @@
 ### Current Main Repository with temporary CI/CD:
 * [https://github.com/imimaps/imimaps](https://github.com/imimaps/imimaps)
 * [![Build Status](https://travis-ci.org/imimaps/imimaps.svg?branch=master)](https://travis-ci.org/imimaps/imimaps)
-
-This deploys every successful build to
-
-- [http://imimaps-staging.dev-sector.net](http://imimaps-staging.dev-sector.net)
-- and every version tag to [http://imimaps-production.dev-sector.net](http://imimaps-production.dev-sector.net)
+* [Branch and Stages Overview on Travis CI](https://travis-ci.org/imimaps/imimaps/branches)
 
 
 ## General Project Info
