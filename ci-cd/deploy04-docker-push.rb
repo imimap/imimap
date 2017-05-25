@@ -14,7 +14,7 @@ module CICD
 
     def start
         push_command = "docker login -u #{ENV["DOCKER_USERNAME"]} -p #{ENV["DOCKER_PASSWORD"]} && \
-        docker push imimapshtw/#{ENV["DEPLOYMENT_ENVIRONMENT"]}:#{ENV["DEPLOYMENT_TAG"]}"
+        docker push #{ENV["DEPLOYMENT_DOCKER_ORGANISATION"]}/#{ENV["DEPLOYMENT_ENVIRONMENT"]}:#{ENV["DEPLOYMENT_TAG"]}"
         system(push_command)
     end
   end
