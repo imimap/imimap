@@ -29,5 +29,5 @@ module CICD
 end
 
 puts "*** start #{__FILE__}"
-# TBD CICD::DockerBuild.new.start
+CICD::DockerBuild.new.start
 puts "*** end #{__FILE__}"
