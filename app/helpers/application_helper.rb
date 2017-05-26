@@ -46,4 +46,11 @@ module ApplicationHelper
     "MAP WAS HERE"
   end
 
+  def locale_picker
+    I18n.available_locales.each do |loc|
+      locale_param = request.path == root_path ? root_path(locale: loc) : params.merge(locale: loc)
+      concat content_tag(:li, (link_to_unless_current loc, locale_param))
+    end
+  end
+
 end
