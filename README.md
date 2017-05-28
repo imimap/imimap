@@ -18,3 +18,13 @@ The project was developed as part of the study of international media and comput
 ## Development Setup
 
 see .docker/docs.md
+
+# Generated Documentation
+
+Two gems are used to generate documentation: society and railroady.
+
+## Society
+
+## Railroady
+* [Railroady on Github](https://github.com/preston/railroady)
+*
