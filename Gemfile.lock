@@ -69,6 +69,7 @@ GEM
       sass (~> 3.2)
       thor
     builder (3.2.3)
+    byebug (9.0.6)
     capistrano (3.8.1)
       airbrussh (>= 1.0.0)
       i18n
@@ -341,6 +342,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass (= 2.1)
+  byebug
   capistrano
   capybara
   carrierwave
