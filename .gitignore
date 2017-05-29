@@ -60,3 +60,6 @@ playbook.retry
 # ignore server keys
 id_rsa_production
 id_rsa_staging
+
+# ignore byebug history
+.byebug_history

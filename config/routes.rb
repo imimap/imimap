@@ -10,7 +10,7 @@ ImiMaps::Application.routes.draw do
 
     resources :users
 
-    resources :user_verifications
+    resources :user_verifications, only: [:new, :create]
 
     resources :search, :only => [:index]
 
