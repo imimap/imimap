@@ -1,4 +1,4 @@
-@import "bootstrap";
+@import "bootstrap2_gem/bootstrap";
 
 #company-title-text ul {
     margin-left:0;
@@ -14,13 +14,13 @@ td ul {
 
 
 
-#map img { 
+#map img {
   max-width: none;
 }
-#map label { 
-  width: 0 auto; 
-  display:inline; 
-} 
+#map label {
+  width: 0 auto;
+  display:inline;
+}
 
 header .pull-left {
 	margin:5px;
@@ -173,8 +173,8 @@ p.explanation {
 }
 
 .text_guide{
-    margin-left: 10%; 
-    margin-right: 10%; 
+    margin-left: 10%;
+    margin-right: 10%;
     text-align: justify;
 }
 
