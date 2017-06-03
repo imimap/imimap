@@ -14,7 +14,7 @@ describe "Detailed Search Page " do
     it "should have title and arbitrary search criteria" do
       login_with(@user)
         visit internships_path(locale: locale)
-        save_and_open_page
+      #  save_and_open_page
         page.should have_content(t('search.title'))
         page.should have_content(t('internships.attributes.living_costs'))
      end
