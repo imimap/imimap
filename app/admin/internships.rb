@@ -22,9 +22,10 @@ ActiveAdmin.register Internship do
 
 
   form do |f|
-    f.semantic_errors :student
+
     f.inputs "Student" do
       f.input :student_id, as: :select, collection: Student.order(:last_name).collect { |s| ["#{s.enrolment_number}, #{s.last_name}, #{s.first_name}", s.id] }
+      f.semantic_errors :student
     end
     f.inputs "Company" do
       f.input :company_id, as: :select, collection: Company.order(:name).collect { |c| ["#{c.name}, #{c.city}, #{c.country}", c.id] }
