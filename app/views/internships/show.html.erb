@@ -218,14 +218,26 @@
   <div class="span12">
    <div class="row" id="row2-intern">
     <div class="span3" id="intern-title">
-      <%= t "internships.attributes.weekValidation" %></div>
+      <%= t "internships.attributes.amountOfWeeks" %></div>
       <div class="span8" id="intern-box">
-         <%= @internship.weekValidation %>
+         <%= @internship.weekCount %>
       </div>
     </div>
     </div>
-    </div>   
+    </div>
     
+   <div class="row-fluid" id="row-intern">
+    <div class="span12">
+     <div class="row" id="row2-intern">
+      <div class="span3" id="intern-title">
+        <%= t "internships.attributes.weekValidation" %></div>
+        <div class="span8" id="intern-box">
+           <%= @internship.weekValidation %>
+        </div>
+      </div>
+      </div>
+    </div>  
+
               <div id="favorite">
                 <% if @favorite %>
                 <%= link_to({:controller=>:favorite,:action=>:destroy, :id => @favorite.id}, {:method=>:delete, remote: true, class: "btn btn-danger"}) do %>

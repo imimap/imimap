@@ -232,6 +232,12 @@ de:
       title: "Job Titel"
       recommend: "Empfehlung"
       internship_report: "Praktikumsbericht"
+      amountOfWeeks: "Anzahl der Wochen"
+      weekValidation: "Validität"
+      val1: "wf"
+      val2: "bka"
+      val3:  "fkgkgk"
+
 
   users:
     name: "Benutzer"

@@ -189,6 +189,8 @@ en:
       title: "Job Title"
       recommend: "Recommendation"
       internship_report: "Internship Report"
+      amountOfWeeks: "Total amount of weeks"
+      weekValidation: "Validation status"  
 
 
   users:
