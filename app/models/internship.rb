@@ -49,4 +49,24 @@ class Internship < ActiveRecord::Base
     student.enrolment_number
   end
 
+  def weekCount
+    days = (self[:end_date] - self[:start_date]).to_i
+    weeks = days/7
+    return weeks
+  end
+
+  def weekValidation
+    weeksToValidate = weekCount
+    case weeksToValidate
+      when 0..4
+        valText = "Intership is less than 4 weeks"
+      when 4..17,5
+        valText = "Internsip needs manual validation"
+      else
+        valText = "Internsip is long enough"
+    end
+    return valText
+
+  end
+
 end
