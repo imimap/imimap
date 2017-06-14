@@ -61,9 +61,9 @@ class Internship < ActiveRecord::Base
       when 0..4
         valText = "Intership is less than 4 weeks"
       when 4..17,5
-        valText = "Internsip needs manual validation"
+        valText = "Internship needs manual validation"
       else
-        valText = "Internsip is long enough"
+        valText = "Internship is long enough"
     end
     return valText
 
