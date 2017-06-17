@@ -60,4 +60,10 @@ RSpec.describe Internship, :type => :model do
     end
   end 
 
+  describe "#weekValidation"
+  it 'should return the correct string according to the week count' do
+    expect(internship.weekValidation).to eq("Intership is less than 4 weeks")
+  end 
+end 
+
 end 
