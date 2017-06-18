@@ -2,7 +2,7 @@ version: '2'
 services:
   postgresql:
     image: postgres:9.6.2-alpine
-    container_name: postgresql-production
+    container_name: postgresql
     environment:
       - POSTGRES_PASSWORD=imimaps
       - POSTGRES_USER=imimaps
@@ -13,12 +13,12 @@ services:
       - ./postgresql/data:/var/lib/postgresql/data
 
   imimaps:
-    image: imimapshtw/production:${TAG}
-    container_name: imimaps-production
+    image: imimap/imimap:${TAG}
+    container_name: imimaps
     environment:
-      - POSTGRES_PASSWORD=imimaps
-      - POSTGRES_USER=imimaps
-      - POSTGRES_DB=imimaps
+      - POSTGRES_PASSWORD=imimap
+      - POSTGRES_USER=imimap
+      - POSTGRES_DB=imimap
     depends_on:
       - postgresql
     links:
