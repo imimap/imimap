@@ -1,6 +1,27 @@
 
 # Setup der Deployment Pipeline
 
+## Database setup
+
+### Initial Database setup
+
+If IMI-Map is set up on a new machine, the database needs to be created.
+After the Container has started, run:
+
+    psql --set ON_ERROR_STOP=on  -h localhost -U imi_map imi_map_production < imi-maps.pgdump
+
+on the machine to import a database dump in imi-maps.pgdump. If necessary, delete the database files completely - they will be recreated when the docker image is started.
+
+The database is mounted to ./postgres from where docker-compose is run.
+
+Perform a database migration:
+
+    docker-compose exec imimaps bundle exec rake db:migrate
+
+    (note that TAG and SECRET_TOKEN need to be set to run docker-compose)
+
+
+
 ### Github setup
 Restrictions on Master Branch are set via github branch configuration page
  https://github.com/imimaps/imimaps/settings/branches/master
