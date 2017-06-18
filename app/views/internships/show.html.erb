@@ -231,10 +231,21 @@
      <div class="row" id="row2-intern">
       <div class="span3" id="intern-title">
         <%= t "internships.attributes.weekValidation" %></div>
-        <div class="span8" id="intern-box">
-           <%= @internship.weekValidation %>
+          <% if @internship.weekValidation == "A" %>
+            <div class="span8" id="intern-box">
+              <%= t "internships.attributes.weekVal.optionA" %>
+            </div>
+          <% end %>
+          <% if @internship.weekValidation == "B" %>
+            <div class="span8" id="intern-box">
+              <%= t "internships.attributes.weekVal.optionB" %>
+            </div>
+          <% else %>
+            <div class="span8" id="intern-box">
+              <%= t "internships.attributes.weekVal.optionC" %>
+            </div>
+          <% end %>      
         </div>
-      </div>
       </div>
     </div>  
 

@@ -66,11 +66,11 @@ class Internship < ActiveRecord::Base
     weeksToValidate = weekCount
     case weeksToValidate
       when 0..4
-        valText = "Intership is less than 4 weeks"
+        valText = A
       when 4..17,5
-        valText = "Internship needs manual validation"
-      else
-        valText = "Internship is long enough"
+        valText = B
+      # else
+      #   valText = C
     end
     return valText
 

@@ -234,9 +234,10 @@ de:
       internship_report: "Praktikumsbericht"
       amountOfWeeks: "Anzahl der Wochen"
       weekValidation: "Validität"
-      val1: "wf"
-      val2: "bka"
-      val3:  "fkgkgk"
+      weekVal:
+        optionA: "Die Praktikumsdauer ist kleiner als 4 Wochen"
+        optionB: "Die Praktikumsdauer benötigt manuelle Nachberechnung"
+        optionC: "Die Praktikumsdauer ist ausreichend"
 
 
   users:
