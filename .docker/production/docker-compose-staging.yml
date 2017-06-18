@@ -15,12 +15,12 @@ services:
   imimaps:
     image: imimapshtw/staging:${TAG}
     container_name: imimaps-staging
-    depends_on:
-      - postgresql
     environment:
       - POSTGRES_PASSWORD=imimaps
       - POSTGRES_USER=imimaps
       - POSTGRES_DB=imimaps
+    depends_on:
+      - postgresql
     links:
       - postgresql
     ports:
