@@ -16,9 +16,10 @@ services:
     image: imimap/imimap:${TAG}
     container_name: imimaps
     environment:
-      - POSTGRES_PASSWORD=imimap
-      - POSTGRES_USER=imimap
-      - POSTGRES_DB=imimap
+      - POSTGRES_PASSWORD=imimaps
+      - POSTGRES_USER=imimaps
+      - POSTGRES_DB=imimaps
+      - SECRET_KEY_BASE=${SECRET_KEY_BASE}
     depends_on:
       - postgresql
     links:
