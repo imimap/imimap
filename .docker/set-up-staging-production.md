@@ -1,6 +1,37 @@
 
 # Setup der Deployment Pipeline
 
+## Testing the production image locally
+
+You can either test an image that is available from docker hub or
+build an image yourself. IMI-Map Images are named
+
+   imimap/imimap:<tag>
+
+in either case, you need to set the TAG environment variable:
+
+    export TAG=<tag you want to use, eg. local>
+
+you also need to set SECRET_TOKEN
+
+    export SECRET_TOKEN=<secret>
+
+you can generate a secret token with
+
+    rake secret
+
+to build the image:
+
+    docker-compose build
+
+### running the image
+
+- copy Dockerfile, docker-compose.yml (and docker-entrypoint.sh) into a seperate repository, e.g. production. Edit docker-compose.yml and add the environment variable RAILS_SERVE_STATIC_FILES=true to the imimap service (otherwise the assets wont be served, this is done by ngnix on the production server and run
+
+    docker-compose up
+
+After that, set up your database, if not already in place.
+
 ## Database setup
 
 ### Initial Database setup
@@ -19,7 +50,6 @@ Perform a database migration:
     docker-compose exec imimaps bundle exec rake db:migrate
 
     (note that TAG and SECRET_TOKEN need to be set to run docker-compose)
-
 
 
 ### Github setup
