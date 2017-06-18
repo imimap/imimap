@@ -1,0 +1,3 @@
+-# how to allow failures in stages:
+-# https://github.com/backspace/travixperiments-redux/blob/primary/.travis.yml
+-# https://github.com/travis-ci/beta-features/issues/11#issuecomment-301310134

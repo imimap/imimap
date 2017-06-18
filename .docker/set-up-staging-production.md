@@ -161,18 +161,19 @@ dabei wird das Kommando zum entschl√ºsseln generiert, das in .travis.yml eingef√
 # to test this script: put id_rsa keys in root (don't forget to delete them later!)
 # and set the following environment variables:
 
-export IMIMAPS_ENVIRONMENT=docker  # set by travis build matrix in .travis.yml
+export DOCKER_USERNAME=imimap # set by secret env variables in .travis.yml
+export DOCKER_PASSWORD=<put here> # set by secret env variables in .travis.yml  
+export IMIMAPS_ENVIRONMENT=docker # set by travis build matrix in .travis.yml
 export DEPLOYMENT_PIPELINE=HTW # set by travis via repository settings. If you have a fork, this can be used to disable deployment attempts.
-export DOCKER_USERNAME=imimapshtw # set by secret env variables in .travis.yml
-export DOCKER_PASSWORD=<put here>
+export TRAVIS_COMMIT=$(git log --pretty=format:'%h' -n 1)
+export TRAVIS_BRANCH=docker
 
 # for staging
 export TRAVIS_BRANCH=master # automatically set by travis
-export DEPLOYMENT_ENVIRONMENT=staging
-TRAVIS_COMMIT=321xyz
+export TRAVIS_COMMIT=$(git log --pretty=format:'%h' -n 1)
+
 
 
 # for production
 export TRAVIS_TAG=0.0.5 # automatically set by travis
 export TRAVIS_BRANCH=0.0.5 # automatically set by travis
-export DEPLOYMENT_ENVIRONMENT=production
