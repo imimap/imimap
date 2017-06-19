@@ -18,15 +18,17 @@ if [ -z "$DEPLOYMENT_PIPELINE" ]; then
     export DEPLOYMENT_SHOULD_RUN=false
 else
 
-#if [ $false ]; then
-if [ "$DEPLOYMENT_ENVIRONMENT" == "staging" ] && [ "$TRAVIS_BRANCH" != "master" ]; then
+#if [ "$DEPLOYMENT_ENVIRONMENT" == "staging" ] && [ "$TRAVIS_BRANCH" != "master" ]; then
+# TBD docker-deploy: change this back to deploy from master branch
+if [ "$DEPLOYMENT_ENVIRONMENT" == "staging" ] && [ "$TRAVIS_BRANCH" != "docker" ]; then
 
   echo "DEPLOYMENT: staging will only deploy on master branch"
   export DEPLOYMENT_SHOULD_RUN=false
 else
 
-#if [ $false ]; then
-if [ "$DEPLOYMENT_ENVIRONMENT" == "production" ] && [ "$TRAVIS_BRANCH" != "$TRAVIS_TAG" ]; then
+#if [ "$DEPLOYMENT_ENVIRONMENT" == "production" ] && [ "$TRAVIS_BRANCH" != "$TRAVIS_TAG" ]; then
+# TBD docker-deploy: change this back to above line
+if [ "$DEPLOYMENT_ENVIRONMENT" == "staging" ] && [ "$TRAVIS_BRANCH" != "docker" ]; then
     echo "DEPLOYMENT: production will only deploy from tag"
     echo "DEPLOYMENT: got TRAVIS_BRANCH [$TRAVIS_BRANCH] and TRAVIS_TAG [$TRAVIS_TAG]"
     export DEPLOYMENT_SHOULD_RUN=false
