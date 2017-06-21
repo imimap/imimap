@@ -41,8 +41,8 @@ server {
 	#
 	# include snippets/snakeoil.conf;
 
-    listen 443 ssl default_server;
-    listen [::]:443 ssl default_server;
+	listen 443 ssl default_server;
+	listen [::]:443 ssl default_server;
 	ssl    on;
 	ssl_certificate      /etc/ssl/{{ nginx_host_name }}.pem;
 	ssl_certificate_key  /etc/ssl/{{ nginx_host_name }}.key;
@@ -52,10 +52,17 @@ server {
 	# Add index.php to the list if you are using PHP
 	index index.html index.htm index.nginx-debian.html;
 
-	server_name {{ nginx_host_name }} imi-map.f4.htw-berlin.de ;
+	server_name imi-map.f4.htw-berlin.de imi-map-production.f4.htw-berlin.de imi-map-staging.f4.htw-berlin.de  ;
+
+        location ~ ^/assets/ {
+        root   /home/deployer/rails/public;
+                gzip_static on;
+                expires max;
+                add_header Cache-Control public;
+        }
 
 	location / {
-    proxy_pass http://localhost:{{ application_port }};
+		proxy_pass http://localhost:{{ application_port }};
 	}
 
 	# pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
