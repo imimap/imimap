@@ -64,16 +64,16 @@ class Internship < ActiveRecord::Base
 
   def weekValidation
     weeksToValidate = weekCount
-    valText = " "
+    valText = ""
     case weeksToValidate
       when 0..4
-        valText = "A"
+        valText = I18n.t('internships.attributes.weekVal.optionA')
       when 4..17,5
-        valText = "B"
-       #else
-        #valText = C
+         valText = I18n.t('internships.attributes.weekVal.optionB')
+       else
+        valText =  I18n.t('internships.attributes.weekVal.optionC')
     end
-    return valText
+    return valText;
 
   end
 
