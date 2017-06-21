@@ -50,11 +50,11 @@ class Internship < ActiveRecord::Base
     student.enrolment_number
   end
 
-  #def start_date_before_end_date?
-  #  if (:start_date > :end_date)
-  #    errors.add :end_date, "must be after start date"
-  #  end
-  #end
+  def start_date_before_end_date?
+    if (:start_date > :end_date)
+      errors.add :end_date, "must be after start date"
+    end
+  end
 
   def weekCount
     days = (self[:end_date] - self[:start_date]).to_i
@@ -64,16 +64,31 @@ class Internship < ActiveRecord::Base
 
   def weekValidation
     weeksToValidate = weekCount
-    valText = ""
+    valText = " "
     case weeksToValidate
       when 0..4
         valText = "A"
       when 4..17,5
         valText = "B"
-      # else
-      #   valText = C
+       #else
+        #valText = C
     end
     return valText
+
+  end
+
+  def weekValidationActAdm
+    weeksToValidate = weekCount
+    valText = ""
+    case weeksToValidate
+      when 0..4
+        valText = "Intership is less than 4 weeks"
+      when 4..17,5
+         valText = "Internship needs manual validation"
+       else
+        valText = "Internship is long enough"
+    end
+    return valText;
 
   end
 
