@@ -28,3 +28,4 @@ services:
       - 4000:80
     volumes:
       - ./rails/public/uploads:/usr/src/app/public/uploads
+      - ./rails/public/assets:/usr/src/app/public/assets
