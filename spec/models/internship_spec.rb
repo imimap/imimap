@@ -62,7 +62,7 @@ RSpec.describe Internship, :type => :model do
 
   describe "#weekValidation" do
   it 'should return the correct string according to the week count' do
-    expect(internship.weekValidation).to eq(A)
+    expect(internship.weekValidation).to eq("A")
   end 
 end 
 
