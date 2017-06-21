@@ -9,54 +9,28 @@
 // Converted to Sass by @thomasmcdonald_, and distributed as bootstrap-sass
 
 // Core variables and mixins
-@import "bootstrap/variables"; // Modify this for custom colors, font-sizes, etc
-@import "bootstrap/mixins";
+@import "../../../../vendor/assets/stylesheets/bootstrap/variables"; // Modify this for custom colors, font-sizes, etc
+@import "../../../../vendor/assets/stylesheets/bootstrap/mixins";
 
 // CSS Reset
-@import "bootstrap/reset";
+@import "../../../../vendor/assets/stylesheets/bootstrap/reset";
 
 // Grid system and page structure
-@import "bootstrap/scaffolding";
-@import "bootstrap/grid";
-@import "bootstrap/layouts";
+@import "../../../../vendor/assets/stylesheets/bootstrap/scaffolding";
+@import "../../../../vendor/assets/stylesheets/bootstrap/layouts";
 
 // Base CSS
-@import "bootstrap/type";
-@import "bootstrap/code";
-@import "bootstrap/forms";
-@import "bootstrap/tables";
+@import "../../../../vendor/assets/stylesheets/bootstrap/type";
+@import "../../../../vendor/assets/stylesheets/bootstrap/tables";
 
 // Components: common
-@import "bootstrap/sprites";
-@import "bootstrap/dropdowns";
-@import "bootstrap/wells";
-@import "bootstrap/component-animations";
-@import "bootstrap/close";
-
-// Components: Buttons & Alerts
-@import "bootstrap/buttons";
-@import "bootstrap/button-groups";
-@import "bootstrap/alerts"; // Note: alerts share common CSS with buttons and thus have styles in _buttons.scss
-
-// Components: Nav
-@import "bootstrap/navs";
-@import "bootstrap/navbar";
-@import "bootstrap/breadcrumbs";
-@import "bootstrap/pagination";
-@import "bootstrap/pager";
+@import "../../../../vendor/assets/stylesheets/bootstrap/sprites";
+@import "../../../../vendor/assets/stylesheets/bootstrap/wells";
 
 // Components: Popovers
-@import "bootstrap/modals";
-@import "bootstrap/tooltip";
-@import "bootstrap/popovers";
+@import "../../../../vendor/assets/stylesheets/bootstrap/tooltip";
 
 // Components: Misc
-@import "bootstrap/thumbnails";
-@import "bootstrap/labels-badges";
-@import "bootstrap/progress-bars";
-@import "bootstrap/accordion";
-@import "bootstrap/carousel";
-@import "bootstrap/hero-unit";
-
-// Utility classes
-@import "bootstrap/utilities"; // Has to be last to override when necessary
+@import "../../../../vendor/assets/stylesheets/bootstrap/thumbnails";
+@import "../../../../vendor/assets/stylesheets/bootstrap/labels-badges";
+@import "../../../../vendor/assets/stylesheets/bootstrap/hero-unit";
