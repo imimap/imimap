@@ -1,19 +1,15 @@
-# require 'rails_helper'
+require 'spec_helper'
 
-# describe "internship/show.html.erb" do
-#   context "logged in" do
-#     before :each do
-#       @admin_user = create :admin_user
-#       login_as(@admin_user, :scope => :admin_user)
-#       I18n.locale = "de"
-#     end
-#     describe "show internship" do
-#       it "shows internship" do
-#         internship = create(:internship)
-#         visit admin_internship_path(internship)
-#         expect(page).to have_content internship.weekCount
-#         expect(page).to have_content internship.weekValidation
-#       end
-#     end
-#   end
-# end
+describe 'internship/show.html.erb' do
+  context 'displayed in English'
+    it 'it shows internship correctly' do
+      let(:locale) {:en}
+      internship = build(:internship)
+      render
+
+      rendered.should contain('1')
+      rendered.should contain('Intership is less than 4 weeks')
+      render.should have_content('Total amount of weeks')
+      render.should have_content('Validation status')
+  end
+end
