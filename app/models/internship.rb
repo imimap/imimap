@@ -49,4 +49,8 @@ class Internship < ActiveRecord::Base
     student.enrolment_number
   end
 
+  def new
+    @internship = Internship.new(params[:id])
+  end
+
 end
