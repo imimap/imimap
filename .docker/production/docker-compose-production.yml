@@ -11,7 +11,7 @@ services:
       - 5432:5432
     volumes:
       - ./postgresql/data:/var/lib/postgresql/data
-    restart: unless-stopped      
+    restart: always    
     
   imimaps:
     image: imimapshtw/production:${TAG}
@@ -29,4 +29,4 @@ services:
     volumes:
       - ./rails/public/uploads:/usr/src/app/public/uploads
       - ./rails/public/assets:/usr/src/app/public/assets
-    restart: unless-stopped    
+    restart: always  
