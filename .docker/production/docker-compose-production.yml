@@ -11,7 +11,8 @@ services:
       - 5432:5432
     volumes:
       - ./postgresql/data:/var/lib/postgresql/data
-
+    restart: unless-stopped      
+    
   imimaps:
     image: imimapshtw/production:${TAG}
     container_name: imimaps-production
@@ -23,9 +24,9 @@ services:
       - postgresql
     links:
       - postgresql
-    restart: unless-stopped        
     ports:
       - 4000:80
     volumes:
       - ./rails/public/uploads:/usr/src/app/public/uploads
       - ./rails/public/assets:/usr/src/app/public/assets
+    restart: unless-stopped    
