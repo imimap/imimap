@@ -7,6 +7,8 @@ services:
       - POSTGRES_PASSWORD=imimaps
       - POSTGRES_USER=imimaps
       - POSTGRES_DB=imimaps
+    restart: unless-stopped  
+    restart: unless-stopped
     ports:
       - 5432:5432
     volumes:
@@ -23,6 +25,7 @@ services:
       - postgresql
     links:
       - postgresql
+    restart: unless-stopped  
     ports:
       - 4000:80
     volumes:
