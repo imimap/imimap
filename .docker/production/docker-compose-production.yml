@@ -23,6 +23,7 @@ services:
       - postgresql
     links:
       - postgresql
+    restart: unless-stopped        
     ports:
       - 4000:80
     volumes:
