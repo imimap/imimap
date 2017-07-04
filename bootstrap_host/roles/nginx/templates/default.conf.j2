@@ -54,13 +54,24 @@ server {
 
 	server_name imi-map.f4.htw-berlin.de imi-map-production.f4.htw-berlin.de imi-map-staging.f4.htw-berlin.de  ;
 
-        location ~ ^/assets/ {
-        	root   /home/deployer/rails/public;
-                gzip_static on;
-                expires max;
-                add_header Cache-Control public;
-        }
-
+    location ~ ^/assets/ {
+       	root   /home/deployer/rails/public/assets;
+        gzip_static on;
+        expires max;
+        add_header Cache-Control public;
+    }
+    location ~ ^/images/ {
+       	root   /home/deployer/rails/public/images;
+        gzip_static on;
+        expires max;
+        add_header Cache-Control public;
+    }
+    location ~ ^/uploads/ {
+       	root   /home/deployer/rails/public/uploads;
+        gzip_static on;
+        expires max;
+        add_header Cache-Control public;
+    }
 	location / {
 		proxy_pass http://localhost:{{ application_port }};
 	}
