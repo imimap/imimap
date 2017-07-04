@@ -60,18 +60,18 @@ server {
         expires max;
         add_header Cache-Control public;
     }
-    location ~ ^/images/ {
-       	root   /home/deployer/rails/public/images;
-        gzip_static on;
-        expires max;
-        add_header Cache-Control public;
-    }
-    location ~ ^/uploads/ {
-       	root   /home/deployer/rails/public/uploads;
-        gzip_static on;
-        expires max;
-        add_header Cache-Control public;
-    }
+#    location ~ ^/images/ {
+#       	root   /home/deployer/rails/public/images;
+#        gzip_static on;
+#        expires max;
+#        add_header Cache-Control public;
+#    }
+#    location ~ ^/uploads/ {
+#       	root   /home/deployer/rails/public/uploads;
+#        gzip_static on;
+#        expires max;
+#        add_header Cache-Control public;
+#    }
 	location / {
 		proxy_pass http://localhost:{{ application_port }};
 	}
