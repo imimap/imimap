@@ -28,7 +28,5 @@ services:
     ports:
       - 4000:80
     volumes:
-      - ./rails/public/uploads:/usr/src/app/public/uploads
-      - ./rails/public/assets:/usr/src/app/public/assets
-      - ./rails/public/images:/usr/src/app/public/images
+      - ./rails/public:/usr/src/app/public
     restart: always 
