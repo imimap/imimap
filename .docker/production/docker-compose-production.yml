@@ -29,4 +29,5 @@ services:
     volumes:
       - ./rails/public/uploads:/usr/src/app/public/uploads
       - ./rails/public/assets:/usr/src/app/public/assets
+      - ./rails/public/images:/usr/src/app/public/images
     restart: always  
