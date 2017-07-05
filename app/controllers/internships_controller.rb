@@ -80,11 +80,11 @@ class InternshipsController < ApplicationController
     @user_comments = @internship.user_comments.order("created_at DESC")
 
     Gmaps4rails.build_markers(@internship.company) do |company, marker |
-       marker.infowindow ("Company")
-     end
+     marker.infowindow ("Company")
+   end
 
-    respond_with(@internship)
-  end
+   respond_with(@internship)
+ end
 
 
   # GET /internships/1/edit
@@ -122,7 +122,19 @@ class InternshipsController < ApplicationController
     end
   end
 
-private
+
+  # if user has an internship, clicking on "My Internship" shows the user internship details
+  # else the user is prompted to create a new internship
+  def my_internship
+    @internship = Internship.find(params[:id])
+    if internship.current_user != null
+      @internship = current_user.internship
+    else
+      @internship = Internship.new(params[:id])
+      @internship.user_id = current_user.id
+    end 
+
+    private
 
     def authorize_internship
       internship = Internship.where(id: params[:id]).first
@@ -133,4 +145,5 @@ private
       end
     end
 
+  end
 end

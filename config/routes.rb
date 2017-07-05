@@ -4,7 +4,7 @@ ImiMaps::Application.routes.draw do
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
 
-    resources :internships, :only => [:new, :edit, :show, :index, :destroy, :update]
+    resources :internships, :only => [:my_internship, :edit, :show, :index, :destroy, :update]
 
     resources :companies
 
@@ -60,6 +60,8 @@ ImiMaps::Application.routes.draw do
 
 
 	end
+
+  get  'my_internship', to: 'internships#my_internship', as: 'my_internship'
 
   #root to: 'sessions#new'
 
