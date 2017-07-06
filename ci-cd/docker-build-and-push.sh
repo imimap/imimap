@@ -11,7 +11,8 @@ if [ $DEPLOYMENT_SHOULD_RUN != "true" ]; then
 fi
 
 docker build -t imimap/imimap:$DEPLOYMENT_TAG .
-
+docker images
+echo "pushing image with tag imimap/imimap:$DEPLOYMENT_TAG"
 docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 docker push imimap/imimap:$DEPLOYMENT_TAG
 
