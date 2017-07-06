@@ -206,6 +206,7 @@ de:
     create: "Erstelle Praktikum"
     update: "Praktikum aktualisieren"
     company_fact: "Arbeitsplatz Kurzinfo"
+    createInternship: "Du hast noch kein Praktikum eingetragen, möchtest du eins erstellen?"
     index:
       title: "Liste von Praktika"
     edit:

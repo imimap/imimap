@@ -137,6 +137,10 @@ class InternshipsController < ApplicationController
     #end
   end
 
+  def noInternshipData
+    render :noInternshipData  
+  end
+
 
   private
 
@@ -148,4 +152,14 @@ class InternshipsController < ApplicationController
       redirect_to overview_index_path, notice: "You're not allowed to edit this internship"
     end
   end
+
+
+    #check if user already has an internship or not
+    # def check_if_internship_exists
+    #   internship = Internship.where(id: params[:id]).first
+    #   if current_user.student && internship && internship.student_id != current_user.student.id
+    #     render :action => 'noInternshipData', :layout => 'noInternshipData'
+    #   # else
+    #   #    render :action => 'new', :layout => 'new' 
+    # end  
 end
