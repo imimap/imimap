@@ -1,215 +1,86 @@
-<h2 style="margin-bottom:35px;"><%= t "search.title" %></h2>
-<%= form_tag(internships_path, :method => 'get', class: 'form2') do %>
+<div class="row" id="form-block2">
 
-<div class="row-fluid">
- <div class="row">
-  <div class="span4"> 
-    <div class="field" id="field-titles">
-      <%= f.label t "companies.attributes.name" %><br />
-      <%= f.text_field :name %>
+<%= form_for(@internship) do |f| %>
+
+  <div class="row">
+    <div class="span4"> 
+      <div class="field" id="field-titles">
+        <%= f.label t "companies.attributes.name" %><br />
+        <%= f.text_field :name %>
+      </div>
     </div>
   </div>
 
-  <div class="span4">
-    <div class="field" id="field-titles">
-      <%= f.label t "companies.attributes.street" %><br />
-      <%= f.text_field :street %>
+  <div class="row">
+    <div class="span4"> 
+      <div class="field" id="field-titles">
+        <%= f.label t "companies.attributes.department" %><br />
+        <%= f.text_field :department %>
+      </div>
     </div>
   </div>
 
-  <div class="span2"> 
-    <div class="field" id="field-titles">
-      <%= f.label t "companies.attributes.zip" %><br />
-      <%= f.number_field :zip %>
-    </div>
-  </div>
-</div>
-
-<div class="row" style="margin-top:20px">
-  <div class="span4"> 
-    <div class="field" id="field-titles">
-      <%= f.label t "companies.attributes.city" %><br />
-      <%= f.text_field :city %>
+  <div class="row">
+    <div class="span4">
+      <div class="field" id="field-titles">
+        <%= f.label t "companies.attributes.street" %><br />
+        <%= f.text_field :street %>
+      </div>
     </div>
   </div>
 
-  <div class="span4">
-    <div class="field" id="field-titles">
-      <%= f.label t "companies.attributes.country" %><br />
-      <%= f.country_select :country, ["United States"], class: 'chzn-select' %>
+  <div class="row">
+    <div class="span2"> 
+      <div class="field" id="field-titles">
+        <%= f.label t "companies.attributes.zip" %><br />
+        <%= f.number_field :zip %>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="span4">
-  <div class="field" id="field-titles">
-    <%= f.label t "companies.attributes.advisor" %><br />
-    <%= f.text_field :advisor %>
+  <div class="row" style="margin-top:20px">
+    <div class="span4"> 
+      <div class="field" id="field-titles">
+        <%= f.label t "companies.attributes.city" %><br />
+        <%= f.text_field :city %>
+      </div>
+    </div>
   </div>
-</div>
-</div>
 
-<div class="span4">
-  <div class="field" id="field-titles">
-    <%= f.label t "companies.attributes.phone" %><br />
-    <%= f.number_field :phone %>
+  <div class="row">
+    <div class="span4">
+      <div class="field" id="field-titles">
+        <%= f.label t "companies.attributes.country" %><br />
+        <%= f.country_select :country, ["United States"], class: 'chzn-select' %>
+      </div>
+    </div>
   </div>
-</div>
-</div>
 
-<div class="span4">
-  <div class="field" id="field-titles">
-    <%= f.label t "companies.attributes.email" %><br />
-    <%= f.text_field :email, class "textlabel" %>
+  <div class="row">
+    <div class="span4"> 
+      <div class="field" id="field-titles">
+        <%= f.label t "companies.attributes.advisor" %><br />
+        <%= f.text_field :advisor %>
+      </div>
+    </div>
   </div>
-</div>
-</div>
 
-<div class="span4"> 
-  <div class="field" id="field-titles">
-    <%= f.label t "companies.attributes.website" %><br />
-    <%= f.text_field :website %>
+  <div class="row">
+    <div class="span4"> 
+      <div class="field" id="field-titles">
+        <%= f.label t "companies.attributes.phone" %><br />
+        <%= f.number_field :phone %>
+      </div>
+    </div>
   </div>
-</div>
-</div>
-<br/>
 
-<% end %>
-
-<script> 
-  <% if @country_choices %>
-
-  var country_choices = <%= raw @country_choices %>
-
-  for (var i=0; i < country_choices.length; i++) {
-    var ary = [];
-    if ($("#country").val()!=null)
-      ary = $("#country").val();
-    ary.push(country_choices[i]);
-    $("#country").val(ary);
-  }
-  $("#country").trigger("liszt:updated");
-
+  <div class="row">
+    <div class="span4"> 
+      <div class="field" id="field-titles">
+        <%= f.label t "companies.attributes.email" %><br />
+        <%= f.text_field :email %>
+      </div>
+    </div>
+  </div>
   <% end %>
-</script> 
-
-
-<h5> <%=@internships_size%> <%= t('results.found') %> </h5>
-
-<div class="table-container">
-  <table id="paginated" class="table tablesorter">
-    <thead>
-      <tr class="table_intern table_fin">
-        <th class="company"><%= t "internships.attributes.company" %></th>
-        <th class="company"><%= t "companies.attributes.address" %></th>
-        <th class="programming_language"><%= t "internships.attributes.programming_language" %></th>
-        <th data-sort="string" class="company"><%= t "internships.attributes.semester" %> <i class='icon-sort'></i></th>
-        <th data-sort="string" class="orientation"><%= t "internships.attributes.orientation" %> <i class='icon-sort'></i></th>
-        <th data-sort="float" class="salary"><%= t "internships.attributes.salary" %> €/<%= t("unit.month")%> <i class='icon-sort'></i></th>
-        <th data-sort="float" class="living_costs"><%= t "internships.attributes.living_costs" %> €/<%= t("unit.month")%> <i class='icon-sort'></i></th>
-        <th data-sort="float" class="rating"><%= t "internships.attributes.rating" %> <i class='icon-sort'></i></th>
-        <th data-sort="boolean" class="recommend"><%= t "internships.attributes.recommend" %> <i class='icon-sort'></i></th>
-        <th class="top_inside"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @internships.each do |internship| %>
-      <tr class="<%= cycle("even_row", "odd_row") %>">
-        <td class="table_inside"><%= internship.company.name %></td>
-        <td class="table_inside"><%= internship.company.address %></td>
-        <td class="table_inside"><%= internship.programming_languages.map(&:name).join(", ") %></td>
-        <td class="table_inside"><%= internship.try(:semester).try(:name) %></td>
-        <td class="table_inside"><%= internship.try(:orientation).try(:name) %></td>
-        <td class="table_inside"><%= internship.salary %></td>
-        <td class="table_inside"><%= internship.living_costs %></td>
-        <td class="table_inside" data-sort-value=<%= internship.rating %>><%= render_stars(internship.rating, self) %></td>
-        <td class="table_inside" data-sort-value=<%= internship.recommend %>>
-          <% if internship.recommend %>
-          <i class="icon-thumbs-up icon-2x"></i>
-          <% else %>
-          <i class="icon-thumbs-down icon-2x"></i>
-          <% end %>
-        </td>
-        <td class="table_inside"><%= link_to "", internship, class: "icon-green-hover icon-circle-arrow-right icon-2x button_intern" %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <!--<div style="width: 100%; height:10px; background-color:#4f4f4f; position: inherit; margin-top:-20px;"></div>-->
 </div>
-<!---  
-<% #if @internships_size > 5 %>
-<div class='pager'>
-    <a href='' alt='First' class='firstPage'>First</a>
-    <a href='' alt='Previous' class='prevPage'>Prev</a>
-        
-    <span class='currentPage'></span> of <span class='totalPages'></span>
-    <a href='' alt='Next' class='nextPage'>Next</a>
-    <a href='' alt='Last' class='lastPage'>Last</a>
-  </div>
-<% #end %>
----->
-<script>
-  var table = $("#paginated").stupidtable();
-
-  table.bind('aftertablesort', function (event, data) {
-    // data.column - the index of the column sorted after a click
-    // data.direction - the sorting direction (either asc or desc)
-
-    var th = $(this).find("th");
-    th.find("i").removeClass().addClass("icon-sort");
-    th.eq(data.column).find("i").remove();
-    var arrow = data.direction === "asc" ? "<i class='icon-caret-up'></i>" : "<i class='icon-caret-down'></i>";
-    th.eq(data.column).append(arrow);
-  });
-
-/*
-        $('table#paginated').each(function() {
-          var currentPage = 1;
-          var numPerPage = 5;
-          var $table = $(this);
-          var numRows = $table.find('tbody tr').length;
-          var numPages = Math.ceil(numRows / numPerPage);
-          $table.bind('repaginate', function() {
-              $(".currentPage").html(currentPage);
-              $(".totalPages").html(numPages);
-              $table.find('tbody tr').css("display","none").slice((currentPage-1) * numPerPage, (currentPage) * numPerPage).css("display","table-row");
-              if (currentPage == 1) {
-                $(".firstPage").hide();
-              }
-              else 
-                $(".firstPage").show();
-              if (currentPage == numPages) {
-                $(".lastPage").hide();
-              }
-              else 
-                $(".lastPage").show();
-          });
-          $table.trigger('repaginate');
-          
-
-          $(".firstPage").click(function() {
-            currentPage = 1;
-            $table.trigger('repaginate');
-          }); 
-
-          $(".lastPage").click(function() {
-            currentPage = numPages;
-            $table.trigger('repaginate');
-          }); 
-
-          $(".prevPage").click(function() {
-            if (currentPage-1>0)
-              currentPage -= 1;
-            $table.trigger('repaginate');
-          });
-
-          $(".nextPage").click(function() {
-            if (currentPage<numPages)
-              currentPage += 1;
-            $table.trigger('repaginate');
-          });
-
-        });*/
-      </script>

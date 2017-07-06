@@ -67,6 +67,9 @@ class InternshipsController < ApplicationController
     respond_with(@internships)
   end
 
+  def new
+  end
+
   # GET /internships/1
   # GET /internships/1.json
   def show
@@ -126,24 +129,23 @@ class InternshipsController < ApplicationController
   # if user has an internship, clicking on "My Internship" shows the user internship details
   # else the user is prompted to create a new internship
   def my_internship
-    @internship = Internship.find(params[:id])
-    if internship.current_user != null
-      @internship = current_user.internship
-    else
-      @internship = Internship.new(params[:id])
-      @internship.user_id = current_user.id
-    end 
+    @internship = Internship.new
 
-    private
+    #if @internship.nil?
+      #@internship = Internship.new
+     # @internship.user_id = current_user.id
+    #end
+  end
 
-    def authorize_internship
-      internship = Internship.where(id: params[:id]).first
-      if current_user.student && internship && internship.student_id != current_user.student.id
-        redirect_to overview_index_path, notice: "You're not allowed to edit this internship"
-      elsif internship.nil?
-        redirect_to overview_index_path, notice: "You're not allowed to edit this internship"
-      end
+
+  private
+
+  def authorize_internship
+    internship = Internship.where(id: params[:id]).first
+    if current_user.student && internship && internship.student_id != current_user.student.id
+      redirect_to overview_index_path, notice: "You're not allowed to edit this internship"
+    elsif internship.nil?
+      redirect_to overview_index_path, notice: "You're not allowed to edit this internship"
     end
-
   end
 end
