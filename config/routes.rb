@@ -8,7 +8,7 @@ ImiMaps::Application.routes.draw do
 
     resources :companies
 
-    resources :users
+    resources :users, :only => [:edit, :show, :update, :create, :new]
 
     resources :user_verifications, only: [:new, :create]
 
