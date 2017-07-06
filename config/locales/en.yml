@@ -140,6 +140,7 @@ en:
     new:
       newcompany: "New Company"
     attributes:
+      department: "department"
       rating: "Average Rating"
       name: "Company name"
       street: "Street"

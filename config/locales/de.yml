@@ -183,6 +183,7 @@ de:
     new:
       newcompany: "Neue Firma"
     attributes:
+      department: "Abteilung"
       rating: "Durchschnittswertung"
       name: "Firmenname"
       street: "Straße"
