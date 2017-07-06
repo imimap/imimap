@@ -3,6 +3,7 @@ class InternshipsController < ApplicationController
   before_filter :get_programming_languages, :get_orientations, :only => [:edit, :update]
   before_filter :authorize
   before_filter :authorize_internship, :only => [:edit, :update, :destroy]
+  before_filter :check_if_internship_exists, :only => [:my_internship]
   # GET /internships
   # GET /internships.json
   def index
@@ -153,13 +154,12 @@ class InternshipsController < ApplicationController
     end
   end
 
-
     #check if user already has an internship or not
-    # def check_if_internship_exists
-    #   internship = Internship.where(id: params[:id]).first
-    #   if current_user.student && internship && internship.student_id != current_user.student.id
-    #     render :action => 'noInternshipData', :layout => 'noInternshipData'
-    #   # else
-    #   #    render :action => 'new', :layout => 'new' 
-    # end  
+    def check_if_internship_exists
+      if @internship.nil?
+        render :noInternshipData
+      else
+         render :my_internship
+      end   
+    end  
 end
