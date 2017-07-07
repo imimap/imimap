@@ -6,7 +6,7 @@ ImiMaps::Application.routes.draw do
 
     resources :internships, :only => [:edit, :show, :index, :destroy, :update]
 
-    resources :companies
+    resources :companies, :only => [:edit, :show, :index, :destroy, :update, :create, :new]
 
     resources :users, :only => [:edit, :show, :update, :create, :new]
 
@@ -20,15 +20,15 @@ ImiMaps::Application.routes.draw do
 
     resources :notifications, :only => [:destroy, :show]
 
-    resources :favorite, :only => [:create, :destroy]
+    resources :favorite, :only => [:create, :destroy, :index]
 
     resources :location, :only => [:create, :destroy]
 
-    resources :sessions
+    resources :sessions, :only => [:destroy, :create, :new]
 
-    resources :user_comments
+    resources :user_comments, :only => [:destroy, :update, :create, :new]
 
-    resources :answers
+    resources :answers, :only => [:create, :update, :destroy]
 
     resources :general
 
@@ -46,9 +46,9 @@ ImiMaps::Application.routes.draw do
 
     resources :favorite, :only => [:index]
 
-    resources :favorite_compare
+    resources :favorite_compare, :only => [:index]
 
-    resources :password_resets
+    resources :password_resets, :only => [:edit, :update, :create, :new]
 
     resources :errors, :only => [:not_found]
 
