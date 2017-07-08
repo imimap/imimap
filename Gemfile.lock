@@ -20,6 +20,8 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_median (0.1.4)
+      activerecord
     activeadmin (1.0.0)
       arbre (>= 1.1.1)
       bourbon
@@ -86,6 +88,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    chartkick (1.2.5)
     chosen-rails (1.5.2)
       coffee-rails (>= 3.2)
       railties (>= 3.0)
@@ -139,6 +142,8 @@ GEM
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     gmaps4rails (2.1.2)
+    groupdate (2.1.1)
+      activerecord (>= 3.0.0)
     has_scope (0.7.1)
       actionpack (>= 4.1, < 5.2)
       activesupport (>= 4.1, < 5.2)
@@ -337,6 +342,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  active_median (~> 0.1.0)
   activeadmin (~> 1.0)
   bcrypt (~> 3)
   better_errors
@@ -346,6 +352,7 @@ DEPENDENCIES
   capistrano
   capybara
   carrierwave
+  chartkick (~> 1.2.4)
   chosen-rails
   coffee-rails (~> 4.0)
   country_select
@@ -356,6 +363,7 @@ DEPENDENCIES
   font-awesome-sass-rails
   geocoder
   gmaps4rails
+  groupdate (~> 2.1.1)
   jquery-rails (= 3.1.4)
   jquery-ui-rails
   kaminari
@@ -383,4 +391,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.15.0
+   1.15.1

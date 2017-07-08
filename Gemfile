@@ -54,7 +54,10 @@ gem 'coffee-rails', '~> 4.0'
 gem 'font-awesome-sass-rails'
 gem 'uglifier', '>= 1.0.3'
 
-
+#gems used for charts
+gem 'chartkick', '~> 1.2.4'
+gem 'groupdate', '~> 2.1.1'
+gem 'active_median', '~> 0.1.0'
 
 gem 'factory_girl_rails'
 
