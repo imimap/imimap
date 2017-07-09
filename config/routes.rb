@@ -4,11 +4,11 @@ ImiMaps::Application.routes.draw do
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
 
-    resources :internships, :only => [:edit, :show, :index, :destroy, :update]
+    resources :internships
 
     resources :companies
 
-    resources :users
+    resources :users, :only => [:edit, :show, :update, :create, :new]
 
     resources :user_verifications, only: [:new, :create]
 
@@ -20,35 +20,25 @@ ImiMaps::Application.routes.draw do
 
     resources :notifications, :only => [:destroy, :show]
 
-    resources :favorite, :only => [:create, :destroy]
+    resources :favorite, :only => [:create, :destroy, :index]
 
     resources :location, :only => [:create, :destroy]
 
-    resources :sessions
+    resources :sessions, :only => [:destroy, :create, :new]
 
-    resources :user_comments
+    resources :user_comments, :only => [:destroy, :update, :create, :new]
 
-    resources :answers
-
-    resources :general
-
-    resources :faq
-
-    resources :financing
-
-    resources :download
+    resources :answers, :only => [:create, :update, :destroy]
 
     resources :internship_searches
 
     resources :quicksearches, :only => [:index]
 
-    resources :companies_compare
-
     resources :favorite, :only => [:index]
 
-    resources :favorite_compare
+    resources :favorite_compare, :only => [:index]
 
-    resources :password_resets
+    resources :password_resets, :only => [:edit, :update, :create, :new]
 
     resources :errors, :only => [:not_found]
 
