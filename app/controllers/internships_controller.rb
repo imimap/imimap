@@ -73,15 +73,12 @@ class InternshipsController < ApplicationController
   end
 
   def create
-    @internship = Internship.create(internship_params)
+    @internship = Internship.new(internship_params)
 
-    if @internship.save
-      redirect_to "/internships/#{@internship.id}", :notice => "Your internship was saved!"
-    else
-      render "new"
-    end
+    @internship.save
+    redirect_to @internship, :notice => "Your internship was saved!"
   end
-  
+
 
   # GET /internships/1
   # GET /internships/1.json
@@ -156,6 +153,10 @@ class InternshipsController < ApplicationController
 
 
   private
+
+  def internship_params
+    params.require(:internship).permit(:supervisor_name, companies_attributes: [:name, :department, :street, :zip, :city, :country, :phone, :email])
+  end
 
   def authorize_internship
     internship = Internship.where(id: params[:id]).first

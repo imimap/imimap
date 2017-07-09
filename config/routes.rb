@@ -6,7 +6,7 @@ ImiMaps::Application.routes.draw do
 
     # get 'internships/noInternshipData', to: 'internships#noInternshipData', as: 'noInternshipData'
 
-    post 'internships/new', to: 'internships#new'
+    #post 'internships/new', to: 'internships#new'
 
     resources :internships
 
