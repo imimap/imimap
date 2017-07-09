@@ -32,6 +32,7 @@ class Internship < ActiveRecord::Base
 
   accepts_nested_attributes_for :attachments, allow_destroy: true
   accepts_nested_attributes_for :internship_rating
+  accepts_nested_attributes_for :company
 
   def rating
     internship_rating.total_rating

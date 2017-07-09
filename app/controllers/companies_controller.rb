@@ -69,7 +69,7 @@ class CompaniesController < ApplicationController
   # POST /companies
   # POST /companies.json
   def create
-    @company = Company.new(params[:company])
+    @company = Company.new(params[:name, :department, :street, :zip, :city, :country, :phone, :email])
 
     respond_to do |format|
       if @company.save

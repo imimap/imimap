@@ -1,7 +1,9 @@
 <div class="row" id="form-block2">
 
-<%= form_for @internship, url: {action: "create"}, html: {method: "post"} do |f| %>
+  <%= form_for @internship do |f| %>
   <%= f.fields_for :companies do |company_form| %>
+
+  <h2>Internship company data</h2>
 
   <div class="row">
     <div class="span4"> 
@@ -78,16 +80,69 @@
   <div class="row">
     <div class="span4"> 
       <div class="field" id="field-titles">
-        <%= company_form.label t "companies.attributes.email" %><br />
-        <%= company_form.text_field :email %>
+        <%= f.label t "internships.attributes.supervisor_email" %><br />
+        <%= f.text_field :supervisor_email %>
       </div>
     </div>
   </div>
 
-  <div>
-    <%= f.submit "Create internship" %>
+  <h2>Internship specification</h2>
+
+  <div class="row">
+    <div class="span2"> 
+      <div class="field" id="field-titles">
+        <%= f.label t "internships.attributes.start_date" %><br />
+        <%= f.date_field :start_date %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span2"> 
+      <div class="field" id="field-titles">
+        <%= f.label t "internships.attributes.end_date" %><br />
+        <%= f.date_field :end_date %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span4"> 
+      <div class="field" id="field-titles">
+        <%= f.label t "internships.attributes.operational_area" %><br />
+        <%= f.text_field :operational_area %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span8"> 
+      <div class="field" id="field-titles">
+        <%= f.label t "internships.attributes.tasks" %><br />
+        <%= f.text_area :tasks, size: "30x5" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span4"> 
+      <div class="field" id="field-titles">
+        <%= f.label t "internships.attributes.semester" %><br />
+        <%= f.select :semester_id, get_semesters, {}, class: 'chzn-select' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="pull-right"> 
+      <div class="actions">
+        <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+        <i class="icon-ok icon-white"></i> <%= @internship.completed ? t("internships.update") : t("internships.create")%>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
   </div>
   
-  <% end %>
   <% end %>
 </div>

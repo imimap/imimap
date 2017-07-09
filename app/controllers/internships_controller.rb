@@ -73,10 +73,20 @@ class InternshipsController < ApplicationController
   end
 
   def create
-    @internship = Internship.new(internship_params)
+    @company = Company.create(company_params)
+    @company.save
 
-    @internship.save
-    redirect_to @internship, :notice => "Your internship was saved!"
+    @internship = Internship.new(internship_params)
+    @internship.user_id = current_user.id
+    @internship.student_id =@internship.user.student_id
+    @internship.company = @company
+
+    if @internship.save
+      flash[:success] = "Your internship was successfully created!"
+      redirect_to :action => 'show'
+    else
+      render :action => 'new'
+    end
   end
 
 
@@ -88,7 +98,7 @@ class InternshipsController < ApplicationController
     @answer = Answer.new
     @favorite = Favorite.where(:internship_id => @internship.id, :user_id => current_user.id)[0]
     @company = @internship.company
-    @other_internships = @company.internships.reject { |x| x.id == @internship.id }.reject{ |i| i.completed == false }
+    # @other_internships = @company.internships.reject { |x| x.id == @internship.id }.reject{ |i| i.completed == false }
 
     @user_comments = @internship.user_comments.order("created_at DESC")
 
@@ -155,8 +165,13 @@ class InternshipsController < ApplicationController
   private
 
   def internship_params
-    params.require(:internship).permit(:supervisor_name, companies_attributes: [:name, :department, :street, :zip, :city, :country, :phone, :email])
+    params.require(:internship).permit(:supervisor_name, :supervisor_email, :semester_id)
   end
+
+  def company_params
+    params.require(:internship).permit(company_atributes: [:name, :department, :street, :zip, :city, :country, :phone])
+  end
+
 
   def authorize_internship
     internship = Internship.where(id: params[:id]).first

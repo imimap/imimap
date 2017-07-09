@@ -65,7 +65,6 @@ ImiMaps::Application.routes.draw do
 
 	end
 
-  get '/internships/new', to: 'internships#new'
   get  'my_internship', to: 'internships#my_internship', as: 'my_internship'
 
   #root to: 'sessions#new'
