@@ -1,13 +1,7 @@
 <div class="row">
   <!-- Column Chart -->
   <div class="col-xs-6">
-    <h3>Total Internships</h3>
-    <%= column_chart @interships.count %>
-  </div>
-  <!-- Bar Chart -->
-  <div class="col-xs-6">
     <h3>Total Visits Per Country</h3>
-    <!--Internship hat Company , Company hat Country -->
-    <%= bar_chart @interships.group(:company.country).count %>
+    <%= column_chart @internships = @internships.where({:countries => :country})%>
   </div>
 </div>
