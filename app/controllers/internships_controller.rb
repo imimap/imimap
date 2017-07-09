@@ -69,7 +69,19 @@ class InternshipsController < ApplicationController
   end
 
   def new
+    @internship = Internship.new
   end
+
+  def create
+    @internship = Internship.create(internship_params)
+
+    if @internship.save
+      redirect_to "/internships/#{@internship.id}", :notice => "Your internship was saved!"
+    else
+      render "new"
+    end
+  end
+  
 
   # GET /internships/1
   # GET /internships/1.json
@@ -130,7 +142,7 @@ class InternshipsController < ApplicationController
   # if user has an internship, clicking on "My Internship" shows the user internship details
   # else the user is prompted to create a new internship
   def my_internship
-    @internship = Internship.new
+    render :show
 
     #if @internship.nil?
       #@internship = Internship.new
@@ -159,7 +171,7 @@ class InternshipsController < ApplicationController
       if @internship.nil?
         render :noInternshipData
       else
-         render :my_internship
-      end   
-    end  
-end
+       render :my_internship
+     end   
+   end  
+ end

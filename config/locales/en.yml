@@ -152,6 +152,8 @@ en:
       main_language: "Main Language"
       website: "Website"
       address: "Address"
+      phone: "Telephone"
+      email: "E-Mail"
       recommended: "Recommended"
       not_recommended: "Not Recommended"
 
@@ -189,6 +191,7 @@ en:
       training_rating: "Training success"
       atmosphere_rating: "Atmosphere"
       supervision_rating: "Supervision"
+      supervisor_name: "Supervisor"
       appreciation_rating: "Appreciation"
       title: "Job Title"
       recommend: "Recommendation"

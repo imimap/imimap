@@ -1,6 +1,93 @@
-<h1><%= t ".newinternship" %></h1>
+<div class="row" id="form-block2">
 
-<%= link_to (t "buttons.back"), internships_path %>
+<%= form_for :internship, url: internships_path do |f| %>
+  <%= f.fields_for :companies do |company_form| %>
 
-<%= render 'form' %>
+  <div class="row">
+    <div class="span4"> 
+      <div class="field" id="field-titles">
+        <%= company_form.label t "companies.attributes.name" %><br />
+        <%= company_form.text_field :name %>
+      </div>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="span4"> 
+      <div class="field" id="field-titles">
+        <%= company_form.label t "companies.attributes.department" %><br />
+        <%= company_form.text_field :department %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span4">
+      <div class="field" id="field-titles">
+        <%= company_form.label t "companies.attributes.street" %><br />
+        <%= company_form.text_field :street %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span2"> 
+      <div class="field" id="field-titles">
+        <%= company_form.label t "companies.attributes.zip" %><br />
+        <%= company_form.number_field :zip %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span4"> 
+      <div class="field" id="field-titles">
+        <%= company_form.label t "companies.attributes.city" %><br />
+        <%= company_form.text_field :city %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span4">
+      <div class="field" id="field-titles">
+        <%= company_form.label t "companies.attributes.country" %><br />
+        <%= company_form.country_select :country, ["United States"], class: 'chzn-select' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span4"> 
+      <div class="field" id="field-titles">
+        <%= f.label t "internships.attributes.supervisor_name" %><br />
+        <%= f.text_field :supervisor_name %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span4"> 
+      <div class="field" id="field-titles">
+        <%= company_form.label t "companies.attributes.phone" %><br />
+        <%= company_form.number_field :phone %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span4"> 
+      <div class="field" id="field-titles">
+        <%= company_form.label t "companies.attributes.email" %><br />
+        <%= company_form.text_field :email %>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+  
+  <% end %>
+  <% end %>
+</div>
