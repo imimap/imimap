@@ -13,7 +13,7 @@
     <%= column_chart @internships.group(:orientation).count, colors: ["#77b900", "#999"]%>
   </div>
   <div class="col-xs-6">
-    <h3>Countries visits by IMI-Students</h3>
+    <h3>Countries visited by IMI-Students</h3>
     <%= geo_chart Company.group(:country).count,  width: "800px", height: "500px", colors: ["#77b900", "#999"] %>
   </div>
 </div>
