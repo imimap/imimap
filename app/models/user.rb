@@ -3,9 +3,10 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_secure_password
+  #has_secure_password
 
-  attr_accessible :email, :password, :password_confirmation, :publicmail, :mailnotif, :student_id
+  attr_accessible :email, :password, :password_confirmation, :publicmail, :mailnotif, :student_id, :remember_me
+
 
   validates :email, :presence => true
   validates :password, :presence => true, length: { minimum: 5 }
