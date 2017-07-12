@@ -45,9 +45,9 @@ ImiMaps::Application.routes.draw do
 
 		root to: 'sessions#new'
 
-    get 'signup', to: 'users#new', as: 'signup'
-    get 'login', to: 'sessions#new', as: 'login'
-    get 'logout', to: 'sessions#destroy', as: 'logout'
+    # get 'signup', to: 'users#new', as: 'signup'
+    # get 'login', to: 'sessions#new', as: 'login'
+    # get 'logout', to: 'sessions#destroy', as: 'logout'
 
     match "/404", :to => "errors#not_found", :via => :all
     match "/500", :to => "errors#internal_server_error", :via => :all
