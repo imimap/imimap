@@ -1,9 +1,10 @@
 class Internship < ActiveRecord::Base
 
   attr_accessible :attachments_attributes, :living_costs, :orientation_id, :salary, :working_hours, :programming_language_ids, :internship_rating_id,
-    :company_id, :user_id, :title, :recommend, :email_public, :semester_id, :description, :internship_report, :student_id, :start_date, :end_date, :operational_area, :tasks, :internship_state_id, :reading_prof_id, :payment_state_id, :registration_state_id, :contract_state_id, :report_state_id, :certificate_state_id, :certificate_signed_by_internship_officer, :certificate_signed_by_prof, :certificate_to_prof, :comment, :supervisor_email, :supervisor_name, :internship_rating_attributes, :completed
-
+    :company_id, :user_id, :title, :recommend, :email_public, :semester_id, :description, :internship_report, :student_id, :start_date, :end_date, :operational_area, :tasks, :internship_state_id, :reading_prof_id, :payment_state_id, :registration_state_id, :contract_state_id, :report_state_id, :certificate_state_id, :certificate_signed_by_internship_officer, :certificate_signed_by_prof,
+    :certificate_to_prof, :comment, :supervisor_email, :supervisor_name, :internship_rating_attributes, :completed
   validates :semester_id, :student, presence: true
+  #validate :start_date_before_end_date?
 
   belongs_to :user
   belongs_to :company
@@ -47,6 +48,48 @@ class Internship < ActiveRecord::Base
 
   def enrolment_number
     student.enrolment_number
+  end
+
+  def start_date_before_end_date?
+    if (:start_date > :end_date)
+      errors.add :end_date, "must be after start date"
+    end
+  end
+
+  def weekCount
+    days = (self[:end_date] - self[:start_date]).to_i
+    weeks = days/7
+    return weeks
+  end
+
+  def weekValidation
+    weeksToValidate = weekCount
+    valText = ""
+    case weeksToValidate
+      when 0..4
+        valText = I18n.t('internships.attributes.weekVal.optionA')
+      when 4..17,5
+         valText = I18n.t('internships.attributes.weekVal.optionB')
+       else
+        valText =  I18n.t('internships.attributes.weekVal.optionC')
+    end
+    return valText;
+
+  end
+
+  def weekValidationActAdm
+    weeksToValidate = weekCount
+    valText = ""
+    case weeksToValidate
+      when 0..4
+        valText = "Intership is less than 4 weeks"
+      when 4..17,5
+         valText = "Internship needs manual validation"
+       else
+        valText = "Internship is long enough"
+    end
+    return valText;
+
   end
 
 end
