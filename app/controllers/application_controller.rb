@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 private
 
     def authorize
-      redirect_to root_url if current_user.nil?
+      redirect_to new_user_session_path if current_user.nil?
     end
 
     def set_locale
@@ -17,13 +17,14 @@ private
       { locale: I18n.locale }
     end
 
-    def current_user
-      @current_user = User.find(session[:user_id]) if session[:user_id]
-      #@current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
-      rescue ActiveRecord::RecordNotFound
-        session.destroy
-        nil
-    end
+    # we use devise logic instead
+    # def current_user
+    #   @current_user = User.find(session[:user_id]) if session[:user_id]
+    #   #@current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
+    #   rescue ActiveRecord::RecordNotFound
+    #     session.destroy
+    #     nil
+    # end
 
     helper_method :current_user
 
