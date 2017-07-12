@@ -176,6 +176,24 @@ RSpec.describe InternshipsController, :type => :controller do
     end
   end
 
+describe "private #check_if_internship_exists" do
+
+    context 'the user has an internship' do
+      it 'renders the my_internship view' do
+        @internship = create :internship
+        get :my_internship, id: @internship
+        expect(response).to render_template(:my_internship)
+      end
+    end
+
+    context 'the internship can not be found' do
+      it 'renders the noInternshipData view' do
+        get :my_internship, id: 42
+        expect(response).to render_template(:noInternshipData)
+      end
+    end
+  end
+
   describe "private #authorize_internship" do
 
     context 'the user is not associated to the internship' do
