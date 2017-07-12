@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170712065717) do
+ActiveRecord::Schema.define(version: 20170712104244) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "resource_id",   null: false
@@ -314,7 +314,7 @@ ActiveRecord::Schema.define(version: 20170712065717) do
     t.string   "email",                  default: "", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "password_digest"
+    t.string   "old_pass_digesr"
     t.boolean  "publicmail"
     t.boolean  "mailnotif"
     t.integer  "student_id"
