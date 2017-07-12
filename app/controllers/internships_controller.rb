@@ -73,17 +73,15 @@ class InternshipsController < ApplicationController
   end
 
   def create
-    @company = Company.create(company_params)
-    @company.save
-
     @internship = Internship.new(internship_params)
     @internship.user_id = current_user.id
     @internship.student_id =@internship.user.student_id
-    @internship.company = @company
+    @company = @internship.company
+    @company = Company.new(@company)
 
     if @internship.save
       flash[:success] = "Your internship was successfully created!"
-      redirect_to :action => 'show'
+      redirect_to @internship
     else
       render :action => 'new'
     end

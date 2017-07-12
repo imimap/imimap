@@ -85,77 +85,10 @@
     </div>
     </div>
 
-<div class="row-fluid" id="row-intern">
-  <div class="span12">
-   <div class="row" id="row2-intern">
-    <div class="span3" id="intern-title">
-      <%= t "internships.attributes.tasks_rating" %></div>
-      <div class="span8" style="padding-top:7px">
-         <%= render_stars @internship.internship_rating.tasks, self %>
-      <div class="span8">
-      </div>
-    </div>
-    </div>
-    </div>
+<!--    
 
-<div class="row-fluid" id="row-intern">
-  <div class="span12">
-   <div class="row" id="row2-intern">
-    <div class="span3" id="intern-title">
-      <%= t "internships.attributes.training_rating" %></div>
-      <div class="span8" style="padding-top:7px">
-        <%= render_stars @internship.internship_rating.training_success, self %>
-      </div>
-    </div>
-    </div>
-    </div>
 
-    <div class="row-fluid" id="row-intern">
-  <div class="span12">
-   <div class="row" id="row2-intern">
-    <div class="span3" id="intern-title">
-      <%= t "internships.attributes.atmosphere_rating" %></div>
-      <div class="span8" style="padding-top:7px">
-        <%= render_stars @internship.internship_rating.atmosphere, self %>
-      </div>
-    </div>
-    </div>
-    </div>
-
-    <div class="row-fluid" id="row-intern">
-  <div class="span12">
-   <div class="row" id="row2-intern">
-    <div class="span3" id="intern-title">
-      <%= t "internships.attributes.supervision_rating" %></div>
-      <div class="span8" style="padding-top:7px">
-        <%= render_stars @internship.internship_rating.supervision, self %>
-    </div>
-    </div>
-    </div>
-
-    <div class="row-fluid" id="row-intern">
-  <div class="span12">
-   <div class="row" id="row2-intern">
-    <div class="span3" id="intern-title">
-      <%= t "internships.attributes.appreciation_rating" %></div>
-      <div class="span8" style="padding-top:7px">
-        <%= render_stars @internship.internship_rating.appreciation,self %>
-      </div>
-    </div>
-    </div>
-    </div>   
-
-<div class="row-fluid" id="row-intern">
-  <div class="span12">
-   <div class="row" id="row2-intern">
-    <div class="span3" id="intern-title">
-      <%= t "internships.attributes.student" %></div>
-      <div class="span8" id="intern-box">
-        <%= @internship.try(:student).try(:name) %>
-      </div>
-    </div>
-    </div>
-    </div>
+-->    
 
 <% if @internship.student.try(:user).try(:publicmail) %>
 <div class="row-fluid" id="row-intern">
@@ -381,70 +314,14 @@
 
             <div class="container-right-text">
 
-             <div id="company-title">
-              <%= t "companies.attributes.name"  %>
-            </div>
-            <div id="company-title-text">
-              <%= @company.name %>
-            </div>
+            <!--
 
 
-             <div id="company-title">
-              <%= t "companies.attributes.website"  %>
-            </div>
-            <div id="company-title-text">
-              <%= link_to @company.website, url_with_protocol(@company.website) , target: "_blank" if @company.website %>
-            </div>
+             
 
+            -->
 
-
-             <div id="company-title">
-              <%= t "companies.attributes.industry"  %>
-            </div>
-            <div id="company-title-text">
-              <%= @company.industry %>
-            </div>
-
-
-
-             <div id="company-title">
-              <%= t "companies.attributes.number_employees"  %>
-            </div>
-            <div id="company-title-text">
-              <%= @company.number_employees %>
-            </div>
-
-
-
-             <div id="company-title">
-              <%= t "companies.attributes.main_language"  %>
-            </div>
-            <div id="company-title-text">
-              <%= @company.main_language %>
-            </div>
-
-
-             <div id="company-title">
-              <%= t "companies.attributes.rating"  %>
-            </div>
-            <div style="height: 5px;"  class="span8">
-              <%= render_stars(@company.average_rating,self) %>
-            </div>
-            <% if @other_internships.any? %>
-            <div id="company-title">
-              <%= t("internships.others")  %>
-            </div>
-            <br/>
-            <div id="company-title-text">
-              <% @other_internships.each do |other| %>
-              <div>
-                <%= link_to " #{other.title}", other, class: "btn btn-success icon-white icon-circle-arrow-right icon-large" %>
-              </div>
-              <br/>
-              <% end %>
-            </div>
-            <% end %>
-
+            
 </div>
 
 
