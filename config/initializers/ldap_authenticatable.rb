@@ -29,8 +29,9 @@ module Devise
                   @givenname = entry.givenname
                   @email = entry.mail
                   @enrolment_number = entry.uid
-                  stud = Student.create({first_name: @givenname, last_name: @surname, enrolment_number: @enrolment_number, email: params[:user][:email]})
-                  user = User.create({email: params[:user][:email], password_digest: password, student: stud})
+                  @stud = Student.create({first_name: @givenname, last_name: @surname, enrolment_number: @enrolment_number, email: params[:user][:email]})
+                  @user = User.create({email: email, password: password, student_id: @stud.id})
+                  #password: password, password_confirmation: password
                 end
                 return success!(user)
               end
@@ -43,6 +44,9 @@ module Devise
         end
       end
 
+      def email
+        return params[:user][:email]
+      end
 
       def searchstring
         email = params[:user][:email]
