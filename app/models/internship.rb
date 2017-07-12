@@ -6,6 +6,7 @@ class Internship < ActiveRecord::Base
   validates :semester_id, :student, presence: true
   #validate :start_date_before_end_date?
 
+
   belongs_to :user
   belongs_to :company
   belongs_to :orientation
