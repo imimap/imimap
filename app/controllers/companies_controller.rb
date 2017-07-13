@@ -10,10 +10,10 @@ class CompaniesController < ApplicationController
     @pins = Gmaps4rails.build_markers(@companies) do |company, marker |
 
       href =  if company.website.starts_with?'http'
-              company.website
-            else
-              "http://"+company.website
-             end
+                company.website
+              else
+                "http://"+company.website
+              end
 
       marker.infowindow ("<a href='/companies/#{company.id}' style='font-weight:bold'>#{company.name}</a><p>Industry: #{company.industry}</p><p>Employees: #{company.number_employees}</p><a href='#{href}' target='_blank'>#{company.website}</a>")
 
@@ -33,10 +33,10 @@ class CompaniesController < ApplicationController
     @pins = Gmaps4rails.build_markers(@companies) do |company, marker |
 
       href =  if company.website.starts_with?'http'
-              company.website
-            else
-              "http://"+company.website
-             end
+                company.website
+              else
+                "http://"+company.website
+              end
 
       marker.infowindow ("<a href='/companies/#{company.id}' style='font-weight:bold'>#{company.name}</a><p>Industry: #{company.industry}</p><p>Employees: #{company.number_employees}</p><a href='#{href}' target='_blank'>#{company.website}</a>")
 
@@ -69,17 +69,19 @@ class CompaniesController < ApplicationController
   # POST /companies
   # POST /companies.json
   def create
-    @company = Company.new(params[:name, :department, :street, :zip, :city, :country, :phone, :email])
+    # @company = Company.new(params[:name, :department, :street, :zip, :city, :country, :phone, :email])
+    # @company = Company.new(params[:company])
+    @company = Company.new(company_params)
 
-    respond_to do |format|
-      if @company.save
-        format.html { redirect_to @company, notice: 'Company was successfully created.' }
-        format.json { render json: @company, status: :created, location: @company }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @company.errors, status: :unprocessable_entity }
-      end
-    end
+    #respond_to do |format|
+      #if @company.save
+       # format.html { redirect_to @company, notice: 'Company was successfully created.' }
+      #  format.json { render json: @company, status: :created, location: @company }
+     # else
+       # format.html { render action: "new" }
+      #  format.json { render json: @company.errors, status: :unprocessable_entity }
+     # end
+    #end
   end
 
   # PUT /companies/1
@@ -108,5 +110,9 @@ class CompaniesController < ApplicationController
       format.html { redirect_to companies_url }
       format.json { head :no_content }
     end
+  end
+
+  def company_params
+    params.require(:company).permit(:name, :department, :street, :zip, :city, :country, :phone)
   end
 end

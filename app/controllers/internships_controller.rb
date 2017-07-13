@@ -70,20 +70,22 @@ class InternshipsController < ApplicationController
 
   def new
     @internship = Internship.new
+    @internship.build_company
   end
 
   def create
     @internship = Internship.new(internship_params)
     @internship.user_id = current_user.id
-    @internship.student_id =@internship.user.student_id
-    @company = @internship.company
-    @company = Company.new(@company)
+    @internship.student_id = current_user.student_id
 
-    if @internship.save
-      flash[:success] = "Your internship was successfully created!"
-      redirect_to @internship
-    else
-      render :action => 'new'
+    respond_to do |format|
+      if @internship.save
+        format.html { redirect_to @internship, notice: 'Your internship was successfully created!' }
+        format.json { render json: @internship, status: :created, location: @internship }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @internship.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -101,11 +103,11 @@ class InternshipsController < ApplicationController
     @user_comments = @internship.user_comments.order("created_at DESC")
 
     Gmaps4rails.build_markers(@internship.company) do |company, marker |
-     marker.infowindow ("Company")
-   end
+      marker.infowindow ("Company")
+    end
 
-   respond_with(@internship)
- end
+    respond_with(@internship)
+  end
 
 
   # GET /internships/1/edit
@@ -150,26 +152,21 @@ class InternshipsController < ApplicationController
     render :show
 
     #if @internship.nil?
-      #@internship = Internship.new
-     # @internship.user_id = current_user.id
+    #@internship = Internship.new
+    # @internship.user_id = current_user.id
     #end
   end
 
   def noInternshipData
-    render :noInternshipData  
+    render :noInternshipData
   end
 
 
   private
 
   def internship_params
-    params.require(:internship).permit(:supervisor_name, :supervisor_email, :semester_id)
+    params.require(:internship).permit(:start_date, :end_date, :operational_area, :tasks, :supervisor_name, :supervisor_email, :semester_id, companies_attributes: [:name, :department, :street, :zip, :city, :country, :phone])
   end
-
-  def company_params
-    params.require(:internship).permit(company_atributes: [:name, :department, :street, :zip, :city, :country, :phone])
-  end
-
 
   def authorize_internship
     internship = Internship.where(id: params[:id]).first
@@ -180,12 +177,12 @@ class InternshipsController < ApplicationController
     end
   end
 
-    #check if user already has an internship or not
-    def check_if_internship_exists
-      if @internship.nil?
-        render :noInternshipData
-      else
-       render :my_internship
-     end   
-   end  
- end
+  #check if user already has an internship or not
+  def check_if_internship_exists
+    if @internship.nil?
+      render :noInternshipData
+    else
+      render :my_internship
+    end
+  end
+end

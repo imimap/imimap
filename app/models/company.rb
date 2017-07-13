@@ -20,6 +20,8 @@ class Company < ActiveRecord::Base
   #associations
   has_many :internships
 
+  # accepts_nested_attributes_for :internships
+
   def address
     [street, zip, city, country].compact.join(", ")
   end
