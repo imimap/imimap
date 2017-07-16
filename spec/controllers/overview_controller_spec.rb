@@ -11,7 +11,9 @@ RSpec.describe OverviewController, :type => :controller do
 
   describe "current user with invalid user_id" do
     it 'destroys the session' do
-      session[:user_id] = 42
+      # instead of faking invalid session - we are signing out the user
+      sign_out @current_user
+      #session[:user_id] = 42
         get :index
         # The HTTP response status code 302 Found is a common way of performing URL redirection.
         expect(response).to have_http_status(:found)
