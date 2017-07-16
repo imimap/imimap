@@ -70,7 +70,6 @@ class InternshipsController < ApplicationController
 
   def new
     @internship = Internship.new
-    @internship.build_company
   end
 
   def create

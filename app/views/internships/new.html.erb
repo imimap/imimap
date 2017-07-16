@@ -73,71 +73,11 @@
 </div>
 </div>
 
-<%= f.fields_for :companies do |company_form| %>
+<h2>Select a Company</h2>
 
-<h2>Internship company data</h2>
-
-<div class="row">
-  <div class="span4"> 
-   <div class="field" id="field-titles">
-    <%= company_form.label t "companies.attributes.name" %><br />
-    <%= company_form.text_field :name %>
-  </div>
-</div>
-</div>
-
-<div class="row">
-  <div class="span4"> 
-   <div class="field" id="field-titles">
-    <%= company_form.label t "companies.attributes.department" %><br />
-    <%= company_form.text_field :department %>
-  </div>
-</div>
-</div>
-
-<div class="row">
-  <div class="span4">
-   <div class="field" id="field-titles">
-    <%= company_form.label t "companies.attributes.street" %><br />
-    <%= company_form.text_field :street %>
-  </div>
-</div>
-</div>
-
-<div class="row">
-  <div class="span2"> 
-   <div class="field" id="field-titles">
-    <%= company_form.label t "companies.attributes.zip" %><br />
-    <%= company_form.number_field :zip %>
-  </div>
-</div>
-</div>
-
-<div class="row">
-  <div class="span4"> 
-   <div class="field" id="field-titles">
-    <%= company_form.label t "companies.attributes.city" %><br />
-    <%= company_form.text_field :city %>
-  </div>
-</div>
-</div>
-
-<div class="row">
-  <div class="span4">
-   <div class="field" id="field-titles">
-    <%= company_form.label t "companies.attributes.country" %><br />
-    <%= company_form.country_select :country, ["United States"], class: 'chzn-select' %>
-  </div>
-</div>
-</div>
-
-<div class="row">
-  <div class="span4"> 
-   <div class="field" id="field-titles">
-    <%= company_form.label t "companies.attributes.phone" %><br />
-    <%= company_form.number_field :phone %>
-  </div>
-</div>
+<div class="field" id="field-titles">
+ <%= f.label t "internships.attributes.company" %>
+ <%= f.select :company_id, Company.order(:name).map { |c| [c.name, c.id] },{}, class: 'chzn-select', disabled: false %>
 </div>
 
 <h2>Internship specification</h2>
@@ -215,6 +155,5 @@
   <% end %>
 </div>
 </div>
-<% end %>
 <% end %>
 </div>
