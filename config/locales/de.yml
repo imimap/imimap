@@ -43,6 +43,9 @@ de:
           attributes:
             password:
               confirmation: "Password confirmation does not match"
+              too_short: "ist zu kurz"
+            email:
+              taken: "ist schon belegt"
         internship:
           attributes:
             title:
