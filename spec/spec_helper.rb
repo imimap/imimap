@@ -17,9 +17,8 @@ require 'simplecov'
  module ControllerTestHelper
    def login
      user = FactoryGirl.create :user
-     session[:user_id] = user.id
-     session[:enrolment_number] = user.student.enrolment_number
-     user
+     sign_in user
+     return user
    end
  end
 module I18nTestHelper
