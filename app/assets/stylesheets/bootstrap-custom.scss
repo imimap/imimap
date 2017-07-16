@@ -54,3 +54,11 @@
 // Utility classes
 //@import "bootstrap/utilities";
 @import "bootstrap/responsive-utilities";
+
+
+@import "../../../vendor/assets/stylesheets/bootstrap/variables"; // Modify this for custom colors, font-sizes, etc
+@import "../../../vendor/assets/stylesheets/bootstrap/mixins";
+
+// Grid system and page structure
+@import "../../../vendor/assets/stylesheets/bootstrap/scaffolding";
+@import "../../../vendor/assets/stylesheets/bootstrap/layouts";
