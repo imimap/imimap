@@ -11,11 +11,12 @@ describe "Student Login" do
         @user = create(:user)
       end
 
-      it "should log in" do
+      it "should proceed to log in" do
         visit root_path
-        fill_in "email",  :with => @user.email
-        fill_in "password",  :with => @user.password
-        page.find('.signin-icon').click
+        fill_in "user_email",  :with => @user.email
+        fill_in "user_password",  :with => @user.password
+        click_on('Log in')
+
         expect(page).to have_content I18n.t('header.exchange')
       end
     end
