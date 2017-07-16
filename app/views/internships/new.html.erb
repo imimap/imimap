@@ -78,6 +78,8 @@
 <div class="field" id="field-titles">
  <%= f.label t "internships.attributes.company" %>
  <%= f.select :company_id, Company.order(:name).map { |c| [c.name, c.id] },{}, class: 'chzn-select', disabled: false %>
+ <%= t "Company not found?" %>
+ <%= link_to t("companies.createNewCompany"), new_company_path(returnToForm: true) %>
 </div>
 
 <h2>Internship specification</h2>
