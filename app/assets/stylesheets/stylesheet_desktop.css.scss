@@ -642,8 +642,9 @@ p{
   background-size: 220px 150px;
   height: 150px;
   width: 220px; 
-  margin-top: -220px;
+  margin-top: -180px;
   margin-left: 230px;
+  z-index: 5;
 }
 
 #salary_text{
