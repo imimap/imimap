@@ -1,30 +1,29 @@
 <div class="row statistics">
-  <%= form_for @internship do |f| %>
-  <div class="span4">
-    <div class="field" id="field-titles">
-      <%= f.label t "internships.attributes.semester" %>
-      <%= f.select :semester_id, Internship.order(:semester_id), class: 'chzn-select', disabled: true  %>
-    </div>
+<%= form_for @internship do |f| %>
+  <% @semesters = Semester.all%>
+  <select name="semester">
+    <% @semesters.each do |semester| -%>
+    <option value="#{semester.id}"><%=semester.name%></option>
+    <% end %>
+    <% @semester = params[:semester.id] %>
+  </select>
+  <% @sem_id = Semester.first.id %>
+  <%= column_chart Internship.joins(:company).where(semester_id: @sem_id).group(:country).count, colors: ["#77b900", "#999"] %> 
+<% end %>
+
+
+
+
+<!--   <div class="col-xs-6">
+    <h3>Countries visited by IMI-Students</h3>
+    <%= column_chart Internship.joins(:company).where(semester_id: @sem_id).group(:country).count, colors: ["#77b900", "#999"] %>
   </div>
-  <div class="actions"><%= f.submit "Search" %></div>
-  <% end %>
+  <div class="col-xs-6">   
+    <%= geo_chart Internship.joins(:company).where(semester_id: @sem_id).group(:country).count, colors: ["#77b900", "#999"] %>
+  </div>  
+</div> -->
 
-  <%= s = Semester.first%> 
-  <%= l = Internship.where(semester_id: s)%>
-  <div class="col-xs-6">
-    <h3>Total</h3>
-    <%= column_chart (l.map {|i| i.company.country}).group_by(l) %>
-  </div>
-
-
-
-
-
-
-
-
-  <div class="col-xs-6">
-    <h3>Total number visits per country</h3>
-    <%= column_chart Company.group(:country).count, colors: ["#77b900", "#999"]%>
-  </div>
-</div>
+$(function(){
+    $('#semester.id').on('change', function(){
+        alert('do soemthing ' + $(this).val());
+    });

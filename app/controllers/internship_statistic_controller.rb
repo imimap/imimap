@@ -1,6 +1,7 @@
 class InternshipStatisticController < ApplicationController
   def index
-    @internship = Internship.new
+    @internship = Internship.first
     @internships = Internship.all
+    @companies = Company.all
   end
 end
