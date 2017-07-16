@@ -164,7 +164,7 @@ class InternshipsController < ApplicationController
   private
 
   def internship_params
-    params.require(:internship).permit(:start_date, :end_date, :operational_area, :tasks, :supervisor_name, :supervisor_email, :semester_id, companies_attributes: [:name, :department, :street, :zip, :city, :country, :phone])
+    params.require(:internship).permit(:start_date, :end_date, :operational_area, :tasks, :supervisor_name, :supervisor_email, :semester_id, :company_id)
   end
 
   def authorize_internship
