@@ -39,6 +39,5 @@ class Company < ActiveRecord::Base
     end
     size||=1
     r.to_f/size
-  end
-
+  end   
 end
