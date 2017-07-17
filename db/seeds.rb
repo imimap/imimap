@@ -73,6 +73,9 @@ PaymentState.where(name: "no payment", name_de: "keine Bezahlung").first_or_crea
 
 RegistrationState.where(name: "not in examination office", name_de: "nicht beim Prüfungsamt").first_or_create
 RegistrationState.where(name: "in examination office", name_de: "beim Prüfungsamt").first_or_create
+RegistrationState.where(name: "accepted", name_de: "zugelassen").first_or_create
+RegistrationState.where(name: "accepted, but passed courses are still missing", name_de: "zugelassen, aber bestandene Kurse nicht vorhanden").first_or_create
+RegistrationState.where(name: "accepted, but contract is still missing", name_de: "zugelassen, aber Vertrag nicht vorhanden").first_or_create
 
 ContractState.where(name: "missing", name_de: "nicht vorhanden").first_or_create
 ContractState.where(name: "copy in the office", name_de: "Kopie vorhanden").first_or_create
