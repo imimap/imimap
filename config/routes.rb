@@ -6,6 +6,8 @@ ImiMaps::Application.routes.draw do
 
     resources :internships
 
+    resources :internship_statistic, :only  => [:index, :create]
+
     resources :companies
 
     resources :users, :only => [:edit, :show, :update, :create, :new]
