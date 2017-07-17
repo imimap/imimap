@@ -20,6 +20,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", inline: script
 
+
   config.vm.provision "ansible_local" do |ansible|
     #ansible.limit = "vagrant"
     ansible.playbook = "./bootstrap_host/playbook.yml"

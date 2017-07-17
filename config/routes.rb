@@ -4,13 +4,13 @@ ImiMaps::Application.routes.draw do
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
 
-    resources :internships, :only => [:edit, :show, :index, :destroy, :update]
+    resources :internships
 
     resources :internship_statistic, :only  => [:index, :create]
 
     resources :companies
 
-    resources :users
+    resources :users, :only => [:edit, :show, :update, :create, :new]
 
     resources :user_verifications, only: [:new, :create]
 
@@ -22,15 +22,15 @@ ImiMaps::Application.routes.draw do
 
     resources :notifications, :only => [:destroy, :show]
 
-    resources :favorite, :only => [:create, :destroy]
+    resources :favorite, :only => [:create, :destroy, :index]
 
     resources :location, :only => [:create, :destroy]
 
-    resources :sessions
+    resources :sessions, :only => [:destroy, :create, :new]
 
-    resources :user_comments
+    resources :user_comments, :only => [:destroy, :update, :create, :new]
 
-    resources :answers
+    resources :answers, :only => [:create, :update, :destroy]
 
     resources :general
 
@@ -48,9 +48,9 @@ ImiMaps::Application.routes.draw do
 
     resources :favorite, :only => [:index]
 
-    resources :favorite_compare
+    resources :favorite_compare, :only => [:index]
 
-    resources :password_resets
+    resources :password_resets, :only => [:edit, :update, :create, :new]
 
     resources :errors, :only => [:not_found]
 
@@ -60,6 +60,8 @@ ImiMaps::Application.routes.draw do
     get 'login', to: 'sessions#new', as: 'login'
     get 'logout', to: 'sessions#destroy', as: 'logout'
 
+    match "/404", :to => "errors#not_found", :via => :all
+    match "/500", :to => "errors#internal_server_error", :via => :all
 
 	end
 

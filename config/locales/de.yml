@@ -234,6 +234,13 @@ de:
       title: "Job Titel"
       recommend: "Empfehlung"
       internship_report: "Praktikumsbericht"
+      amountOfWeeks: "Anzahl der Wochen"
+      weekValidation: "Validität"
+      weekVal:
+        optionA: "Die Praktikumsdauer ist kleiner als 4 Wochen"
+        optionB: "Die Praktikumsdauer benötigt manuelle Nachberechnung"
+        optionC: "Die Praktikumsdauer ist ausreichend"
+
 
   users:
     name: "Benutzer"

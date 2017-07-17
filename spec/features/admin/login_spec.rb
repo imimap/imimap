@@ -9,7 +9,7 @@ describe "ActiveAdmin Student creation" do
     # Tests should work independently of set locale.
     I18n.locale = "de"
   end
-  describe "login" do
+  describe "show" do
     it "logs in a user" do
       visit admin_root_path
       login_t = I18n.t('active_admin.devise.login.title')
