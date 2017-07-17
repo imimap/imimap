@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 4.2.8'
-gem 'bootstrap-sass', '2.1'
 gem 'carrierwave'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'nested_form'
 gem "country_select"
+gem 'bootstrap-sass', '~> 3.3.5'
 
 # see https://github.com/tzinfo/tzinfo/wiki/Resolving-TZInfo::DataSourceNotFound-Errors
 gem 'tzinfo-data'
@@ -49,7 +49,7 @@ gem 'jquery-rails', '3.1.4'
 # Gems used only for assets and not required
 # in production environments by default.
 gem 'jquery-ui-rails'
-gem 'sass-rails',   '~> 4.0'
+gem 'sass-rails','~> 4.0.5'
 gem 'coffee-rails', '~> 4.0'
 gem 'font-awesome-sass-rails'
 gem 'uglifier', '>= 1.0.3'

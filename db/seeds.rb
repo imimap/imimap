@@ -1,4 +1,5 @@
 # encoding: UTF-8
+puts "seeding database"
 ProgrammingLanguage.where(name: "Java").first_or_create
 ProgrammingLanguage.where(name: "C++").first_or_create
 ProgrammingLanguage.where(name: "C").first_or_create
@@ -188,3 +189,4 @@ InternshipOffer.create(title: "Java in Barcelona", body: "come to Barcelona and 
 
 User.destroy_all
 User.create!(password: "testmap", email: "test@imimaps.com", student_id: 1)
+User.create(:email => "user@imimaps.de", :password => 'geheim123', :password_confirmation => 'geheim123', student_id: 1)
