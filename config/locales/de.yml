@@ -130,6 +130,7 @@ de:
     search: "Erweiterte Suche"
     overview: "Start"
     start: "Start"
+    statistic: "Statistik"
     exchange: "Praktikumsangebote"
     guide: "Guide"
     logout: "Abmelden"
@@ -198,6 +199,7 @@ de:
 
 
   internships:
+    statistic: "Wähle das Semester und sehe wo die Studenten diesem Semester waren"
     my: "Meine Praktika"
     others: "Andere Praktika bei dieser Firma"
     details: "Praktikumsdetails"

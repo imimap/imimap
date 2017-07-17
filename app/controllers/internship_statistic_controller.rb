@@ -4,7 +4,11 @@ class InternshipStatisticController < ApplicationController
     @internships = Internship.all
     @companies = Company.all
     @semesters = Semester.all
-    @semester_id = params[:semester_id]
+    if params[:semester_id] == nil
+      @semester_id = Semester.last.id
+    else  
+      @semester_id = params[:semester_id]
+    end  
   end
 
   def create

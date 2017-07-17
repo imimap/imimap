@@ -88,6 +88,7 @@ en:
     search: "Advanced search"
     overview: "Home"
     start: "Home"
+    statistic: "Statistik"
     exchange: "Internship offers"
     guide: "Guide"
     logout: "Logout"
@@ -154,6 +155,7 @@ en:
       not_recommended: "Not Recommended"
 
   internships:
+    statistic: "Choose the semester and see where the students in this semester have been"
     my: "Meine Praktika"
     others: "Other internships done here"
     details: "Internship Details"
