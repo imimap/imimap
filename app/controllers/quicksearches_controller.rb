@@ -21,6 +21,8 @@ class QuicksearchesController < ApplicationController
       @internships = @quicksearch.internships(params)
     end
 
+    @internships = @internships.first(5)
+
     @internships.each do |i|
         i.programming_languages.each do |p|
           @language_ary << p
