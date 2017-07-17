@@ -32,6 +32,10 @@ if [ "$DEPLOYMENT_ENVIRONMENT" == "production" ] && [ "$TRAVIS_BRANCH" != "$TRAV
     export DEPLOYMENT_SHOULD_RUN=false
 else
 
+echo "*********************** SWITCHED OFF DEPLOYMENT IN MASTER TO NOT INTERFER WITH TESTING FROM BRANCH htw-staging-server ***************************"
+export DEPLOYMENT_SHOULD_RUN=false
+
+
 echo "TRAVIS_TAG $TRAVIS_TAG"
 if [ -z "$TRAVIS_TAG" ]; then
   export DEPLOYMENT_TAG=$TRAVIS_COMMIT
@@ -40,13 +44,12 @@ else
 fi
 
 export DEPLOYMENT_DOCKER_ORGANISATION=imimapshtw
-export DEPLOYMENT_SHOULD_RUN=true
 
 echo "all environment checks passed:"
 echo "DEPLOYMENT_ENVIRONMENT: $DEPLOYMENT_ENVIRONMENT"
 echo "DEPLOYMENT_TAG: $DEPLOYMENT_TAG"
 echo "DEPLOYMENT_DOCKER_ORGANISATION: $DEPLOYMENT_DOCKER_ORGANISATION"
-
+echo "DEPLOYMENT_SHOULD_RUN: $DEPLOYMENT_SHOULD_RUN"
 
 fi
 fi

@@ -214,6 +214,29 @@
     </div>
     </div>
 
+ <div class="row-fluid" id="row-intern">
+  <div class="span12">
+   <div class="row" id="row2-intern">
+    <div class="span3" id="intern-title">
+      <%= t "internships.attributes.amountOfWeeks" %></div>
+      <div class="span8" id="intern-box">
+         <%= @internship.weekCount %>
+      </div>
+    </div>
+    </div>
+    </div>
+    
+   <div class="row-fluid" id="row-intern">
+    <div class="span12">
+     <div class="row" id="row2-intern">
+      <div class="span3" id="intern-title">
+        <%= t "internships.attributes.weekValidation" %></div>
+          <div class="span8" id="intern-box">
+            <%= @internship.weekValidation %>
+          </div>    
+        </div>
+      </div>
+    </div>  
 
               <div id="favorite">
                 <% if @favorite %>

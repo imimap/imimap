@@ -33,6 +33,14 @@ Zum lokalen entwickeln muss folgende Software installiert werden:
 Die Applikation ist dann via [http://192.168.33.10](http://192.168.33.10) erreichbar. Die Migrations sowie Seeds der Datenbank
 sind bereits ausgeführt.
 
+# known vagrant errors
+Sometimes during start of vagrant on windows, all of the files in the environment get edited (added end of line symbols).
+
+To catch that, after vagrant up run: git diff
+if you see changes in lots of file just do a hard reset
+git reset —hard
+
+
 ## Setup mit Docker
 IMI-Maps läuft in Docker.
 Vorteil: Konfiguration wie auf Staging/Production Maschinen.

@@ -57,8 +57,8 @@ RSpec.describe User, :type => :model do
 
   describe "UserObserver" do
     it 'should trigger the observer method' do
-      user.student.internships << build(:internship, student: user.student, completed: false)
-      user.student.internships << build(:internship, student: user.student, completed: false)
+      user.student.internships << create(:internship, user: user, completed: false)
+      user.student.internships << create(:internship, user: user, completed: false)
       expect(user.save).to be_truthy
     end
   end

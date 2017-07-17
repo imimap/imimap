@@ -88,6 +88,7 @@ group :development, :test do
   gem 'railroady'
   gem 'database_cleaner'
   gem "simplecov", require: false
+  gem 'byebug'
 end
 
 
