@@ -14,8 +14,6 @@ ImiMaps::Application.routes.draw do
 
     resources :user_verifications, only: [:new, :create]
 
-    resources :search, :only => [:index]
-
     resources :overview, :only => [:index]
 
     resources :internship_offer, :only => [:index, :show]
@@ -24,7 +22,7 @@ ImiMaps::Application.routes.draw do
 
     resources :favorite, :only => [:create, :destroy, :index]
 
-    resources :location, :only => [:create, :destroy]
+    # resources :location, :only => [:create, :destroy]
 
     resources :sessions, :only => [:destroy, :create, :new]
 
@@ -34,19 +32,9 @@ ImiMaps::Application.routes.draw do
 
     resources :general
 
-    resources :faq
-
-    resources :financing
-
-    resources :download
-
     resources :internship_searches
 
     resources :quicksearches, :only => [:index]
-
-    resources :companies_compare
-
-    resources :favorite, :only => [:index]
 
     resources :favorite_compare, :only => [:index]
 
