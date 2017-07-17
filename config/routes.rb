@@ -60,6 +60,8 @@ ImiMaps::Application.routes.draw do
     get 'login', to: 'sessions#new', as: 'login'
     get 'logout', to: 'sessions#destroy', as: 'logout'
 
+    match "/404", :to => "errors#not_found", :via => :all
+    match "/500", :to => "errors#internal_server_error", :via => :all
 
 	end
 
