@@ -19,15 +19,7 @@ RSpec.describe OverviewController, :type => :controller do
   describe "GET #index" do
     it 'shows index view with the right id' do
       get :index, id: @semester_id
-      @semester_id = Semester.first.id
-      expect(assigns(:semester_id)).to eq(@semester_id)
-    end
-  end
-
-    describe "GET #index" do
-    it 'shows index view by default with last semester id' do
-      get :index, id: nil
-      semester_id = Semester.last.id
+      @semester_id = 1
       expect(assigns(:semester_id)).to eq(@semester_id)
     end
   end
