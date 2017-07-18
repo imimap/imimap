@@ -19,7 +19,6 @@ RSpec.describe OverviewController, :type => :controller do
   describe "GET #index" do
     it 'shows index view with the right id' do
       get :index, id: @semester_id
-      @semester_id = 1
       expect(assigns(:semester_id)).to eq(@semester_id)
     end
   end
