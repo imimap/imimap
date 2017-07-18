@@ -232,7 +232,13 @@
       <div class="span3" id="intern-title">
         <%= t "internships.attributes.weekValidation" %></div>
           <div class="span8" id="intern-box">
-            <%= @internship.weekValidation %>
+            <% if @internship.weekValidation == A %>
+              <%= t "internships.attributes.weekVal.optionA"%>
+            <% elsif @internship.weekValidation == B  %>
+              <%= t "internships.attributes.weekVal.optionB"%> 
+            <% else %>
+               <%= t "internships.attributes.weekVal.optionC"%> 
+            <% end %>
           </div>    
         </div>
       </div>
@@ -247,10 +253,10 @@
                   <% else %>
                   <%= link_to({:controller=>:favorite,:action=>:create, :internship_id => @internship.id, :user_id => current_user.id}, {:method=>:post, remote: true, class: "btn btn-success"}) do %>
                   <i class="icon-heart icon-large icon-white"> </i><%= t("favorite.add") %>
-                <% end %>
+                   <br/>
+               <% end %>
                     <% end %>
                   </div>
-                  <br/>
 
                   <% if @internship.attachments.present? %>
                   <b><%= t "internships.attributes.pictures" %> :</b></b>
