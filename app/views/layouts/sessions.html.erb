@@ -58,6 +58,7 @@
     <% end %>
     
     </div>
+
     <div class="display_none display_nonet"></div>
     
     <!-- Leaflet Map -->
@@ -66,15 +67,15 @@
     <script type="text/javascript">  
 
     var companiesInternship = JSON.parse('<%= @company_location_json %>')
-
-
-    var mymap = L.map('mapid').setView([52.4569311, 13.5242551], 3);
+    var mymap = L.map('mapid').setView([52.4569311, 13.5242551], 2);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 10,
         id: 'mapbox.streets',
-        accessToken: 'pk.eyJ1IjoiaW1pbWFwIiwiYSI6ImNqNHppOG5jMzIzNm4yd3A4bG1obGRpbDAifQ.iXbEsLQvC940jdiIWgTfBw'
+        accessToken: 'pk.eyJ1IjoiaW1pbWFwIiwiYSI6ImNqNHppOG5jMzIzNm4yd3A4bG1obGRpbDAifQ.iXbEsLQvC940jdiIWgTfBw',
+        minZoom: 2, 
+        maxZoom: 18 
     }).addTo(mymap);
+   
 
     for (var i = 0; i < companiesInternship.length; i++) {
          marker = new L.marker([companiesInternship[i][1],companiesInternship[i][2]])
@@ -86,7 +87,6 @@
 
   <%= yield :scripts %>
 
-  </div>
   <div class="login_top3">
 
     <div class="sign_up">

@@ -78,10 +78,4 @@
 <% end %>
 </table>
 
-
-<%= gmaps({
-   "map_options" => {"auto_zoom" => false, "zoom" => 5 },
-   "markers"     => {"data" => @pins }
-  })
-%>
 <%= yield :scripts %>

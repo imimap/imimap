@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '~> 4.2.8'
 gem 'carrierwave'
 gem 'geocoder'
-gem 'gmaps4rails'
 gem 'nested_form'
 gem "country_select"
 gem 'bootstrap-sass', '~> 3.3.5'

@@ -7,44 +7,7 @@ class SessionsController < ApplicationController
     end
 
     @company_location_json = Company.pluck(:name, :latitude, :longitude).to_json.html_safe
-
-  
-  @internships = Internship.includes(:company, :semester, :orientation, :programming_languages).where(completed: true).order('created_at DESC')
-
-  @companies = @internships.collect do |i| i.company end
-   @pins = Gmaps4rails.build_markers(@companies) do |company, marker |
-
-      n=0
-      s=""
-      p=""
-
-      @internships_comp = @internships.select {|x| x.company_id == company.id}
-      @internships_comp.each do |internship|
-
-      if n==0
-        s+=(internship.student.first_name[0..0].capitalize+".")
-      else
-        s+=(" & " + internship.student.first_name[0..0].capitalize+".")
-       end
-        n+=1
-       end
-
-      if n==1
-        p="hat"
-      else
-        p="haben"
-      end
-
-
-      href =  if company.try(:website).try(:starts_with?,'http') && company
-              company.website
-              elsif company and company.website
-              "http://"+company.website
-             end
-
-      marker.infowindow ("<p>#{company.name}</p>")
-
-    end
+    @internships = Internship.includes(:company, :semester, :orientation, :programming_languages).where(completed: true).order('created_at DESC')
   end
 
 
