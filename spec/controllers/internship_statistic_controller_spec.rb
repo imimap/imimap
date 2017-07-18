@@ -18,7 +18,8 @@ RSpec.describe OverviewController, :type => :controller do
 
   describe "GET #index" do
     it 'renders the show action correctly' do
-      get :index
+      get :index, id: @semester_id
       expect(assigns(:semester_id)).to eq(@semester_id)
     end
+  end
 end
