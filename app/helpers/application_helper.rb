@@ -36,16 +36,6 @@ module ApplicationHelper
     Notification.where(:user_id => current_user.try(:id)).order("created_at DESC")
   end
 
-  # TBD Update gmaps4rails: this should return appropriate
-  # javascript to include the map.
-  def gmaps(hash={})
-    "MAP WAS HERE"
-  end
-
-  def gmaps4rails(pins)
-    "MAP WAS HERE"
-  end
-
   def locale_picker
     I18n.available_locales.each do |loc|
       locale_param = request.path == root_path ? root_path(locale: loc) : params.merge(locale: loc)

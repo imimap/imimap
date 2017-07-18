@@ -395,12 +395,6 @@
                 </div>
               </div>
 
-
-
-
-            <%= gmaps(:map_options => { :container_class => "map-intern display_none display_nonet", :id => "map3", :draggable => true, :auto_zoom => false, :zoom => 6, :mapTypeControl => false,} , :markers => { "data" => @pins},) %>
-            <%= yield :scripts %>
-
             <div class="greenline display_none display_nonet"></div>
 
             <div class="container-right-text">
@@ -412,9 +406,7 @@
               <%= @company.name %>
             </div>
 
-
-
-
+            
              <div id="company-title">
               <%= t "companies.attributes.website"  %>
             </div>

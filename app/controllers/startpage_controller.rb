@@ -7,9 +7,7 @@ class StartpageController < ApplicationController
     end
 
     @company_location_json = Company.pluck(:name, :latitude, :longitude).to_json.html_safe
-
-  
-  @internships = Internship.includes(:company, :semester, :orientation, :programming_languages).where(completed: true).order('created_at DESC')
+    @internships = Internship.includes(:company, :semester, :orientation, :programming_languages).where(completed: true).order('created_at DESC')
   end
 
 

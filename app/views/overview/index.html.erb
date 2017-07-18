@@ -1,4 +1,3 @@
-
  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css"
    integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw=="
    crossorigin=""/>
@@ -11,12 +10,14 @@
     <script type="text/javascript">
 
     var companiesInternship = JSON.parse('<%= @company_location_json %>')
-    var mymap = L.map('mapid').setView([52.4569311, 13.5242551], 3);
+    var mymap = L.map('mapid').setView([52.4569311, 13.5242551], 2);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
         maxZoom: 18,
         id: 'mapbox.streets',
-        accessToken: 'pk.eyJ1IjoiaW1pbWFwIiwiYSI6ImNqNHppOG5jMzIzNm4yd3A4bG1obGRpbDAifQ.iXbEsLQvC940jdiIWgTfBw'
+        accessToken: 'pk.eyJ1IjoiaW1pbWFwIiwiYSI6ImNqNHppOG5jMzIzNm4yd3A4bG1obGRpbDAifQ.iXbEsLQvC940jdiIWgTfBw',
+        minZoom: 2, 
+        maxZoom: 4 
     }).addTo(mymap);
 
     for (var i = 0; i < companiesInternship.length; i++) {

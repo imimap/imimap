@@ -543,8 +543,9 @@ p{
   background-size: 220px 150px;
   height: 150px;
   width: 220px; 
-  margin-top: -220px;
-  margin-left: 320px;
+  margin-top: -200px;
+  margin-left: 230px;
+  z-index: 4;
 }
 
 #close {
@@ -636,16 +637,6 @@ p{
   color:#e3e5e1;
 }
 
-.msgbox {
-  position: absolute;
-  background: url(arrow.png) no-repeat;
-  background-size: 220px 150px;
-  height: 150px;
-  width: 220px; 
-  margin-top: -180px;
-  margin-left: 230px;
-  z-index: 5;
-}
 
 #salary_text{
   margin-top: -10px !important;
