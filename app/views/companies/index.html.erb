@@ -1,8 +1,4 @@
-<% # gmaps4rails(@pins) %>
- markers = handler.addMarkers(<%=raw @pins.to_json %>);
 
-<%= yield :scripts %>
-<br/>
 <%= form_tag(quicksearches_path, :method => 'get', :remote => true) do %>
 
 <p>Search Query<br /> </p>
