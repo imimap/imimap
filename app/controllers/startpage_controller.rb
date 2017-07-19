@@ -1,5 +1,5 @@
 class StartpageController < ApplicationController
-  layout 'sessions'
+  layout 'startpage'
 
   def new
     if current_user
@@ -33,7 +33,7 @@ class StartpageController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    startpage[:user_id] = nil
     #cookies.delete(:auth_token)
     redirect_to root_url, :alert =>  t("msg.logout")
   end
