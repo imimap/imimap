@@ -54,11 +54,11 @@ ImiMaps::Application.routes.draw do
 
     resources :errors, :only => [:not_found]
 
-		root to: 'sessions#new'
+		root to: 'startpage#new'
 
     get 'signup', to: 'users#new', as: 'signup'
-    get 'login', to: 'sessions#new', as: 'login'
-    get 'logout', to: 'sessions#destroy', as: 'logout'
+    get 'login', to: 'startpage#new', as: 'login'
+    get 'logout', to: 'startpage#destroy', as: 'logout'
 
     match "/404", :to => "errors#not_found", :via => :all
     match "/500", :to => "errors#internal_server_error", :via => :all
