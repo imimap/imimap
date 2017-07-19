@@ -181,7 +181,7 @@ RSpec.describe InternshipsController, :type => :controller do
       context 'the user has an internship' do
         it 'renders the my_internship view' do
           @internship = create :internship
-          get :show, id: @internship.id
+          get :show, id: @internship
           expect(response).to redirect_to(@internship)
         end
       end
