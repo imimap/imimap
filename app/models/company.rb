@@ -40,4 +40,9 @@ class Company < ActiveRecord::Base
     size||=1
     r.to_f/size
   end
+
+  def address_changed?
+    street_changed? || city_changed? || zip_changed? || country_changed?
+  end
+  
 end
