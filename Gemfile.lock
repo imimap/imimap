@@ -20,6 +20,8 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_median (0.1.4)
+      activerecord
     activeadmin (1.0.0)
       arbre (>= 1.1.1)
       bourbon
@@ -51,11 +53,13 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
-    airbrussh (1.2.0)
+    airbrussh (1.3.0)
       sshkit (>= 1.6.1, != 1.7.0)
     arbre (1.1.1)
       activesupport (>= 3.0.0)
     arel (6.0.4)
+    autoprefixer-rails (7.1.1.2)
+      execjs
     bcrypt (3.1.11)
     bcrypt (3.1.11-x86-mingw32)
     better_errors (2.1.1)
@@ -64,18 +68,20 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (2.1.0.0)
+    bootstrap-sass (3.3.5)
+      autoprefixer-rails (>= 5.0.0.1)
+      sass (>= 3.2.19)
     bourbon (3.2.4)
       sass (~> 3.2)
       thor
     builder (3.2.3)
     byebug (9.0.6)
-    capistrano (3.8.1)
+    capistrano (3.8.2)
       airbrussh (>= 1.0.0)
       i18n
       rake (>= 10.0.0)
       sshkit (>= 1.9.0)
-    capybara (2.14.0)
+    capybara (2.14.3)
       addressable
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -86,6 +92,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    chartkick (1.2.5)
     chosen-rails (1.5.2)
       coffee-rails (>= 3.2)
       railties (>= 3.0)
@@ -110,7 +117,7 @@ GEM
     country_select (3.0.0)
       countries (~> 2.0)
       sort_alphabetical (~> 1.0)
-    d3-rails (4.9.0)
+    d3-rails (4.9.1)
       railties (>= 3.1)
     database_cleaner (1.6.1)
     debug_inspector (0.0.3)
@@ -139,6 +146,8 @@ GEM
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     gmaps4rails (2.1.2)
+    groupdate (2.1.1)
+      activerecord (>= 3.0.0)
     has_scope (0.7.1)
       actionpack (>= 4.1, < 5.2)
       activesupport (>= 4.1, < 5.2)
@@ -173,7 +182,7 @@ GEM
       addressable (~> 2.3)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
-    mail (2.6.5)
+    mail (2.6.6)
       mime-types (>= 1.16, < 4)
     method_source (0.8.2)
     mime-types (3.1)
@@ -199,8 +208,8 @@ GEM
       activesupport (>= 2.3.2)
       cocaine (>= 0.0.2)
       mime-types
-    pg (0.20.0)
-    pg (0.20.0-x86-mingw32)
+    pg (0.21.0)
+    pg (0.21.0-x86-mingw32)
     poltergeist (1.15.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -239,8 +248,8 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
-    rails-observers (0.1.2)
-      activemodel (~> 4.0)
+    rails-observers (0.1.4)
+      activemodel (>= 4.0)
     railties (4.2.8)
       actionpack (= 4.2.8)
       activesupport (= 4.2.8)
@@ -248,7 +257,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.18.0)
     rake (12.0.0)
-    ransack (1.8.2)
+    ransack (1.8.3)
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       activesupport (>= 3.0)
@@ -337,15 +346,17 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  active_median (~> 0.1.0)
   activeadmin (~> 1.0)
   bcrypt (~> 3)
   better_errors
   binding_of_caller
-  bootstrap-sass (= 2.1)
+  bootstrap-sass (~> 3.3.5)
   byebug
   capistrano
   capybara
   carrierwave
+  chartkick (~> 1.2.4)
   chosen-rails
   coffee-rails (~> 4.0)
   country_select
@@ -356,6 +367,7 @@ DEPENDENCIES
   font-awesome-sass-rails
   geocoder
   gmaps4rails
+  groupdate (~> 2.1.1)
   jquery-rails (= 3.1.4)
   jquery-ui-rails
   kaminari
@@ -373,7 +385,7 @@ DEPENDENCIES
   rails-observers
   rmagick (~> 2.13.1)
   rspec-rails (~> 3.5)
-  sass-rails (~> 4.0)
+  sass-rails (~> 4.0.5)
   simplecov
   spring
   sqlite3 (~> 1.3.7)
@@ -383,4 +395,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.15.0
+   1.15.1

@@ -1,4 +1,5 @@
 # encoding: UTF-8
+puts "seeding database"
 ProgrammingLanguage.where(name: "Java").first_or_create
 ProgrammingLanguage.where(name: "C++").first_or_create
 ProgrammingLanguage.where(name: "C").first_or_create
@@ -73,9 +74,8 @@ PaymentState.where(name: "no payment", name_de: "keine Bezahlung").first_or_crea
 RegistrationState.where(name: "not in examination office", name_de: "nicht beim Prüfungsamt").first_or_create
 RegistrationState.where(name: "in examination office", name_de: "beim Prüfungsamt").first_or_create
 RegistrationState.where(name: "accepted", name_de: "zugelassen").first_or_create
-RegistrationState.where(name: "accepted, but courses are missing", name_de: "zugelassen, aber bestandene Kurse fehlen").first_or_create
-RegistrationState.where(name: "accepted, but contract is missing", name_de: "zugelassen, aber Vertrag fehlt").first_or_create
-
+RegistrationState.where(name: "accepted, but passed courses are still missing", name_de: "zugelassen, aber bestandene Kurse nicht vorhanden").first_or_create
+RegistrationState.where(name: "accepted, but contract is still missing", name_de: "zugelassen, aber Vertrag nicht vorhanden").first_or_create
 
 ContractState.where(name: "missing", name_de: "nicht vorhanden").first_or_create
 ContractState.where(name: "copy in the office", name_de: "Kopie vorhanden").first_or_create
@@ -189,3 +189,4 @@ InternshipOffer.create(title: "Java in Barcelona", body: "come to Barcelona and 
 
 User.destroy_all
 User.create!(password: "testmap", email: "test@imimaps.com", student_id: 1)
+User.create(:email => "user@imimaps.de", :password => 'geheim123', :password_confirmation => 'geheim123', student_id: 1)

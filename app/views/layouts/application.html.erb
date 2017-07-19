@@ -4,6 +4,9 @@
     <title><%= t "header.tabtitle" %></title>
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
+    <!--chartkick includes-->
+    <%= javascript_include_tag "http://www.google.com/jsapi", "chartkick" %>
+  
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :content => 'Imi Map' %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +15,7 @@
     <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
   </head>
   <body data-target=".bs-docs-sidebar" data-spy="scroll" data-twttr-rendered="true">
-
+  
     <div class="navbar navbar-inverse">
       <div class="navbar-inner">
         <div class="top-bar"></div>
@@ -81,9 +84,8 @@
                 <ul class="nav nav-top ">
                   <li class="<%= 'active_nav' if current_page?(overview_index_path) %>"><%= link_to t("header.overview"), overview_index_path %></li>
                   <li class="<%= 'active_nav' if current_page?(internships_path) %>"><%= link_to t("header.search"), internships_path %></li>
-                  <li class="dropdown <%= 'active_nav' if current_page?(general_index_path) || current_page?(download_index_path) || current_page?(faq_index_path) || current_page?(faq_index_path) %>">
-                  </li>
                   <li class="<%= 'active_nav' if current_page?(internship_offer_index_path) %>"><%= link_to t("header.exchange"), internship_offer_index_path %></li>
+                  <li class="<%= 'active_nav' if current_page?(internship_statistic_index_path) %>"><%= link_to t("header.statistic"), internship_statistic_index_path %></li>
 
                 </ul>
               </div>

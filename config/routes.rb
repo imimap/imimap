@@ -6,13 +6,13 @@ ImiMaps::Application.routes.draw do
 
     resources :internships
 
+    resources :internship_statistic, :only  => [:index, :create]
+
     resources :companies
 
     resources :users, :only => [:edit, :show, :update, :create, :new]
 
     resources :user_verifications, only: [:new, :create]
-
-    resources :search, :only => [:index]
 
     resources :overview, :only => [:index]
 
@@ -22,7 +22,7 @@ ImiMaps::Application.routes.draw do
 
     resources :favorite, :only => [:create, :destroy, :index]
 
-    resources :location, :only => [:create, :destroy]
+    # resources :location, :only => [:create, :destroy]
 
     resources :sessions, :only => [:destroy, :create, :new]
 
@@ -32,19 +32,9 @@ ImiMaps::Application.routes.draw do
 
     resources :general
 
-    resources :faq
-
-    resources :financing
-
-    resources :download
-
     resources :internship_searches
 
     resources :quicksearches, :only => [:index]
-
-    resources :companies_compare
-
-    resources :favorite, :only => [:index]
 
     resources :favorite_compare, :only => [:index]
 
@@ -58,6 +48,8 @@ ImiMaps::Application.routes.draw do
     get 'login', to: 'sessions#new', as: 'login'
     get 'logout', to: 'sessions#destroy', as: 'logout'
 
+    match "/404", :to => "errors#not_found", :via => :all
+    match "/500", :to => "errors#internal_server_error", :via => :all
 
 	end
 
