@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SessionsController, :type => :controller do
+RSpec.describe StartpageController, :type => :controller do
 
   describe "GET #new" do
     context 'when not logged in ' do
