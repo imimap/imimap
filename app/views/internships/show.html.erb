@@ -232,9 +232,9 @@
       <div class="span3" id="intern-title">
         <%= t "internships.attributes.weekValidation" %></div>
           <div class="span8" id="intern-box">
-            <% if @internship.weekValidation == A %>
+            <% if @internship.weekValidation == "A" %>
               <%= t "internships.attributes.weekVal.optionA"%>
-            <% elsif @internship.weekValidation == B  %>
+            <% elsif @internship.weekValidation == "B"  %>
               <%= t "internships.attributes.weekVal.optionB"%> 
             <% else %>
                <%= t "internships.attributes.weekVal.optionC"%> 

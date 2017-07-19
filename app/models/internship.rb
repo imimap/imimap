@@ -68,11 +68,11 @@ class Internship < ActiveRecord::Base
     valText = ""
     case weeksToValidate
       when 0..4
-        valText = A 
+        valText = "A" 
       when 4..17,5
-         valText = B
+         valText = "B"
        else
-        valText = C
+        valText = "C"
     end
     return valText;
 
