@@ -24,7 +24,7 @@
 
       <div class="row login_top">
         <div id="logo_res"></div>
-        <%= form_tag sessions_path do %>
+        <%= form_tag new_startpage_path do %>
         <div class="span6 login_center">
           <p id="font_session">E-mail:
             <%= text_field_tag :email, params[:email] %></p>
@@ -68,7 +68,7 @@
         id: 'mapbox.streets',
         accessToken: 'pk.eyJ1IjoiaW1pbWFwIiwiYSI6ImNqNHppOG5jMzIzNm4yd3A4bG1obGRpbDAifQ.iXbEsLQvC940jdiIWgTfBw',
         minZoom: 2, 
-        maxZoom: 18 
+        maxZoom: 16 
     }).addTo(mymap);
    
 
