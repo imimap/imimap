@@ -3,7 +3,6 @@ class InternshipsController < ApplicationController
   before_filter :get_programming_languages, :get_orientations, :only => [:edit, :update]
   before_filter :authorize
   before_filter :authorize_internship, :only => [:edit, :update, :destroy]
-  before_filter :check_if_internship_exists, :only => [:my_internship]
   # GET /internships
   # GET /internships.json
   def index
@@ -97,7 +96,7 @@ class InternshipsController < ApplicationController
     @answer = Answer.new
     @favorite = Favorite.where(:internship_id => @internship.id, :user_id => current_user.id)[0]
     @company = @internship.company
-    # @other_internships = @company.internships.reject { |x| x.id == @internship.id }.reject{ |i| i.completed == false }
+    @other_internships = @company.internships.reject { |x| x.id == @internship.id }.reject{ |i| i.completed == false }
 
     @user_comments = @internship.user_comments.order("created_at DESC")
 
@@ -144,20 +143,15 @@ class InternshipsController < ApplicationController
     end
   end
 
-
-  # if user has an internship, clicking on "My Internship" shows the user internship details
-  # else the user is prompted to create a new internship
-  def my_internship
-    render :show
-
-    #if @internship.nil?
-    #@internship = Internship.new
-    # @internship.user_id = current_user.id
-    #end
-  end
-
-  def noInternshipData
-    render :noInternshipData
+  # If the user has no internship, the system asks him/her to create a new one
+  # else the internship details are shown
+  def internshipData
+    if Internship.where(user_id: current_user.id).last.nil?
+      render :noInternshipData
+    else
+      @internship = Internship.where(user_id: current_user.id).last
+      redirect_to @internship
+    end
   end
 
 
@@ -173,15 +167,6 @@ class InternshipsController < ApplicationController
       redirect_to overview_index_path, notice: "You're not allowed to edit this internship"
     elsif internship.nil?
       redirect_to overview_index_path, notice: "You're not allowed to edit this internship"
-    end
-  end
-
-  #check if user already has an internship or not
-  def check_if_internship_exists
-    if @internship.nil?
-      render :noInternshipData
-    else
-      render :my_internship
     end
   end
 end

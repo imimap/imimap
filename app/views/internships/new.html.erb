@@ -1,6 +1,6 @@
 <div class="row" id="form-block2">
 
-	<% if @internship.errors.any? %>
+  <% if @internship.errors.any? %>
   <div class="error_explanation">
     <strong><%= pluralize(@internship.errors.count, "error") %> prohibited this internship from being saved:</strong>
 
@@ -123,13 +123,27 @@
 <div class="row">
   <div class="span4"> 
     <div class="field" id="field-titles">
+      <%= f.label t("internships.attributes.salary") + " € / " + t("unit.month") %><br />
+      <%= f.text_field :salary %>
+    </div>
+  </div>
+  
+  <div class="span4">
+    <div class="field" id="field-titles">
+      <%= f.label t("internships.attributes.working_hours") + " / " + t("unit.week") %><br />
+      <%= f.text_field :working_hours %>
+    </div>
+  </div>
+</div>  
+
+<div class="row">
+  <div class="span4"> 
+    <div class="field" id="field-titles">
       <%= f.label t "internships.attributes.supervisor_name" %><br />
       <%= f.text_field :supervisor_name %>
     </div>
   </div>
-</div>
 
-<div class="row">
   <div class="span4"> 
     <div class="field" id="field-titles">
       <%= f.label t "internships.attributes.supervisor_email" %><br />
@@ -148,14 +162,90 @@
 </div>
 
 <div class="row">
-  <div class="pull-right"> 
-   <div class="actions">
-    <%= button_tag(type: 'submit', class: "btn btn-success") do %>
-    <i class="icon-ok icon-white"></i> <%= @internship.completed ? t("internships.update") : t("internships.create")%>
-    <% end %>
+  <div class="span10"> 
+    <div id="attachments_div">
+      <%= f.fields_for :attachments, :html => {:multipart => true} do |attachment_form|  %>    
+      <%= render 'attachment_fields', f: attachment_form %>
+      <% end %>
+      <%= link_to_add_fields "Add attachment", f, :attachments %>
+    </div>
+    <br/>
+    <div class="field" id="field-titles">
+      <%= f.label t "internships.attributes.internship_report"  %>
+      <%= f.file_field :internship_report %>
+    </div>
+  </div>
+</div>
+
+<%= f.fields_for :internship_rating do |rat| %>
+
+<div class="row">
+  <div class="span4"> 
+    <div class="field" id="field-titles">
+      <%= rat.label t "internships.attributes.tasks_rating" %><br />
+      <div class="edit-rating" id="tasks" style="margin-top:-10px; margin-left:-20px;"><%= render_stars(@rating.tasks, self) %></div>
+      <%= rat.hidden_field :tasks %>
+    </div>
+  </div>
+
+  <div class="span4">
+    <div class="field" id="field-titles">
+      <%= rat.label t "internships.attributes.training_rating" %><br />
+      <div class="edit-rating" id="training_success" style="margin-top:-10px; margin-left:-20px;"><%= render_stars(@rating.training_success, self) %></div>
+      <%= rat.hidden_field :training_success %>
+    </div>
+  </div>
+
+  <div class="span2"> 
+    <div class="field" id="field-titles">
+      <%= rat.label t "internships.attributes.atmosphere_rating" %><br />
+      <div class="edit-rating" id="atmosphere" style="margin-top:-10px; margin-left:-20px;"><%= render_stars(@rating.atmosphere, self) %></div>
+      <%= rat.hidden_field :atmosphere %>
+    </div>
+  </div>
+</div>
+
+<br>
+<div class="row">
+  <div class="span4"> 
+    <div class="field" id="field-titles">
+      <%= rat.label t "internships.attributes.supervision_rating" %><br />
+      <div class="edit-rating" id="supervision" style="margin-top:-10px; margin-left:-20px;"><%= render_stars(@rating.supervision, self) %></div>
+      <%= rat.hidden_field :supervision %>
+    </div>
+  </div>
+
+  <div class="span4">
+    <div class="field" id="field-titles" >
+      <%= rat.label t "internships.attributes.appreciation_rating" %><br />
+      <div class="edit-rating" id="appreciation" style="margin-top:-10px; margin-left:-20px;"><%= render_stars(@rating.appreciation, self) %></div>
+      <%= rat.hidden_field :appreciation %>
+    </div>
+  </div>
+
+  <div class="span2"> 
+    <div class="field" id="field-titles">
+      <%= f.label t "internships.attributes.recommend"  %>
+      <div class="edit-recommend1" style="margin-left:10px; cursor: pointer;">
+        <% if @internship.recommend %>
+        <i id="recommend up" class="icon-thumbs-up green-thumb recommend-edit icon-2x"></i>
+        <% else %>
+        <i id="recommend down" class="icon-thumbs-down red-thumb recommend-edit icon-2x"></i>
+        <% end %>
+      </div>
+      <%= f.hidden_field :recommend, value: @internship.recommend ? 1 : 0 %>
+    </div>
   </div>
   <% end %>
-</div>
+
+  <div class="row">
+    <div class="pull-right"> 
+     <div class="actions">
+      <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+      <i class="icon-ok icon-white"></i> <%= @internship.completed ? t("internships.update") : t("internships.create")%>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
 </div>
 <% end %>
-</div>

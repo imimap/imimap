@@ -28,12 +28,6 @@
         <%= f.select :company_id, Company.order(:name).map { |c| [c.name, c.id] },{}, class: 'chzn-select', disabled: true  %>
       </div>
     </div>
-    <div class="span2"> 
-      <div class="field" id="field-titles">
-        <%= f.label t "internships.attributes.orientation" %><br />
-        <%= f.select :orientation_id, @orientations,{}, class: 'chzn-select' %>
-      </div>
-    </div>
   </div>
 
   <div class="row">
