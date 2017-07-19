@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class StartpageController < ApplicationController
   layout 'sessions'
 
   def new
