@@ -18,23 +18,19 @@ if [ -z "$DEPLOYMENT_PIPELINE" ]; then
     export DEPLOYMENT_SHOULD_RUN=false
 else
 
-#if [ $false ]; then
 if [ "$DEPLOYMENT_ENVIRONMENT" == "staging" ] && [ "$TRAVIS_BRANCH" != "master" ]; then
-
   echo "DEPLOYMENT: staging will only deploy on master branch"
   export DEPLOYMENT_SHOULD_RUN=false
 else
 
-#if [ $false ]; then
-if [ "$DEPLOYMENT_ENVIRONMENT" == "production" ] && [ "$TRAVIS_BRANCH" != "$TRAVIS_TAG" ]; then
-    echo "DEPLOYMENT: production will only deploy from tag"
+#if [ "$DEPLOYMENT_ENVIRONMENT" == "production" ] && [ "$TRAVIS_BRANCH" != "$TRAVIS_TAG" ]; then
+# TBD docker-deploy: change this back to above line
+if [ "$DEPLOYMENT_ENVIRONMENT" == "production" ] && [ "$TRAVIS_BRANCH" != "master" ]; then
+    echo "DEPLOYMENT deploys for every build to set up deployment" # TBD docker-deploy switch with this line:
+    #echo "DEPLOYMENT: production will only deploy from tag"
     echo "DEPLOYMENT: got TRAVIS_BRANCH [$TRAVIS_BRANCH] and TRAVIS_TAG [$TRAVIS_TAG]"
     export DEPLOYMENT_SHOULD_RUN=false
 else
-
-echo "*********************** SWITCHED OFF DEPLOYMENT IN MASTER TO NOT INTERFER WITH TESTING FROM BRANCH htw-staging-server ***************************"
-export DEPLOYMENT_SHOULD_RUN=false
-
 
 echo "TRAVIS_TAG $TRAVIS_TAG"
 if [ -z "$TRAVIS_TAG" ]; then
@@ -43,7 +39,7 @@ else
   export DEPLOYMENT_TAG=$TRAVIS_TAG
 fi
 
-export DEPLOYMENT_DOCKER_ORGANISATION=imimapshtw
+export DEPLOYMENT_DOCKER_ORGANISATION=imimap
 
 echo "all environment checks passed:"
 echo "DEPLOYMENT_ENVIRONMENT: $DEPLOYMENT_ENVIRONMENT"

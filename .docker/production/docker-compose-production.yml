@@ -4,20 +4,21 @@ services:
     image: postgres:9.6.2-alpine
     container_name: postgresql-production
     environment:
-      - POSTGRES_USER=imimaps
       - POSTGRES_PASSWORD=imimaps
+      - POSTGRES_USER=imimaps
       - POSTGRES_DB=imimaps
     ports:
       - 5432:5432
     volumes:
       - ./postgresql/data:/var/lib/postgresql/data
-
+    restart: always    
+    
   imimaps:
     image: imimapshtw/production:${TAG}
     container_name: imimaps-production
     environment:
-      - POSTGRES_USER=imimaps
       - POSTGRES_PASSWORD=imimaps
+      - POSTGRES_USER=imimaps
       - POSTGRES_DB=imimaps
     depends_on:
       - postgresql
@@ -26,4 +27,5 @@ services:
     ports:
       - 4000:80
     volumes:
-      - ./rails/public/uploads:/usr/src/app/public/uploads
+      - ./rails/public:/usr/src/app/public
+    restart: always  

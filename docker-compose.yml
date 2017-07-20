@@ -1,0 +1,32 @@
+version: '2'
+services:
+  postgresql:
+    image: postgres:9.6.2-alpine
+    container_name: postgresql
+    environment:
+      - POSTGRES_PASSWORD=imimap
+      - POSTGRES_USER=imi_map
+      - POSTGRES_DB=imi_map_production
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgresql/data:/var/lib/postgresql/data
+    restart: always 
+
+  imimap:
+    image: imimap/imimap:${TAG}
+    container_name: imimap
+    environment:
+      - POSTGRES_PASSWORD=imimap
+      - POSTGRES_USER=imi_map
+      - POSTGRES_DB=imi_map_production
+      - SECRET_KEY_BASE=${SECRET_KEY_BASE}
+    depends_on:
+      - postgresql
+    links:
+      - postgresql
+    ports:
+      - 4000:80
+    volumes:
+      - ./rails/public:/usr/src/app/public
+    restart: always 

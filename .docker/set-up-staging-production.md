@@ -1,6 +1,57 @@
 
 # Setup der Deployment Pipeline
 
+## Testing the production image locally
+
+You can either test an image that is available from docker hub or
+build an image yourself. IMI-Map Images are named
+
+   imimap/imimap:<tag>
+
+in either case, you need to set the TAG environment variable:
+
+    export TAG=<tag you want to use, eg. local>
+
+you also need to set SECRET_TOKEN
+
+    export SECRET_TOKEN=<secret>
+
+you can generate a secret token with
+
+    rake secret
+
+to build the image:
+
+    docker-compose build
+
+### running the image
+
+- copy Dockerfile, docker-compose.yml (and docker-entrypoint.sh) into a seperate repository, e.g. production. Edit docker-compose.yml and add the environment variable RAILS_SERVE_STATIC_FILES=true to the imimap service (otherwise the assets wont be served, this is done by ngnix on the production server and run
+
+    docker-compose up
+
+After that, set up your database, if not already in place.
+
+## Database setup
+
+### Initial Database setup
+
+If IMI-Map is set up on a new machine, the database needs to be created.
+After the Container has started, run:
+
+    psql --set ON_ERROR_STOP=on  -h localhost -U imi_map imi_map_production < imi-maps.pgdump
+
+on the machine to import a database dump in imi-maps.pgdump. If necessary, delete the database files completely - they will be recreated when the docker image is started.
+
+The database is mounted to ./postgres from where docker-compose is run.
+
+Perform a database migration:
+
+    docker-compose exec imimaps bundle exec rake db:migrate
+
+    (note that TAG and SECRET_TOKEN need to be set to run docker-compose)
+
+
 ### Github setup
 Restrictions on Master Branch are set via github branch configuration page
  https://github.com/imimaps/imimaps/settings/branches/master
@@ -110,18 +161,19 @@ dabei wird das Kommando zum entschlÃ¼sseln generiert, das in .travis.yml eingefÃ
 # to test this script: put id_rsa keys in root (don't forget to delete them later!)
 # and set the following environment variables:
 
-export IMIMAPS_ENVIRONMENT=docker  # set by travis build matrix in .travis.yml
+export DOCKER_USERNAME=imimap # set by secret env variables in .travis.yml
+export DOCKER_PASSWORD=<put here> # set by secret env variables in .travis.yml  
+export IMIMAPS_ENVIRONMENT=docker # set by travis build matrix in .travis.yml
 export DEPLOYMENT_PIPELINE=HTW # set by travis via repository settings. If you have a fork, this can be used to disable deployment attempts.
-export DOCKER_USERNAME=imimapshtw # set by secret env variables in .travis.yml
-export DOCKER_PASSWORD=<put here>
+export TRAVIS_COMMIT=$(git log --pretty=format:'%h' -n 1)
+export TRAVIS_BRANCH=docker
 
 # for staging
 export TRAVIS_BRANCH=master # automatically set by travis
-export DEPLOYMENT_ENVIRONMENT=staging
-TRAVIS_COMMIT=321xyz
+export TRAVIS_COMMIT=$(git log --pretty=format:'%h' -n 1)
+
 
 
 # for production
 export TRAVIS_TAG=0.0.5 # automatically set by travis
 export TRAVIS_BRANCH=0.0.5 # automatically set by travis
-export DEPLOYMENT_ENVIRONMENT=production
