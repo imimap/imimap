@@ -39,11 +39,12 @@ module CICD
 
       # copy files for the environment to root, execute block, clean up when done
       def in_environment(environment, *extra_files)
-        environment_files = [
-          "docker-compose-#{environment}.yml",
-         'docker-entrypoint.sh',
-         'Dockerfile'
-        ].concat(extra_files)
+        environment_files_delete = ["docker-compose-#{environment}.yml"]
+        environment_files_checkout = ['docker-entrypoint.sh',
+        'Dockerfile']
+        environment_files = environment_files_delete + environment_files_checkout
+        #.concat(extra_files)
+        raise "extra_files deprecated #{extra_files}" if extra_files.size > 0
 
         environment_files.each do |file|
           `cp #{path('.docker', environment.to_s, file)} #{File.dirname(File.expand_path(File.join(__FILE__, '..')))}`
@@ -53,7 +54,11 @@ module CICD
           yield
         rescue
         ensure
-          environment_files.each do |file|
+          # some more complicated cleanup before all this is deleted      
+          environment_files_delete.each do |file|
+            `rm #{path(file)}`
+          end
+          environment_files_checkout.each do |file|
             `git checkout #{path(file)}`
           end
         end
