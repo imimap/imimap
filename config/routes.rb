@@ -3,7 +3,15 @@ ImiMaps::Application.routes.draw do
   get "password_resets/new"
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+
     devise_for :users
+
+    devise_scope :user do
+
+
+
+      #match '/sessions/user', to: 'devise/sessions#create', via: :post
+
 
     resources :internships
 
@@ -25,7 +33,7 @@ ImiMaps::Application.routes.draw do
 
     # resources :location, :only => [:create, :destroy]
 
-    resources :sessions, :only => [:destroy, :create, :new]
+    # resources :sessions, :only => [:destroy, :create, :new]
 
     resources :user_comments, :only => [:destroy, :update, :create, :new]
 
@@ -43,20 +51,20 @@ ImiMaps::Application.routes.draw do
 
     resources :errors, :only => [:not_found]
 
-		root to: 'sessions#new'
 
     # get 'signup', to: 'users#new', as: 'signup'
-    # get 'login', to: 'sessions#new', as: 'login'
-    # get 'logout', to: 'sessions#destroy', as: 'logout'
+    get 'login', to: 'devise/sessions#create', as: 'login'
+    get 'logout', to: 'devise/sessions#destroy', as: 'logout'
 
     match "/404", :to => "errors#not_found", :via => :all
     match "/500", :to => "errors#internal_server_error", :via => :all
 
-	end
+    end
+  end
+  root to: 'overview#index'
 
   #root to: 'sessions#new'
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
 
