@@ -215,7 +215,7 @@ Devise.setup do |config|
   # config.navigational_formats = ["*/*", :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
-  config.sign_out_via = :delete
+  # config.sign_out_via = :delete
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
@@ -228,7 +228,7 @@ Devise.setup do |config|
   #
   config.warden do |manager|
     manager.strategies.add(:ldap_authenticatable, Devise::Strategies::LdapAuthenticatable)
-    manager.default_strategies(:scope => :user).unshift :ldap_authenticatable
+    # manager.default_strategies(:scope => :user).unshift :ldap_authenticatable
   end
 
   # ==> Mountable engine configurations

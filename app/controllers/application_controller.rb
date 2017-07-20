@@ -1,13 +1,23 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-
   before_filter :set_locale
 
-private
+    # def authorize
+    #   if !user_signed_in?
+    #     :authenticate_user!
+    #   end
 
-    def authorize
-      redirect_to new_user_session_path if current_user.nil?
+
+  def authenticate_active_admin_user!
+    authenticate_user!
+    unless current_user.superuser?
+      flash[:alert] = "Unauthorized Access!"
+      redirect_to root_path
     end
+  end
+
+     # redirect_to new_user_session_path if current_user.nil?
+
 
     def set_locale
       I18n.locale = params[:locale] || I18n.default_locale
@@ -26,7 +36,7 @@ private
     #     nil
     # end
 
-    helper_method :current_user
+    # helper_method :current_user
 
     def get_programming_languages
       @programming_languages ||= ProgrammingLanguage.order(:name).map do |p|
