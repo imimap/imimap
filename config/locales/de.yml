@@ -33,10 +33,96 @@ de:
         last_sign_in_ip: Letzte IP-Adresse
         created_at: Erstellt am
         updated_at: Aktualisiert am
+      user:
+        publicmail: E-Mail veröffentlicht
+        mailnotif: Benachrichtigungen
+      reading_prof:
+        name: Name
+        internships: Praktikum
+      company: 
+        internships: Praktikum
+        industry: Industrie
+        number_employees: Angestelltenanzahl
+        website: Webseite
+        address: Adresse
+        main_language: Hauptsprache
+        phone: Telefon
+        blacklisted: schwarze Liste
+      internship:
+        company: Firma
+        start_date: Anfangsdatum
+        end_date: Enddatum
+        weekCount: Anzahl der Wochen
+        weekValidation: Validierung
+        operational_area: Orientierung
+        tasks: Aufgaben
+        supervisor_name: Betreuername
+        supervisor_email: E-Mail des Betreuers
+        registration_state: Regisstrierungsstatus
+        payment_state: Bezahlungsstatus
+        contract_state: Vertragsstatus
+        internship_state: Praktikumsstatus
+        comment: Kommentar
+        semester: Semester
+        certificate_to_prof: Praktikumsnachweis an Prof
+        certificate_signed_by_prof: Praktikumsnachweis unterschrieben von Prof
+        certificate_signed_by_internship_officer: Praktikumsnachweis unterschrieben von Betreuer/in
+        report_state: Berichtstatus
+        certificate_state: Nachweisstatus
+        reading_prof: Prof
+      programming_language:
+        internships: Praktika
+      internship_offer:
+        body: Beschreibung
+        created_at: Erstellt am
+        updated_at: Ergänzt am
+      orientation:
+        internships: Praktika
+      semester:
+        internships: Praktika
+      student:
+        internships: Praktika
+        enrolment_number: Matrikel
+        last_name: Nachname
+        first_name: Vorname
+        birthday: Geburtsdatum
+        birthplace: Geburtsort
+
     models:
       admin_user:
         one: Administrator
         other: Administratoren
+      comment: 
+        one: Kommentar
+        other: Kommentare
+      internship:
+        one: Praktikum
+        other: Praktika
+      company:
+        one: Firma
+        other: Firmen
+      internship_offer:
+        one: Praktikumsangebot
+        other: Praktikumsangebote
+      orientation:
+        one: Schwehrpunkt
+        other: Schwehrpunkte
+      programming_language:
+        one: Programmiersprache
+        other: Programmiersprachen
+      reading_prof:
+        one: Professor/in
+        other: Profs
+      semester:
+        one: Semester
+        other: Semester
+      student:
+        one: Student
+        other: Studenten
+      user:
+        one: Benutzer
+        other: Benutzern
+
     errors:
       models:
         user:
