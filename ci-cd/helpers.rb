@@ -54,7 +54,7 @@ module CICD
         rescue
         ensure
           environment_files.each do |file|
-            `rm #{path(file)}`
+            `git checkout #{path(file)}`
           end
         end
 
