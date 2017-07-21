@@ -49,7 +49,8 @@ ImiMaps::Application.routes.draw do
     get 'logout', to: 'sessions#destroy', as: 'logout'
 
     match "/404", :to => "errors#not_found", :via => :all
-    match "/500", :to => "errors#internal_server_error", :via => :all
+    # erros in production are shadowed by this action looking for its non-existent template
+   #  match "/500", :to => "errors#internal_server_error", :via => :all
 
 	end
 
