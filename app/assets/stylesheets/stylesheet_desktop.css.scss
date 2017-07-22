@@ -84,7 +84,7 @@ p {
 }
 
 .brand{
-  background: url(logo4.png) no-repeat;
+  background: image-url("logo4.png") no-repeat;
   background-size: 100%;
   width: 100px;
   height: 122px;
@@ -191,7 +191,7 @@ p {
 }
 
 .top-bar{
-  background: url(topbar-over.png);
+  background: image-url("topbar-over.png");
   background-repeat: no-repeat;
   background-size: 100%;
   width: 100%;
@@ -313,7 +313,7 @@ h3.comp-head {
 .htw_logo{
   height: 60px;
   width: 104px;
-  background: url(htw_logo.png);
+  background: image-url("htw_logo.png");
   background-size: 104px 60px;
   display: inline-block;
   margin-right: 10px;
@@ -322,7 +322,7 @@ h3.comp-head {
 .imi_logo{
   height: 60px;
   width: 66px;
-  background: url(imi_logo.png);
+  background: image-url("imi_logo.png");
   background-size: 66px 60px;
   display: inline-block;
 }
@@ -432,14 +432,14 @@ p{
   opacity: 0.9;
   position: inherit;
   width: 1258px;
-  background: url(content-shadow.png) no-repeat;
+  background: image-url("content-shadow.png") no-repeat;
   background-size: 1258px 210px;
   margin-top: -189px;
   margin-left: -43px;
 }
 
 .hand-pointer{
-  background: url(handh.png);
+  background: image-url("handh.png");
   background-repeat: no-repeat;
   height: 60px;
   width: 43px;
@@ -539,7 +539,7 @@ p{
 
 .msgbox {
   position: absolute;
-  background: url(arrow.png) no-repeat;
+  background: image-url("arrow.png") no-repeat;
   background-size: 220px 150px;
   height: 150px;
   width: 220px;
@@ -612,7 +612,7 @@ p{
     opacity: 0.9;
     position: inherit;
     width: 1012px;
-    background: url(content-shadow.png) no-repeat;
+    background: image-url("content-shadow.png") no-repeat;
     background-size: 1012px 210px;
     margin-top: -189px;
     margin-left: -35px;
@@ -638,7 +638,7 @@ p{
 
 .msgbox {
   position: absolute;
-  background: url(arrow.png) no-repeat;
+  background: image-url("arrow.png") no-repeat;
   background-size: 220px 150px;
   height: 150px;
   width: 220px;
