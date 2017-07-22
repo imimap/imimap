@@ -6,7 +6,16 @@ echo "TRAVIS_TAG [${TRAVIS_TAG}]"
 echo "TRAVIS_BRANCH [${TRAVIS_BRANCH}]"
 echo "TRAVIS_COMMIT [${TRAVIS_COMMIT}]"
 echo "TRAVIS [${TRAVIS}]"
+echo "DEPLOY_FROM_BRANCH [${DEPLOY_FROM_BRANCH}]"
 
+# if, for example for testing purposes, deployments should be triggered
+# from another branch than master, set the environment variable
+# DEPLOY_FROM_BRANCH within the travis projects settings
+# https://travis-ci.org/imimaps/imimaps/settings
+
+if [ -z "$DEPLOY_FROM_BRANCH"]; then
+  export DEPLOY_FROM_BRANCH=master
+fi
 
 if [ "$IMIMAPS_ENVIRONMENT" != "docker" ]; then
   echo "DEPLOYMENT: IMIMAPS_ENVIRONMENT is set to ${IMIMAPS_ENVIRONMENT}, skipping deployment"
@@ -18,14 +27,14 @@ if [ -z "$DEPLOYMENT_PIPELINE" ]; then
     export DEPLOYMENT_SHOULD_RUN=false
 else
 
-if [ "$DEPLOYMENT_ENVIRONMENT" == "staging" ] && [ "$TRAVIS_BRANCH" != "master" ]; then
+if [ "$DEPLOYMENT_ENVIRONMENT" == "staging" ] && [ "$TRAVIS_BRANCH" != "$DEPLOY_FROM_BRANCH" ]; then
   echo "DEPLOYMENT: staging will only deploy on master branch"
   export DEPLOYMENT_SHOULD_RUN=false
 else
 
 #if [ "$DEPLOYMENT_ENVIRONMENT" == "production" ] && [ "$TRAVIS_BRANCH" != "$TRAVIS_TAG" ]; then
 # TBD docker-deploy: change this back to above line
-if [ "$DEPLOYMENT_ENVIRONMENT" == "production" ] && [ "$TRAVIS_BRANCH" != "master" ]; then
+if [ "$DEPLOYMENT_ENVIRONMENT" == "production" ] && [ "$TRAVIS_BRANCH" != "$DEPLOY_FROM_BRANCH" ]; then
     echo "DEPLOYMENT deploys for every build to set up deployment" # TBD docker-deploy switch with this line:
     #echo "DEPLOYMENT: production will only deploy from tag"
     echo "DEPLOYMENT: got TRAVIS_BRANCH [$TRAVIS_BRANCH] and TRAVIS_TAG [$TRAVIS_TAG]"
