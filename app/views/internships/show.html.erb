@@ -33,19 +33,17 @@
             </div>
           </div>
 
-
           <div class="row-fluid" id="row-intern">
             <div class="span12">
              <div class="row" id="row2-intern">
               <div class="span3" id="intern-title">
-                <%= t "internships.attributes.programming_languages" %></div>
+                <%= t "internships.attributes.programming_language" %></div>
                 <div class="span8" id="intern-box">
-                 <%= @internship.programming_languages.map(&:name).join(", ") %>
+                <%= @internship.programming_languages.map(&:name).join(", ") %>
                </div>
              </div>
            </div>
          </div>
-
 
          <div class="row-fluid" id="row-intern">
           <div class="span12">
@@ -85,80 +83,77 @@
      </div>
    </div>
 
-
-   <!--- 
-
-   -->
-
-    <div class="row-fluid" id="row-intern">
-      <div class="span12">
-       <div class="row" id="row2-intern">
-        <div class="span3" id="intern-title">
-          <%= t "internships.attributes.student" %></div>
-          <div class="span8" id="intern-box">
-            <%= @internship.try(:student).try(:name) %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <% if @internship.student.try(:user).try(:publicmail) %>
-    <div class="row-fluid" id="row-intern">
-      <div class="span12">
-       <div class="row" id="row2-intern">
-        <div class="span3" id="intern-title">
-          <%= t "users.attributes.email" %></div>
-          <div class="span8" id="intern-box">
-            <%= @internship.student.user.email %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <% end %>
-
-    <div class="row-fluid" id="row-intern">
-      <div class="span12">
-       <div class="row" id="row2-intern">
-        <div class="span3" id="intern-title">
-          <%= t "internships.attributes.semester" %></div>
-          <div class="span8" id="intern-box">
-           <%= @internship.semester.name %>
-         </div>
-       </div>
-     </div>
-   </div>
-
-
    <div class="row-fluid" id="row-intern">
     <div class="span12">
      <div class="row" id="row2-intern">
       <div class="span3" id="intern-title">
-        <%= t "internships.attributes.recommend" %></div>
+        <%= t "internships.attributes.student" %></div>
         <div class="span8" id="intern-box">
-          <% if @internship.recommend %>
-          <i class="icon-thumbs-up icon-2x green-thumb"></i>
-          <% else %>
-          <i class="icon-thumbs-down icon-2x red-thumb"></i>
-          <% end %>
+          <%= @internship.try(:student).try(:name) %>
         </div>
       </div>
     </div>
   </div>
 
+  <div class="row-fluid" id="row-intern">
+    <div class="span12">
+     <div class="row" id="row2-intern">
+      <div class="span3" id="intern-title">
+        <%= t "users.attributes.email" %></div>
+        <div class="span8" id="intern-box">
+          <%= @internship.student.user.email %>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="row-fluid" id="row-intern">
     <div class="span12">
      <div class="row" id="row2-intern">
       <div class="span3" id="intern-title">
-        <%= t "internships.attributes.description" %></div>
+        <%= t "internships.attributes.semester" %></div>
         <div class="span8" id="intern-box">
-         <%= @internship.description %>
+         <%= @internship.semester.name %>
        </div>
      </div>
    </div>
- </div> 
+ </div>
 
-<div id="favorite">
+
+ <div class="row-fluid" id="row-intern">
+  <div class="span12">
+   <div class="row" id="row2-intern">
+    <div class="span3" id="intern-title">
+      <%= t "internships.attributes.recommend" %></div>
+      <div class="span8" id="intern-box">
+        <% if @internship.recommend %>
+        <i class="icon-thumbs-up icon-2x green-thumb"></i>
+        <% else %>
+        <i class="icon-thumbs-down icon-2x red-thumb"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row-fluid" id="row-intern">
+  <div class="span12">
+   <div class="row" id="row2-intern">
+    <div class="span3" id="intern-title">
+      <%= t "internships.attributes.description" %></div>
+      <div class="span8" id="intern-box">
+       <%= @internship.description %>
+     </div>
+   </div>
+ </div>
+</div> 
+
+<div id="edit">
+ <%= link_to({:controller => :internships, :action => :edit, :id => @internship.id}, class: "btn btn-danger") do %>
+ <i class = "icon-2x icon-large icon-white"> <%= t("buttons.edit") %> </i> 
+ <% end %>
+
+ <div id="favorite">
   <% if @favorite %>
   <%= link_to({:controller=>:favorite,:action=>:destroy, :id => @favorite.id}, {:method=>:delete, remote: true, class: "btn btn-danger"}) do %>
   <i class="icon-remove icon-large icon-white"> </i><%= t("favorite.delete") %>
@@ -332,9 +327,6 @@
       <%= @company.name %>
     </div>
 
-
-
-
     <div id="company-title">
       <%= t "companies.attributes.website"  %>
     </div>
@@ -370,12 +362,7 @@
     </div>
 
 
-    <div id="company-title">
-      <%= t "companies.attributes.rating"  %>
-    </div>
-    <div style="height: 5px;"  class="span8">
-      <%= render_stars(@company.average_rating,self) %>
-    </div>
+    
     <% if @other_internships.any? %>
     <div id="company-title">
       <%= t("internships.others")  %>

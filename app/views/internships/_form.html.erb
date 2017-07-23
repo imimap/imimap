@@ -25,34 +25,41 @@
     <div class="span4">
       <div class="field" id="field-titles">
         <%= f.label t "internships.attributes.company" %>
-        <%= f.select :company_id, Company.order(:name).map { |c| [c.name, c.id] },{}, class: 'chzn-select', disabled: true  %>
+        <%= f.select :company_id, Company.order(:name).map { |c| [c.name, c.id] },{}, class: 'chzn-select', disabled: false  %>
       </div>
     </div>
   </div>
 
   <div class="row">
     <div class="span4"> 
-      <div class="field" id="field-titles">
-        <%= f.label t("internships.attributes.salary") + " € / " + t("unit.month") %><br />
-        <%= f.text_field :salary %>
-      </div>
-    </div>
-    <div class="span4">
-      <div class="field" id="field-titles">
-        <%= f.label t("internships.attributes.working_hours") + " / " + t("unit.week") %><br />
-        <%= f.text_field :working_hours %>
-      </div>
-    </div>
-    <div class="span2"> 
      <div class="field" id="field-titles">
       <%= f.label t "internships.attributes.programming_language"  %><br />
       <%= f.select :programming_language_ids, @programming_languages, {}, { :multiple => true, class: 'chzn-select'} %>
     </div>
+  </div>
 
+  <div class="span4"> 
+   <div class="field" id="field-titles">
+    <%= f.label t "internships.attributes.orientation"  %><br />
+    <%= f.select :orientation, @orientations, {}, { :multiple => true, class: 'chzn-select'} %>
   </div>
 </div>
+</div>
 
-
+<div class="row">
+  <div class="span4"> 
+    <div class="field" id="field-titles">
+      <%= f.label t("internships.attributes.salary") + " € / " + t("unit.month") %><br />
+      <%= f.text_field :salary %>
+    </div>
+  </div>
+  <div class="span4">
+    <div class="field" id="field-titles">
+      <%= f.label t("internships.attributes.working_hours") + " / " + t("unit.week") %><br />
+      <%= f.text_field :working_hours %>
+    </div>
+  </div>
+</div>
 
 <div class="row">
   <div class="span4"> 
