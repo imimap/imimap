@@ -12,8 +12,8 @@ describe "ActiveAdmin create Internship" do
         visit "admin/internships"
       #  save_and_open_page
         expect(page).to have_content "Internships"
-        click_button "New Internship"
-        expect(page).to have_content "New Internship"
+      #  click_button "New Internship"
+      #  expect(page).to have_content "New Internship"
         # or: visit 'admin/internships/new?locale=en'
       end
     end
