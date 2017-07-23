@@ -5,3 +5,4 @@
 # sqlite databases
 /db/*.sqlite
 /public/uploads
+.git

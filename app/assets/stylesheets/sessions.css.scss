@@ -5,8 +5,8 @@
 body{
   background-color: #333333;
   color:#fff;
-  background: url(lines2.png);
-} 
+  background: image-url("lines2.png");
+}
 
 form{
     margin: 0 !important;
@@ -16,7 +16,7 @@ form{
   display: inline-block;
   margin:0 auto;
   width: auto;
-  z-index: 3; 
+  z-index: 3;
 }
 
 h3 p{
@@ -32,7 +32,7 @@ h3 p{
 .login_top{
   margin-top: 20px;
   margin:0 auto;
-  z-index: 3;  
+  z-index: 3;
 }
 
 .signin-icon{
@@ -47,16 +47,16 @@ h3 p{
     padding: 5px;
     margin-top: 5px;
     margin-right: 40px;
-    z-index: 3; 
+    z-index: 3;
 }
 
 #password{
     padding: 5px;
     margin-top: 5px;
-    z-index: 3; 
+    z-index: 3;
 }
 
-#logo_w { 
+#logo_w {
     float: none;
     height: 130px;
     position: absolute;
@@ -77,21 +77,21 @@ h3 p{
 }
 
 .tri-line {
-  width:100%; 
-  height: 20px; 
-  background: url(triangle1.png); 
+  width:100%;
+  height: 20px;
+  background: image-url("triangle1.png");
   background-repeat: repeat-x;
-  position: absolute; 
+  position: absolute;
   top: 79px;
   z-index: 4;
 }
 
 .tri-line2 {
-  width:100%; 
-  height: 20px; 
-  background: url(triangle.png); 
+  width:100%;
+  height: 20px;
+  background: image-url("triangle.png");
   background-repeat: repeat-x;
-  position: absolute; 
+  position: absolute;
   bottom: 15px;
   z-index: 4;
 }
@@ -144,16 +144,16 @@ h3 p{
 }
 
 /* ################################################################ TABLET ################################################################ */
-@media (min-width: 480px) and (max-width: 979px) { 
-  
+@media (min-width: 480px) and (max-width: 979px) {
+
 body{
-  background: url(bg.gif);
+  background: image-url("bg.gif");
   text-align: center;
   color: #000 !important;
 }
 
 a{
- color: rgb(139, 185, 0) !important; 
+ color: rgb(139, 185, 0) !important;
 }
 
 #logo_p{
@@ -221,7 +221,7 @@ a{
 
 #logo_res{
   position: absolute;
-  background: url(logo.png);
+  background: image-url("logo.png");
   width: 150px;
   height: 100px;
   background-size: 150px 100px;
@@ -244,9 +244,9 @@ a{
 
 /* ################################################################ MOBILE ################################################################ */
 @media (max-width: 480px) {
-  
+
 body{
-  background: url(bg.gif);
+  background: image-url("bg.gif");
   text-align: center;
   color: #000 !important;
 }
@@ -292,7 +292,7 @@ body{
 }
 
 a{
-  color: rgb(139, 185, 0) !important; 
+  color: rgb(139, 185, 0) !important;
 }
 
 .lost-pswd {
@@ -320,7 +320,7 @@ a{
 
 #logo_res{
   position: absolute;
-  background: url(logo.png);
+  background: image-url("logo.png");
   width: 150px;
   height: 100px;
   background-size: 150px 100px;

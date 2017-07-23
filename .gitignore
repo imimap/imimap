@@ -7,6 +7,8 @@
 # Ignore bundler config
 /.bundle
 
+# Ignore a local postgressql data directory
+postgresql/
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
@@ -42,15 +44,14 @@ cmd.exe
 # ignore code coverage reports
 coverage
 
-/docker-compose-*
-/docker-sync-*
-/start-development.sh
+
+
 /.env-*
-/Dockerfile
-/docker-entrypoint.sh
+
 playbook.retry
 /docker-sync.yml
 /.vagrant
+
 *.log
 
 # ignore metadata for rubymine
