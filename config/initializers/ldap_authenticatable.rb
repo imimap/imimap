@@ -33,8 +33,8 @@ module Devise
                   @user = User.create({email: email, password: password, student_id: @stud.id})
                   #password: password, password_confirmation: password
                 end
-                return success!(user)
-              end
+                return success!(@user)
+                end
               end
             end
           else

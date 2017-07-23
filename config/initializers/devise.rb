@@ -228,7 +228,7 @@ Devise.setup do |config|
   #
   config.warden do |manager|
     manager.strategies.add(:ldap_authenticatable, Devise::Strategies::LdapAuthenticatable)
-    # manager.default_strategies(:scope => :user).unshift :ldap_authenticatable
+    manager.default_strategies(:scope => :user).unshift :ldap_authenticatable
   end
 
   # ==> Mountable engine configurations
