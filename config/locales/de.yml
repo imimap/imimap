@@ -17,8 +17,12 @@ de:
   error:
     message: "Die Seite die Sie aufrufen wollten existiert nicht.<br/>Vielleicht haben Sie sich verschrieben oder die Seite ist umgezogen."
 
+
   activerecord:
     attributes:
+      user:
+        password: "Passwort"
+
       admin_user:
         id: ID
         email: E-Mail
@@ -131,6 +135,9 @@ de:
           attributes:
             password:
               confirmation: "Password confirmation does not match"
+              too_short: "ist zu kurz"
+            email:
+              taken: "ist schon belegt"
         internship:
           attributes:
             title:

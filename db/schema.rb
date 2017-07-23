@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170430090647) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20170719063910) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "resource_id",   null: false
@@ -27,9 +24,9 @@ ActiveRecord::Schema.define(version: 20170430090647) do
     t.string   "namespace"
   end
 
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -46,8 +43,8 @@ ActiveRecord::Schema.define(version: 20170430090647) do
     t.datetime "updated_at"
   end
 
-  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
-  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
   create_table "answers", force: :cascade do |t|
     t.text     "body"
@@ -67,7 +64,7 @@ ActiveRecord::Schema.define(version: 20170430090647) do
     t.datetime "updated_at"
   end
 
-  add_index "attachments", ["attachable_id"], name: "index_attachments_on_attachable_id", using: :btree
+  add_index "attachments", ["attachable_id"], name: "index_attachments_on_attachable_id"
 
   create_table "certificate_states", force: :cascade do |t|
     t.string   "name"
@@ -215,7 +212,7 @@ ActiveRecord::Schema.define(version: 20170430090647) do
     t.integer "internship_id"
   end
 
-  add_index "internships_programming_languages", ["programming_language_id", "internship_id"], name: "unique_index", unique: true, using: :btree
+  add_index "internships_programming_languages", ["programming_language_id", "internship_id"], name: "unique_index", unique: true
 
   create_table "locations", force: :cascade do |t|
     t.string   "street"
@@ -314,16 +311,29 @@ ActiveRecord::Schema.define(version: 20170430090647) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email"
+    t.string   "email",                  default: "",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "password_digest"
+    t.string   "old_pass_digesr"
     t.boolean  "publicmail"
     t.boolean  "mailnotif"
     t.integer  "student_id"
     t.string   "auth_token"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,     null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.boolean  "superuser",              default: false
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
