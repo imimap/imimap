@@ -2,11 +2,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :set_locale
 
-    def authorize
+  def authorize
+    if !user_signed_in?
       authenticate_active_admin_user!
-      # if !user_signed_in?
-      #   :authenticate_user!
-      end
+    end
+  end
 
 
   def authenticate_active_admin_user!

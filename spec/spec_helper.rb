@@ -5,7 +5,7 @@ require 'simplecov'
    add_filter 'app/admin'
 
    # ignore initializers
-   add_filter 'config/initializers'
+   # add_filter 'config/initializers'
 
    # ignore unused uploader
    add_filter 'app/uploaders/picture_uploader.rb'
@@ -21,6 +21,7 @@ require 'simplecov'
      return user
    end
  end
+
 module I18nTestHelper
   def t(label)
     I18n.t(label)

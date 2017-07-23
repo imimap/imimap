@@ -4,10 +4,10 @@ ImiMaps::Application.routes.draw do
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
 
-    devise_for :users
 
     devise_scope :user do
 
+      devise_for :users
 
 
       #match '/sessions/user', to: 'devise/sessions#create', via: :post

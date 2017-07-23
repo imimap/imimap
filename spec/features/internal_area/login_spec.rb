@@ -12,7 +12,7 @@ describe "Student Login" do
       end
 
       it "should proceed to log in" do
-        visit root_path
+        visit internships_path
         fill_in "user_email",  :with => @user.email
         fill_in "user_password",  :with => @user.password
         click_on('Log in')
