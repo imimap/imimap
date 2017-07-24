@@ -11,12 +11,13 @@ services:
       - 5432:5432
     volumes:
       - ./postgresql/data:/var/lib/postgresql/data
-    restart: always 
+    restart: always
 
   imimap:
     image: imimap/imimap:${TAG}
     container_name: imimap
     environment:
+      - TAG
       - POSTGRES_PASSWORD=imimap
       - POSTGRES_USER=imi_map
       - POSTGRES_DB=imi_map_production
@@ -29,4 +30,4 @@ services:
       - 4000:80
     volumes:
       - ./rails/public:/usr/src/app/public
-    restart: always 
+    restart: always

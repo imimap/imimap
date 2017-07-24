@@ -1,0 +1,30 @@
+version: '2'
+services:
+  postgresql:
+    image: postgres:9.6.2-alpine
+    container_name: postgresql-development
+    environment:
+      - APPLICATION=imimaps
+      - POSTGRES_PASSWORD=imimaps
+      - POSTGRES_USER=imimaps
+      - POSTGRES_DB=imimaps
+    ports:
+      - 5432:5432
+
+  imimaps:
+    build: .
+    image: imimaps:development
+    container_name: imimaps-development
+    environment:
+      - APPLICATION=imimaps
+      - POSTGRES_PASSWORD=imimaps
+      - POSTGRES_USER=imimaps
+      - POSTGRES_DB=imimaps
+    depends_on:
+      - postgresql
+    volumes:
+      - .:/usr/src/app
+    links:
+      - postgresql
+    ports:
+      - 8080:80
