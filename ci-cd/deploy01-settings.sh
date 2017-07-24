@@ -43,7 +43,7 @@ else
 
 echo "TRAVIS_TAG $TRAVIS_TAG"
 if [ -z "$TRAVIS_TAG" ]; then
-  export DEPLOYMENT_TAG=$(echo $TRAVIS_COMMIT | head -c 6)
+  export DEPLOYMENT_TAG=$(echo $TRAVIS_COMMIT | head -c 7)
 else
   export DEPLOYMENT_TAG=$TRAVIS_TAG
 fi
