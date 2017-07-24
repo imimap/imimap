@@ -1,25 +1,31 @@
-<%= gmaps4rails(@pins) %> 
+<%= stylesheet_link_tag    "leaflet", :media => "all" %>
+<%= javascript_include_tag "leaflet" %>
+
+<div id="mapid" style="height: 20vh"></div>
+    <script type="text/javascript">
+
+    var companiesInternship = JSON.parse('<%= @company_location_json %>')
+    var mymap = L.map('mapid').setView([52.4569311, 13.5242551], 2);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1IjoiaW1pbWFwIiwiYSI6ImNqNHppOG5jMzIzNm4yd3A4bG1obGRpbDAifQ.iXbEsLQvC940jdiIWgTfBw',
+        minZoom: 2, 
+        maxZoom: 16 
+    }).addTo(mymap);
+
+    for (var i = 0; i < companiesInternship.length; i++) {
+         marker = new L.marker([companiesInternship[i][1],companiesInternship[i][2]])
+        .bindPopup(companiesInternship[i][0])
+        .addTo(mymap);
+         }
+
+    </script>
+
 <%= yield :scripts %>
 
-<script type="text/javascript">
-/*Gmaps.map.callback = function(){
-for(var i = 0; i < Gmaps.map.markers.length; i++){
-          marker = Gmaps.map.markers[i];
-          google.maps.event.addListener(marker.serviceObject, 'click', 
-            (function(marker){
-              return function(){
-                if (Gmaps.map.serviceObject.getZoom() < 8) {
-                  Gmaps.map.serviceObject.setZoom(8);
-                }
-                Gmaps.map.setCenter(marker.getPosition());
-              }
-            })(marker)
-          )
-        }
-}*/
-</script>
-
 <br/>
+
 <div class="map-shadow"></div> 
 <%= form_tag(quicksearches_path, :method => 'get', :remote => true) do %>
 
@@ -37,7 +43,6 @@ for(var i = 0; i < Gmaps.map.markers.length; i++){
   </tr>
 </table>
 <% end %>
-
  
 <div class="row display_nonet display_none">
 <div class="span4" id="country_chart"></div>
@@ -94,8 +99,6 @@ for(var i = 0; i < Gmaps.map.markers.length; i++){
         <button href='' alt='Next' class='nextPage'>Next</button>
         <button href='' alt='Last' class='lastPage'>Last</button>
     </div>
-
-
 <script>
 
 $('table#paginated').each(function() {

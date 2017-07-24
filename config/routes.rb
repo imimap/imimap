@@ -9,13 +9,17 @@ ImiMaps::Application.routes.draw do
 
       devise_for :users
 
+      root to: 'startpage#new'
 
-      #match '/sessions/user', to: 'devise/sessions#create', via: :post
+      authenticated :user do
+        root 'overview#index', as: :authenticated_root
+      end
+      # match '/startpage/new', to: 'devise/sessions#create', as: "user" via: :post
 
 
     resources :internships
 
-    resources :internship_statistic, :only  => [:index, :create]
+    resources :internship_statistic, :only  => [:index]
 
     resources :companies
 
@@ -34,6 +38,7 @@ ImiMaps::Application.routes.draw do
     # resources :location, :only => [:create, :destroy]
 
     # resources :sessions, :only => [:destroy, :create, :new]
+      resources :startpage, :only  => [:create]
 
     resources :user_comments, :only => [:destroy, :update, :create, :new]
 
@@ -62,7 +67,6 @@ ImiMaps::Application.routes.draw do
 
     end
   end
-  root to: 'overview#index'
 
   #root to: 'sessions#new'
 
