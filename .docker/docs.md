@@ -596,10 +596,6 @@ Im [Routing](https://github.com/imimaps/imimaps/blob/master/config/routes.rb) de
 Viele Controller werden als RESTful Resources deklariert, obwohl sie dies überhaupt nicht sind.
 Es bietet sich an, RESTful Routes, die nicht genutzt werden, gar nicht erst anzulegen und generell ungenutzte Routes zu entfernen.
 
-### gmaps4rails
-Das `gmaps4rails`-Gem benötigt ein Update. In der aktuellen Version versucht das Gem im View-Layer der Applikation externe JavaScript- sowie CSS-Assets
-zu laden, welche nicht existieren. Das hat zur Folge, dass die GoogleMaps-Integration der IMI-Map aktuell nicht funktionieren kann.
-
 ### Rubocop
 Um den gewünschten Code-Stil zu forcieren, Code-Linting zu betreiben oder Empfehlungen bezüglich Code-Performance zu erhalten,
 wäre es eventuell sinnvoll, [Rubocop](http://rubocop.readthedocs.io/en/latest/cops/) in die Codebase einzubinden.

@@ -101,9 +101,9 @@ h3 p{
     float: right;
     height: 20px;
     position: relative;
-    top: -25px;
+    top: -3px;
     z-index: 7;
-    margin-right: 55px;
+    margin-right: 145px;
 }
 .lost-pswd a:hover{
     color:#bddb78;
@@ -340,3 +340,9 @@ a{
   top: 0px;
 }
 }
+#mapid { 
+  height: 80vh; 
+  width: 100vw;
+  z-index: 3;
+}
+

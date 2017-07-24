@@ -17,7 +17,6 @@ de:
   error:
     message: "Die Seite die Sie aufrufen wollten existiert nicht.<br/>Vielleicht haben Sie sich verschrieben oder die Seite ist umgezogen."
 
-
   activerecord:
     attributes:
       user:
@@ -43,7 +42,7 @@ de:
       reading_prof:
         name: Name
         internships: Praktikum
-      company: 
+      company:
         internships: Praktikum
         industry: Industrie
         number_employees: Angestelltenanzahl
@@ -91,14 +90,14 @@ de:
         first_name: Vorname
         birthday: Geburtsdatum
         birthplace: Geburtsort
-      comment: 
+      comment:
         created_at: Erstellt am
 
     models:
       admin_user:
         one: Administrator
         other: Administratoren
-      comment: 
+      comment:
         one: Kommentar
         other: Kommentare
       internship:
