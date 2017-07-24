@@ -25,10 +25,10 @@ module Devise
               # when succesfully connected to ldap but there are no user
               if ldap.open do |ldap|
                 ldap.search( :base => searchstring) do |entry|
-                  @surname = entry.sn
-                  @givenname = entry.givenname
-                  @email = entry.mail
-                  @enrolment_number = entry.uid
+                  @surname = (entry.sn).first
+                  @givenname = (entry.givenname).first
+                  @email = (entry.mail).first
+                  @enrolment_number = (entry.uid).first
                   @stud = Student.create({first_name: @givenname, last_name: @surname, enrolment_number: @enrolment_number, email: params[:user][:email]})
                   @user = User.create({email: email, password: password, student_id: @stud.id})
                   #password: password, password_confirmation: password
