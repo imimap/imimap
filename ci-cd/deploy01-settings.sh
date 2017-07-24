@@ -13,7 +13,7 @@ echo "DEPLOY_FROM_BRANCH [${DEPLOY_FROM_BRANCH}]"
 # DEPLOY_FROM_BRANCH within the travis projects settings
 # https://travis-ci.org/imimaps/imimaps/settings
 
-if [ -z "$DEPLOY_FROM_BRANCH"]; then
+if [ -z "$DEPLOY_FROM_BRANCH" ]; then
   export DEPLOY_FROM_BRANCH=master
 fi
 
