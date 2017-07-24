@@ -51,6 +51,7 @@ Perform a database migration:
 
     (note that TAG and SECRET_TOKEN need to be set to run docker-compose)
 
+It's also possible to skip applying the dump, and use seed data instead.
 
 ### Github setup
 Restrictions on Master Branch are set via github branch configuration page

@@ -13,7 +13,7 @@ echo "DEPLOY_FROM_BRANCH [${DEPLOY_FROM_BRANCH}]"
 # DEPLOY_FROM_BRANCH within the travis projects settings
 # https://travis-ci.org/imimaps/imimaps/settings
 
-if [ -z "$DEPLOY_FROM_BRANCH"]; then
+if [ -z "$DEPLOY_FROM_BRANCH" ]; then
   export DEPLOY_FROM_BRANCH=master
 fi
 
@@ -43,7 +43,7 @@ else
 
 echo "TRAVIS_TAG $TRAVIS_TAG"
 if [ -z "$TRAVIS_TAG" ]; then
-  export DEPLOYMENT_TAG=$(echo $TRAVIS_COMMIT | head -c 6)
+  export DEPLOYMENT_TAG=$(echo $TRAVIS_COMMIT | head -c 7)
 else
   export DEPLOYMENT_TAG=$TRAVIS_TAG
 fi
@@ -54,6 +54,7 @@ echo "all environment checks passed:"
 echo "DEPLOYMENT_ENVIRONMENT: $DEPLOYMENT_ENVIRONMENT"
 echo "DEPLOYMENT_TAG: $DEPLOYMENT_TAG"
 echo "DEPLOYMENT_DOCKER_ORGANISATION: $DEPLOYMENT_DOCKER_ORGANISATION"
+echo "DEPLOY_FROM_BRANCH: $DEPLOY_FROM_BRANCH"
 echo "DEPLOYMENT_SHOULD_RUN: $DEPLOYMENT_SHOULD_RUN"
 
 fi
