@@ -19,7 +19,7 @@ ImiMaps::Application.routes.draw do
 
     resources :internships
 
-    resources :internship_statistic, :only  => [:index, :create]
+    resources :internship_statistic, :only  => [:index]
 
     resources :companies
 
@@ -38,7 +38,7 @@ ImiMaps::Application.routes.draw do
     # resources :location, :only => [:create, :destroy]
 
     # resources :sessions, :only => [:destroy, :create, :new]
-      resources :startpage, :only  => [:create, :destroy, :new]
+      resources :startpage, :only  => [:create]
 
     resources :user_comments, :only => [:destroy, :update, :create, :new]
 

@@ -17,7 +17,6 @@ de:
   error:
     message: "Die Seite die Sie aufrufen wollten existiert nicht.<br/>Vielleicht haben Sie sich verschrieben oder die Seite ist umgezogen."
 
-
   activerecord:
     attributes:
       user:
