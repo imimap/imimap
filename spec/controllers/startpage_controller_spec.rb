@@ -35,29 +35,30 @@ RSpec.describe StartpageController, :type => :controller do
     end
   end
 
-  describe "POST #create" do
-    context 'without successful authentication' do
-      it "redirects to :back" do
-        request.env["HTTP_REFERER"] = '/'
-        post :create
-        expect(response).to redirect_to("/")
-      end
-    end
-
-    context 'with successful authentication' do
-      it "redirects to overview#index" do
-        user = create :user, password: "foofoofoo", password_confirmation: "foofoofoo", email: "foo@bar.com"
-        post :create, email: user.email, password: "foofoofoo"
-        expect(response).to redirect_to(:overview_index)
-      end
-    end
-  end
-
-  describe "GET #destroy" do
-    it "redirects to root_url" do
-      get :destroy
-      expect(response).to redirect_to(:root)
-    end
-  end
+  # there is no need in these actions anymore...
+  # describe "POST #create" do
+  #   context 'without successful authentication' do
+  #     it "redirects to :back" do
+  #       request.env["HTTP_REFERER"] = '/'
+  #       post :create
+  #       expect(response).to redirect_to("/")
+  #     end
+  #   end
+  #
+  #   context 'with successful authentication' do
+  #     it "redirects to overview#index" do
+  #       user = create :user, password: "foofoofoo", password_confirmation: "foofoofoo", email: "foo@bar.com"
+  #       post :create, email: user.email, password: "foofoofoo"
+  #       expect(response).to redirect_to(:overview_index)
+  #     end
+  #   end
+  # end
+  #
+  # describe "GET #destroy" do
+  #   it "redirects to root_url" do
+  #     get :destroy
+  #     expect(response).to redirect_to(:root)
+  #   end
+  # end
 
 end
