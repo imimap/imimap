@@ -1,6 +1,6 @@
 class InternshipsController < ApplicationController
   respond_to :html, :json
-  before_filter :get_programming_languages, :get_orientations, :only => [:edit, :update]
+  before_filter :get_programming_languages, :get_orientations, :only => [:new, :edit, :update]
   before_filter :authorize
   before_filter :authorize_internship, :only => [:edit, :update, :destroy]
   # GET /internships
@@ -72,7 +72,7 @@ class InternshipsController < ApplicationController
   end
 
   def create
-    @internship = Internship.new(internship_params)
+    @internship = Internship.new(params[:internship])
     @internship.user_id = current_user.id
     @internship.student_id = current_user.student_id
 
@@ -158,8 +158,9 @@ class InternshipsController < ApplicationController
   private
 
   def internship_params
-    params.require(:internship).permit(:title, :start_date, :end_date, :operational_area, :tasks, :programming_languages, 
-      :programming_language_ids, :orientation, :orientation_id, :salary, :working_hours, :supervisor_name, :supervisor_email, :internship_report, :recommend, :semester_id, :company_id)
+    params.require(:internship).permit(:title, :start_date, :end_date, :operational_area, :tasks, 
+      :programming_language_ids, :orientation_id, :salary, :working_hours, :living_costs, :supervisor_name, :supervisor_email, 
+      :internship_report, :recommend, :semester_id, :company_id)
   end
 
   def authorize_internship

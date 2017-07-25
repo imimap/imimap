@@ -82,7 +82,7 @@
  <%= link_to t("companies.createNewCompany"), new_company_path(returnToForm: true) %>
 </div>
 
-<h2>Internship specification</h2>
+<h2>Internship specifications</h2>
 
 <div class="row">
   <div class="span4"> 
@@ -131,30 +131,38 @@
   <div class="span4"> 
    <div class="field" id="field-titles">
     <%= f.label t "internships.attributes.programming_language" %><br />
-    <%= f.select :programming_languages, get_programming_languages, {}, { :multiple => true, class: 'chzn-select'} %>
+    <%= f.select :programming_language_ids, @programming_languages, {}, { :multiple => true, class: 'chzn-select'} %>
   </div>
 </div>
 
 <div class="span4"> 
  <div class="field" id="field-titles">
   <%= f.label t "internships.attributes.orientation" %><br />
-  <%= f.select :orientation, get_orientations, {}, class: 'chzn-select' %>
+  <%= f.select :orientation_id, @orientations, {}, class: 'chzn-select' %>
 </div>
 </div>
 </div>
 
 <div class="row">
-  <div class="span4"> 
+
+  <div class="span2">
+    <div class="field" id="field-titles">
+      <%= f.label t("internships.attributes.working_hours") + " / " + t("unit.week") %><br />
+      <%= f.text_field :working_hours %>
+    </div>
+  </div>
+
+  <div class="span2"> 
     <div class="field" id="field-titles">
       <%= f.label t("internships.attributes.salary") + " € / " + t("unit.month") %><br />
       <%= f.text_field :salary %>
     </div>
   </div>
   
-  <div class="span4">
+  <div class="span2">
     <div class="field" id="field-titles">
-      <%= f.label t("internships.attributes.working_hours") + " / " + t("unit.week") %><br />
-      <%= f.text_field :working_hours %>
+      <%= f.label t("internships.attributes.living_costs") + " € / " + t("unit.month") %><br />
+      <%= f.text_field :living_costs %>
     </div>
   </div>
 </div>  
@@ -200,6 +208,9 @@
   </div>
 </div>
 
+
+
+
 <div class="span2"> 
   <div class="field" id="field-titles">
     <%= f.label t "internships.attributes.recommend"  %>
@@ -213,7 +224,7 @@
     <%= f.hidden_field :recommend, value: @internship.recommend ? 1 : 0 %>
   </div>
 </div>
-<% end %>
+</div>
 
 <div class="row">
   <div class="pull-right"> 
@@ -224,4 +235,5 @@
   </div>
   <% end %>
 </div>
+<% end %>
 </div>

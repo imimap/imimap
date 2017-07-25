@@ -33,15 +33,14 @@
   <div class="row">
     <div class="span4"> 
      <div class="field" id="field-titles">
-      <%= f.label t "internships.attributes.programming_language"  %><br />
-      <%= f.select :programming_language_ids, @programming_languages, {}, { :multiple => true, class: 'chzn-select'} %>
+      <%= f.label t "internships.attributes.orientation" %><br />
+      <%= f.select :orientation_id, @orientations, {}, class: 'chzn-select' %>
     </div>
   </div>
-
   <div class="span4"> 
    <div class="field" id="field-titles">
-    <%= f.label t "internships.attributes.orientation"  %><br />
-    <%= f.select :orientation, @orientations, {}, { :multiple => true, class: 'chzn-select'} %>
+    <%= f.label t "internships.attributes.programming_language"  %><br />
+    <%= f.select :programming_language_ids, @programming_languages, {}, { :multiple => true, class: 'chzn-select'} %>
   </div>
 </div>
 </div>
@@ -104,9 +103,6 @@
   </div>
 </div>
 
-
-
-
 <br>
 <div class="row">
   <div class="span4"> 
@@ -139,7 +135,6 @@
   </div>
 </div>
 <% end %>
-
 
 
 <br>
