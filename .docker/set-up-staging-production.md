@@ -12,6 +12,9 @@ in either case, you need to set the TAG environment variable:
 
     export TAG=<tag you want to use, eg. local>
 
+The Tag is usually the hash of the commit you want to install, images that have been uploaded by travis to docker hub are here: https://hub.docker.com/r/imimap/imimap/tags/
+(you can also build your own image by using the commands used by the scripts, e.g. ci-cd/docker-build-and-push.sh)
+
 you also need to set SECRET_TOKEN
 
     export SECRET_TOKEN=<secret>
