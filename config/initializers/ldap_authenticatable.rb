@@ -16,30 +16,34 @@ module Devise
           ldap.port = 389
           ldap.auth  searchstring, password
 
+          begin
           if ldap.bind
             #when succesfully connected to LDAP and user already exists
             user = User.find_by_email(params[:user][:email])
             if (user != nil)
               return success!(user)
-            else
-              # when succesfully connected to ldap but there are no user
-              if ldap.open do |ldap|
-                ldap.search( :base => searchstring) do |entry|
-                  @surname = (entry.sn).first
-                  @givenname = (entry.givenname).first
-                  @email = (entry.mail).first
-                  @enrolment_number = (entry.uid).first
-                  @stud = Student.create({first_name: @givenname, last_name: @surname, enrolment_number: @enrolment_number, email: params[:user][:email]})
-                  @user = User.create({email: email, password: password, student_id: @stud.id})
-                  #password: password, password_confirmation: password
-                end
-                return success!(@user)
-                end
+            end
+
+            # when succesfully connected to ldap but there are no user
+            if ldap.open do |ldap|
+              ldap.search( :base => searchstring) do |entry|
+                @surname = entry.sn.first
+                @givenname = entry.givenname.first
+                @email = entry.maile.first
+                @enrolment_number = entry.uid.first
+                @stud = Student.create({first_name: @givenname, last_name: @surname, enrolment_number: @enrolment_number, email: params[:user][:email]})
+                @user = User.create({email: email, password: password, student_id: @stud.id})
+              end
+              return success!(@user)
               end
             end
           else
-            # if ldap connection failed
-            return fail(:invalid_login)
+          # if ldap connection failed
+          return fail!(ldap.get_operation_result.message)
+          end
+
+          rescue Errno::ECONNREFUSED, Net::LDAP::Error, Net::LDAP::ConnectionRefused => e
+            return fail!(e)
           end
         end
       end
@@ -57,6 +61,7 @@ module Devise
       def password
         params[:user][:password]
       end
+
     end
   end
 end
