@@ -64,6 +64,7 @@ de:
       add: "Kommentar hinzufügen"
       no_comments_yet: "Es gibt noch keine Kommentare."
       title_content: "Kommentare (%{count})"
+      created_at: Erstellt am
       errors:
         empty_text: "Der Kommentar wurde nicht gespeichert, da der Text fehlt."
 

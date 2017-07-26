@@ -68,7 +68,7 @@
   </div>
 </div>
 <div class="span4">
-  <div class="field" id="field-titles" style="text-transform: capitalize;">
+  <div class="field" id="field-titles">
     <%= f.label t "internships.attributes.semester"  %><br />
       <%= f.select :semester_id, get_semesters, {}, class: 'chzn-select' %>
   </div>
@@ -83,21 +83,21 @@
 
   <div class="field" id="field-titles">
     <%= rat.label t "internships.attributes.tasks_rating" %><br />
-    <div class="edit-rating" id="tasks" style="margin-top:-10px; margin-left:-20px;"><%= render_stars(@rating.tasks, self) %></div>
+    <div class="edit-rating" id="tasks"><%= render_stars(@rating.tasks, self) %></div>
     <%= rat.hidden_field :tasks %>
   </div>
 </div>
 <div class="span4">
   <div class="field" id="field-titles">
     <%= rat.label t "internships.attributes.training_rating" %><br />
-    <div class="edit-rating" id="training_success" style="margin-top:-10px; margin-left:-20px;"><%= render_stars(@rating.training_success, self) %></div>
+    <div class="edit-rating" id="training_success"><%= render_stars(@rating.training_success, self) %></div>
     <%= rat.hidden_field :training_success %>
   </div>
 </div>
 <div class="span2"> 
 <div class="field" id="field-titles">
     <%= rat.label t "internships.attributes.atmosphere_rating" %><br />
-    <div class="edit-rating" id="atmosphere" style="margin-top:-10px; margin-left:-20px;"><%= render_stars(@rating.atmosphere, self) %></div>
+    <div class="edit-rating" id="atmosphere"><%= render_stars(@rating.atmosphere, self) %></div>
     <%= rat.hidden_field :atmosphere %>
   </div>
 </div>
@@ -111,14 +111,14 @@
 <div class="span4"> 
 <div class="field" id="field-titles">
     <%= rat.label t "internships.attributes.supervision_rating" %><br />
-    <div class="edit-rating" id="supervision" style="margin-top:-10px; margin-left:-20px;"><%= render_stars(@rating.supervision, self) %></div>
+    <div class="edit-rating" id="supervision"><%= render_stars(@rating.supervision, self) %></div>
     <%= rat.hidden_field :supervision %>
   </div>
 </div>
 <div class="span4">
 <div class="field" id="field-titles" >
     <%= rat.label t "internships.attributes.appreciation_rating" %><br />
-    <div class="edit-rating" id="appreciation" style="margin-top:-10px; margin-left:-20px;"><%= render_stars(@rating.appreciation, self) %></div>
+    <div class="edit-rating" id="appreciation"><%= render_stars(@rating.appreciation, self) %></div>
     <%= rat.hidden_field :appreciation %>
   </div>
 </div>
@@ -126,7 +126,7 @@
 <div class="span2"> 
 <div class="field" id="field-titles">
     <%= f.label t "internships.attributes.recommend"  %>
-    <div class="edit-recommend1" style="margin-left:10px; cursor: pointer;">
+    <div class="edit-recommend1">
       <% if @internship.recommend %>
           <i id="recommend up" class="icon-thumbs-up green-thumb recommend-edit icon-2x"></i>
         <% else %>

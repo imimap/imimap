@@ -68,29 +68,28 @@ class Internship < ActiveRecord::Base
     valText = ""
     case weeksToValidate
       when 0..4
-        valText = I18n.t('internships.attributes.weekVal.optionA')
+        valText = "A" 
       when 4..17,5
-         valText = I18n.t('internships.attributes.weekVal.optionB')
+         valText = "B"
        else
-        valText =  I18n.t('internships.attributes.weekVal.optionC')
+        valText = "C"
     end
     return valText;
 
   end
 
   def weekValidationActAdm
-    weeksToValidate = weekCount
-    valText = ""
-    case weeksToValidate
-      when 0..4
-        valText = "Intership is less than 4 weeks"
-      when 4..17,5
-         valText = "Internship needs manual validation"
-       else
-        valText = "Internship is long enough"
-    end
-    return valText;
-
-  end
+     weeksToValidate = weekCount
+     valText = ""
+     case weeksToValidate
+       when 0..4
+         valText = "Intership is less than 4 weeks"
+       when 4..17,5
+          valText = "Internship needs manual validation"
+        else
+         valText = "Internship is long enough"
+      end
+      return valText;
+   end   
 
 end

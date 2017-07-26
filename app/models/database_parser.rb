@@ -12,7 +12,6 @@ class DatabaseParser
     "Neuseeland" => "New Zealand",
     "Schweden" => "Sweden",
     "Griechenland" => "Greece",
-    "Katar" => "Qatar",
     "Vereinigte Arabische Emirate" => "United Arab Emirates",
     "Schweiz" => "Switzerland",
     "Ukraine" => "Ukraine",

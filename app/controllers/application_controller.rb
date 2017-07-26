@@ -1,13 +1,24 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-
   before_filter :set_locale
 
-private
-
-    def authorize
-      redirect_to root_url if current_user.nil?
+  def authorize
+    if !user_signed_in?
+      authenticate_active_admin_user!
     end
+  end
+
+
+  def authenticate_active_admin_user!
+    authenticate_user!
+    unless current_user.superuser?
+      flash[:alert] = "Unauthorized Access!"
+      redirect_to authenticated_root
+    end
+  end
+
+     # redirect_to new_user_session_path if current_user.nil?
+
 
     def set_locale
       I18n.locale = params[:locale] || I18n.default_locale
@@ -17,15 +28,16 @@ private
       { locale: I18n.locale }
     end
 
-    def current_user
-      @current_user = User.find(session[:user_id]) if session[:user_id]
-      #@current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
-      rescue ActiveRecord::RecordNotFound
-        session.destroy
-        nil
-    end
+    # we use devise logic instead
+    # def current_user
+    #   @current_user = User.find(session[:user_id]) if session[:user_id]
+    #   #@current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
+    #   rescue ActiveRecord::RecordNotFound
+    #     session.destroy
+    #     nil
+    # end
 
-    helper_method :current_user
+    # helper_method :current_user
 
     def get_programming_languages
       @programming_languages ||= ProgrammingLanguage.order(:name).map do |p|

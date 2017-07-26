@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '~> 4.2.8'
 gem 'carrierwave'
 gem 'geocoder'
-gem 'gmaps4rails'
 gem 'nested_form'
 gem "country_select"
 gem 'bootstrap-sass', '~> 3.3.5'
@@ -43,7 +42,7 @@ gem "net-ldap"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'jquery-rails', '3.1.4'
+gem 'jquery-rails'
 
 
 # Gems used only for assets and not required

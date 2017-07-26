@@ -91,7 +91,7 @@
    <div class="row" id="row2-intern">
     <div class="span3" id="intern-title">
       <%= t "internships.attributes.tasks_rating" %></div>
-      <div class="span8" style="padding-top:7px">
+      <div class="span8">
          <%= render_stars @internship.internship_rating.tasks, self %>
       <div class="span8">
       </div>
@@ -104,7 +104,7 @@
    <div class="row" id="row2-intern">
     <div class="span3" id="intern-title">
       <%= t "internships.attributes.training_rating" %></div>
-      <div class="span8" style="padding-top:7px">
+      <div class="span8">
         <%= render_stars @internship.internship_rating.training_success, self %>
       </div>
     </div>
@@ -116,7 +116,7 @@
    <div class="row" id="row2-intern">
     <div class="span3" id="intern-title">
       <%= t "internships.attributes.atmosphere_rating" %></div>
-      <div class="span8" style="padding-top:7px">
+      <div class="span8">
         <%= render_stars @internship.internship_rating.atmosphere, self %>
       </div>
     </div>
@@ -128,7 +128,7 @@
    <div class="row" id="row2-intern">
     <div class="span3" id="intern-title">
       <%= t "internships.attributes.supervision_rating" %></div>
-      <div class="span8" style="padding-top:7px">
+      <div class="span8">
         <%= render_stars @internship.internship_rating.supervision, self %>
     </div>
     </div>
@@ -139,7 +139,7 @@
    <div class="row" id="row2-intern">
     <div class="span3" id="intern-title">
       <%= t "internships.attributes.appreciation_rating" %></div>
-      <div class="span8" style="padding-top:7px">
+      <div class="span8">
         <%= render_stars @internship.internship_rating.appreciation,self %>
       </div>
     </div>
@@ -232,7 +232,13 @@
       <div class="span3" id="intern-title">
         <%= t "internships.attributes.weekValidation" %></div>
           <div class="span8" id="intern-box">
-            <%= @internship.weekValidation %>
+            <% if @internship.weekValidation == "A" %>
+              <%= t "internships.attributes.weekVal.optionA"%>
+            <% elsif @internship.weekValidation == "B"  %>
+              <%= t "internships.attributes.weekVal.optionB"%> 
+            <% else %>
+               <%= t "internships.attributes.weekVal.optionC"%> 
+            <% end %>
           </div>    
         </div>
       </div>
@@ -247,10 +253,10 @@
                   <% else %>
                   <%= link_to({:controller=>:favorite,:action=>:create, :internship_id => @internship.id, :user_id => current_user.id}, {:method=>:post, remote: true, class: "btn btn-success"}) do %>
                   <i class="icon-heart icon-large icon-white"> </i><%= t("favorite.add") %>
-                <% end %>
+                   <br/>
+               <% end %>
                     <% end %>
                   </div>
-                  <br/>
 
                   <% if @internship.attachments.present? %>
                   <b><%= t "internships.attributes.pictures" %> :</b></b>
@@ -395,12 +401,6 @@
                 </div>
               </div>
 
-
-
-
-            <%= gmaps(:map_options => { :container_class => "map-intern display_none display_nonet", :id => "map3", :draggable => true, :auto_zoom => false, :zoom => 6, :mapTypeControl => false,} , :markers => { "data" => @pins},) %>
-            <%= yield :scripts %>
-
             <div class="greenline display_none display_nonet"></div>
 
             <div class="container-right-text">
@@ -412,9 +412,7 @@
               <%= @company.name %>
             </div>
 
-
-
-
+            
              <div id="company-title">
               <%= t "companies.attributes.website"  %>
             </div>
@@ -453,7 +451,7 @@
              <div id="company-title">
               <%= t "companies.attributes.rating"  %>
             </div>
-            <div style="height: 5px;"  class="span8">
+            <div class="span8">
               <%= render_stars(@company.average_rating,self) %>
             </div>
             <% if @other_internships.any? %>

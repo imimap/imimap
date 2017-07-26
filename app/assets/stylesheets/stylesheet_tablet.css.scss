@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@media (min-width: 481px) and (max-width: 979px) { 
+@media (min-width: 481px) and (max-width: 979px) {
 
 body{
   font-family: 'Merriweather Sans', sans-serif;
@@ -78,7 +78,7 @@ a{
 .htw_logo{
   height: 60px;
   width: 104px;
-  background: url(htw_logo.png);
+  background: image-url("htw_logo.png");
   background-size: 104px 60px;
   display: inline-block;
   margin-right: 10px;
@@ -87,7 +87,7 @@ a{
 .imi_logo{
   height: 60px;
   width: 66px;
-  background: url(imi_logo.png);
+  background: image-url("imi_logo.png");
   background-size: 66px 60px;
   display: inline-block;
 }
@@ -113,7 +113,7 @@ a{
 }
 
 .search-table{
-  background-color:#333333; 
+  background-color:#333333;
   color:#e3e5e1;
 }
 
@@ -274,4 +274,3 @@ a{
 }
 
 }
-

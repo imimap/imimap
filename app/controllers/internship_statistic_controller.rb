@@ -6,12 +6,12 @@ class InternshipStatisticController < ApplicationController
     @semesters = Semester.all
     if params[:semester_id] == nil
       @semester_id = Semester.last.id
-    else  
+    else
       @semester_id = params[:semester_id]
-    end  
+    end
   end
 
   def create
     redirect_to action: "index", semester_id: params[:semester_id]
-  end 
+  end
 end
