@@ -1,7 +1,8 @@
-<div class="row">
-  <!-- Column Chart -->
-  <div class="col-xs-6">
-    <h3>Total Visits Per Country</h3>
-    <%= column_chart Company.group(:country).count%>
-  </div>
-</div>
+<h3><%= t"internships.statistic" %></h3>
+<%= form_tag "/de/internship_statistic" do |f| %>
+    <%= select_tag(:semester_id, options_for_select(Semester.all.map { |s| [s.name, s.id] })) %>
+    <%= submit_tag("Search") %>
+    <% end %>
+
+<div class="col-xs-6" style="margin-top: 50px">
+  <%= column_chart Internship.joins(:company).where(semester_id: @semester_id).group(:country).count, colors: ["#77b900", "#999"] %>
