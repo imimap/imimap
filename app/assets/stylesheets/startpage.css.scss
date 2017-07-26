@@ -1,21 +1,4 @@
 
-.login-nav {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 60px;
-  width: 100vw;
-  z-index: 3;
-}
-
-.login-items {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 60px;
-  width: 100vw;
-}
-
 .logo {
   position: absolute;
   top: 20px;
@@ -59,13 +42,12 @@ form input[type=submit] {
 }
 
 .startmap {
-  position: absolute;
-  height: 100% !important;
+  height: 85% !important;
   width: 100vw !important;
   margin:0;
-  top: 0;
+  top: 100px;
   left: 0;
-  z-index: -3;
+  z-index: -1;
 }
 
 .login_footer {
