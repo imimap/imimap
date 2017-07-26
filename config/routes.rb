@@ -19,7 +19,7 @@ ImiMaps::Application.routes.draw do
 
     resources :internships
 
-    resources :internship_statistic, :only  => [:index]
+    resources :internship_statistic, :only  => [:index, :create]
 
     resources :companies
 

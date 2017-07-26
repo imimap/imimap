@@ -1,5 +1,17 @@
 class InternshipStatisticController < ApplicationController
   def index
-	    @internships = Internship.all
+    @internship = Internship.first
+    @internships = Internship.all
+    @companies = Company.all
+    @semesters = Semester.all
+    if params[:semester_id] == nil
+      @semester_id = Semester.last.id
+    else
+      @semester_id = params[:semester_id]
+    end
+  end
+
+  def create
+    redirect_to action: "index", semester_id: params[:semester_id]
   end
 end
