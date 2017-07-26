@@ -1,3 +1,31 @@
+* {
+  z-index: 0 !important;
+}
+
+.navbar.navbar-inverse.top-bar.login-nav {
+  z-index: 900 !important;
+}
+
+body {
+  height:100vh !important;
+  overflow: hidden !important;
+}
+
+.login-nav {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 100vw;
+}
+
+.login-items {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 100vw;
+}
 
 .logo {
   position: absolute;
@@ -35,19 +63,26 @@ form input[type=submit] {
   background-color: #538200;
 }
 
+#map-container {
+  position: relative;
+  z-index: -3;
+}
+
 #mapid {
   position: relative;
   height: 500px;
   width: 900px;
+  z-index: 3;
 }
 
 .startmap {
-  height: 85% !important;
+  position: absolute;
   width: 100vw !important;
-  margin:0;
-  top: 100px;
+  height:82vh !important;
+  overflow: hidden;
+  margin:14vh 0 4vh 0;
+  top: 0;
   left: 0;
-  z-index: -1;
 }
 
 .login_footer {
