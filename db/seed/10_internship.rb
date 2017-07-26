@@ -22,7 +22,7 @@ n=1
       internship_rating_id: intern_rating_id,
       working_hours: Faker::Number.number(2),
       living_costs: Faker::Number.number(3),
-      company_id: r_company_id ,
+      company_id: r_company_id,
       student_id: r_student_id,
       semester_id: r_semester_id,
       start_date: Faker::Date.backward(120),
