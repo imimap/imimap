@@ -1,4 +1,4 @@
-<h2 style="margin-bottom:35px;"><%= t "search.title" %></h2>
+<h2><%= t "search.title" %></h2>
 <%= form_tag(internships_path, :method => 'get', class: 'form2') do %>
 <div class="row-fluid">
 <div class="span4">
@@ -10,7 +10,7 @@
 <div class="span4" id="salary_text">
         <span><%= t "search.salary" %></span>
         <span id="salary_span"></span>
-        <input name="salary[]" type="text" id="salary" style="border: 0; color: #f6931f; font-weight: bold; display:none" readonly />
+        <input name="salary[]" type="text" id="salary" readonly />
         <div id="salary_slider">
         </div>
     </div>
@@ -27,7 +27,7 @@
 <div class="span4" id="living_costs_text">
         <span><%= t "search.livingCost"%></span>
         <span id="living_costs_span"></span>
-        <input name="living_costs[]" type="text" id="living_costs" style="border: 0; color: #f6931f; font-weight: bold; display:none" readonly />
+        <input name="living_costs[]" type="text" id="living_costs" readonly />
         <div id="living_costs_slider">
         </div>
     </div>
@@ -172,7 +172,7 @@
 <% end %>
   </tbody>
 </table>
-<!--<div style="width: 100%; height:10px; background-color:#4f4f4f; position: inherit; margin-top:-20px;"></div>-->
+
 </div>
 <!---  
 <% #if @internships_size > 5 %>
