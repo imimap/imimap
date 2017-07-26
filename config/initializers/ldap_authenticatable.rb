@@ -29,7 +29,7 @@ module Devise
               ldap.search( :base => searchstring) do |entry|
                 @surname = entry.sn.first
                 @givenname = entry.givenname.first
-                @email = entry.maile.first
+                @email = entry.mail.first
                 @enrolment_number = entry.uid.first
                 @stud = Student.create({first_name: @givenname, last_name: @surname, enrolment_number: @enrolment_number, email: params[:user][:email]})
                 @user = User.create({email: email, password: password, student_id: @stud.id})
@@ -42,7 +42,7 @@ module Devise
           return fail!(ldap.get_operation_result.message)
           end
 
-          rescue Errno::ECONNREFUSED, Net::LDAP::Error, Net::LDAP::ConnectionRefused => e
+          rescue Errno::ECONNREFUSED, Net::LDAP::Error => e
             return fail!(e)
           end
         end
