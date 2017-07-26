@@ -1,7 +1,7 @@
 <%= form_for(@user_creation_form, url: users_path, method: :post) do |f| %>
 <% if @user_creation_form.errors.any? %>
 <div id="error_explanation">
-  <h2 style="font-size:20px; color: #ff0000 !important;"><%= pluralize(@user_creation_form.errors.count, "error") %> prohibited this user from being saved:</h2>
+  <h2><%= pluralize(@user_creation_form.errors.count, "error") %> prohibited this user from being saved:</h2>
 
   <ul>
     <% @user_creation_form.errors.full_messages.each do |msg| %>
@@ -15,11 +15,11 @@
 <div id="form-block3">
 
  <% if @user_creation_form.student_exists? %>
- <p style="color:#b2c880 !important">
+ <p>
   <%= t "users.title1" %>
   </p>
 <% else %>
- <p style="color:#b2c880 !important">
+ <p>
   <%= t "users.title2" %>
  </p>
 <% end %>
@@ -27,7 +27,7 @@
 <div class="row">
 
   <div class="span5">
-           <h2 style="color:#80b900 !important"> Student Data </h2>
+           <h2> Student Data </h2>
  <div class="field" id="field-titles">
         <%= f.label t "students.attributes.first_name1" %><br />
         <%= f.text_field :first_name, :readonly => @user_creation_form.student_exists? %>
@@ -61,7 +61,7 @@
 
 
   <div class="span3">
-      <h2 style="color:#80b900 !important"> User Data </h2>
+      <h2> User Data </h2>
 
       <div class="field" id="field-titles">
         <%= f.label t "users.attributes.email1" %><br />
@@ -91,7 +91,7 @@
 </div>
 <div class="row">
   <div class="span1 offset7">
-   <div class="actions" style="float: right; margin-right: 46px; margin-top: 20px;">
+   <div class="actions">
     <%= f.submit t(params[:action] == 'new' ? 'users.create' : 'users.update'), class: "btn btn-success", id: 'submit' %>
   </div>
 
