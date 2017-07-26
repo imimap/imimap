@@ -1,40 +1,3 @@
-$('.mapcontainer').html('<%= escape_javascript( gmaps({:last_map => false}) ) %>');
-
-Gmaps.map = new Gmaps4RailsGoogle();
-Gmaps.load_map = function() {
-    Gmaps.map.initialize();
-    Gmaps.map.markers = <%=raw @pins %>;
-    Gmaps.map.markers_conf.do_clustering = true;
-    Gmaps.map.create_markers();
-    Gmaps.map.adjustMapToBounds();
-    Gmaps.map.callback = function()  {
-    	if (Gmaps.map.markers.length == 1) {
-         //only one marker, choose the zoom level you expect
-         Gmaps.map.serviceObject.setZoom(5);
-        }
-        else{
-         //more than one marker, let's auto_zoom
-         Gmaps.map.map_options.auto_zoom = true;
-         Gmaps.map.adjustMapToBounds();
-        };
-        
-        /*for(var i = 0; i < Gmaps.map.markers.length; i++){
-          marker = Gmaps.map.markers[i];
-          google.maps.event.addListener(marker.serviceObject, 'click', 
-            (function(marker){
-              return function(){
-                if (Gmaps.map.serviceObject.getZoom() < 8) {
-                  Gmaps.map.serviceObject.setZoom(8);
-                }
-                Gmaps.map.setCenter(marker.getPosition());
-              }
-            })(marker)
-          )
-        }*/
-      }
-     Gmaps.map.callback();
-};
-Gmaps.loadMaps();
 
 var country_choices = $("#country_chzn .search-choice");
 var semester_choices = $("#semester_chzn .search-choice");
@@ -118,7 +81,7 @@ $('#results_string').css("height","30px");
 else {
 $('#results_string').css("display","none");  
 }
-$('.table').html('<%= escape_javascript( render "table"  ) %>');
+$('.table').html('<%= escape_javascript( render "quicksearches/table"  ) %>');
 
 $('table#paginated').each(function() {
     var currentPage = 1;

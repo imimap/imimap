@@ -55,13 +55,14 @@ RSpec.describe PasswordResetsController, :type => :controller do
       end
     end
 
-    context 'given incorrect parameters' do
-      it 're-renders the edit template' do
-        @user.password_reset_sent_at = 1.hours.ago
-        @user.save
-        put :update, id: @user.password_reset_token, user: attributes_for(:user, email: nil)
-        expect(response).to render_template :edit
-      end
-    end
+    # we don't support pasword reset anymore
+    # context 'given incorrect parameters' do
+    #   it 're-renders the edit template' do
+    #     @user.password_reset_sent_at = 1.hours.ago
+    #     @user.save
+    #     put :update, id: @user.password_reset_token, user: attributes_for(:user, email: nil)
+    #     expect(response).to render_template :edit
+    #   end
+    # end
   end
 end

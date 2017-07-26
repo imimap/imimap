@@ -88,6 +88,7 @@ en:
     search: "Advanced search"
     overview: "Home"
     start: "Home"
+    statistic: "Statistics"
     exchange: "Internship offers"
     guide: "Guide"
     internship: "My Internship"
@@ -158,6 +159,7 @@ en:
       not_recommended: "Not Recommended"
 
   internships:
+    statistic: "Choose the semester and see where the students in this semester have been"
     my: "Meine Praktika"
     others: "Other internships done here"
     details: "Internship Details"
@@ -201,6 +203,12 @@ en:
       title: "Job Title"
       recommend: "Recommendation"
       internship_report: "Internship Report"
+      amountOfWeeks: "Total amount of weeks"
+      weekValidation: "Validation status"
+      weekVal:
+        optionA: "Intership is less than 4 weeks"
+        optionB: "Internship needs manual validation"
+        optionC: "Internship is long enough"  
 
 
   users:

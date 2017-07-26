@@ -1,8 +1,14 @@
+
+
 FactoryGirl.define do
+  sequence :email do |n|
+    "email#{n}@factory.com"
+  end
+
   factory :user do
-    email "foo@bar.com"
-    password "foofoo"
-    password_confirmation "foofoo"
+    email
+    password "foofoofoo123123"
+    password_confirmation "foofoofoo123123"
     publicmail true
     mailnotif true
     after(:build) do |user|
@@ -10,3 +16,4 @@ FactoryGirl.define do
     end
   end
 end
+

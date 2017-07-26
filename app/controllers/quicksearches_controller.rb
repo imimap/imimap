@@ -21,6 +21,8 @@ class QuicksearchesController < ApplicationController
       @internships = @quicksearch.internships(params)
     end
 
+    @internships = @internships.first(5)
+
     @internships.each do |i|
         i.programming_languages.each do |p|
           @language_ary << p
@@ -32,18 +34,6 @@ class QuicksearchesController < ApplicationController
     @orientations = @orientations_ary.uniq.map do |o| [o.name, o.id] end
 
     @companies = @internships.collect do |x| x.company end
-
-		@pins = Gmaps4rails.build_markers(@companies) do |company, marker |
-      if company.website
-        href =  if company.website.starts_with?'http'
-                company.website
-              else
-                "http://"+company.website
-              end
-      end
-      marker.infowindow ("<a href='/internships/#{company.internships.first.id}' style='font-weight:bold'>#{company.internships.first.title} at #{company.name}</a><p>Industry: #{company.industry}</p><p>Employees: #{company.number_employees}</p><a href='#{href}' target='_blank'>#{company.website}</a>")
-
-    end
 
     @semesters = @internships.collect do |x| x.semester end.map do |s|[s.name,s.id] end
 

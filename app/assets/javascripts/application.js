@@ -21,23 +21,21 @@
 //= require stupidtable.min
 //= require bootstrap
 //= require bootstrap.min
-// for gmaps4rails:
-// require underscore (was not found)
-//= require gmaps/google
+
 
 $(window).load(function () {
-      $(".alert-info").animate({opacity: 1.0}, 5000).fadeOut('slow');
+      // $(".alert-info").animate({opacity: 1.0}, 5000).fadeOut('slow');
 
       $("#close").click(function(){
-        $(".msgbox").fadeOut("400")
-      $.cookie('fadeOut', true);
-});
-
-    if($.cookie('fadeOut') == 'true'){
-        $('.msgbox').hide();
-    } else {
-        $('.msgbox').click();
-    }
+        $(".msgbox").fadeOut("400");
+        $.cookie('fadeOut', true);
+      });
+    // hide the message box if the close already clicked before
+    //  if($.cookie('fadeOut') == 'true'){
+     //   $(".msgbox").hide();
+    // } else {
+    //     $('.msgbox').click();
+    //  }
 
     $(".edit-rating .rating_star").click(function() {
       var val = $(this).attr('data-rating-id');

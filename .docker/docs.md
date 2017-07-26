@@ -33,6 +33,14 @@ Zum lokalen entwickeln muss folgende Software installiert werden:
 Die Applikation ist dann via [http://192.168.33.10](http://192.168.33.10) erreichbar. Die Migrations sowie Seeds der Datenbank
 sind bereits ausgeführt.
 
+# known vagrant errors
+Sometimes during start of vagrant on windows, all of the files in the environment get edited (added end of line symbols).
+
+To catch that, after vagrant up run: git diff
+if you see changes in lots of file just do a hard reset
+git reset —hard
+
+
 ## Setup mit Docker
 IMI-Maps läuft in Docker.
 Vorteil: Konfiguration wie auf Staging/Production Maschinen.
@@ -587,10 +595,6 @@ deutlich reduziert werden könnte und zum anderen, dass die Search-Queries deutl
 Im [Routing](https://github.com/imimaps/imimaps/blob/master/config/routes.rb) der IMI-Map befinden sich aktuell viele Routes, die nicht genutzt werden.
 Viele Controller werden als RESTful Resources deklariert, obwohl sie dies überhaupt nicht sind.
 Es bietet sich an, RESTful Routes, die nicht genutzt werden, gar nicht erst anzulegen und generell ungenutzte Routes zu entfernen.
-
-### gmaps4rails
-Das `gmaps4rails`-Gem benötigt ein Update. In der aktuellen Version versucht das Gem im View-Layer der Applikation externe JavaScript- sowie CSS-Assets
-zu laden, welche nicht existieren. Das hat zur Folge, dass die GoogleMaps-Integration der IMI-Map aktuell nicht funktionieren kann.
 
 ### Rubocop
 Um den gewünschten Code-Stil zu forcieren, Code-Linting zu betreiben oder Empfehlungen bezüglich Code-Performance zu erhalten,

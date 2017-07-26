@@ -11,19 +11,21 @@ services:
       - 5432:5432
     volumes:
       - ./postgresql/data:/var/lib/postgresql/data
-
+    restart: always    
+    
   imimaps:
     image: imimapshtw/staging:${TAG}
     container_name: imimaps-staging
-    depends_on:
-      - postgresql
     environment:
       - POSTGRES_PASSWORD=imimaps
       - POSTGRES_USER=imimaps
       - POSTGRES_DB=imimaps
+    depends_on:
+      - postgresql
     links:
       - postgresql
     ports:
       - 4000:80
     volumes:
-      - ./rails/public/uploads:/usr/src/app/public/uploads
+      - ./rails/public:/usr/src/app/public
+    restart: always  

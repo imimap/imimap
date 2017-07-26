@@ -14,7 +14,7 @@ class Company < ActiveRecord::Base
   geocoded_by :address
   # TBD: geocoding should only happen if necessary, see
   # https://github.com/alexreisner/geocoder#avoiding-unnecessary-api-requests
-  after_validation :geocode
+  after_validation :geocode, if: :address_changed?
   #acts_as_gmappable :process_geocoding => false
 
   #associations
@@ -43,4 +43,8 @@ class Company < ActiveRecord::Base
     r.to_f/size
   end
 
+  def address_changed?
+    street_changed? || city_changed? || zip_changed? || country_changed?
+  end
+  
 end

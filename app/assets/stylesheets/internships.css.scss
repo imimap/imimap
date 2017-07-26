@@ -22,9 +22,9 @@
 
 h3.comp-head {
   color: #ffffff !important;
-  margin-left:15px; 
-  font-variant: small-caps; 
-  font-size: 19px; 
+  margin-left:15px;
+  font-variant: small-caps;
+  font-size: 19px;
 }
 
 #company-title-text {
@@ -87,7 +87,7 @@ h2 {
 }
 
 .rating_star {
-  background: url('images/star.png') 0 0;
+  background: image-url('images/star.png') 0 0;
   width: 16px;
   height: 16px;
   display: block;
@@ -213,7 +213,7 @@ h2 {
 
 #table_top{
   position: absolute;
-  background: url(table-top.png);
+  background: image-url("table-top.png");
   height: 64px;
   width: 38px;
   margin-left: -38px;
@@ -255,7 +255,7 @@ h2 {
 }
 
 .table_inside ul, ol{
-    margin: 0px 0px 0px 0px !important;    
+    margin: 0px 0px 0px 0px !important;
 }
 
 .img_preview{
@@ -283,23 +283,23 @@ h2 {
   color: #fff;
 }
 
-#triangle_right { 
-  width: 0; 
-  height: 0; 
-  border-top: 20px solid #568501; 
-  border-left: 20px solid transparent; 
-  border-bottom: 20px solid #568501; 
+#triangle_right {
+  width: 0;
+  height: 0;
+  border-top: 20px solid #568501;
+  border-left: 20px solid transparent;
+  border-bottom: 20px solid #568501;
   position: absolute;
   top: 177px;
   margin-left: 1007px;
 }
 
-#triangle_left { 
-  width: 0; 
-  height: 0; 
-  border-top: 20px solid #568501; 
-  border-right: 20px solid transparent; 
-  border-bottom: 20px solid #568501; 
+#triangle_left {
+  width: 0;
+  height: 0;
+  border-top: 20px solid #568501;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid #568501;
   position: absolute;
   top: 177px;
   margin-left: 1150px;
@@ -329,6 +329,6 @@ h2 {
 }
 
 #field-titles {
-  line-height:1px; 
+  line-height:1px;
   margin-bottom:15px;
 }

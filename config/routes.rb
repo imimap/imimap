@@ -4,15 +4,28 @@ ImiMaps::Application.routes.draw do
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
 
+
+    devise_scope :user do
+
+      devise_for :users
+
+      root to: 'startpage#new'
+
+      authenticated :user do
+        root 'overview#index', as: :authenticated_root
+      end
+      # match '/startpage/new', to: 'devise/sessions#create', as: "user" via: :post
+
+
     resources :internships
+
+    resources :internship_statistic, :only  => [:index, :create]
 
     resources :companies
 
-    resources :users
+    resources :users, :only => [:edit, :show, :update, :create, :new]
 
     resources :user_verifications, only: [:new, :create]
-
-    resources :search, :only => [:index]
 
     resources :overview, :only => [:index]
 
@@ -20,52 +33,45 @@ ImiMaps::Application.routes.draw do
 
     resources :notifications, :only => [:destroy, :show]
 
-    resources :favorite, :only => [:create, :destroy]
+    resources :favorite, :only => [:create, :destroy, :index]
 
-    resources :location, :only => [:create, :destroy]
+    # resources :location, :only => [:create, :destroy]
 
-    resources :sessions
+    # resources :sessions, :only => [:destroy, :create, :new]
+      resources :startpage, :only  => [:create]
 
-    resources :user_comments
+    resources :user_comments, :only => [:destroy, :update, :create, :new]
 
-    resources :answers
+    resources :answers, :only => [:create, :update, :destroy]
 
     resources :general
-
-    resources :faq
-
-    resources :financing
-
-    resources :download
 
     resources :internship_searches
 
     resources :quicksearches, :only => [:index]
 
-    resources :companies_compare
+    resources :favorite_compare, :only => [:index]
 
-    resources :favorite, :only => [:index]
-
-    resources :favorite_compare
-
-    resources :password_resets
+    resources :password_resets, :only => [:edit, :update, :create, :new]
 
     resources :errors, :only => [:not_found]
 
-		root to: 'sessions#new'
 
-    get 'signup', to: 'users#new', as: 'signup'
-    get 'login', to: 'sessions#new', as: 'login'
-    get 'logout', to: 'sessions#destroy', as: 'logout'
+    # get 'signup', to: 'users#new', as: 'signup'
+    get 'login', to: 'devise/sessions#create', as: 'login'
+    get 'logout', to: 'devise/sessions#destroy', as: 'logout'
 
+    match "/404", :to => "errors#not_found", :via => :all
+    # erros in production are shadowed by this action looking for its non-existent template
+   #  match "/500", :to => "errors#internal_server_error", :via => :all
 
-	end
+    end
+  end
 
   get  'my_internship', to: 'internships#internshipData', as: 'my_internship'
 
   #root to: 'sessions#new'
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
 

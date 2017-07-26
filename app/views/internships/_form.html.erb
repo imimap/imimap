@@ -100,11 +100,13 @@
       <div class="edit-rating" id="atmosphere" style="margin-top:-10px; margin-left:-20px;"><%= render_stars(@rating.atmosphere, self) %></div>
       <%= rat.hidden_field :atmosphere %>
     </div>
+
   </div>
 </div>
 
 <br>
 <div class="row">
+
   <div class="span4"> 
     <div class="field" id="field-titles">
       <%= rat.label t "internships.attributes.supervision_rating" %><br />
@@ -118,6 +120,7 @@
       <div class="edit-rating" id="appreciation" style="margin-top:-10px; margin-left:-20px;"><%= render_stars(@rating.appreciation, self) %></div>
       <%= rat.hidden_field :appreciation %>
     </div>
+
   </div>
 
   <div class="span2"> 
@@ -126,6 +129,7 @@
       <div class="edit-recommend1" style="margin-left:10px; cursor: pointer;">
         <% if @internship.recommend %>
         <i id="recommend up" class="icon-thumbs-up green-thumb recommend-edit icon-2x"></i>
+
         <% else %>
         <i id="recommend down" class="icon-thumbs-down red-thumb recommend-edit icon-2x"></i>
         <% end %>
