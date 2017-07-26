@@ -231,7 +231,7 @@ de:
       company: "Firma"
       start_date: "Anfang"
       end_date: "Ende"
-      operational_area: "Einsatzstelle"
+      operational_area: "Einsatzbereich"
       tasks: "Aufgaben"
       tasks_rating: "Aufgaben"
       training_rating: "Lernerfolg"

@@ -148,6 +148,18 @@
  </div>
 </div> 
 
+<div class="row-fluid" id="row-intern">
+  <div class="span12">
+   <div class="row" id="row2-intern">
+    <div class="span3" id="intern-title">
+      <%= t "internships.attributes.tasks" %></div>
+      <div class="span8" id="intern-box">
+       <%= @internship.tasks %>
+     </div>
+   </div>
+ </div>
+</div> 
+
 <div id="edit">
  <%= link_to({:controller => :internships, :action => :edit, :id => @internship.id}, class: "btn btn-danger") do %>
  <i class = "icon-2x icon-large icon-white"> <%= t("buttons.edit") %> </i> 
@@ -330,10 +342,18 @@
     <div id="company-title">
       <%= t "companies.attributes.website"  %>
     </div>
+
+
     <div id="company-title-text">
       <%= link_to @company.website, url_with_protocol(@company.website) , target: "_blank" if @company.website %>
     </div>
 
+    <div id="company-title">
+      <%= t "companies.attributes.phone"  %>
+    </div>
+    <div id="company-title-text">
+      <%= @company.phone %>
+    </div>
 
 
     <div id="company-title">

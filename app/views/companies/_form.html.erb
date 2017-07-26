@@ -72,14 +72,24 @@
     <%= f.text_field :main_language %>
   </div>
 </div>
-<div class="span2"> 
+</div>
+
+<div class="row" style="margin-top:20px">
+<div class="span4"> 
   <div class="field" id="field-titles">
     <%= f.label t "companies.attributes.website" %><br />
     <%= f.text_field :website %>
   </div>
 </div>
-</div>
 
+
+<div class="span4"> 
+  <div class="field" id="field-titles">
+    <%= f.label t "companies.attributes.phone" %><br />
+    <%= f.number_field :phone %>
+  </div>
+</div>
+</div>
 
 
 <div class="row" style="margin-top:20px">
