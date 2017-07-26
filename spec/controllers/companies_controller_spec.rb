@@ -99,7 +99,7 @@ RSpec.describe CompaniesController, :type => :controller do
 
       it 'redirects to the show view ' do
         post :create, company: attributes_for(:company)
-        expect(response).to redirect_to Internship.new
+        expect(response).to redirect_to new_internship_path
       end
     end
 
