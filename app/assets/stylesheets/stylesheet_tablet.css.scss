@@ -10,6 +10,10 @@ body{
   padding-left: 0px !important;
 }
 
+  .navbar .nav.nav-top {
+    font-size: 0.9rem;
+  }
+
 a{
   color: #8bb900 !important;
 }
@@ -70,6 +74,8 @@ a{
 }
 
 .footer-text{
+  float: left;
+  max-width: 200px;
   font-size: 10px;
   display: inline-block;
   margin-right: 5px;
@@ -205,6 +211,10 @@ a{
   margin-left: 50%;
   left: -75px;
 }
+
+  .navbar .nav.nav-top {
+    font-size: 0.9rem;
+  }
 
 #salary_slider{
   margin-top: 10px;
