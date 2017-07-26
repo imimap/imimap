@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     authenticate_user!
     unless current_user.superuser?
       flash[:alert] = "Unauthorized Access!"
-      redirect_to root_path
+      redirect_to authenticated_root
     end
   end
 

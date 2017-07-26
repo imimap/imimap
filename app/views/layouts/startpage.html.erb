@@ -18,8 +18,8 @@
     <div class="login_top2">
 
       <div style="position:inherit;">
-        <img src="assets/plane0.gif" id="logo_p">
-        <img src="assets/logos.png" id="logo_w">
+        <%= image_tag "plane0.gif" %>
+        <%= image_tag "logos.png" %>
       </div>
 
       <div class="row login_top">
@@ -48,15 +48,15 @@
           <%= value %>
         </div>
     <% end %>
-    
+
     </div>
 
     <div class="display_none display_nonet"></div>
-    
+
     <!-- Leaflet Map -->
 
    <div id="mapid" style="height: 80vh; width: 100vw; z-index: 3;"></div>
-    <script type="text/javascript">  
+    <script type="text/javascript">
 
     var companiesInternship = JSON.parse('<%= @company_location_json %>')
     var mymap = L.map('mapid').setView([52.4569311, 13.5242551], 2);
@@ -64,10 +64,10 @@
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
         id: 'mapbox.streets',
         accessToken: 'pk.eyJ1IjoiaW1pbWFwIiwiYSI6ImNqNHppOG5jMzIzNm4yd3A4bG1obGRpbDAifQ.iXbEsLQvC940jdiIWgTfBw',
-        minZoom: 2, 
-        maxZoom: 16 
+        minZoom: 2,
+        maxZoom: 16
     }).addTo(mymap);
-   
+
 
     for (var i = 0; i < companiesInternship.length; i++) {
          marker = new L.marker([companiesInternship[i][1],companiesInternship[i][2]])
@@ -119,6 +119,6 @@
       </div>
     </div>
   </div>
-
+  <div class="footer-text"><%= render 'version/version' %> - Projekt im Studiengang Internationale Medieninformatik der HTW Berlin.</div>
 </body>
 </html>

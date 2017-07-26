@@ -186,6 +186,7 @@ n=1
 end
 
 InternshipOffer.create(title: "Java in Barcelona", body: "come to Barcelona and do some Java Programming with us!")
+
 User.destroy_all
-User.create!(password: "foofoofoo123123",  :password_confirmation => 'foofoofoo123123', email: "test@imimaps.com", student_id: 1)
+User.create!(email: "test@imimaps.com", student_id: 1,  :password => 'foofoofoo123123', :password_confirmation => 'foofoofoo123123', )
 User.create(:email => "user@imimaps.de", :password => 'foofoofoo123123', :password_confirmation => 'foofoofoo123123', student_id: 1)
