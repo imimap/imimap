@@ -11,7 +11,8 @@ Rails.application.configure do
   config.eager_load = true
 
   # Try to use ssl for everything on production
-  config.force_ssl = true
+  # config.force_ssl = true
+
 
 
   # Full error reports are disabled and caching is turned on.
