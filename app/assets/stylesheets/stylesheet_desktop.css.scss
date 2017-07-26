@@ -351,40 +351,6 @@ h3.comp-head {
     box-shadow: 0 0 5px #77b900;
 }
 
-#login-box{
-  background-color: #000000;
-  height: 180px;
-  padding-top:40px;
-  position: inherit;
-  width: 100%;
-  margin-top:6%;
-  z-index: 3;
-  opacity: 0.78;
-}
-
-.login_top{
-  float:right;
-  margin-top:11px;
-}
-
-.login_top2{
-  width:100%;
-  height: 80px;
-  background-color:#292929;
-  position: inherit;
-  top: 0px;
-  z-index: 3;
-}
-
-.login_top3{
-  width:100%;
-  height: 22px;
-  background-color:#292929;
-  position: fixed;
-  bottom: 0px;
-  z-index: 23;
-}
-
 p{
   color: #000 !important;
 }
@@ -431,11 +397,10 @@ p{
   margin-top: 0px;
   opacity: 0.9;
   position: inherit;
-  width: 1258px;
+  width: 100%;
   background: image-url("content-shadow.png") no-repeat;
-  background-size: 1258px 210px;
+  background-size: 900px 210px;
   margin-top: -189px;
-  margin-left: -43px;
 }
 
 .hand-pointer{
@@ -608,15 +573,9 @@ p{
 
 .map-shadow{
     height: 210px;
-    margin-top: 0px;
     opacity: 0.9;
-    position: inherit;
-    width: 1012px;
-    background: image-url("content-shadow.png") no-repeat;
-    background-size: 1012px 210px;
-    margin-top: -189px;
-    margin-left: -35px;
-    z-index: -1;
+    background: url("content-shadow.png") no-repeat;
+    z-index: -400;
 }
 
 .chzn-container{

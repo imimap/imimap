@@ -61,7 +61,6 @@ module Devise
       def password
         params[:user][:password]
       end
-
     end
   end
 end
