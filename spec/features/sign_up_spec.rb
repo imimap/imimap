@@ -5,9 +5,9 @@ describe "SignUp Process" do
     I18n.locale = :de
   end
   context "(not logged in)" do
-      before :each do
-        LdapAuthentication.configure(mode: :test)
-      end
+      # before :each do
+      #   LdapAuthentication.configure(mode: :test)
+      # end
 
     it "shows the Sign up link on the root page" do
       pending("still failing intermittently - remove the js s* out of the registration process")
@@ -53,12 +53,12 @@ describe "SignUp Process" do
     end
 
     context "with failing ldap authorization" do
-      before :each do
-        LdapAuthentication.configure(mode: :test_fail)
-      end
-      after :each do
-        LdapAuthentication.configure(mode: :test)
-      end
+      # before :each do
+      #   LdapAuthentication.configure(mode: :test_fail)
+      # end
+      # after :each do
+      #   LdapAuthentication.configure(mode: :test)
+      # end
 
       it "shows error on ldap login", js: true  do
         pending("still failing intermittently - remove the js s* out of the registration process")
