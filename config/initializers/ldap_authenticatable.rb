@@ -11,7 +11,7 @@ module Devise
 
       def authenticate!
         if params[:user]
-          ldap = Net::LDAP.new
+          ldap = Net::LDAP.new(connect_timeout: 15 )
           ldap.host = "141.45.146.101"
           ldap.port = 389
           ldap.auth  searchstring, password
@@ -26,7 +26,7 @@ module Devise
 
             # when succesfully connected to ldap but there are no user
             if ldap.open do |ldap|
-              ldap.search( :base => searchstring) do |entry|
+              ldap.search( :base => searchstring , :connect_timeout=> 5) do |entry|
                 @surname = entry.sn.first
                 @givenname = entry.givenname.first
                 @email = entry.mail.first
