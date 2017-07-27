@@ -157,7 +157,7 @@ p {
   font-size: 1rem;
   float: right;
   color: #6b6b6b;
-  margin-top: 12px;
+  margin: 12px 50px 0 0;
 }
 
 .navbar .nav.pull-right {
@@ -393,17 +393,6 @@ p{
 
 .table_compare{
   width: 100% !important;
-}
-
-.map-shadow{
-  height: 210px;
-  margin-top: 0px;
-  opacity: 0.9;
-  position: inherit;
-  width: 100%;
-  background: image-url("content-shadow.png") no-repeat;
-  background-size: 900px 210px;
-  margin-top: -189px;
 }
 
 .hand-pointer{
