@@ -81,6 +81,27 @@ a{
     left: -75px;
 }
 
+  #startbody .logo {
+    position: relative;
+    margin: 150px auto;
+    padding: 20px 0;
+    width: 100%;
+  }
+  #startbody .logo div {
+    width:100%;
+    margin: 10px auto;
+  }
+
+  .world * {
+    width: 100px !important;
+    left: -7vw;
+  }
+
+  .plane * {
+    width: 100px !important;
+    left: -7vw;
+  }
+
 .table_block{
   position: relative;
   display: block;
@@ -122,7 +143,7 @@ float: right;
     background-color: #cbc9c9;
 }
 
-.map_container {
+#map-container {
   display: none;
 }
 
@@ -132,6 +153,40 @@ float: right;
   width: 320px;
   margin-right: -110px;
 }
+
+   #startbody .navbar.navbar-inverse.top-bar.login-nav {
+    height: 100vh !important;
+  }
+
+  #startbody .login-nav {
+    margin: auto;
+    width: 100%;
+  }
+
+  #startbody .login-items, #startbody .input-items {
+    position: relative;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+  }
+
+  #startbody .input-items * {
+    position: relative;
+    width: 90%;
+    margin: auto;
+  }
+
+  #startbody .login-items div {
+    margin: 30px auto;
+    position: relative;
+    display: block;
+  }
+
+  #startbody .navbar {
+    background-size: 190%;
+  }
+
+
 
 .navbar .nav > li > .dropdown-menu:before {
   right: 245px !important;
