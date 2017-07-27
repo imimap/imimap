@@ -9,15 +9,21 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
  *= require chosen
  *= require jquery-ui
  *= require jquery-ui/slider
- *= repeat bootstrap-responsive.min
+ *= require_tree .
 
  */
+@import ".";
+@import "custom.css.scss";
+@import "stylesheet_desktop.css.scss";
+@import "stylesheet_phone.css.scss";
+@import "stylesheet_tablet.css.scss";
+@import "startpage.css.scss";
 
- #en {
+
+#en {
   background-image: image-url('images/en.gif');
   background-repeat:repeat-y;
  }
