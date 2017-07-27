@@ -95,4 +95,14 @@ class Internship < ActiveRecord::Base
       return valText;
    end   
 
+   def self.to_csv
+    CSV.generate do |csv|
+      csv << %w{semester enrolment_number student start_date end_date } 
+      all.each do|internship|
+        csv << [internship.semester.name, internship.student.enrolment_number, internship.student.name, internship.start_date, internship.end_date]
+      end 
+    end
+
+  end
+
 end
