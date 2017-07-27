@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   def authenticate_active_admin_user!
     authenticate_user!
     unless current_user.superuser?
@@ -16,6 +15,14 @@ class ApplicationController < ActionController::Base
       redirect_to authenticated_root
     end
   end
+  
+     def redirect_PV
+      if (current_user.email == "s0553728@htw-berlin.de")
+        redirect_to current_internships_path
+      end
+    end
+
+
 
      # redirect_to new_user_session_path if current_user.nil?
 

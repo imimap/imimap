@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :redirect_PV
   before_filter :check_permission, only: [:new, :create]
   before_filter :check_existing_user, only: [:new, :create]
 

@@ -1,5 +1,5 @@
 class OverviewController < ApplicationController
-  before_filter :authorize
+  before_filter :authorize, :redirect_PV
   before_filter :get_programming_languages, :get_orientations
 
   def index
@@ -41,5 +41,7 @@ class OverviewController < ApplicationController
       format.js
     end
   end
+
+
 
 end

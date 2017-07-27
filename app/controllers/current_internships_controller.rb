@@ -16,7 +16,7 @@ before_filter :authorize, :auth_PV
 	end
 
 	def auth_PV
-		if ((!current_user.superuser) && (!(current_user.email == "PRÜFUNGSVERWALTUNG")))
+		if ((!current_user.superuser) && (!(current_user.email == "s0553728@htw-berlin.de")))
 			redirect_to overview_index_path
 		end
 	end

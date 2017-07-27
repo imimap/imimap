@@ -1,5 +1,5 @@
 class FavoriteController < ApplicationController
-  before_filter :authorize
+  before_filter :authorize, :redirect_PV
 
 	def create 
 
