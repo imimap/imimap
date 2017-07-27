@@ -1,0 +1,29 @@
+<h1>current internships</h1>
+
+<tbody>
+	<table class="table">
+		<th><%= t "students.attributes.enrolment_number" %></th>
+		<th><%= t "internships.attributes.student.name" %></th>
+		<th><%= t "internships.attributes.semester" %></th>
+		<th><%= t "internships.attributes.start_date" %></th>
+		<th><%= t "internships.attributes.end_date" %></th>
+	</tr>
+
+	<% @internships.each do |internship| %>
+	<tr class="<%= cycle("even_row", "odd_row") %>">
+		<td><%= internship.student.enrolment_number%></td>
+		<td><%= internship.student.name%></td>
+		<td><%= internship.semester.name %></td>
+		<td><%= internship.start_date %></td>
+		<td><%= internship.end_date %></td>
+	</tr>
+	<% end %>
+</table>
+</tbody>
+
+
+<p>
+	Download:
+	<%= link_to "CSV", current_internships_path(format: :csv) %> |
+	
+</p>
