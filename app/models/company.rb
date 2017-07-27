@@ -1,5 +1,5 @@
 class Company < ActiveRecord::Base
-  attr_accessible :street, :city, :country, :zip, :main_language, :industry, :name, :number_employees, :website, :phone, :blacklisted, :fax, :import_id, :latitude, :longitude
+  attr_accessible :street, :city, :country, :zip, :main_language, :department, :industry, :name, :number_employees, :website, :phone, :blacklisted, :fax, :import_id, :latitude, :longitude
 
  # validates :street, :presence => true, :allow_blank => false
  # validates :zip, :presence => true, :allow_blank => false
@@ -19,6 +19,8 @@ class Company < ActiveRecord::Base
 
   #associations
   has_many :internships
+
+  # accepts_nested_attributes_for :internships
 
   def address
     [street, zip, city, country].compact.join(", ")

@@ -7,6 +7,8 @@ class Internship < ActiveRecord::Base
   #validate :start_date_before_end_date?
 
 
+  validates_presence_of :company
+
   belongs_to :user
   belongs_to :company
   belongs_to :orientation
@@ -34,6 +36,7 @@ class Internship < ActiveRecord::Base
 
   accepts_nested_attributes_for :attachments, allow_destroy: true
   accepts_nested_attributes_for :internship_rating
+  accepts_nested_attributes_for :company, reject_if: proc { |attributes| attributes{'name'}.blank? }
 
   def rating
     internship_rating.total_rating
@@ -91,5 +94,15 @@ class Internship < ActiveRecord::Base
       end
       return valText;
    end   
+
+   def self.to_csv
+    CSV.generate do |csv|
+      csv << %w{semester enrolment_number student start_date end_date } 
+      all.each do|internship|
+        csv << [internship.semester.name, internship.student.enrolment_number, internship.student.name, internship.start_date, internship.end_date]
+      end 
+    end
+
+  end
 
 end

@@ -35,6 +35,8 @@ ImiMaps::Application.routes.draw do
 
     resources :favorite, :only => [:create, :destroy, :index]
 
+    resources :current_internships, :only => [:index]
+
     # resources :location, :only => [:create, :destroy]
 
     # resources :sessions, :only => [:destroy, :create, :new]
@@ -67,6 +69,8 @@ ImiMaps::Application.routes.draw do
 
     end
   end
+
+  get  'my_internship', to: 'internships#internshipData', as: 'my_internship'
 
   #root to: 'sessions#new'
 

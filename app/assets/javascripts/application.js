@@ -15,12 +15,12 @@
 //= require jquery-ui/widgets/slider
 //= require jquery_ujs
 //= require jquery_nested_form
-//= require_tree .
 //= require chosen-jquery
 //= require d3
 //= require stupidtable.min
 //= require bootstrap
 //= require bootstrap.min
+//= require_tree .
 
 
 $(window).load(function () {
