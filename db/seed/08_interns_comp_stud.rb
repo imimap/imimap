@@ -6,7 +6,7 @@ Company.destroy_all
 intern_rating_id = InternshipRating.first
 
 n=1
-10.times do
+20.times do
   Student.create!(
     import_id: Faker::Number.number(1),
     enrolment_number: Faker::Number.number(10),
