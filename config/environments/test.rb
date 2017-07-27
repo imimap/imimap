@@ -42,7 +42,6 @@ Rails.application.configure do
 
   #IMI-Maps specific
   config.allow_concurrency = false
-  LdapAuthentication.configure(mode: :test)
   Rails.application.routes.default_url_options[:host] = 'localhost:3000'
   #IMI-Maps specific
 end
