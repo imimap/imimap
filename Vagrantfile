@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "ansible_local" do |ansible|
     #ansible.limit = "vagrant"
-    ansible.playbook = "./bootstrap_host/playbook.yml"
+    ansible.playbook = "./bootstrap_host/vagrant_playbook.yml"
     ansible.groups = {
       "vagrant" => [
         "imimaps.dev",
