@@ -69,6 +69,7 @@ class InternshipsController < ApplicationController
 
   def new
     @internship = Internship.new
+    @company_last = Company.last
   end
 
   def create
