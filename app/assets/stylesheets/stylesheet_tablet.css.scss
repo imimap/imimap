@@ -10,11 +10,15 @@ body{
   padding-left: 0px !important;
 }
 
+
+  #startbody  .logo {
+    margin-left: 4%;
+  }
   .navbar .nav.nav-top {
     font-size: 0.9rem;
   }
 
-a{
+  a{
   color: #8bb900 !important;
 }
 
@@ -23,7 +27,7 @@ a{
 }
 
 .navbar-inner {
-  border-radius: 0px 0px 0px 0px !important;
+  border-radius: 0 !important;
 }
 
 .navbar-inverse .brand, .navbar-inverse .nav > li > a{
@@ -35,10 +39,6 @@ a{
 }
 
 .display_nonet{
-  display: none;
-}
-
-.map-shadow{
   display: none;
 }
 
@@ -84,7 +84,7 @@ a{
 .htw_logo{
   height: 60px;
   width: 104px;
-  background: image-url("htw_logo.png");
+  background: url("htw_logo.png");
   background-size: 104px 60px;
   display: inline-block;
   margin-right: 10px;
@@ -93,7 +93,7 @@ a{
 .imi_logo{
   height: 60px;
   width: 66px;
-  background: image-url("imi_logo.png");
+  background: url("imi_logo.png");
   background-size: 66px 60px;
   display: inline-block;
 }
@@ -212,8 +212,33 @@ a{
   left: -75px;
 }
 
+
+  #startbody  .logo img {
+    position: absolute;
+    margin: auto;
+  }
+
+  #startbody .logo {
+    position: relative;
+    margin: 10px auto 20px;
+    padding: 10px 0;
+    width: 100%;
+  }
   .navbar .nav.nav-top {
     font-size: 0.9rem;
+  }
+
+  .input-items {
+    float: none;
+    margin: 20px auto;
+    width: 100%;
+  }
+  #submit {
+    padding: 0;
+  }
+
+  #startbody .navbar.navbar-inverse.top-bar.login-nav {
+    height: 25vh !important;
   }
 
 #salary_slider{

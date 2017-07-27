@@ -2,6 +2,7 @@
 <%= javascript_include_tag "leaflet" %>
 
 <div id="mapid"></div>
+
 <script type="text/javascript">
 
     var companiesInternship = JSON.parse('<%= @company_location_json %>')
@@ -26,7 +27,7 @@
 
 <br/>
 
-<div class="map-shadow"></div>
+
 <%= form_tag(quicksearches_path, :method => 'get', :remote => true) do %>
 
     <table class="table_block start_block">
