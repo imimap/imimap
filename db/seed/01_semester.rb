@@ -1,9 +1,4 @@
-# 4.times do
-#   Semester.create!(
-#     name: Faker::Number.number(1),
-#     id: Faker::Number.number(1)
-#   )
-# end
+# ruby encoding: utf-8
 Semester.destroy_all
 for i in 0..5
   if i%2 == 0

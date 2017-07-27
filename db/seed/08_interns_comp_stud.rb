@@ -1,8 +1,34 @@
+# ruby encoding: utf-8
+Student.destroy_all
 Internship.destroy_all
+Company.destroy_all
 
 intern_rating_id = InternshipRating.first
+
 n=1
-10.times do
+20.times do
+  Student.create!(
+    import_id: Faker::Number.number(1),
+    enrolment_number: Faker::Number.number(10),
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    birthday: Faker::Date.birthday(18, 65),
+    birthplace: Faker::Address.country
+  )
+  Company.create!(
+    street: Faker::Address.street_address,
+    zip: Faker::Address.zip,
+    name: Faker::Company.name,
+    number_employees: Faker::Number.number(3),
+    city: Faker::Address.city,
+    country: Faker::Address.country,
+    phone: Faker::PhoneNumber.phone_number,
+    blacklisted: Faker::Boolean.boolean,
+    import_id: Faker::Number.number(1),
+    website: Faker::Internet.url('example.com')
+   ) 
+
   r_o = rand(Orientation.count)+1
   r_c_s = rand(ContractState.count)+1
   r_r_s = rand(RegistrationState.count)+1
@@ -10,10 +36,12 @@ n=1
   r_ce_s = rand(CertificateState.count)+1
   r_p_s = rand(PaymentState.count)+1
   r_i_s = rand(InternshipState.count)+1
-  r_student_id = rand(Student.count)+1
-  r_company_id = rand(Company.count)+1
-  r_readingProf_id = rand(ReadingProf.count)+1
-  r_semester_id = rand(Semester.count)+1
+  r_student = Student.last
+  company = Company.last
+  reading_prof = ReadingProf.find(rand(ReadingProf.count)+1)
+  reading_prof_id = reading_prof.id if reading_prof
+  semester = Semester.find(rand(Semester.count)+1)
+
 
 
   Internship.create!(
@@ -22,9 +50,9 @@ n=1
       internship_rating_id: intern_rating_id,
       working_hours: Faker::Number.number(2),
       living_costs: Faker::Number.number(3),
-      company_id: r_company_id,
-      student_id: r_student_id,
-      semester_id: r_semester_id,
+      company_id: company.id,
+      student_id: r_student.id,
+      semester_id: semester.id,
       start_date: Faker::Date.backward(120),
       end_date: Faker::Date.forward(50),
       operational_area: Faker::Job.title,
@@ -39,7 +67,7 @@ n=1
       payment_state_id: r_p_s,
       internship_state_id: r_i_s,
       comment: Faker::ChuckNorris.fact,
-      reading_prof_id: r_readingProf_id,
+      reading_prof_id: reading_prof_id,
       certificate_to_prof: Faker::Date.forward(30),
       certificate_signed_by_prof: Faker::Date.forward(50),
       certificate_signed_by_internship_officer: Faker::Date.backward(5)
