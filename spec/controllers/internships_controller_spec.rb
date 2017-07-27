@@ -172,25 +172,43 @@ RSpec.describe InternshipsController, :type => :controller do
       @internship = create :internship, student: @current_user.student
       expect {
         delete :destroy, id: @internship.id
-      }.to change(Internship, :count).by(-1)
-    end
-  end
-
-  describe "private #authorize_internship" do
-
-    context 'the user is not associated to the internship' do
-      it 'redirects to overview_index' do
-        @internship = create :internship
-        get :edit, id: @internship
-        expect(response).to redirect_to(:overview_index)
+        }.to change(Internship, :count).by(-1)
       end
     end
 
-    context 'the internship can not be found' do
-      it 'redirects to overview_index' do
-        get :edit, id: 42
-        expect(response).to redirect_to(:overview_index)
+    describe "#internshipData" do
+
+      context 'the user has an internship' do
+        it 'renders the my_internship view' do
+          @internship = create :internship
+          get :show, id: @internship
+          expect(response).to render_template(:show)
+        end
+      end
+
+      context 'the internship can not be found' do
+        it 'renders the noInternshipData view' do
+          get :internshipData, id: 42
+          expect(response).to render_template(:noInternshipData)
+        end
+      end
+    end
+
+    describe "private #authorize_internship" do
+
+      context 'the user is not associated to the internship' do
+        it 'redirects to overview_index' do
+          @internship = create :internship
+          get :edit, id: @internship
+          expect(response).to redirect_to(:overview_index)
+        end
+      end
+
+      context 'the internship can not be found' do
+        it 'redirects to overview_index' do
+          get :edit, id: 42
+          expect(response).to redirect_to(:overview_index)
+        end
       end
     end
   end
-end
