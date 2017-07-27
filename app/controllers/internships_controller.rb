@@ -1,6 +1,6 @@
 class InternshipsController < ApplicationController
   respond_to :html, :json
-  before_filter :get_programming_languages, :get_orientations, :only => [:edit, :update]
+  before_filter :get_programming_languages, :get_orientations, :only => [:new, :edit, :update]
   before_filter :authorize
   before_filter :authorize_internship, :only => [:edit, :update, :destroy]
   # GET /internships
@@ -67,6 +67,27 @@ class InternshipsController < ApplicationController
     respond_with(@internships)
   end
 
+  def new
+    @internship = Internship.new
+  end
+
+  def create
+    @internship = Internship.new(params[:internship])
+    @internship.user_id = current_user.id
+    @internship.student_id = current_user.student_id
+
+    respond_to do |format|
+      if @internship.save
+        format.html { redirect_to @internship, notice: 'Your internship was successfully created!' }
+        format.json { render json: @internship, status: :created, location: @internship }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @internship.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
   # GET /internships/1
   # GET /internships/1.json
   def show
@@ -78,6 +99,7 @@ class InternshipsController < ApplicationController
     @other_internships = @company.internships.reject { |x| x.id == @internship.id }.reject{ |i| i.completed == false }
 
     @user_comments = @internship.user_comments.order("created_at DESC")
+
     
     respond_with(@internship)
   end
@@ -118,15 +140,32 @@ class InternshipsController < ApplicationController
     end
   end
 
-private
-
-    def authorize_internship
-      internship = Internship.where(id: params[:id]).first
-      if current_user.student && internship && internship.student_id != current_user.student.id
-        redirect_to overview_index_path, notice: "You're not allowed to edit this internship"
-      elsif internship.nil?
-        redirect_to overview_index_path, notice: "You're not allowed to edit this internship"
-      end
+  # If the user has no internship, the system asks him/her to create a new one
+  # else the internship details are shown
+  def internshipData
+    if Internship.where(user_id: current_user.id).last.nil?
+      render :noInternshipData
+    else
+      @internship = Internship.where(user_id: current_user.id).last
+      redirect_to @internship
     end
+  end
 
+
+  private
+
+  def internship_params
+    params.require(:internship).permit(:title, :start_date, :end_date, :operational_area, :tasks, 
+      :programming_language_ids, :orientation_id, :salary, :working_hours, :living_costs, :supervisor_name, :supervisor_email, 
+      :internship_report, :recommend, :semester_id, :company_id)
+  end
+
+  def authorize_internship
+    internship = Internship.where(id: params[:id]).first
+    if current_user.student && internship && internship.student_id != current_user.student.id
+      redirect_to overview_index_path, notice: "You're not allowed to edit this internship"
+    elsif internship.nil?
+      redirect_to overview_index_path, notice: "You're not allowed to edit this internship"
+    end
+  end
 end

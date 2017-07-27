@@ -37,6 +37,8 @@ ActiveAdmin.register Internship do
       f.input :tasks
       f.input :supervisor_name
       f.input :supervisor_email
+      f.input :programming_languages
+      f.input :orientation
     end
     f.inputs "Administration" do
       f.input :semester_id, label: "Semester", as: :select, collection: Semester.order(:name).collect { |s| [s.name, s.id] }
@@ -71,6 +73,10 @@ ActiveAdmin.register Internship do
         row :tasks
         row :supervisor_name
         row :supervisor_email
+        row :programming_languages do |i|
+          i.programming_languages.map(&:name).join(", ")
+        end
+        row :orientation
         row :semester
         row :registration_state
         row :payment_state

@@ -22,37 +22,37 @@
 </p>
 <p>
 
-<p>
-  <b><%= t "companies.attributes.number_employees"  %> :</b>
-  <%= @company.number_employees %>
-</p>
+  <p>
+    <b><%= t "companies.attributes.number_employees"  %> :</b>
+    <%= @company.number_employees %>
+  </p>
 
 
-<b><%= t "companies.attributes.main_language"  %> :</b>
+  <b><%= t "companies.attributes.main_language"  %> :</b>
   <%= @company.main_language %>
 </p>
 <p>
 
-<b><%= t "companies.attributes.rating"  %> :</b>
+  <b><%= t "companies.attributes.rating"  %> :</b>
   <% sum = 0%>
   <% amt = 0%>
   <% if @internships.size > 0 %>
-    <% @internships.each do |i| %>
-      <% sum += i.rating %>
-      <% amt += 1 %>
-    <%end%>
-    <%=sum/amt%>
+  <% @internships.each do |i| %>
+  <% sum += i.rating %>
+  <% amt += 1 %>
+  <%end%>
+  <%=sum/amt%>
   <% else %>
-    <% 0 %>
+  <% 0 %>
   <%end%>
 </p>
 <p>
 
   <b><%= t "companies.internships.recommend"  %> :</b>
- <% recommended, not_recommended = @company.internships.partition { |internship| internship.recommend == true } %>
+  <% recommended, not_recommended = @company.internships.partition { |internship| internship.recommend == true } %>
 
- <%= "#{t('companies.attributes.recommended')} #{recommended.size}" %>
- <%= "#{t('companies.attributes.not_recommended')} #{not_recommended.size}" %>
+  <%= "#{t('companies.attributes.recommended')} #{recommended.size}" %>
+  <%= "#{t('companies.attributes.not_recommended')} #{not_recommended.size}" %>
 </p>
 
 
@@ -67,7 +67,7 @@
     <th></th>
   </tr>
 
-<% @internships.each do |internship| %>
+  <% @internships.each do |internship| %>
   <tr>
     <td><%= internship.title %></td>
     <td><%= internship.orientation.name %></td>
@@ -75,7 +75,7 @@
     <td><%= render_stars(internship.rating, self) %></td>
     <td><%= link_to (t "buttons.show"), internship, class: "btn btn-success" %></td>
   </tr>
-<% end %>
+  <% end %>
 </table>
 
 <%= yield :scripts %>

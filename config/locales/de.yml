@@ -227,6 +227,7 @@ de:
     start: "Start"
     exchange: "Praktikumsangebote"
     guide: "Guide"
+    internship: "Mein Praktikum"
     logout: "Abmelden"
     faq: "FAQs"
     downloads: "Downloads"
@@ -277,6 +278,7 @@ de:
     new:
       newcompany: "Neue Firma"
     attributes:
+      department: "Abteilung"
       rating: "Durchschnittswertung"
       name: "Firmenname"
       street: "Straße"
@@ -288,19 +290,22 @@ de:
       main_language: "Sprache"
       website: "Webseite"
       address: "Adresse"
+      phone: "Telefon"
       recommended: "Empfohlen"
       not_recommended: "nicht Empfohlen"
 
 
   internships:
-    statistic: "Wähle das Semester und sieh welche Länder die Studenten in diesem Semester gewesen sind"
+    statistic: "Wähle das Semester und sieh welchen Ländern die Studenten in diesem Semester gewesen sind"
     my: "Meine Praktika"
     others: "Andere Praktika bei dieser Firma"
     details: "Praktikumsdetails"
     name: "Praktika"
     create: "Erstelle Praktikum"
+    createYourInternship: "Erstelle jetzt dein Praktikum"
     update: "Praktikum aktualisieren"
     company_fact: "Arbeitsplatz Kurzinfo"
+    createInternship: "Du hast noch kein Praktikum eingetragen"
     index:
       title: "Liste von Praktika"
     edit:
@@ -320,10 +325,16 @@ de:
       living_costs: "Lebenshaltungskosten"
       living_costs2: "Lebenshaltungskosten pro Monat"
       company: "Firma"
+      start_date: "Anfang"
+      end_date: "Ende"
+      operational_area: "Einsatzbereich"
+      tasks: "Aufgaben"
       tasks_rating: "Aufgaben"
       training_rating: "Lernerfolg"
       atmosphere_rating: "Atmosphäre"
       supervision_rating: "Betreuung"
+      supervisor_name: "Betreuer"
+      supervisor_email: "Betreuer E-Mail"
       appreciation_rating: "Wertschätzung"
       title: "Job Titel"
       recommend: "Empfehlung"

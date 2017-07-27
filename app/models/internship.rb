@@ -7,6 +7,8 @@ class Internship < ActiveRecord::Base
   #validate :start_date_before_end_date?
 
 
+  validates_presence_of :company
+
   belongs_to :user
   belongs_to :company
   belongs_to :orientation
@@ -34,6 +36,7 @@ class Internship < ActiveRecord::Base
 
   accepts_nested_attributes_for :attachments, allow_destroy: true
   accepts_nested_attributes_for :internship_rating
+  accepts_nested_attributes_for :company, reject_if: proc { |attributes| attributes{'name'}.blank? }
 
   def rating
     internship_rating.total_rating
