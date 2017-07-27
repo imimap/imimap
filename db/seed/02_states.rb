@@ -1,3 +1,4 @@
+# ruby encoding: utf-8
 PaymentState.where(name: "uncharted", name_de: "unbekannt").first_or_create
 PaymentState.where(name: "cash benefit", name_de: "bezahlt").first_or_create
 PaymentState.where(name: "noncash benefit", name_de: "geldlos vergütet").first_or_create

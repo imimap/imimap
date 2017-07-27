@@ -1,3 +1,4 @@
+# ruby encoding: utf-8
 InternshipRating.destroy_all
 5.times do
   InternshipRating.create!(
