@@ -68,6 +68,8 @@ ImiMaps::Application.routes.draw do
     end
   end
 
+  get  'my_internship', to: 'internships#internshipData', as: 'my_internship'
+
   #root to: 'sessions#new'
 
   ActiveAdmin.routes(self)
