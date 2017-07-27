@@ -6,7 +6,15 @@ class StartpageController < ApplicationController
       redirect_to overview_index_url
     end
 
-    @company_location_json = Company.pluck(:name, :latitude, :longitude).to_json.html_safe
+    #@company_location_json = Company.pluck(:name, :latitude, :longitude).to_json.html_safe
+    @company_location_json_raw = Company.pluck(:name, :latitude, :longitude)
+    @company_location_json_raw.each do |x|
+        x[0] = x[0].gsub('\'', ' ')
+      end
+     @company_location_json = @company_location_json_raw.to_json.html_safe
+   
+
+
     @internships = Internship.includes(:company, :semester, :orientation, :programming_languages).where(completed: true).order('created_at DESC')
   end
 

@@ -70,10 +70,13 @@
 
 
     for (var i = 0; i < companiesInternship.length; i++) {
+      if ((companiesInternship[i][1] != null ) && (companiesInternship[i][2] != null ))
+        
         marker = new L.marker([companiesInternship[i][1], companiesInternship[i][2]])
             .bindPopup(companiesInternship[i][0])
             .addTo(mymap);
-    }
+        
+    }   
 
 </script>
 <%= yield :scripts %>

@@ -232,11 +232,13 @@ ActiveAdmin.setup do |config|
 
    config.namespace :admin do |admin|
       admin.build_menu :utility_navigation do |menu|
+        menu.add label: "User view", url: :authenticated_root_path 
         menu.add label: "Locale" do |lang|
         lang.add :label => "English",:url => proc { url_for(:locale => 'en') }, :priority => 1
         lang.add :label => "Deutsch",:url => proc { url_for(:locale => 'de') }, :priority => 2
       end
-
+        
+      #   menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
         admin.add_current_user_to_menu  menu
         admin.add_logout_button_to_menu menu
       end
