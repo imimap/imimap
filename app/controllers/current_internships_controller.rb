@@ -1,7 +1,11 @@
 class CurrentInternshipsController < ApplicationController
+before_filter :authorize, :auth_PV
+
+
 
 	def index
-		@internships = Internship.where(semester_id: 6)
+		@semester = Semester.last
+		@internships = Internship.where(semester_id: @semester)
 		@companies = Company.all
 		@semesters = Semester.all
 
@@ -10,4 +14,11 @@ class CurrentInternshipsController < ApplicationController
 			format.csv {send_data @internships.to_csv}
 		end
 	end
+
+	def auth_PV
+		if ((!current_user.superuser) && (!(current_user.email == "PRÜFUNGSVERWALTUNG")))
+			redirect_to overview_index_path
+		end
+	end
+
 end
