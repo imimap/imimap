@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+#to rebuild travis image
+gem 'google-wrapper'
+
 gem 'rails', '~> 4.2.8'
 gem 'carrierwave'
 gem 'geocoder'
