@@ -38,9 +38,9 @@ n=1
   r_i_s = rand(InternshipState.count)+1
   r_student = Student.last
   company = Company.last
-  reading_prof = ReadingProf.find(rand(ReadingProf.count)+1)
+  reading_prof = ReadingProf.find(ReadingProf.pluck(:id).shuffle.first)
   reading_prof_id = reading_prof.id if reading_prof
-  semester = Semester.find(rand(Semester.count)+1)
+  semester = Semester.find(Semester.pluck(:id).shuffle.first)
 
 
 
