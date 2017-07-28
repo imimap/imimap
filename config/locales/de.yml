@@ -220,6 +220,7 @@ de:
       short: ! '%d. %B, %H:%M Uhr'
     pm: nachmittags
   header:
+    curInternships: "aktuelle Praktika"
     account: "Konto"
     search: "Erweiterte Suche"
     overview: "Start"

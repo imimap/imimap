@@ -1,5 +1,5 @@
 class InternshipStatisticController < ApplicationController
-  before_filter :authorize
+  before_filter :authorize 
   def index
     @internship = Internship.first
     @internships = Internship.all

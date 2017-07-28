@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_filter :authorize
+  before_filter :authorize, :redirect_PV
 
   def create
     @answer = Answer.new(params[:answer])
