@@ -39,6 +39,9 @@ module Devise
             end
           else
           # if ldap connection failed
+          # fail ohne ! would pass authentication to next strategy and activate
+          # the db authentication
+          # ALSO REMOVE ! in rescue clause below
           return fail!(ldap.get_operation_result.message)
           end
 

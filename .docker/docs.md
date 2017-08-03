@@ -111,6 +111,15 @@ Deployments auf das Produktivsystem
 werden durch [Tags](https://help.github.com/articles/working-with-tags/) auf GitHub getriggert.
 Legt ein_e Entwickler_in einen neuen Tag bzw. ein neues Release an, stößt diese einen Travis-Build an. Ist dieser erfolgreich, wird die Applikation automatisch auf das Produktivsystem deployed.
 
+## Testing Admin Area
+
+For testing the admin area, find your User object (created after first login on the test, usually User.last) e.g.
+
+     user = User.last
+     user.password = "irgendwaswaslanggenugist42"
+     user.superuser = true
+     user.save
+     
 # Development Workflow
 
 - create a feature branch

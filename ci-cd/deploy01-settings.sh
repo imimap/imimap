@@ -13,23 +13,33 @@ echo "DEPLOY_FROM_BRANCH [${DEPLOY_FROM_BRANCH}]"
 # DEPLOY_FROM_BRANCH within the travis projects settings
 # https://travis-ci.org/imimaps/imimaps/settings
 
+echo ""
+echo "starting to check wether deployment should run"
+export set DEPLOYMENT_SHOULD_RUN=true
+
+
 if [ -z "$DEPLOY_FROM_BRANCH" ]; then
-  export DEPLOY_FROM_BRANCH=master
+  export set DEPLOY_FROM_BRANCH=master
 fi
+
+if [ -z "$DEPLOYMENT_ENVIRONMENT" ]; then
+  echo "DEPLOYMENT_ENVIRONMENT not set, no deployment"
+  export set DEPLOYMENT_SHOULD_RUN=false
+else
 
 if [ "$IMIMAPS_ENVIRONMENT" != "docker" ]; then
   echo "DEPLOYMENT: IMIMAPS_ENVIRONMENT is set to ${IMIMAPS_ENVIRONMENT}, skipping deployment"
-    export DEPLOYMENT_SHOULD_RUN=false
+    export set DEPLOYMENT_SHOULD_RUN=false
 else
 
 if [ -z "$DEPLOYMENT_PIPELINE" ]; then
     echo "DEPLOYMENT: no DEPLOYMENT_PIPELINE set, skipping deployment"
-    export DEPLOYMENT_SHOULD_RUN=false
+    export set DEPLOYMENT_SHOULD_RUN=false
 else
 
 if [ "$DEPLOYMENT_ENVIRONMENT" == "staging" ] && [ "$TRAVIS_BRANCH" != "$DEPLOY_FROM_BRANCH" ]; then
   echo "DEPLOYMENT: staging will only deploy on master branch"
-  export DEPLOYMENT_SHOULD_RUN=false
+  export set DEPLOYMENT_SHOULD_RUN=false
 else
 
 #if [ "$DEPLOYMENT_ENVIRONMENT" == "production" ] && [ "$TRAVIS_BRANCH" != "$TRAVIS_TAG" ]; then
@@ -38,17 +48,19 @@ if [ "$DEPLOYMENT_ENVIRONMENT" == "production" ] && [ "$TRAVIS_BRANCH" != "$DEPL
     echo "DEPLOYMENT deploys for every build to set up deployment" # TBD docker-deploy switch with this line:
     #echo "DEPLOYMENT: production will only deploy from tag"
     echo "DEPLOYMENT: got TRAVIS_BRANCH [$TRAVIS_BRANCH] and TRAVIS_TAG [$TRAVIS_TAG]"
-    export DEPLOYMENT_SHOULD_RUN=false
+    export set DEPLOYMENT_SHOULD_RUN=false
 else
 
 echo "TRAVIS_TAG $TRAVIS_TAG"
 if [ -z "$TRAVIS_TAG" ]; then
-  export DEPLOYMENT_TAG=$(echo $TRAVIS_COMMIT | head -c 7)
+  export set DEPLOYMENT_TAG=$(echo $TRAVIS_COMMIT | head -c 7)
 else
-  export DEPLOYMENT_TAG=$TRAVIS_TAG
+  export set DEPLOYMENT_TAG=$TRAVIS_TAG
 fi
 
 export DEPLOYMENT_DOCKER_ORGANISATION=imimap
+
+if [ build-production-image ]
 
 echo "all environment checks passed:"
 echo "DEPLOYMENT_ENVIRONMENT: $DEPLOYMENT_ENVIRONMENT"
@@ -57,6 +69,7 @@ echo "DEPLOYMENT_DOCKER_ORGANISATION: $DEPLOYMENT_DOCKER_ORGANISATION"
 echo "DEPLOY_FROM_BRANCH: $DEPLOY_FROM_BRANCH"
 echo "DEPLOYMENT_SHOULD_RUN: $DEPLOYMENT_SHOULD_RUN"
 
+fi
 fi
 fi
 fi

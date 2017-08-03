@@ -1,8 +1,5 @@
 source 'https://rubygems.org'
 
-#to rebuild travis image
-gem 'google-wrapper'
-
 gem 'rails', '~> 4.2.8'
 gem 'carrierwave'
 gem 'geocoder'
@@ -61,8 +58,6 @@ gem 'chartkick', '~> 1.2.4'
 gem 'groupdate', '~> 2.1.1'
 gem 'active_median', '~> 0.1.0'
 
-gem 'faker'
-
 gem 'factory_girl_rails'
 
 group :development do
@@ -82,7 +77,7 @@ group :development, :test do
 end
 
 group :development, :test do
-
+  gem 'faker'
   gem 'rspec-rails', '~> 3.5'
   gem 'better_errors'
   gem 'binding_of_caller'
