@@ -18,20 +18,22 @@ module Devise
 
           begin
           if ldap.bind
-            #when succesfully connected to LDAP and user already exists
+            #when successfully connected to LDAP and user already exists
             user = User.find_by_email(params[:user][:email])
             if (user != nil)
               return success!(user)
             end
 
-            # when succesfully connected to ldap but there are no user
+            # when successfully connected to ldap but no matching user exists
             if ldap.open do |ldap|
               ldap.search( :base => searchstring , :connect_timeout=> 5) do |entry|
                 @surname = entry.sn.first
                 @givenname = entry.givenname.first
                 @email = entry.mail.first
                 @enrolment_number = entry.uid.first
+                #TBD Review: why is email from params used rather than the one read from ldap? also, method email not used
                 @stud = Student.create({first_name: @givenname, last_name: @surname, enrolment_number: @enrolment_number, email: params[:user][:email]})
+                #TBD Review: this stores the ldap password in our database, and although encrypted, we shouldn't be doing this.
                 @user = User.create({email: email, password: password, student_id: @stud.id})
               end
               return success!(@user)
@@ -58,7 +60,7 @@ module Devise
       def searchstring
         email = params[:user][:email]
         usrid = email.split('@').first
-        return "uid="+ usrid +", ou=Users, o=f4, dc=htw-berlin, dc=de"
+        return "uid=#{usrid}, ou=Users, o=f4, dc=htw-berlin, dc=de"
       end
 
       def password

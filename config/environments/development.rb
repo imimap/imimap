@@ -41,4 +41,12 @@ Rails.application.configure do
   #IMI-Maps specific
   Rails.application.routes.default_url_options[:host] = 'localhost:3000'
   #IMI-Maps specific
+  config.devise_ldap=:off
+end
+
+Devise.setup do |config|
+  config.warden do |manager|
+    manager.default_strategies(:scope => :user).unshift :ldap_off_authenticatable
+    puts "manager.default_strategies(:scope => :user).inspect #{manager.default_strategies(:scope => :user).inspect}"
+  end
 end
