@@ -13,7 +13,7 @@ describe "ActiveAdmin create Internship" do
       #  visit "admin/internships"
         visit admin_internships_path
         expect(I18n.locale).to eq :de
-        save_and_open_page
+        # save_and_open_page
         expect(page).to have_content I18n.t("activerecord.models.internship.other")
       #  click_button "New Internship"
       #  expect(page).to have_content "New Internship"
