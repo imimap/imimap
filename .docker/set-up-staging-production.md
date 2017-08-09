@@ -25,7 +25,16 @@ you can generate a secret token with
 
 to build the image:
 
-    docker-compose build
+    export TAG=`git rev-parse HEAD | head -c 7`-LOCAL
+    export set SECRET_KEY_BASE=baa7a08e6afa122478c888c601024948aaf6bf9685f43c50d2e9649692eee25ed4b326e216a42439f36a581c242b8c3c538c71671771fdbf525474911d94ce02
+
+    docker build -t imimap/imimap:$TAG -f Dockerfile.production .
+
+    docker-compose up
+
+    or
+    docker-compose up -d
+
 
 ### running the image
 
