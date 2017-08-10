@@ -11,7 +11,7 @@ services:
     ports:
       - 5432:5432
 
-  imimaps:
+  imimap:
     build: .
     image: imimaps:development
     container_name: imimaps-dev
