@@ -19,13 +19,10 @@ if [ "$IMIMAPS_ENVIRONMENT" == "docker" ]; then
 
 
     echo "starting tests in docker image"
-
+    docker exec -ti imimap-dev ./ci-cd/wait-for-db-connection.sh
     docker exec -e RAILS_ENV=test -ti imimap-dev rake db:create RAILS_ENV=test
-    if [ $? != 0 ]; then echo "ERROR: db:create FAILED"; exit 1; fi
     docker exec -e RAILS_ENV=test -ti imimap-dev rake db:migrate RAILS_ENV=test
-    if [ $? != 0 ]; then echo "ERROR: db:migrate FAILED"; exit 1; fi
     docker exec -e RAILS_ENV=test -ti imimap-dev rake db:migrate:status RAILS_ENV=test
-    if [ $? != 0 ]; then echo "ERROR: db:migrate:status FAILED"; exit 1; fi
     docker exec -e RAILS_ENV=test -ti imimap-dev rspec spec
   fi
 
