@@ -67,6 +67,7 @@ end
 
 # database gem
 install_if -> { ENV['IMIMAPS_ENVIRONMENT'] == "docker" } do
+  echo "installing postgres"
   gem "pg"
 end
 
@@ -74,9 +75,7 @@ group :development, :test do
   install_if -> { ENV['IMIMAPS_ENVIRONMENT'] != "docker" } do
     gem 'sqlite3', '~> 1.3.7'
   end
-end
 
-group :development, :test do
   gem 'faker'
   gem 'rspec-rails', '~> 3.5'
   gem 'better_errors'
@@ -92,8 +91,6 @@ group :development, :test do
   gem "simplecov", require: false
   gem 'byebug'
 end
-
-
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3'
