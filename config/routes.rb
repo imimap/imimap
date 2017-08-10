@@ -1,5 +1,7 @@
 ImiMaps::Application.routes.draw do
 
+  #get 'future_report/index'
+
   get "password_resets/new"
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
@@ -57,6 +59,8 @@ ImiMaps::Application.routes.draw do
     resources :password_resets, :only => [:edit, :update, :create, :new]
 
     resources :errors, :only => [:not_found]
+
+      resources :future_report, :only => [:index]
 
 
     # get 'signup', to: 'users#new', as: 'signup'
