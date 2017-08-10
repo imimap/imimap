@@ -60,7 +60,6 @@ fi
 
 export DEPLOYMENT_DOCKER_ORGANISATION=imimap
 
-if [ build-production-image ]
 
 echo "all environment checks passed:"
 echo "DEPLOYMENT_ENVIRONMENT: $DEPLOYMENT_ENVIRONMENT"
