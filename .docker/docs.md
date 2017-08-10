@@ -1,10 +1,8 @@
 # IMI-Map Dokumentation
-Die IMI-Map ist eine Webapplikation auf Basis von Ruby on Rails, welche Studenten der Hochschule für Technik und Wirtschaft Berlin
-dabei unterstützt, Praktika im Ausland zu finden.
-
-Die Applikation wurde im Rahmen einer Veranstaltung des Studiengangs Internationale Medieninformatik entwickelt.
 
 # Local Setup on Development Machine
+
+*** VERALTET ***
 
 Für das lokale Setup gibt es drei Möglichkeiten, rails auszuführen:
 - mit [Docker](#setup-mit-docker)
@@ -42,7 +40,7 @@ git reset —hard
 
 
 ## Setup mit Docker
-IMI-Maps läuft in Docker.
+IMI-Map läuft in Docker.
 Vorteil: Konfiguration wie auf Staging/Production Maschinen.
 Nachteil: Mehr Komplexität, gerade für Rails-Neulinge noch unübersichtlicher.
 
@@ -58,7 +56,7 @@ Zum lokalen entwickeln muss folgende Software installiert werden:
 $ brew update && brew install imagemagick@6 node openssl rbenv ruby-build postgresql
 
 # Install the ruby version required by the application
-$ cd /path/to/imimaps
+$ cd /path/to/imimap
 $ rbenv install 2.1.5
 $ rbenv global 2.1.5 (optional, if you want to set 2.1.5 as your default Ruby version)
 $ echo 'eval "$(rbenv init -)"' >> ~/.bashrc
@@ -66,44 +64,24 @@ $ source ~/.bashrc
 $ gem install bundler thor
 $ bundle install
 
-# start the development environment
-$ ./docker-tool development start
+# start the development environment: start the containers
+$ docker-compose up
+
+# then, the easiest way to work with docker would be to enter the container and
+# enter all commands just as with a local rails installation:
+
+docker exec -ti imimap-dev bash
+
+(start rails, see below)
 
 # Open the application in your browser
 $ open http://localhost:8080
 
 ```
 
-## Lokales Setup
-
-Ohne Docker, mit SQLite
-SQLite is now the default used both in Gemfile as well as config/database.yml
-
-Run tests:
-
-    rake db:migrate RAILS_ENV=test
-
-
-# Development Process and Deployment Pipeline
-
-## Committing Changes to the Mainline
-
-## CI Builds
-
 
 ## Automated Deployment to Staging
 
-If the travis build was succesfull, an automated deployment is triggered.
-
-This is governed by the method is_release in ci-cd/helpers.rb and only happens
-if the DEPLOYMENT_PIPELINE environment variable is set in travis. You can
-do this with the travis cli, eg.
-
-    travis env set DEPLOYMENT_PIPELINE dev-sector
-    travis env set DEPLOYMENT_PIPELINE heroku
-
-(added by BK to enable forks on github without deployment pipeline and also
-  successfull checks for pull-requests from these repositories)
 
 ## Production Deployments
 
@@ -119,7 +97,7 @@ For testing the admin area, find your User object (created after first login on 
      user.password = "irgendwaswaslanggenugist42"
      user.superuser = true
      user.save
-     
+
 # Development Workflow
 
 - create a feature branch
@@ -226,7 +204,7 @@ Bei der Installation des Eventmachine Gem kann folgender Fehler auftreten:
 Dieser Fehler kann durch die Installation von OpenSSL und spezielle Konfiguration des Eventmachine-Gem behoben werden:
 ```
   $ brew install openssl
-  $ cd /path/to/imimaps && bundle config build.eventmachine \
+  $ cd /path/to/imimap && bundle config build.eventmachine \
        --with-cppflags=-I/usr/local/opt/openssl/include
   $ bundle install
 ```
@@ -403,25 +381,25 @@ services
     container_name: postresql-development
     # Setzen der notwendigen Umgebungsvariablen für den Postgresql-Prozess
     environment:
-      - APPLICATION=imimaps
-      - POSTGRES_PASSWORD=imimaps
-      - POSTGRES_USER=imimaps
-      - POSTGRES_DB=imimaps
+      - APPLICATION=imimap
+      - POSTGRES_PASSWORD=imimap
+      - POSTGRES_USER=imimap
+      - POSTGRES_DB=imimap
     # Öffnen des Postgresql-Ports
     ports:
       - 5432:5432
 
   # Definition des Applikationsservices. "build ." besagt hierbei, dass das Image
   # mittels der im aktuellen Verzeichnis liegenden Dockerfile erstellt werden soll.
-  imimaps:
+  imimap:
     build: .
-    image: imimaps:development
-    container_name: imimaps-development
+    image: imimap:development
+    container_name: imimap-development
     environment:
-      - APPLICATION=imimaps
-      - POSTGRES_PASSWORD=imimaps
-      - POSTGRES_USER=imimaps
-      - POSTGRES_DB=imimaps
+      - APPLICATION=imimap
+      - POSTGRES_PASSWORD=imimap
+      - POSTGRES_USER=imimap
+      - POSTGRES_DB=imimap
     depends_on:
       - postgresql
     # Mounten des Quelltextes der Applikation nach /usr/src/app
@@ -510,13 +488,13 @@ Es befinden sich keine Credentials der CI/CD-Pipeline in unverschlüsselter Form
 
 Zum Verschlüsseln einzelner Umgebunsvariablen wurden Befehle der folgenden Form verwendet:
 ```
-travis encrypt -r "imimaps/imimaps" DOCKER_PASSWORD="secret_docker_password"
+travis encrypt -r "imimap/imimap" DOCKER_PASSWORD="secret_docker_password"
 ```
 Die Ausgabe dieses Befehls wurde danach `.travis.yml` in die Umgebungsvariablen eingefügt.
 
 Die Verschlüsselung ganzer Dateien (in diesem Fall ein TAR-Archiv, welches die SSH Deployment-Keys beinhaltet) wurde wiefolgt durchgeführt:
 ```
-travis encrypt-file -r "imimaps/imimaps" ssh_keys.tar
+travis encrypt-file -r "imimap/imimap" ssh_keys.tar
 ```
 Weitere Information zu Verschlüsselung von Daten mit Travis in der Dokumentation zu finden:
 - [Verschlüsselung für Dateien](https://docs.travis-ci.com/user/encrypting-files/)
@@ -534,7 +512,7 @@ werden nur ausgeführt, falls die Umgebung des Travis-Builds entweder ein [Tagge
 Master-Branch ist. Zusätzlich hierzu müssen die Tests in Schritt 3 erfolreich gewesen sein.
 
 4. Erstellen eines Docker-Images für die neue Version der Applikation (`docker-build.rb`)
-5. Pushen des Images in ein Repository auf [Docker Hub](https://hub.docker.com/u/imimaps/dashboard/) (`docker-push.rb`)
+5. Pushen des Images in ein Repository auf [Docker Hub](https://hub.docker.com/u/imimap/dashboard/) (`docker-push.rb`)
 6. Deployment des neuen Images (`docker-deploy.rb`)
 
 Sollte Travis erkennen, dass es sich bei dem aktuellen Commit um einen Tag handelt, wird der Deployment-Schritt auf dem Produktivsystem ausgeführt, andernfalls auf dem
