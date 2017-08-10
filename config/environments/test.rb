@@ -43,5 +43,6 @@ Rails.application.configure do
   #IMI-Maps specific
   config.allow_concurrency = false
   Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+  config.devise_ldap=:on
   #IMI-Maps specific
 end

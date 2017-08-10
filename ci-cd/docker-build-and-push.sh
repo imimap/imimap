@@ -11,7 +11,7 @@ if [ $DEPLOYMENT_SHOULD_RUN != "true" ]; then
 fi
 
 
-docker build -t imimap/imimap:$DEPLOYMENT_TAG .
+docker build -f Dockerfile.production -t imimap/imimap:$DEPLOYMENT_TAG .
 
 
 docker images
