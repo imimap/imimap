@@ -1,0 +1,81 @@
+<h2> <%= t "users.show.read_lists_title" %> </h2>
+
+
+
+<% if !@read_lists.empty? %>
+
+    <!-- form tag for submitting the button -->
+
+
+    <%= form_tag(read_list_path( @read_list, :id => @read_lists.collect(&:id) ), remote: false, method: 'delete') do %>
+
+        <div class="table-container">
+          <table  id="table" class="table table-hover table-mc-light-blue table-bordered" data-sort-name="name" data-sort-order="desc">
+
+            <thead style="background: #00ff00;">
+
+            <tr class="even_row">
+
+
+              <th class ="headColor"><%= t "internships.attributes.delete" %></th>
+              <th class ="headColor"><%= t "users.attributes.name" %></th>
+              <th class ="headColor"><%= t "companies.attributes.name" %></th>
+              <th class ="headColor"><%= t "students.attributes.enrolment_number" %></th>
+              <th class ="headColor"><%= t "internships.attributes.semester" %> </th>
+              <th class ="headColor"><%= t "internships.attributes.expected_hand_in" %> </th>
+              <th class ="headColor"><%= t "internships.attributes.title" %> </th>
+              <th class ="headColor"><%= t "internships.attributes.internship_report" %> </th>
+
+
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            <% @read_lists.each do |read_list| %>
+                <tr class="<%= cycle("even_row2", "odd_row2") %>">
+
+                  <td><%= check_box_tag "read_list_ids[]", read_list.id %></td>
+
+
+                  <td> <%= read_list.internship.student.name %></td>
+                  <td> <%= read_list.internship.company.name %></td>
+                  <td> <%= read_list.internship.student.enrolment_number %></td>
+                  <td> <%= read_list.internship.try(:semester).try(:name) %></td>
+                  <td> <%= read_list.internship.expected_hand_in %></td>
+                  <td> <%= read_list.internship.title %> </td>
+
+                  <% if read_list.internship.internship_report.present? %>
+
+                      <td> <%= link_to File.basename(read_list.internship.internship_report.path), read_list.internship.internship_report.url %></td>
+
+                  <% else %>
+
+                      <td> has not been submitted </td>
+                  <% end %>
+
+
+
+                  <td> <%= link_to({:controller=>:finish_list, :action => :create, :internship_id => read_list.internship.id, :user_id => current_user.id}, {:method=>:post, remote: true, class: "btn btn-success"}) do %>
+                        <i class=""> </i><%= t("move to my reading list") %>
+                    <% end %>
+                  </td>
+
+                </tr>
+
+
+            <% end %>
+
+            </tbody>
+          </table>
+
+
+        </div>
+
+
+        <%= submit_tag (t "delete"), data: { confirm: 'Are you sure?' }, class: "btn btn-success" %>
+
+    <% end %>
+
+<% end %>

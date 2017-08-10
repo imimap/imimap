@@ -29,6 +29,31 @@
 
 
 
+
+// jquery for dropdown
+$(document).ready(function() {
+
+        $('nav ul li a:not(:only-child)').click(function(event) {
+
+            $('nav ul li a:not(:only-child)').siblings('.dropdownNav').toggle();
+            $('.dropdownNav').not($(this).siblings()).hide();
+            event.stopPropagation();
+
+        });
+
+ // may not work properly in IE6 through at least IE9, according to api.jquery.com
+        $('#toogleNav').click(function() {
+
+            this.classList.toggle("active");
+            $('nav ul').slideToggle();
+
+        });
+
+});
+
+
+
+
 $(window).load(function () {
       // $(".alert-info").animate({opacity: 1.0}, 5000).fadeOut('slow');
 

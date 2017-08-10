@@ -1,0 +1,59 @@
+
+
+
+
+  <%= form_for(@offer_new, url: {action: "create"}, html: {class: "nifty_form"}) do |f| %>
+
+      <div class="row" id="form-block2">
+          <div class="row">
+            <div class="span4">
+              <div class="field" id="field-titles">
+                <%= f.label "title"%><br />
+                <%= f.text_field :title, placeholder:  "Job Offer Title" %>
+              </div>
+            </div>
+
+
+                <div class="row">
+                  <div class="span10">
+                    <div class="field" id="field-titles">
+                      <%= f.label t "internships.attributes.description"  %><br />
+                      <%= f.text_area :body %>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="span10">
+
+                    <br/>
+
+                    <div class="field" id="field-titles">
+                      <%= f.label t "internships.attributes.internship_report"  %>
+                      <%= f.file_field :pdf %>
+                      <%= f.hidden_field :_destroy %>
+                      <%= link_to " remove", '#', class: "remove_fields btn btn-danger icon-white icon-remove" %>
+                    </div>
+                  </div>
+                </div>
+
+
+
+          <br>
+          <div class="row">
+            <div class="pull-right">
+              <div class="actions">
+                <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+                    <i class="icon-ok icon-white"></i> <%= "create new internship offer"%>
+                <% end %>
+              </div>
+
+      </div>
+
+  </div>
+</div>
+      </div>
+
+  <% end %>
+

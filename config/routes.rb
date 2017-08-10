@@ -24,6 +24,11 @@ ImiMaps::Application.routes.draw do
       resources :quicksearches, only: %i[index]
       resources :favorite_compare, only: %i[index]
       resources :errors, only: %i[not_found]
+      resources :report_overview, :only => [:index]
+      resources :read_list, :only => [:create, :destroy, :index]
+      resources :complete_report, :only => [:index]
+      resources :internship_status, :only => [:index]
+      resources :finish_list, :only => [:create, :destroy, :index]
       get 'login', to: 'devise/sessions#create', as: 'login'
       get 'logout', to: 'devise/sessions#destroy', as: 'logout'
       get 'statistic', to: 'statistic#overview'

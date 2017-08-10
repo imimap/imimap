@@ -1,5 +1,6 @@
 <h1>current internships</h1>
 
+
 <tbody>
 	<table class="table">
 		<th><%= t "students.attributes.enrolment_number" %></th>
@@ -13,7 +14,7 @@
 	<tr class="<%= cycle("even_row", "odd_row") %>">
 		<td><%= internship.student.enrolment_number%></td>
 		<td><%= internship.student.name%></td>
-		<td><%= internship.semester.name %></td>
+		<td><%= internship.semester.id %></td>
 		<td><%= internship.start_date %></td>
 		<td><%= internship.end_date %></td>
 	</tr>

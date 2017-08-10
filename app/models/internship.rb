@@ -38,7 +38,7 @@ class Internship < ActiveRecord::Base
   has_and_belongs_to_many :programming_languages, -> { uniq }
   has_many :user_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-
+  has_many :read_list, :dependent => :destroy
   has_many :attachments, as: :attachable, dependent: :destroy
   has_many :answers
 
@@ -70,6 +70,7 @@ class Internship < ActiveRecord::Base
     @duration = nil
   end
 
+<<<<<<< HEAD
   # CodeReviewSS17
   # CSV is a view and should not be in the model.
   def self.to_csv
@@ -81,6 +82,40 @@ class Internship < ActiveRecord::Base
                 internship.student.name, internship.start_date,
                 internship.end_date]
       end
+=======
+  # expected hand in 4 weeks after end of internship time
+  def expected_hand_in
+    if ( self[:end_date].nil? )
+      Time.now.strftime('%Y-%m-%d')
+    else
+      d = self[:end_date].to_time + 4.weeks
+      d.strftime('%Y-%m-%d')
+    end
+  end
+
+
+  def weekValidationActAdm
+     weeksToValidate = weekCount
+     valText = ""
+     case weeksToValidate
+       when 0..4
+         valText = "Intership is less than 4 weeks"
+       when 4..17,5
+          valText = "Internship needs manual validation"
+        else
+         valText = "Internship is long enough"
+      end
+      return valText;
+   end
+
+  # modificate to accept hash options for .xls file
+   def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << %w{semester enrolment_number student start_date end_date }
+      all.each do|internship|
+        csv << [internship.semester.name, internship.student.enrolment_number, internship.student.name, internship.start_date, internship.end_date]
+      end
+>>>>>>> Report Lists for Profs - BA DAK
     end
   end
 end
