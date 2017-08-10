@@ -9,7 +9,7 @@ services:
       - POSTGRES_USER=imimaps
       - POSTGRES_DB=imimaps
     ports:
-      - 5432
+      - 5432:5432
       # was:
       #- 5432:5432
       # let docker choose the port, as 5432 is taken by a postgres instance on travis
