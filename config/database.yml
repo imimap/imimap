@@ -12,6 +12,7 @@ development:
   pool: 5
   timeout: 5000
   host: postgresql
+  port: 5555
   username: <%= ENV['POSTGRES_USER'] %>
   password: <%= ENV['POSTGRES_PASSWORD'] %>
   database: <%= ENV['POSTGRES_DB'] %>
@@ -22,6 +23,7 @@ test:
   pool: 5
   timeout: 5000
   host: postgresql
+  port: 5555
   username: <%= ENV['POSTGRES_USER'] %>
   password: <%= ENV['POSTGRES_PASSWORD'] %>
   database: <%= ENV['POSTGRES_DB'] %>-test
@@ -58,5 +60,5 @@ production:
   database: db/production.sqlite3
   pool: 5
   timeout: 5000
-  
+
 <% end %>
