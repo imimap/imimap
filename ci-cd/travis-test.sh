@@ -18,10 +18,10 @@ if [ "$IMIMAPS_ENVIRONMENT" == "docker" ]; then
     echo "starting tests in docker image"
 
 
-    docker exec -e RAILS_ENV=test -ti imimaps-dev rake db:create RAILS_ENV=test
-    docker exec -e RAILS_ENV=test -ti imimaps-dev rake db:migrate RAILS_ENV=test
-    docker exec -e RAILS_ENV=test -ti imimaps-dev rake db:migrate:status RAILS_ENV=test
-    docker exec -e RAILS_ENV=test -ti imimaps-dev rspec spec
+    docker exec -e RAILS_ENV=test -ti imimap-dev rake db:create RAILS_ENV=test
+    docker exec -e RAILS_ENV=test -ti imimap-dev rake db:migrate RAILS_ENV=test
+    docker exec -e RAILS_ENV=test -ti imimap-dev rake db:migrate:status RAILS_ENV=test
+    docker exec -e RAILS_ENV=test -ti imimap-dev rspec spec
   fi
 
 else
