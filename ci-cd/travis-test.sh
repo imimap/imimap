@@ -5,6 +5,8 @@ if [ "$IMIMAPS_ENVIRONMENT" == "docker" ]; then
   echo "lsof -i tcp:5432"
   lsof -i tcp:5432
   docker-compose build
+  echo "done building image"
+  echo "starting tests in docker image"
   docker-compose run imimap "./ci-cd/travis-test-commands.sh"
 else
   bundle install

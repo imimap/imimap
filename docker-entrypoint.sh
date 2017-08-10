@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -eo pipefail
-echo "Development entrypoint"
+echo "Development/Test entrypoint"
 
 # test if postgresql is up
 while ! nc -z postgresql 5432; do sleep 1; done
