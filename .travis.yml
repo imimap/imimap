@@ -4,12 +4,6 @@ services:
 - docker
 rvm:
 - 2.4.1
-before_install:
-- gem install bundler
-- bundle --version
-install:
-- echo "Install task"
-- gem install thor
 script:
 - "./ci-cd/travis-test.sh"
 env:
