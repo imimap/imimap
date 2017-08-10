@@ -67,8 +67,7 @@ end
 
 # database gem
 install_if -> { ENV['IMIMAPS_ENVIRONMENT'] == "docker" } do
-  echo "installing postgres"
-  gem "pg"
+  gem "pg"  
 end
 
 group :development, :test do
