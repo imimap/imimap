@@ -49,6 +49,10 @@ Start the Postgres and IMI-Map Containers:
 You then get a bash prompt from within the docker container and can execute all
 of the rails commands that you would execute locally.
 
+Stop the containers with
+
+    docker-compose down
+
 For testing, you can also just call the tests that travis calls:
 
     ./ci-cd/travis-test.sh
@@ -56,10 +60,7 @@ For testing, you can also just call the tests that travis calls:
 Note that they too run in the imimap-dev container.
 
 There are many different ways of working with the docker containers. Refer to the
-Docker and docker-compose documentation
-
-
-
+Docker and docker-compose documentations.
 
 # More on Deployment
 

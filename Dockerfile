@@ -1,8 +1,6 @@
 FROM ruby:2.4-alpine
 
 ENV APP_HOME /usr/src/app
-ENV RAILS_ENV development
-ENV RACK_ENV development
 ENV IMIMAPS_ENVIRONMENT docker
 
 EXPOSE 80
