@@ -100,7 +100,8 @@
                     <div class="dropdown-content">
 
 
-                      <a href="#">unread list</a>
+                      <li class="<%= 'active_nav' if current_page?(read_list_index_path) %>"><%= link_to t("Internships report overview"), read_list_index_path %></li>
+
                       <a href="#">read list</a>
                       <a href="#">angegebene berichte</a>
 
