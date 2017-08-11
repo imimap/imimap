@@ -4,12 +4,8 @@ services:
 - docker
 rvm:
 - 2.4.1
-before_install:
-- gem install bundler
-- bundle --version
-install:
-- echo "Install task"
-- gem install thor
+before_script:
+  - sudo /etc/init.d/postgresql stop
 script:
 - "./ci-cd/travis-test.sh"
 env:

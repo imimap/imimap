@@ -1,0 +1,33 @@
+version: '3'
+services:
+  postgresql:
+    image: postgres:9.6.2-alpine
+    container_name: postgresql-dev
+    environment:
+      - APPLICATION=imimap
+      - POSTGRES_PASSWORD=imimap
+      - POSTGRES_USER=imimap
+      - POSTGRES_DB=imimap
+    ports:
+      - 5432:5432
+      # was:
+      #- 5432:5432
+      # let docker choose the port, as 5432 is taken by a postgres instance on travis
+
+  imimap:
+    build: .
+    image: imimap:dev
+    container_name: imimap-dev
+    environment:
+      - APPLICATION=imimap
+      - POSTGRES_PASSWORD=imimap
+      - POSTGRES_USER=imimap
+      - POSTGRES_DB=imimap
+    depends_on:
+      - postgresql
+    volumes:
+      - .:/usr/src/app
+    links:
+      - postgresql
+    ports:
+      - 8080:80

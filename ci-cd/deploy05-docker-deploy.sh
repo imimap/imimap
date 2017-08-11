@@ -24,10 +24,10 @@ if [ $DEPLOYMENT_ENVIRONMENT == "production" ]; then
 fi
 
 echo "copying docker-compose file to $DEPLOYMENT_HOST"
-scp -i id_rsa_$DEPLOYMENT_ENVIRONMENT -o StrictHostKeyChecking=no docker-compose.yml $DEPLOMENT_USER@$DEPLOYMENT_HOST:~
+scp -i id_rsa_$DEPLOYMENT_ENVIRONMENT -o StrictHostKeyChecking=no docker-compose-production.yml $DEPLOMENT_USER@$DEPLOYMENT_HOST:~
 exit_on_error $?
 echo "sshing to $DEPLOYMENT_HOST and calling docker-compose"
-ssh  -i id_rsa_$DEPLOYMENT_ENVIRONMENT -o StrictHostKeyChecking=no $DEPLOMENT_USER@$DEPLOYMENT_HOST "export set TAG=$DEPLOYMENT_TAG; export set SECRET_KEY_BASE=$SECRET_KEY_BASE; echo "TAG: $TAG"; docker-compose up -d -f docker-compose-production.yml; docker-compose  -f docker-compose-production.yml exec imimap bundle exec rake db:migrate"
+ssh  -i id_rsa_$DEPLOYMENT_ENVIRONMENT -o StrictHostKeyChecking=no $DEPLOMENT_USER@$DEPLOYMENT_HOST "export set TAG=$DEPLOYMENT_TAG; export set SECRET_KEY_BASE=$SECRET_KEY_BASE; echo "TAG: $TAG"; docker-compose -f docker-compose-production.yml up -d; docker-compose -f docker-compose-production.yml exec imimap ./ci-cd/wait-for-db-connection.sh ; docker-compose -f docker-compose-production.yml exec imimap bundle exec rake db:migrate"
 exit_on_error $?
 
 echo "Deployment successful"
