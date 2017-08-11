@@ -91,13 +91,14 @@
 
                   <li class="<%= 'active_nav' if current_page?(current_internships_path) %>"> <%= link_to t("header.curInternships"),  current_internships_path %></li>
 
+                  <li class="<%= 'active_nav' if current_page?(report_overview_index_path) %>"><%= link_to t("Internships report overview"), report_overview_index_path %></li>
+
 
 
                   <div class="dropdown report-drop-down">
                     <li class="">Report</li>
                     <div class="dropdown-content">
 
-                      <li class="<%= 'active_nav' if current_page?(future_report_index_path) %>"> <%= link_to t("header.curInternships"),  future_report_index_path %></li>
 
                       <a href="#">unread list</a>
                       <a href="#">read list</a>

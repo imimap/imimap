@@ -1,0 +1,60 @@
+
+<h1 class=""> <%= t "REPORT OVERVIEW" %> </h1>
+
+
+<div class="table-container">
+  <table id="paginated" class="table tablesorter">
+
+    <thead>
+
+    <tr class="table_intern table_fin">
+
+      <th class="name"><%= t "users.attributes.name" %></th>
+      <th class="company"><%= t "companies.attributes.name" %></th>
+      <th class="programming_language"><%= t "students.attributes.enrolment_number" %></th>
+      <th data-sort="string" class="company"><%= t "internships.attributes.semester" %> <i class='icon-sort'></i></th>
+      <th class="date"> <%=  "vorraussichtliche abgabe" %> </th>
+      <th class="title"><%= t "internships.attributes.title" %> <i class='icon-sort'></i></th>
+      <th data-sort="string" class="orientation"><%= t "internships.attributes.internship_report" %> <i class='icon-sort'></i></th>
+
+
+    </tr>
+
+    </thead>
+
+
+
+
+    <tbody>
+
+
+
+    <% @internships.each do |internship| %>
+
+
+
+        <tr class="<%= cycle("even_row", "odd_row") %>">
+
+
+          <td> <%= internship.student.name %></td>
+          <td> <%= internship.company.name %></td>
+          <td> <%= internship.student.enrolment_number %></td>
+          <td> <%= internship.try(:semester).try(:name) %></td>
+          <td> <%= internship.vorraussichtliche_abgabe %></td>
+          <td> <%= internship.title %> </td>
+
+
+
+          </td>
+
+        </tr>
+    <% end %>
+    </tbody>
+  </table
+
+  </div>
+
+<script>
+
+
+</script>

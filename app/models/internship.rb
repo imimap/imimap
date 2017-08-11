@@ -81,6 +81,12 @@ class Internship < ActiveRecord::Base
 
   end
 
+  # expected hand in 4 weeks after end of internship time
+  def vorraussichtliche_abgabe
+    #self[:end_date].to_time + 4.weeks
+  end
+
+
   def weekValidationActAdm
      weeksToValidate = weekCount
      valText = ""
