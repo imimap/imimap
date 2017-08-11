@@ -1,6 +1,5 @@
 ImiMaps::Application.routes.draw do
 
-  #get 'future_report/index'
 
   get "password_resets/new"
 
@@ -60,7 +59,7 @@ ImiMaps::Application.routes.draw do
 
     resources :errors, :only => [:not_found]
 
-      resources :future_report, :only => [:index]
+      resources :report_overview, :only => [:index]
 
 
     # get 'signup', to: 'users#new', as: 'signup'
