@@ -63,6 +63,8 @@ ImiMaps::Application.routes.draw do
 
       resources :read_list, :only => [:create, :destroy, :index]
 
+      resources :complete_report, :only => [:index]
+
 
     # get 'signup', to: 'users#new', as: 'signup'
     get 'login', to: 'devise/sessions#create', as: 'login'

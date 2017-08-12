@@ -91,19 +91,21 @@
 
                   <li class="<%= 'active_nav' if current_page?(current_internships_path) %>"> <%= link_to t("header.curInternships"),  current_internships_path %></li>
 
-                  <li class="<%= 'active_nav' if current_page?(report_overview_index_path) %>"><%= link_to t("Internships report overview"), report_overview_index_path %></li>
-
 
 
                   <div class="dropdown report-drop-down">
                     <li class="">Report</li>
                     <div class="dropdown-content">
 
+                      <li> <%= link_to t("Internships report overview"), report_overview_index_path %> </li>
 
-                      <li class="<%= 'active_nav' if current_page?(read_list_index_path) %>"><%= link_to t("Internships report overview"), read_list_index_path %></li>
+                      <li> <%= link_to t("complete report list"), complete_report_index_path %> </li>
+
+
+                      <li class="<%= 'active_nav' if current_page?(read_list_index_path) %>"><%= link_to t("Internships unread list"), read_list_index_path %></li>
+
 
                       <a href="#">read list</a>
-                      <a href="#">angegebene berichte</a>
 
                     </div>
                   </li>
