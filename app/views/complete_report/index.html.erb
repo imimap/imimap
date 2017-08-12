@@ -1,44 +1,10 @@
 <h1>current completed reports</h1>
 
-<%= form_tag "/de/current_internships" do |f| %>
-    <%= select_tag(:semester, options_for_select(Semester.all.map { |s| [s.name, s.id] })) %>
-    <%= submit_tag("Search") %>
-<% end %>
-
-<%= form_tag(current_internships_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Recipes" %>
-    <%= submit_tag "Search", :name => nil %>
-<% end %>
-
-<%= form_tag(current_internships_path, :method => 'get') do %>
-
-
-    <div class="row-fluid">
-
-      <div class="span4">
-        <%= select_tag :semester, options_for_select(@internships.map(&:semester).uniq.map{ |s| [s.name, s.id] }),  { :multiple => true , class: 'chzn-select', 'data-placeholder'=>t("choose.semester")}  %>
-      </div>
-
-
-
-
-    </div>
-    <br/>
-
-    <br/>
-
-    <%= submit_tag t("search.title"), :name => "search", :class => "form2" %>
-
-
-<% end %>
-
-
-
-
-
 
 <tbody>
+
 	<table class="table">
+
 		<th><%= t "students.attributes.enrolment_number" %></th>
 		<th><%= t "internships.attributes.student.name" %></th>
 		<th><%= t "internships.attributes.semester" %></th>
@@ -46,7 +12,7 @@
 		<th><%= t "internships.attributes.end_date" %></th>
     <th><%= t " report state " %></th>
 
-	</tr>
+
 
 	<% @internships.each do |internship| %>
 

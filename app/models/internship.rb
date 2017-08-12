@@ -84,7 +84,19 @@ class Internship < ActiveRecord::Base
 
   # expected hand in 4 weeks after end of internship time
   def vorraussichtliche_abgabe
-    #self[:end_date].to_time + 4.weeks
+
+    #valDefault = "1991-01-01"
+
+    if ( self[:end_date].nil? )
+
+      Time.now.strftime('%Y-%m-%d')
+
+    else
+
+    d = self[:end_date].to_time + 4.weeks
+      d.strftime('%Y-%m-%d')
+
+    end
   end
 
 

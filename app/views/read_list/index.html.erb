@@ -1,0 +1,62 @@
+
+<h1> <%= t "MY UNREAD LIST" %> </h1>
+
+
+
+
+<% if !@read_list.empty? %>
+
+<%= form_tag(read_list_path, remote: true, method: 'get') do %>
+
+<div class="table-container">
+<table class="table">
+	<tbody>
+
+	<% @read_list.each do |read_list| %>
+
+	  <tr class="<%= cycle("even_row2", "odd_row2") %>">
+
+
+
+      <td> <%= read_list.internship.student.name %> </td>
+	    <td> <%= read_list.internship.student.enrolment_number %> </td>
+	    <td> <%= read_list.internship.company.name %> </td>
+	    <td> <%= read_list.internship.try(:semester).try(:name) %> </td>
+
+     <!-- <td><%#= link_to File.basename(assigned_report.internship.internship_report.path), assigned_report.internship.internship_report.url %></td>
+
+        -->
+
+      <td> <%= read_list.internship.vorraussichtliche_abgabe %></td>
+      <td> <%= read_list.internship.title %> </td>
+
+      <!-- <td> <#%= link_to({:controller=>:assigned_reports,:action=>:destroy, :id => assigned_report.id}, {:method=>:delete, remote: true, class: "btn btn-danger"}) do %>
+            <i class=""> </i><#%= t("delete") %>
+        <#% end %>
+      </td>
+
+      <td> <#%= link_to({:controller=>:assigned_reports, :action => :create, :internship_id => assigned_report.id, :user_id => current_user.id}, {:method=>:post, remote: true, class: "btn btn-success"}) do %>
+          <i class=""> </i><#%= t("move to read list") %>
+      <#% end %>
+
+      </td>
+
+    </tr>
+
+	<% end %>
+
+
+	</tbody>
+</table>
+</div>
+
+
+<% end %>
+
+<% end %>
+
+
+
+
+
+
