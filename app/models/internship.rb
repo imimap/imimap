@@ -85,7 +85,6 @@ class Internship < ActiveRecord::Base
   # expected hand in 4 weeks after end of internship time
   def vorraussichtliche_abgabe
 
-    #valDefault = "1991-01-01"
 
     if ( self[:end_date].nil? )
 
@@ -114,8 +113,8 @@ class Internship < ActiveRecord::Base
       return valText;
    end   
 
-   def self.to_csv
-    CSV.generate do |csv|
+   def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
       csv << %w{semester enrolment_number student start_date end_date } 
       all.each do|internship|
         csv << [internship.semester.name, internship.student.enrolment_number, internship.student.name, internship.start_date, internship.end_date]
