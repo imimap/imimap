@@ -113,6 +113,7 @@ class Internship < ActiveRecord::Base
       return valText;
    end   
 
+  # modificate to accept hash options for .xls file
    def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << %w{semester enrolment_number student start_date end_date } 

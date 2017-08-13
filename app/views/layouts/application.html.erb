@@ -97,15 +97,15 @@
                     <li class="">Report</li>
                     <div class="dropdown-content">
 
-                      <li> <%= link_to t("Internships report overview"), report_overview_index_path %> </li>
+                      <li> <%= link_to t("header.reportOverview"), report_overview_index_path %> </li>
 
-                      <li> <%= link_to t("complete report list"), complete_report_index_path %> </li>
-
-
-                      <li class="<%= 'active_nav' if current_page?(read_list_index_path) %>"><%= link_to t("Internships unread list"), read_list_index_path %></li>
+                      <li> <%= link_to t("header.completeList"), complete_report_index_path %> </li>
 
 
-                      <a href="#">read list</a>
+                      <li class="<%= 'active_nav' if current_page?(read_list_index_path) %>"><%= link_to t("header.readList"), read_list_index_path %></li>
+
+
+                      <li class="<%= 'active_nav' if current_page?(read_list_index_path) %>"><%= link_to t("header.unreadList"), read_list_index_path %></li>
 
                     </div>
                   </li>

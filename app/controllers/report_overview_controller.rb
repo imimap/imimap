@@ -10,25 +10,27 @@ class ReportOverviewController < ApplicationController
   # GET /report_overview.json
   def index
 
+    @internships = Internship.includes(:company).where(semester_id: Semester.all)
 
-    @semesters = Semester.all
+    @companies = @internships.collect(&:company)
 
-    @internships = Internship.all
+    @countries = @companies.collect(&:country)
 
-
-    #@companies = @internships.collect(&:company)
-
-    #@enrolment_number = @internships.collect(&:enrolment_number)
+    @semesters = @internships.map(&:semester).uniq.map{ |s| [s.name, s.id] }
 
 
-    #s_id = params[:semester].collect(&:to_i) if params[:semester]
-
-    #@internships = @internships.where(:companies => {:country => params[:country]}) if params[:country].present?
-
-    #@internships = @internships.where(:semester_id => s_id) if s_id.present?
+    @students = @internships.collect(&:student).compact.uniq.collect { |o| [o.name, o.id] }
 
 
-   # @internships_size = @internships.size
+    semesters = params[:semester].collect(&:to_i) if params[:semester]
+    students = params[:student].collect(&:to_i) if params[:student]
+
+    #buat munculin tabel stlh search
+
+    @internships = @internships.where(:student_id => students) if students.present?
+
+    @internships = @internships.where(:semester_id => semesters) if semesters.present?
+
 
     respond_with(@internships)
   end

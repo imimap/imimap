@@ -220,6 +220,10 @@ de:
       short: ! '%d. %B, %H:%M Uhr'
     pm: nachmittags
   header:
+    reportOverview: "Berichte Übersicht"
+    completeList: "Angegebene Berichte"
+    readList: "Gelesene Berichte"
+    unreadList: "Ungelesene Berichte"
     curInternships: "aktuelle Praktika"
     account: "Konto"
     search: "Erweiterte Suche"
