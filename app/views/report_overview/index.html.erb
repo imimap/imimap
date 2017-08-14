@@ -29,12 +29,17 @@
   <%= form_tag(report_overview_index_path, :method => 'get', class: 'form2') do %>
 
 
-<div class="span4">
-    <%= select_tag :country, options_for_select((@countries).uniq), { :multiple => true , class: 'chzn-select', 'data-placeholder'=>t("choose.country"), style: "width:100%"} %>
-  </div>
+    <!--
+    http://localhost:3000/de/report_overview?utf8=%E2%9C%93&student=nevio&search=Suche
+    http://localhost:3000/de/report_overview?utf8=%E2%9C%93&student%5B%5D=1&search=Suche
+
+    -->
 
   <div class="span4">
-    <%= select_tag :student, options_for_select(@students),  { :multiple => true , class: 'chzn-select', 'data-placeholder'=>t("choose.country"), style: "width:100%"}  %>
+    <%#= text_field_tag :student, (params[:student] if params[:student]), placeholder: "Search Students" %>
+    <%#= select_tag :student, options_for_select(@students),  { :multiple => true , class: 'chzn-select', 'data-placeholder'=>t("test"), style: "width:100%"}  %>
+
+    <%= select_tag :student, options_for_select(@students) %>
   </div>
 
 
