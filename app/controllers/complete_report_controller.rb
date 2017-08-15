@@ -1,5 +1,5 @@
 class CompleteReportController < ApplicationController
-
+  respond_to :html, :json
   before_filter :authorize
 
 
@@ -14,6 +14,8 @@ class CompleteReportController < ApplicationController
       format.csv {send_data @internships.to_csv}
       format.xls { send_data @internships.to_csv(col_sep: "\t") }
     end
+
+
   end
 
 

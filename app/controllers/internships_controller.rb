@@ -101,7 +101,7 @@ class InternshipsController < ApplicationController
 
     @user_comments = @internship.user_comments.order("created_at DESC")
 
-    
+
     respond_with(@internship)
   end
 
