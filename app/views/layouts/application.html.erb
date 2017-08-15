@@ -77,7 +77,53 @@
 
               </ul>
               <!-- Everything you want hidden at 940px or less, place within here -->
-              <div class="nav-collapse ">
+
+
+              <div class="navigation-container">
+
+                <nav>
+
+                  <div class="navigation-mobile">
+                    <a id="navigation-toggle" href="#!"><span></span></a>
+                  </div>
+
+
+                  <ul class="navigation-list2">
+
+
+                    <li class="test"><%= link_to t("header.overview"), overview_index_path, style: 'color:#FFFFFF; text-decoration: none', class: 'css_class' %></li>
+
+                    <li class="<%= 'active_nav' if current_page?(internships_path) %>"><%= link_to t("header.search"), internships_path, style: 'color:#FFFFFF; text-decoration: none', class: 'css_class' %></li>
+
+                    <li class="<%= 'active_nav' if current_page?(internship_offer_index_path) %>"><%= link_to t("header.exchange"), internship_offer_index_path, style: 'color:#FFFFFF; text-decoration: none', class: 'css_class' %></li>
+
+                    <li class="<%= 'active_nav' if current_page?(internship_statistic_index_path) %>"><%= link_to t("header.statistic"), internship_statistic_index_path, style: 'color:#FFFFFF; text-decoration: none', class: 'css_class' %></li>
+
+                    <li class="<%= 'active_nav' if current_page?(my_internship_path) %>"> <%= link_to t("header.internship"),  my_internship_path, style: 'color:#FFFFFF; text-decoration: none', class: 'css_class' %> </li>
+
+                    <li class="<%= 'active_nav' if current_page?(current_internships_path) %>"> <%= link_to t("header.curInternships"),  current_internships_path, style: 'color:#FFFFFF; text-decoration: none', class: 'css_class' %></li>
+
+
+                    <li>
+                      <a href="#!" style="color:#FFFFFF; text-decoration: none">List</a>
+
+                      <ul class="navigation-dropdown">
+                        <li> <%= link_to t("header.reportOverview"), report_overview_index_path, style: 'color:#FFFFFF; text-decoration: none', class: 'css_class' %> </li>
+
+                        <li> <%= link_to t("header.completeList"), complete_report_index_path, style: 'color:#FFFFFF; text-decoration: none', class: 'css_class' %> </li>
+
+                        <li> <%= link_to t("my internship status"), internship_status_index_path, style: 'color:#FFFFFF; text-decoration: none', class: 'css_class'  %> </li>
+                      </ul>
+                    </li>
+
+
+
+                  </ul>
+                </nav>
+              </div>
+
+
+              <!--<div class="nav-collapse ">
 
                 <ul class="nav nav-top ">
                   <li class="<%= 'active_nav' if current_page?(overview_index_path) %>"><%= link_to t("header.overview"), overview_index_path %></li>
@@ -114,7 +160,7 @@
             </li>
 
                 </ul>
-              </div>
+              </div> -->
             </div>
           </div>
           <!-- .nav, .navbar-search, .navbar-form, etc -->

@@ -65,6 +65,8 @@ ImiMaps::Application.routes.draw do
 
       resources :complete_report, :only => [:index]
 
+      resources :internship_status, :only => [:index]
+
 
     # get 'signup', to: 'users#new', as: 'signup'
     get 'login', to: 'devise/sessions#create', as: 'login'
@@ -78,6 +80,8 @@ ImiMaps::Application.routes.draw do
   end
 
   get  'my_internship', to: 'internships#internshipData', as: 'my_internship'
+  #get  '/my_internship/:id', to: 'internships#internshipData'
+
 
   #root to: 'sessions#new'
 

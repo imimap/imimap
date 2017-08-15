@@ -3,10 +3,11 @@
 
 <tbody>
 
-	<table class="table">
+
+	<table id="table" class="table table-hover table-mc-light-blue table-bordered" data-sort-name="name" data-sort-order="desc">
 
 		<th><%= t "students.attributes.enrolment_number" %></th>
-		<th><%= t "internships.attributes.student.name" %></th>
+		<th data-field="name" data-sortable="true" ><%= t "internships.attributes.student.name" %></th>
 		<th><%= t "internships.attributes.semester" %></th>
 		<th><%= t "internships.attributes.start_date" %></th>
 		<th><%= t "internships.attributes.end_date" %></th>
