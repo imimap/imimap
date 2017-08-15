@@ -10,6 +10,12 @@ class InternshipsController < ApplicationController
 
     @current_user = User.find(current_user.id)
 
+    #@state = RegistrationState.first
+
+    #@current_intern = Internship.find(params[:id])
+
+    #@current_internship = Internship.where(user_id: current_user).last
+
     @companies = @internships.collect(&:company)
 
     @countries = @companies.collect(&:country)
