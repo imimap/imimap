@@ -153,7 +153,7 @@
 <% @internships.each do |internship| %>
   <tr class="<%= cycle("even_row", "odd_row") %>">
 
-    <td class="table_inside"><%= Favorite.last.id %></td>
+    <!--<td class="table_inside"><%#= Favorite.last.id %></td> -->
     <td class="table_inside"><%= internship.company.name %></td>
     <td class="table_inside"><%= internship.company.address %></td>
     <td class="table_inside"><%= internship.programming_languages.map(&:name).join(", ") %></td>

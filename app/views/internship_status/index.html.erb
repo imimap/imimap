@@ -1,32 +1,69 @@
 <h1>My Internship Status</h1>
 
 
-<div>
-  <p> Name : <%= @internship.student.name %></p>
+<div >
+  <p class="name"> <%= t "Name" %> : <strong> <%= @internship.student.name %></p></strong>
+  <p class="name"> <%= t "students.attributes.enrolment_number" %> : <strong> <%= @internship.student.enrolment_number %></p></strong>
 </div>
 
-<div class = "greenBox">
+<section class = "greenBox">
 
 
-		<p><%= @internship.registration_state.name %></p>
+  <% if @internship.registration_state.nil? %>
+
+      <p> <%= t "internships.attributes.registration_state" %> : Waiting ... </p>
+
+  <% else %>
+
+      <p class = ""> <%= t "internships.attributes.registration_state" %> : <%= @internship.registration_state.name %></p>
+
+  <% end %>
 
     <br/>
 
-    <p><%= @internship.report_state.name %></p>
+
+
+  <% if @internship.report_state.nil? %>
+      <p> <%= t "internships.attributes.report_state" %> : Waiting ... </p>
+
+      <% else %>
+
+    <p> <%= t "internships.attributes.report_state" %> : <%= @internship.report_state.name %></p>
+
+      <% end %>
 
 <br/>
 
-<p><%= @internship.internship_state.name %></p>
+  <% if @internship.internship_state.nil? %>
 
+      <p> <%= t "internships.attributes.internship_state" %> : Waiting ... </p>
+
+  <% else %>
+<p> <%= t "internships.attributes.internship_state" %> : <%= @internship.internship_state.name %></p>
+
+  <% end %>
 <br/>
 
-<p><%= @internship.certificate_state.name %></p>
+
+  <% if @internship.certificate_state.nil? %>
+
+      <p> <%= t "internships.attributes.certificate_state" %> : Waiting ... </p>
+
+  <% else %>
+<p> <%= t "internships.attributes.certificate_state" %> : <%= @internship.certificate_state.name %></p>
 
 <br/>
-
-<p><%= @internship.contract_state.name %></p>
-
+  <% end %>
 
 
+  <% if @internship.contract_state.nil? %>
 
-</div>
+      <p> <%= t "internships.attributes.contract_state" %> : Waiting ... </p>
+
+  <% else %>
+<p> <%= t "internships.attributes.contract_state" %> : <%= @internship.contract_state.name %></p>
+
+  <% end %>
+
+
+</section>

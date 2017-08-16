@@ -3,23 +3,29 @@
 
 <tbody>
 
+<thead>
+
+<tr class="even_row">
 
 	<table id="table" class="table table-hover table-mc-light-blue table-bordered" data-sort-name="name" data-sort-order="desc">
 
-		<th><%= t "students.attributes.enrolment_number" %></th>
-		<th data-field="name" data-sortable="true" ><%= t "internships.attributes.student.name" %></th>
-		<th><%= t "internships.attributes.semester" %></th>
-		<th><%= t "internships.attributes.start_date" %></th>
-		<th><%= t "internships.attributes.end_date" %></th>
-    <th><%= t " report state " %></th>
+    <th class ="headColor"><%= t "students.attributes.enrolment_number" %></th>
+		<th class ="headColor" data-field="name" data-sortable="true" ><%= t "internships.attributes.student.name" %></th>
+    <th class ="headColor"><%= t "internships.attributes.semester" %></th>
+    <th class ="headColor"><%= t "internships.attributes.start_date" %></th>
+    <th class ="headColor"><%= t "internships.attributes.end_date" %></th>
+    <th class ="headColor"><%= t " report state " %></th>
 
 	</tr>
+
+    </thead>
+
 
 	<% @internships.each do |internship| %>
 
 
 
-	<tr class="<%= cycle("even_row", "odd_row") %>">
+	<tr class="even_row">
 		<td><%= internship.student.enrolment_number %></td>
 		<td><%= internship.student.name %></td>
 		<td><%= internship.semester.name %></td>
@@ -29,6 +35,7 @@
 	</tr>
 
 	<% end %>
+
 </table>
 </tbody>
 

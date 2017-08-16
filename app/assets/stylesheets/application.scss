@@ -25,6 +25,8 @@
   position: absolute;
   display: none;
   z-index: 1;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.15);
 }
 
 
@@ -37,7 +39,7 @@ nav {
 
   float: right;
   //umargin-right: 25%;
-  margin-top: 2.5%;
+  //margin-top: 2.5%;
 
   ul {
     list-style: none;
@@ -48,25 +50,23 @@ nav {
       float: left;
       position: relative;
 
-      // this a style element got overwritten by the style on adminactive class
+      // this a style element got overwritten by the style on adminactive css
       a {
 
-        padding: 0 20px;
-        line-height: 50px;
+        padding: 20px 20px;
+        line-height: 70px;
         background: transparent;
 
-        &:hover {
-          background: #3CB371;
-          color: #ffffff;
-        }
+
         &:not(:only-child):after {
-          //padding-left: 4px;
+
           content: ' ▾';
         }
       }
 
       ul li {
-        min-width: 100px;
+        min-width: 150px;
+        min-height: 50px;
 
         //this too
         & a {
@@ -82,18 +82,12 @@ nav {
 }
 
 .test {
-  background: #ffffff;
+  //background: #ffffff;
 }
 
 
 .navigation-mobile {
   display: none;
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: #ffffff;
-  height: 50px;
-  width: 50px;
 }
 
 #navigation-toggle {
@@ -109,7 +103,7 @@ nav {
     border-radius: 1px;
     height: 5px;
     width: 35px;
-    background: #ffffff;
+    background: #00ff00;
     position: absolute;
     display: block;
     content: '';
@@ -142,9 +136,16 @@ nav {
 // this is for mobile
 @media only screen and (max-width: 960px) {
 
-  .nav-mobile {
+  .navigation-mobile {
     display: block;
     margin-top: 5%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent;
+    height: 50px;
+    width: 50px;
+
   }
   nav {
     width: 100%;
