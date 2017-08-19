@@ -39,7 +39,9 @@
     <%#= text_field_tag :student, (params[:student] if params[:student]), placeholder: "Search Students" %>
     <%#= select_tag :student, options_for_select(@students),  { :multiple => true , class: 'chzn-select', 'data-placeholder'=>t("test"), style: "width:100%"}  %>
 
-    <%= select_tag :student, options_for_select(@students) %>
+    <%= select_tag :semester, options_for_select(@semesters),  { :multiple => true , 'data-placeholder'=>t("test"), style: "width:100%"}  %>
+
+    <%= select_tag :student, options_for_select(@contract_states)%>
   </div>
 
 
@@ -49,6 +51,7 @@
 
     <%= submit_tag t("search.title"), :name => "search", :class => "form2" %>
 
+    <td class="table_block reset"><%= button_tag t("helpers.reset"), :name => nil, :class => "btn btn-success", :id => "reset_chosen", :onclick => "click_reset();" %></td>
 
 <% end %>
 
@@ -95,6 +98,12 @@
           <td> <%= internship.try(:semester).try(:name) %></td>
           <td> <%= internship.vorraussichtliche_abgabe %></td>
           <td> <%= internship.title %> </td>
+
+          <td> <%= link_to({:controller=>:read_list, :action => :create, :internship_id => internship.id, :user_id => current_user.id}, {:method=>:post, remote: true, class: "btn btn-success"}) do %>
+                <i class=""> </i><%= t("move to my reading list") %>
+            <% end %>
+          </td>
+
 
 
 

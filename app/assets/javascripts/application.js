@@ -15,12 +15,14 @@
 //= require jquery-ui/widgets/slider
 //= require jquery_ujs
 //= require jquery_nested_form
-//= require chosen-jquery
+//= require turbolinks
 //= require d3
 //= require stupidtable.min
 //= require bootstrap
 //= require bootstrap.min
 //= require_tree .
+//= require chosen-jquery
+
 
 // jquery for smooth scroll test
 // Select all links with hashes

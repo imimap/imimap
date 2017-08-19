@@ -1,6 +1,7 @@
 ImiMaps::Application.routes.draw do
 
 
+  resources :reads
   get "password_resets/new"
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do

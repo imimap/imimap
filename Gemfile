@@ -14,6 +14,10 @@ gem 'activeadmin', "~> 1.0"
 #gem 'formtastic', "~> 3"
 gem 'devise', ' ~> 4.3'
 
+gem 'turbolinks'
+
+gem 'jquery-turbolinks'
+
 # TBD Update: replace by new mechanism
 #  `attr_accessible` is extracted out of Rails into a gem. Please use new recommended protection model for params(strong_parameters) or add `protected_attributes` to your Gemfile to use old one.
 # "Rails 4.0 has removed attr_accessible and attr_protected feature in favor of Strong Parameters. You can use the Protected Attributes gem for a smooth upgrade path."

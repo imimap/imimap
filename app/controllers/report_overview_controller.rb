@@ -18,7 +18,7 @@ class ReportOverviewController < ApplicationController
 
     #@students = @internships.map(&:student).compact.uniq.collect { |o| [o.name, o.id] }
 
-    @students = @internships.map(&:contract_state).compact.uniq.collect { |o| [o.name, o.id] }
+    @contract_states = @internships.map(&:contract_state).compact.uniq.collect { |o| [o.name, o.id] }
 
 
 
