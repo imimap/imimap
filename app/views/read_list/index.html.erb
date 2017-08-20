@@ -1,62 +1,50 @@
+<h2> <%= t "users.show.read_lists_title" %> </h2>
 
-<h1> <%= t "MY UNREAD LIST" %> </h1>
-
-
-
-
-<% if !@read_list.empty? %>
-
-<%= form_tag(read_list_path, remote: true, method: 'get') do %>
-
-<div class="table-container">
-<table class="table">
-	<tbody>
-
-	<% @read_list.each do |read_list| %>
-
-	  <tr class="<%= cycle("even_row2", "odd_row2") %>">
+<% if !@read_lists.empty? %>
 
 
+    <div class="table-container">
+      <table  id="table" class="table table-hover table-mc-light-blue table-bordered" data-sort-name="name" data-sort-order="desc">
 
-      <td> <%= read_list.internship.student.name %> </td>
-	    <td> <%= read_list.internship.student.enrolment_number %> </td>
-	    <td> <%= read_list.internship.company.name %> </td>
-	    <td> <%= read_list.internship.try(:semester).try(:name) %> </td>
+        <thead style="background: #00ff00;">
 
-     <!-- <td><%#= link_to File.basename(assigned_report.internship.internship_report.path), assigned_report.internship.internship_report.url %></td>
+        <tr class="even_row">
 
-        -->
-
-      <td> <%= read_list.internship.vorraussichtliche_abgabe %></td>
-      <td> <%= read_list.internship.title %> </td>
-
-      <!-- <td> <#%= link_to({:controller=>:assigned_reports,:action=>:destroy, :id => assigned_report.id}, {:method=>:delete, remote: true, class: "btn btn-danger"}) do %>
-            <i class=""> </i><#%= t("delete") %>
-        <#% end %>
-      </td>
-
-      <td> <#%= link_to({:controller=>:assigned_reports, :action => :create, :internship_id => assigned_report.id, :user_id => current_user.id}, {:method=>:post, remote: true, class: "btn btn-success"}) do %>
-          <i class=""> </i><#%= t("move to read list") %>
-      <#% end %>
-
-      </td>
-
-    </tr>
-
-	<% end %>
+          <th class ="headColor"><%= t "users.attributes.name" %></th>
+          <th class ="headColor"><%= t "companies.attributes.name" %></th>
+          <th class ="headColor"><%= t "students.attributes.enrolment_number" %></th>
+          <th class ="headColor"><%= t "internships.attributes.semester" %> </th>
+          <th class ="headColor"> <%=  "vorraussichtliche abgabe" %> </th>
+          <th class ="headColor"><%= t "internships.attributes.title" %> </th>
+          <th class ="headColor"><%= t "internships.attributes.internship_report" %> </th>
 
 
-	</tbody>
-</table>
-</div>
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <% @read_lists.each do |read_list| %>
+            <tr class="<%= cycle("even_row2", "odd_row2") %>">
+              <td><%= read_list.internship.title %></td>
+              <td><%= read_list.internship.company.address %></td>
+              <td><%= read_list.internship.orientation.name %></td>
+              <td><%= read_list.internship.programming_languages.map { |n| n.name }.join(", ") %></td>
+
+              <td> <%= link_to({:controller=>:read_list,:action=>:destroy, :id => read_list.id}, {:method=>:delete, class: "btn btn-danger"}) do %>
+                    <i class=""> </i><%= t("delete") %>
+                <% end %>
+              </td>
+
+              <td><%= link_to "", read_list, method: :delete, data: { confirm: 'Are you sure?' }, class: "red-thumb icon-remove icon-2x button_intern" %></td>
+            </tr>
+        <% end %>
+
+        </tbody>
+      </table>
+    </div>
+
 
 
 <% end %>
-
-<% end %>
-
-
-
-
-
-

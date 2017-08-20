@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :user_comments, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
   has_many :notifications, :dependent => :destroy
+  has_many :read_lists, :dependent => :destroy
 
   def name
     "#{student.first_name} #{student.last_name}"
