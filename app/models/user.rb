@@ -16,7 +16,10 @@ class User < ActiveRecord::Base
   has_many :user_comments, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
   has_many :notifications, :dependent => :destroy
+<<<<<<< HEAD
   has_many :reads, :dependent => :destroy
+=======
+>>>>>>> read list test
   has_many :read_lists, :dependent => :destroy
 
   def name

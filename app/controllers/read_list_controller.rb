@@ -5,7 +5,13 @@ class ReadListController < ApplicationController
 
   # create an unread list and save it
   def create
+<<<<<<< HEAD
     @read_list = ReadList.new
+=======
+
+    @read_list = ReadList.new
+
+>>>>>>> read list test
     @read_list.internship_id = params[:internship_id]
     @read_list.user_id = params[:user_id]
     @read_list.save
@@ -31,10 +37,32 @@ class ReadListController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
   def index
 
     @read_lists = current_user.read_lists
 
   end
+=======
+
+    # destroy unwanted assigned reports
+    def destroy
+        @read_list = ReadList.find(params[:id])
+        @current_user = @read_list.user
+        @internship = @read_list.internship
+        @read_list.destroy
+
+        respond_to do |format|
+            format.html { redirect_to(read_list_index_path) }
+            format.js { render :layout=>false,:locals => { :current_user  => @current_user, :internship => @internship, :read_list => @read_list} }
+    end
+    end
+
+  def index
+
+       @read_lists = current_user.read_lists
+
+      end
+>>>>>>> read list test
 
 end
