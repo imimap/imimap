@@ -1,6 +1,8 @@
 class ReadListController < ApplicationController
+
   #check the user if current user nil or not
   before_filter :authorize
+  respond_to :html, :json
 
 
   # create an unread list and save it
@@ -19,10 +21,18 @@ class ReadListController < ApplicationController
     @current_user = @read_list.user
     @internship = @read_list.internship
 
+    flash[:notice] = "Post successfully created"
+
     respond_to do |format|
+<<<<<<< HEAD
       format.js { render :layout=>false,:locals => { :current_user  => @current_user, :internship => @internship, :read_list => @read_list} }
     end
   end
+=======
+
+      format.html { redirect_to(read_list_index_path) }
+      format.js { render :layout=>false, :locals => { :current_user  => @current_user, :internship => @internship, :read_list => @read_list} }
+>>>>>>> modify search option
 
   # destroy unwanted assigned reports
   def destroy
@@ -48,12 +58,14 @@ class ReadListController < ApplicationController
     # destroy unwanted assigned reports
     def destroy
         @read_list = ReadList.find(params[:id])
-        @current_user = @read_list.user
-        @internship = @read_list.internship
         @read_list.destroy
 
+
+        @current_user = @read_list.user
+        @internship = @read_list.internship
+
         respond_to do |format|
-            format.html { redirect_to(read_list_index_path) }
+            format.html { redirect_to read_list_index_path, notice: 'List successfully deleted'}
             format.js { render :layout=>false,:locals => { :current_user  => @current_user, :internship => @internship, :read_list => @read_list} }
     end
     end
@@ -62,7 +74,22 @@ class ReadListController < ApplicationController
 
        @read_lists = current_user.read_lists
 
+<<<<<<< HEAD
       end
 >>>>>>> read list test
+=======
+  end
+
+  def destroy_multiple
+
+    @read_lists.where(id: params[:read_list_ids]).destroy_all
+
+    respond_to do |format|
+      format.html { redirect_to read_list_index_path }
+      format.js { render :layout=>false,:locals => { :current_user  => @current_user, :internship => @internship, :read_list => @read_list} }
+
+    end
+  end
+>>>>>>> modify search option
 
 end

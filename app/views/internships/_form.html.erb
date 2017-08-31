@@ -16,33 +16,13 @@
 
   <div class="row">
 
-<%#= Internship.where(user_id: current_user).last.registration_state.id %>
 
-   <#% if Internship.where(user_id: current_user).last.registration_state.id == 1 %>
-
-    <!-- <div class="span4">
-      <div class="field" id="field-titles">
-        <#%= f.label t "internships.attributes.title" %><br />
-        <#%= f.text_field :title , :readonly => true %>
-      </div>
-    </div>
-
-        <#% else %>
-
-        <div class="span4">
-          <div class="field" id="field-titles">
-            <#%= f.label t "internships.attributes.title" %><br />
-            <#%= f.text_field :title , :readonly => false %>
-          </div>
-        </div>
-
-<#% end %> -->
 
 
      <div class="span4">
        <div class="field" id="field-titles">
-         <#%= f.label t "internships.attributes.title" %><br />
-           <#%= f.text_field :title , :readonly => false %>
+         <%= f.label t "internships.attributes.title" %><br />
+           <%= f.text_field :title , :readonly => false %>
        </div>
      </div>
 

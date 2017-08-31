@@ -1,5 +1,7 @@
 <h2> <%= t "users.show.read_lists_title" %> </h2>
 
+
+
 <% if !@read_lists.empty? %>
 
 
@@ -70,6 +72,8 @@
 
         <% @read_lists.each do |read_list| %>
             <tr class="<%= cycle("even_row2", "odd_row2") %>">
+
+              <td><%= check_box_tag "read_list_ids[]", read_list.id %></td>
               <td><%= read_list.internship.title %></td>
               <td><%= read_list.internship.company.address %></td>
               <td><%= read_list.internship.orientation.name %></td>
@@ -82,10 +86,15 @@
 
               <td><%= link_to "", read_list, method: :delete, data: { confirm: 'Are you sure?' }, class: "red-thumb icon-remove icon-2x button_intern" %></td>
             </tr>
+
+            <%= button_to "Delete selected", { :controller=>:read_list, :action => :destroy_multiple, :id => read_list.id}, method: :delete %>
+
         <% end %>
 
         </tbody>
       </table>
+
+
     </div>
 >>>>>>> read list test
 

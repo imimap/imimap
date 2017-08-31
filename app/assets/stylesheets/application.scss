@@ -38,7 +38,7 @@
 nav {
 
   float: right;
-  //umargin-right: 25%;
+  margin-right: 25%;
   //margin-top: 2.5%;
 
   ul {
@@ -150,6 +150,7 @@ nav {
   nav {
     width: 100%;
     padding: 50px 0 15px;
+    margin-right: 0%;
     ul {
       display: none;
       li {
@@ -172,7 +173,7 @@ nav {
 
 @media screen and (min-width: 960px) {
   .navigation-list2 {
-    display: block !important;
+    display: block
 
   }
 }
