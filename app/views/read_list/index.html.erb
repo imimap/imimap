@@ -4,7 +4,9 @@
 
 <% if !@read_lists.empty? %>
 
+    <!-- form tag for submitting the button -->
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         <div class="table-container">
           <table  id="table" class="table table-hover table-mc-light-blue table-bordered" data-sort-name="name" data-sort-order="desc">
@@ -49,6 +51,13 @@
         </div>
 =======
     <div class="table-container">
+=======
+
+
+    <%= form_tag(read_list_path( @read_list, :id => @read_lists.collect(&:id) ), remote: false, method: 'delete') do %>
+
+        <div class="table-container">
+>>>>>>> modify delete read list with using checkbox
       <table  id="table" class="table table-hover table-mc-light-blue table-bordered" data-sort-name="name" data-sort-order="desc">
 
         <thead style="background: #00ff00;">
@@ -74,6 +83,7 @@
             <tr class="<%= cycle("even_row2", "odd_row2") %>">
 
               <td><%= check_box_tag "read_list_ids[]", read_list.id %></td>
+
               <td><%= read_list.internship.title %></td>
               <td><%= read_list.internship.company.address %></td>
               <td><%= read_list.internship.orientation.name %></td>
@@ -87,7 +97,6 @@
               <td><%= link_to "", read_list, method: :delete, data: { confirm: 'Are you sure?' }, class: "red-thumb icon-remove icon-2x button_intern" %></td>
             </tr>
 
-            <%= button_to "Delete selected", { :controller=>:read_list, :action => :destroy_multiple, :id => read_list.id}, method: :delete %>
 
         <% end %>
 
@@ -99,5 +108,8 @@
 >>>>>>> read list test
 
 
+        <%= submit_tag (t "delete"), data: { confirm: 'Are you sure?' }, class: "btn btn-success" %>
+
+    <% end %>
 
 <% end %>
