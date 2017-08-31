@@ -1,6 +1,6 @@
 class InternshipStatusController < ApplicationController
 
-  before_filter :authorize
+
 
 
 

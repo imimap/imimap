@@ -36,10 +36,19 @@
     -->
 
   <div class="span4">
-    <%#= text_field_tag :student, (params[:student] if params[:student]), placeholder: "Search Students" %>
-    <%#= select_tag :student, options_for_select(@students),  { :multiple => true , class: 'chzn-select', 'data-placeholder'=>t("test"), style: "width:100%"}  %>
+    <%= text_field_tag :country, params[:country], placeholder: "Search Country" %>
+    <%= text_field_tag :last_name, params[:last_name], placeholder: "Search last name" %>
+    <%= text_field_tag :first_name, params[:first_name], placeholder: "Search first name" %>
+    <%= text_field_tag :name, params[:name], placeholder: "Search semester" %>
 
-    <%= select_tag :student, options_for_select(@students) %>
+    <!--
+     <#%= select_tag :student, options_for_select(@students),  { :multiple => true , class: 'chzn-select', 'data-placeholder'=>t("test"), style: "width:100%"}  %>
+
+     ini yg udah berfungsi
+
+     <#%= select_tag :student, options_for_select(@students) %>
+       <#%= select_tag :country, options_for_select((@countries).uniq), { :multiple => true , class: 'chzn-select', 'data-placeholder'=>t("choose.country"), style: "width:100%"} %>
+         -->
   </div>
 
 
@@ -50,7 +59,12 @@
     <%= submit_tag t("search.title"), :name => "search", :class => "form2" %>
 
 
+
+
+
 <% end %>
+
+<%= button_to "reset", report_overview_index_path, :method => "get" %>
 
 
 
@@ -96,14 +110,15 @@
           <td> <%= internship.vorraussichtliche_abgabe %></td>
           <td> <%= internship.title %> </td>
 
-
-
+          <td> <%= link_to({:controller=>:read_list, :action => :create, :internship_id => internship.id, :user_id => current_user.id}, {:method=>:post, remote: true, class: "btn btn-success"}) do %>
+                <i class=""> </i><%= t("move to my reading list") %>
+            <% end %>
           </td>
 
         </tr>
     <% end %>
     </tbody>
-  </table
+  </table>
 
   </div>
 

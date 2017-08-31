@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @finish_read.user_id %>
+</p>
+
+<p>
+  <strong>Internship:</strong>
+  <%= @finish_read.internship_id %>
+</p>
+
+<%= link_to 'Edit', edit_finish_read_path(@finish_read) %> |
+<%= link_to 'Back', finish_reads_path %>

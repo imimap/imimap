@@ -39,6 +39,10 @@ class Internship < ActiveRecord::Base
   accepts_nested_attributes_for :internship_rating
   accepts_nested_attributes_for :company, reject_if: proc { |attributes| attributes{'name'}.blank? }
 
+  def self.search(search)
+    where("title LIKE ?", "%#{search}%")
+  end
+
   def rating
     internship_rating.total_rating
   end
