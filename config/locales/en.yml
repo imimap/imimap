@@ -181,8 +181,10 @@ en:
     new:
       newinternship: "New Internship"
     attributes:
+      delete: "Delete"
       description: "Description"
       semester: "Semester/Year"
+      expected_hand_in: "expected hand in"
       email_public: "Make email adress public?"
       comments: "Comments"
       pictures: "Pics"

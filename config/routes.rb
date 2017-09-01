@@ -1,6 +1,7 @@
 ImiMaps::Application.routes.draw do
 
 
+
   get "password_resets/new"
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
@@ -67,6 +68,7 @@ ImiMaps::Application.routes.draw do
 
       resources :internship_status, :only => [:index]
 
+      resources :finish_lists, :only => [:create, :destroy, :index]
 
     # get 'signup', to: 'users#new', as: 'signup'
     get 'login', to: 'devise/sessions#create', as: 'login'

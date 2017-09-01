@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @finish_list.user_id %>
+</p>
+
+<p>
+  <strong>Internship:</strong>
+  <%= @finish_list.internship_id %>
+</p>
+
+<%= link_to 'Edit', edit_finish_list_path(@finish_list) %> |
+<%= link_to 'Back', finish_lists_path %>

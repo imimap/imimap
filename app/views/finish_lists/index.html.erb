@@ -1,14 +1,14 @@
-<h2> <%= t "users.show.read_lists_title" %> </h2>
+<h2> <%= t "users.show.finish_lists_title" %> </h2>
 
 
 
-<% if !@read_lists.empty? %>
+<% if !@finish_lists.empty? %>
 
     <!-- form tag for submitting the button -->
 
 
 
-    <%= form_tag(read_list_path( @read_list, :id => @read_lists.collect(&:id) ), remote: false, method: 'delete') do %>
+    <%= form_tag(finish_list_path( @finish_list, :id => @finish_lists.collect(&:id) ), remote: false, method: 'delete') do %>
 
         <div class="table-container">
       <table  id="table" class="table table-hover table-mc-light-blue table-bordered" data-sort-name="name" data-sort-order="desc">
@@ -32,31 +32,26 @@
 
         <tbody>
 
-        <% @read_lists.each do |read_list| %>
+        <% @finish_lists.each do |finish_list| %>
             <tr class="<%= cycle("even_row2", "odd_row2") %>">
 
-              <td><%= check_box_tag "read_list_ids[]", read_list.id %></td>
+              <td><%= check_box_tag "finish_list_ids[]", finish_list.id %></td>
+              <td><%= finish_list.internship.id %></td>
 
-              <td><%= read_list.internship.id %></td>
-              <td><%= read_list.internship.title %></td>
-              <td><%= read_list.internship.company.address %></td>
-              <td><%= read_list.internship.orientation.name %></td>
-              <td><%= read_list.internship.programming_languages.map { |n| n.name }.join(", ") %></td>
+              <td><%= finish_list.internship.title %></td>
+              <td><%= finish_list.internship.company.address %></td>
+              <td><%= finish_list.internship.orientation.name %></td>
+              <td><%= finish_list.internship.programming_languages.map { |n| n.name }.join(", ") %></td>
 
 
-             <!-- <td> <#%= link_to({:controller=>:read_list,:action=>:destroy, :id => read_list.id}, {:method=>:delete, class: "btn btn-danger"}) do %>
+             <!-- <td> <#%= link_to({:controller=>:finish_list,:action=>:destroy, :id => finish_list.id}, {:method=>:delete, class: "btn btn-danger"}) do %>
                     <i class=""> </i><%= t("delete") %>
                 <#% end %>
               </td>
 
-              <td><#+%= link_to "", read_list, method: :delete, data: { confirm: 'Are you sure?' }, class: "red-thumb icon-remove icon-2x button_intern" %></td>
+              <td><#+%= link_to "", finish_list, method: :delete, data: { confirm: 'Are you sure?' }, class: "red-thumb icon-remove icon-2x button_intern" %></td>
            -->
 
-
-              <td> <%= link_to({:controller=>:finish_lists, :action => :create, :internship_id => read_list.internship.id, :user_id => current_user.id}, {:method=>:post, remote: true, class: "btn btn-success"}) do %>
-                    <i class=""> </i><%= t("move to my reading list") %>
-                <% end %>
-              </td>
 
             </tr>
 
