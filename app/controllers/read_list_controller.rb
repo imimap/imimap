@@ -31,8 +31,12 @@ class ReadListController < ApplicationController
 =======
 
       format.html { redirect_to(read_list_index_path) }
+<<<<<<< HEAD
       format.js { render :layout=>false, :locals => { :current_user  => @current_user, :internship => @internship, :read_list => @read_list} }
 >>>>>>> modify search option
+=======
+      #format.js { render :layout=>false, :locals => { :current_user  => @current_user, :internship => @internship, :read_list => @read_list} }
+>>>>>>> modify finish read list
 
   # destroy unwanted assigned reports
   def destroy

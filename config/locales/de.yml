@@ -318,7 +318,9 @@ de:
     new:
       newinternship: "Neues Praktikum"
     attributes:
+      delete: "Löschen"
       description: "Beschreibung"
+      expected_hand_in: "Voraussichtliche Abgabe"
       semester: "Semester"
       email_public: "Emailadresse öffentlich anzeigen?"
       comments: "Kommentare"

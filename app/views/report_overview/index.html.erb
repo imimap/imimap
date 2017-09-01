@@ -83,11 +83,12 @@
 
     <tr class="even_row">
 
+
       <th class ="headColor"><%= t "users.attributes.name" %></th>
       <th class ="headColor"><%= t "companies.attributes.name" %></th>
       <th class ="headColor"><%= t "students.attributes.enrolment_number" %></th>
       <th class ="headColor"><%= t "internships.attributes.semester" %> </th>
-      <th class ="headColor"> <%=  "vorraussichtliche abgabe" %> </th>
+      <th class ="headColor"><%= t "internships.attributes.expected_hand_in" %> </th>
       <th class ="headColor"><%= t "internships.attributes.title" %> </th>
       <th class ="headColor"><%= t "internships.attributes.internship_report" %> </th>
 
@@ -110,6 +111,7 @@
         <tr class="<%= cycle("even_row", "odd_row") %>">
 
 
+          <td> <%= internship.student.id %></td>
           <td> <%= internship.student.name %></td>
           <td> <%= internship.company.name %></td>
           <td> <%= internship.student.enrolment_number %></td>

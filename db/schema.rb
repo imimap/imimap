@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170817182803) do
+=======
+ActiveRecord::Schema.define(version: 20170901111533) do
+>>>>>>> modify finish read list
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "resource_id",   null: false
@@ -131,6 +135,20 @@ ActiveRecord::Schema.define(version: 20170817182803) do
   create_table "financings", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "finish_lists", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "internship_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "finish_reads", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "read_list_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "internship_offers", force: :cascade do |t|

@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
 =======
 >>>>>>> read list test
   has_many :read_lists, :dependent => :destroy
+  has_many :finish_lists, :dependent => :destroy
 
   def name
     "#{student.first_name} #{student.last_name}"

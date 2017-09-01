@@ -1,4 +1,4 @@
-class ReadList < ActiveRecord::Base
+class FinishList < ActiveRecord::Base
   attr_accessible :user_id, :internship_id
 
   validates_uniqueness_of :internship_id, :scope => :user_id
@@ -8,7 +8,5 @@ class ReadList < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :internship
-
-
 
 end

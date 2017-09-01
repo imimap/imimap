@@ -64,11 +64,11 @@
 
         <tr class="even_row">
 
-          <th class ="headColor"><%= t "users.attributes.name" %></th>
+          <th class ="headColor"><%= t "internships.attributes.delete" %></th>
           <th class ="headColor"><%= t "companies.attributes.name" %></th>
           <th class ="headColor"><%= t "students.attributes.enrolment_number" %></th>
           <th class ="headColor"><%= t "internships.attributes.semester" %> </th>
-          <th class ="headColor"> <%=  "vorraussichtliche abgabe" %> </th>
+          <th class ="headColor"><%= t "internships.attributes.expected_hand_in" %> </th>
           <th class ="headColor"><%= t "internships.attributes.title" %> </th>
           <th class ="headColor"><%= t "internships.attributes.internship_report" %> </th>
 
@@ -84,17 +84,27 @@
 
               <td><%= check_box_tag "read_list_ids[]", read_list.id %></td>
 
+              <td><%= read_list.internship.id %></td>
               <td><%= read_list.internship.title %></td>
               <td><%= read_list.internship.company.address %></td>
               <td><%= read_list.internship.orientation.name %></td>
               <td><%= read_list.internship.programming_languages.map { |n| n.name }.join(", ") %></td>
 
-              <td> <%= link_to({:controller=>:read_list,:action=>:destroy, :id => read_list.id}, {:method=>:delete, class: "btn btn-danger"}) do %>
+
+             <!-- <td> <#%= link_to({:controller=>:read_list,:action=>:destroy, :id => read_list.id}, {:method=>:delete, class: "btn btn-danger"}) do %>
                     <i class=""> </i><%= t("delete") %>
+                <#% end %>
+              </td>
+
+              <td><#+%= link_to "", read_list, method: :delete, data: { confirm: 'Are you sure?' }, class: "red-thumb icon-remove icon-2x button_intern" %></td>
+           -->
+
+
+              <td> <%= link_to({:controller=>:finish_lists, :action => :create, :internship_id => read_list.internship.id, :user_id => current_user.id}, {:method=>:post, remote: true, class: "btn btn-success"}) do %>
+                    <i class=""> </i><%= t("move to my reading list") %>
                 <% end %>
               </td>
 
-              <td><%= link_to "", read_list, method: :delete, data: { confirm: 'Are you sure?' }, class: "red-thumb icon-remove icon-2x button_intern" %></td>
             </tr>
 
 
