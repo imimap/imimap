@@ -140,13 +140,6 @@ ActiveRecord::Schema.define(version: 20170901111533) do
     t.datetime "updated_at",    null: false
   end
 
-  create_table "finish_reads", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "read_list_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
   create_table "internship_offers", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
@@ -289,6 +282,13 @@ ActiveRecord::Schema.define(version: 20170901111533) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "reads", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "internship_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "registration_states", force: :cascade do |t|

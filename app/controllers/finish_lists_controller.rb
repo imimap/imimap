@@ -39,20 +39,6 @@ class FinishListsController < InheritedResources::Base
     end
   end
 
-  # destroy unwanted assigned reports
-  # def destroy
-  # @finish_list = ReadList.find(params[:id])
-  # @finish_list.destroy
-
-
-  # @current_user = @finish_list.user
-  # @internship = @finish_list.internship
-
-  # respond_to do |format|
-  #    format.html { redirect_to finish_list_index_path, notice: 'List successfully deleted'}
-  #   format.js { render :layout=>false,:locals => { :current_user  => @current_user, :internship => @internship, :finish_list => @finish_list} }
-  # end
-  # end
 
   def index
 
