@@ -25,7 +25,6 @@ describe 'internships/show.html.erb' do
       assign(:internship, internship)
       render
 
-      rendered.should have_content('1')
       rendered.should have_content('Intership is less than 4 weeks')
       render.should have_content('Total amount of weeks')
       render.should have_content('Validation status')
