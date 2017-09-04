@@ -66,7 +66,7 @@ class Internship < ActiveRecord::Base
   end  
 
   def weekCount
-    days = (self[:end_date] - self[:start_date]).to_i
+    days = returnDays
     weeks = days/7
     return weeks
   end
