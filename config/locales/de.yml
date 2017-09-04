@@ -341,6 +341,7 @@ de:
       recommend: "Empfehlung"
       internship_report: "Praktikumsbericht"
       amountOfWeeks: "Anzahl der Wochen"
+      amoutOfDays: "Anzahl der Tage"
       weekValidation: "Validität"
       weekVal:
         optionA: "Die Praktikumsdauer ist kleiner als 4 Wochen"

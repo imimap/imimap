@@ -205,6 +205,7 @@ en:
       recommend: "Recommendation"
       internship_report: "Internship Report"
       amountOfWeeks: "Total amount of weeks"
+      amoutOfDays: "The amount of days"
       weekValidation: "Validation status"
       weekVal:
         optionA: "Intership is less than 4 weeks"
