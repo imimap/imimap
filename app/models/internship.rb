@@ -1,3 +1,4 @@
+require 'date'
 class Internship < ActiveRecord::Base
 
   attr_accessible :attachments_attributes, :living_costs, :orientation_id, :salary, :working_hours, :programming_language_ids, :internship_rating_id,
