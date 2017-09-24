@@ -59,7 +59,7 @@ class Internship < ActiveRecord::Base
   after_save do
      @duration = nil
   end
-  
+
    # CodeReviewSS17
    # CSV is a view and should not be in the model.
    def self.to_csv
