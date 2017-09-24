@@ -1,5 +1,5 @@
 <h3><%= t"internships.statistic" %></h3>
-<%= form_tag "/de/internship_statistic" do |f| %>
+<%= form_tag (internship_statistic_path, :method => 'get') do |f| %>
     <%= select_tag(:semester_id, options_for_select(Semester.all.map { |s| [s.name, s.id] })) %>
     <%= submit_tag("Search") %>
     <% end %>
