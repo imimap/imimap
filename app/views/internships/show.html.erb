@@ -191,12 +191,12 @@
     <div class="span3" id="intern-title">
       <%= t "internships.attributes.weekValidation" %></div>
       <div class="span8" id="intern-box">
-        <% if @internship.weekValidation == "A" %>
-        <%= t "internships.attributes.weekVal.optionA"%>
-        <% elsif @internship.weekValidation == "B"  %>
-        <%= t "internships.attributes.weekVal.optionB"%> 
+        <% if @internship.weekValidation == "notLongEnough" %>
+        <%= t "internships.attributes.weekVal.notLongEnough"%>
+        <% elsif @internship.weekValidation == "partInternship"  %>
+        <%= t "internships.attributes.weekVal.partInternship"%> 
         <% else %>
-        <%= t "internships.attributes.weekVal.optionC"%> 
+        <%= t "internships.attributes.weekVal.longEnough"%> 
         <% end %>
       </div>    
     </div>

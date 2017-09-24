@@ -4,7 +4,6 @@ class Internship < ActiveRecord::Base
     :company_id, :user_id, :title, :recommend, :email_public, :semester_id, :description, :internship_report, :student_id, :start_date, :end_date, :operational_area, :tasks, :internship_state_id, :reading_prof_id, :payment_state_id, :registration_state_id, :contract_state_id, :report_state_id, :certificate_state_id, :certificate_signed_by_internship_officer, :certificate_signed_by_prof,
     :certificate_to_prof, :comment, :supervisor_email, :supervisor_name, :internship_rating_attributes, :completed
   validates :semester_id, :student, presence: true
-  #validate :start_date_before_end_date?
 
 
   validates_presence_of :company
@@ -54,63 +53,13 @@ class Internship < ActiveRecord::Base
     student.enrolment_number
   end
 
-  def start_date_before_end_date?
-    if (:start_date > :end_date)
-      errors.add :end_date, "must be after start date"
-    end
+  def duration
+    @duration || @duration = InternshipDuration.new(self)
   end
-
-  def returnDays
-    days = (self[:end_date] - self[:start_date]).to_i
-    return days;
-  end  
-
-  def weekCount
-    days = returnDays
-    weeks = days/7
-    return weeks
+  after_save do
+     @duration = nil
   end
-
-  # CodeReviewSS17: this method name gives no hint
-  # on what the method does/returns. A,B,C are
-  # obscure return values for weekValidation
-
-  def weekValidation
-    weeksToValidate = weekCount
-    valText = ""
-    case weeksToValidate
-      when 0..4
-        valText = "A"
-      when 4..17,5
-         valText = "B"
-       else
-        valText = "C"
-    end
-    return valText;
-
-  end
-
-  # CodeReviewSS17: This method needs a better name at least but:
-  # the only thing it seems to do is avoid translation
-  # for activeadmin. Why doesn't that work?
-  # Having a workaround with literal texts in the model
-  # is not a good solution
-  # also, duplicated code, see weekValidation
-
-  def weekValidationActAdm
-    weeksToValidate = weekCount
-    valText = ""
-    case weeksToValidate
-      when 0..4
-        valText = "Intership is less than 4 weeks"
-      when 4..17,5
-         valText = "Internship needs manual validation"
-       else
-        valText = "Internship is long enough"
-    end
-    return valText;
-  end
-
+  
    # CodeReviewSS17
    # CSV is a view and should not be in the model.
    def self.to_csv
