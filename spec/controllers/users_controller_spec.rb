@@ -60,47 +60,48 @@ RSpec.describe UsersController, :type => :controller do
     end
   end
 
-  describe "GET #edit" do
-    it 'assigns @user' do
-      get :edit, id: @current_user
-      expect(assigns(:user)).to eq @current_user
-    end
-  end
-
-  describe "PUT #update" do
-    before :each do
-      @user = create :user, email: "foo@bar.com"
-    end
-
-    it '"assigns @user"' do
-      put :update, id: @current_user
-      expect(assigns(:user)).to eq @current_user
-    end
-
-    context 'given correct parameters' do
-      it 'updates the user' do
-        put :update, id: @user, user: attributes_for(:user, email: "bar@foo.com")
-        @user.reload
-        expect(@user.email).to eq("bar@foo.com")
-      end
-
-      it 'redirects to the user show view' do
-        put :update, id: @user, user: attributes_for(:user, email: "bar@foo.com")
-        expect(response).to redirect_to @user
-      end
-    end
-
-    context 'given incorrect parameters' do
-      it 'refuses to updates the user' do
-        put :update, id: @user, user: attributes_for(:user, email: nil)
-        @user.reload
-        expect(@user.email).to eq("foo@bar.com")
-      end
-
-      it 'redirects to the user show view' do
-        put :update, id: @user, user: attributes_for(:user, email: nil)
-        expect(response).to render_template :edit
-      end
-    end
-  end
+  # no edit or update anymore, could be deleted
+  # describe "GET #edit" do
+  #   it 'assigns @user' do
+  #     get :edit, id: @current_user
+  #     expect(assigns(:user)).to eq @current_user
+  #   end
+  # end
+  #
+  # describe "PUT #update" do
+  #   before :each do
+  #     @user = create :user, email: "foo@bar.com"
+  #   end
+  #
+  #   it '"assigns @user"' do
+  #     put :update, id: @current_user
+  #     expect(assigns(:user)).to eq @current_user
+  #   end
+  #
+  #   context 'given correct parameters' do
+  #     it 'updates the user' do
+  #       put :update, id: @user, user: attributes_for(:user, email: "bar@foo.com")
+  #       @user.reload
+  #       expect(@user.email).to eq("bar@foo.com")
+  #     end
+  #
+  #     it 'redirects to the user show view' do
+  #       put :update, id: @user, user: attributes_for(:user, email: "bar@foo.com")
+  #       expect(response).to redirect_to @user
+  #     end
+  #   end
+  #
+  #   context 'given incorrect parameters' do
+  #     it 'refuses to updates the user' do
+  #       put :update, id: @user, user: attributes_for(:user, email: nil)
+  #       @user.reload
+  #       expect(@user.email).to eq("foo@bar.com")
+  #     end
+  #
+  #     it 'redirects to the user show view' do
+  #       put :update, id: @user, user: attributes_for(:user, email: nil)
+  #       expect(response).to render_template :edit
+  #     end
+  #   end
+  # end
 end
