@@ -49,6 +49,10 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.save
+        # CodeReviewSS17 seems a bit too specific for the general create
+        # case, but if Company#create isn't called from anywhere else,
+        # why not. but if the company was specifically created for the
+        # internship, it should be passed to the new internship.
         format.html { redirect_to new_internship_path, notice: 'Company was successfully created.' }
         format.json { render json: @company, status: :created, location: @company }
       else

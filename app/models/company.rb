@@ -20,6 +20,7 @@ class Company < ActiveRecord::Base
   #associations
   has_many :internships
 
+  # CodeReviewSS17: delete?
   # accepts_nested_attributes_for :internships
 
   def address
@@ -46,5 +47,5 @@ class Company < ActiveRecord::Base
   def address_changed?
     street_changed? || city_changed? || zip_changed? || country_changed?
   end
-  
+
 end
