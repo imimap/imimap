@@ -81,3 +81,14 @@ Two gems are used to generate documentation: society and railroady.
 
 ## Railroady
 * [Railroady on Github](https://github.com/preston/railroady)
+
+
+# Code Review after SS2017
+
+Comparision: https://github.com/imimaps/imimaps/compare/before-update-gmaps-working...master
+See many comments in the code Tagged with CodeReviewSS17
+Also:
+
+* Leaflet should be in vendor/assets
+
+weiter mit  app/controllers/users_controller.rb

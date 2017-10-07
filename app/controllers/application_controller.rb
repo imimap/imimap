@@ -17,12 +17,24 @@ class ApplicationController < ActionController::Base
       redirect_to authenticated_root
     end
   end
-  
-     def redirect_PV
+
+  # CodeReviewSS17
+  # PV = Pruefungsverwaltung
+  # only needs one page currently, but introducing an explicit
+  # redirect from most other pages seems redundant.
+  # it also clutters the code - the combination of
+  #   before_filter :authorize, :redirect_PV
+  # was found 9 times in the code.
+  # If this is really the default case, which I doupt,
+  # it should be in one method.
+
+
+    def redirect_PV
       if (current_user.email == Rails.configuration.x.pv_Email)
         redirect_to current_internships_path
       end
     end
+
 
 
 

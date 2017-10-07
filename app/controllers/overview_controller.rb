@@ -5,6 +5,7 @@ class OverviewController < ApplicationController
   def index
     @internships = Internship.includes(:company, :semester, :orientation, :programming_languages).where(completed: true).order('created_at DESC')
     @companies = @internships.map(&:company)
+    #CodeReviewSS17 too long, own method, also duplication with startpage_controller
     #@company_location_json = Company.pluck(:name, :latitude, :longitude).to_json.html_safe
     @company_location_json_raw = Company.pluck(:name, :latitude, :longitude)
     @company_location_json_raw.each do |x|

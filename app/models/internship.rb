@@ -66,12 +66,16 @@ class Internship < ActiveRecord::Base
     return weeks
   end
 
+  # CodeReviewSS17: this method name gives no hint
+  # on what the method does/returns. A,B,C are
+  # obscure return values for weekValidation
+
   def weekValidation
     weeksToValidate = weekCount
     valText = ""
     case weeksToValidate
       when 0..4
-        valText = "A" 
+        valText = "A"
       when 4..17,5
          valText = "B"
        else
@@ -81,28 +85,37 @@ class Internship < ActiveRecord::Base
 
   end
 
+  # CodeReviewSS17: This method needs a better name at least but:
+  # the only thing it seems to do is avoid translation
+  # for activeadmin. Why doesn't that work?
+  # Having a workaround with literal texts in the model
+  # is not a good solution
+  # also, duplicated code, see weekValidation
+
   def weekValidationActAdm
-     weeksToValidate = weekCount
-     valText = ""
-     case weeksToValidate
-       when 0..4
-         valText = "Intership is less than 4 weeks"
-       when 4..17,5
-          valText = "Internship needs manual validation"
-        else
-         valText = "Internship is long enough"
-      end
-      return valText;
-   end   
-
-   def self.to_csv
-    CSV.generate do |csv|
-      csv << %w{semester enrolment_number student start_date end_date } 
-      all.each do|internship|
-        csv << [internship.semester.name, internship.student.enrolment_number, internship.student.name, internship.start_date, internship.end_date]
-      end 
+    weeksToValidate = weekCount
+    valText = ""
+    case weeksToValidate
+      when 0..4
+        valText = "Intership is less than 4 weeks"
+      when 4..17,5
+         valText = "Internship needs manual validation"
+       else
+        valText = "Internship is long enough"
     end
-
+    return valText;
   end
+
+   # CodeReviewSS17
+   # CSV is a view and should not be in the model.
+   def self.to_csv
+     CSV.generate do |csv|
+       # CodeReviewSS17 this duplicates field names
+       csv << %w{semester enrolment_number student start_date end_date }
+       all.each do|internship|
+         csv << [internship.semester.name, internship.student.enrolment_number, internship.student.name, internship.start_date, internship.end_date]
+       end
+     end
+   end
 
 end

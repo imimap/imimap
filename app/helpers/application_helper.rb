@@ -28,16 +28,15 @@ module ApplicationHelper
     link_to(" #{name}", '#', class: "add_fields btn btn-success icon-white icon-plus", data: {id: id, fields: fields.gsub("\n", "")})
   end
 
-  # def current_user
-  #   @current_user = User.find(session[:user_id]) if session[:user_id]
-  # end
-
   def get_notifications
     Notification.where(:user_id => current_user.try(:id)).order("created_at DESC")
   end
 
   def locale_picker
     I18n.available_locales.each do |loc|
+      #CodeReviewSS17
+      # this seems to be a necessary workaround because of the current
+      # url structure, maybe adapt the routes/paths?
       locale_param = request.path == root_path ? root_path(locale: loc) : params.merge(locale: loc)
       concat content_tag(:li, (link_to_unless_current loc, locale_param))
     end

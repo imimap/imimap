@@ -1,3 +1,5 @@
+#CodeReviewSS17 why was this file renamed from users.rb to user.rb?
+
 ActiveAdmin.register User do
 
   form do |f|
