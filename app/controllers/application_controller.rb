@@ -6,10 +6,12 @@ class ApplicationController < ActionController::Base
     if !user_signed_in?
       authenticate_active_admin_user!
     end
+    redirect_PV
   end
 
   def authenticate_active_admin_user!
     authenticate_user!
+
     unless current_user.superuser?
       flash[:alert] = "Unauthorized Access!"
       redirect_to authenticated_root
@@ -17,7 +19,7 @@ class ApplicationController < ActionController::Base
   end
   
      def redirect_PV
-      if (current_user.email == "s0553728@htw-berlin.de")
+      if (current_user.email == Rails.configuration.x.pv_Email)
         redirect_to current_internships_path
       end
     end

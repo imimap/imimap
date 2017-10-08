@@ -1,7 +1,7 @@
 class InternshipsController < ApplicationController
   respond_to :html, :json
   before_filter :get_programming_languages, :get_orientations, :only => [:new, :edit, :update]
-  before_filter :authorize, :redirect_PV
+  before_filter :authorize
   before_filter :authorize_internship, :only => [:edit, :update, :destroy]
   # GET /internships
   # GET /internships.json

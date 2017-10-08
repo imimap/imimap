@@ -1,5 +1,5 @@
 class InternshipOfferController < ApplicationController
-  before_filter :authorize , :redirect_PV
+  before_filter :authorize
 
 	def index
 		@offers = InternshipOffer.all

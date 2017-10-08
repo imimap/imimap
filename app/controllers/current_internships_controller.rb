@@ -1,5 +1,5 @@
 class CurrentInternshipsController < ApplicationController
-before_filter :authorize, :auth_PV
+before_filter :auth_PV #:authorize,
 
 
 
@@ -16,7 +16,7 @@ before_filter :authorize, :auth_PV
 	end
 
 	def auth_PV
-		if ((!current_user.superuser) && (!(current_user.email == "s0553728@htw-berlin.de")))
+		if ((!current_user.superuser) && (!(current_user.email == Rails.configuration.x.pv_Email)))
 			redirect_to overview_index_path
 		end
 	end
