@@ -12,8 +12,8 @@ module Devise
       def authenticate!
         if params[:user]
           ldap = Net::LDAP.new(connect_timeout: 15 )
-          ldap.host = "141.45.146.101"
-          ldap.port = 389
+          ldap.host = Rails.configuration.x.ldapServerAddr
+          ldap.port = Rails.configuration.x.ldapPort
           ldap.auth  searchstring, password
 
           begin
@@ -32,7 +32,7 @@ module Devise
                 @email = entry.mail.first
                 @enrolment_number = entry.uid.first
                 #TBD Review: why is email from params used rather than the one read from ldap? also, method email not used
-                @stud = Student.create({first_name: @givenname, last_name: @surname, enrolment_number: @enrolment_number, email: params[:user][:email]})
+                @stud = Student.create({first_name: @givenname, last_name: @surname, enrolment_number: @enrolment_number, email: @email})
                 #TBD Review: this stores the ldap password in our database, and although encrypted, we shouldn't be doing this.
                 @user = User.create({email: email, password: password, student_id: @stud.id})
               end
@@ -51,10 +51,6 @@ module Devise
             return fail!(e)
           end
         end
-      end
-
-      def email
-        return params[:user][:email]
       end
 
       def searchstring

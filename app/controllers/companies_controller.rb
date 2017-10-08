@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_filter :authorize, :redirect_PV
+  before_filter :authorize
 
 
   # GET /companies

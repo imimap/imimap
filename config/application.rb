@@ -9,6 +9,13 @@ Bundler.require(*Rails.groups)
 
 module ImiMaps
   class Application < Rails::Application
+    #LDAP SETTINGS
+    config.x.ldapServerAddr = "141.45.146.101"
+    config.x.ldapPort = 389
+
+    #Prüfungs Vervaltung email
+    config.x.pv_Email = "someemail@htw-berlin.de"
+
     # IMI-Map settings
     config.active_record.observers = :user_comment_observer, :answer_observer, :internship_observer, :user_observer
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**/*.{rb,yml}').to_s]
