@@ -8,6 +8,9 @@ services:
       - POSTGRES_PASSWORD=imimap
       - POSTGRES_USER=imi_map
       - POSTGRES_DB=imimap
+    volumes:
+      - ./postgresql/data:/var/lib/postgresql/data
+      - ./postgresql/dumps:/var/lib/postgresql/dumps
     ports:
       - 5432:5432
 
