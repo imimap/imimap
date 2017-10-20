@@ -35,7 +35,6 @@ RUN set -ex \
   && bundle install \
   && apk del .builddeps
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD export QMAKE=/usr/lib/qt5/bin/qmake
 CMD export PATH=/usr/lib/qt5/bin/qmake:$PATH
 CMD ["bundle", "exec", "unicorn", "--port", "80"]
