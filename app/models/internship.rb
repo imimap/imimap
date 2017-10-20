@@ -7,11 +7,6 @@ class Internship < ActiveRecord::Base
     :company_id, :user_id, :title, :recommend, :email_public, :semester_id, :description, :internship_report, :student_id, :start_date, :end_date, :operational_area, :tasks, :internship_state_id, :reading_prof_id, :payment_state_id, :registration_state_id, :contract_state_id, :report_state_id, :certificate_state_id, :certificate_signed_by_internship_officer, :certificate_signed_by_prof,
     :certificate_to_prof, :comment, :supervisor_email, :supervisor_name, :internship_rating_attributes, :completed
   validates :semester_id, :student, presence: true
-<<<<<<< HEAD
-=======
-
->>>>>>> fixed week validation, proper text/translation generation still pending
-
 
   validates_presence_of :company
 
