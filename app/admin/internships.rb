@@ -67,9 +67,9 @@ ActiveAdmin.register Internship do
         row :company
         row :start_date
         row :end_date
-        row ('returnDayst') {ad.returnDays}
-        row ('weekCount') {ad.weekCount}
-        row ('weekValidation') {ad.weekValidationActAdm}
+				# TBD clean this up
+        row ('weekCount') {ad.duration.weeks}
+        row ('weekValidation') {ad.duration.weekValidationActAdm}
         row :operational_area
         row :tasks
         row :supervisor_name
