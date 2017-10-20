@@ -65,4 +65,4 @@ id_rsa_staging
 # ignore byebug history
 .byebug_history
 
-postgres-dump/
+postgresql/*
