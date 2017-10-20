@@ -6,13 +6,13 @@ services:
     environment:
       - APPLICATION=imimap
       - POSTGRES_PASSWORD=imimap
-      - POSTGRES_USER=imimap
+      - POSTGRES_USER=imi_map
       - POSTGRES_DB=imimap
+  #  uncomment these lines for importing a dump
+  #  volumes:
+  #    - ./postgres-dump:/usr/local/tmp
     ports:
       - 5432:5432
-      # was:
-      #- 5432:5432
-      # let docker choose the port, as 5432 is taken by a postgres instance on travis
 
   imimap:
     build: .
@@ -21,7 +21,7 @@ services:
     environment:
       - APPLICATION=imimap
       - POSTGRES_PASSWORD=imimap
-      - POSTGRES_USER=imimap
+      - POSTGRES_USER=imi_map
       - POSTGRES_DB=imimap
     depends_on:
       - postgresql
