@@ -341,11 +341,12 @@ de:
       recommend: "Empfehlung"
       internship_report: "Praktikumsbericht"
       amountOfWeeks: "Anzahl der Wochen"
+      amoutOfDays: "Anzahl der Tage"
       weekValidation: "Validität"
       weekVal:
-        optionA: "Die Praktikumsdauer ist kleiner als 4 Wochen"
-        optionB: "Die Praktikumsdauer benötigt manuelle Nachberechnung"
-        optionC: "Die Praktikumsdauer ist ausreichend"
+        notLongEnough: "Die Praktikumsdauer ist kleiner als 4 Wochen"
+        partInternship: "Wenn das Praktikum ein Teilpraktikum ist, ist es valide"
+        longEnough: "Die Praktikumsdauer ist ausreichend"
 
 
   users:

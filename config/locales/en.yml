@@ -205,11 +205,12 @@ en:
       recommend: "Recommendation"
       internship_report: "Internship Report"
       amountOfWeeks: "Total amount of weeks"
+      amoutOfDays: "The amount of days"
       weekValidation: "Validation status"
       weekVal:
-        optionA: "Intership is less than 4 weeks"
-        optionB: "Internship needs manual validation"
-        optionC: "Internship is long enough"  
+        notLongEnough: "Intership is less than 4 weeks"
+        partInternship: "If internship is a part internship it's valid"
+        longEnough: "Internship is long enough"  
 
 
   users:
