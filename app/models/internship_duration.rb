@@ -5,8 +5,7 @@ class InternshipDuration
   def initialize(internship)
     if internship.start_date && internship.end_date
       @start_date = internship.start_date
-      d = internship.end_date
-      @end_date = d.friday? ? d+3 : d
+      @end_date = adjust(internship.end_date)
       @days = @end_date - @start_date
       @weeks = @days.to_f/7
       @validation = do_validation(@weeks)
@@ -41,4 +40,17 @@ class InternshipDuration
        ok: "Internship is long enough"}[validation]
   end
 
+private
+  def adjust(d)
+    case
+    when d.friday?
+      d+3
+    when d.saturday?
+      d+2
+    when d.sunday?
+      d+1
+    else
+      d
+    end
+  end
 end

@@ -15,99 +15,34 @@ RSpec.describe InternshipDuration, :type => :model do
       expect(duration.end_date).to eq(Date.new(2017,10,12))
     end
   end
+  TC = Struct.new(:message,:internship,:weeks,:validation)
 
-  context "for an internship with 2 weeks" do
-    before :each do
-      id = InternshipDummy.new(Date.new(2017,10,9), Date.new(2017,10,20))
-      @duration = InternshipDuration.new(id)
-    end
-    it "weeks are computed correctly" do
-      expect(@duration.weeks).to eq(2)
-    end
-    it "validation marker is set correctly" do
-      expect(@duration.validation).to eq(:too_short)
+  testcases = [
+    TC.new("for an internship with 2 weeks", InternshipDummy.new(Date.new(2017,10,9), Date.new(2017,10,20)),2,:too_short),
+    TC.new("for an internship with 4 weeks till saturday",InternshipDummy.new(Date.new(2017,10,2), Date.new(2017,10,29)),4,:ok_for_part),
+    TC.new("for an internship with 4 weeks - 1 day",InternshipDummy.new(Date.new(2017,10,2), Date.new(2017,10,26)),3.4285714285714284,:too_short),
+    TC.new("for an internship with 4 weeks",InternshipDummy.new(Date.new(2017,10,2), Date.new(2017,10,30)),4,:ok_for_part),
+    TC.new("for an internship with 7 weeks",InternshipDummy.new(Date.new(2017,10,2), Date.new(2017,11,17)),7,:ok_for_part),
+    TC.new("for an internship with one day less than 19 weeks",InternshipDummy.new(Date.new(2017,10,2), Date.new(2018,2,8)),18.428571428571427,:ok_for_part),
+    TC.new("for an internship with exactly 19 weeks",InternshipDummy.new(Date.new(2017,10,2), Date.new(2018,2,9)),19,:ok),
+    TC.new("for an internship with more than 19 weeks",InternshipDummy.new(Date.new(2017,10,2), Date.new(2018,3,7)),22.285714285714285,:ok),
+    TC.new("for an internship without an end_date",InternshipDummy.new(Date.new(2017,10,2), nil),0,:date_missing),
+    TC.new("for an internship without an start_date",InternshipDummy.new(nil, Date.new(2017,10,2)),0,:date_missing),
+    TC.new("for an internship without any dates",InternshipDummy.new(nil, nil),0,:date_missing)
+  ]
+
+  testcases.each do | tc |
+    context tc.message do
+      before :each do
+        @duration = InternshipDuration.new(tc.internship)
+      end
+      it "weeks are computed correctly" do
+        expect(@duration.weeks).to eq(tc.weeks)
+      end
+      it "validation marker is set correctly" do
+        expect(@duration.validation).to eq(tc.validation)
+      end
     end
   end
 
-  context "for an internship with 7 weeks" do
-    before :each do
-      id = InternshipDummy.new(Date.new(2017,10,2), Date.new(2017,11,17))
-      @duration = InternshipDuration.new(id)
-    end
-    it "weeks are computed correctly" do
-      expect(@duration.weeks).to eq(7)
-    end
-    it "validation marker is set correctly" do
-      expect(@duration.validation).to eq(:ok_for_part)
-    end
-  end
-
-  context "for an internship with exactly 19 weeks" do
-    before :each do
-      id = InternshipDummy.new(Date.new(2017,10,2), Date.new(2018,2,9))
-      @duration = InternshipDuration.new(id)
-    end
-    it "weeks are computed correctly" do
-      expect(@duration.weeks).to eq(19)
-    end
-    it "validation marker is set correctly" do
-      expect(@duration.validation).to eq(:ok)
-    end
-  end
-
-  context "for an internship with more than 19 weeks" do
-    before :each do
-      id = InternshipDummy.new(Date.new(2017,10,2), Date.new(2018,3,7))
-      @duration = InternshipDuration.new(id)
-    end
-    it "weeks are computed correctly" do
-      expect(@duration.weeks).to eq(22.285714285714285)
-    end
-    it "validation marker is set correctly" do
-      expect(@duration.validation).to eq(:ok)
-    end
-  end
-
-  context "for an internship without an end_date" do
-    before :each do
-      id = InternshipDummy.new(Date.new(2017,10,2), nil)
-      @duration = InternshipDuration.new(id)
-    end
-    it "weeks are computed correctly" do
-      expect(@duration.weeks).to eq(0)
-    end
-    it "validation marker is set correctly" do
-      expect(@duration.validation).to eq(:date_missing)
-    end
-  end
-
-  context "for an internship without an start_date" do
-    before :each do
-      id = InternshipDummy.new(nil, Date.new(2017,10,2))
-      @duration = InternshipDuration.new(id)
-    end
-    it "weeks are computed correctly" do
-      expect(@duration.weeks).to eq(0)
-    end
-    it "validation marker is set correctly" do
-      expect(@duration.validation).to eq(:date_missing)
-    end
-  end
-
-  context "for an internship without any dates" do
-    before :each do
-      id = InternshipDummy.new(nil, nil)
-      @duration = InternshipDuration.new(id)
-    end
-    it "weeks are computed correctly" do
-      expect(@duration.weeks).to eq(0)
-    end
-    it "validation marker is set correctly" do
-      expect(@duration.validation).to eq(:date_missing)
-    end
-  end
-
-
-#  row ('weekCount') {ad.duration.weeks}
-#  row ('weekValidation') {ad.duration.weekValidationActAdm}
 end
