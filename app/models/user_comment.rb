@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
+#
 class UserComment < ActiveRecord::Base
   attr_accessible :body, :internship_id
 
-  validates :body, :presence => true
-  validates :internship_id, :presence => true
+  validates :body, presence: true
+  validates :internship_id, presence: true
 
-  
+
   belongs_to :internship
   belongs_to :user
 

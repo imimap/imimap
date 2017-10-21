@@ -11,5 +11,5 @@ class AdminUser < ActiveRecord::Base
   validates :password, presence: true
   validates :password_confirmation, presence: true
 
-  # validates :remember_me, :presence => true
+  # validates :remember_me, presence: true
 end

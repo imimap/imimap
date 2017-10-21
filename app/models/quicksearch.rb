@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+#
 class Quicksearch < ActiveRecord::Base
 
   def internships(query)
