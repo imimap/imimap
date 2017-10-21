@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+#
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -8,9 +11,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :publicmail, :mailnotif, :student_id, :remember_me
 
 
-  validates :email, :presence => true
-  validates :password, :presence => true, length: { minimum: 5 }
-  validates :student, :presence => true
+  validates :email, presence: true
+  validates :password, presence: true, length: { minimum: 5 }
+  validates :student, presence: true
 
   belongs_to :student
   has_many :user_comments, :dependent => :destroy

@@ -193,9 +193,9 @@
       <div class="span8" id="intern-box">
         <% #tbd ... wtf.the mapping of the mapping of the mapping in all the wrong places.
 
-        if @internship.duration.weekValidation == "notLongEnough" %>
+        if @internship.duration.week_validation == "notLongEnough" %>
         <%= t "internships.attributes.weekVal.notLongEnough"%>
-        <% elsif @internship.duration.weekValidation == "partInternship"  %>
+        <% elsif @internship.duration.week_validation == "partInternship"  %>
         <%= t "internships.attributes.weekVal.partInternship"%>
         <% else # tbd ... wtf ... and here comes core business logic in the view...%>
         <%= t "internships.attributes.weekVal.longEnough"%>

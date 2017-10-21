@@ -1,5 +1,7 @@
-class InternshipNotificationHandler
+# frozen_string_literal: true
 
+# For Notifications
+class InternshipNotificationHandler
   attr_reader :internship, :student, :user
 
   def initialize(options)
@@ -13,14 +15,17 @@ class InternshipNotificationHandler
     send_email
   end
 
-private
-    def send_notification
-      user.notifications.create(text: "noti.report", link: Rails.application.routes.url_helpers.edit_internship_url(internship, locale: I18n.locale))
-    end
+  private
 
-    def send_email
-      if user && user.mailnotif
-        InternshipMailer.internship_ready(internship, user).deliver_now
-      end
-    end
+  def send_notification
+    helpers = Rails.application.routes.url_helpers
+    link = helpers.edit_internship_url(internship, locale: I18n.locale)
+    user.notifications.create(text: 'noti.report',
+                              link: link)
+  end
+
+  def send_email
+    return unless user&.mailnotif
+    InternshipMailer.internship_ready(internship, user).deliver_now
+  end
 end
