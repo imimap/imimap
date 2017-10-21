@@ -26,7 +26,9 @@ describe 'internships/show.html.erb' do
       render
 
       rendered.should have_content('1')
+      # TBD should use translation
       rendered.should have_content('Intership is less than 4 weeks')
+      # TBD subsequent calls to render
       render.should have_content('Total amount of weeks')
       render.should have_content('Validation status')
   end
