@@ -63,11 +63,12 @@ gem 'factory_girl_rails'
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'rubocop', '~> 0.51.0', require: false
 end
 
 # database gem
 install_if -> { ENV['IMIMAPS_ENVIRONMENT'] == "docker" } do
-  gem "pg"  
+  gem "pg"
 end
 
 group :development, :test do
