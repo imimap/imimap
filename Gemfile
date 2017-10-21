@@ -63,7 +63,7 @@ gem 'factory_girl_rails'
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
-  gem 'rubocop', '~> 0.51.0', require: false
+  gem 'rubocop', '~> 0.51.0'
 end
 
 # database gem
