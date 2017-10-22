@@ -7,7 +7,7 @@ echo "TRAVIS_BRANCH [${TRAVIS_BRANCH}]"
 echo "TRAVIS_COMMIT [${TRAVIS_COMMIT}]"
 echo "TRAVIS [${TRAVIS}]"
 echo "DEPLOY_FROM_BRANCH [${DEPLOY_FROM_BRANCH}]"
-echo "TRAVIS_PULL_REQUEST" [${TRAVIS_PULL_REQUEST}]"
+echo "TRAVIS_PULL_REQUEST [${TRAVIS_PULL_REQUEST}]"
 
 # if, for example for testing purposes, deployments should be triggered
 # from another branch than master, set the environment variable
@@ -39,24 +39,37 @@ if [ -z "$DEPLOYMENT_PIPELINE" ]; then
 else
 
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-  echo "BUILDING PULL REQUEST ${TRAVIS_PULL_REQUEST}, skipping deployment"
+    echo "BUILDING PULL REQUEST ${TRAVIS_PULL_REQUEST}, skipping deployment"
     export set DEPLOYMENT_SHOULD_RUN=false
 else
 
 if [ "$DEPLOYMENT_ENVIRONMENT" == "staging" ] && [ "$TRAVIS_BRANCH" != "$DEPLOY_FROM_BRANCH" ]; then
-  echo "DEPLOYMENT: staging will only deploy on master branch"
+  echo "DEPLOYMENT: staging will only deploy from ${$DEPLOY_FROM_BRANCH} branch"
   export set DEPLOYMENT_SHOULD_RUN=false
 else
 
 #if [ "$DEPLOYMENT_ENVIRONMENT" == "production" ] && [ "$TRAVIS_BRANCH" != "$TRAVIS_TAG" ]; then
 # TBD docker-deploy: change this back to above line
 if [ "$DEPLOYMENT_ENVIRONMENT" == "production" ] && [ "$TRAVIS_BRANCH" != "$DEPLOY_FROM_BRANCH" ]; then
-    echo "DEPLOYMENT deploys for every build to set up deployment" # TBD docker-deploy switch with this line:
     #echo "DEPLOYMENT: production will only deploy from tag"
+    echo "deployment to production: not on Deployment Branch ${DEPLOY_FROM_BRANCH}"
     echo "DEPLOYMENT: got TRAVIS_BRANCH [$TRAVIS_BRANCH] and TRAVIS_TAG [$TRAVIS_TAG]"
     export set DEPLOYMENT_SHOULD_RUN=false
 else
 
+  echo "DEPLOYMENT to production deploys for every build to test and set up deployment" # TBD docker-deploy
+  export set DEPLOYMENT_SHOULD_RUN=true
+
+fi
+fi
+fi
+fi
+fi
+fi
+
+
+
+export DEPLOYMENT_DOCKER_ORGANISATION=imimap
 echo "TRAVIS_TAG $TRAVIS_TAG"
 
 if [ -z "$TRAVIS_TAG" ]; then
@@ -65,21 +78,9 @@ else
   export set DEPLOYMENT_TAG=$TRAVIS_TAG
 fi
 
-echo "deploy01-settings: "
-echo "set DEPLOYMENT_TAG to ${DEPLOYMENT_TAG}"
-
-export DEPLOYMENT_DOCKER_ORGANISATION=imimap
-
-
 echo "all environment checks passed:"
 echo "DEPLOYMENT_ENVIRONMENT: $DEPLOYMENT_ENVIRONMENT"
 echo "DEPLOYMENT_TAG: $DEPLOYMENT_TAG"
 echo "DEPLOYMENT_DOCKER_ORGANISATION: $DEPLOYMENT_DOCKER_ORGANISATION"
 echo "DEPLOY_FROM_BRANCH: $DEPLOY_FROM_BRANCH"
 echo "DEPLOYMENT_SHOULD_RUN: $DEPLOYMENT_SHOULD_RUN"
-
-fi
-fi
-fi
-fi
-fi
