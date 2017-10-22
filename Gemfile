@@ -11,7 +11,7 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'tzinfo-data'
 
 gem 'activeadmin', "~> 1.0"
-#gem 'formtastic', "~> 3"
+gem 'formtastic', "~> 3"
 gem 'devise', ' ~> 4.3'
 
 # TBD Update: replace by new mechanism
