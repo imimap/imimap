@@ -373,6 +373,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   font-awesome-sass-rails
+  formtastic (~> 3)
   geocoder
   groupdate (~> 2.1.1)
   jquery-rails
