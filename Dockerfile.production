@@ -10,8 +10,8 @@ EXPOSE 80
 WORKDIR $APP_HOME
 
 COPY Gemfile* $APP_HOME/
-COPY docker-entrypoint.sh /
-RUN chmod +x /docker-entrypoint.sh
+COPY docker-entrypoint-production.sh /
+RUN chmod +x /docker-entrypoint-production.sh
 
 # general dependencies
 RUN set -ex \
@@ -32,5 +32,5 @@ RUN set -ex \
   && apk del .builddeps
 
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["/docker-entrypoint-production.sh"]
 CMD ["bundle", "exec", "unicorn", "--port", "80"]
