@@ -8,7 +8,6 @@ ImiMaps::Application.routes.draw do
         root 'overview#index', as: :authenticated_root
       end
       resources :internships
-      resources :internship_statistic, only: %i[index create]
       resources :companies
       resources :users, only: %i[edit show update create new]
       resources :user_verifications, only: %i[new create]
@@ -28,6 +27,7 @@ ImiMaps::Application.routes.draw do
       resources :errors, only: %i[not_found]
       get 'login', to: 'devise/sessions#create', as: 'login'
       get 'logout', to: 'devise/sessions#destroy', as: 'logout'
+      get 'statistic', to: 'statistic#overview'
 
       match '/404', to: 'errors#not_found', via: :all
       # erros in production are shadowed by this action looking for its
