@@ -1,7 +1,7 @@
 class InternshipsController < ApplicationController
   respond_to :html, :json
   before_filter :get_programming_languages, :get_orientations, :only => [:new, :edit, :update]
-  before_filter :authorize
+
   before_filter :authorize_internship, :only => [:edit, :update, :destroy]
   # GET /internships
   # GET /internships.json
@@ -101,7 +101,7 @@ class InternshipsController < ApplicationController
 
     @user_comments = @internship.user_comments.order("created_at DESC")
 
-    
+
     respond_with(@internship)
   end
 
@@ -156,8 +156,8 @@ class InternshipsController < ApplicationController
   private
 
   def internship_params
-    params.require(:internship).permit(:title, :start_date, :end_date, :operational_area, :tasks, 
-      :programming_language_ids, :orientation_id, :salary, :working_hours, :living_costs, :supervisor_name, :supervisor_email, 
+    params.require(:internship).permit(:title, :start_date, :end_date, :operational_area, :tasks,
+      :programming_language_ids, :orientation_id, :salary, :working_hours, :living_costs, :supervisor_name, :supervisor_email,
       :internship_report, :recommend, :semester_id, :company_id)
   end
 

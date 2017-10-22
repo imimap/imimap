@@ -1,7 +1,6 @@
 class FavoriteController < ApplicationController
-  before_filter :authorize, :redirect_PV
 
-	def create 
+	def create
 
 		@favorite = Favorite.new
 		@favorite.internship_id = params[:internship_id]
@@ -30,7 +29,7 @@ class FavoriteController < ApplicationController
 
   def index
 
-    @favorites = current_user.favorites        
+    @favorites = current_user.favorites
 
   end
 

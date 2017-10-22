@@ -1,12 +1,12 @@
+# frozen_string_literal: true
+
+# Offers for Internship Positions
 class InternshipOfferController < ApplicationController
-  before_filter :authorize
+  def index
+    @offers = InternshipOffer.all
+  end
 
-	def index
-		@offers = InternshipOffer.all
-	end
-
-	def show
-		@offer = InternshipOffer.find(params[:id])
-	end
-	
+  def show
+    @offer = InternshipOffer.find(params[:id])
+  end
 end

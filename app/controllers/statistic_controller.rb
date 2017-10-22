@@ -1,5 +1,5 @@
 class StatisticController < ApplicationController
-  before_filter :authorize
+  
   def overview
     @internships = Internship.all
     @companies = Company.all

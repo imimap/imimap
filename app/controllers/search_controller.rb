@@ -1,5 +1,4 @@
 class SearchController < ApplicationController
-  before_filter :authorize
 
   def index
 

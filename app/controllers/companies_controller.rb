@@ -1,6 +1,7 @@
-class CompaniesController < ApplicationController
-  before_filter :authorize
+# frozen_string_literal: true
 
+#
+class CompaniesController < ApplicationController
 
   # GET /companies
   # GET /companies.json

@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe NotificationsController, :type => :controller do
   render_views
 
   before :each do
-    @notification =  create :notification, link: "http://localhost"
+    @notification = create :notification, link: 'http://localhost'
+    @current_user = login
   end
-
 
   describe "DELETE #destroy" do
     it 'assigns @noti' do

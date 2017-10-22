@@ -3,6 +3,9 @@ require 'rails_helper'
 RSpec.describe QuicksearchesController, :type => :controller do
   render_views
 
+  before :each do
+    @current_user = login
+  end
   describe "GET index" do
     it 'renders the index template' do
       xhr :get, :index, format: :js

@@ -1,45 +1,20 @@
-class ApplicationController < ActionController::Base
-  protect_from_forgery
-  before_filter :set_locale
+# frozen_string_literal: true
 
-  def authorize
-    if !user_signed_in?
-      authenticate_active_admin_user!
-    end
-    redirect_PV
-  end
+#
+class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
+  before_filter :set_locale
+  before_action :authenticate_user!
 
   def authenticate_active_admin_user!
     authenticate_user!
-
-    unless current_user.superuser?
-      flash[:alert] = "Unauthorized Access!"
-      redirect_to authenticated_root
-    end
   end
-
-  # CodeReviewSS17
-  # PV = Pruefungsverwaltung
-  # only needs one page currently, but introducing an explicit
-  # redirect from most other pages seems redundant.
-  # it also clutters the code - the combination of
-  #   before_filter :authorize, :redirect_PV
-  # was found 9 times in the code.
-  # If this is really the default case, which I doupt,
-  # it should be in one method.
-
-
-    def redirect_PV
-      if (current_user.email == Rails.configuration.x.pv_Email)
-        redirect_to current_internships_path
-      end
-    end
-
-
-
-
-     # redirect_to new_user_session_path if current_user.nil?
-
+  def authorize_role_pruefungsverwaltung
+  end
+  def authorize_role(role)
+    # :pruefungsverwaltung
+    true
+  end
 
     def set_locale
       I18n.locale = params[:locale] || I18n.default_locale

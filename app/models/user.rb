@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   #has_secure_password
 
-  attr_accessible :email, :password, :password_confirmation, :publicmail, :mailnotif, :student_id, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :publicmail,
+                  :mailnotif, :student_id, :remember_me
 
 
   validates :email, presence: true
@@ -29,13 +30,6 @@ class User < ActiveRecord::Base
   end
 
   before_create { generate_token(:auth_token) }
-
-  def send_password_reset
-    generate_token(:password_reset_token)
-    self.password_reset_sent_at = Time.zone.now
-    self.save(:validate => false)
-    UserMailer.forgot_pwd(self).deliver_later
-  end
 
   def generate_token(column)
     begin

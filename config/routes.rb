@@ -23,7 +23,6 @@ ImiMaps::Application.routes.draw do
       resources :internship_searches
       resources :quicksearches, only: %i[index]
       resources :favorite_compare, only: %i[index]
-      resources :password_resets, only: %i[edit update create new]
       resources :errors, only: %i[not_found]
       get 'login', to: 'devise/sessions#create', as: 'login'
       get 'logout', to: 'devise/sessions#destroy', as: 'logout'

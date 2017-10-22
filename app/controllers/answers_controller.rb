@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
+#
 class AnswersController < ApplicationController
-  before_filter :authorize
 
   def create
     @answer = Answer.new(params[:answer])

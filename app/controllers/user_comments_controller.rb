@@ -1,6 +1,4 @@
 class UserCommentsController < ApplicationController
-  before_filter :authorize
-
 
   # GET /companies/new
   # GET /companies/new.json
