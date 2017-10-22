@@ -17,7 +17,7 @@ echo ""
 echo "starting to check wether deployment should run"
 export set DEPLOYMENT_SHOULD_RUN=true
 
-
+# DEPLOY_FROM_BRANCH should be set in a travis setting
 if [ -z "$DEPLOY_FROM_BRANCH" ]; then
   export set DEPLOY_FROM_BRANCH=master
 fi
@@ -34,6 +34,11 @@ else
 
 if [ -z "$DEPLOYMENT_PIPELINE" ]; then
     echo "DEPLOYMENT: no DEPLOYMENT_PIPELINE set, skipping deployment"
+    export set DEPLOYMENT_SHOULD_RUN=false
+else
+
+if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
+  echo "BUILDING PULL REQUEST ${TRAVIS_PULL_REQUEST}, skipping deployment"
     export set DEPLOYMENT_SHOULD_RUN=false
 else
 
