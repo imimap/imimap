@@ -8,8 +8,8 @@ EXPOSE 80
 WORKDIR $APP_HOME
 
 COPY Gemfile* $APP_HOME/
-COPY docker-entrypoint.sh /
-RUN chmod +x /docker-entrypoint.sh
+# COPY docker-entrypoint.sh /
+# RUN chmod +x /docker-entrypoint.sh
 
 # general dependencies
 RUN set -ex \
