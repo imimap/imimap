@@ -23,24 +23,29 @@ jobs:
     script: ci-cd/docker-build-and-push.sh
     env: IMIMAPS_ENVIRONMENT=docker
     rvm: 2.4.1
+    if: (branch = master) AND (NOT(type IN (push, pull_request)))
   - stage: test connection to staging
     install: true
     script: ci-cd/deploy03-travis-decrypt-keys.sh staging
     env: IMIMAPS_ENVIRONMENT=docker
     rvm: 2.4.1
+    if: (branch = master) AND (NOT(type IN (push, pull_request)))
   - stage: deploy to staging
     script: "./ci-cd/travis-deploy.sh staging"
     env: IMIMAPS_ENVIRONMENT=docker
     rvm: 2.4.1
+    if: (branch = master) AND (NOT(type IN (push, pull_request)))
   - stage: test connection to production
     install: true
     script: ci-cd/deploy03-travis-decrypt-keys.sh production
     env: IMIMAPS_ENVIRONMENT=docker
     rvm: 2.4.1
+    if: (tag =~ ^v1) AND (branch = master) AND (NOT(type IN (push, pull_request)))
   - stage: deploy to production
     script: "./ci-cd/travis-deploy.sh production"
     env: IMIMAPS_ENVIRONMENT=docker
     rvm: 2.4.1
+    if: (tag =~ ^v1) AND (branch = master) AND (NOT(type IN (push, pull_request)))
   allow_failures:
   - stage: test connection to staging
     env: IMIMAPS_ENVIRONMENT=docker
