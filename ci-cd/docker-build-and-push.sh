@@ -15,6 +15,10 @@ fi
 
 docker build -f Dockerfile.production -t imimap/imimap:$DEPLOYMENT_TAG .
 
+return_code=$?
+if [ return_code != 0 ]; then
+  exit return_code
+fi
 
 docker images
 echo "pushing image with tag imimap/imimap:$DEPLOYMENT_TAG"
@@ -22,6 +26,9 @@ echo "pushing image with tag imimap/imimap:$DEPLOYMENT_TAG"
 
 docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 docker push imimap/imimap:$DEPLOYMENT_TAG
-
+return_code=$?
+if [ return_code != 0 ]; then
+  exit return_code
+fi
 
 echo "end $0"
