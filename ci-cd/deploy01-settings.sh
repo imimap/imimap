@@ -58,11 +58,15 @@ if [ "$DEPLOYMENT_ENVIRONMENT" == "production" ] && [ "$TRAVIS_BRANCH" != "$DEPL
 else
 
 echo "TRAVIS_TAG $TRAVIS_TAG"
+
 if [ -z "$TRAVIS_TAG" ]; then
   export set DEPLOYMENT_TAG=$(echo $TRAVIS_COMMIT | head -c 7)
 else
   export set DEPLOYMENT_TAG=$TRAVIS_TAG
 fi
+
+echo "deploy01-settings: "
+echo "set DEPLOYMENT_TAG to ${DEPLOYMENT_TAG}"
 
 export DEPLOYMENT_DOCKER_ORGANISATION=imimap
 
