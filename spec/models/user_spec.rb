@@ -49,12 +49,6 @@ RSpec.describe User, :type => :model do
     end
   end
 
-  describe "#send_password_reset" do
-    it 'should return true' do
-      expect(user.send_password_reset).to be_truthy
-    end
-  end
-
   describe "UserObserver" do
     it 'should trigger the observer method' do
       user.student.internships << create(:internship, user: user, completed: false)

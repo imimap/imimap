@@ -1,4 +1,5 @@
 class StartpageController < ApplicationController
+  skip_before_action :authenticate_user!
   layout 'startpage'
 
   def new
@@ -12,7 +13,7 @@ class StartpageController < ApplicationController
         x[0] = x[0].gsub('\'', ' ')
       end
      @company_location_json = @company_location_json_raw.to_json.html_safe
-   
+
 
 
     @internships = Internship.includes(:company, :semester, :orientation, :programming_languages).where(completed: true).order('created_at DESC')

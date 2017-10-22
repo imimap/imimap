@@ -1,9 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe FavoriteCompareController, :type => :controller do
+RSpec.describe FavoriteCompareController, type: :controller do
   render_views
 
-  describe "GET #index" do
+  before :each do
+    @current_user = login
+  end
+
+  describe 'GET #index' do
     it 'assigns @internships' do
       @internship = create :internship
 
@@ -19,5 +23,4 @@ RSpec.describe FavoriteCompareController, :type => :controller do
       expect(response).to render_template(:index)
     end
   end
-
 end

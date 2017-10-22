@@ -20,11 +20,6 @@ class UserMailer < ActionMailer::Base
 
   # :nocov:
 
-  def forgot_pwd(user)
-    @user = user
-    mail :to => user.email, :subject => "(IMI-Map)Password Reset"
-  end
-
   # :nocov:
   def invite_student(student)
     @student = student
