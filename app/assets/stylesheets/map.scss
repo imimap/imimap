@@ -1,11 +1,24 @@
 /*
 *= require leaflet
 */
+
+#map-container {
+  position: relative;
+  height: 80%;
+  z-index: -3;
+}
+
 #mapid {
   height: 500px;
-  width: 900px;
+  width: 100%;
   z-index: 3;
   -webkit-box-shadow: 0px 14px 45px -6px rgba(63,63,63,0.61);
   -moz-box-shadow: 0px 14px 45px -6px rgba(63,63,63,0.61);
   box-shadow: 0px 14px 45px -6px rgba(63,63,63,0.61);
+}
+
+.startmap {
+  width: 100vw !important;
+  height: 100% !important;
+  overflow: hidden;
 }
