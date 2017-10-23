@@ -15,7 +15,7 @@
   overflow: visible;
 }
 
-.wrapper:not(#mapod, #mapid *) * {
+.wrapper:not(#mapod, #mapid, #mapid2 *) * {
   overflow-x: hidden;
 }
 

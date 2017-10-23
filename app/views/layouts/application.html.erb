@@ -4,7 +4,7 @@
     <title><%= t "header.tabtitle" %></title>
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
-    
+
     <!--chartkick includes-->
     <%= javascript_include_tag "http://www.google.com/jsapi", "chartkick" %>
 
@@ -100,11 +100,16 @@
       </div>
   </div>
 
+  <% if @map_view %>
+    <%= yield %>
+  <% else %>
   <div class="wrapper">
     <div class="container clear-top">
       <%= yield %>
     </div>
   </div>
+  <% end %>
+
 </div>
 <footer>
 <div class="container">

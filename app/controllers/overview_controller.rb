@@ -1,12 +1,10 @@
-class OverviewController < ApplicationController
-  before_filter :get_programming_languages, :get_orientations
-  include MapHelper
+# frozen_string_literal: true
 
+# Start Page with Map overview
+class OverviewController < ApplicationController
+  include MapHelper
   def index
+    @map_view = true
     @company_location_json = company_locations_json
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 end
