@@ -1,0 +1,2 @@
+# Delete old docker-containers, -volumes, -networks and -images
+0 5 * * 1 /usr/bin/docker system prune --all --force
