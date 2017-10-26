@@ -33,7 +33,7 @@ exit_on_error $?
 echo "copying crontab file file to $DEPLOYMENT_HOST"
 scp -i id_rsa_$DEPLOYMENT_ENVIRONMENT -o StrictHostKeyChecking=no crontab $DEPLOMENT_USER@$DEPLOYMENT_HOST:~
 echo "sshing to $DEPLOYMENT_HOST and create the crontab"
-ssh  -i id_rsa_$DEPLOYMENT_ENVIRONMENT -o StrictHostKeyChecking=no $DEPLOMENT_USER@$DEPLOYMENT_HOST "cat crontab | crontab -"
+ssh  -i id_rsa_$DEPLOYMENT_ENVIRONMENT -o StrictHostKeyChecking=no $DEPLOMENT_USER@$DEPLOYMENT_HOST "cat crontab | crontab - ; rm crontab"
 
 
 echo "Deployment successful"
