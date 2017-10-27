@@ -14,15 +14,14 @@ env:
   - secure: FUrsJFCahj2NK6MpMxQBVG9avWCoREQTSo80CDfTOS4JCOEhMZxYjmUc7GHN33LiaPQ2PrMc0k95HhkEk+MiJUbph/QpO1aTJBRaBG6ibB94gNxTE2vTV+MB68f8xQ4zoWn/JiK73oqWeEcSlQw7fKEb4WpEiKh0jM1UR8muImUPuu8FDQ1z6IJLMUld1M7Saev8jy1ZUzZELynaE9YakCOWJwFlRFmiCFMiITWrXIrR8Pp7Kdtn/L+Z67+diLB1AE6MkjDwT+zES3ET9Yy1DDV+8py9Ms0C1UspQiTLHmhEHCVL0wzzPx2flwsqsQdCTwocNFsgaJMVlUx2SbGr5ndr1v3U3U3qSb2b3t1h0se66Wjuys5pLVYKHzb1jzV5hhVzw+f3A0m9TJ5/WxGp7/f415q2dMssnL8WGoJDzk3rr0GtpLlZTpK5KNQ0KjGldGeFYNPPg3SjaS0afmFXja5kZeZGnkW3TcXgYKo6qKXj1A4RBYMzywVXm6399zc4r0sWDv7gj9NQq5urhAyeGwO2UUBreNeD+CEI6vcjYCkwmHLJrH1PngcM2WpOJmJZ7Hh27eonBAVkU7j1V0ptU/rXUug8jS/KreKTgUPISLpem6cbYTK5/EzrHY/Zc5zH5C80DkIXiol7fC064qMIAS/6NKN8pBIo79EPv/oWPkQ=
 jobs:
   include:
+  - stage: rspec test
+    script: "./ci-cd/travis-test.sh"
   - stage: build and push docker image
     script: ci-cd/docker-build-and-push.sh
-    env: IMIMAPS_ENVIRONMENT=docker
     if: (branch = master) AND (NOT(type IN (push, pull_request)))
   - stage: deploy to staging
     script: "./ci-cd/travis-deploy.sh staging"
-    env: IMIMAPS_ENVIRONMENT=docker
     if: (branch = master) AND (NOT(type IN (push, pull_request)))
   - stage: deploy to production
     script: "./ci-cd/travis-deploy.sh production"
-    env: IMIMAPS_ENVIRONMENT=docker
     if: (tag =~ ^v1) AND (branch = master) AND (NOT(type IN (push, pull_request)))
