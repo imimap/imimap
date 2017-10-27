@@ -4,16 +4,6 @@
 
 @import 'font-awesome';
 
-.navbar {
-  background: url("topbar-over.png"), #292929;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 100%;
-  border-radius: 0 !important;
-  height:129px;
-  text-align:center;
-  overflow: visible;
-}
 
 .wrapper:not(#mapod, #mapid, #mapid2 *) * {
   overflow-x: hidden;
@@ -27,7 +17,7 @@
 
 body{
   font-family: 'Merriweather Sans', sans-serif;
-  background: image-url("bg.gif");
+  background: image-url("<%= asset_path 'bg.gif' %>");
   color: #000;
 }
 
@@ -104,7 +94,7 @@ p {
 }
 
 .brand{
-  background: image-url("logo4.png") no-repeat;
+  background: image-url("<%= asset_path 'logo4.png' %>") no-repeat;
   background-size: 100%;
   width: 100px;
   height: 122px;
@@ -130,8 +120,9 @@ p {
   position: absolute;
 }
 
+
 .navbar {
-  background: url("topbar-over.png"), #292929;
+  background: url("<%= asset_path 'topbar-over.png' %>"), #292929;
   background-repeat: no-repeat;
   background-size: 100%;
   width: 100%;
@@ -316,7 +307,7 @@ h3.comp-head {
 .htw_logo{
   height: 60px;
   width: 104px;
-  background: image-url("htw_logo.png");
+  background: image-url("<%= asset_path 'htw_logo.png' %>");
   background-size: 104px 60px;
   display: inline-block;
   margin-right: 10px;
@@ -325,7 +316,7 @@ h3.comp-head {
 .imi_logo{
   height: 60px;
   width: 66px;
-  background: image-url("imi_logo.png");
+  background: image-url("<%= asset_path 'imi_logo.png' %>");
   background-size: 66px 60px;
   display: inline-block;
 }
@@ -396,7 +387,7 @@ p{
 }
 
 .hand-pointer{
-  background: image-url("handh.png");
+  background: image-url("<%= asset_path 'handh.png' %>");
   background-repeat: no-repeat;
   height: 60px;
   width: 43px;
@@ -496,7 +487,7 @@ p{
 
 .msgbox {
   position: absolute;
-  background: image-url("arrow.png") no-repeat;
+  background: image-url("<%= asset_path 'arrow.png' %>") no-repeat;
   background-size: 220px 150px;
   height: 150px;
   width: 220px;
@@ -566,7 +557,7 @@ p{
 .map-shadow{
     height: 210px;
     opacity: 0.9;
-    background: url("content-shadow.png") no-repeat;
+    background: url("<%= asset_path 'content-shadow.png' %>") no-repeat;
     z-index: -400;
 }
 
@@ -589,7 +580,7 @@ p{
 
 .msgbox {
   position: absolute;
-  background: image-url("arrow.png") no-repeat;
+  background: image-url("<%= asset_path 'arrow.png' %>") no-repeat;
   background-size: 220px 150px;
   height: 150px;
   width: 220px;
