@@ -28,7 +28,6 @@ RUN set -ex \
   postgresql-dev \
   imagemagick-dev \
   && bundle install --without development test \
-  && bundle exec rake assets:precompile \
   && apk del .builddeps
 
 
