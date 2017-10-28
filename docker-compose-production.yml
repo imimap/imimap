@@ -22,6 +22,7 @@ services:
       - POSTGRES_USER=imi_map
       - POSTGRES_DB=imi_map_production
       - SECRET_KEY_BASE=${SECRET_KEY_BASE}
+      - RAILS_SERVE_STATIC_FILES=true
     depends_on:
       - postgresql
     links:

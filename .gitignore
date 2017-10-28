@@ -66,3 +66,4 @@ id_rsa_staging
 .byebug_history
 
 postgresql/*
+rails/public
