@@ -30,5 +30,5 @@ services:
     ports:
       - 4000:80
     volumes:
-      - ./rails/public:/usr/src/app/public/assets
+      - ./rails/public:/usr/src/app/nginx-assets
     restart: always
