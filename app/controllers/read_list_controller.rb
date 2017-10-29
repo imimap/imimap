@@ -1,7 +1,6 @@
 class ReadListController < ApplicationController
 
-  #check the user if current user is prof or not
-  before_filter :authorize, :auth_Prof
+  before_filter :authorize_role_prof
 
   respond_to :html, :json
 

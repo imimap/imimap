@@ -1,8 +1,6 @@
 class ReportOverviewController < ApplicationController
   respond_to :html, :json
 
-  before_filter :authorize
-
 
   # GET /report_overview
   # GET /report_overview.json

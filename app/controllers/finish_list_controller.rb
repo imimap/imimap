@@ -1,7 +1,6 @@
 class FinishListController < ApplicationController
 
   #check the user if current user nil or not
-  before_filter :authorize
   respond_to :html, :json
 
 

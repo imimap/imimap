@@ -1,6 +1,6 @@
 class CompleteReportController < ApplicationController
   respond_to :html, :json
-  before_filter :authorize , :auth_Prof
+  before_filter :authorize_role_prof
 
 
 

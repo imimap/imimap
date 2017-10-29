@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+dd app/controllers/application_controller.rb# frozen_string_literal: true
 
 #
 class ApplicationController < ActionController::Base
@@ -23,13 +23,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-    def set_locale
-      I18n.locale = params[:locale] || I18n.default_locale
-    end
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
 
-    def default_url_options(options = {})
-      { locale: I18n.locale }
-    end
+  def default_url_options(options = {})
+    { locale: I18n.locale }
+  end
 
     # we use devise logic instead
     # def current_user

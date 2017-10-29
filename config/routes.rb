@@ -12,7 +12,7 @@ ImiMaps::Application.routes.draw do
       resources :users, only: %i[edit show update create new]
       resources :user_verifications, only: %i[new create]
       resources :overview, only: %i[index]
-      resources :internship_offer, only: %i[index show]
+      resources :internship_offer, only: %i[index show new create]
       resources :notifications, only: %i[destroy show]
       resources :favorite, only: %i[create destroy index]
       resources :current_internships, only: %i[index]
