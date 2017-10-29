@@ -61,7 +61,9 @@
                 <%end%>
             <% else %>
                 <li>
-                  <%= t("noti.void") %>
+                  <%= link_to current_user  do %>
+                    <i class="icon-user icon-large"></i>
+                  <% end %>
                 </li>
             <% end %>
           </ul>
@@ -112,35 +114,39 @@
               <ul class="dropdownNav">
                 <li> <%= link_to t("header.statistic"), statistic_path, style: 'color:#FFFFFF; text-decoration: none', class: 'css_class' %></li>
 
-                <li> <%= link_to t("header.internship"),  my_internship_path, style: 'color:#FFFFFF; text-decoration: none', class: 'css_class' %> </li>
+                <li class="dropdown">
+                  <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog icon-large"></i></a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                    <% locale_picker %>
+                  </ul>
+                </li>
 
-                <li> <%= link_to t("header.curInternships"),  current_internships_path, style: 'color:#FFFFFF; text-decoration: none', class: 'css_class' %></li>
+                <li><%= link_to destroy_user_session_path, :method => :delete  do %>
+                    <i class="icon-signout icon-large"></i>
+                  <% end %>
+                </li>
 
-                <li> <%= link_to t("my internship status"), internship_status_index_path, style: 'color:#FFFFFF; text-decoration: none', class: 'css_class'  %> </li>
               </ul>
-            </li>
+              <!-- Everything you want hidden at 940px or less, place within here -->
+              <div class="nav-collapse ">
 
+                <ul class="nav nav-top ">
+                  <li class="<%= 'active_nav' if current_page?(overview_index_path) %>"><%= link_to t("header.overview"), overview_index_path %></li>
+                  <li class="<%= 'active_nav' if current_page?(internships_path) %>"><%= link_to t("header.search"), internships_path %></li>
+                  <li class="<%= 'active_nav' if current_page?(internship_offer_index_path) %>"><%= link_to t("header.exchange"), internship_offer_index_path %></li>
 
-            <li>
-              <a href="#!" style="color:#FFFFFF; text-decoration: none">List +</a>
+                  <li class="<%= 'active_nav' if current_page?(statistic_path) %>"><%= link_to t("header.statistic"), statistic_path %></li>
 
-              <ul class="dropdownNav">
-                <li> <%= link_to t("header.reportOverview"), report_overview_index_path, style: 'color:#FFFFFF; text-decoration: none', class: 'css_class' %> </li>
+                  <li class="<%= 'active_nav' if current_page?(my_internship_path) %>"><%= link_to t("header.internship"),  my_internship_path %></li>
 
-                <li> <%= link_to t("header.completeList"), complete_report_index_path, style: 'color:#FFFFFF; text-decoration: none', class: 'css_class' %> </li>
+                  <li class="<%= 'active_nav' if current_page?(current_internships_path) %>"><%= link_to t("header.curInternships"),  current_internships_path %></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- .nav, .navbar-search, .navbar-form, etc -->
+        </div>
 
-                <li> <%= link_to t("header.readList"), read_list_index_path, style: 'color:#FFFFFF; text-decoration: none', class: 'css_class' %></li>
-
-                <li> <%= link_to t("finish read list"), finish_list_index_path, style: 'color:#FFFFFF; text-decoration: none', class: 'css_class' %></li>
-
-                <li> <%= link_to t("my internship status"), internship_status_index_path, style: 'color:#FFFFFF; text-decoration: none', class: 'css_class'  %> </li>
-              </ul>
-            </li>
-
-
-
-          </ul>
-        </nav>
       </div>
 
   <% if @map_view %>
@@ -154,24 +160,14 @@
   <% end %>
 
 </div>
-
-</div>
-</div>
-
-<div class="wrapper">
-  <div class="container clear-top">
-    <%= yield %>
-  </div>
-</div>
-</div>
 <footer>
-  <div class="container">
-    <div class="im-items">
-      <div class="footer-text"><%= render 'version/version' %> - Projekt im Studiengang Internationale Medieninformatik der HTW Berlin.</div>
-      <div class="htw_logo"></div>
-      <div class="imi_logo"></div>
-    </div>
+<div class="container">
+  <div class="im-items">
+    <div class="footer-text"><%= render 'version/version' %> - Projekt im Studiengang Internationale Medieninformatik der HTW Berlin.</div>
+    <div class="htw_logo"></div>
+    <div class="imi_logo"></div>
   </div>
+</div>
 </footer>
 </body>
 </html>

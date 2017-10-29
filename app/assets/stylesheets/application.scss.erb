@@ -29,173 +29,10 @@
  */
 
 
-.navigation-inside {
-  margin: 5%;
-}
-
-.dropdownNav {
-  position: absolute;
-  display: none;
-  z-index: 1;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-  background: rgba(0, 0, 0, 0.15);
-}
-
-
-.navigation-container {
-  max-width: 80%;
-  margin: 0 auto;
-}
-
-nav {
-
-  float: right;
-
-  margin-right: 25%;
-  //margin-top: 2.5%;
-
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
-    li {
-      float: left;
-      position: relative;
-
-      // this a style element sometimes got overwritten by the style on admin active css
-      a, a:visited  {
-        display: block;
-        padding: 0px 20px;
-        line-height: 70px;
-        background: transparent;
-
-      }
-
-      ul li {
-        min-width: 150px;
-        min-height: 50px;
-
-        //this too
-        & a {
-          padding: 15px;
-          line-height: 20px;
-
-          z-index: 1;
-
-        }
-      }
-    }
-  }
-}
-
-.test {
-  //background: #ffffff;
-}
-
-
-.navigation-mobile {
-  display: none;
-}
-
-#toogleNav {
-  position: absolute;
-  left: 18px;
-  top: 22px;
-  cursor: pointer;
-  padding: 10px 35px 16px 0px;
-  span,
-  span:before,
-  span:after {
-    border-radius: 1px;
-    height: 5px;
-    width: 35px;
-    background: #00ff00;
-    position: absolute;
-    display: block;
-    content: '';
-    transition: all 300ms ease-in-out;
-  }
-  span:before {
-    top: -10px;
-  }
-  span:after {
-    bottom: -10px;
-  }
-
-  // create x animation
-  &.active span {
-    background-color: transparent;
-    &:before,
-    &:after {
-      top: 0;
-    }
-    &:before {
-      transform: rotate(45deg);
-    }
-    &:after {
-      transform: rotate(-45deg);
-    }
-  }
-}
-
-
-// this is for mobile
-@media only screen and (max-width: 960px) {
-
-  .navigation-mobile {
-    display: block;
-    margin-top: 5%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: transparent;
-    height: 50px;
-    width: 50px;
-
-  }
-  nav {
-    width: 100%;
-    padding: 50px 0 15px;
-    margin-top: 15%;
-    margin-right: 0%;
-    ul {
-      display: none;
-      li {
-        float: none;
-        a {
-          padding: 15px;
-          line-height: 20px;
-        }
-        ul li a {
-          padding-left: 30px;
-        }
-      }
-    }
-  }
-
-  .dropdownNav {
-    position: static;
-  }
-}
-
-@media screen and (min-width: 960px) {
-  .navigation-list2 {
-    display: block
-
-  }
-}
-
-.navigation {
-  //height: $nav-height;
-  //background: $nav-background;
-}
-
-
 #en {
   background-image: url("<%= asset_path 'en.gif' %>");
   background-repeat:repeat-y;
-}
+ }
 
 
 #de {
@@ -204,9 +41,9 @@ nav {
 }
 
 .green-thumb {
-  color: #8bb900 !important;
+	color: #8bb900 !important;
 }
 
 .red-thumb {
-  color: #b90000 !important;
+	color: #b90000 !important;
 }
