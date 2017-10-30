@@ -12,16 +12,19 @@ echo "+++ pulling and starting docker containers"
 docker-compose -f docker-compose-production.yml up -d
 exit_on_error $?
 
-# echo "+++ Asset precompilation "
-# docker-compose -f docker-compose-production.yml exec imimap rake assets:precompile
-# exit_on_error $?
+echo "+++ Clean assets "
+docker-compose -f docker-compose-production.yml exec imimap rm -rf public/assets
 
-echo "+++ instead copy the precompiled assets to new dir"
-#       - ./rails/public:/usr/src/app/nginx-assets
-rm -rf ./rails/public # clear out assets directory from host,
-# then copy assets to mounted dir to make them accessible from outside the container.
-docker-compose -f docker-compose-production.yml exec imimap cp -r ./public/assets ./nginx-assets
+echo "+++ Asset precompilation "
+docker-compose -f docker-compose-production.yml exec imimap rake assets:precompile
 exit_on_error $?
+
+# echo "+++ instead copy the precompiled assets to new dir"
+#       - ./rails/public:/usr/src/app/nginx-assets
+# rm -rf ./rails/public # clear out assets directory from host,
+# then copy assets to mounted dir to make them accessible from outside the container.
+# docker-compose -f docker-compose-production.yml exec imimap cp -r ./public/assets ./nginx-assets
+# exit_on_error $?
 
 echo "+++ Wait for postgres"
 docker-compose -f docker-compose-production.yml exec imimap ./ci-cd/wait-for-db-connection.sh
