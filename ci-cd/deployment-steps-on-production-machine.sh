@@ -13,11 +13,15 @@ docker-compose -f docker-compose-production.yml up -d
 exit_on_error $?
 
 echo "+++ Clean assets "
-docker-compose -f docker-compose-production.yml exec imimap rm -rf public/assets
-
-echo "+++ Asset precompilation "
-docker-compose -f docker-compose-production.yml exec imimap rake assets:precompile
+rm -rf nginx-assets
+mkdir -p nginx-assets
+echo "+++ copy assets from container to dir on host"
+docker cp imimap:/usr/src/app/public/assets nginx-assets
 exit_on_error $?
+
+# echo "+++ Asset precompilation "
+# docker-compose -f docker-compose-production.yml exec imimap rake assets:precompile
+# exit_on_error $?
 
 # echo "+++ instead copy the precompiled assets to new dir"
 #       - ./rails/public:/usr/src/app/nginx-assets

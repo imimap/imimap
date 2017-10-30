@@ -29,7 +29,7 @@ services:
       - postgresql
     ports:
       - 4000:80
-    volumes:
+#    volumes:
 #      - ./rails/public:/usr/src/app/nginx-assets
-      - ./rails/public:/usr/src/app/public/assets
+#      - ./rails/public:/usr/src/app/public/assets
     restart: always
