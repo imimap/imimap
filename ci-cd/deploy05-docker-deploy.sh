@@ -26,6 +26,7 @@ fi
 echo "copying docker-compose file to $DEPLOYMENT_HOST"
 scp -i id_rsa_$DEPLOYMENT_ENVIRONMENT -o StrictHostKeyChecking=no docker-compose-production.yml $DEPLOMENT_USER@$DEPLOYMENT_HOST:~
 exit_on_error $?
+echo "copying deployment-steps-on-production-machine.sh to server"
 scp -i id_rsa_$DEPLOYMENT_ENVIRONMENT -o StrictHostKeyChecking=no ci-cd/deployment-steps-on-production-machine.sh $DEPLOMENT_USER@$DEPLOYMENT_HOST:~
 exit_on_error $?
 
