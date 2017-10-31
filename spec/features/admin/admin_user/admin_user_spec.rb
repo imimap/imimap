@@ -11,6 +11,7 @@ describe "ActiveAdmin Admin User" do
     describe "pages" do
       it "index" do
         visit admin_users_path
+        # save_and_open_page
         expect(page).to have_content @admin_user.email
 
         # put some of new translations

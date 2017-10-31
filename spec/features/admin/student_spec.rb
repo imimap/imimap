@@ -11,7 +11,7 @@ describe "ActiveAdmin Student CRUD" do
     describe "show student" do
       it "shows student" do
         student = create(:student)
-        visit admin_student_path(student)
+        visit admin_student_path(id: student)
         expect(page).to have_content student.first_name
         expect(page).to have_content student.last_name
         expect(page).to have_content student.enrolment_number
@@ -24,12 +24,11 @@ describe "ActiveAdmin Student CRUD" do
     describe "show student" do
       it "shows unauthenticated failure" do
         I18n.locale = "de"
-        expected_text = I18n.t('devise.failure.admin_user.unauthenticated')
+        expected_text = I18n.t('devise.failure.unauthenticated')
+        # expected_text = I18n.t('devise.failure.admin_user.unauthenticated')
         student = create(:student)
-        visit admin_student_path(student)
-
-        # need to add translation
-        # expect(page).to have_content expected_text
+        visit admin_student_path(id: student)
+        expect(page).to have_content expected_text
       end
     end
   end

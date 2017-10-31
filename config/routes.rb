@@ -33,8 +33,8 @@ ImiMaps::Application.routes.draw do
       # non-existent template
       # match "/500", :to => "errors#internal_server_error", :via => :all
     end
+    ActiveAdmin.routes(self)
   end
   # TBD Review: what is this special route for outside of the other scopes?
   get 'my_internship', to: 'internships#internshipData', as: 'my_internship'
-  ActiveAdmin.routes(self)
 end
