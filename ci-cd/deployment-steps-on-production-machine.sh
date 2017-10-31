@@ -1,3 +1,4 @@
+#!/bin/bash
 exit_on_error () {
   sshexit=$1
   if [ $sshexit -eq 0 ]; then
