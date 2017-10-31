@@ -29,6 +29,7 @@ RUN set -ex \
   imagemagick-dev \
   && bundle install --without development test \
   && bundle exec rake assets:precompile \
+  && mkdir nginx-assets \
   && apk del .builddeps
 
 

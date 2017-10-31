@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 echo "$0: starting build for IMIMAPS_ENVIRONMENT ${IMIMAPS_ENVIRONMENT}"
 
-if [ "$IMIMAPS_ENVIRONMENT" == "docker" ]; then
 
   echo "--------- sudo netstat -nlp | grep 5432"
   sudo netstat -nlp | grep 5432
@@ -24,15 +23,5 @@ if [ "$IMIMAPS_ENVIRONMENT" == "docker" ]; then
     docker exec -e RAILS_ENV=test -ti imimap-dev rake db:migrate RAILS_ENV=test
     docker exec -e RAILS_ENV=test -ti imimap-dev rake db:migrate:status RAILS_ENV=test
     docker exec -e RAILS_ENV=test -ti imimap-dev rspec spec
+    docker exec -e RAILS_ENV=test -ti imimap-dev rake assets:precompile
   fi
-
-else
-  gem install bundler
-  bundle --version
-  bundle install
-  bundle exec rake db:migrate RAILS_ENV=test
-  bundle exec rspec spec
-fi
-
-# for testing:
-# export set IMIMAPS_ENVIRONMENT=docker

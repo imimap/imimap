@@ -55,7 +55,7 @@ server {
 	server_name imi-map.f4.htw-berlin.de imi-map-production.f4.htw-berlin.de imi-map-staging.f4.htw-berlin.de  ;
 
     location ~ ^/assets/ {
-       	root   /home/deployer/rails/public;
+       	root   /home/deployer/nginx-assets;
         gzip_static on;
         expires max;
         add_header Cache-Control public;
@@ -114,5 +114,3 @@ server {
 #		try_files $uri $uri/ =404;
 #	}
 #}
-
-

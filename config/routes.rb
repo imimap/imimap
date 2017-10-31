@@ -27,7 +27,7 @@ ImiMaps::Application.routes.draw do
       get 'login', to: 'devise/sessions#create', as: 'login'
       get 'logout', to: 'devise/sessions#destroy', as: 'logout'
       get 'statistic', to: 'statistic#overview'
-
+      get 'debug', to: 'overview#debug', as: 'debug'
       match '/404', to: 'errors#not_found', via: :all
       # erros in production are shadowed by this action looking for its
       # non-existent template
