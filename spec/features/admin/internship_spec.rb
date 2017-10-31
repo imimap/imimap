@@ -18,12 +18,12 @@ describe "ActiveAdmin Internship CRUD" do
       #  expect(page).to have_content internship.supervisor_name
       #  expect(page).to have_content internship.supervisor_email
       #  expect(page).to have_content internship.comment
-        expect(page).to have_content I18n.t("activerecord.models.start_date.other")
-        expect(page).to have_content I18n.t("activerecord.models.end_date.other")
-        expect(page).to have_content I18n.t("activerecord.models.tasks.other")
-        expect(page).to have_content I18n.t("activerecord.models.supervisor_email.other")
-        expect(page).to have_content I18n.t("activerecord.models.supervisor_name.other")
-        expect(page).to have_content I18n.t("activerecord.models.comment.other")
+        expect(page).to have_content I18n.t("activerecord.attributes.internship.start_date")
+        expect(page).to have_content I18n.t("activerecord.attributes.internship.end_date")
+        expect(page).to have_content I18n.t("activerecord.attributes.internship.tasks")
+        expect(page).to have_content I18n.t("activerecord.attributes.internship.supervisor_email")
+        expect(page).to have_content I18n.t("activerecord.attributes.internship.supervisor_name")
+        expect(page).to have_content I18n.t("activerecord.attributes.internship.comment")
       end
     end
   end
