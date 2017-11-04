@@ -1,0 +1,71 @@
+<h2> <%= t "users.show.read_lists_title" %> </h2>
+
+
+
+<% if !@finish_lists.empty? %>
+
+    <!-- form tag for submitting the button -->
+
+    <%= form_tag(finish_list_path( @finish_list, :id => @finish_lists.collect(&:id) ), remote: false, method: 'delete') do %>
+
+        <div class="table-container">
+          <table  id="table" class="table table-hover table-mc-light-blue table-bordered" data-sort-name="name" data-sort-order="desc">
+
+            <thead style="background: #00ff00;">
+
+            <tr class="even_row">
+
+
+              <th class ="headColor"><%= t "internships.attributes.delete" %></th>
+              <th class ="headColor"><%= t "users.attributes.name" %></th>
+              <th class ="headColor"><%= t "companies.attributes.name" %></th>
+              <th class ="headColor"><%= t "students.attributes.enrolment_number" %></th>
+              <th class ="headColor"><%= t "internships.attributes.semester" %> </th>
+              <th class ="headColor"><%= t "internships.attributes.title" %> </th>
+              <th class ="headColor"><%= t "internships.attributes.internship_report" %> </th>
+
+
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            <% @finish_lists.each do |finish_list| %>
+                <tr class="<%= cycle("even_row2", "odd_row2") %>">
+
+                  <td><%= check_box_tag "finish_list_ids[]", finish_list.id %></td>
+
+                  <td> <%= finish_list.internship.student.name %></td>
+                  <td> <%= finish_list.internship.company.name %></td>
+                  <td> <%= finish_list.internship.student.enrolment_number %></td>
+                  <td> <%= finish_list.internship.try(:semester).try(:name) %></td>
+                  <td> <%= finish_list.internship.title %> </td>
+
+                  <% if finish_list.internship.internship_report.present? %>
+
+                      <td> <%= link_to File.basename(finish_list.internship.internship_report.path), finish_list.internship.internship_report.url %></td>
+
+                  <% else %>
+                      <td> has not been uploaded </td>
+                  <% end %>
+
+
+
+                </tr>
+
+
+            <% end %>
+
+            </tbody>
+          </table>
+
+
+        </div>
+
+
+        <%= submit_tag (t "delete"), data: { confirm: 'Are you sure?' }, class: "btn btn-success" %>
+
+    <% end %>
+
+<% end %>

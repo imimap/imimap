@@ -68,7 +68,7 @@ end
 
 # database gem
 install_if -> { ENV['IMIMAPS_ENVIRONMENT'] == "docker" } do
-  gem "pg"
+  gem "pg"  
 end
 
 group :development, :test do

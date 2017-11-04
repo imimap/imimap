@@ -38,7 +38,7 @@ class Internship < ActiveRecord::Base
   has_and_belongs_to_many :programming_languages, -> { uniq }
   has_many :user_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-
+  has_many :read_list, :dependent => :destroy
   has_many :attachments, as: :attachable, dependent: :destroy
   has_many :answers
 
@@ -70,10 +70,12 @@ class Internship < ActiveRecord::Base
     @duration = nil
   end
 
+
   # CodeReviewSS17
   # CSV is a view and should not be in the model.
-  def self.to_csv
-    CSV.generate do |csv|
+  # modify to accept hash options for .xls file (needed for prof reports?)
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
       # CodeReviewSS17 this duplicates field names
       csv << %w[semester enrolment_number student start_date end_date]
       all.each do |internship|
@@ -81,6 +83,17 @@ class Internship < ActiveRecord::Base
                 internship.student.name, internship.start_date,
                 internship.end_date]
       end
+    end
+  end
+
+  # CodeReview: form and logic of missing end date needs to be adapted
+  # expected hand in 4 weeks after end of internship time
+  def expected_hand_in
+    if ( self[:end_date].nil? )
+      Time.now.strftime('%Y-%m-%d')
+    else
+      d = self[:end_date].to_time + 4.weeks
+      d.strftime('%Y-%m-%d')
     end
   end
 end

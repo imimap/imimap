@@ -1,0 +1,43 @@
+<h1>current completed reports</h1>
+
+
+
+<tbody>
+
+
+	<table id="table" class="table table-hover table-mc-light-blue table-bordered" data-sort-name="name" data-sort-order="desc">
+
+		<th><%= t "students.attributes.enrolment_number" %></th>
+		<th data-field="name" data-sortable="true" ><%= t "internships.attributes.student.name" %></th>
+		<th><%= t "internships.attributes.semester" %></th>
+		<th><%= t "internships.attributes.start_date" %></th>
+		<th><%= t "internships.attributes.end_date" %></th>
+    <th><%= t " report state " %></th>
+
+	</tr>
+
+	<% @internships.each do |internship| %>
+
+
+
+	<tr class="<%= cycle("even_row", "odd_row") %>">
+		<td><%= internship.student.enrolment_number %></td>
+		<td><%= internship.student.name %></td>
+		<td><%= internship.semester.name %></td>
+		<td><%= internship.start_date %></td>
+		<td><%= internship.end_date %></td>
+    <td><%= internship.report_state.name %></td>
+	</tr>
+
+	<% end %>
+</table>
+</tbody>
+
+
+<p>
+
+	Download:
+	<%= link_to "CSV", complete_report_index_path(format: :csv) %>
+  <%= link_to "Excel", complete_report_index_path(format: "xls") %>
+
+</p>

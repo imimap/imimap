@@ -19,7 +19,7 @@
   <h2>Student Information</h2>
 
   <div class="row">
-    <div class="span4"> 
+    <div class="span4">
      <div class="field" id="field-titles">
       <%= u_form.label t "students.attributes.enrolment_number" %><br />
       <%=@current_user.student.enrolment_number%>
@@ -28,7 +28,7 @@
 </div>
 
 <div class="row">
-  <div class="span4"> 
+  <div class="span4">
    <div class="field" id="field-titles">
     <%= u_form.label t "students.attributes.first_name" %><br />
     <%=@current_user.student.first_name%>
@@ -38,7 +38,7 @@
 
 
 <div class="row">
-  <div class="span4"> 
+  <div class="span4">
    <div class="field" id="field-titles">
     <%= u_form.label t "students.attributes.last_name" %><br />
     <%=@current_user.student.last_name%>
@@ -47,7 +47,7 @@
 </div>
 
 <div class="row">
-  <div class="span4"> 
+  <div class="span4">
    <div class="field" id="field-titles">
     <%= u_form.label t "students.attributes.birthday" %><br />
     <%=@current_user.student.birthday%>
@@ -56,7 +56,7 @@
 </div>
 
 <div class="row">
-  <div class="span4"> 
+  <div class="span4">
    <div class="field" id="field-titles">
     <%= u_form.label t "students.attributes.birthplace" %><br />
     <%=@current_user.student.birthplace%>
@@ -65,7 +65,7 @@
 </div>
 
 <div class="row">
-  <div class="span4"> 
+  <div class="span4">
    <div class="field" id="field-titles">
     <%= u_form.label t "students.attributes.email" %><br />
     <%=@current_user.student.email%>
@@ -83,14 +83,14 @@
 <br />
 
 <div class="row">
-  <div class="span4"> 
+  <div class="span4">
     <div class="field" id="field-titles">
       <%= f.label t "internships.attributes.supervisor_name" %><br />
       <%= f.text_field :supervisor_name, placeholder:  "supervisor in company" %>
     </div>
   </div>
 
-  <div class="span4"> 
+  <div class="span4">
     <div class="field" id="field-titles">
       <%= f.label t "internships.attributes.supervisor_email" %><br />
       <%= f.text_field :supervisor_email, placeholder: "company supervisor e-mail" %>
@@ -101,7 +101,7 @@
 <h2>Internship specifications</h2>
 
 <div class="row">
-  <div class="span4"> 
+  <div class="span4">
     <div class="field" id="field-titles">
       <%= f.label t "internships.attributes.title" %><br />
       <%= f.text_field :title %>
@@ -110,14 +110,14 @@
 </div>
 
 <div class="row">
-  <div class="span3"> 
+  <div class="span3">
    <div class="field" id="field-titles">
     <%= f.label t "internships.attributes.start_date" %><br />
     <%= f.date_field :start_date %>
   </div>
 </div>
 
-<div class="span3"> 
+<div class="span3">
  <div class="field" id="field-titles">
   <%= f.label t "internships.attributes.end_date" %><br />
   <%= f.date_field :end_date %>
@@ -126,7 +126,7 @@
 </div>
 
 <div class="row">
-  <div class="span4"> 
+  <div class="span4">
    <div class="field" id="field-titles">
     <%= f.label t "internships.attributes.operational_area" %><br />
     <%= f.text_field :operational_area %>
@@ -135,7 +135,7 @@
 </div>
 
 <div class="row">
-  <div class="span8"> 
+  <div class="span8">
    <div class="field" id="field-titles">
     <%= f.label t "internships.attributes.tasks" %><br />
     <%= f.text_area :tasks, size: "30x5" %>
@@ -144,14 +144,14 @@
 </div>
 
 <div class="row">
-  <div class="span4"> 
+  <div class="span4">
    <div class="field" id="field-titles">
     <%= f.label t "internships.attributes.programming_language" %><br />
     <%= f.select :programming_language_ids, @programming_languages, {}, { :multiple => true, class: 'chzn-select'} %>
   </div>
 </div>
 
-<div class="span4"> 
+<div class="span4">
  <div class="field" id="field-titles">
   <%= f.label t "internships.attributes.orientation" %><br />
   <%= f.select :orientation_id, @orientations, {}, class: 'chzn-select' %>
@@ -168,17 +168,17 @@
     </div>
   </div>
 
-  <div class="span4"> 
+  <div class="span4">
     <div class="field" id="field-titles">
       <%= f.label t("internships.attributes.salary") + " € / " + t("unit.month") %><br />
       <%= f.text_field :salary %>
     </div>
   </div>
 
-</div>  
+</div>
 
 <div class="row">
-  <div class="span4"> 
+  <div class="span4">
    <div class="field" id="field-titles">
     <%= f.label t "internships.attributes.semester" %><br />
     <%= f.select :semester_id, get_semesters, {}, class: 'chzn-select' %>
@@ -188,7 +188,7 @@
 
 <br>
 <div class="row">
-  <div class="pull-right"> 
+  <div class="pull-right">
    <div class="actions">
     <%= button_tag(type: 'submit', class: "btn btn-success") do %>
     <i class="icon-ok icon-white"></i> <%= t("internships.create")%>

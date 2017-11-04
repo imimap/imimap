@@ -12,7 +12,7 @@ ImiMaps::Application.routes.draw do
       resources :users, only: %i[edit show update create new]
       resources :user_verifications, only: %i[new create]
       resources :overview, only: %i[index]
-      resources :internship_offer, only: %i[index show]
+      resources :internship_offer, only: %i[index show new create]
       resources :notifications, only: %i[destroy show]
       resources :favorite, only: %i[create destroy index]
       resources :current_internships, only: %i[index]
@@ -24,6 +24,11 @@ ImiMaps::Application.routes.draw do
       resources :quicksearches, only: %i[index]
       resources :favorite_compare, only: %i[index]
       resources :errors, only: %i[not_found]
+      resources :report_overview, :only => [:index]
+      resources :read_list, :only => [:create, :destroy, :index]
+      resources :complete_report, :only => [:index]
+      resources :internship_status, :only => [:index]
+      resources :finish_list, :only => [:create, :destroy, :index]
       get 'login', to: 'devise/sessions#create', as: 'login'
       get 'logout', to: 'devise/sessions#destroy', as: 'logout'
       get 'statistic', to: 'statistic#overview'

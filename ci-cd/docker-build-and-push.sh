@@ -1,7 +1,7 @@
 
 echo "$0: building docker image"
 
-export DEPLOYMENT_ENVIRONMENT=production
+export DEPLOYMENT_ENVIRONMENT=staging
 
 . ./ci-cd/deploy01-settings.sh
 . ./ci-cd/deploy00-echo-settings.sh

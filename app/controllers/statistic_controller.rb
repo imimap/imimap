@@ -1,5 +1,5 @@
 class StatisticController < ApplicationController
-  
+
   def overview
     @internships = Internship.all
     @companies = Company.all
