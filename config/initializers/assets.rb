@@ -34,5 +34,5 @@ Rails.application.config.assets.precompile += %w[stylesheet_tablet.css]
 Rails.application.config.assets.precompile += %w[users.css]
 Rails.application.config.assets.precompile += %w[viz.css]
 
-puts '+++Rails.application.config.assets.precompile'
-puts Rails.application.config.assets.precompile.inspect
+# puts '+++Rails.application.config.assets.precompile'
+# puts Rails.application.config.assets.precompile.inspect
