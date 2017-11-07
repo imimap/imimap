@@ -43,7 +43,7 @@
 
 // Brand: website or project name
 // -------------------------
-.navbar .brand {
+.navbar .navbar-brand {
   float: left;
   display: block;
   // Vertically center the text given $navbarHeight
@@ -380,7 +380,7 @@
     border-color: $navbarInverseBorder;
   }
 
-  .brand,
+  .navbar-brand,
   .nav > li > a {
     color: $navbarInverseLinkColor;
     text-shadow: 0 -1px 0 rgba(0,0,0,.25);

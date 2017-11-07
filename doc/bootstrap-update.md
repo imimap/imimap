@@ -1,7 +1,7 @@
 bootstrap update: .row-fluid ->  .row
 bootstrap update: .span* ->  .col-md-*
 bootstrap update: .offset* ->  .col-md-offset-*
-bootstrap update: .brand ->  .navbar-brand
+bootstrap update: .navbar-brand ->  .navbar-brand
 bootstrap update: .navbar .nav ->  .navbar-nav
 bootstrap update: .nav-collapse ->  .navbar-collapse
 bootstrap update: .nav-toggle ->  .navbar-toggle
