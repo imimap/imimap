@@ -110,53 +110,53 @@ de:
         one: Praktikumsangebot
         other: Praktikumsangebote
       orientation:
-        one: Schwehrpunkt
-        other: Schwehrpunkte
+        one: Schwerpunkt
+        other: Schwerpunkte
       programming_language:
         one: Programmiersprache
         other: Programmiersprachen
       reading_prof:
-        one: Professor/in
-        other: Profs
+        one: Professor_in
+        other: Professor_innen
       semester:
         one: Semester
         other: Semester
       student:
-        one: Student
-        other: Studenten
+        one: Student_in
+        other: Student_innen
       user:
-        one: Benutzer
-        other: Benutzern
+        one: Benutzer_in
+        other: Benutzer_innen
 
     errors:
       models:
         user:
           attributes:
             password:
-              confirmation: "Password confirmation does not match"
+              confirmation: "Password stimmen nicht überein"
               too_short: "ist zu kurz"
             email:
               taken: "ist schon belegt"
         internship:
           attributes:
             title:
-              blank: "kann nicht fehlen"
+              blank: "darf nicht fehlen"
             living_costs:
-              blank: "kann nicht fehlen"
+              blank: "darf nicht fehlen"
             salary:
-              blank: "kann nicht fehlen"
+              blank: "darf nicht fehlen"
             working_hours:
-              blank: "kann nicht fehlen"
+              blank: "darf nicht fehlen"
             programming_language_ids:
-              blank: "kann nicht fehlen"
+              blank: "darf nicht fehlen"
       messages:
         blank: "darf nicht freigelassen werden"
         record_invalid: "Fehlerhafte Angaben: %{errors}"
   favorite:
-    delete: "Von Favoriten entfernen"
+    delete: "Aus Favoriten löschen"
     add: "Zu Favoriten hinzufügen"
     notfound:
-      title: "Leider wurden keine Favoriten gefunden"
+      title: "keine Favoriten angelegt"
       message: "Anscheinend hast du noch keine Praktika als Favoriten gespeichert. <br/> Du kannst %{href} benutzen um Praktika zu finden."
       link: "die Suche"
   date:

@@ -195,12 +195,10 @@ ActiveAdmin.setup do |config|
   # To load a stylesheet:
   #   config.register_stylesheet 'my_stylesheet.css'
   #
-  # You can provide an options hash for more control, which is passed along to stylesheet_link_tag():
-  #   config.register_stylesheet 'my_print_stylesheet.css', media: :print
-  #
-  # To load a javascript file:
-  #   config.register_javascript 'my_javascript.js'
-
+  # update to 1.1.0
+  # https://github.com/activeadmin/activeadmin/blob/master/CHANGELOG.md
+  # Deprecated config.register_stylesheet and config.register_javascript. Import
+  # your CSS and JS files in active_admin.scss or active_admin.js. #5060 by @javierjulio
   # == CSV options
   #
   # Set the CSV builder separator
@@ -232,12 +230,12 @@ ActiveAdmin.setup do |config|
 
    config.namespace :admin do |admin|
       admin.build_menu :utility_navigation do |menu|
-        menu.add label: "User view", url: :authenticated_root_path 
+        menu.add label: "User view", url: :authenticated_root_path
         menu.add label: "Locale" do |lang|
         lang.add :label => "English",:url => proc { url_for(:locale => 'en') }, :priority => 1
         lang.add :label => "Deutsch",:url => proc { url_for(:locale => 'de') }, :priority => 2
       end
-        
+
       #   menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
         admin.add_current_user_to_menu  menu
         admin.add_logout_button_to_menu menu

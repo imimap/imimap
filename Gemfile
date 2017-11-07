@@ -10,7 +10,7 @@ gem 'bootstrap-sass', '~> 3.3.5'
 # see https://github.com/tzinfo/tzinfo/wiki/Resolving-TZInfo::DataSourceNotFound-Errors
 gem 'tzinfo-data'
 
-gem 'activeadmin', "~> 1.0"
+gem 'activeadmin', "~> 1.1"
 gem 'formtastic', "~> 3"
 gem 'devise', ' ~> 4.3'
 

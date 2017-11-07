@@ -360,7 +360,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_median (~> 0.1)
-  activeadmin (~> 1.0)
+  activeadmin (~> 1.1)
   bcrypt (~> 3)
   better_errors
   binding_of_caller
