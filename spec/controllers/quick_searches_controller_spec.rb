@@ -1,14 +1,15 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe QuicksearchesController, :type => :controller do
+RSpec.describe QuicksearchesController, type: :controller do
   render_views
 
   before :each do
     @current_user = login
   end
-  describe "GET index" do
+  describe 'GET index' do
     it 'renders the index template' do
-      xhr :get, :index, format: :js
+      get :index, format: :js, xhr: true
       expect(response).to render_template(:index)
     end
 
@@ -18,21 +19,20 @@ RSpec.describe QuicksearchesController, :type => :controller do
       @programming_language_b = create :programming_language
       @internship.programming_languages << [@programming_language_a, @programming_language_b]
 
-      xhr(:get, :index, format: :js,
-          semester: [@internship.semester.id.to_s],
-          programming_language_ids: [@programming_language_a.id.to_s, @programming_language_b.id.to_s]
-      )
+      get :index, format: :js, xhr: true,
+          params: { semester: [@internship.semester.id.to_s],
+          programming_language_ids: [@programming_language_a.id.to_s, @programming_language_b.id.to_s] }
       expect(response).to render_template(:index)
 
-      @internship.company.website = "http://foo"
+      @internship.company.website = 'http://foo'
       @internship.company.save
 
-      xhr(:get, :index, format: :js,
-          semester: [@internship.semester.id.to_s],
-          programming_language_ids: [@programming_language_a.id.to_s, @programming_language_b.id.to_s]
-      )
+      get :index, format: :js, xhr: true,
+          params: { semester: [@internship.semester.id.to_s],
+          programming_language_ids: [@programming_language_a.id.to_s, @programming_language_b.id.to_s] }
       expect(response).to render_template(:index)
     end
+
     it 'performs the quicksearch 2' do
       # TBD this is a variation of 'performs the quicksearch' to gain 100% coverage
       # as the href is computed in the controller. Can be removed after this is moved to a model method.
@@ -41,19 +41,19 @@ RSpec.describe QuicksearchesController, :type => :controller do
       @programming_language_b = create :programming_language
       @internship.programming_languages << [@programming_language_a, @programming_language_b]
 
-      xhr(:get, :index, format: :js,
+      get :index, format: :js, xhr: true, params: {
           semester: [@internship.semester.id.to_s],
           programming_language_ids: [@programming_language_a.id.to_s, @programming_language_b.id.to_s]
-      )
+      }
       expect(response).to render_template(:index)
 
-      @internship.company.website = "foo.bar"
+      @internship.company.website = 'foo.bar'
       @internship.company.save
 
-      xhr(:get, :index, format: :js,
+      get :index, format: :js, xhr: true, params: {
           semester: [@internship.semester.id.to_s],
           programming_language_ids: [@programming_language_a.id.to_s, @programming_language_b.id.to_s]
-      )
+      }
       expect(response).to render_template(:index)
     end
   end

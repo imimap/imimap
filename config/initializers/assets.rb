@@ -1,11 +1,16 @@
 # Be sure to restart your server when you modify this file.
 
 # Version of your assets, change this if you want to expire all your assets.
-# Rails.application.config.assets.enabled = true
 Rails.application.config.assets.version = '1.0'
 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
+
+# Precompile additional assets.
+# application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
+# Rails.application.config.assets.precompile += %w( search.js )
+
+# IMI-Map Specific - start
 Rails.application.config.assets.precompile += %w[leaflet.css]
 Rails.application.config.assets.precompile += %w[leaflet.js]
 # Precompile additional assets.
@@ -33,6 +38,9 @@ Rails.application.config.assets.precompile += %w[stylesheet_phone.css]
 Rails.application.config.assets.precompile += %w[stylesheet_tablet.css]
 Rails.application.config.assets.precompile += %w[users.css]
 Rails.application.config.assets.precompile += %w[viz.css]
+Rails.application.config.assets.precompile += %w[report_overview.js]
+Rails.application.config.assets.precompile += %w[report_overview.css]
 
-puts '+++Rails.application.config.assets.precompile'
-puts Rails.application.config.assets.precompile.inspect
+# puts '+++Rails.application.config.assets.precompile'
+# puts Rails.application.config.assets.precompile.inspect
+# IMI-Map Specific - end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Implements a Search
-class Quicksearch < ActiveRecord::Base
+class Quicksearch < ApplicationRecord
   def internships(query)
     @internships = find_internships(query)
   end
@@ -19,7 +19,7 @@ class Quicksearch < ActiveRecord::Base
     internships = internships.where(companies: {country: query[:country]}) if query[:country].present?
     internships = internships.where(orientation_id: orientations) if orientations.present?
     internships = internships.where(semester_id: semesters) if semesters.present?
-    internships.uniq.sort_by(&:created_at).reverse
+    internships.distinct.sort_by(&:created_at).reverse
   end
 
   def filter_by_programming_languages(internships,query)

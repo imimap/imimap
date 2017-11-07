@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
+#
 
 
-FactoryGirl.define do
+FactoryBot.define do
   sequence :email do |n|
     "email#{n}@factory.com"
   end
@@ -12,8 +15,7 @@ FactoryGirl.define do
     publicmail true
     mailnotif true
     after(:build) do |user|
-      user.student ||= FactoryGirl.build(:student, user: user)
+      user.student ||= FactoryBot.build(:student, user: user)
     end
   end
 end
-

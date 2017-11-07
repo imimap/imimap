@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 # The Semester the Internship is assigned to
-class Semester < ActiveRecord::Base
-  attr_accessible :name
+class Semester < ApplicationRecord
+  # attr_accessible :name
 
   # validates :name, presence: true
 

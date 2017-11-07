@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+#
 require 'spec_helper'
 
 
@@ -17,7 +20,7 @@ require 'spec_helper'
         #@current_user.nil?.should be false
         #response.should render_template(:overview)
         #visit favorite_index_path("de")
-        #page.should have_content("Meine Favoriten")
+        #expect(page).to have_content("Meine Favoriten")
     end
 end
 
@@ -31,7 +34,7 @@ describe "search" do
       #response.should respond_with 200
       click_link (link_to_unless_current "Deutsch", locale: "de")
       response.should render_template(:overview)
-      page.should have_content("quicksearches_path")
+      expect(page).to have_content("quicksearches_path")
       select "Germany", :from => '#country_td'
       fill_in "programming_language_ids", :with => "Java"
 

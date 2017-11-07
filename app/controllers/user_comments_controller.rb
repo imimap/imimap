@@ -15,7 +15,7 @@ class UserCommentsController < ApplicationController
 
 
   def create
-    @comment = UserComment.new(params[:user_comment])
+    @comment = UserComment.new(user_comment_params)
     @comment.user_id = current_user.id if current_user
     @comment.save
     @answer = Answer.new
@@ -35,7 +35,7 @@ class UserCommentsController < ApplicationController
     @comment = UserComment.find(params[:id])
 
     respond_to do |format|
-      if @comment.update_attributes(params[:user_comment])
+      if @comment.update_attributes(user_comment_params)
         format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
         format.json { head :no_content }
       else
@@ -57,6 +57,10 @@ class UserCommentsController < ApplicationController
     respond_to do |format|
       format.js { render :layout=> false, :locals => { :internship => @internship }}
     end
+  end
+
+  def user_comment_params
+    params.require(:user_comment).permit(:body, :internship_id)
   end
 
 end

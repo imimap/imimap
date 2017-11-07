@@ -1,5 +1,5 @@
 ActiveAdmin.register Company do
-    filter :internships_student_enrolment_number, :as => :select, :collection => proc { Student.all.map(&:enrolment_number).uniq }, :label => "Matrikel"
+    filter :internships_student_enrolment_number, :as => :select, :collection => proc { Student.pluck(:enrolment_number) }, :label => "Matrikel"
     filter :name
     filter :city
     filter :country

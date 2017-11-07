@@ -1,8 +1,8 @@
 class InternshipsController < ApplicationController
   respond_to :html, :json
-  before_filter :get_programming_languages, :get_orientations, :only => [:new, :edit, :update]
+  before_action :get_programming_languages, :get_orientations, :only => [:new, :edit, :update]
 
-  before_filter :authorize_internship, :only => [:edit, :update, :destroy]
+  before_action :authorize_internship, :only => [:edit, :update, :destroy]
   # GET /internships
   # GET /internships.json
   def index
@@ -79,7 +79,7 @@ class InternshipsController < ApplicationController
   end
 
   def create
-    @internship = Internship.new(params[:internship])
+    @internship = Internship.new(internship_params)
     @internship.user_id = current_user.id
     @internship.student_id = current_user.student_id
 
@@ -123,8 +123,8 @@ class InternshipsController < ApplicationController
   # PUT /internships/1.json
   def update
     @internship = Internship.find(params[:id])
-    attributes = params[:internship]
-    attributes.delete(:company_id)
+    attributes = internship_params
+    attributes.delete(:company_id) # make internship company readonly by schlubbi
     if @internship.update_attributes(attributes)
       @internship.update_attributes(completed: true)
       flash[:notice] = 'Internship was successfully updated.'
@@ -161,10 +161,21 @@ class InternshipsController < ApplicationController
 
   private
 
+  # this was defined but not used.
   def internship_params
-    params.require(:internship).permit(:title, :start_date, :end_date, :operational_area, :tasks,
-      :programming_language_ids, :orientation_id, :salary, :working_hours, :living_costs, :supervisor_name, :supervisor_email,
-      :internship_report, :recommend, :semester_id, :company_id)
+    params.require(:internship).permit(:attachments_attributes, :living_costs, :orientation_id,
+                     :salary, :working_hours, :programming_language_ids,
+                     :internship_rating_id, :company_id, :user_id, :title,
+                     :recommend, :email_public, :semester_id, :description,
+                     :internship_report, :student_id, :start_date, :end_date,
+                     :operational_area, :tasks, :internship_state_id,
+                     :reading_prof_id, :payment_state_id, :registration_state_id,
+                     :contract_state_id, :report_state_id, :certificate_state_id,
+                     :certificate_signed_by_internship_officer,
+                     :certificate_signed_by_prof, :certificate_to_prof, :comment,
+                     :supervisor_email, :supervisor_name,
+                     :internship_rating_attributes, :completed)
+
   end
 
   def authorize_internship

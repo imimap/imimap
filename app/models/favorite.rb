@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 #
-class Favorite < ActiveRecord::Base
-  attr_accessible :user_id, :internship_id, :comparebox
+class Favorite < ApplicationRecord
+  # attr_accessible :user_id, :internship_id, :comparebox
 
   validates :user, presence: true
   validates :internship, presence: true

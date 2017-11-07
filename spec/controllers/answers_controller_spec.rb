@@ -1,49 +1,58 @@
+# frozen_string_literal: true
+
+#
 require 'rails_helper'
 
-RSpec.describe AnswersController, :type => :controller do
+RSpec.describe AnswersController, type: :controller do
   render_views
 
   before :each do
     @current_user = login
-    @answer = create :answer, body: "foo"
+    @answer = create :answer, body: 'foo'
   end
 
-  describe "POST #create" do
-
+  describe 'POST #create' do
     it 'creates a new Answer' do
       user_comment = create :user_comment
-      expect {
-        post :create, answer: attributes_for(:answer, user_comment_id: user_comment.id, internship_id: user_comment.internship_id), format: :js
-      }.to change(Answer, :count).by(1)
+      expect do
+        post :create,
+             format: :js,
+             params: {
+               answer:
+                 attributes_for(:answer,
+                                user_comment_id: user_comment.id,
+                                internship_id: user_comment.internship_id)
+             }
+      end.to change(Answer, :count).by(1)
     end
   end
 
-  describe "PUT #update" do
+  describe 'PUT #update' do
     context 'with valid parameters' do
       it 'locates the requested answer' do
-        put :update, id: @answer, answer: attributes_for(:answer)
+        put :update, params: {id: @answer, answer: attributes_for(:answer) }
         expect(assigns(:answer)).to eq(@answer)
       end
 
       it 'updates the answer' do
-        put :update, id: @answer, answer: attributes_for(:answer, body: "Bar")
+        put :update, params: {id: @answer, answer: attributes_for(:answer, body: 'Bar') }
         @answer.reload
-        expect(@answer.body).to eq("Bar")
+        expect(@answer.body).to eq('Bar')
       end
     end
 
     context 'with an invalid parameters' do
       it 'refuses to update the answer' do
-        xhr :put, :update, id: @answer, answer: attributes_for(:answer, body: ""), format: :json
+        put :update, params: { id: @answer, answer: attributes_for(:answer, body: '') }, format: :json, xhr: true
         @answer.reload
-        expect(@answer.body).to eq("foo")
+        expect(@answer.body).to eq('foo')
       end
     end
 
-    describe "DELETE #destroy" do
+    describe 'DELETE #destroy' do
       it 'destroys the specified answer' do
         expect {
-          delete :destroy, id: @answer.id, format: :js
+          delete :destroy, params: { id: @answer.id }, format: :js
         }.to change(Answer, :count).by(-1)
       end
     end

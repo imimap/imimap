@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 # Attachment file for Internship
-class Attachment < ActiveRecord::Base
-  attr_accessible :description, :file
+class Attachment < ApplicationRecord
+  # attr_accessible :description, :file
 
   validates :file, presence: true
 

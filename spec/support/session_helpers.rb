@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+#
 # adapted from https://robots.thoughtbot.com/rspec-integration-tests-with-capybara
 module Features
   module SessionHelpers

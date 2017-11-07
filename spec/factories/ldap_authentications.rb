@@ -1,4 +1,7 @@
-FactoryGirl.define do
+# frozen_string_literal: true
+
+#
+FactoryBot.define do
   #factory :ldap_authentication do
     #host "localhost"
     #port "8888"

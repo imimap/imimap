@@ -18,7 +18,7 @@
    <div class="row-fluid">
 
       <div class="span4">
-        <%#= select_tag :semester, options_for_select(@internships.map(&:semester).uniq.map{ |s| [s.name, s.id] }),  { :multiple => true , class: 'chzn-select', 'data-placeholder'=>t("choose.semester")}  %>
+        <%#= select_tag :semester, options_for_select(@internships.map(&:semester).distinct.map{ |s| [s.name, s.id] }),  { :multiple => true , class: 'chzn-select', 'data-placeholder'=>t("choose.semester")}  %>
       </div>
 
 
@@ -39,7 +39,7 @@
        ini yg udah berfungsi
 
        <#%= select_tag :student, options_for_select(@students) %>
-         <#%= select_tag :country, options_for_select((@countries).uniq), { :multiple => true , class: 'chzn-select', 'data-placeholder'=>t("choose.country"), style: "width:100%"} %>
+         <#%= select_tag :country, options_for_select((@countries).distinct), { :multiple => true , class: 'chzn-select', 'data-placeholder'=>t("choose.country"), style: "width:100%"} %>
            -->
     </div>
 

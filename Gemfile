@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.2.8'
+gem 'rails', '~> 5.0.6'
 gem 'carrierwave'
 gem 'geocoder'
 gem 'nested_form'
@@ -13,12 +13,6 @@ gem 'tzinfo-data'
 gem 'activeadmin', "~> 1.0"
 gem 'formtastic', "~> 3"
 gem 'devise', ' ~> 4.3'
-
-# TBD Update: replace by new mechanism
-#  `attr_accessible` is extracted out of Rails into a gem. Please use new recommended protection model for params(strong_parameters) or add `protected_attributes` to your Gemfile to use old one.
-# "Rails 4.0 has removed attr_accessible and attr_protected feature in favor of Strong Parameters. You can use the Protected Attributes gem for a smooth upgrade path."
-# "If you are not using Protected Attributes, you can remove any options related to this gem such as whitelist_attributes or mass_assignment_sanitizer options."
-gem 'protected_attributes'
 
 # TBD Update: Observers have been removed in 4.0
 # replace with ActiveRecord callbacks, maybe refactor as aspect
@@ -48,8 +42,8 @@ gem 'jquery-rails'
 # Gems used only for assets and not required
 # in production environments by default.
 gem 'jquery-ui-rails'
-gem 'sass-rails','~> 4.0.5'
-gem 'coffee-rails', '~> 4.0'
+gem 'sass-rails'
+gem 'coffee-rails'
 gem 'font-awesome-sass-rails'
 gem 'uglifier', '>= 1.0.3'
 
@@ -58,17 +52,16 @@ gem 'chartkick', '~> 1.2.4'
 gem 'groupdate', '~> 2.1.1'
 gem 'active_median', '~> 0.1.0'
 
-gem 'factory_girl_rails'
+gem 'factory_bot_rails'
 
 group :development do
-  gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'rubocop', '~> 0.51.0'
 end
 
 # database gem
 install_if -> { ENV['IMIMAPS_ENVIRONMENT'] == "docker" } do
-  gem "pg"  
+  gem "pg"
 end
 
 group :development, :test do
@@ -80,13 +73,14 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'pry'
+
   gem 'capybara'
   gem 'poltergeist'
   gem 'launchy'
   gem 'rack-mini-profiler'
 
   gem 'railroady'
+  gem 'rails-controller-testing'
   gem 'database_cleaner'
   gem "simplecov", require: false
   gem 'byebug'

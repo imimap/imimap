@@ -3,19 +3,7 @@
 require 'date'
 require 'time'
 # THE Internship
-class Internship < ActiveRecord::Base
-  attr_accessible :attachments_attributes, :living_costs, :orientation_id,
-                  :salary, :working_hours, :programming_language_ids,
-                  :internship_rating_id, :company_id, :user_id, :title,
-                  :recommend, :email_public, :semester_id, :description,
-                  :internship_report, :student_id, :start_date, :end_date,
-                  :operational_area, :tasks, :internship_state_id,
-                  :reading_prof_id, :payment_state_id, :registration_state_id,
-                  :contract_state_id, :report_state_id, :certificate_state_id,
-                  :certificate_signed_by_internship_officer,
-                  :certificate_signed_by_prof, :certificate_to_prof, :comment,
-                  :supervisor_email, :supervisor_name,
-                  :internship_rating_attributes, :completed
+class Internship < ApplicationRecord
   validates :semester_id, :student, presence: true
 
   validates_presence_of :company
@@ -35,10 +23,10 @@ class Internship < ActiveRecord::Base
   belongs_to :certificate_state
   belongs_to :reading_prof
 
-  has_and_belongs_to_many :programming_languages, -> { uniq }
+  has_and_belongs_to_many :programming_languages, -> { distinct }
   has_many :user_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :read_list, :dependent => :destroy
+  has_many :read_list, dependent: :destroy
   has_many :attachments, as: :attachable, dependent: :destroy
   has_many :answers
 

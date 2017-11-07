@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+#
 require 'rails_helper'
 
 describe "Detailed Search Page " do
@@ -16,8 +19,8 @@ describe "Detailed Search Page " do
       sign_in(@user)
         visit internships_path(locale: locale)
       #  save_and_open_page
-        page.should have_content(t('search.title'))
-        page.should have_content(t('internships.attributes.living_costs'))
+        expect(page).to have_content(t('search.title'))
+        expect(page).to have_content(t('internships.attributes.living_costs'))
      end
   # end
  end

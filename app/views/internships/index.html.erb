@@ -16,7 +16,7 @@
     </div>
     </div>
 <br/>
-<div class="row-fluid">   
+<div class="row-fluid">
 <div class="span4">
 <%= select_tag :orientation, options_for_select(@orientations),  { :multiple => true , class: 'chzn-select', 'data-placeholder'=>t("choose.orientation"), style: "width:100%"}  %>
 </div>
@@ -39,7 +39,7 @@
 
 <% end %>
 
-<script> 
+<script>
         $( "#salary_slider" ).slider({
             min: 0,
             max: <%= @salary_max %>,
@@ -50,7 +50,7 @@
             }
 
         });
-        
+
         $( "#salary" ).val( $( "#salary_slider" ).slider( "value" ) );
         $( "#salary_span")[0].innerHTML = ( $( "#salary_slider" ).slider( "value" ) + " €")
 
@@ -128,7 +128,7 @@
         <% end %>
 
 
-   </script> 
+   </script>
 
 <h5> <%=@internships_size%> <%= t('results.found') %> </h5>
 
@@ -176,12 +176,12 @@
 </table>
 
 </div>
-<!---  
+<!---
 <% #if @internships_size > 5 %>
 <div class='pager'>
     <a href='' alt='First' class='firstPage'>First</a>
     <a href='' alt='Previous' class='prevPage'>Prev</a>
-        
+
     <span class='currentPage'></span> of <span class='totalPages'></span>
     <a href='' alt='Next' class='nextPage'>Next</a>
     <a href='' alt='Last' class='lastPage'>Last</a>
@@ -216,26 +216,26 @@ table.bind('aftertablesort', function (event, data) {
               if (currentPage == 1) {
                 $(".firstPage").hide();
               }
-              else 
+              else
                 $(".firstPage").show();
               if (currentPage == numPages) {
                 $(".lastPage").hide();
               }
-              else 
+              else
                 $(".lastPage").show();
           });
           $table.trigger('repaginate');
-          
+
 
           $(".firstPage").click(function() {
             currentPage = 1;
             $table.trigger('repaginate');
-          }); 
+          });
 
           $(".lastPage").click(function() {
             currentPage = numPages;
             $table.trigger('repaginate');
-          }); 
+          });
 
           $(".prevPage").click(function() {
             if (currentPage-1>0)

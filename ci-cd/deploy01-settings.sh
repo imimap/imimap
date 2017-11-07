@@ -44,7 +44,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
 else
 
 if [ "$DEPLOYMENT_ENVIRONMENT" == "staging" ] && [ "$TRAVIS_BRANCH" != "$DEPLOY_FROM_BRANCH" ]; then
-  echo "DEPLOYMENT: staging will only deploy from ${$DEPLOY_FROM_BRANCH} branch"
+  echo "DEPLOYMENT: staging will only deploy from ${DEPLOY_FROM_BRANCH} branch"
   export set DEPLOYMENT_SHOULD_RUN=false
 else
 
