@@ -575,7 +575,7 @@
 }
 
 @mixin grid-fluid ($columnWidth, $gutterWidth) {
-  .row-fluid {
+  .row {
     width: 100%;
     @include clearfix();
     [class*="span"] {

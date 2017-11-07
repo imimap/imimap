@@ -1,6 +1,6 @@
 <h2><%= t "search.title" %></h2>
 <%= form_tag(internships_path, :method => 'get', class: 'form2') do %>
-<div class="row-fluid">
+<div class=.row">
 <div class="span4">
 <%= select_tag :country, options_for_select((@countries).uniq), { :multiple => true , class: 'chzn-select', 'data-placeholder'=>t("choose.country"), style: "width:100%"} %>
 </div>
@@ -16,7 +16,7 @@
     </div>
     </div>
 <br/>
-<div class="row-fluid">
+<div class=.row">
 <div class="span4">
 <%= select_tag :orientation, options_for_select(@orientations),  { :multiple => true , class: 'chzn-select', 'data-placeholder'=>t("choose.orientation"), style: "width:100%"}  %>
 </div>
