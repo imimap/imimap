@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.2.10'
+gem 'rails', '~> 5.0.6'
 gem 'carrierwave'
 gem 'geocoder'
 gem 'nested_form'
@@ -13,12 +13,6 @@ gem 'tzinfo-data'
 gem 'activeadmin', "~> 1.0"
 gem 'formtastic', "~> 3"
 gem 'devise', ' ~> 4.3'
-
-# TBD Update: replace by new mechanism
-#  `attr_accessible` is extracted out of Rails into a gem. Please use new recommended protection model for params(strong_parameters) or add `protected_attributes` to your Gemfile to use old one.
-# "Rails 4.0 has removed attr_accessible and attr_protected feature in favor of Strong Parameters. You can use the Protected Attributes gem for a smooth upgrade path."
-# "If you are not using Protected Attributes, you can remove any options related to this gem such as whitelist_attributes or mass_assignment_sanitizer options."
-gem 'protected_attributes'
 
 # TBD Update: Observers have been removed in 4.0
 # replace with ActiveRecord callbacks, maybe refactor as aspect
@@ -48,8 +42,8 @@ gem 'jquery-rails'
 # Gems used only for assets and not required
 # in production environments by default.
 gem 'jquery-ui-rails'
-gem 'sass-rails','~> 4.0.5'
-gem 'coffee-rails', '~> 4.0'
+gem 'sass-rails'
+gem 'coffee-rails'
 gem 'font-awesome-sass-rails'
 gem 'uglifier', '>= 1.0.3'
 
