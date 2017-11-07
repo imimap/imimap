@@ -18,7 +18,7 @@ RSpec.describe ApplicationHelper, :type => :helper do
     it 'should return the correct css classes' do
       expect(helper.flash_class(:notice)).to eq "alert alert-info"
       expect(helper.flash_class(:success)).to eq "alert alert-success"
-      expect(helper.flash_class(:error)).to eq "alert alert-error"
+      expect(helper.flash_class(:error)).to eq "alert alert-danger"
       expect(helper.flash_class(:alert)).to eq "alert alert-info"
     end
   end
