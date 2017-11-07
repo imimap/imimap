@@ -1,7 +1,7 @@
 class InternshipStatusController < ApplicationController
   respond_to :html, :json
 
-  before_filter :authorize
+  before_action :authorize
 
 
 

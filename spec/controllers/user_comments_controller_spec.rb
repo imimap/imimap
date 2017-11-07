@@ -3,7 +3,7 @@
 #
 require 'rails_helper'
 
-RSpec.describe UserCommentsController, :type => :controller do
+RSpec.describe UserCommentsController, type: :controller do
   render_views
 
   before :each do
@@ -60,7 +60,7 @@ RSpec.describe UserCommentsController, :type => :controller do
     end
 
     it 'assigns @comment' do
-      put :update, id: @user_comment, user_comment: attributes_for(:user_comment)
+      put :update, params: { id: @user_comment, user_comment: attributes_for(:user_comment) }
       expect(assigns(:comment)).to eq(@user_comment)
     end
 
@@ -100,14 +100,13 @@ RSpec.describe UserCommentsController, :type => :controller do
     end
 
     it 'assigns @internship' do
-      delete :destroy, id: @user_comment, format: :js
+      delete :destroy, params: { id: @user_comment }, format: :js
       expect(assigns(:internship)).to eq(@user_comment.internship)
     end
 
     it 'assigns @user_comments' do
-      delete :destroy, id: @user_comment, format: :js
+      delete :destroy, params: { id: @user_comment }, format: :js
       expect(assigns(:user_comments)).to eq([])
     end
   end
-
 end

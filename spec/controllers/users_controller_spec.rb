@@ -3,7 +3,7 @@
 #
 require 'rails_helper'
 
-RSpec.describe UsersController, :type => :controller do
+RSpec.describe UsersController, type: :controller do
   render_views
 
   before :each do
@@ -43,22 +43,22 @@ RSpec.describe UsersController, :type => :controller do
 
   describe "GET #show" do
     it 'renders the show template' do
-      get :show, id: @current_user
+      get :show, params: { id: @current_user }
       expect(response).to render_template :show
     end
 
     it 'assigns @user' do
-      get :show, id: @current_user
+      get :show, params: { id: @current_user }
       expect(assigns(:user)).to eq @current_user
     end
 
     it 'assigns @internships' do
-      get :show, id: @current_user
+      get :show, params: {  id: @current_user }
       expect(assigns(:internships)).to eq []
     end
 
     it 'assigns @comments' do
-      get :show, id: @current_user
+      get :show,  params: { id: @current_user }
       expect(assigns(:comments)).to eq []
     end
   end

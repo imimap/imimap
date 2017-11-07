@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :check_permission, only: [:new, :create]
-  before_filter :check_existing_user, only: [:new, :create]
+  before_action :check_permission, only: [:new, :create]
+  before_action :check_existing_user, only: [:new, :create]
 
   def create
     @user = User.new(user_params)

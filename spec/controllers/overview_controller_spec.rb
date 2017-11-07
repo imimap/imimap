@@ -3,7 +3,7 @@
 #
 require 'rails_helper'
 
-RSpec.describe OverviewController, :type => :controller do
+RSpec.describe OverviewController, type: :controller do
   render_views
 
 

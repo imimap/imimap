@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-#
 require 'rails_helper'
 
-RSpec.describe CompaniesController, :type => :controller do
+RSpec.describe CompaniesController, type: :controller do
   render_views
 
   before :each do
@@ -41,23 +40,23 @@ RSpec.describe CompaniesController, :type => :controller do
     end
 
     it 'renders the show template' do
-      get :show, id: @company
+      get :show, params: { id: @company }
       expect(response).to render_template :show
     end
 
     it 'renders the show template for a company without http in website name' do
-      get :show, id: @company2
+      get :show, params: { id: @company2 }
       expect(response).to render_template :show
     end
 
     it 'assigns @company' do
-      get :show, id: @company
+      get :show, params: { id: @company }
       expect(assigns(:company)).to eq(@company)
     end
 
     it 'does not add http to the company website, if http is already present' do
       @company = create :company, website: "http"
-      get :show, id: @company
+      get :show, params: { id: @company }
       expect(response).to render_template :show
     end
 
@@ -82,12 +81,12 @@ RSpec.describe CompaniesController, :type => :controller do
     end
 
     it 'renders the edit template' do
-      get :edit, id: @company
+      get :edit, params: { id: @company }
       expect(response).to render_template :edit
     end
 
     it 'assigns @company' do
-      get :edit, id: @company
+      get :edit, params: { id: @company }
       expect(assigns(:company)).to eq(@company)
     end
   end
@@ -96,12 +95,12 @@ RSpec.describe CompaniesController, :type => :controller do
     context 'given correct parameters' do
       it 'creates a new Company' do
         expect {
-          post :create, company: attributes_for(:company)
+          post :create, params: { company: attributes_for(:company) }
         }.to change(Company, :count).by(1)
       end
 
       it 'redirects to the show view ' do
-        post :create, company: attributes_for(:company)
+        post :create, params: { company: attributes_for(:company) }
         expect(response).to redirect_to new_internship_path
       end
     end
@@ -109,12 +108,12 @@ RSpec.describe CompaniesController, :type => :controller do
     context 'given incorrect parameters' do
       it 'refuses to create a new Company' do
         expect {
-          post :create, company: attributes_for(:company, name: nil)
+          post :create, params: { company: attributes_for(:company, name: nil) }
         }.to_not change(Company, :count)
       end
 
       it 'redirects to the show new view ' do
-        post :create, company: attributes_for(:company, name: nil)
+        post :create, params: { company: attributes_for(:company, name: nil) }
         expect(response).to render_template :new
       end
     end
@@ -127,27 +126,27 @@ RSpec.describe CompaniesController, :type => :controller do
 
     context 'given correct parameters' do
       it 'updates the specified Company' do
-        put :update, id: @company, company: attributes_for(:company, name: "Bar")
+        put :update, params: { id: @company, company: attributes_for(:company, name: "Bar") }
         @company.reload
         expect(@company.name).to eq("Bar")
       end
 
       it 'redirects to the show view' do
-        put :update, id: @company, company: attributes_for(:company, name: "Bar")
+        put :update, params: { id: @company, company: attributes_for(:company, name: "Bar") }
         expect(response).to redirect_to Company.last
       end
     end
 
     context 'given incorrect parameters' do
       it 'refuses to update the specified Company' do
-        put :update, id: @company, company: attributes_for(:company, name: nil)
+        put :update, params: { id: @company, company: attributes_for(:company, name: nil) }
         @company.reload
         expect(@company.name).to eq("Foo")
 
       end
 
       it 'redirects to the edit view' do
-        put :update, id: @company, company: attributes_for(:company, name: nil)
+        put :update,  params: { id: @company, company: attributes_for(:company, name: nil) }
         expect(response).to render_template :edit
       end
     end
@@ -160,7 +159,7 @@ RSpec.describe CompaniesController, :type => :controller do
 
     it 'destroys the specified company' do
       expect {
-        delete :destroy, id: @company.id
+        delete :destroy, params: { id: @company.id }
       }.to change(Company, :count).by(-1)
     end
   end

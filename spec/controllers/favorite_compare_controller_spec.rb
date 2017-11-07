@@ -14,15 +14,15 @@ RSpec.describe FavoriteCompareController, type: :controller do
     it 'assigns @internships' do
       @internship = create :internship
 
-      xhr :get, :index, format: :js
+      get :index, format: :js, xhr: true
       expect(assigns(:internships)).to eq([])
 
-      xhr :get, :index, format: :js, favorite_ids: [@internship.id]
+      get :index, format: :js, xhr: true, params: { favorite_ids: [@internship.id] }
       expect(assigns(:internships)).to eq([@internship])
     end
 
     it 'renders the index template ' do
-      xhr :get, :index, format: :js
+      get :index, format: :js, xhr: true
       expect(response).to render_template(:index)
     end
   end

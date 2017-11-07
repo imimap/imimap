@@ -1,6 +1,6 @@
 class ReadListController < ApplicationController
 
-  before_filter :authorize_role_prof
+  before_action :authorize_role_prof
 
   respond_to :html, :json
 

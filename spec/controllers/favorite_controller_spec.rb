@@ -3,7 +3,7 @@
 #
 require 'rails_helper'
 
-RSpec.describe FavoriteController, :type => :controller do
+RSpec.describe FavoriteController, type: :controller do
   render_views
 
   before :each do

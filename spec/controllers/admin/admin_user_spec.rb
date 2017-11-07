@@ -3,7 +3,7 @@
 #
 require 'rails_helper'
 
-RSpec.describe CompaniesController, :type => :controller do
+RSpec.describe CompaniesController, type: :controller do
   render_views
   describe "GET #index" do
   before :each do
