@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @media (max-width: 480px) {
-  
+
 body{
   font-family: 'Merriweather Sans', sans-serif;
   color: #000000;
@@ -22,24 +22,24 @@ a{
   left: -25px;
 }
 
-.modal { 
-    position: fixed; 
-    top: 3%; 
-    right: 3%; 
-    left: 3%; 
-    width: auto; 
+.modal {
+    position: fixed;
+    top: 3%;
+    right: 3%;
+    left: 3%;
+    width: auto;
     margin: 0;
     margin-top: -180px;
 }
-.modal-body { 
-    height: 60%; 
+.modal-body {
+    height: 60%;
 }
 
-.modal-body { 
-    max-height: 350px; 
-    padding: 15px; 
-    overflow-y: auto; 
-    -webkit-overflow-scrolling: touch; 
+.modal-body {
+    max-height: 350px;
+    padding: 15px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
  }
 
 .navbar-inner {
@@ -54,13 +54,13 @@ a{
 
 .navbar .nav.pull-right > li{
   margin-left: 10px;
-} 
+}
 
 .navbar .nav.pull-right > li > a {
   float:none;
   margin-left: -8px;
   margin-right: -8px;                               /* nav right */
-} 
+}
 
 .navbar-inverse .brand, .navbar-inverse .nav > li > a{
   color: #c0b9b9 !important;
@@ -135,7 +135,7 @@ float: right;
 }*/
 
 .search-table{
-  background-color:#333333; 
+  background-color:#333333;
   color:#e3e5e1;
 }
 
@@ -237,7 +237,7 @@ float: right;
   padding-right: 30px !important;
 }
 
-.span8 > ul{
+.col-md-8 > ul{
   margin-left: 50%;
   left: -31px;
   position: relative;
