@@ -2,7 +2,7 @@
 
 # Notifications for Students.
 class Notification < ApplicationRecord
-  attr_accessible :read, :text, :link
+  # attr_accessible :read, :text, :link
 
   validates :text, presence: true
 

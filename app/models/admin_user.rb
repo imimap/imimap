@@ -5,7 +5,7 @@ class AdminUser < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  # attr_accessible :email, :password, :password_confirmation, :remember_me
 
   validates :email, presence: true
   validates :password, presence: true

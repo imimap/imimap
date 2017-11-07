@@ -60,7 +60,7 @@ class UserCommentsController < ApplicationController
   end
 
   def user_comment_params
-    params.require(:user_comment).permit(:body, :user_id, :internship_id)
+    params.require(:user_comment).permit(:body, :internship_id)
   end
 
 end

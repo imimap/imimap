@@ -28,6 +28,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :publicmail, :mailnotif, :student_id)
+    # this was listed here, but probably the shorter list above works just fine:
+    # attr_accessible :email, :password, :password_confirmation, :publicmail,
+    #                :mailnotif, :student_id, :remember_me
   end
 end
 # create_table "users", force: :cascade do |t|

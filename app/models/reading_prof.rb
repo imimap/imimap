@@ -2,7 +2,7 @@
 
 # Prof reading the Report
 class ReadingProf < ApplicationRecord
-  attr_accessible :name
+  # attr_accessible :name
 
   has_many :internships
 end

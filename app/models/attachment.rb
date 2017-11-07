@@ -2,7 +2,7 @@
 
 # Attachment file for Internship
 class Attachment < ApplicationRecord
-  attr_accessible :description, :file
+  # attr_accessible :description, :file
 
   validates :file, presence: true
 

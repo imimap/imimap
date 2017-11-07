@@ -1,5 +1,5 @@
 class ReadList < ApplicationRecord
-  attr_accessible :user_id, :internship_id
+  # attr_accessible :user_id, :internship_id
 
   validates_uniqueness_of :internship_id, :scope => :user_id
 

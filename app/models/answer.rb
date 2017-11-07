@@ -2,8 +2,6 @@
 
 # Answers are answers to comments to an internship.
 class Answer < ApplicationRecord
-  attr_accessible :body, :internship_id, :user_comment_id
-
   validates :body, presence: true
   validates :internship_id, presence: true
   validates :user_comment_id, presence: true

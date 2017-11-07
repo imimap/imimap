@@ -2,8 +2,8 @@
 
 # Students can create a rating for their internship
 class InternshipRating < ApplicationRecord
-  attr_accessible :appreciation, :atmosphere, :supervision, :tasks,
-                  :training_success
+  # attr_accessible :appreciation, :atmosphere, :supervision, :tasks,
+  #                :training_success
 
   has_many :internships
 
