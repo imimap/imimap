@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+#
 FactoryGirl.define do
   factory :internship do
     working_hours 2.0

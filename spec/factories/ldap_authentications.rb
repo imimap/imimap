@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+#
 FactoryGirl.define do
   #factory :ldap_authentication do
     #host "localhost"

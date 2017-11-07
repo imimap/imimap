@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+#
 FactoryGirl.define do
   factory :internship_state do
     name "internship state name"

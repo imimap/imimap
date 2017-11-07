@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+#
 FactoryGirl.define do
   factory :company do
     name "The IMI-Map Company"

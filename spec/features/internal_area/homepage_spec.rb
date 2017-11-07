@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+#
 #require 'spec_helper'
 
 #describe "Testing LogIn1" do

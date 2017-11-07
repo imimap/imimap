@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+#
 FactoryGirl.define do
   factory :contract_state do
     name "contract state name"

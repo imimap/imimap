@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+#
 
 
 FactoryGirl.define do
@@ -16,4 +19,3 @@ FactoryGirl.define do
     end
   end
 end
-
