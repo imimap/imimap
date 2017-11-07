@@ -1,43 +1,43 @@
-.row-fluid                                          .row
-.span*                                          .col-md-*
-.offset*                                          .col-md-offset-*
-.brand                                          .navbar-brand
-.navbar .nav                                          .navbar-nav
-.nav-collapse                                          .navbar-collapse
-.nav-toggle                                          .navbar-toggle
-.btn-navbar                                          .navbar-btn
-.hero-unit                                          .jumbotron
-.icon-*                                          .glyphicon .glyphicon-*
-.btn                                          .btn .btn-default
-.btn-mini                                          .btn-xs
-.btn-small                                          .btn-sm
-.btn-large                                          .btn-lg
-.alert                                          .alert .alert-warning
-.alert-error                                          .alert-danger
-.visible-phone                                          .visible-xs
-.visible-tablet                                          .visible-sm
-.visible-desktop                                          Split into .visible-md .visible-lg
-.hidden-phone                                          .hidden-xs
-.hidden-tablet                                          .hidden-sm
-.hidden-desktop                                          Split into .hidden-md .hidden-lg
-.input-block-level                                          .form-control
-.control-group                                          .form-group
-.control-group.warning .control-group.error .control-group.success                                          .form-group.has-*
-.checkbox.inline .radio.inline                                          .checkbox-inline .radio-inline
-.input-prepend .input-append                                          .input-group
-.add-on                                          .input-group-addon
-.img-polaroid                                          .img-thumbnail
-ul.unstyled                                          .list-unstyled
-ul.inline                                          .list-inline
-.muted                                          .text-muted
-.label                                          .label .label-default
-.label-important                                          .label-danger
-.text-error                                          .text-danger
-.table .error                                          .table .danger
-.bar                                          .progress-bar
-.bar-*                                          .progress-bar-*
-.accordion                                          .panel-group
-.accordion-group                                          .panel .panel-default
-.accordion-heading                                          .panel-heading
-.accordion-body                                          .panel-collapse
-.accordion-inner                                          .panel-body
+bootstrap update: .row-fluid ->  .row
+bootstrap update: .span* ->  .col-md-*
+bootstrap update: .offset* ->  .col-md-offset-*
+bootstrap update: .brand ->  .navbar-brand
+bootstrap update: .navbar .nav ->  .navbar-nav
+bootstrap update: .nav-collapse ->  .navbar-collapse
+bootstrap update: .nav-toggle ->  .navbar-toggle
+bootstrap update: .btn-navbar ->  .navbar-btn
+bootstrap update: .hero-unit ->  .jumbotron
+bootstrap update: .icon-* ->  .glyphicon .glyphicon-*
+bootstrap update: .btn ->  .btn .btn-default
+bootstrap update: .btn-mini ->  .btn-xs
+bootstrap update: .btn-small ->  .btn-sm
+bootstrap update: .btn-large ->  .btn-lg
+bootstrap update: .alert ->  .alert .alert-warning
+bootstrap update: .alert-error ->  .alert-danger
+bootstrap update: .visible-phone ->  .visible-xs
+bootstrap update: .visible-tablet ->  .visible-sm
+bootstrap update: .visible-desktop ->  Split into .visible-md .visible-lg
+bootstrap update: .hidden-phone ->  .hidden-xs
+bootstrap update: .hidden-tablet ->  .hidden-sm
+bootstrap update: .hidden-desktop ->  Split into .hidden-md .hidden-lg
+bootstrap update: .input-block-level ->  .form-control
+bootstrap update: .control-group ->  .form-group
+bootstrap update: .control-group.warning .control-group.error .control-group.success ->  .form-group.has-*
+bootstrap update: .checkbox.inline .radio.inline ->  .checkbox-inline .radio-inline
+bootstrap update: .input-prepend .input-append ->  .input-group
+bootstrap update: .add-on ->  .input-group-addon
+bootstrap update: .img-polaroid ->  .img-thumbnail
+bootstrap update: ul.unstyled ->  .list-unstyled
+bootstrap update: ul.inline ->  .list-inline
+bootstrap update: .muted ->  .text-muted
+bootstrap update: .label ->  .label .label-default
+bootstrap update: .label-important ->  .label-danger
+bootstrap update: .text-error ->  .text-danger
+bootstrap update: .table .error ->  .table .danger
+bootstrap update: .bar ->  .progress-bar
+bootstrap update: .bar-* ->  .progress-bar-*
+bootstrap update: .accordion ->  .panel-group
+bootstrap update: .accordion-group ->  .panel .panel-default
+bootstrap update: .accordion-heading ->  .panel-heading
+bootstrap update: .accordion-body ->  .panel-collapse
+bootstrap update: .accordion-inner ->  .panel-body
