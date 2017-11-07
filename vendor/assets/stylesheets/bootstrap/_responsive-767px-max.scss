@@ -43,7 +43,7 @@
     width: auto;
   }
   // Fluid rows
-  .row-fluid {
+  .row {
     width: 100%;
   }
   // Undo negative margin on rows and thumbnails
@@ -57,14 +57,14 @@
   }
   // Make all grid-sized elements block level again
   [class*="span"],
-  .row-fluid [class*="span"] {
+  .row [class*="span"] {
     float: none;
     display: block;
     width: auto;
     margin-left: 0;
   }
-  .span12,
-  .row-fluid .span12 {
+  .col-md-12,
+  .row .col-md-12 {
     width: 100%;
     @include box-sizing(border-box);
   }

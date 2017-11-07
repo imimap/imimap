@@ -19,7 +19,7 @@
 
 
 
-        <div class="span4">
+        <div class="col-md-4">
           <div class="field" id="field-titles">
             <%= f.label t "internships.attributes.title" %><br />
             <%= f.text_field :title , :readonly => false %>
@@ -27,7 +27,7 @@
         </div>
 
 
-        <div class="span4">
+        <div class="col-md-4">
           <div class="field" id="field-titles">
             <%= f.label t "internships.attributes.company" %>
             <%= f.select :company_id, Company.order(:name).map { |c| [c.name, c.id] },{}, class: 'chzn-select', disabled: false  %>
@@ -36,13 +36,13 @@
       </div>
 
       <div class="row">
-        <div class="span4">
+        <div class="col-md-4">
           <div class="field" id="field-titles">
             <%= f.label t "internships.attributes.orientation" %><br />
             <%= f.select :orientation_id, @orientations, {}, class: 'chzn-select' %>
           </div>
         </div>
-        <div class="span4">
+        <div class="col-md-4">
           <div class="field" id="field-titles">
             <%= f.label t "internships.attributes.programming_language"  %><br />
             <%= f.select :programming_language_ids, @programming_languages, {}, { :multiple => true, class: 'chzn-select'} %>
@@ -51,13 +51,13 @@
       </div>
 
       <div class="row">
-        <div class="span4">
+        <div class="col-md-4">
           <div class="field" id="field-titles">
             <%= f.label t("internships.attributes.salary") + " € / " + t("unit.month") %><br />
             <%= f.text_field :salary %>
           </div>
         </div>
-        <div class="span4">
+        <div class="col-md-4">
           <div class="field" id="field-titles">
             <%= f.label t("internships.attributes.working_hours") + " / " + t("unit.week") %><br />
             <%= f.text_field :working_hours %>
@@ -66,13 +66,13 @@
       </div>
 
       <div class="row">
-        <div class="span4">
+        <div class="col-md-4">
           <div class="field" id="field-titles" >
             <%= f.label t("internships.attributes.living_costs") + " € / " + t("unit.month") %><br />
             <%= f.text_field :living_costs %>
           </div>
         </div>
-        <div class="span4">
+        <div class="col-md-4">
           <div class="field" id="field-titles" style="text-transform: capitalize;">
             <%= f.label t "internships.attributes.semester"  %><br />
             <%= f.select :semester_id, get_semesters, {}, class: 'chzn-select' %>
@@ -84,7 +84,7 @@
       <br>
       <%= f.fields_for :internship_rating do |rat| %>
           <div class="row">
-            <div class="span4">
+            <div class="col-md-4">
 
               <div class="field" id="field-titles">
                 <%= rat.label t "internships.attributes.tasks_rating" %><br />
@@ -92,14 +92,14 @@
                 <%= rat.hidden_field :tasks %>
               </div>
             </div>
-            <div class="span4">
+            <div class="col-md-4">
               <div class="field" id="field-titles">
                 <%= rat.label t "internships.attributes.training_rating" %><br />
                 <div class="edit-rating" id="training_success" style="margin-top:-10px; margin-left:-20px;"><%= render_stars(@rating.training_success, self) %></div>
                 <%= rat.hidden_field :training_success %>
               </div>
             </div>
-            <div class="span2">
+            <div class="col-md-2">
               <div class="field" id="field-titles">
                 <%= rat.label t "internships.attributes.atmosphere_rating" %><br />
                 <div class="edit-rating" id="atmosphere" style="margin-top:-10px; margin-left:-20px;"><%= render_stars(@rating.atmosphere, self) %></div>
@@ -112,14 +112,14 @@
           <br>
           <div class="row">
 
-            <div class="span4">
+            <div class="col-md-4">
               <div class="field" id="field-titles">
                 <%= rat.label t "internships.attributes.supervision_rating" %><br />
                 <div class="edit-rating" id="supervision" style="margin-top:-10px; margin-left:-20px;"><%= render_stars(@rating.supervision, self) %></div>
                 <%= rat.hidden_field :supervision %>
               </div>
             </div>
-            <div class="span4">
+            <div class="col-md-4">
               <div class="field" id="field-titles" >
                 <%= rat.label t "internships.attributes.appreciation_rating" %><br />
                 <div class="edit-rating" id="appreciation" style="margin-top:-10px; margin-left:-20px;"><%= render_stars(@rating.appreciation, self) %></div>
@@ -128,7 +128,7 @@
 
             </div>
 
-            <div class="span2">
+            <div class="col-md-2">
               <div class="field" id="field-titles">
                 <%= f.label t "internships.attributes.recommend"  %>
                 <div class="edit-recommend1" style="margin-left:10px; cursor: pointer;">
@@ -149,7 +149,7 @@
       <br>
 
       <div class="row">
-        <div class="span8">
+        <div class="col-md-8">
           <div class="field" id="field-titles">
             <%= f.label t "internships.attributes.tasks" %><br />
             <%= f.text_area :tasks, size: "30x5" %>
@@ -158,7 +158,7 @@
       </div>
 
       <div class="row">
-        <div class="span10">
+        <div class="col-md-10">
           <div class="field" id="field-titles">
             <%= f.label t "internships.attributes.description"  %><br />
             <%= f.text_area :description %>
@@ -168,7 +168,7 @@
 
 
       <div class="row">
-        <div class="span10">
+        <div class="col-md-10">
           <div id="attachments_div">
             <%= f.fields_for :attachments, :html => {:multipart => true} do |attachment_form|  %>
                 <%= render 'attachment_fields', f: attachment_form %>

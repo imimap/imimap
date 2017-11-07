@@ -1,13 +1,13 @@
 <div id="form-block4">
 <h2 class="user_titel">Profil</h2>
 <div class="row">
-<div class="span4">
+<div class="col-md-4">
   <div class="field" id="field-titles2">
   <b><%= t "users.attributes.first_name" %> :</b>
   <%= @user.student.first_name %>
   </div>
 </div>
-<div class="span4">
+<div class="col-md-4">
   <div class="field" id="field-titles2">
   <b><%= t "users.attributes.publicmail" %> :</b>
   <% if @user.publicmail %>
@@ -25,13 +25,13 @@
 
 <div class="row">
 
-<div class="span4">
+<div class="col-md-4">
   <div class="field" id="field-titles2">
 <b><%= t "users.attributes.last_name" %> :</b>
   <%= @user.student.last_name %>
   </div>
 </div>
-<div class="span4">
+<div class="col-md-4">
   <div class="field" id="field-titles2">
   <b><%= t "users.attributes.mailnotif" %> :</b>
   <% if @user.mailnotif %>
@@ -48,7 +48,7 @@
 
 <div class="row">
 
-<div class="span4">
+<div class="col-md-4">
   <div class="field" id="field-titles2">
   <b><%= t "users.attributes.email" %> :</b>
   <%= @user.email %>
