@@ -83,4 +83,27 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # IMI-Map specific Start
+    config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
+    # Precompile additional assets.
+    # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
+    # config.assets.precompile += %w( search.js )
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.default_url_options = { host: "imi-map.f4.htw-berlin.de" }
+    config.action_mailer.smtp_settings = {
+      host: "smtp.gmail.com",
+      port: "587",
+      domain: "gmail.com",
+      user_name: ENV['GMAIL_USERNAME'],
+      password: ENV['GMAIL_PASSWORD'],
+      authentication: :plain,
+      enable_starttls_auto: true
+    }
+    #TBD Environment variable for HOST name Staging and Production
+    Rails.application.routes.default_url_options[:host] = "imi-map.f4.htw-berlin.de"
+    #TBD Review
+    #config.devise_ldap=:on
+    config.devise_ldap=:off
+  # IMI-Map specific End
 end
