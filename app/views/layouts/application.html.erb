@@ -6,7 +6,9 @@
     <!-- application wide assets -->
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
-
+    <!-- controller specific assets -->
+    <%= javascript_include_tag params[:controller] %>
+    <%= stylesheet_link_tag params[:controller] %>
     <!--chartkick includes-->
     <%= javascript_include_tag "http://www.google.com/jsapi", "chartkick" %>
 
