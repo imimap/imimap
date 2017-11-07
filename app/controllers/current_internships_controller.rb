@@ -1,6 +1,6 @@
 class CurrentInternshipsController < ApplicationController
 
-before_action :authorize_role_pruefungsverwaltung
+before_action :authorize_role_examination_office
 
 # CodeReviewSS17
 # Why is this a special controller? It offers an index view on Internship.
