@@ -55,7 +55,6 @@ gem 'active_median', '~> 0.1.0'
 gem 'factory_bot_rails'
 
 group :development do
-  gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'rubocop', '~> 0.51.0'
 end
@@ -74,7 +73,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'pry'
+
   gem 'capybara'
   gem 'poltergeist'
   gem 'launchy'
