@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 #
-FactoryGirl.define do
+FactoryBot.define do
   factory :read_list do
     user_id 1
     internship_id 1

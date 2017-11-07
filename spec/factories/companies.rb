@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 #
-FactoryGirl.define do
+FactoryBot.define do
   factory :company do
     name "The IMI-Map Company"
     number_employees 2

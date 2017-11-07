@@ -6,7 +6,7 @@
 #describe "Testing LogIn1" do
      ##include Capybara::DSL
       ##it "login data not valid because password too short. Render Session" do
-        ##user4 =  FactoryGirl.build(:user)
+        ##user4 =  FactoryBot.build(:user)
         ##visit root_path
         ##fill_in "email",  :with => user4.email
         ##fill_in "password",  :with => user4.password

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 #
-FactoryGirl.define do
+FactoryBot.define do
 
 
   factory :admin_user, class: User do
@@ -12,7 +12,7 @@ FactoryGirl.define do
     mailnotif true
     superuser true
     after(:build) do |user|
-      user.student ||= FactoryGirl.build(:student, user: user)
+      user.student ||= FactoryBot.build(:student, user: user)
     end
   end
 end

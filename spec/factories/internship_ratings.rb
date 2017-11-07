@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 #
-FactoryGirl.define do
+FactoryBot.define do
   factory :internship_rating do
     tasks 3
     training_success 3

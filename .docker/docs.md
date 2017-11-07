@@ -190,7 +190,7 @@ deren externe Softwareabhängigkeiten installiert werden. Diese können unter ma
   $ brew install imagemagick@6 postgresql nodejs sqlite
 ```
 Danach können die Gem-Abhängigkeiten der Rails-App mit `bundle install` installiert werden.
-Es ist anzumerken, dass die Gems `factory_girl_rails` sowie  `rspec_rails` auf die jeweils aktuellste Version geupdated worden sind.
+Es ist anzumerken, dass die Gems `factory_bot_rails` sowie  `rspec_rails` auf die jeweils aktuellste Version geupdated worden sind.
 
 #### Probleme
 Unter macOS Sierra können bei der Installation der Gem-Abhängigkeiten Probleme auftreten. Die im Rahmen des IC aufgetretenen Probleme sind im Folgenden dokumentiert:
@@ -211,7 +211,7 @@ Dieser Fehler kann durch die Installation von OpenSSL und spezielle Konfiguratio
 
 ### Factories
 Automatisierte Tests sind häufig abhängig von Daten in einer Datenbank. Um diese effizient zu generieren, bietet sich die Nutzung von Factories an.
-Das Gem `factory_girl` bietet eine einfache DSL zum erstellen solcher Factories. Im Rahmen des IC wurden Factories für alle in der Applikation vorhandenen Models sowie deren Relationen erstellt.
+Das Gem `factory_bot` bietet eine einfache DSL zum erstellen solcher Factories. Im Rahmen des IC wurden Factories für alle in der Applikation vorhandenen Models sowie deren Relationen erstellt.
 Diese sind im Verzeichnis `spec/factories` zu finden.
 
 #### Probleme
@@ -221,7 +221,7 @@ Die oben genannten Models sind über eine 1:1 Relation miteinander verbunden, wo
 Schreibt man nun Factories für die beiden Models wie im folgenden Code-Snippet zu sehen, kommt es beim Ausführen der Tests zu einer Endlosschleife:
 ```
 # User Factory
-FactoryGirl.define do
+FactoryBot.define do
   factory :user do
     ...
     student
@@ -229,7 +229,7 @@ FactoryGirl.define do
 end
 
 # Student Factory
-FactoryGirl.define do
+FactoryBot.define do
   factory :student do
     ...
     user
@@ -240,17 +240,17 @@ end
 Dies kann dadurch gelöst werden, dass man das Entstehen der Endlosschleife verhindert, indem man im `after(:build)`-Callback in einer der obigen Factories
 das in Beziehung stehende Objekt manuell setzt:
 ```
-FactoryGirl.define do
+FactoryBot.define do
   factory :user do
     ...
     after(:build) do |user|
-      user.student = FactoryGirl.create(:student, user: user)
+      user.student = FactoryBot.create(:student, user: user)
     end
   end
 end
 ```
 
-Merkwürdigerweise traten hierbei weitere Fehler auf. FactoryGirl meldete, dass die User-Factory nicht validiert werden konnte. Das wiederum
+Merkwürdigerweise traten hierbei weitere Fehler auf. FactoryBot meldete, dass die User-Factory nicht validiert werden konnte. Das wiederum
 war darauf zurückzuführen, dass im [User-Model](https://github.com/imimaps/imimaps/blob/6c808f0914d1158f8ce2214766072c8928a218e5/app/models/user.rb#L8) eine Validierung
 des Attributs `student_id` durchgeführt wurde. \
 Dies hat zur Folge, dass sich Instanzen des User-Model nicht validieren lassen, wenn besagtes Attribut nicht vorhanden ist.
@@ -623,8 +623,8 @@ Ebenfalls werden könnte sich ein Nutzer mit dem Vornamen C3PO anmelden, ohne da
 
 Alle Attribute aller Models sollten mit Validierungen versehen werden.
 
-### Database Seeds mit FactoryGirl
-Da FactoryGirl in der Test-Suite bereits eingesetzt wird und Factories für alle Models bestehen, bietet es sich an, diese Factories
+### Database Seeds mit FactoryBot
+Da FactoryBot in der Test-Suite bereits eingesetzt wird und Factories für alle Models bestehen, bietet es sich an, diese Factories
 auch für die Seeds der Datenbank zu nutzen. Dies würde die Datei `seeds.rb` deutlich verkürzen und übersichtlicher machen.
 
 ### SSL
@@ -632,7 +632,7 @@ Es ist aus Gründen der Datensicherheit zu empfehlen, dass die Kommunikation zwi
 Deswegen sollte die Nginx-Konfiguration - zumindest für das Produktivsystem - so erweitert werden, dass der virtuelle Host zur Kommunikation SSL verwendet.
 
 ## Lessons learned
-Ich persönlich habe in dem IC einige Dinge gelernt. So war mir beispielsweise das oben beschriebene Problem mit FactoryGirl, welches durch die 1:1-Beziehung zwischen
+Ich persönlich habe in dem IC einige Dinge gelernt. So war mir beispielsweise das oben beschriebene Problem mit FactoryBot, welches durch die 1:1-Beziehung zwischen
 Student-Model und User-Model entstand, nicht bekannt.
 
 Weiterhin habe ich in meinem beruflichen Umfeld zwar bereits mit den in den eingesetzten Tools Docker, Docker Compose, Travis und Ansible gearbeitet, allerdings war es für mich

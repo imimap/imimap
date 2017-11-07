@@ -11,12 +11,12 @@ require 'simplecov'
    add_filter 'app/uploaders/picture_uploader.rb'
  end
 
- require 'factory_girl_rails'
+ require 'factory_bot_rails'
  require 'database_cleaner'
 
  module ControllerTestHelper
    def login
-     user = FactoryGirl.create :user
+     user = FactoryBot.create :user
      sign_in user
      return user
    end
@@ -143,8 +143,8 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 
-  # Include FactoryGirl so we can use 'create' instead of 'FactoryGirl.create'
-  config.include FactoryGirl::Syntax::Methods
+  # Include FactoryBot so we can use 'create' instead of 'FactoryBot.create'
+  config.include FactoryBot::Syntax::Methods
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
@@ -153,10 +153,10 @@ RSpec.configure do |config|
     begin
       DatabaseCleaner.start
 
-      factories_to_lint = FactoryGirl.factories.reject do |factory|
+      factories_to_lint = FactoryBot.factories.reject do |factory|
         factory.name =~ /^invalid_/
       end
-      FactoryGirl.lint factories_to_lint
+      FactoryBot.lint factories_to_lint
     ensure
       DatabaseCleaner.clean
     end

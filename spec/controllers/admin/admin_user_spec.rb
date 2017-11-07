@@ -7,7 +7,7 @@ RSpec.describe CompaniesController, :type => :controller do
   render_views
   describe "GET #index" do
   before :each do
-    @admin_user = FactoryGirl.build(:admin_user)
+    @admin_user = FactoryBot.build(:admin_user)
     sign_in @admin_user
   end
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 #
-FactoryGirl.define do
+FactoryBot.define do
   #factory :database_parser do
     #student_file "database parser student file"
     #internships_file "database parser internhips file"

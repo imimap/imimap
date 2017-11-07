@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 #
-FactoryGirl.define do
+FactoryBot.define do
   factory :internship do
     working_hours 2.0
     living_costs  4.0

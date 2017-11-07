@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 #
-FactoryGirl.define do
+FactoryBot.define do
   factory :student do
     first_name "Tuennes"
     last_name "Schael"
@@ -11,7 +11,7 @@ FactoryGirl.define do
     email "foo@bar.com"
     #user
     after(:build) do |student|
-      student.user ||= FactoryGirl.build(:user, student: student)
+      student.user ||= FactoryBot.build(:user, student: student)
     end
   end
 end
