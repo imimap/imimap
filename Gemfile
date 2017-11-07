@@ -68,7 +68,7 @@ end
 
 # database gem
 install_if -> { ENV['IMIMAPS_ENVIRONMENT'] == "docker" } do
-  gem "pg"  
+  gem "pg"
 end
 
 group :development, :test do
@@ -87,6 +87,7 @@ group :development, :test do
   gem 'rack-mini-profiler'
 
   gem 'railroady'
+  gem 'rails-controller-testing'
   gem 'database_cleaner'
   gem "simplecov", require: false
   gem 'byebug'
