@@ -79,7 +79,7 @@ $('#results_string').css("display","block");
 $('#results_string').css("height","30px");
 }
 else {
-$('#results_string').css("display","none");  
+$('#results_string').css("display","none");
 }
 $('.table').html('<%= escape_javascript( render "quicksearches/table"  ) %>');
 
@@ -96,26 +96,26 @@ $('table#paginated').each(function() {
         if (currentPage == 1) {
           $(".firstPage").hide();
         }
-        else 
+        else
           $(".firstPage").show();
         if (currentPage == numPages) {
           $(".lastPage").hide();
         }
-        else 
+        else
           $(".lastPage").show();
     });
     $table.trigger('repaginate');
-    
+
 
     $(".firstPage").click(function() {
       currentPage = 1;
       $table.trigger('repaginate');
-    }); 
+    });
 
     $(".lastPage").click(function() {
       currentPage = numPages;
       $table.trigger('repaginate');
-    }); 
+    });
 
     $(".prevPage").click(function() {
       if (currentPage-1>0)
@@ -209,7 +209,7 @@ var data_country_5 = data_country.slice(0,8);
       .append("g");
 
   bar_country.append("rect")
-      .attr("class", "bar")
+      .attr("class", "progress-bar")
       .on("click",function(d) {
         var ary = [];
         if ($("#country").val()!=null)
@@ -223,9 +223,9 @@ var data_country_5 = data_country.slice(0,8);
       .attr("y", function(d) { return y(d.count/sum(data_country)); })
       .attr("height", function(d) { return height - y(d.count/sum(data_country)); })
       .style("fill", function(d) { return color(d.name); });
-      
+
   bar_country.append("text")
-      .on("click",function(d) {        
+      .on("click",function(d) {
         var ary = [];
         if ($("#country").val()!=null)
         ary = $("#country").val();
@@ -285,7 +285,7 @@ var data_language_5 = data_language.slice(0,8);
             ary.push($("#programming_language_ids")[0].children[j].value);
             $("#programming_language_ids").val(ary);
           }
-        }        
+        }
         $("#programming_language_ids").trigger("liszt:updated");
       })
       .attr("x", function(d) { return x(d.name); })
@@ -293,7 +293,7 @@ var data_language_5 = data_language.slice(0,8);
       .attr("y", function(d) { return y(d.count/100); })
       .attr("height", function(d) { return height - y(d.count/100); })
       .style("fill", function(d) { return color2(d.name); });
-      
+
   bar_language.append("text")
       .on("click",function(d) {
         for (var j=0; j< $("#programming_language_ids")[0].children.length; j++) {
@@ -304,7 +304,7 @@ var data_language_5 = data_language.slice(0,8);
             ary.push($("#programming_language_ids")[0].children[j].value);
             $("#programming_language_ids").val(ary);
           }
-        }        
+        }
         $("#programming_language_ids").trigger("liszt:updated");
       })
       .attr("x", -height+5)
@@ -349,7 +349,7 @@ var data_orientation_5 = data_orientation.slice(0,8);
       .append("g");
 
   bar_orientation.append("rect")
-      .attr("class", "bar")
+      .attr("class", "progress-bar")
       .on("click",function(d) {
         for (var j=0; j< $("#orientation")[0].children.length; j++) {
           if ($("#orientation")[0].children[j].innerHTML == d.name) {
@@ -359,7 +359,7 @@ var data_orientation_5 = data_orientation.slice(0,8);
             ary.push($("#orientation")[0].children[j].value);
             $("#orientation").val(ary);
           }
-        }        
+        }
         $("#orientation").trigger("liszt:updated");
       })
       .attr("x", function(d) { return x(d.name); })
@@ -367,7 +367,7 @@ var data_orientation_5 = data_orientation.slice(0,8);
       .attr("y", function(d) { return y(d.count/sum(data_orientation)); })
       .attr("height", function(d) { return height - y(d.count/sum(data_orientation)); })
       .style("fill", function(d) { return color3(d.name); });
-      
+
   bar_orientation.append("text")
       .on("click",function(d) {
         for (var j=0; j< $("#orientation")[0].children.length; j++) {
@@ -378,7 +378,7 @@ var data_orientation_5 = data_orientation.slice(0,8);
             ary.push($("#orientation")[0].children[j].value);
             $("#orientation").val(ary);
           }
-        }        
+        }
         $("#orientation").trigger("liszt:updated");
       })
       .attr("x", -height+5)
