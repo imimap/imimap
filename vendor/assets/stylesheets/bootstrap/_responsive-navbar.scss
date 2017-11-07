@@ -33,7 +33,7 @@
     padding: 0;
   }
   // Account for brand name
-  .navbar .brand {
+  .navbar .navbar-brand {
     padding-left: 10px;
     padding-right: 10px;
     margin: 0 0 0 -5px;
@@ -130,7 +130,7 @@
     float: none;
     margin-left: 0;
   }
-  // Hide everything in the navbar save .brand and toggle button */
+  // Hide everything in the navbar save .navbar-brand and toggle button */
   .nav-collapse,
   .nav-collapse.collapse {
     overflow: hidden;
