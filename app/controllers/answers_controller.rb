@@ -4,7 +4,7 @@
 class AnswersController < ApplicationController
 
   def create
-    @answer = Answer.new(params[:answer])
+    @answer = Answer.new(answer_params)
     @answer.user_id = current_user.id if current_user
     @answer.save
 
@@ -21,7 +21,7 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
 
     respond_to do |format|
-      if @answer.update_attributes(params[:answer])
+      if @answer.update_attributes(answer_params)
         format.html { redirect_to @answer, notice: 'Answer was successfully updated.' }
         format.json { head :no_content }
       else
@@ -45,4 +45,7 @@ class AnswersController < ApplicationController
 
   end
 
+  def answer_params
+    params.require(:answer).permit(:body, :user_comment_id, :user_id, :internship_id)
+  end
 end

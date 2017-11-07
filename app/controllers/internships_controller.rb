@@ -79,7 +79,7 @@ class InternshipsController < ApplicationController
   end
 
   def create
-    @internship = Internship.new(params[:internship])
+    @internship = Internship.new(internship_params)
     @internship.user_id = current_user.id
     @internship.student_id = current_user.student_id
 
@@ -123,8 +123,8 @@ class InternshipsController < ApplicationController
   # PUT /internships/1.json
   def update
     @internship = Internship.find(params[:id])
-    attributes = params[:internship]
-    attributes.delete(:company_id)
+    attributes = internship_params
+    attributes.delete(:company_id) # make internship company readonly by schlubbi
     if @internship.update_attributes(attributes)
       @internship.update_attributes(completed: true)
       flash[:notice] = 'Internship was successfully updated.'
@@ -161,6 +161,7 @@ class InternshipsController < ApplicationController
 
   private
 
+  # this was defined but not used.
   def internship_params
     params.require(:internship).permit(:title, :start_date, :end_date, :operational_area, :tasks,
       :programming_language_ids, :orientation_id, :salary, :working_hours, :living_costs, :supervisor_name, :supervisor_email,

@@ -46,7 +46,7 @@ class CompaniesController < ApplicationController
   # POST /companies
   # POST /companies.json
   def create
-    @company = Company.new(params[:company])
+    @company = Company.new(company_params)
 
     respond_to do |format|
       if @company.save
@@ -69,7 +69,7 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
 
     respond_to do |format|
-      if @company.update_attributes(params[:company])
+      if @company.update_attributes(company_params)
         format.html { redirect_to @company, notice: 'Company was successfully updated.' }
         format.json { head :no_content }
       else
@@ -89,5 +89,12 @@ class CompaniesController < ApplicationController
       format.html { redirect_to companies_url }
       format.json { head :no_content }
     end
+  end
+
+  def company_params
+    params.require(:company).permit(:name, :number_employees, :industry,
+                                    :website, :city, :country, :street, :zip,
+                                    :main_language, :phone, :fax, :blacklisted)
+                                    # :latitude, :longitude,
   end
 end

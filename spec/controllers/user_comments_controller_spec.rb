@@ -54,7 +54,7 @@ RSpec.describe UserCommentsController, :type => :controller do
     end
 
     it 'assigns @comment' do
-      put :update, id: @user_comment
+      put :update, id: @user_comment, user_comment: attributes_for(:user_comment)
       expect(assigns(:comment)).to eq(@user_comment)
     end
 

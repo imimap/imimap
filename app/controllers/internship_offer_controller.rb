@@ -19,7 +19,7 @@ class InternshipOfferController < ApplicationController
 	end
 
 	def create
-		@offer = InternshipOffer.new(params[:internship_offer])
+		@offer = InternshipOffer.new(internship_offer_params)
 
 		respond_to do |format|
 			if @offer.save
@@ -32,4 +32,9 @@ class InternshipOfferController < ApplicationController
 		end
 	end
 
+# TBD there is no update, but an edit.
+
+  def internship_offer_params
+    params.require(:internship_offer).permit(:title, :body, :pdf)
+  end
 end
