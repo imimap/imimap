@@ -34,7 +34,7 @@
         ##response.should render_template(:overview)
         #visit overview_index_path("de")
         ##current_path.should == "/de/overview"
-        ##page.should have_content("Rating")
+        ##expect(page).to have_content("Rating")
       #end
 
       #it "should not allow user with fake login data to login" do

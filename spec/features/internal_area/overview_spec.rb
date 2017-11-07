@@ -29,9 +29,9 @@ describe "Overview Page" do
         #page.find('.signin-icon').click
         #@current_user=@user6
         #response.should render_template(:overview)
-        #page.should have_content("Rating")
-        #page.should have_content("Deutsch")
-        #page.should have_content("English")
-        #page.should have_content("Guide")
+        #expect(page).to have_content("Rating")
+        #expect(page).to have_content("Deutsch")
+        #expect(page).to have_content("English")
+        #expect(page).to have_content("Guide")
     end
 end
