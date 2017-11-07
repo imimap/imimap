@@ -12,7 +12,7 @@
   @include clearfix();
 }
 // Fluid rows have no left margin
-.row-fluid .thumbnails {
+.row .thumbnails {
   margin-left: 0;
 }
 

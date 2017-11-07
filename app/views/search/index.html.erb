@@ -1,6 +1,6 @@
 <h1><%= t "search.title" %></h1>
 <%= form_tag(internships_path, :method => 'get') do %>
-<div class="row-fluid">
+<div class=.row">
 <div class="span3">
 <%= select_tag :country, options_for_select((@countries).distinct), { :multiple => true , class: 'chzn-select', 'data-placeholder'=>t("choose.country"), style: "width:100%"} %>
 </div>
@@ -15,7 +15,7 @@
 </div>
 </div>
 <br/>
-<div class="row-fluid">
+<div class=.row">
 <div class="span4">
         <span><%= t "search.salary" %></span>
         <span id="salary_span"></span>
