@@ -183,6 +183,8 @@ GEM
     kgio (2.11.0)
     launchy (2.4.3)
       addressable (~> 2.3)
+    leaflet-rails (1.2.0)
+      rails (>= 4.2.0)
     loofah (2.1.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -385,6 +387,7 @@ DEPENDENCIES
   jquery-ui-rails
   kaminari
   launchy
+  leaflet-rails
   nested_form
   net-ldap
   paperclip (~> 2.7)

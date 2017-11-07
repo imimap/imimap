@@ -24,6 +24,8 @@ gem "rmagick", "~> 2.13.1"
 gem "paperclip", "~> 2.7"
 
 gem 'chosen-rails'
+# for map on startpage and overview
+gem 'leaflet-rails'
 
 gem 'kaminari'
 

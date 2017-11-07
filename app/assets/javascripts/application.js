@@ -20,8 +20,10 @@
 //= require d3
 //= require stupidtable.min
 
-//= require_tree .
 //= jquery.cookie
+//= require leaflet
+//= require_tree .
+//= require_self
 //=
 
 
