@@ -2,7 +2,7 @@
 <%= form_tag(internships_path, :method => 'get') do %>
 <div class="row-fluid">
 <div class="span3">
-<%= select_tag :country, options_for_select((@countries).uniq), { :multiple => true , class: 'chzn-select', 'data-placeholder'=>t("choose.country"), style: "width:100%"} %>
+<%= select_tag :country, options_for_select((@countries).distinct), { :multiple => true , class: 'chzn-select', 'data-placeholder'=>t("choose.country"), style: "width:100%"} %>
 </div>
 <div class="span3">
 <%= select_tag :semester, options_for_select(@semesters),  { :multiple => true , class: 'chzn-select', 'data-placeholder'=>t("choose.semester"), style: "width:100%"}  %>

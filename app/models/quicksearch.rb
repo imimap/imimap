@@ -19,7 +19,7 @@ class Quicksearch < ApplicationRecord
     internships = internships.where(companies: {country: query[:country]}) if query[:country].present?
     internships = internships.where(orientation_id: orientations) if orientations.present?
     internships = internships.where(semester_id: semesters) if semesters.present?
-    internships.uniq.sort_by(&:created_at).reverse
+    internships.distinct.sort_by(&:created_at).reverse
   end
 
   def filter_by_programming_languages(internships,query)
