@@ -10,13 +10,13 @@ RSpec.describe CompaniesController, :type => :controller do
     @current_user = login
   end
 
-  describe "GET #index" do
+  describe 'GET #index' do
     before :each do
       @company = create :company
       @company2 = create :is24
     end
 
-    it 'render the index template' do
+    it 'renders the index template' do
       get :index
       expect(response).to render_template :index
     end

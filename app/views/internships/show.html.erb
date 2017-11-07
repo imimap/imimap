@@ -212,7 +212,7 @@
 
  <div id="favorite">
   <% if @favorite %>
-  <%= link_to({:controller=>:favorite,:action=>:destroy, :id => @favorite.id}, {:method=>:delete, remote: true, class: "btn btn-danger"}) do %>
+  <%= link_to({:controller=>:favorite,:action=>:destroy, :id => @favorite.id }, {:method=>:destroy, remote: true, class: "btn btn-danger"}) do %>
   <i class="icon-remove icon-large icon-white"> </i><%= t("favorite.delete") %>
   <% end %>
 
