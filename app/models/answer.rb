@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Answers are answers to comments to an internship.
-class Answer < ActiveRecord::Base
+class Answer < ApplicationRecord
   attr_accessible :body, :internship_id, :user_comment_id
 
   validates :body, presence: true

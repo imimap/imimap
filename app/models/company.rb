@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # The Company where an Internship takes place.
-class Company < ActiveRecord::Base
+class Company < ApplicationRecord
   attr_accessible :street, :city, :country, :zip, :main_language, :department,
                   :industry, :name, :number_employees, :website, :phone,
                   :blacklisted, :fax, :import_id, :latitude, :longitude

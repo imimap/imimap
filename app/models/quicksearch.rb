@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Implements a Search
-class Quicksearch < ActiveRecord::Base
+class Quicksearch < ApplicationRecord
   def internships(query)
     @internships = find_internships(query)
   end

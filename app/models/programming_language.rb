@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Known Programming Languages
-class ProgrammingLanguage < ActiveRecord::Base
+class ProgrammingLanguage < ApplicationRecord
   attr_accessible :name
 
   validates :name, presence: true

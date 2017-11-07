@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # User for the activeadmin part. Deprecated. TBD: check if it can be deleted
-class AdminUser < ActiveRecord::Base
+class AdminUser < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 

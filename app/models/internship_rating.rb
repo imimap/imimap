@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Students can create a rating for their internship
-class InternshipRating < ActiveRecord::Base
+class InternshipRating < ApplicationRecord
   attr_accessible :appreciation, :atmosphere, :supervision, :tasks,
                   :training_success
 

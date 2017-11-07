@@ -3,7 +3,7 @@
 require 'date'
 require 'time'
 # THE Internship
-class Internship < ActiveRecord::Base
+class Internship < ApplicationRecord
   attr_accessible :attachments_attributes, :living_costs, :orientation_id,
                   :salary, :working_hours, :programming_language_ids,
                   :internship_rating_id, :company_id, :user_id, :title,

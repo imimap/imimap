@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Represents a Student.
-class Student < ActiveRecord::Base
+class Student < ApplicationRecord
   attr_accessible :birthday, :birthplace, :email, :first_name,
                   :enrolment_number, :last_name
 

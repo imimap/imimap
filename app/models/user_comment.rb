@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Comments for Internships in ActiveAdmin
-class UserComment < ActiveRecord::Base
+class UserComment < ApplicationRecord
   attr_accessible :body, :internship_id
 
   validates :body, presence: true

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # for job offers.
-class InternshipOffer < ActiveRecord::Base
+class InternshipOffer < ApplicationRecord
   attr_accessible :title, :body, :pdf
 
   has_one :user
