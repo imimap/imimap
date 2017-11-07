@@ -10,17 +10,10 @@ class ApplicationController < ActionController::Base
     authenticate_user!
   end
 
-  def authorize_role_pruefungsverwaltung
-  end
-  def authorize_role(role)
-    # :pruefungsverwaltung
-    true
+  def authorize_role_examination_office
   end
 
-  def auth_Prof
-    if !(current_user.email.match(/^(s0538111@htw-berlin.de|s0538144@htw-berlin.de)$/))
-    redirect_to overview_index_path
-    end
+  def authorize_role_professor
   end
 
   def set_locale

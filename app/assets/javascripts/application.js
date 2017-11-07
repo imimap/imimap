@@ -20,12 +20,9 @@
 //= require d3
 //= require stupidtable.min
 
-
-// manual for require tree. needs cleanup as well.
-//= require bootstrap
-//= require bootstrap.min
-//= require internships
+//= require_tree .
 //= jquery.cookie
+//=
 
 
 

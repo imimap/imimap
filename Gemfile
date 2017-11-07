@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.0.6'
+gem 'rails', '~> 5.1.4'
 gem 'carrierwave'
 gem 'geocoder'
 gem 'nested_form'
@@ -10,7 +10,7 @@ gem 'bootstrap-sass', '~> 3.3.5'
 # see https://github.com/tzinfo/tzinfo/wiki/Resolving-TZInfo::DataSourceNotFound-Errors
 gem 'tzinfo-data'
 
-gem 'activeadmin', "~> 1.0"
+gem 'activeadmin', "~> 1.1"
 gem 'formtastic', "~> 3"
 gem 'devise', ' ~> 4.3'
 
@@ -48,9 +48,9 @@ gem 'font-awesome-sass-rails'
 gem 'uglifier', '>= 1.0.3'
 
 #gems used for charts
-gem 'chartkick', '~> 1.2.4'
-gem 'groupdate', '~> 2.1.1'
-gem 'active_median', '~> 0.1.0'
+gem 'chartkick', '~> 2.2'
+gem 'groupdate', '~> 3.2'
+gem 'active_median', '~> 0.1'
 
 gem 'factory_bot_rails'
 

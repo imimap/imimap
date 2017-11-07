@@ -2,7 +2,6 @@
 
 # Start Page with Map overview
 class OverviewController < ApplicationController
-  skip_before_action :authenticate_user!
   include MapHelper
   def index
     @map_view = true
