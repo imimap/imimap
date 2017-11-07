@@ -10,7 +10,7 @@ en:
       login:
       title: "Login"
       remember_me: "Remember me"
-      submit: "Login"
+      submit: "Log in"
     reset_password:
       title: "Forgot your password?"
       submit: "Reset My Password"
