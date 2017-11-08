@@ -66,12 +66,13 @@ install_if -> { ENV['IMIMAPS_ENVIRONMENT'] == "docker" } do
   gem "pg"
 end
 
+gem 'faker'
+
 group :development, :test do
   install_if -> { ENV['IMIMAPS_ENVIRONMENT'] != "docker" } do
     gem 'sqlite3', '~> 1.3.7'
   end
 
-  gem 'faker'
   gem 'rspec-rails', '~> 3.5'
   gem 'better_errors'
   gem 'binding_of_caller'
