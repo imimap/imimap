@@ -1,3 +1,6 @@
+
+changes 2 -> 3
+
 bootstrap update: .row-fluid ->  .row
 bootstrap update: .span* ->  .col-md-*
 bootstrap update: .offset* ->  .col-md-offset-*
