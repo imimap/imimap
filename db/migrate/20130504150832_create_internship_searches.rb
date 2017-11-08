@@ -1,4 +1,4 @@
-class CreateInternshipSearches < ActiveRecord::Migration
+class CreateInternshipSearches < ActiveRecord::Migration[4.2]
   def change
     create_table :internship_searches do |t|
       t.string :country

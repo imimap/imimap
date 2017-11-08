@@ -1,4 +1,4 @@
-class AddRecommendToInternship < ActiveRecord::Migration
+class AddRecommendToInternship < ActiveRecord::Migration[4.2]
   def change
     add_column :internships, :recommend, :boolean
   end

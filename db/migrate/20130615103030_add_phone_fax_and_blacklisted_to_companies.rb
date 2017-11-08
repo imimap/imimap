@@ -1,4 +1,4 @@
-class AddPhoneFaxAndBlacklistedToCompanies < ActiveRecord::Migration
+class AddPhoneFaxAndBlacklistedToCompanies < ActiveRecord::Migration[4.2]
   def change
     add_column :companies, :phone, :string
     add_column :companies, :fax, :string

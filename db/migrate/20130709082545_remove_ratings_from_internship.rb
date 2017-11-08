@@ -1,4 +1,4 @@
-class RemoveRatingsFromInternship < ActiveRecord::Migration
+class RemoveRatingsFromInternship < ActiveRecord::Migration[4.2]
   def change
   	remove_column :internships, :tasks_rating
   	remove_column :internships, :training_rating

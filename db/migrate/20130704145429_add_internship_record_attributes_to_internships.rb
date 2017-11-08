@@ -1,4 +1,4 @@
-class AddInternshipRecordAttributesToInternships < ActiveRecord::Migration
+class AddInternshipRecordAttributesToInternships < ActiveRecord::Migration[4.2]
   def change
     add_column :internships, :internship_state_id, :integer
     add_column :internships, :reading_prof_id, :integer

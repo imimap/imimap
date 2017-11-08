@@ -1,4 +1,4 @@
-class AddStudentIdToInternships < ActiveRecord::Migration
+class AddStudentIdToInternships < ActiveRecord::Migration[4.2]
   def change
     add_column :internships, :student_id, :integer
   end

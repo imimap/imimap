@@ -1,4 +1,4 @@
-class CreateContractStates < ActiveRecord::Migration
+class CreateContractStates < ActiveRecord::Migration[4.2]
   def change
     create_table :contract_states do |t|
       t.string :name

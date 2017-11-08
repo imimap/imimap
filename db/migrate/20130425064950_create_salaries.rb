@@ -1,4 +1,4 @@
-class CreateSalaries < ActiveRecord::Migration
+class CreateSalaries < ActiveRecord::Migration[4.2]
   def change
     create_table :salaries do |t|
       t.string :amount
