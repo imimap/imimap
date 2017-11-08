@@ -1,3 +1,3 @@
-class DropSalary < ActiveRecord::Migration
+class DropSalary < ActiveRecord::Migration[4.2]
   drop_table :salaries
 end

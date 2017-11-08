@@ -1,4 +1,4 @@
-class AddInitialRegistrationStates < ActiveRecord::Migration
+class AddInitialRegistrationStates < ActiveRecord::Migration[4.2]
 	def up
 		RegistrationState.create(name: "accepted", name_de: "zugelassen")
 		RegistrationState.create(name: "accepted, but courses are missing", name_de: "zugelassen, aber bestandene Kurse fehlen")

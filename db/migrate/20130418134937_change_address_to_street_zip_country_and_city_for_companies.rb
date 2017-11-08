@@ -1,4 +1,4 @@
-class ChangeAddressToStreetZipCountryAndCityForCompanies < ActiveRecord::Migration
+class ChangeAddressToStreetZipCountryAndCityForCompanies < ActiveRecord::Migration[4.2]
   def change
     remove_column :companies, :address
     add_column :companies, :city, :string

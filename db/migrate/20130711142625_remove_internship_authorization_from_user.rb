@@ -1,4 +1,4 @@
-class RemoveInternshipAuthorizationFromUser < ActiveRecord::Migration
+class RemoveInternshipAuthorizationFromUser < ActiveRecord::Migration[4.2]
   def up
     remove_column :users, :internship_authorization
   end

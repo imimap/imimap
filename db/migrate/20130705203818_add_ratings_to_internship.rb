@@ -1,4 +1,4 @@
-class AddRatingsToInternship < ActiveRecord::Migration
+class AddRatingsToInternship < ActiveRecord::Migration[4.2]
   def change
   	add_column :internships, :tasks_rating, :integer
   	add_column :internships, :training_rating, :integer

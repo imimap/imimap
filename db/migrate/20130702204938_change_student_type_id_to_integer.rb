@@ -1,4 +1,4 @@
-class ChangeStudentTypeIdToInteger < ActiveRecord::Migration
+class ChangeStudentTypeIdToInteger < ActiveRecord::Migration[4.2]
   def up
     remove_column :users, :student_id
     add_column :users, :student_id, :integer

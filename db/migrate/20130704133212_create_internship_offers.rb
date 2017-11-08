@@ -1,4 +1,4 @@
-class CreateInternshipOffers < ActiveRecord::Migration
+class CreateInternshipOffers < ActiveRecord::Migration[4.2]
   def change
     create_table :internship_offers do |t|
     	t.string :title

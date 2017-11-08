@@ -1,4 +1,4 @@
-class CreateReadingProf < ActiveRecord::Migration
+class CreateReadingProf < ActiveRecord::Migration[4.2]
   def change
     create_table :reading_profs do |t|
       t.string :name

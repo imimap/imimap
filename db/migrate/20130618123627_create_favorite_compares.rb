@@ -1,4 +1,4 @@
-class CreateFavoriteCompares < ActiveRecord::Migration
+class CreateFavoriteCompares < ActiveRecord::Migration[4.2]
   def change
     create_table :favorite_compares do |t|
 

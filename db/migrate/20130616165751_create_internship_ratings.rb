@@ -1,4 +1,4 @@
-class CreateInternshipRatings < ActiveRecord::Migration
+class CreateInternshipRatings < ActiveRecord::Migration[4.2]
   def change
     create_table :internship_ratings do |t|
       t.integer :tasks, :limit => 1

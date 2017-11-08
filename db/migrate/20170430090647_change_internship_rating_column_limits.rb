@@ -1,4 +1,4 @@
-class ChangeInternshipRatingColumnLimits < ActiveRecord::Migration
+class ChangeInternshipRatingColumnLimits < ActiveRecord::Migration[4.2]
   def up
     change_column :internship_ratings, :tasks, :integer, :limit => 2
     change_column :internship_ratings, :training_success, :integer, :limit => 2

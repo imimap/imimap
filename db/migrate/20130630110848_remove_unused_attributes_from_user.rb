@@ -1,4 +1,4 @@
-class RemoveUnusedAttributesFromUser < ActiveRecord::Migration
+class RemoveUnusedAttributesFromUser < ActiveRecord::Migration[4.2]
   def change
     remove_column :users, :major
     remove_column :users, :first_name

@@ -1,4 +1,4 @@
-class CreateCertificateStates < ActiveRecord::Migration
+class CreateCertificateStates < ActiveRecord::Migration[4.2]
   def change
     create_table :certificate_states do |t|
       t.string :name
