@@ -1,0 +1,27 @@
+<div class="navbar navbar-inverse top-bar login-nav">
+  <div class="login-items">
+    <div class="logo">
+      <div class="world"><%= image_tag "logos.png" %></div>
+      <div class="plane"><%= image_tag "plane0.gif" %></div>
+    </div>
+
+    <div class="input-items">
+      <%= form_for(:user, :url => session_path(:user)) do |f| %>
+          <div>
+            <%= f.label :email %>
+            <%= f.email_field :email, autofocus: true %>
+          </div>
+
+          <div>
+            <%= f.label :password %>
+            <%= f.password_field :password, autocomplete: "off" %>
+          </div>
+
+          <div id="submit">
+            <%= f.submit t('devise.sessions.submit') %>
+          </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # Represents a user in the imi-map.
+# Users can be Students, Professors, or IMI-Map Admins.
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
