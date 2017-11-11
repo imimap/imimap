@@ -1,0 +1,14 @@
+<div class="nav-collapse ">
+
+  <ul class="nav nav-top ">
+    <li class="<%= 'active_nav' if current_page?(overview_index_path) %>"><%= link_to t("header.overview"), overview_index_path %></li>
+    <li class="<%= 'active_nav' if current_page?(internships_path) %>"><%= link_to t("header.search"), internships_path %></li>
+    <li class="<%= 'active_nav' if current_page?(internship_offer_index_path) %>"><%= link_to t("header.exchange"), internship_offer_index_path %></li>
+
+    <li class="<%= 'active_nav' if current_page?(statistic_path) %>"><%= link_to t("header.statistic"), statistic_path %></li>
+
+    <li class="<%= 'active_nav' if current_page?(my_internship_path) %>"><%= link_to t("header.internship"),  my_internship_path %></li>
+
+    <li class="<%= 'active_nav' if current_page?(current_internships_path) %>"><%= link_to t("header.curInternships"),  current_internships_path %></li>
+  </ul>
+</div>

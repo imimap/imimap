@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang = "en">
   <head>
     <title><%= t "header.tabtitle" %></title>
+    <!-- Required meta tags bootstrap-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- application wide assets -->
     <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -20,6 +23,7 @@
   <body >
 
   <% if user_signed_in? %>
+    <%= render 'navigation_old' %>
     <%= render 'navigation' %>
   <% else %>
     <%= render 'login' %>
