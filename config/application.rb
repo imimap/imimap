@@ -25,7 +25,6 @@ module ImiMaps
 
     # TBD Update: distribute this over the environments with appropriate settings from ENV variable
     config.action_mailer.default_url_options = { :host => "localhost" }
-    config.exceptions_app = routes # for the dynamic error pages
     # IMI-Map settings end
 
     # Settings in config/environments/* take precedence over those specified here.

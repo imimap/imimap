@@ -32,8 +32,6 @@ ImiMaps::Application.routes.draw do
       get 'logout', to: 'devise/sessions#destroy', as: 'logout'
       get 'statistic', to: 'statistic#overview'
       get 'debug', to: 'overview#debug', as: 'debug'
-      match '/404', to: 'errors#not_found', via: :all
-      match '/500', to: 'errors#internal_server_error', via: :all
     end
     ActiveAdmin.routes(self)
   end
