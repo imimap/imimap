@@ -9,18 +9,12 @@
 //
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
-//
-// this needs cleanup:
-//= require jquery
-//= require jquery-ui
-//= require jquery-ui/widgets/slider
-//= require jquery_ujs
-//= require jquery_nested_form
-//= require chosen-jquery
-//= require d3
-//= require stupidtable.min
 
-//= jquery.cookie
+
+//= require jquery3
+//= require chosen-jquery
+//= require popper
+//= require bootstrap-sprockets
 //= require leaflet
 //= require_tree .
 //= require_self

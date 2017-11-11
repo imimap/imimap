@@ -8,14 +8,33 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require chosen
- *= require jquery-ui
- *= require jquery-ui/slider
- *= require_tree .
- *= require_self
-
  */
 
+ // Custom bootstrap variables must be set or imported *before* bootstrap.
+
+ @import "bootstrap_variables";
+ @import "bootstrap";
+
+
+
+@import 'active_admin';
+@import 'chosen';
+@import 'bootstrap_variables';
+@import 'custom';
+@import 'favorite';
+@import 'financing';
+@import 'imi-map-navigation';
+@import 'internship_status';
+@import 'internships';
+@import 'map';
+@import 'report_overview';
+@import 'search';
+@import 'startpage';
+@import 'stylesheet_desktop';
+// @import 'stylesheet_phone';
+// @import 'stylesheet_tablet';
+@import 'users';
+@import 'viz';
 
 #en {
   background-image: url("<%= asset_path 'en.gif' %>");
