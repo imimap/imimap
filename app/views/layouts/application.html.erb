@@ -20,11 +20,10 @@
     <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
   </head>
-  <body class = "container-fluid">
+  <body>
 
-  <%= render 'header' %>
+    <%= render 'header' %>
 
-  <div class = "container-fluid">
   <% if @map_view %>
     <%= yield %>
   <% else %>
@@ -34,17 +33,18 @@
     </div>
   </div>
   <% end %>
-</div>
 
 
-<footer>
-<div class="container">
-  <div class="im-items">
-    <div class="footer-text"><%= render 'version/version' %> - Projekt im Studiengang Internationale Medieninformatik der HTW Berlin.</div>
-    <div class="htw_logo"></div>
-    <div class="imi_logo"></div>
-  </div>
-</div>
-</footer>
+   <footer>
+   <div class="container">
+     <div class="im-items">
+       <div class="footer-text"><%= render 'version/version' %> - Projekt im Studiengang Internationale Medieninformatik der HTW Berlin.</div>
+       <div class="htw_logo"></div>
+       <div class="imi_logo"></div>
+     </div>
+   </div>
+   </footer>
+
+
 </body>
 </html>

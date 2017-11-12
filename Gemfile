@@ -39,7 +39,7 @@ gem "net-ldap"
 
 # Gems used only for assets and not required
 # in production environments by default.
-gem 'jquery-ui-rails'
+#gem 'jquery-ui-rails'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'font-awesome-sass-rails'
