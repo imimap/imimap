@@ -1,5 +1,5 @@
 // container for navigation
-.imi-map-navigation {
+.imi-map-header {
   background: url("<%= asset_path 'topbar-over.png' %>"), #292929;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -95,4 +95,32 @@
 
 .imi-nav-right > li > a:focus{
   color: #000;
+}
+
+
+.dropdown-menu{
+  margin: 0 0 0;
+  font-family: 'Josefin Sans', sans-serif;
+  text-transform: uppercase;
+}
+
+.dropdown .dropdown-toggle {
+  background-color:transparent;
+  color:#FFF;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  color: #000;
+  background-color: #77b900;
+  background-image: none;
+  filter: none;
+}
+.locale-en {
+  background-image: url("<%= asset_path 'en.gif' %>");
+  background-repeat:repeat-y;
+ }
+
+.locale-de {
+  background-image: url("<%= asset_path 'de.png' %>");
+  background-repeat: repeat-y;
 }
