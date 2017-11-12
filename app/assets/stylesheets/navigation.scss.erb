@@ -1,6 +1,53 @@
+// container for navigation
+.imi-map-navigation {
+  background: url("<%= asset_path 'topbar-over.png' %>"), #292929;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 100%;
+  border-radius: 0 !important;
+  height:129px;
+  text-align:center;
+  overflow: visible;
+  margin-bottom: 20px;
+}
 
-
-.imi-map-logo{
+// style for nav-brand within main navigation
+.imi-map-logo {
   background: url("<%= asset_path 'logos.png' %>") no-repeat;
   background-size: 100%;
+  width: 130px;
+  height: 130px;
+
+  margin-top: 8px;
+}
+
+.im-nav-link {
+  color:#000;
+  text-shadow:none;
+  font-family: 'Josefin Sans', sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1rem;
+  float: right;
+  color: #6b6b6b;
+//  margin: 12px 50px 0 0;
+
+}
+
+
+// imi-main-nav was .navbar .nav
+.imi-main-nav {
+  margin-left: 70px;
+}
+
+.im-nav-link > li > a {
+  color:#c3c8be;
+  font-size: 15px;
+  text-shadow:none;
+  z-index: 1;
+  margin-top: 30px;
+}
+
+.imi-main-nav > li > a:hover {
+  color:#77b900;
 }
