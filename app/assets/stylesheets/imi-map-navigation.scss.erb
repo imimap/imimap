@@ -7,13 +7,12 @@
   height:129px;
   text-align:center;
   overflow: visible;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 
 
-
-.navbar-brand{
+.imi-map-logo{
   background: url("<%= asset_path 'logo4.png' %>") no-repeat;
   background-size: 100%;
   width: 100px;
@@ -22,10 +21,24 @@
   left: -580px;
 }
 
-.navbar .navbar-brand {
+.imi-map-logo{
   margin-left: 50%;
   margin-top: 8px;
 }
+
+//.navbar-brand{
+//  background: url("<%= asset_path 'logo4.png' %>") no-repeat;
+//  background-size: 100%;
+//  width: 100px;
+//  height: 122px;
+//  position: absolute;
+//  left: -580px;
+//}
+//
+//.navbar .navbar-brand {
+//  margin-left: 50%;
+//  margin-top: 8px;
+//}
 
 .nav-top > li > a {
   color:#000;
@@ -41,12 +54,12 @@
   margin: 12px 50px 0 0;
 }
 
-.navbar .nav.pull-right {
+.imi-nav-right {
   margin-left: 50%;
-  padding-left: 400px;
+  //padding-left: 400px;
 }
 
-.navbar .nav.pull-right > li > a {
+.imi-nav-right > li > a {
   float:left;
   display:inline;
   vertical-align: top;
@@ -62,19 +75,20 @@
   font-weight: 100;
                                /* nav right */
 }
-.navbar .nav.pull-right > li > a:hover{
+.imi-nav-right > li > a:hover{
   color: #000;
 }
 
-.navbar .nav.pull-right > li > a:focus{
+.imi-nav-right > li > a:focus{
   color: #000;
 }
 
-.navbar .nav {
+// imi-main-nav was .navbar .nav
+.imi-main-nav {
   margin-left: 70px;
 }
 
-.navbar .nav > li > a {
+.imi-main-nav > li > a {
   color:#c3c8be;
   font-size: 15px;
   text-shadow:none;
@@ -82,7 +96,7 @@
   margin-top: 30px;
 }
 
-.navbar .nav > li > a:hover {
+.imi-main-nav > li > a:hover {
   color:#77b900;
 }
 
