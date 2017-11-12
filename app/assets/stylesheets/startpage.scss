@@ -35,28 +35,14 @@
   width: 100vw;
 }
 
-.plane {
-  position: absolute;
-  z-index: 3;
-}
+
+
 .logo {
   position: absolute;
   width: 11vw !important;
   height: auto;
   margin-top: 15px;
   margin-left: 14%;
-}
-
-.world * {
-  position: absolute !important;
-  width: 11vw !important;
-  height: auto;
-
-}
-
-.plane * {
-  width: 11vw !important;
-  height: auto;
 }
 
 
