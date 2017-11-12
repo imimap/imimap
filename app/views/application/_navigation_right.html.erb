@@ -1,10 +1,10 @@
 <ul class="nav float-right imi-nav-right">
-  <li><%= link_to(favorite_index_path, :alt => "Favorite") do %>
+  <li class = "imimap-nav-right-li"><%= link_to(favorite_index_path, :alt => "Favorite") do %>
       <i class="icon-heart icon-large"></i>
     <% end %>
   </li>
 
-  <li class="dropdown">
+  <li class="dropdown imimap-nav-right-li">
     <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">
       <% if get_notification_size > 0 %>
 
@@ -26,20 +26,20 @@
     </ul>
 
 
-    <li>
+    <li class = "imimap-nav-right-li">
       <%= link_to current_user  do %>
         <i class="icon-user icon-large"></i>
       <% end %>
     </li>
 
-    <li class="dropdown">
+    <li class="dropdown imimap-nav-right-li">
       <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog icon-large"></i></a>
       <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
         <% locale_picker %>
       </ul>
     </li>
 
-    <li><%= link_to destroy_user_session_path, :method => :delete  do %>
+    <li class = "imimap-nav-right-li"><%= link_to destroy_user_session_path, :method => :delete  do %>
         <i class="icon-signout icon-large"></i>
       <% end %>
     </li>
