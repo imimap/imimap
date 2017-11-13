@@ -38,7 +38,7 @@ module ApplicationHelper
       # this seems to be a necessary workaround because of the current
       # url structure, maybe adapt the routes/paths?
       locale_param = request.path == root_path ? root_path(locale: loc) : params.permit(:locale).merge(locale: loc)
-      concat content_tag(:li, (link_to_unless_current loc, locale_param))
+      concat content_tag(:li, (link_to_unless_current loc, locale_param), class: "locale-#{loc}")
     end
   end
 

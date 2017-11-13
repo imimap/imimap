@@ -23,7 +23,6 @@ ImiMaps::Application.routes.draw do
       resources :internship_searches
       resources :quicksearches, only: %i[index]
       resources :favorite_compare, only: %i[index]
-      resources :errors, only: %i[not_found]
       resources :report_overview, :only => [:index]
       resources :read_list, :only => [:create, :destroy, :index]
       resources :complete_report, :only => [:index]
@@ -33,10 +32,6 @@ ImiMaps::Application.routes.draw do
       get 'logout', to: 'devise/sessions#destroy', as: 'logout'
       get 'statistic', to: 'statistic#overview'
       get 'debug', to: 'overview#debug', as: 'debug'
-      match '/404', to: 'errors#not_found', via: :all
-      # erros in production are shadowed by this action looking for its
-      # non-existent template
-      # match "/500", :to => "errors#internal_server_error", :via => :all
     end
     ActiveAdmin.routes(self)
   end

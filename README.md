@@ -1,8 +1,9 @@
+[![Build Status](https://travis-ci.org/imimaps/imimaps.svg?branch=master)](https://travis-ci.org/imimaps/imimaps)
 
 ## Repositories & Travis CI
+
 ### Current Main Repository with CI/CD:
 * [https://github.com/imimaps/imimaps](https://github.com/imimaps/imimaps)
-* [![Build Status](https://travis-ci.org/imimaps/imimaps.svg?branch=master)](https://travis-ci.org/imimaps/imimaps)
 * [Branch and Stages Overview on Travis CI](https://travis-ci.org/imimaps/imimaps/branches)
 
 ## General Project Info
@@ -64,7 +65,7 @@ Docker and docker-compose documentations.
 
 # More on Deployment
 
-see .docker/docs.md
+see doc subdirectory
 
 ## Production and Deployment
 
@@ -81,14 +82,3 @@ Two gems are used to generate documentation: society and railroady.
 
 ## Railroady
 * [Railroady on Github](https://github.com/preston/railroady)
-
-
-# Code Review after SS2017
-
-Comparision: https://github.com/imimaps/imimaps/compare/before-update-gmaps-working...master
-See many comments in the code Tagged with CodeReviewSS17
-Also:
-
-* Leaflet should be in vendor/assets
-
-weiter mit  app/controllers/users_controller.rb

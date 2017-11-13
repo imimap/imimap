@@ -5,7 +5,9 @@ gem 'carrierwave'
 gem 'geocoder'
 gem 'nested_form'
 gem "country_select"
-gem 'bootstrap-sass', '~> 3.3.5'
+
+gem 'bootstrap', '~> 4.0.0.beta2.1'
+gem 'jquery-rails'
 
 # see https://github.com/tzinfo/tzinfo/wiki/Resolving-TZInfo::DataSourceNotFound-Errors
 gem 'tzinfo-data'
@@ -35,15 +37,9 @@ gem "net-ldap"
 #gem 'griddler'
 
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'jquery-rails'
-
-
 # Gems used only for assets and not required
 # in production environments by default.
-gem 'jquery-ui-rails'
+#gem 'jquery-ui-rails'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'font-awesome-sass-rails'

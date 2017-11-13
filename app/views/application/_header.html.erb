@@ -1,0 +1,18 @@
+<div class = "container-fluid imi-map-header">
+  <div class = "row">
+    <div class = "col-2">
+      <%= render 'logo' %>
+    </div>
+
+      <% if user_signed_in? %>
+        <div class = "col-10">
+        <%= render 'navigation' %>
+        </div>
+      <% else %>
+        <div class = "col-10 align-self-center">
+        <%= render 'login' %>
+        </div>
+      <% end %>
+
+ </div>
+</div>

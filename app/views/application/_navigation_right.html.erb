@@ -1,0 +1,47 @@
+<ul class="nav float-right imi-nav-right">
+  <li class = "imimap-nav-right-li"><%= link_to(favorite_index_path, :alt => "Favorite") do %>
+      <i class="icon-heart icon-large"></i>
+    <% end %>
+  </li>
+
+  <li class="dropdown imimap-nav-right-li">
+    <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">
+      <% if get_notification_size > 0 %>
+
+        <span class="badge badge-important"><%= get_notification_size %></span>
+      <%end%>
+      <i class="icon-flag icon-large"></i></a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+      <% if current_user && current_user.notifications.any? %>
+        <% get_notifications.each do |noti| %>
+          <li>
+            <%= link_to t(noti.text), {:controller => "notifications", :action => :destroy, :id => noti.id}, :method => :delete, :class => "bold" %>
+          </li>
+        <%end%>
+      <% else %>
+        <li>
+          <%= t("noti.void") %>
+        </li>
+      <% end %>
+    </ul>
+
+
+    <li class = "imimap-nav-right-li">
+      <%= link_to current_user  do %>
+        <i class="icon-user icon-large"></i>
+      <% end %>
+    </li>
+
+    <li class="dropdown imimap-nav-right-li">
+      <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog icon-large"></i></a>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+        <% locale_picker %>
+      </ul>
+    </li>
+
+    <li class = "imimap-nav-right-li"><%= link_to destroy_user_session_path, :method => :delete  do %>
+        <i class="icon-signout icon-large"></i>
+      <% end %>
+    </li>
+
+  </ul>

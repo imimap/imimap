@@ -164,7 +164,7 @@ en:
       not_recommended: "Not Recommended"
 
   internships:
-    statistic: "Choose the semester and see where the students in this semester have been"
+    statistic: "Overview per Semester"
     my: "Meine Praktika"
     others: "Other internships done here"
     details: "Internship Details"
@@ -214,7 +214,7 @@ en:
       weekVal:
         notLongEnough: "Intership is less than 4 weeks"
         partInternship: "If internship is a part internship it's valid"
-        longEnough: "Internship is long enough"  
+        longEnough: "Internship is long enough"
 
 
   users:
@@ -270,7 +270,7 @@ en:
     attributes:
       body: "Reply"
 
-  
+
 
   faq:
     title: "FAQs"
