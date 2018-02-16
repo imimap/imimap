@@ -15,11 +15,11 @@ fi
 . ./ci-cd/deploy01-settings.sh
 . ./ci-cd/deploy00-echo-settings.sh
 
-if [ $DEPLOYMENT_SHOULD_RUN != "true" ]; then
-  echo "***** SKIPPING DEPLOYMENT: DEPLOYMENT_SHOULD_RUN $DEPLOYMENT_SHOULD_RUN *****"
-  echo "end $0"
-  exit 0
-fi
+# if [ $DEPLOYMENT_SHOULD_RUN != "true" ]; then
+#    echo "***** SKIPPING DEPLOYMENT: DEPLOYMENT_SHOULD_RUN $DEPLOYMENT_SHOULD_RUN *****"
+#    echo "end $0"
+#    exit 0
+#  fi
 
 if [ $DEPLOYMENT_PIPELINE == "HTW" ]; then
 
