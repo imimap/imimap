@@ -30,10 +30,10 @@ jobs:
     if: (tag =~ ^v1)
   - stage: build
     script: ci-cd/docker-build-and-push.sh
-    if: (branch = travis-stages) AND (NOT (type IN (push, pull_request)))
+    if: (branch = travis-stages) AND (type != pull_request)
   - stage: deploy-staging
     script: "./ci-cd/travis-deploy.sh staging"
-    if: (branch = travis-stages) AND (NOT (type IN (push, pull_request)))
+    if: (branch = travis-stages) AND (type != pull_request)
   - stage: deploy-production
     script: "./ci-cd/travis-deploy.sh production"
-    if: (tag =~ ^v1) AND (branch = master) AND (NOT (type IN (push, pull_request)))
+    if: (tag =~ \d\.\d\.\d) AND (branch = travis-stages) AND (type != pull_request)

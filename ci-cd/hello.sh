@@ -1,3 +1,3 @@
 
 echo "hello!"
-echo "condition true: $1"
+echo $TRAVIS_EVENT_TYPE

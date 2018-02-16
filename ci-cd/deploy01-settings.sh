@@ -1,13 +1,14 @@
 
 
 # this should be the only file in the deployment process handling environment variables.
-echo "checking environment"
+echo "----------------- TRAVIS ENVIRONMENT ------------------"
 echo "TRAVIS_TAG [${TRAVIS_TAG}]"
 echo "TRAVIS_BRANCH [${TRAVIS_BRANCH}]"
 echo "TRAVIS_COMMIT [${TRAVIS_COMMIT}]"
 echo "TRAVIS [${TRAVIS}]"
 echo "DEPLOY_FROM_BRANCH [${DEPLOY_FROM_BRANCH}]"
 echo "TRAVIS_PULL_REQUEST [${TRAVIS_PULL_REQUEST}]"
+echo "TRAVIS_EVENT_TYPE [${TRAVIS_EVENT_TYPE}]""
 
 # if, for example for testing purposes, deployments should be triggered
 # from another branch than master, set the environment variable
