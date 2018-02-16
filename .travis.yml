@@ -17,6 +17,7 @@ jobs:
   - stage: test
     script: "./ci-cd/travis-test.sh"
   - stage: settings
+    script: "./ci-cd/deploy01-settings.sh"
     script: "./ci-cd/deploy00-echo-settings.sh"
   - stage: hello1
     script: skip
@@ -35,10 +36,10 @@ jobs:
     if: (tag =~ \d\.\d\.\d)
   - stage: build
     script: ci-cd/docker-build-and-push.sh
-    if: (branch = travis-stages) AND (type != pull_request)
+    if: ((tag =~ \d\.\d\.\d) OR (branch = travis-stages)) AND (type != pull_request)
   - stage: deploy-staging
     script: "./ci-cd/travis-deploy.sh staging"
     if: (branch = travis-stages) AND (type != pull_request)
   - stage: deploy-production
     script: "./ci-cd/travis-deploy.sh production"
-    if: (tag =~ \d\.\d\.\d) AND (branch = travis-stages) AND (type != pull_request)
+    if: ((tag =~ \d\.\d\.\d) OR (branch = travis-stages)) AND (type != pull_request)
