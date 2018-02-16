@@ -19,19 +19,19 @@ jobs:
   - stage: settings
     script: "./ci-cd/deploy01-settings.sh"
     script: "./ci-cd/deploy00-echo-settings.sh"
-  - stage: hello1
+  - stage: branch-travis-stages
     script: skip
     if: (branch = travis-stages)
-  - stage: hello2a
+  - stage: typePR
     script: skip
-    if: (type IN (push, pull_request))
+    if: (type = pull_request )
   - stage: typePush
     script: skip
-    if: (type == push)
-  - stage: hello3
+    if: (type = push)
+  - stage: tag-present
     script: skip
     if: tag IS present
-  - stage: hello4
+  - stage: tag0.0.0
     script: skip
     if: (tag =~ \d\.\d\.\d)
   - stage: build
