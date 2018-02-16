@@ -6,12 +6,7 @@ export DEPLOYMENT_ENVIRONMENT=staging
 . ./ci-cd/deploy01-settings.sh
 . ./ci-cd/deploy00-echo-settings.sh
 
-if [ $DEPLOYMENT_SHOULD_RUN != "true" ]; then
-  echo "***** SKIPPING BUILD AND PUSH: DEPLOYMENT_SHOULD_RUN $DEPLOYMENT_SHOULD_RUN *****"
-  echo "end $0"
-  exit 0
-fi
-
+echo "---------------------- calling docker build ----------------------"
 
 docker build -f Dockerfile.production -t imimap/imimap:$DEPLOYMENT_TAG .
 
@@ -21,7 +16,9 @@ if [ $return_code != 0 ]; then
   exit $return_code
 fi
 
+echo "--- docker images ---"
 docker images
+
 echo "pushing image with tag imimap/imimap:$DEPLOYMENT_TAG"
 
 
