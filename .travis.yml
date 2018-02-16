@@ -16,18 +16,9 @@ jobs:
   include:
   - stage: test
     script: "./ci-cd/travis-test.sh"
-  - stage: settings
-    script: "./ci-cd/deploy01-settings.sh"
-    script: "./ci-cd/deploy00-echo-settings.sh"
-  - stage: branch-travis-stages
-    script: skip
-    if: (branch = travis-stages)
-  - stage: typePR
+  - stage: pullrequest-skipping-build-deploy
     script: skip
     if: (type = pull_request )
-  - stage: typePush
-    script: skip
-    if: (type = push)
   - stage: tag-present
     script: skip
     if: tag IS present
