@@ -22,7 +22,10 @@ jobs:
   - stage: tag-present
     script: skip
     if: (tag IS present)
-  - stage: tag0.0.0
+  - stage: no-tag
+    script: skip
+    if: NOT (tag IS present)
+  - stage: tagMatches0.0.0
     script: skip
     if: (tag =~ \d\.\d\.\d)
   - stage: build
