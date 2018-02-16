@@ -16,9 +16,6 @@ jobs:
   include:
   - stage: test
     script: "./ci-cd/travis-test.sh"
-  - stage: pullrequest-skipping-build-deploy
-    script: skip
-    if: (type = pull_request)
   - stage: build
     script: ci-cd/docker-build-and-push.sh
     if: ((tag IS present) OR (branch = master)) AND (type != pull_request)
