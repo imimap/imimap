@@ -23,7 +23,7 @@ gem 'rails-observers'
 
 
 gem "rmagick", "~> 2.13.1"
-gem "paperclip", "~> 2.7"
+gem "paperclip", "~> 5.2"
 
 gem 'chosen-rails'
 # for map on startpage and overview
