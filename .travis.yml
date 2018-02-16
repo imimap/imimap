@@ -18,10 +18,10 @@ jobs:
     script: "./ci-cd/travis-test.sh"
   - stage: build and push docker image
     script: ci-cd/docker-build-and-push.sh
-    if: (branch = master) AND (NOT(type IN (push, pull_request)))
+    if: (branch = master) AND (NOT (type IN (push, pull_request)))
   - stage: deploy to staging
     script: "./ci-cd/travis-deploy.sh staging"
-    if: (branch = master) AND (NOT(type IN (push, pull_request)))
+    if: (branch = master) AND (NOT (type IN (push, pull_request)))
   - stage: deploy to production
     script: "./ci-cd/travis-deploy.sh production"
-    if: (tag =~ ^v1) AND (branch = master) AND (NOT(type IN (push, pull_request)))
+    if: (tag =~ ^v1) AND (branch = master) AND (NOT (type IN (push, pull_request)))
