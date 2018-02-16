@@ -17,17 +17,19 @@ jobs:
   - stage: test
     script: "./ci-cd/travis-test.sh"
   - stage: hello1
-    script: ci-cd/hello.sh (branch = travis-stages)
+    script: skip
     if: (branch = travis-stages)
   - stage: hello2a
-    script: ci-cd/hello.sh (type IN (push, pull_request))
+    script: skip
     if: (type IN (push, pull_request))
   - stage: hello2b
-    script: ci-cd/hello.sh (NOT (type IN (push, pull_request)))
+    script: skip
     if: (NOT (type IN (push, pull_request)))
   - stage: hello3
-    script: ci-cd/hello.sh (tag =~ ^v1)
-    if: (tag =~ ^v1)
+    script: skip
+  - stage: hello4
+    script: skip
+    if: (tag =~ \d\.\d\.\d)
   - stage: build
     script: ci-cd/docker-build-and-push.sh
     if: (branch = travis-stages) AND (type != pull_request)
