@@ -16,17 +16,20 @@ jobs:
   include:
   - stage: test
     script: "./ci-cd/travis-test.sh"
+  - stage: settings
+    script: "./ci-cd/deploy00-echo-settings.sh"
   - stage: hello1
     script: skip
     if: (branch = travis-stages)
   - stage: hello2a
     script: skip
     if: (type IN (push, pull_request))
-  - stage: hello2b
+  - stage: typePush
     script: skip
-    if: (NOT (type IN (push, pull_request)))
+    if: (type == push)
   - stage: hello3
     script: skip
+    if: tag IS present
   - stage: hello4
     script: skip
     if: (tag =~ \d\.\d\.\d)
