@@ -18,22 +18,13 @@ jobs:
     script: "./ci-cd/travis-test.sh"
   - stage: pullrequest-skipping-build-deploy
     script: skip
-    if: (type = pull_request )
-  - stage: tag-present
-    script: skip
-    if: (tag IS present)
-  - stage: no-tag
-    script: skip
-    if: NOT (tag IS present)
-  - stage: tagMatches0.0.0
-    script: skip
-    if: (tag =~ \d\.\d\.\d)
+    if: (type = pull_request)
   - stage: build
     script: ci-cd/docker-build-and-push.sh
-    if: ((tag =~ \d\.\d\.\d) OR (branch = travis-stages)) AND (type != pull_request)
+    if: ((tag IS present) OR (branch = travis-stages)) AND (type != pull_request)
   - stage: deploy-staging
     script: "./ci-cd/travis-deploy.sh staging"
-    if: (branch = travis-stages) AND (type != pull_request)
+    if: ( NOT (tag IS present)) AND (branch = travis-stages) AND (type != pull_request)
   - stage: deploy-production
     script: "./ci-cd/travis-deploy.sh production"
-    if: ((tag =~ \d\.\d\.\d) OR (branch = travis-stages)) AND (type != pull_request)
+    if: (tag IS present) AND (type != pull_request)
