@@ -1,4 +1,11 @@
+
 <h2><%= t "search.title" %></h2>
+
+Hello. There are <%= @internship_count %> internships in the system.
+
+
+
+
 <%= form_tag(internships_path, :method => 'get', class: 'form2') do %>
 <div class=.row">
 <div class="col-md-4">
