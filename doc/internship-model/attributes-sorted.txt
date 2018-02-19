@@ -1,0 +1,70 @@
+
+
+Internship Administrativa
+----------
+
+semester_id
+start_date
+end_date
+
+internship_state_id
+
+registration_state_id
+contract_state_id
+
+report_state_id
+reading_prof_id
+certificate_signed_by_internship_officer
+certificate_signed_by_prof
+certificate_state_id
+certificate_to_prof
+
+internship_report
+
+completed - not used
+
+comment
+
+
+Work Description
+----------
+
+tasks
+operational_area
+
+title (job title, usually not used, not part of active admin)
+orientation_id (not used)
+
+
+Contact Information
+---------
+supervisor_email
+supervisor_name
+company_id
+
+
+
+
+Internship Review
+---------
+working_hours
+salary
+recommend
+payment_state_id
+living_costs
+internship_rating_id
+email_public - if students email can be shared.
+
+description - scheinen eher jobangebote zu sein, insg. 36 - bzw Erfahrungsberichte??
+
+
+Student Related
+------
+user_id
+student_id
+
+
+Internal Stuff
+-----
+created_at
+updated_at
