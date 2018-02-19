@@ -15,6 +15,7 @@ describe "Detailed Search Page " do
       end
 
     it "should have title and arbitrary search criteria" do
+      pending
       # login_with(@user)
       sign_in(@user)
         visit internships_path(locale: locale)

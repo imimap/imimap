@@ -2,6 +2,7 @@ ActiveAdmin.register Internship do
 	filter :student_enrolment_number, :as => :select, :collection => proc { Student.all.map(&:enrolment_number).uniq }, :label => "Matrikel"
   filter :reading_prof
   filter :semester
+	filter :internship_state
 
 	index do
 
@@ -10,11 +11,13 @@ ActiveAdmin.register Internship do
     end
     column :company
     column :semester
+		column :internship_state
+		column :report_state
+		column :certificate_state
     column :certificate_to_prof
     column :certificate_signed_by_prof
     column :certificate_signed_by_internship_officer
-    column :report_state
-    column :certificate_state
+
     column :reading_prof
     actions
 

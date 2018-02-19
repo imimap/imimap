@@ -1,7 +1,6 @@
 # ruby encoding: utf-8
 Orientation.destroy_all
-10.times do
-  Orientation.create!(
-    name: Faker::Job.field,
-  )
-end
+Orientation.create!(name: 'Design')
+Orientation.create!(name: 'Game Development')
+Orientation.create!(name: 'iOS Development')
+Orientation.create!(name: 'Software Development')
