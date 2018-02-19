@@ -5,19 +5,19 @@
   </a>
 -->
   <button class="navbar-toggler imi-maps-toggler" type="button" data-toggle="collapse"
-   data-target="#imi-maps-navbar-core" aria-controls="imi-maps-navbar-core"
+   data-target="#imi-map-navbar-core" aria-controls="imi-map-navbar-core"
    aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="imi-maps-navbar-core">
+  <div class="collapse navbar-collapse" id="imi-map-navbar-core">
     <ul class="navbar-nav ">
-      <li class="nav-item im-nav-item <%= 'active' if current_page?(overview_index_path) %>"><%= link_to t("header.overview"), overview_index_path, class: 'nav-link im-nav-link' %></li>
-      <li class="nav-item im-nav-item <%= 'active' if current_page?(internships_path) %>"><%= link_to t("header.search"), internships_path, class: 'nav-link im-nav-link' %></li>
-      <li class="nav-item im-nav-item <%= 'active' if current_page?(internship_offer_index_path) %>"><%= link_to t("header.exchange"), internship_offer_index_path, class: 'nav-link im-nav-link' %></li>
-      <li class="nav-item im-nav-item <%= 'active' if current_page?(statistic_path) %>"><%= link_to t("header.statistic"), statistic_path, class: 'nav-link im-nav-link' %></li>
-      <li class="nav-item im-nav-item <%= 'active' if current_page?(my_internship_path) %>"><%= link_to t("header.internship"),  my_internship_path, class: 'nav-link im-nav-link' %></li>
-      <li class="nav-item im-nav-item <%= 'active' if current_page?(current_internships_path) %>"><%= link_to t("header.curInternships"),  current_internships_path, class: 'nav-link im-nav-link' %></li>
+      <li class="nav-item im-nav-item<%= 'active' if current_page?(overview_index_path) %>"><%= link_to t("header.overview"), overview_index_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
+      <li class="nav-item im-nav-item<%= 'active' if current_page?(internships_path) %>"><%= link_to t("header.search"), internships_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
+      <li class="nav-item im-nav-item<%= 'active' if current_page?(internship_offer_index_path) %>"><%= link_to t("header.exchange"), internship_offer_index_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
+      <li class="nav-item im-nav-item<%= 'active' if current_page?(statistic_path) %>"><%= link_to t("header.statistic"), statistic_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
+      <li class="nav-item im-nav-item<%= 'active' if current_page?(my_internship_path) %>"><%= link_to t("header.internship"),  my_internship_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
+      <li class="nav-item im-nav-item<%= 'active' if current_page?(current_internships_path) %>"><%= link_to t("header.curInternships"),  current_internships_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
     </ul>
   </div>
 </nav>
