@@ -23,22 +23,25 @@ by students of the Bachelor's Programme International Media Informatics at HTW B
 
     cd imimaps
 
-Starting the server:
+## Running Rails locally
+    IMI-Map Development should be done within a docker container, local Development is discouraged. If you do it nonetheless, be careful not to
+    commit db/schema.rb files generated with a migration against a SQLITE database.
 
-    bundle install
-    rake db:migrate
-    rake db:seed
-    rails server  
+    IMI-Map needs a couple of packages to be installed, refer to the Dockerfile.
 
-Testing:
+    Starting the server:
 
-    rake db:migrate RAILS_ENV=test
-    rspec spec
+        bundle install
+        rake db:migrate
+        rake db:seed
+        rails server  
 
-Local Development is discouraged. If you do it nonetheless, be careful not to
-commit db/schema.rb files generated with a migration against a SQLITE database.
+    Testing:
 
-You need the same commands using docker, however:
+        rake db:migrate RAILS_ENV=test
+        rspec spec
+
+    You need the same commands using docker, however:
 
 ## Local dev and test environment using Docker
 
@@ -62,6 +65,21 @@ Note that they too run in the imimap-dev container.
 
 There are many different ways of working with the docker containers. Refer to the
 Docker and docker-compose documentations.
+
+## Rebuild the Docker Image
+
+After changing the Gemfile or Gemfile.lock, the docker image for imimap
+needs to be rebuilt.
+
+Changes to Gemfile and Gemfile.lock should be made with the imimap container running, such that it is possible that the gem installation succeeds in the
+container.
+
+Nevertheless, bundler may fail during the build process. To troubleshoot, replace the main command by uncommenting the simple tail command in docker-compose.override.yml - this is a simple way to override the default startup command of the container.
+
+The container should now come up and after entering a bash within the container,
+the gem installation can be troubleshooted within the container.
+
+    docker-compose exec imimap bash
 
 # More on Deployment
 
