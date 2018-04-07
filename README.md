@@ -74,7 +74,11 @@ needs to be rebuilt.
 Changes to Gemfile and Gemfile.lock should be made with the imimap container running, such that it is possible that the gem installation succeeds in the
 container.
 
-Nevertheless, bundler may fail during the build process. To troubleshoot, replace the main command by uncommenting the simple tail command in docker-compose.override.yml - this is a simple way to override the default startup command of the container.
+Nevertheless, bundler may fail during the build process. To troubleshoot,
+the bundler command needs to be removed from the Dockerfile.
+
+If the rails server can't be started, the startup command can be replaced by uncommenting the simple tail command in docker-compose.override.yml - this is a simple way to override the default startup command of the container without
+modifying the Dockerfile.
 
 The container should now come up and after entering a bash within the container,
 the gem installation can be troubleshooted within the container.

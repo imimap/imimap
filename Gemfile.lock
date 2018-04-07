@@ -278,7 +278,7 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-    rmagick (2.13.4)
+    rmagick (2.16.0)
     rspec-core (3.7.1)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
@@ -367,7 +367,7 @@ DEPENDENCIES
   bcrypt (~> 3)
   better_errors
   binding_of_caller
-  bootstrap (~> 4.0.0.beta2.1)
+  bootstrap (~> 4.0.0)
   byebug
   capistrano
   capybara
@@ -399,7 +399,7 @@ DEPENDENCIES
   rails (~> 5.1.4)
   rails-controller-testing
   rails-observers
-  rmagick (~> 2.13.1)
+  rmagick (~> 2.16)
   rspec-rails (~> 3.5)
   rubocop (~> 0.51.0)
   sass-rails
