@@ -1,28 +1,31 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 5.1.4'
+
 gem 'carrierwave'
+gem 'country_select'
 gem 'geocoder'
 gem 'nested_form'
-gem "country_select"
 
-gem 'bootstrap', '~> 4.0.0.beta2.1'
+
+gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 
 # see https://github.com/tzinfo/tzinfo/wiki/Resolving-TZInfo::DataSourceNotFound-Errors
 gem 'tzinfo-data'
 
-gem 'activeadmin', "~> 1.1"
-gem 'formtastic', "~> 3"
+gem 'activeadmin', '~> 1.1'
 gem 'devise', ' ~> 4.3'
+gem 'formtastic', '~> 3'
+
 
 # TBD Update: Observers have been removed in 4.0
 # replace with ActiveRecord callbacks, maybe refactor as aspect
 # as described in http://stackoverflow.com/questions/15165260/rails-observer-alternatives-for-4-0
 gem 'rails-observers'
 
-
-gem "rmagick", "~> 2.13.1"
+gem "mini_magick"
+# gem "rmagick", "~> 2.16"
 gem "paperclip", "~> 5.2"
 
 gem 'chosen-rails'

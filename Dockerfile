@@ -1,4 +1,4 @@
-FROM ruby:2.4-alpine
+FROM ruby:2.5-alpine
 
 ENV APP_HOME /usr/src/app
 ENV IMIMAPS_ENVIRONMENT docker
