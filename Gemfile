@@ -24,8 +24,8 @@ gem 'formtastic', '~> 3'
 # as described in http://stackoverflow.com/questions/15165260/rails-observer-alternatives-for-4-0
 gem 'rails-observers'
 
-
-gem "rmagick", "~> 2.16"
+gem "mini_magick"
+# gem "rmagick", "~> 2.16"
 gem "paperclip", "~> 5.2"
 
 gem 'chosen-rails'
