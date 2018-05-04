@@ -8,6 +8,7 @@ RSpec.describe Internship, :type => :model do
 
   context 'given a valid Internship' do
     it 'can be saved with all required attributes present' do
+      # simulates a mouse click on the link internship.save 
       expect(internship.save).to be_truthy
     end
   end
