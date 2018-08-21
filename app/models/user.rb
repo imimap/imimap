@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true
   validates :password, presence: true, length: { minimum: 5 }
-  validates :student, presence: true
+  #validates :student, presence: true
 
   belongs_to :student
   has_many :user_comments, dependent: :destroy
@@ -18,11 +18,22 @@ class User < ApplicationRecord
   has_many :finish_lists, dependent: :destroy
 
   def name
-    "#{student.first_name} #{student.last_name}"
+    if student.nil?
+      email
+    else
+      "#{student.first_name} #{student.last_name}"
+    end
   end
 
   def enrolment_number
     return nil unless student
     student.enrolment_number
+  end
+
+  enum role: %i[user prof admin]
+  after_initialize :set_default_role, if: :new_record?
+
+  def set_default_role
+    self.role ||= :user
   end
 end

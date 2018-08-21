@@ -323,7 +323,7 @@ ActiveRecord::Schema.define(version: 20170902214206) do
     t.string "email", default: "", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "old_pass_digesr"
+    t.string "old_pass_digest"
     t.boolean "publicmail"
     t.boolean "mailnotif"
     t.integer "student_id"
@@ -339,7 +339,7 @@ ActiveRecord::Schema.define(version: 20170902214206) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.boolean "superuser", default: false
+    t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
