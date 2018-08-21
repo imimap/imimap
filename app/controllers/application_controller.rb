@@ -67,4 +67,10 @@ class ApplicationController < ActionController::Base
 
     helper_method :get_notification_size
 
+    protected
+    # see https://github.com/plataformatec/devise/wiki/How-To:-redirect-to-a-specific-page-on-successful-sign-in
+    def after_sign_in_path_for(resource)
+      byebug
+      overview_index_path
+    end
 end

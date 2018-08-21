@@ -21,6 +21,7 @@ module Devise
             #when successfully connected to LDAP and user already exists
             user = User.find_by_email(params[:user][:email])
             if (user != nil)
+              log
               return success!(user)
             end
 
