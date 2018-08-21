@@ -51,7 +51,7 @@ module Devise
         else
           message = 'ldap: no message'
           message = ldap_adapter.errors[0].join if ldap_adapter.errors.any?
-          return fail!(message)
+          return fail(message)
         end
       end
     end
