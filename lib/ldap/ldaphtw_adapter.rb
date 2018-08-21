@@ -5,12 +5,12 @@ require 'net/ldap'
 class LDAPHTWAdapter
   attr_accessor :email, :host, :port, :connectstring, :errors
 
-  def initialize(email)
+  def initialize(email:)
     @email = email
     @errors = []
   end
 
-  def valid
+  def valid?
     config && ldap_username
   end
 

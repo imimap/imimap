@@ -228,10 +228,13 @@ Devise.setup do |config|
   #
 
   # LDAP
-    config.warden do |manager|
-     manager.strategies.add(:ldap_authenticatable, Devise::Strategies::LdapAuthenticatable)
-     manager.default_strategies(:scope => :user).unshift :ldap_authenticatable
-   end
+  puts "LOADING LDAP"
+
+  config.warden do |manager|
+    manager.strategies.add(:ldap_authenticatable, Devise::Strategies::LdapAuthenticatable)
+    manager.default_strategies(scope: :user).unshift :ldap_authenticatable
+  end
+    
 
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine
