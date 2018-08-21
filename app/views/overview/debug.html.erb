@@ -1,15 +1,9 @@
 
 <h2>Some Debug Information</h2>
-
 <ul>
-  <li>asset_path <%= asset_path 'x' %></li>
-  <li>image_path("rails.png") <%= image_path("rails.png") %></li>
-  <li>asset_path("application.js")<%= (asset_path("application.js")).html_safe%></li>
-  <li>stylesheet_link_tag("application")
-    <% (stylesheet_link_tag("application")).to_s.inspect.split('\n').each do | stylesheet_link | %>
-       <br/>
-         <%= stylesheet_link%>
-    <% end %>
-    <br/>
-  </li>
+<li><%= current_user %>
+</li><li><%= current_user.encrypted_password %>
+</li><li><%= current_user.student %>
+<li><%= current_user.email %>
+</li>
 </ul>
