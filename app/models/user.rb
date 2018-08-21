@@ -29,8 +29,8 @@ class User < ApplicationRecord
     return nil unless student
     student.enrolment_number
   end
-
-  enum role: %i[user prof admin]
+  ROLES=%i[user prof admin examination_office]
+  enum role: ROLES
   after_initialize :set_default_role, if: :new_record?
 
   def set_default_role

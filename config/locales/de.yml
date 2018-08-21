@@ -220,6 +220,7 @@ de:
       short: ! '%d. %B, %H:%M Uhr'
     pm: nachmittags
   header:
+    admin: "Admin"
     reportOverview: "Berichte Übersicht"
     completeList: "Angegebene Berichte"
     readList: "Gelesene Berichte"
