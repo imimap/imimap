@@ -40,7 +40,7 @@ module Devise
       end
 
       def authenticate!
-        auth_successful = create(ldap_password).authenticate
+        auth_successful = ldap_adapter.create(ldap_password: ldap_password).authenticate
         if auth_successful
           user = User.find_or_create_by(email: ldap_email)
           return success!(user)
