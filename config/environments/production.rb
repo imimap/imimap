@@ -103,7 +103,7 @@ Rails.application.configure do
     #TBD Environment variable for HOST name Staging and Production
     Rails.application.routes.default_url_options[:host] = "imi-map.f4.htw-berlin.de"
     #TBD Review
-    #config.devise_ldap=:on
-    config.devise_ldap=:off
+    config.devise_ldap=:on
+    #config.devise_ldap=:off
   # IMI-Map specific End
 end
