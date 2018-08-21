@@ -15,7 +15,6 @@ describe "SignUp Process" do
       click_on I18n.t('devise.sessions.submit')
       # expect(LdapAuthentication.mode).to eq :test
       # save_and_open_page
-      fail
     end
     context "with failing ldap authorization" do
       # before :each do
