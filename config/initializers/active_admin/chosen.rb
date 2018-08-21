@@ -1,3 +1,4 @@
+#TBD is this still needed?
 module ActiveAdmin
   module Inputs
     class FilterSelectInput < ::Formtastic::Inputs::SelectInput
