@@ -29,10 +29,6 @@ RSpec.describe User, :type => :model do
 
     end
 
-    it 'rejects empty student relations' do
-      user.student = nil
-      expect(user.save).to be_falsy
-    end
   end
 
   describe "#name" do

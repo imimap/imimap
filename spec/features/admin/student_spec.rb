@@ -7,7 +7,7 @@ describe "ActiveAdmin Student CRUD" do
   context "logged in" do
     before :each do
       @admin_user = create :admin_user
-      sign_in@admin_user
+      sign_in @admin_user
       I18n.locale = "de"
     end
     describe "show student" do
