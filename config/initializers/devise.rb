@@ -228,10 +228,10 @@ Devise.setup do |config|
   #
 
   # LDAP
-  # config.warden do |manager|
-  #   manager.strategies.add(:ldap_authenticatable, Devise::Strategies::LdapAuthenticatable)
-  #   manager.default_strategies(:scope => :user).unshift :ldap_authenticatable
-  # end
+    config.warden do |manager|
+     manager.strategies.add(:ldap_authenticatable, Devise::Strategies::LdapAuthenticatable)
+     manager.default_strategies(:scope => :user).unshift :ldap_authenticatable
+   end
 
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine
@@ -248,12 +248,12 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = "/my_engine/users/auth"
 end
 
-# if Rails.configuration.devise_ldap == :off
-#   Devise.setup do |config|
-#     config.warden do |manager|
-#       manager.default_strategies(:scope => :user).unshift :ldap_off_authenticatable
-#       puts "WARNING: switched LDAP Authentification off, all passwords will be accepted"
-#       puts "manager.default_strategies(:scope => :user).inspect #{manager.default_strategies(:scope => :user).inspect}"
-#     end
-#   end
-# end
+if Rails.configuration.devise_ldap == :off
+ Devise.setup do |config|
+   config.warden do |manager|
+     manager.default_strategies(:scope => :user).unshift :ldap_off_authenticatable
+     puts "WARNING: switched LDAP Authentification off, all passwords will be accepted"
+     puts "manager.default_strategies(:scope => :user).inspect #{manager.default_strategies(:scope => :user).inspect}"
+   end
+ end
+end

@@ -1,0 +1,80 @@
+# frozen_string_literal: true
+
+# to run this api test, you need to
+# - be within the HTW network to be able to connect to LDAP
+# - set three environment variables:
+# LDAP
+# EMAIL
+# PASSWORD
+# e.g.
+
+# $ export LDAP='<host>|<port>|<connectstring>'
+# $ export EMAIL='kleinen@htw-berlin.de'
+# $ export HISTCONTROL=ignorespace
+# $  export PASSWORD=<yourvalidpassword>
+
+# by setting the HISTCONTROL=ignorespace and prefixing the export PASSWORD with
+# a space the password should not show up in your shell history.
+
+require 'ldap/ldaphtw_adapter'
+describe LDAPHTWAdapter do
+  let(:email) { ENV['EMAIL'] }
+  let(:password) { ENV['PASSWORD'] }
+  let(:ldap_adapter) { LDAPHTWAdapter.new(email: email) }
+
+  describe 'successful login' do
+    it 'ldap adapter is valid' do
+      expect(ldap_adapter).to be_valid
+      expect(ldap_adapter.errors).to be_empty
+    end
+    it 'authenticates' do
+      expect(ldap_adapter.create(ldap_password: password).authenticate).to(
+        be true
+      )
+      expect(ldap_adapter.errors).to be_empty
+    end
+  end
+
+  describe 'handles issue' do
+    it 'wrong password' do
+      authenticated = ldap_adapter.create(ldap_password: 'notpw').authenticate
+      expect(authenticated).to be false
+      expect(ldap_adapter.errors).not_to be_empty
+      expect(ldap_adapter.errors).to include([:ldap_authentication_failed, ''])
+    end
+
+    it 'LDAP env missing' do
+      restore = ENV['LDAP']
+      ENV['LDAP'] = nil
+      authenticated = ldap_adapter.create(ldap_password: password).authenticate
+      expect(authenticated).to be false
+      expect(ldap_adapter.errors).not_to be_empty
+      expect(ldap_adapter.errors).to include([:ldap_env_missing, ''])
+      ENV['LDAP'] = restore
+    end
+
+    it 'host unreachable' do
+      restore = ENV['LDAP']
+      ENV['LDAP'] = "xx#{ENV['LDAP']}"
+      host, port, connectstring = ldap_adapter.config
+      authenticated = ldap_adapter.create(ldap_password: password).authenticate
+      expect(authenticated).to be false
+      expect(ldap_adapter.errors).not_to be_empty
+      expect(ldap_adapter.errors).to include([:ldap_could_not_connect, host])
+      ENV['LDAP'] = restore
+    end
+
+    it 'valid email' do
+      adapter = LDAPHTWAdapter.new(email: 'amy@nothtw-berlin.de')
+      expect(adapter).to be_valid
+    end
+
+    it 'wrong email' do
+      wrong_email = 'amy@xxx-berlin.de'
+      adapter = LDAPHTWAdapter.new(email: wrong_email)
+      expect(adapter).not_to be_valid
+      expect(adapter.errors).not_to be_empty
+      expect(adapter.errors).to include([:ldap_email_not_valid, wrong_email])
+    end
+  end
+end
