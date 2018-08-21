@@ -21,3 +21,10 @@ enter the postgres container and import the dump:
 
     docker exec -ti postgresql-dev bash
     psql --set ON_ERROR_STOP=on  -h localhost -U imi_map imimap < /var/lib/postgresql/dumps/imi-map.pgdump
+
+
+psql --set ON_ERROR_STOP=on  -h localhost -U imi_map imimap < /var/lib/postgresql/dumps/imi-maps-2018-07-13.pgdump
+
+
+
+    docker exec -ti  imimap-dev bash

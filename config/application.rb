@@ -12,7 +12,7 @@ module ImiMaps
     config.x.ldapServerAddr = "141.45.146.101"
     config.x.ldapPort = 389
 
-    #Prüfungs Vervaltung email
+    #Prüfungs Verwaltung email
     config.x.pv_Email = "someemail@htw-berlin.de"
 
     # IMI-Map settings
