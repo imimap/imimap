@@ -32,8 +32,9 @@ class User < ApplicationRecord
   EDITABLE_ATTRIBUTES = [:email, :mailnotif, :publicmail, :student, :role]
   EDITABLE_ATTRIBUTES_PW = [:email, :mailnotif, :publicmail, :student, :role, :password, :password_confirmation]
 
-  ROLES=%i[user prof admin examination_office]
+  ROLES=%i[admin prof examination_office user]
   enum role: ROLES
+
   after_initialize :set_default_role, if: :new_record?
 
   def set_default_role
