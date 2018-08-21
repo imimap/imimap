@@ -146,21 +146,21 @@ RSpec.configure do |config|
   # Include FactoryBot so we can use 'create' instead of 'FactoryBot.create'
   config.include FactoryBot::Syntax::Methods
 
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with :truncation
+#config.before(:suite) do
+#  DatabaseCleaner.strategy = :transaction
+#  DatabaseCleaner.clean_with :truncation
 
-    begin
-      DatabaseCleaner.start
+#  begin
+#    DatabaseCleaner.start
 
-      factories_to_lint = FactoryBot.factories.reject do |factory|
-        factory.name =~ /^invalid_/
-      end
-      FactoryBot.lint factories_to_lint
-    ensure
-      DatabaseCleaner.clean
-    end
-  end
+#    factories_to_lint = FactoryBot.factories.reject do |factory|
+#      factory.name =~ /^invalid_/
+#    end
+#    FactoryBot.lint factories_to_lint
+#  ensure
+#    DatabaseCleaner.clean
+#  end
+#end
 
   config.include ControllerTestHelper, type: :controller
   config.include I18nTestHelper
