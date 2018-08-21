@@ -6,9 +6,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :email, presence: true
-  validates :password, presence: true, length: { minimum: 5 }
-  #validates :student, presence: true
+  # validates :email, presence: true
+  # validates :password, presence: true, length: { minimum: 5 }
+  # validates :student, presence: true
 
   belongs_to :student
   has_many :user_comments, dependent: :destroy
@@ -29,6 +29,9 @@ class User < ApplicationRecord
     return nil unless student
     student.enrolment_number
   end
+  EDITABLE_ATTRIBUTES = [:email, :mailnotif, :publicmail, :student, :role]
+  EDITABLE_ATTRIBUTES_PW = [:email, :mailnotif, :publicmail, :student, :role, :password, :password_confirmation]
+
   ROLES=%i[user prof admin examination_office]
   enum role: ROLES
   after_initialize :set_default_role, if: :new_record?

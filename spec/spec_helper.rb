@@ -23,8 +23,8 @@ require 'simplecov'
  end
 
 module I18nTestHelper
-  def t(label)
-    I18n.t(label)
+  def t(label,options = {})
+    I18n.t(label,options)
   end
 end
 require 'capybara/rspec'
