@@ -4,10 +4,10 @@ ImiMaps::Application.routes.draw do
     devise_scope :user do
       devise_for :users, controllers: { registrations: 'users/registrations', passwords: 'users/passwords' }
       root to: 'startpage#new'
-      # TBD: Review - remove?
-      # authenticated :user do
-      #   root 'overview#index', as: :authenticated_root
-      # end
+      # This is needed for ActiveAdmin
+      authenticated :user do
+       root 'overview#index', as: :authenticated_root
+      end
       resources :internships
       resources :companies
       resources :users, only: %i[edit show update create new]
