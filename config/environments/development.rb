@@ -55,6 +55,6 @@ Rails.application.configure do
 
   #IMI-Maps specific
   Rails.application.routes.default_url_options[:host] = 'localhost:3000'
-  config.devise_ldap=:off
+  config.devise_ldap=:on
   #IMI-Maps specific
 end
