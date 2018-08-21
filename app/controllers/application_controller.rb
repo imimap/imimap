@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   def authenticate_active_admin_user!
-    result = authenticate_user!
-    throw(:warden) unless result.admin?
+    user = authenticate_user!
+    throw(:warden) unless user.admin?
   end
 
   def authorize_role_examination_office

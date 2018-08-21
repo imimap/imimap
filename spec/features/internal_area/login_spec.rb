@@ -19,7 +19,7 @@ describe 'Student Login' do
           fill_in 'user_email', with: @user.email
           fill_in 'user_password', with: @user.password
           click_on('Log in')
-          expect(page).to have_content I18n.t('search.title')
+          expect(page).to have_content I18n.t('devise.sessions.signed_in')
         end
       end
     end

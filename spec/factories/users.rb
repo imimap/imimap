@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-#
-
-
+# regular user with student role and associated student
 FactoryBot.define do
   sequence :email do |n|
     "email#{n}@factory.com"
