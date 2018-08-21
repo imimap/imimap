@@ -32,7 +32,7 @@ module Devise
       end
 
       def ldap_adapter
-        @ldap_adapter ||= LDAPHTWAdapter.new(ldap_email)
+        @ldap_adapter ||= LDAPHTWAdapter.new(email: ldap_email)
       end
 
       def valid?

@@ -9,7 +9,9 @@ class LDAPHTWAdapter
     @email = email
     @errors = []
   end
-
+  def valid
+    valid?
+  end
   def valid?
     config && ldap_username
   end
