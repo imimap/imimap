@@ -9,7 +9,6 @@ class InternshipsController < ApplicationController
   include InternshipsHelper
   def index
     @internship_count = Internship.all.count
-
   end
 
   def new
