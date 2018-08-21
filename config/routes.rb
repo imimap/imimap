@@ -2,11 +2,12 @@ ImiMaps::Application.routes.draw do
   get "password_resets/new"
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     devise_scope :user do
-      devise_for :users
+      devise_for :users, controllers: { registrations: 'users/registrations', passwords: 'users/passwords' }
       root to: 'startpage#new'
-      authenticated :user do
-        root 'overview#index', as: :authenticated_root
-      end
+      # TBD: Review - remove?
+      # authenticated :user do
+      #   root 'overview#index', as: :authenticated_root
+      # end
       resources :internships
       resources :companies
       resources :users, only: %i[edit show update create new]
