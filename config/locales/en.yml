@@ -84,6 +84,7 @@ en:
     semester: "Choose a semester"
     language: "Choose a programming language"
   header:
+    admin: "Admin"
     reportOverview: "Report Overview"
     completeList: "Completed Report"
     readList: "Reading List Report"
