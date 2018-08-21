@@ -42,7 +42,11 @@ module Devise
       def authenticate!
         auth_successful = ldap_adapter.create(ldap_password: ldap_password).authenticate
         if auth_successful
-          user = User.find_or_create_by(email: ldap_email)
+          user = User.where(email: ldap_email).first
+          unless user
+            rpw = SecureRandom.urlsafe_base64(24, false)
+            user = User.create(email: ldap_email, password: rpw, password_confirmation: rpw )
+          end
           return success!(user)
         else
           message = 'ldap: no message'
