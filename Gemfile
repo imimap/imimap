@@ -57,7 +57,8 @@ gem 'factory_bot_rails'
 
 group :development do
   gem 'spring'
-  gem 'rubocop', '~> 0.51.0'
+  gem 'rubocop'
+  gem 'rubocop-rspec'
   gem 'bootsnap'
   gem 'listen'
 end

@@ -3,6 +3,6 @@
 #
 FactoryBot.define do
   factory :orientation do
-    name "orientation name"
+    name { "orientation name" }
   end
 end
