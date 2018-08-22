@@ -8,8 +8,7 @@ export DEPLOYMENT_ENVIRONMENT=staging
 
 echo "---------------------- calling docker build ----------------------"
 
-docker build -f Dockerfile.production -t imimap/imimap:$DEPLOYMENT_TAG .
-
+docker build -f Dockerfile.production --build-arg RAILS_MASTER_KEY=$RAILS_MASTER_KEY  -t imimap/imimap:$DEPLOYMENT_TAG.
 return_code=$?
 if [ $return_code != 0 ]; then
   echo "FAILED: docker build"
