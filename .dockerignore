@@ -1,6 +1,7 @@
 # ignore tmp
 /tmp/*
 /log/*
+/doc/*
 
 # sqlite databases
 /db/*.sqlite
