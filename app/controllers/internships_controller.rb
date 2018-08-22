@@ -86,9 +86,9 @@ class InternshipsController < ApplicationController
 
   # If the user has no internship, the system asks him/her to create a new one
   # else the internship details are shown
-  def internshipData
+  def internship_data
     if Internship.where(user_id: current_user.id).last.nil?
-      render :noInternshipData
+      render :no_internship_data
     else
       @internship = Internship.where(user_id: current_user.id).last
       redirect_to @internship

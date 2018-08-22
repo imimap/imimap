@@ -39,5 +39,5 @@ Rails.application.routes.draw do
     ActiveAdmin.routes(self)
   end
   # TBD Review: what is this special route for outside of the other scopes?
-  get 'my_internship', to: 'internships#internshipData', as: 'my_internship'
+  get 'my_internship', to: 'internships#internship_data', as: 'my_internship'
 end

@@ -63,45 +63,45 @@ Metrics/BlockLength:
 # Offense count: 16
 # Configuration parameters: CountComments.
 Metrics/MethodLength:
-  Max: 47
+  Max: 30
 
 # Offense count: 1
-Metrics/PerceivedComplexity:
-  Max: 10
+# Metrics/PerceivedComplexity:
+#   Max: 10
 
 # Offense count: 5
-Naming/AccessorMethodName:
-  Exclude:
+# Naming/AccessorMethodName:
+#   Exclude:
 #     - 'app/controllers/application_controller.rb'
-    - 'app/helpers/application_helper.rb'
+#     - 'app/helpers/application_helper.rb'
 
 # Offense count: 3
 # Configuration parameters: EnforcedStyleForLeadingUnderscores.
 # SupportedStylesForLeadingUnderscores: disallowed, required, optional
-Naming/MemoizedInstanceVariableName:
-  Exclude:
-    - 'app/controllers/application_controller.rb'
+# Naming/MemoizedInstanceVariableName:
+#   Exclude:
+#     - 'app/controllers/application_controller.rb'
 
 # Offense count: 1
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: snake_case, camelCase
-Naming/MethodName:
-  Exclude:
-    - 'app/controllers/internships_controller.rb'
+# Naming/MethodName:
+#   Exclude:
+#     - 'app/controllers/internships_controller.rb'
 
 # Offense count: 2
 # Configuration parameters: MinNameLength, AllowNamesEndingInNumbers, AllowedNames, ForbiddenNames.
 # AllowedNames: io, id, to, by, on, in, at, ip
-Naming/UncommunicativeMethodParamName:
-  Exclude:
-    - 'app/helpers/application_helper.rb'
-    - 'app/models/internship_duration.rb'
+# Naming/UncommunicativeMethodParamName:
+#   Exclude:
+#     - 'app/helpers/application_helper.rb'
+#     - 'app/models/internship_duration.rb'
 
 # Offense count: 1
 # Configuration parameters: AllowedChars.
-Style/AsciiComments:
-  Exclude:
-    - 'config/application.rb'
+# Style/AsciiComments:
+#   Exclude:
+#     - 'config/application.rb'
 
 # Offense count: 7
 # Cop supports --auto-correct.
