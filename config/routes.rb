@@ -1,4 +1,4 @@
-ImiMaps::Application.routes.draw do
+Rails.application.routes.draw do
   get "password_resets/new"
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     devise_scope :user do
