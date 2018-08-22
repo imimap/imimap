@@ -4,19 +4,23 @@ ENV APP_HOME /usr/src/app
 ENV RAILS_ENV production
 ENV RACK_ENV production
 ENV IMIMAPS_ENVIRONMENT docker
-ARG RAILS_MASTER_KEY
+ENV PATH /root/.yarn/bin:$PATH
 
 EXPOSE 80
 
 WORKDIR $APP_HOME
 
 COPY Gemfile* $APP_HOME/
+# COPY package.json yarn.lock ./
 
 # general dependencies
 RUN set -ex \
   && apk add --no-cache libpq imagemagick nodejs bash
 
 ADD . $APP_HOME
+RUN if [ -z RAILS_MASTER_KEY ]; then echo RAILS_MASTER_KEY missing ; else echo RAILS_MASTER_KEY present; fi
+RUN if [ -z SECRET_KEY_BASE ]; then echo SECRET_KEY_BASE missing ; else echo SECRET_KEY_BASE present; fi
+RUN echo $SECRET_KEY_BASE
 
 # build deps
 RUN set -ex \
@@ -26,6 +30,12 @@ RUN set -ex \
   build-base \
   postgresql-dev \
   imagemagick-dev \
+  curl \
+  && /bin/bash \
+  && touch ~/.bashrc \
+  && curl -o- -L https://yarnpkg.com/install.sh | bash \
+  && yarn install \
+  && npm rebuild node-sass --force \
   && bundle install --without development test \
   && mkdir nginx-assets \
   && bundle exec rails assets:precompile \
