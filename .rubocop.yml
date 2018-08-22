@@ -3,4 +3,6 @@ AllCops:
     - "db/schema.rb"
     - "db/migration/*"
     - db/migrate/20130523140518_rename_orientation_to_orientation_id_in_internship.rb
+    - 'bin/setup'
+    - 'bin/update'
 inherit_from: .rubocop_todo.yml

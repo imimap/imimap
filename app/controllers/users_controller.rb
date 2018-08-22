@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       @user_last_name = s.last_name
     else
       @internships = []
-      @user_first_name = "not a student"
+      @user_first_name = 'not a student'
       @user_last_name = @user.email
     end
   end

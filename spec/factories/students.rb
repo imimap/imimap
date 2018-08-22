@@ -5,7 +5,7 @@ FactoryBot.define do
     first_name { 'Tuennes' }
     last_name { 'Schael' }
     enrolment_number { '123456' }
-    birthday { DateTime.now.to_date }
+    birthday { Date.today - 28.years }
     birthplace { 'Cologne' }
     email { 'foo@bar.com' }
     # user

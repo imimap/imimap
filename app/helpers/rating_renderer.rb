@@ -25,10 +25,17 @@ class RatingRenderer
   end
 
   def create_rating_field(id, klass = '')
-    content_tag :li, nil, class: "rating_star #{klass}", data: { rating_id: id.to_s }
+    content_tag :li,
+                nil,
+                class: "rating_star #{klass}",
+                data: { rating_id: id.to_s }
   end
 
   def method_missing(*args, &block)
     @template.public_send(*args, &block)
+  end
+
+  def respond_to_missing?(method, *)
+    method =~ /.*/ || super
   end
 end

@@ -28,3 +28,16 @@ psql --set ON_ERROR_STOP=on  -h localhost -U imi_map imimap < /var/lib/postgresq
 
 
     docker exec -ti  imimap-dev bash
+
+On Staging/Production Servers
+==================================
+
+
+export TAG=
+export RAILS_MASTER_KEY=
+docker-compose -f docker-compose-production.yml up
+
+
+
+docker-compose exec  imimap bash
+rails db:setup DISABLE_DATABASE_ENVIRONMENT_CHECK=1

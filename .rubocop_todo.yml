@@ -133,8 +133,8 @@ Style/ConditionalAssignment:
 # Offense count: 6
 Style/DateTime:
   Exclude:
-    - 'spec/factories/internships.rb'
-    - 'spec/factories/students.rb'
+#     - 'spec/factories/internships.rb'
+#     - 'spec/factories/students.rb'
 
 # Offense count: 167
 Style/Documentation:
@@ -143,59 +143,56 @@ Style/Documentation:
 # Offense count: 1
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: each, for
-Style/For:
-  Exclude:
-    - 'db/seed/01_semester.rb'
+# Style/For:
+#   Exclude:
+#     - 'db/seed/01_semester.rb'
 
 # Offense count: 5
 # Configuration parameters: MinBodyLength.
-Style/GuardClause:
-  Exclude:
-    - 'app/controllers/statistic_controller.rb'
-    - 'app/mailers/admin_mailer.rb'
-    - 'app/observers/internship_observer.rb'
-    - 'app/observers/user_observer.rb'
-    - 'config/initializers/ldap_off_authenticatable.rb'
+# Style/GuardClause:
+#   Exclude:
+#     - 'app/controllers/statistic_controller.rb'
+#     - 'app/mailers/admin_mailer.rb'
+#     - 'app/observers/internship_observer.rb'
+#     - 'app/observers/user_observer.rb'
+#     - 'config/initializers/ldap_off_authenticatable.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
-Style/IfUnlessModifier:
-  Exclude:
-    - 'app/observers/internship_observer.rb'
-    - 'app/observers/user_observer.rb'
+# Style/IfUnlessModifier:
+#   Exclude:
+#     - 'app/observers/internship_observer.rb'
+#     - 'app/observers/user_observer.rb'
 
-# Offense count: 1
+
+
+# Not solvable for now
 Style/MethodMissingSuper:
-  Exclude:
-    - 'app/helpers/rating_renderer.rb'
-
-# Offense count: 1
-Style/MissingRespondToMissing:
-  Exclude:
-    - 'app/helpers/rating_renderer.rb'
+ Exclude:
+   - 'app/helpers/rating_renderer.rb'
 
 # Offense count: 2
-Style/MixinUsage:
-  Exclude:
-    - 'bin/setup'
-    - 'bin/update'
+# Style/MixinUsage:
+#   Exclude:
+#     - 'bin/setup'
+#     - 'bin/update'
 
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, EnforcedStyle.
 # SupportedStyles: predicate, comparison
-Style/NumericPredicate:
-  Exclude:
-    - 'spec/**/*'
-    - 'app/controllers/statistic_controller.rb'
+# Style/NumericPredicate:
+#   Exclude:
+#     - 'spec/**/*'
+#     - 'app/controllers/statistic_controller.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
 # SupportedStyles: single_quotes, double_quotes
-Style/StringLiterals:
-  Exclude:
-    - 'app/controllers/users_controller.rb'
+# Style/StringLiterals:
+#   Exclude:
+#     - 'app/controllers/users_controller.rb'
 
 # Offense count: 334
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
