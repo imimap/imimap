@@ -29,10 +29,10 @@ class User < ApplicationRecord
     return nil unless student
     student.enrolment_number
   end
-  EDITABLE_ATTRIBUTES = [:email, :mailnotif, :publicmail, :student, :role]
-  EDITABLE_ATTRIBUTES_PW = [:email, :mailnotif, :publicmail, :student, :role, :password, :password_confirmation]
+  EDITABLE_ATTRIBUTES = %i[email mailnotif publicmail student role].freeze
+  EDITABLE_ATTRIBUTES_PW = %i[email mailnotif publicmail student role password password_confirmation].freeze
 
-  ROLES=%i[admin prof examination_office user]
+  ROLES = %i[admin prof examination_office user].freeze
   enum role: ROLES
 
   after_initialize :set_default_role, if: :new_record?

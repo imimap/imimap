@@ -1,8 +1,8 @@
+# frozen_string_literal: true
+
 class QuicksearchesController < ApplicationController
-
-	def index
-
-		@quicksearch = Quicksearch.new
+  def index
+    @quicksearch = Quicksearch.new
 
     @companies = []
 
@@ -15,7 +15,7 @@ class QuicksearchesController < ApplicationController
     params[:programming_language_ids].delete_if(&:empty?) if params[:programming_language_ids].present?
     params[:orientation].delete_if(&:empty?) if params[:orientation].present?
 
-    if !params[:orientation].present? and !params[:semester].present? and !params[:programming_language_ids].present? and !params[:country].present?
+    if !params[:orientation].present? && !params[:semester].present? && !params[:programming_language_ids].present? && !params[:country].present?
       @internships = Internship.includes(:company, :semester, :orientation, :programming_languages).where(completed: true).order('internships.created_at DESC')
     else
       @internships = @quicksearch.internships(params)
@@ -24,40 +24,40 @@ class QuicksearchesController < ApplicationController
     @internships = @internships.first(5)
 
     @internships.each do |i|
-        i.programming_languages.each do |p|
-          @language_ary << p
-        end
+      i.programming_languages.each do |p|
+        @language_ary << p
       end
+    end
     @programming_languages = @language_ary.uniq
 
-    @orientations_ary = @internships.collect do |x| x.orientation end
-    @orientations = @orientations_ary.uniq.map do |o| [o.name, o.id] end
+    @orientations_ary = @internships.collect(&:orientation)
+    @orientations = @orientations_ary.uniq.map { |o| [o.name, o.id] }
 
-    @companies = @internships.collect do |x| x.company end
+    @companies = @internships.collect(&:company)
 
-    @semesters = @internships.collect do |x| x.semester end.map do |s|[s.name,s.id] end
+    @semesters = @internships.collect(&:semester).map { |s| [s.name, s.id] }
 
     @internships_size = @internships.size
 
     @bool = Internship.where(completed: true).size == @internships_size
 
-    @countries = (@companies.collect do |x| x.country end)
+    @countries = @companies.collect(&:country)
 
-    ary = Array.new
+    ary = []
     @countries.uniq.each do |x|
-      ary << {:name=>x, :count=>@countries.count(x)}
+      ary << { name: x, count: @countries.count(x) }
     end
     @data_country = ary
 
-    ary = Array.new
+    ary = []
     @language_ary.uniq.each do |x|
-      ary << {:name=>x.name, :count=>(@language_ary.count(x).to_f/@internships_size*100).to_i}
+      ary << { name: x.name, count: (@language_ary.count(x).to_f / @internships_size * 100).to_i }
     end
     @data_language = ary
 
-    ary = Array.new
+    ary = []
     @orientations_ary.uniq.each do |x|
-      ary << {:name=>x.name, :count=>@orientations_ary.count(x)}
+      ary << { name: x.name, count: @orientations_ary.count(x) }
     end
     @data_orientation = ary
 
@@ -65,8 +65,7 @@ class QuicksearchesController < ApplicationController
     @semesters = @semesters.uniq
 
     respond_to do |format|
-      format.js { render :layout=>false, :locals => { :pins  => @pins, :internships => @internships } }
+      format.js { render layout: false, locals: { pins: @pins, internships: @internships } }
     end
   end
-
 end

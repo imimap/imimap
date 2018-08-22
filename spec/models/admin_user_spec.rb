@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-#
 require 'rails_helper'
 
-RSpec.describe AdminUser, :type => :model do
+RSpec.describe AdminUser, type: :model do
   before :each do
     @admin_user = build :admin_user
   end
@@ -31,5 +30,4 @@ RSpec.describe AdminUser, :type => :model do
     #   expect(@admin_user.save).to be_falsy
     # end
   end
-
 end

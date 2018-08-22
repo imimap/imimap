@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -54,7 +56,7 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -83,7 +85,7 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
+  if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
@@ -99,20 +101,20 @@ Rails.application.configure do
   # already added.
   # config.assets.precompile += %w( search.js )
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: "imi-map.f4.htw-berlin.de" }
+  config.action_mailer.default_url_options = { host: 'imi-map.f4.htw-berlin.de' }
   config.action_mailer.smtp_settings = {
-    host: "smtp.gmail.com",
-    port: "587",
-    domain: "gmail.com",
+    host: 'smtp.gmail.com',
+    port: '587',
+    domain: 'gmail.com',
     user_name: ENV['GMAIL_USERNAME'],
     password: ENV['GMAIL_PASSWORD'],
     authentication: :plain,
     enable_starttls_auto: true
   }
   # TBD Environment variable for HOST name Staging and Production
-  Rails.application.routes.default_url_options[:host] = "imi-map.f4.htw-berlin.de"
+  Rails.application.routes.default_url_options[:host] = 'imi-map.f4.htw-berlin.de'
   # TBD Review
-  config.devise_ldap=:on
+  config.devise_ldap = :on
   # config.devise_ldap=:off
   # IMI-Map specific End
 end

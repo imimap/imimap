@@ -1,11 +1,12 @@
-#CodeReviewSS17 why was this file renamed from users.rb to user.rb?
+# frozen_string_literal: true
+
+# CodeReviewSS17 why was this file renamed from users.rb to user.rb?
 
 ActiveAdmin.register User do
-
   form do |f|
-  #  f.inputs
-    f.inputs "User Details" do
-      User::EDITABLE_ATTRIBUTES_PW.each do | a |
+    #  f.inputs
+    f.inputs 'User Details' do
+      User::EDITABLE_ATTRIBUTES_PW.each do |a|
         f.input a
       end
       # f.input :email
@@ -28,7 +29,7 @@ ActiveAdmin.register User do
   #  else
   #    render active_admin_template((@user.new_record? ? 'new' : 'edit') + '.html.erb')
   #  end
-  #}
+  # }
   # member_action :create, :method => :post, &create_or_edit
   # member_action :update, :method => :put, &create_or_edit
 

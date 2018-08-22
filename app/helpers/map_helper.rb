@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MapHelper
   def company_locations_json
     companies = Company.pluck(:city, :country, :latitude, :longitude)

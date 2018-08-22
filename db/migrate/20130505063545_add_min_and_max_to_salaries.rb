@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddMinAndMaxToSalaries < ActiveRecord::Migration[4.2]
   def change
     add_column :salaries, :min_amount, :integer

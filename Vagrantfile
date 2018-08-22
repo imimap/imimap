@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 #
@@ -6,27 +8,25 @@ script = <<SCRIPT
   gem install thor bundler
 SCRIPT
 
-Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntu/xenial64"
+Vagrant.configure('2') do |config|
+  config.vm.box = 'ubuntu/xenial64'
 
-
-  config.vm.provider "virtualbox" do |vb|
-    vb.memory = "4096"
+  config.vm.provider 'virtualbox' do |vb|
+    vb.memory = '4096'
   end
 
-  config.vm.define "imimaps.dev" do |box|
-    box.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.define 'imimaps.dev' do |box|
+    box.vm.network 'private_network', ip: '192.168.33.10'
   end
 
-  config.vm.provision "shell", inline: script
+  config.vm.provision 'shell', inline: script
 
-
-  config.vm.provision "ansible_local" do |ansible|
-    #ansible.limit = "vagrant"
-    ansible.playbook = "./bootstrap_host/vagrant_playbook.yml"
+  config.vm.provision 'ansible_local' do |ansible|
+    # ansible.limit = "vagrant"
+    ansible.playbook = './bootstrap_host/vagrant_playbook.yml'
     ansible.groups = {
-      "vagrant" => [
-        "imimaps.dev",
+      'vagrant' => [
+        'imimaps.dev'
       ]
     }
   end

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-COUNTRIES = { nil => 'not specified'.freeze,
+
+COUNTRIES = { nil => 'not specified',
               'Neuseeland' => 'New Zealand',
               'Schweden' => 'Sweden',
               'Griechenland' => 'Greece',
@@ -75,14 +76,13 @@ COUNTRIES = { nil => 'not specified'.freeze,
               'Ecuador' => 'Ecuador',
               'Dominikanische Republik' => 'Dominican Republic',
               'Norwegen' => 'Norway',
-              'Tschechische Republik' => 'Czech Republic' }
+              'Tschechische Republik' => 'Czech Republic' }.freeze
 require 'csv'
 # Was used to import old Internship Data.
 class DatabaseParser
   # :nocov:
 
   attr_reader :student_file, :internships_file, :companies_file
-
 
   def initialize(options = {})
     @student_file = options[:student_file]
@@ -129,8 +129,7 @@ class DatabaseParser
   def create_company(row)
     Company.where(name: row[1], street: row[2], city: row[4],
                   country: COUNTRIES[row[5]], zip: row[3], phone: row[6],
-                  blacklisted: row[8], import_id: row[0]
-                ).first_or_create!
+                  blacklisted: row[8], import_id: row[0]).first_or_create!
   end
 
   def create_internship(row)
@@ -162,8 +161,8 @@ class DatabaseParser
       certificate_to_prof: row[16],
       certificate_signed_by_prof: row[17],
       completed: false,
-      certificate_signed_by_internship_officer: row[18]).first_or_create!
-
+      certificate_signed_by_internship_officer: row[18]
+    ).first_or_create!
   end
 
   def prepare_state(state)
@@ -171,5 +170,4 @@ class DatabaseParser
   end
 
   # :nocov:
-
 end

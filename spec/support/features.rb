@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-#
 require 'support/session_helpers'
 RSpec.configure do |config|
   config.include Features::SessionHelpers, type: :feature

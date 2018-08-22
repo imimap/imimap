@@ -1,12 +1,11 @@
+# frozen_string_literal: true
+
 class FinishListController < ApplicationController
-
-  #check the user if current user nil or not
+  # check the user if current user nil or not
   respond_to :html, :json
-
 
   # create a new assigned report/unread list and save it
   def create
-
     @finish_list = FinishList.new
 
     @finish_list.internship_id = params[:internship_id]
@@ -16,14 +15,11 @@ class FinishListController < ApplicationController
     @current_user = @finish_list.user
     @internship = @finish_list.internship
 
-    flash[:notice] = "Post successfully created"
+    flash[:notice] = 'Post successfully created'
 
     respond_to do |format|
-
       format.html { redirect_to(finish_list_index_path) }
-      format.js { render :layout=>false, :locals => { :current_user  => @current_user, :internship => @internship, :finish_list => @finish_list} }
-
-
+      format.js { render layout: false, locals: { current_user: @current_user, internship: @internship, finish_list: @finish_list } }
     end
   end
 
@@ -33,15 +29,11 @@ class FinishListController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to finish_list_index_path }
-      format.js { render :layout=>false,:locals => { :current_user  => @current_user, :internship => @internship, :finish_list => @finish_list} }
-
+      format.js { render layout: false, locals: { current_user: @current_user, internship: @internship, finish_list: @finish_list } }
     end
   end
 
-
   def index
-
     @finish_lists = current_user.finish_lists
-
   end
 end

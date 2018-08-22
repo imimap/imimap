@@ -8,6 +8,5 @@ class OverviewController < ApplicationController
     @company_location_json = company_locations_json
   end
 
-  def debug
-  end
+  def debug; end
 end

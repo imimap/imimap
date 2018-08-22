@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-#
 require 'rails_helper'
 
 RSpec.describe NotificationsController, type: :controller do
@@ -11,16 +10,16 @@ RSpec.describe NotificationsController, type: :controller do
     @current_user = login
   end
 
-  describe "DELETE #destroy" do
+  describe 'DELETE #destroy' do
     it 'assigns @noti' do
       delete :destroy, params: { id: @notification }
       expect(assigns(:noti)).to eq(@notification)
     end
 
     it 'destroys @noti' do
-      expect {
+      expect do
         delete :destroy, params: { id: @notification }
-      }.to change(Notification, :count).by(-1)
+      end.to change(Notification, :count).by(-1)
     end
 
     it 'redirects to @noti.link' do
@@ -29,16 +28,16 @@ RSpec.describe NotificationsController, type: :controller do
     end
   end
 
-  describe "GET #show" do
+  describe 'GET #show' do
     it 'assigns @noti' do
       get :show, params: { id: @notification }
       expect(assigns(:noti)).to eq(@notification)
     end
 
     it 'destroys @noti' do
-      expect {
+      expect do
         get :show, params: { id: @notification }
-      }.to change(Notification, :count).by(-1)
+      end.to change(Notification, :count).by(-1)
     end
 
     it 'redirects to @noti.link' do

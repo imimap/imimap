@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-#
 require 'rails_helper'
 
 RSpec.describe InternshipOfferController, type: :controller do
@@ -30,9 +29,8 @@ RSpec.describe InternshipOfferController, type: :controller do
     end
 
     it 'assigns @show' do
-      get :show, params: {  id: @internship_offer }
+      get :show, params: { id: @internship_offer }
       expect(assigns(:offer)).to eq(@internship_offer)
     end
   end
-
 end

@@ -1,13 +1,15 @@
-ActiveAdmin.register Company do
-    filter :internships_student_enrolment_number, :as => :select, :collection => proc { Student.pluck(:enrolment_number) }, :label => "Matrikel"
-    filter :name
-    filter :city
-    filter :country
+# frozen_string_literal: true
 
-	index do
+ActiveAdmin.register Company do
+  filter :internships_student_enrolment_number, as: :select, collection: proc { Student.pluck(:enrolment_number) }, label: 'Matrikel'
+  filter :name
+  filter :city
+  filter :country
+
+  index do
     column :internships do |n|
       a = n.internships.map(&:id)
-      str = ""
+      str = ''
       a.each do |x|
         str += link_to x, "/admin/internships/#{x}"
       end
@@ -25,30 +27,30 @@ ActiveAdmin.register Company do
     actions
   end
 
-	show do |company|
-      attributes_table do
-      	row :id
-      	row :name
-      	row :number_employees
-      	row :industry
-      	row :website
-      	row :city
-      	row :country
-      	row :street
-      	row :zip
-      	row :main_language
-      	row :phone
-      	row :fax
-      	row :blacklisted
-  			row :internships do |n|
-			    a = company.internships.map(&:id)
-			    str = ""
-			    a.each do |x|
-			   		str += link_to x, "/admin/internships/#{x}"
-			   		str += "<br/>"
-			    end
-			    str.html_safe
-			  end
-			end
-		end
+  show do |company|
+    attributes_table do
+      row :id
+      row :name
+      row :number_employees
+      row :industry
+      row :website
+      row :city
+      row :country
+      row :street
+      row :zip
+      row :main_language
+      row :phone
+      row :fax
+      row :blacklisted
+      row :internships do |_n|
+        a = company.internships.map(&:id)
+        str = ''
+        a.each do |x|
+          str += link_to x, "/admin/internships/#{x}"
+          str += '<br/>'
+        end
+        str.html_safe
+      end
+    end
+  end
 end

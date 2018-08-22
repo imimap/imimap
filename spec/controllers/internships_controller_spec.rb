@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
-#
 require 'rails_helper'
 RSpec.describe InternshipsController, type: :controller do
-   include Devise::Test::ControllerHelpers
-   render_views
+  include Devise::Test::ControllerHelpers
+  render_views
 
   before :each do
     @user = create(:user)
@@ -12,7 +11,7 @@ RSpec.describe InternshipsController, type: :controller do
   end
 
   describe 'GET #index' do
-   it 'renders the index action correctly' do
+    it 'renders the index action correctly' do
       get :index
       expect(response).to have_http_status(:success)
       expect(response).to render_template(:index)
@@ -21,7 +20,7 @@ RSpec.describe InternshipsController, type: :controller do
     context 'assignments' do
       before :each do
         @internship = create :internship, completed: true, living_costs: 42,
-                            salary: 84
+                                          salary: 84
       end
 
       it 'assigns @internships' do
@@ -31,65 +30,65 @@ RSpec.describe InternshipsController, type: :controller do
     end
   end
 end
-      #it 'assigns @current_user' do
-      #  get :index
-      #  expect(assigns(:current_user)).to eq @current_user
-      #end
+# it 'assigns @current_user' do
+#  get :index
+#  expect(assigns(:current_user)).to eq @current_user
+# end
 #
-      #it 'assigns @companies' do
-      #  pending
-      #  get :index
-      #  expect(assigns(:companies)).to eq([@internship.company])
-      #end
+# it 'assigns @companies' do
+#  pending
+#  get :index
+#  expect(assigns(:companies)).to eq([@internship.company])
+# end
 #
-      #it 'assigns @countries' do
-      #  pending
-      #  get :index
-      #  expect(assigns(:countries)).to eq([@internship.company.country])
-      #end
+# it 'assigns @countries' do
+#  pending
+#  get :index
+#  expect(assigns(:countries)).to eq([@internship.company.country])
+# end
 #
-      #it 'assigns @semesters' do
-      #  pending
-      #  get :index
-      #  expect(assigns(:semesters)).to eq([[@internship.semester.name, @internship.semester.id]])
-      #end
+# it 'assigns @semesters' do
+#  pending
+#  get :index
+#  expect(assigns(:semesters)).to eq([[@internship.semester.name, @internship.semester.id]])
+# end
 #
-      #it 'assigns @orientations' do
-      #  pending
-      #  get :index
-      #  expect(assigns(:orientations)).to eq([[@internship.orientation.name, @internship.orientation.id]])
-      #end
+# it 'assigns @orientations' do
+#  pending
+#  get :index
+#  expect(assigns(:orientations)).to eq([[@internship.orientation.name, @internship.orientation.id]])
+# end
 #
-      #it 'assigns @living_costs_max' do
-      #  pending
-      #  get :index
-      #  expect(assigns(:living_costs_max)).to eq(42)
-      #end
+# it 'assigns @living_costs_max' do
+#  pending
+#  get :index
+#  expect(assigns(:living_costs_max)).to eq(42)
+# end
 #
-      #it 'assigns @salary_max' do
-      #  pending
-      #  get :index
-      #  expect(assigns(:salary_max)).to eq(84)
-      #end
+# it 'assigns @salary_max' do
+#  pending
+#  get :index
+#  expect(assigns(:salary_max)).to eq(84)
+# end
 #
-      #it 'assigns @internships differently with progamming_language_ids' do
-      #  pending
-      #  programming_language_a = create(:programming_language)
-      #  programming_language_b = create(:programming_language)
+# it 'assigns @internships differently with progamming_language_ids' do
+#  pending
+#  programming_language_a = create(:programming_language)
+#  programming_language_b = create(:programming_language)
 #
-      #  @internship.programming_languages << programming_language_a
+#  @internship.programming_languages << programming_language_a
 #
-      #  @internship1 = create :internship, completed: true
-      #  @internship1.programming_languages << programming_language_b
+#  @internship1 = create :internship, completed: true
+#  @internship1.programming_languages << programming_language_b
 #
-      #  get :index, params: { programming_language_ids: [programming_language_a.id, programming_language_b.id] }
-      #  expect(assigns(:internships)).to eq([])
-      #end
-  #  end
+#  get :index, params: { programming_language_ids: [programming_language_a.id, programming_language_b.id] }
+#  expect(assigns(:internships)).to eq([])
+# end
+#  end
 
 #  end
 
-#describe 'GET #show' do
+# describe 'GET #show' do
 #  before :each do
 #    @internship = create :internship, completed: true
 #  end
@@ -126,9 +125,9 @@ end
 #      expect(assigns(:user_comments)).to eq([])
 #    end
 #  end
-#end
+# end
 
-#describe 'GET #edit' do
+# describe 'GET #edit' do
 #  before :each do
 #    @internship = create :internship, student: @current_user.student
 #  end
@@ -156,9 +155,9 @@ end
 #    end
 #  end
 
-#end
+# end
 
-#describe 'PUT #update' do
+# describe 'PUT #update' do
 #  before :each do
 #    @internship = create :internship, student: @current_user.student, title: 'Foo'
 #  end
@@ -179,9 +178,9 @@ end
 #      expect(@internship.semester_id).to eq(semester_id)
 #    end
 #  end
-#end
+# end
 
-#describe 'DELETE #destroy' do
+# describe 'DELETE #destroy' do
 #  it 'destroys the specified internship' do
 #    @internship = create :internship, student: @current_user.student
 #    expect {

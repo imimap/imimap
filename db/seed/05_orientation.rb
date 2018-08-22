@@ -1,4 +1,5 @@
-# ruby encoding: utf-8
+# frozen_string_literal: true
+
 Orientation.destroy_all
 Orientation.create!(name: 'Design')
 Orientation.create!(name: 'Game Development')

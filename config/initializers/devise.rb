@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
+  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
   # TDB: create really secret key and handle it better than putting it in a public repository.
   config.secret_key = '1e5f3eecd9af2a0eae15c0e873aa8b47e7e235a951cbb3f4140f4bb9c62d61b7c69f5980f03eb2cbb980c008661de6eed099b54996a41bc0b51cf3abec2fe6bf'
   # Configure the class responsible to send e-mails.
@@ -36,12 +38,12 @@ Devise.setup do |config|
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
-  config.case_insensitive_keys = [ :email ]
+  config.case_insensitive_keys = [:email]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
   # modifying a user and when used to authenticate or find a user. Default is :email.
-  config.strip_whitespace_keys = [ :email ]
+  config.strip_whitespace_keys = [:email]
 
   # Tell if authentication through request.params is enabled. True by default.
   # It can be set to an array that will enable params authentication only for the
@@ -234,7 +236,6 @@ Devise.setup do |config|
     manager.default_strategies(scope: :user).unshift :ldap_authenticatable
   end
 
-
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine
   # is mountable, there are some extra configurations to be taken into account.
@@ -251,11 +252,11 @@ Devise.setup do |config|
 end
 
 if Rails.configuration.devise_ldap == :off
- Devise.setup do |config|
-   config.warden do |manager|
-     manager.default_strategies(:scope => :user).unshift :ldap_off_authenticatable
-     puts "WARNING: switched LDAP Authentification off, all passwords will be accepted"
-     puts "manager.default_strategies(:scope => :user).inspect #{manager.default_strategies(:scope => :user).inspect}"
-   end
- end
+  Devise.setup do |config|
+    config.warden do |manager|
+      manager.default_strategies(scope: :user).unshift :ldap_off_authenticatable
+      puts 'WARNING: switched LDAP Authentification off, all passwords will be accepted'
+      puts "manager.default_strategies(:scope => :user).inspect #{manager.default_strategies(scope: :user).inspect}"
+    end
+  end
 end

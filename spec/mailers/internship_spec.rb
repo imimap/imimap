@@ -1,17 +1,16 @@
 # frozen_string_literal: true
 
-#
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.describe Internship, :type => :mailer do
+RSpec.describe Internship, type: :mailer do
   before :each do
     @user = create :user
     @internship = create :internship
     @mail = InternshipMailer.internship_ready(@internship, @user)
   end
-  describe "#internship_ready" do
+  describe '#internship_ready' do
     it 'renders the subject' do
-      expect(@mail.subject).to eq("IMI-Map: Please tell us about your internship")
+      expect(@mail.subject).to eq('IMI-Map: Please tell us about your internship')
     end
 
     it 'renders the recipient email' do

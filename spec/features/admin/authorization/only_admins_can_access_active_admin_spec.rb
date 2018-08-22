@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-#
 require 'rails_helper'
 
-describe "ActiveAdmin Authorization" do
+describe 'ActiveAdmin Authorization' do
   context 'student users' do
     before :each do
       @user = create(:user)
@@ -36,5 +35,4 @@ describe "ActiveAdmin Authorization" do
       expect(page).to have_content t('active_admin.dashboard')
     end
   end
-
 end

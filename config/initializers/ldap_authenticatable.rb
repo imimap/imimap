@@ -45,13 +45,13 @@ module Devise
           user = User.where(email: ldap_email).first
           unless user
             rpw = SecureRandom.urlsafe_base64(24, false)
-            user = User.create(email: ldap_email, password: rpw, password_confirmation: rpw )
+            user = User.create(email: ldap_email, password: rpw, password_confirmation: rpw)
           end
           return success!(user)
         else
           message = 'ldap: no message'
           message = ldap_adapter.errors[0].join if ldap_adapter.errors.any?
-          return fail(message)
+          return raise(message)
         end
       end
     end

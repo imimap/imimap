@@ -1,4 +1,5 @@
-# ruby encoding: utf-8
+# frozen_string_literal: true
+
 10.times do
   InternshipOffer.create!(
     title: Faker::Job.title,

@@ -1,34 +1,35 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register ReadingProf do
   filter :name
 
-	index do
-		column :name
-		column :internships do |n|
+  index do
+    column :name
+    column :internships do |n|
       a = n.internships.map(&:id)
-      str = ""
+      str = ''
       a.each do |x|
         str += link_to x, "/admin/internships/#{x}"
       end
       str.html_safe
     end
     actions
-	end
+  end
 
   show do |prof|
-      attributes_table do
-        row :id
-        row :name
+    attributes_table do
+      row :id
+      row :name
 
-        row :internships do |n|
-          a = prof.internships.map(&:id)
-          str = ""
-          a.each do |x|
-            str += link_to x, "/admin/internships/#{x}"
-          end
-          str.html_safe
+      row :internships do |_n|
+        a = prof.internships.map(&:id)
+        str = ''
+        a.each do |x|
+          str += link_to x, "/admin/internships/#{x}"
         end
+        str.html_safe
       end
-      active_admin_comments
     end
-
+    active_admin_comments
+  end
 end

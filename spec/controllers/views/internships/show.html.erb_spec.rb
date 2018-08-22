@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
-#
 require 'spec_helper'
 
 # TBD maybe revive with rails 5.1 to be clear which test doc holds
-#describe 'internships/show.html.erb' do
+# describe 'internships/show.html.erb' do
 #  before do
 #    @user = create(:user)
 ##    view.stub(:current_user).and_return(@user)
@@ -35,5 +34,5 @@ require 'spec_helper'
 #      render.should have_content('Total amount of weeks')
 #      render.should have_content('Validation status')
 #  end
-#end
+# end
 #

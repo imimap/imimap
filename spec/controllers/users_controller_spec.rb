@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-#
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
@@ -41,7 +40,7 @@ RSpec.describe UsersController, type: :controller do
   #   end
   # end
 
-  describe "GET #show" do
+  describe 'GET #show' do
     it 'renders the show template' do
       get :show, params: { id: @current_user }
       expect(response).to render_template :show
@@ -53,12 +52,12 @@ RSpec.describe UsersController, type: :controller do
     end
 
     it 'assigns @internships' do
-      get :show, params: {  id: @current_user }
+      get :show, params: { id: @current_user }
       expect(assigns(:internships)).to eq []
     end
 
     it 'assigns @comments' do
-      get :show,  params: { id: @current_user }
+      get :show, params: { id: @current_user }
       expect(assigns(:comments)).to eq []
     end
   end

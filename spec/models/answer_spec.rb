@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-#
 require 'rails_helper'
 
-RSpec.describe Answer, :type => :model do
+RSpec.describe Answer, type: :model do
   before :each do
     @answer = build :answer
   end

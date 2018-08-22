@@ -1,16 +1,15 @@
+# frozen_string_literal: true
+
 class FavoriteCompareController < ApplicationController
   def index
-    if params[:favorite_ids]
-    	@internships = Internship.find(params[:favorite_ids])
-    else
-    	@internships = []
-    end
+    @internships = if params[:favorite_ids]
+                     Internship.find(params[:favorite_ids])
+                   else
+                     []
+                   end
 
     respond_to do |format|
-      format.js { render :layout=>false }
+      format.js { render layout: false }
     end
-
   end
-
-
 end
