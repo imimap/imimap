@@ -4,9 +4,9 @@
 FactoryBot.define do
   factory :prof, class: User do
     email { 'prof@example.com' }
-    password { 'geheim12' }
-    password_confirmation { 'geheim12' }
-    publicmail { true }
+    password { 'geheim123' }
+    password_confirmation { 'geheim123' }
+    publicmail { false }
     mailnotif { true }
     role { :prof }
   end
