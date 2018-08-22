@@ -68,3 +68,6 @@ id_rsa_staging
 
 postgresql/*
 rails/public
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
