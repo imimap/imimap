@@ -43,10 +43,10 @@
 <text text-anchor="start" x="278" y="-390.3" font-family="Times,serif" font-size="14.00" fill="#000000">authorize</text>
 <text text-anchor="start" x="278" y="-376.3" font-family="Times,serif" font-size="14.00" fill="#000000">current_user</text>
 <text text-anchor="start" x="278" y="-362.3" font-family="Times,serif" font-size="14.00" fill="#000000">default_url_options</text>
-<text text-anchor="start" x="278" y="-348.3" font-family="Times,serif" font-size="14.00" fill="#000000">get_notification_size</text>
-<text text-anchor="start" x="278" y="-334.3" font-family="Times,serif" font-size="14.00" fill="#000000">get_orientations</text>
-<text text-anchor="start" x="278" y="-320.3" font-family="Times,serif" font-size="14.00" fill="#000000">get_programming_languages</text>
-<text text-anchor="start" x="278" y="-306.3" font-family="Times,serif" font-size="14.00" fill="#000000">get_semesters</text>
+<text text-anchor="start" x="278" y="-348.3" font-family="Times,serif" font-size="14.00" fill="#000000">notification_size</text>
+<text text-anchor="start" x="278" y="-334.3" font-family="Times,serif" font-size="14.00" fill="#000000">orientations</text>
+<text text-anchor="start" x="278" y="-320.3" font-family="Times,serif" font-size="14.00" fill="#000000">programming_languages</text>
+<text text-anchor="start" x="278" y="-306.3" font-family="Times,serif" font-size="14.00" fill="#000000">semesters</text>
 <text text-anchor="start" x="278" y="-292.3" font-family="Times,serif" font-size="14.00" fill="#000000">_layout</text>
 </g>
 <!-- CompaniesController -->

@@ -2,7 +2,7 @@
 
 class InternshipsController < ApplicationController
   respond_to :html, :json
-  before_action :get_programming_languages, :get_orientations, only: %i[new edit update]
+  before_action :programming_languages, :orientations, only: %i[new edit update]
 
   before_action :authorize_internship, only: %i[edit update destroy]
   # GET /internships
@@ -86,9 +86,9 @@ class InternshipsController < ApplicationController
 
   # If the user has no internship, the system asks him/her to create a new one
   # else the internship details are shown
-  def internshipData
+  def internship_data
     if Internship.where(user_id: current_user.id).last.nil?
-      render :noInternshipData
+      render :no_internship_data
     else
       @internship = Internship.where(user_id: current_user.id).last
       redirect_to @internship

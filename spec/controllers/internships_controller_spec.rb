@@ -189,7 +189,7 @@ end
 #    end
 #  end
 
-#  describe '#internshipData' do
+#  describe '#internship_data' do
 
 #    context 'the user has an internship' do
 #      it 'renders the my_internship view' do
@@ -200,9 +200,9 @@ end
 #    end
 
 #    context 'the internship can not be found' do
-#      it 'renders the noInternshipData view' do
-#        get :internshipData, params: { id: 42 }
-#        expect(response).to render_template(:noInternshipData)
+#      it 'renders the no_internship_data view' do
+#        get :internship_data, params: { id: 42 }
+#        expect(response).to render_template(:no_internship_data)
 #      end
 #    end
 #  end

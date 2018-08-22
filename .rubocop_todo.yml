@@ -8,43 +8,43 @@
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Layout/CommentIndentation:
-  Exclude:
-    - 'spec/controllers/users_controller_spec.rb'
+# Layout/CommentIndentation:
+#   Exclude:
+#     - 'spec/controllers/users_controller_spec.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyleAlignWith, AutoCorrect, Severity.
 # SupportedStylesAlignWith: start_of_line, def
-Layout/DefEndAlignment:
-  Exclude:
-    - 'app/controllers/current_internships_controller.rb'
-    - 'db/migrate/20130523140518_rename_orientation_to_orientation_id_in_internship.rb'
+# Layout/DefEndAlignment:
+#   Exclude:
+#    - 'app/controllers/current_internships_controller.rb'
+#    - 'db/migrate/20130523140518_rename_orientation_to_orientation_id_in_internship.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyleAlignWith, AutoCorrect, Severity.
 # SupportedStylesAlignWith: keyword, variable, start_of_line
-Layout/EndAlignment:
-  Exclude:
-    - 'app/uploaders/file_uploader.rb'
+# Layout/EndAlignment:
+#   Exclude:
+#     - 'app/uploaders/file_uploader.rb'
 
 # Offense count: 1
 # Configuration parameters: AllowSafeAssignment.
-Lint/AssignmentInCondition:
-  Exclude:
-    - 'app/controllers/users_controller.rb'
+# Lint/AssignmentInCondition:
+#   Exclude:
+#     - 'app/controllers/users_controller.rb'
 
 # Offense count: 2
-Lint/ParenthesesAsGroupedExpression:
-  Exclude:
-    - 'app/admin/internships.rb'
+# Lint/ParenthesesAsGroupedExpression:
+#   Exclude:
+#     - 'app/admin/internships.rb'
 
 # Offense count: 3
-Lint/UselessAssignment:
-  Exclude:
-    - 'db/seeds.rb'
-    - 'spec-api/ldap_htw_spec.rb'
+# Lint/UselessAssignment:
+#   Exclude:
+#     - 'db/seeds.rb'
+#     - 'spec-api/ldap_htw_spec.rb'
 
 # Offense count: 20
 Metrics/AbcSize:
@@ -57,84 +57,84 @@ Metrics/BlockLength:
   Max: 297
 
 # Offense count: 1
-Metrics/CyclomaticComplexity:
-  Max: 9
+# Metrics/CyclomaticComplexity:
+#   Max: 9
 
 # Offense count: 16
 # Configuration parameters: CountComments.
 Metrics/MethodLength:
-  Max: 47
+  Max: 30
 
 # Offense count: 1
-Metrics/PerceivedComplexity:
-  Max: 10
+# Metrics/PerceivedComplexity:
+#   Max: 10
 
 # Offense count: 5
-Naming/AccessorMethodName:
-  Exclude:
-    - 'app/controllers/application_controller.rb'
-    - 'app/helpers/application_helper.rb'
+# Naming/AccessorMethodName:
+#   Exclude:
+#     - 'app/controllers/application_controller.rb'
+#     - 'app/helpers/application_helper.rb'
 
 # Offense count: 3
 # Configuration parameters: EnforcedStyleForLeadingUnderscores.
 # SupportedStylesForLeadingUnderscores: disallowed, required, optional
-Naming/MemoizedInstanceVariableName:
-  Exclude:
-    - 'app/controllers/application_controller.rb'
+# Naming/MemoizedInstanceVariableName:
+#   Exclude:
+#     - 'app/controllers/application_controller.rb'
 
 # Offense count: 1
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: snake_case, camelCase
-Naming/MethodName:
-  Exclude:
-    - 'app/controllers/internships_controller.rb'
+# Naming/MethodName:
+#   Exclude:
+#     - 'app/controllers/internships_controller.rb'
 
 # Offense count: 2
 # Configuration parameters: MinNameLength, AllowNamesEndingInNumbers, AllowedNames, ForbiddenNames.
 # AllowedNames: io, id, to, by, on, in, at, ip
-Naming/UncommunicativeMethodParamName:
-  Exclude:
-    - 'app/helpers/application_helper.rb'
-    - 'app/models/internship_duration.rb'
+# Naming/UncommunicativeMethodParamName:
+#   Exclude:
+#     - 'app/helpers/application_helper.rb'
+#     - 'app/models/internship_duration.rb'
 
 # Offense count: 1
 # Configuration parameters: AllowedChars.
-Style/AsciiComments:
-  Exclude:
-    - 'config/application.rb'
+# Style/AsciiComments:
+#   Exclude:
+#     - 'config/application.rb'
 
 # Offense count: 7
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, EnforcedStyle.
 # SupportedStyles: nested, compact
-Style/ClassAndModuleChildren:
-  Exclude:
-    - 'app/controllers/users/confirmations_controller.rb'
-    - 'app/controllers/users/omniauth_callbacks_controller.rb'
-    - 'app/controllers/users/passwords_controller.rb'
-    - 'app/controllers/users/registrations_controller.rb'
-    - 'app/controllers/users/sessions_controller.rb'
-    - 'app/controllers/users/unlocks_controller.rb'
-    - 'config/initializers/active_admin/chosen.rb'
+# Style/ClassAndModuleChildren:
+#   Exclude:
+#    - 'app/controllers/users/confirmations_controller.rb'
+#    - 'app/controllers/users/omniauth_callbacks_controller.rb'
+#    - 'app/controllers/users/passwords_controller.rb'
+#    - 'app/controllers/users/registrations_controller.rb'
+#    - 'app/controllers/users/sessions_controller.rb'
+#    - 'app/controllers/users/unlocks_controller.rb'
+#    - 'config/initializers/active_admin/chosen.rb'
 
 # Offense count: 1
-Style/CommentedKeyword:
-  Exclude:
-    - 'app/admin/dashboard.rb'
+# Style/CommentedKeyword:
+#   Exclude:
+#     - 'app/admin/dashboard.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SingleLineConditionsOnly, IncludeTernaryExpressions.
 # SupportedStyles: assign_to_condition, assign_inside_condition
-Style/ConditionalAssignment:
-  Exclude:
-    - 'app/controllers/quicksearches_controller.rb'
+# Style/ConditionalAssignment:
+#   Exclude:
+#     - 'app/controllers/quicksearches_controller.rb'
 
 # Offense count: 6
-Style/DateTime:
-  Exclude:
-    - 'spec/factories/internships.rb'
-    - 'spec/factories/students.rb'
+# Style/DateTime:
+#   Exclude:
+#     - 'spec/factories/internships.rb'
+#     - 'spec/factories/students.rb'
 
 # Offense count: 167
 Style/Documentation:
@@ -143,59 +143,56 @@ Style/Documentation:
 # Offense count: 1
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: each, for
-Style/For:
-  Exclude:
-    - 'db/seed/01_semester.rb'
+# Style/For:
+#   Exclude:
+#     - 'db/seed/01_semester.rb'
 
 # Offense count: 5
 # Configuration parameters: MinBodyLength.
-Style/GuardClause:
-  Exclude:
-    - 'app/controllers/statistic_controller.rb'
-    - 'app/mailers/admin_mailer.rb'
-    - 'app/observers/internship_observer.rb'
-    - 'app/observers/user_observer.rb'
-    - 'config/initializers/ldap_off_authenticatable.rb'
+# Style/GuardClause:
+#   Exclude:
+#     - 'app/controllers/statistic_controller.rb'
+#     - 'app/mailers/admin_mailer.rb'
+#     - 'app/observers/internship_observer.rb'
+#     - 'app/observers/user_observer.rb'
+#     - 'config/initializers/ldap_off_authenticatable.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
-Style/IfUnlessModifier:
-  Exclude:
-    - 'app/observers/internship_observer.rb'
-    - 'app/observers/user_observer.rb'
+# Style/IfUnlessModifier:
+#   Exclude:
+#     - 'app/observers/internship_observer.rb'
+#     - 'app/observers/user_observer.rb'
 
-# Offense count: 1
+
+
+# Not solvable for now
 Style/MethodMissingSuper:
-  Exclude:
-    - 'app/helpers/rating_renderer.rb'
-
-# Offense count: 1
-Style/MissingRespondToMissing:
-  Exclude:
-    - 'app/helpers/rating_renderer.rb'
+ Exclude:
+   - 'app/helpers/rating_renderer.rb'
 
 # Offense count: 2
-Style/MixinUsage:
-  Exclude:
-    - 'bin/setup'
-    - 'bin/update'
+# Style/MixinUsage:
+#   Exclude:
+#     - 'bin/setup'
+#     - 'bin/update'
 
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, EnforcedStyle.
 # SupportedStyles: predicate, comparison
-Style/NumericPredicate:
-  Exclude:
-    - 'spec/**/*'
-    - 'app/controllers/statistic_controller.rb'
+# Style/NumericPredicate:
+#   Exclude:
+#     - 'spec/**/*'
+#     - 'app/controllers/statistic_controller.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
 # SupportedStyles: single_quotes, double_quotes
-Style/StringLiterals:
-  Exclude:
-    - 'app/controllers/users_controller.rb'
+# Style/StringLiterals:
+#   Exclude:
+#     - 'app/controllers/users_controller.rb'
 
 # Offense count: 334
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.

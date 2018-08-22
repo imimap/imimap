@@ -21,5 +21,5 @@ class CurrentInternshipsController < ApplicationController
       format.html
       format.csv { send_data @internships.to_csv }
     end
-    end
+  end
 end

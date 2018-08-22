@@ -1,3 +1,4 @@
+
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
@@ -33,7 +34,7 @@ class ApplicationController < ActionController::Base
 
   # helper_method :current_user
 
-  def get_programming_languages
+  def programming_languages
     @programming_languages ||= ProgrammingLanguage.order(:name).map do |p|
       [p.name, p.id]
     end
@@ -41,15 +42,15 @@ class ApplicationController < ActionController::Base
 
   helper_method :get_programming_languages
 
-  def get_orientations
+  def orientations
     @orientations ||= Orientation.order(:name).map do |o|
       [o.name, o.id]
     end
   end
 
-  helper_method :get_orientations
+  helper_method :orientations
 
-  def get_semesters
+  def semesters
     @semesters ||= Semester.order(:id).map do |s|
       [s.name, s.id]
     end
@@ -57,7 +58,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :get_semesters
 
-  def get_notification_size
+  def notification_size
     Notification.where(user_id: current_user.try(:id)).size
   end
 

@@ -31,7 +31,7 @@
   </div>
   <div class="field">
     <%= f.label :programming_language_ids %><br />
-    <%= f.select :programming_language_ids, get_programming_languages, {}, { :multiple => true } %>
+    <%= f.select :programming_language_ids, programming_languages, {}, { :multiple => true } %>
   </div>
   <div class="actions"><%= f.submit "Search" %></div>
-<% end %> 
+<% end %>

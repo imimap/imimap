@@ -12,13 +12,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     # TBD centralize logic for users that are not students
-    if s = @user.student
+    if (s = @user.student)
       @internships = s.internships
       @user_first_name = s.first_name
       @user_last_name = s.last_name
     else
       @internships = []
-      @user_first_name = "not a student"
+      @user_first_name = 'not a student'
       @user_last_name = @user.email
     end
   end

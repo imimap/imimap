@@ -11,25 +11,24 @@ module Devise
       end
 
       def authenticate!
-        if params[:user]
-          puts 'WARNING - AUTHENTICATING WITH ANY PASSWORD'
-          # when successfully connected to LDAP and user already exists
-          user = User.find_by_email(params[:user][:email])
-          return success!(user) unless user.nil?
+        return unless params[:user]
+        puts 'WARNING - AUTHENTICATING WITH ANY PASSWORD'
+        # when successfully connected to LDAP and user already exists
+        user = User.find_by_email(params[:user][:email])
+        return success!(user) unless user.nil?
 
-          # when no matching user exists
-          @surname = 'entry.sn.first'
-          @givenname = 'entry.givenname.first'
-          @email = email
-          @enrolment_number = 'entry.uid.first'
-          @student = Student.create(first_name: @givenname, last_name: @surname, enrolment_number: @enrolment_number, email: email)
-          # TBD: this stores the ldap password in our database, and although encrypted, we shouldn't be doing this.
-          @user = User.create(email: email, password: password, student_id: @student.id)
-          puts @user.inspect
-          puts @student.inspect
-          success!(@user)
-          #  end
-        end
+        # when no matching user exists
+        @surname = 'entry.sn.first'
+        @givenname = 'entry.givenname.first'
+        @email = email
+        @enrolment_number = 'entry.uid.first'
+        @student = Student.create(first_name: @givenname, last_name: @surname, enrolment_number: @enrolment_number, email: email)
+        # TBD: this stores the ldap password in our database, and although encrypted, we shouldn't be doing this.
+        @user = User.create(email: email, password: password, student_id: @student.id)
+        puts @user.inspect
+        puts @student.inspect
+        success!(@user)
+        #  end
       end
 
       def email

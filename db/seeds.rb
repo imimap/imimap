@@ -4,7 +4,7 @@ puts 'seeding database'
 
 Dir[File.join(Rails.root, 'db', 'seed', '*.rb')].sort.each { |seed| load seed }
 
-user = User.destroy_all
+User.destroy_all
 u = User.new(email: 'test@htw-berlin.de', password: 'geheim12', password_confirmation: 'geheim12')
 u.student = Student.first
 u.save
