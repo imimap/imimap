@@ -25,10 +25,6 @@ class User < ApplicationRecord
     end
   end
 
-  def enrolment_number
-    return nil unless student
-    student.enrolment_number
-  end
   EDITABLE_ATTRIBUTES = %i[email mailnotif publicmail student role].freeze
   EDITABLE_ATTRIBUTES_PW = %i[email mailnotif publicmail student role password password_confirmation].freeze
 
@@ -39,5 +35,28 @@ class User < ApplicationRecord
 
   def set_default_role
     self.role ||= :user
+  end
+
+  def student?
+    return true if student
+    student_email?(email)
+  end
+
+  def enrolment_number
+    return nil unless student?
+    if student
+      student.enrolment_number
+    else
+      enrolment_number_from_email(email)
+    end
+  end
+  STUDENT_MAIL_REGEX = /s(\d{6})@htw-berlin.de/
+  def student_email?(email1)
+    !STUDENT_MAIL_REGEX.match(email1).nil?
+  end
+
+  def enrolment_number_from_email(email1)
+    match = STUDENT_MAIL_REGEX.match(email1)
+    match ? match[1] : nil
   end
 end

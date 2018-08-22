@@ -4,7 +4,7 @@
 <div class="col-md-4">
   <div class="field" id="field-titles2">
   <b><%= t "users.attributes.first_name" %> :</b>
-  <%= @user.student.first_name %>
+  <%= @user_first_name %>
   </div>
 </div>
 <div class="col-md-4">
@@ -28,7 +28,7 @@
 <div class="col-md-4">
   <div class="field" id="field-titles2">
 <b><%= t "users.attributes.last_name" %> :</b>
-  <%= @user.student.last_name %>
+  <%= @user_last_name %>
   </div>
 </div>
 <div class="col-md-4">
@@ -75,7 +75,8 @@
 </div>
 <% end %>
 
-<% if @comments.any? %>
+
+<% if false && @comments.any? #TBD Comments %>
 
 <div id="form-block4">
 

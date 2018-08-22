@@ -1,8 +1,11 @@
 <ul class="nav float-right imi-nav-right">
+  <% if false #TBD Search Favorites %>
   <li class = "imimap-nav-right-li"><%= link_to(favorite_index_path, :alt => "Favorite") do %>
       <i class="icon-heart icon-large"></i>
     <% end %>
   </li>
+  <% end # TDB Search %>
+  <% if false #TBD Notifications %>
 
   <li class="dropdown imimap-nav-right-li">
     <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">
@@ -24,7 +27,7 @@
         </li>
       <% end %>
     </ul>
-
+<% end # TDB Notifications %>
 
     <li class = "imimap-nav-right-li">
       <%= link_to current_user  do %>
