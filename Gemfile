@@ -55,8 +55,6 @@ gem 'groupdate', '~> 3.2'
 gem 'factory_bot_rails'
 
 group :development do
-  gem 'bootsnap'
-  gem 'listen'
   gem 'rubocop'
   gem 'rubocop-rspec'
   gem 'spring'
@@ -101,3 +99,6 @@ gem 'unicorn'
 
 # Deploy with Capistrano
 gem 'capistrano'
+
+gem 'bootsnap'
+gem 'listen'
