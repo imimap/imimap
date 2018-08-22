@@ -58,6 +58,8 @@ gem 'factory_bot_rails'
 group :development do
   gem 'spring'
   gem 'rubocop', '~> 0.51.0'
+  gem 'bootsnap'
+  gem 'listen'
 end
 
 # database gem
@@ -94,6 +96,7 @@ gem 'bcrypt', '~> 3'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
+
 
 # Use unicorn as the app server
 gem 'unicorn'
