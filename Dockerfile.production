@@ -27,8 +27,6 @@ RUN set -ex \
   postgresql-dev \
   imagemagick-dev \
   && bundle install --without development test \
-  && if [ -z RAILS_MASTER_KEY ]; then echo RAILS_MASTER_KEY missing ; else echo RAILS_MASTER_KEY present; fi \
-  && if [ -z SECRET_KEY_BASE ]; then echo SECRET_KEY_BASE missing ; else echo SECRET_KEY_BASE present; fi \
   && mkdir nginx-assets \
   && bundle exec rails assets:precompile \
   && apk del .builddeps
