@@ -1,28 +1,28 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 class FileUploader < CarrierWave::Uploader::Base
-    # Include RMagick or MiniMagick support:
-    # include CarrierWave::RMagick
-    include CarrierWave::MiniMagick
+  # Include RMagick or MiniMagick support:
+  # include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
 
-    process :resize_to_fit => [1024, 768]
+  process resize_to_fit: [1024, 768]
 
-    version :thumb do
-      process :resize_to_limit => [200, 200]
-    end
-    # include CarrierWave::MiniMagick
+  version :thumb do
+    process resize_to_limit: [200, 200]
+  end
+  # include CarrierWave::MiniMagick
 
-    # Choose what kind of storage to use for this uploader:
-    storage :file
-    # storage :fog
+  # Choose what kind of storage to use for this uploader:
+  storage :file
+  # storage :fog
 
-    # Override the directory where uploaded files will be stored.
-    # This is a sensible default for uploaders that are meant to be mounted:
+  # Override the directory where uploaded files will be stored.
+  # This is a sensible default for uploaders that are meant to be mounted:
 
-    def store_dir
-      #TBD this needs to go into a configuration
-      "uploads/#{Rails.env}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-    end
+  def store_dir
+    # TBD this needs to go into a configuration
+    "uploads/#{Rails.env}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  end
 
     # Provide a default URL as a default if there hasn't been a file uploaded:
     # def default_url(*args)
@@ -55,5 +55,4 @@ class FileUploader < CarrierWave::Uploader::Base
     # def filename
     #   "something.jpg" if original_filename
     # end
-
   end

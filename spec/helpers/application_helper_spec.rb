@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-#
 require 'rails_helper'
 
 # Specs in this file have access to a helper object that includes
@@ -13,19 +12,19 @@ require 'rails_helper'
 #     end
 #   end
 # end
-RSpec.describe ApplicationHelper, :type => :helper do
-  describe "#flash_class" do
+RSpec.describe ApplicationHelper, type: :helper do
+  describe '#flash_class' do
     it 'should return the correct css classes' do
-      expect(helper.flash_class(:notice)).to eq "alert alert-info"
-      expect(helper.flash_class(:success)).to eq "alert alert-success"
-      expect(helper.flash_class(:error)).to eq "alert alert-danger"
-      expect(helper.flash_class(:alert)).to eq "alert alert-info"
+      expect(helper.flash_class(:notice)).to eq 'alert alert-info'
+      expect(helper.flash_class(:success)).to eq 'alert alert-success'
+      expect(helper.flash_class(:error)).to eq 'alert alert-danger'
+      expect(helper.flash_class(:alert)).to eq 'alert alert-info'
     end
   end
 
   # I don't know what was supposed to happen here...
   # get empty array?
-  describe "#get_notifications" do
+  describe '#get_notifications' do
     it 'should return the correct notifications' do
       # expect(helper.get_notifications).to eq []
     end

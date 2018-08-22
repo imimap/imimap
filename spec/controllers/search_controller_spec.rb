@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-#
 require 'rails_helper'
 
 RSpec.describe SearchController, type: :controller do
@@ -12,7 +11,7 @@ RSpec.describe SearchController, type: :controller do
     @internship.programming_languages << create(:programming_language)
   end
 
-  describe "GET index" do
+  describe 'GET index' do
     it 'should run the index method' do
       # get :index
       # expect(response).to be_truthy

@@ -21,19 +21,18 @@ RSpec.describe CompaniesController, type: :controller do
     end
 
     it 'does not add http to the company website, if http is already present' do
-      create :company, website: "http"
+      create :company, website: 'http'
       get :index
       expect(response).to render_template :index
     end
 
     it 'assigns @companies' do
       get :index
-      expect(assigns(:companies)).to eq([@company,@company2])
+      expect(assigns(:companies)).to eq([@company, @company2])
     end
-
   end
 
-  describe "GET #show" do
+  describe 'GET #show' do
     before :each do
       @company = create :company
       @company2 = create :is24
@@ -55,14 +54,13 @@ RSpec.describe CompaniesController, type: :controller do
     end
 
     it 'does not add http to the company website, if http is already present' do
-      @company = create :company, website: "http"
+      @company = create :company, website: 'http'
       get :show, params: { id: @company }
       expect(response).to render_template :show
     end
-
   end
 
-  describe "GET #new" do
+  describe 'GET #new' do
     it 'renders the new template' do
       get :new
       expect(response).to render_template :new
@@ -72,10 +70,9 @@ RSpec.describe CompaniesController, type: :controller do
       get :new
       expect(assigns(:company)).to be_a_new(Company)
     end
-
   end
 
-  describe "GET #edit" do
+  describe 'GET #edit' do
     before :each do
       @company = create :company
     end
@@ -91,12 +88,12 @@ RSpec.describe CompaniesController, type: :controller do
     end
   end
 
-  describe "POST #create" do
+  describe 'POST #create' do
     context 'given correct parameters' do
       it 'creates a new Company' do
-        expect {
+        expect do
           post :create, params: { company: attributes_for(:company) }
-        }.to change(Company, :count).by(1)
+        end.to change(Company, :count).by(1)
       end
 
       it 'redirects to the show view ' do
@@ -107,9 +104,9 @@ RSpec.describe CompaniesController, type: :controller do
 
     context 'given incorrect parameters' do
       it 'refuses to create a new Company' do
-        expect {
+        expect do
           post :create, params: { company: attributes_for(:company, name: nil) }
-        }.to_not change(Company, :count)
+        end.to_not change(Company, :count)
       end
 
       it 'redirects to the show new view ' do
@@ -119,20 +116,20 @@ RSpec.describe CompaniesController, type: :controller do
     end
   end
 
-  describe "PUT #update" do
+  describe 'PUT #update' do
     before :each do
-      @company = create :company, name: "Foo"
+      @company = create :company, name: 'Foo'
     end
 
     context 'given correct parameters' do
       it 'updates the specified Company' do
-        put :update, params: { id: @company, company: attributes_for(:company, name: "Bar") }
+        put :update, params: { id: @company, company: attributes_for(:company, name: 'Bar') }
         @company.reload
-        expect(@company.name).to eq("Bar")
+        expect(@company.name).to eq('Bar')
       end
 
       it 'redirects to the show view' do
-        put :update, params: { id: @company, company: attributes_for(:company, name: "Bar") }
+        put :update, params: { id: @company, company: attributes_for(:company, name: 'Bar') }
         expect(response).to redirect_to Company.last
       end
     end
@@ -141,26 +138,25 @@ RSpec.describe CompaniesController, type: :controller do
       it 'refuses to update the specified Company' do
         put :update, params: { id: @company, company: attributes_for(:company, name: nil) }
         @company.reload
-        expect(@company.name).to eq("Foo")
-
+        expect(@company.name).to eq('Foo')
       end
 
       it 'redirects to the edit view' do
-        put :update,  params: { id: @company, company: attributes_for(:company, name: nil) }
+        put :update, params: { id: @company, company: attributes_for(:company, name: nil) }
         expect(response).to render_template :edit
       end
     end
   end
 
-  describe "DELETE #destroy" do
+  describe 'DELETE #destroy' do
     before :each do
       @company = create :company
     end
 
     it 'destroys the specified company' do
-      expect {
+      expect do
         delete :destroy, params: { id: @company.id }
-      }.to change(Company, :count).by(-1)
+      end.to change(Company, :count).by(-1)
     end
   end
 end

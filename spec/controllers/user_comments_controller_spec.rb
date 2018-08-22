@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-#
 require 'rails_helper'
 
 RSpec.describe UserCommentsController, type: :controller do
@@ -10,15 +9,14 @@ RSpec.describe UserCommentsController, type: :controller do
     @current_user = login
   end
 
-  describe "GET #new" do
-
+  describe 'GET #new' do
     it 'assigns @comment' do
       get :new, xhr: true, format: :json
       expect(assigns(:comment)).to be_a_new(UserComment)
     end
   end
 
-  describe "POST #create" do
+  describe 'POST #create' do
     before :each do
       @internship = create :internship
       # @internship.student.user = create(:user)
@@ -31,7 +29,7 @@ RSpec.describe UserCommentsController, type: :controller do
              params: {
                user_comment: attributes_for(:user_comment,
                                             internship_id: @internship.id)
-                     }
+             }
       end.to change(UserComment, :count).by(1)
     end
 
@@ -50,13 +48,11 @@ RSpec.describe UserCommentsController, type: :controller do
       post :create, xhr: true, format: :js, params: { user_comment: attributes_for(:user_comment, internship_id: @internship.id) }
       expect(assigns(:new_comment)).to be_a_new(UserComment)
     end
-
-
   end
 
-  describe "PUT #update" do
+  describe 'PUT #update' do
     before :each do
-      @user_comment = create :user_comment, body: "Foo"
+      @user_comment = create :user_comment, body: 'Foo'
     end
 
     it 'assigns @comment' do
@@ -66,27 +62,27 @@ RSpec.describe UserCommentsController, type: :controller do
 
     context 'given correct parameters' do
       it 'updates the user_comment' do
-        put :update, params: { id: @user_comment, user_comment: attributes_for(:user_comment, body: "Bar") }
+        put :update, params: { id: @user_comment, user_comment: attributes_for(:user_comment, body: 'Bar') }
         @user_comment.reload
-        expect(@user_comment.body).to eq("Bar")
+        expect(@user_comment.body).to eq('Bar')
       end
     end
 
     context 'given incorrect parameters' do
       it 'refuses to update the user_comment' do
         put :update,
-            #xhr: true,
+            # xhr: true,
             format: :json,
             params: { id: @user_comment, user_comment: attributes_for(:user_comment, body: nil) }
         @user_comment.reload
-        expect(@user_comment.body).to eq("Foo")
+        expect(@user_comment.body).to eq('Foo')
       end
     end
   end
 
-  describe "DELETE #destroy" do
+  describe 'DELETE #destroy' do
     before :each do
-      @user_comment = create :user_comment, body: "Foo"
+      @user_comment = create :user_comment, body: 'Foo'
     end
 
     it 'assigns @comment' do

@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
-#
 require 'rails_helper'
 
 RSpec.describe OverviewController, type: :controller do
   render_views
-
 
   before :each do
     @current_user = login
@@ -21,7 +19,7 @@ RSpec.describe OverviewController, type: :controller do
 
   describe 'GET #index' do
     it 'shows index view with the right id' do
-      get :index,  params: { id: @semester_id }
+      get :index, params: { id: @semester_id }
       expect(assigns(:semester_id)).to eq(@semester_id)
     end
   end

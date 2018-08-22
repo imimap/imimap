@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class SetRecommendToTrueDefault < ActiveRecord::Migration[4.2]
-  def change  	
-      change_column :internships, :recommend, :boolean, :default => true
+  def change
+    change_column :internships, :recommend, :boolean, default: true
   end
 end

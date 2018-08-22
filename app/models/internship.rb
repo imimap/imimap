@@ -58,7 +58,6 @@ class Internship < ApplicationRecord
     @duration = nil
   end
 
-
   # CodeReviewSS17
   # CSV is a view and should not be in the model.
   # modify to accept hash options for .xls file (needed for prof reports?)
@@ -77,7 +76,7 @@ class Internship < ApplicationRecord
   # CodeReview: form and logic of missing end date needs to be adapted
   # expected hand in 4 weeks after end of internship time
   def expected_hand_in
-    if ( self[:end_date].nil? )
+    if self[:end_date].nil?
       Time.now.strftime('%Y-%m-%d')
     else
       d = self[:end_date].to_time + 4.weeks

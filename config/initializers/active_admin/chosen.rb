@@ -1,10 +1,12 @@
-#TBD is this still needed?
+# frozen_string_literal: true
+
+# TBD is this still needed?
 module ActiveAdmin
   module Inputs
     class FilterSelectInput < ::Formtastic::Inputs::SelectInput
       def extra_input_html_options
         {
-          :class => 'chosen'
+          class: 'chosen'
         }
       end
     end
@@ -14,8 +16,8 @@ end
 class Formtastic::Inputs::SelectInput
   def extra_input_html_options
     {
-      :class => 'chosen',
-      :multiple => multiple?
+      class: 'chosen',
+      multiple: multiple?
     }
   end
 end

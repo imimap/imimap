@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe QuicksearchesController, type: :controller do
@@ -20,16 +21,16 @@ RSpec.describe QuicksearchesController, type: :controller do
       @internship.programming_languages << [@programming_language_a, @programming_language_b]
 
       get :index, format: :js, xhr: true,
-          params: { semester: [@internship.semester.id.to_s],
-          programming_language_ids: [@programming_language_a.id.to_s, @programming_language_b.id.to_s] }
+                  params: { semester: [@internship.semester.id.to_s],
+                            programming_language_ids: [@programming_language_a.id.to_s, @programming_language_b.id.to_s] }
       expect(response).to render_template(:index)
 
       @internship.company.website = 'http://foo'
       @internship.company.save
 
       get :index, format: :js, xhr: true,
-          params: { semester: [@internship.semester.id.to_s],
-          programming_language_ids: [@programming_language_a.id.to_s, @programming_language_b.id.to_s] }
+                  params: { semester: [@internship.semester.id.to_s],
+                            programming_language_ids: [@programming_language_a.id.to_s, @programming_language_b.id.to_s] }
       expect(response).to render_template(:index)
     end
 
@@ -42,8 +43,8 @@ RSpec.describe QuicksearchesController, type: :controller do
       @internship.programming_languages << [@programming_language_a, @programming_language_b]
 
       get :index, format: :js, xhr: true, params: {
-          semester: [@internship.semester.id.to_s],
-          programming_language_ids: [@programming_language_a.id.to_s, @programming_language_b.id.to_s]
+        semester: [@internship.semester.id.to_s],
+        programming_language_ids: [@programming_language_a.id.to_s, @programming_language_b.id.to_s]
       }
       expect(response).to render_template(:index)
 
@@ -51,11 +52,10 @@ RSpec.describe QuicksearchesController, type: :controller do
       @internship.company.save
 
       get :index, format: :js, xhr: true, params: {
-          semester: [@internship.semester.id.to_s],
-          programming_language_ids: [@programming_language_a.id.to_s, @programming_language_b.id.to_s]
+        semester: [@internship.semester.id.to_s],
+        programming_language_ids: [@programming_language_a.id.to_s, @programming_language_b.id.to_s]
       }
       expect(response).to render_template(:index)
     end
   end
-
 end

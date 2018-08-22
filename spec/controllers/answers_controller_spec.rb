@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-#
 require 'rails_helper'
 
 RSpec.describe AnswersController, type: :controller do
@@ -30,12 +29,12 @@ RSpec.describe AnswersController, type: :controller do
   describe 'PUT #update' do
     context 'with valid parameters' do
       it 'locates the requested answer' do
-        put :update, params: {id: @answer, answer: attributes_for(:answer) }
+        put :update, params: { id: @answer, answer: attributes_for(:answer) }
         expect(assigns(:answer)).to eq(@answer)
       end
 
       it 'updates the answer' do
-        put :update, params: {id: @answer, answer: attributes_for(:answer, body: 'Bar') }
+        put :update, params: { id: @answer, answer: attributes_for(:answer, body: 'Bar') }
         @answer.reload
         expect(@answer.body).to eq('Bar')
       end
@@ -51,9 +50,9 @@ RSpec.describe AnswersController, type: :controller do
 
     describe 'DELETE #destroy' do
       it 'destroys the specified answer' do
-        expect {
+        expect do
           delete :destroy, params: { id: @answer.id }, format: :js
-        }.to change(Answer, :count).by(-1)
+        end.to change(Answer, :count).by(-1)
       end
     end
   end

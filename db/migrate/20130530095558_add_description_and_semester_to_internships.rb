@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddDescriptionAndSemesterToInternships < ActiveRecord::Migration[4.2]
   def change
     add_column :internships, :description, :text

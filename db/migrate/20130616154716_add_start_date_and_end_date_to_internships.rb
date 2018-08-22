@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddStartDateAndEndDateToInternships < ActiveRecord::Migration[4.2]
   def change
     add_column :internships, :start_date, :date

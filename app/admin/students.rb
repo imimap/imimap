@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Student do
-  filter :enrolment_number, :as => :select, :collection => proc { Student.all.map(&:enrolment_number).uniq }, :label => "Matrikel"
+  filter :enrolment_number, as: :select, collection: proc { Student.all.map(&:enrolment_number).uniq }, label: 'Matrikel'
   filter :last_name
   filter :first_name
   filter :email
@@ -10,7 +12,7 @@ ActiveAdmin.register Student do
     end
     column :internships do |n|
       a = n.internships.map(&:id)
-      str = ""
+      str = ''
       a.each do |x|
         str += link_to x, "/admin/internships/#{x}"
       end
@@ -25,36 +27,35 @@ ActiveAdmin.register Student do
   end
 
   form do |f|
-    f.inputs "Students" do
+    f.inputs 'Students' do
       f.input :enrolment_number
       f.input :first_name
       f.input :last_name
       f.input :birthplace
-      f.input :birthday, :as => :date, :start_year => Time.now.year - 100, :end_year => Time.now.year
+      f.input :birthday, as: :date, start_year: Time.now.year - 100, end_year: Time.now.year
       f.input :email
     end
     f.actions
   end
 
-
   show do |student|
-      attributes_table do
-        row :enrolment_number
-        row :last_name
-        row :first_name
-        row :birthday
-        row :birthplace
-        row :email
+    attributes_table do
+      row :enrolment_number
+      row :last_name
+      row :first_name
+      row :birthday
+      row :birthplace
+      row :email
 
-        row :internships do |n|
-			    a = student.internships.map(&:id)
-			    str = ""
-			    a.each do |x|
-			   		str += link_to x, "/admin/internships/#{x}"
-			    end
-			    str.html_safe
-			  end
+      row :internships do |_n|
+        a = student.internships.map(&:id)
+        str = ''
+        a.each do |x|
+          str += link_to x, "/admin/internships/#{x}"
+        end
+        str.html_safe
       end
-      active_admin_comments
     end
+    active_admin_comments
+  end
 end

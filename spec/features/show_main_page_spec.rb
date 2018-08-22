@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-#
 require 'rails_helper'
 
-describe "Start Page" do
+describe 'Start Page' do
   before :each do
     I18n.locale = :de
   end

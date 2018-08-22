@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-#
 require 'rails_helper'
 
 describe 'I18n in ActiveAdmin specs' do
@@ -30,7 +29,7 @@ describe 'I18n in ActiveAdmin specs' do
     it 'path sets locale de' do
       visit '/de/admin/internships'
       expect(I18n.locale).to eq :de
-      expect(admin_internships_path).to eq ('/admin/internships')
+      expect(admin_internships_path).to eq '/admin/internships'
     end
   end
 end

@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-#
 require 'rails_helper'
 
-RSpec.describe User, :type => :model do
+RSpec.describe User, type: :model do
   let(:user) { build :user }
 
   context 'given a valid user' do
@@ -24,20 +23,18 @@ RSpec.describe User, :type => :model do
     end
 
     it 'rejects passwords shorter than 5 characters' do
-      user.password = "asdf"
+      user.password = 'asdf'
       expect(user.save).to be_falsy
-
     end
-
   end
 
-  describe "#name" do
+  describe '#name' do
     it 'should return the correct name' do
       expect(user.name).to eq "#{user.student.first_name} #{user.student.last_name}"
     end
   end
 
-  describe "#enrolment_number" do
+  describe '#enrolment_number' do
     it 'should return nil if no student is present' do
       user.student = nil
       expect(user.enrolment_number).to eq nil
@@ -48,7 +45,7 @@ RSpec.describe User, :type => :model do
     end
   end
 
-  describe "UserObserver" do
+  describe 'UserObserver' do
     it 'should trigger the observer method' do
       user.student.internships << create(:internship, user: user, completed: false)
       user.student.internships << create(:internship, user: user, completed: false)

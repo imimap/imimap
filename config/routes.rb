@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  get "password_resets/new"
-  scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+  get 'password_resets/new'
+  scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
     devise_scope :user do
       devise_for :users, controllers: { registrations: 'users/registrations', passwords: 'users/passwords' }
       root to: 'startpage#new'
       # This is needed for ActiveAdmin
       authenticated :user do
-       root 'overview#index', as: :authenticated_root
+        root 'overview#index', as: :authenticated_root
       end
       resources :internships
       resources :companies
@@ -24,11 +26,11 @@ Rails.application.routes.draw do
       resources :internship_searches
       resources :quicksearches, only: %i[index]
       resources :favorite_compare, only: %i[index]
-      resources :report_overview, :only => [:index]
-      resources :read_list, :only => [:create, :destroy, :index]
-      resources :complete_report, :only => [:index]
-      resources :internship_status, :only => [:index]
-      resources :finish_list, :only => [:create, :destroy, :index]
+      resources :report_overview, only: [:index]
+      resources :read_list, only: %i[create destroy index]
+      resources :complete_report, only: [:index]
+      resources :internship_status, only: [:index]
+      resources :finish_list, only: %i[create destroy index]
       get 'login', to: 'devise/sessions#create', as: 'login'
       get 'logout', to: 'devise/sessions#destroy', as: 'logout'
       get 'statistic', to: 'statistic#overview'

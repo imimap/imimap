@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateInternshipSearches < ActiveRecord::Migration[4.2]
   def change
     create_table :internship_searches do |t|

@@ -2,7 +2,6 @@
 
 # The Company where an Internship takes place.
 class Company < ApplicationRecord
-
   # validates :street, presence: true, allow_blank: false
   # validates :zip, presence: true, allow_blank: false
   # validates :city, presence: true, allow_blank: false

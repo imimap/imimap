@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class InternshipsController < ApplicationController
   respond_to :html, :json
-  before_action :get_programming_languages, :get_orientations, :only => [:new, :edit, :update]
+  before_action :get_programming_languages, :get_orientations, only: %i[new edit update]
 
-  before_action :authorize_internship, :only => [:edit, :update, :destroy]
+  before_action :authorize_internship, only: %i[edit update destroy]
   # GET /internships
   # GET /internships.json
 
@@ -26,12 +28,11 @@ class InternshipsController < ApplicationController
         format.html { redirect_to @internship, notice: 'Your internship was successfully created!' }
         format.json { render json: @internship, status: :created, location: @internship }
       else
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @internship.errors, status: :unprocessable_entity }
       end
     end
   end
-
 
   # GET /internships/1
   # GET /internships/1.json
@@ -39,16 +40,14 @@ class InternshipsController < ApplicationController
     @internship = Internship.find(params[:id])
     @comment = UserComment.new
     @answer = Answer.new
-    @favorite = Favorite.where(:internship_id => @internship.id, :user_id => current_user.id)[0]
+    @favorite = Favorite.where(internship_id: @internship.id, user_id: current_user.id)[0]
     @company = @internship.company
-    @other_internships = @company.internships.reject { |x| x.id == @internship.id }.reject{ |i| i.completed == false }
+    @other_internships = @company.internships.reject { |x| x.id == @internship.id }.reject { |i| i.completed == false }
 
-    @user_comments = @internship.user_comments.order("created_at DESC")
-
+    @user_comments = @internship.user_comments.order('created_at DESC')
 
     respond_with(@internship)
   end
-
 
   # GET /internships/1/edit
   def edit
@@ -69,7 +68,7 @@ class InternshipsController < ApplicationController
       respond_with(@internship)
     else
       @rating = @internship.build_internship_rating
-      render :edit, notice: "Please fill in all fields"
+      render :edit, notice: 'Please fill in all fields'
     end
   end
 
@@ -96,24 +95,22 @@ class InternshipsController < ApplicationController
     end
   end
 
-
   private
 
   # this was defined but not used.
   def internship_params
     params.require(:internship).permit(:attachments_attributes, :living_costs, :orientation_id,
-                     :salary, :working_hours, :programming_language_ids,
-                     :internship_rating_id, :company_id, :user_id, :title,
-                     :recommend, :email_public, :semester_id, :description,
-                     :internship_report, :student_id, :start_date, :end_date,
-                     :operational_area, :tasks, :internship_state_id,
-                     :reading_prof_id, :payment_state_id, :registration_state_id,
-                     :contract_state_id, :report_state_id, :certificate_state_id,
-                     :certificate_signed_by_internship_officer,
-                     :certificate_signed_by_prof, :certificate_to_prof, :comment,
-                     :supervisor_email, :supervisor_name,
-                     :internship_rating_attributes, :completed)
-
+                                       :salary, :working_hours, :programming_language_ids,
+                                       :internship_rating_id, :company_id, :user_id, :title,
+                                       :recommend, :email_public, :semester_id, :description,
+                                       :internship_report, :student_id, :start_date, :end_date,
+                                       :operational_area, :tasks, :internship_state_id,
+                                       :reading_prof_id, :payment_state_id, :registration_state_id,
+                                       :contract_state_id, :report_state_id, :certificate_state_id,
+                                       :certificate_signed_by_internship_officer,
+                                       :certificate_signed_by_prof, :certificate_to_prof, :comment,
+                                       :supervisor_email, :supervisor_name,
+                                       :internship_rating_attributes, :completed)
   end
 
   def authorize_internship

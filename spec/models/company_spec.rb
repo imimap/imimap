@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-#
 require 'rails_helper'
 
-RSpec.describe Company, :type => :model do
+RSpec.describe Company, type: :model do
   before :each do
     @company = build :company
   end
@@ -21,13 +20,13 @@ RSpec.describe Company, :type => :model do
     end
   end
 
-  describe "#address" do
+  describe '#address' do
     it 'builds the expected address string' do
       expect(@company.address).to eq [@company.street, @company.zip, @company.city, @company.country].join(', ')
     end
   end
 
-  describe "#enrolment_number" do
+  describe '#enrolment_number' do
     it 'builds the expected enrolment_number result' do
       @company.internships << create(:internship)
       @company.internships << create(:internship)
@@ -39,7 +38,7 @@ RSpec.describe Company, :type => :model do
     end
   end
 
-  describe "#average_rating" do
+  describe '#average_rating' do
     context 'with only completed internships' do
       it 'calculates the correct average rating' do
         @company.internships << create(:internship, completed: true)

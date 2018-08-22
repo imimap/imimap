@@ -1,13 +1,12 @@
-class ReadListController < ApplicationController
+# frozen_string_literal: true
 
+class ReadListController < ApplicationController
   before_action :authorize_role_prof
 
   respond_to :html, :json
 
-
   # create a new assigned report/unread list and save it
   def create
-
     @read_list = ReadList.new
 
     @read_list.internship_id = params[:internship_id]
@@ -17,14 +16,11 @@ class ReadListController < ApplicationController
     @current_user = @read_list.user
     @internship = @read_list.internship
 
-    flash[:notice] = "A new Read list has been successfully created"
+    flash[:notice] = 'A new Read list has been successfully created'
 
     respond_to do |format|
-
       format.html { redirect_to(read_list_index_path) }
-      format.js { render :layout=>false, :locals => { :current_user  => @current_user, :internship => @internship, :read_list => @read_list} }
-
-
+      format.js { render layout: false, locals: { current_user: @current_user, internship: @internship, read_list: @read_list } }
     end
   end
 
@@ -34,8 +30,7 @@ class ReadListController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to read_list_index_path }
-      format.js { render :layout=>false,:locals => { :current_user  => @current_user, :internship => @internship, :read_list => @read_list} }
-
+      format.js { render layout: false, locals: { current_user: @current_user, internship: @internship, read_list: @read_list } }
     end
   end
 
@@ -43,7 +38,6 @@ class ReadListController < ApplicationController
   # def destroy
   # @read_list = ReadList.find(params[:id])
   # @read_list.destroy
-
 
   # @current_user = @read_list.user
   # @internship = @read_list.internship
@@ -55,20 +49,15 @@ class ReadListController < ApplicationController
   # end
 
   def index
-
     @read_lists = current_user.read_lists
-
   end
 
   def destroy_multiple
-
     @read_lists.where(id: params[:read_list_ids]).destroy_all
 
     respond_to do |format|
       format.html { redirect_to read_list_index_path }
-      format.js { render :layout=>false,:locals => { :current_user  => @current_user, :internship => @internship, :read_list => @read_list} }
-
+      format.js { render layout: false, locals: { current_user: @current_user, internship: @internship, read_list: @read_list } }
     end
   end
-
 end

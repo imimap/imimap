@@ -8,8 +8,8 @@ FactoryBot.define do
 
   factory :user do
     email
-    password { "foofoofoo123123" }
-    password_confirmation { "foofoofoo123123" }
+    password { 'foofoofoo123123' }
+    password_confirmation { 'foofoofoo123123' }
     publicmail { true }
     mailnotif { true }
     after(:build) do |user|

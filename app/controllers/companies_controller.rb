@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 
-#
 class CompaniesController < ApplicationController
-
   # GET /companies
   # GET /companies.json
   def index
     @companies = Company.all
 
-      respond_to do |format|
+    respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @companies }
     end
@@ -19,7 +17,7 @@ class CompaniesController < ApplicationController
   def show
     @company = Company.find(params[:id])
 
-    @internships = Internship.where("company_id = ?",@company.id)
+    @internships = Internship.where('company_id = ?', @company.id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -57,7 +55,7 @@ class CompaniesController < ApplicationController
         format.html { redirect_to new_internship_path, notice: 'Company was successfully created.' }
         format.json { render json: @company, status: :created, location: @company }
       else
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @company.errors, status: :unprocessable_entity }
       end
     end
@@ -73,7 +71,7 @@ class CompaniesController < ApplicationController
         format.html { redirect_to @company, notice: 'Company was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: 'edit' }
         format.json { render json: @company.errors, status: :unprocessable_entity }
       end
     end
@@ -93,7 +91,7 @@ class CompaniesController < ApplicationController
 
   def company_params
     params.require(:company).permit(:street, :city, :country, :zip, :main_language, :department,
-                    :industry, :name, :number_employees, :website, :phone,
-                    :blacklisted, :fax, :import_id, :latitude, :longitude)
+                                    :industry, :name, :number_employees, :website, :phone,
+                                    :blacklisted, :fax, :import_id, :latitude, :longitude)
   end
 end

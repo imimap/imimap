@@ -1,41 +1,39 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Internship do
-	filter :student_enrolment_number, :as => :select, :collection => proc { Student.all.map(&:enrolment_number).uniq }, :label => "Matrikel"
+  filter :student_enrolment_number, as: :select, collection: proc { Student.all.map(&:enrolment_number).uniq }, label: 'Matrikel'
   filter :reading_prof
   filter :semester
-	filter :internship_state
+  filter :internship_state
 
-	index do
-
+  index do
     column :student do |n|
       link_to n.enrolment_number, "/admin/students/#{n.student_id}"
     end
     column :company
     column :semester
-		column :internship_state
-		column :report_state
-		column :certificate_state
+    column :internship_state
+    column :report_state
+    column :certificate_state
     column :certificate_to_prof
     column :certificate_signed_by_prof
     column :certificate_signed_by_internship_officer
 
     column :reading_prof
     actions
-
   end
 
-
   form do |f|
-
-    f.inputs "Student" do
+    f.inputs 'Student' do
       f.input :student_id, as: :select, collection: Student.order(:last_name).collect { |s| ["#{s.enrolment_number}, #{s.last_name}, #{s.first_name}", s.id] }
       f.semantic_errors :student
     end
-    f.inputs "Company" do
+    f.inputs 'Company' do
       f.input :company_id, as: :select, collection: Company.order(:name).collect { |c| ["#{c.name}, #{c.city}, #{c.country}", c.id] }
     end
-    f.inputs "Internship" do
-      f.input :start_date, :as => :date_picker
-      f.input :end_date, :as => :date_picker
+    f.inputs 'Internship' do
+      f.input :start_date, as: :date_picker
+      f.input :end_date, as: :date_picker
       f.input :operational_area
       f.input :tasks
       f.input :supervisor_name
@@ -43,59 +41,55 @@ ActiveAdmin.register Internship do
       f.input :programming_languages
       f.input :orientation
     end
-    f.inputs "Administration" do
-      f.input :semester_id, label: "Semester", as: :select, collection: Semester.order(:name).collect { |s| [s.name, s.id] }
-      f.input :registration_state_id, label: "Registration", as: :select, collection: RegistrationState.order(:name).collect { |rs| [rs.name, rs.id] }
-      f.input :payment_state_id, label: "Payment", as: :select, collection: PaymentState.order(:name).collect { |ps| [ps.name, ps.id] }
-      f.input :contract_state_id, label: "Contract", as: :select, collection: ContractState.order(:name).collect { |cs| [cs.name, cs.id] }
-      f.input :report_state_id, label: "Report", as: :select, collection: ReportState.order(:name).collect { |rs| [rs.name, rs.id] }
-      f.input :certificate_state_id, label: "Certificate", as: :select, collection: CertificateState.order(:name).collect { |cs| [cs.name, cs.id] }
-      f.input :reading_prof_id, label: "Certficate reading prof", :as => :select, :collection => ReadingProf.order(:name).collect { |p| [p.name, p.id] }
-      f.input :certificate_to_prof, :as => :date_picker
-      f.input :certificate_signed_by_prof, :as => :date_picker
-      f.input :certificate_signed_by_internship_officer, :as => :date_picker
+    f.inputs 'Administration' do
+      f.input :semester_id, label: 'Semester', as: :select, collection: Semester.order(:name).collect { |s| [s.name, s.id] }
+      f.input :registration_state_id, label: 'Registration', as: :select, collection: RegistrationState.order(:name).collect { |rs| [rs.name, rs.id] }
+      f.input :payment_state_id, label: 'Payment', as: :select, collection: PaymentState.order(:name).collect { |ps| [ps.name, ps.id] }
+      f.input :contract_state_id, label: 'Contract', as: :select, collection: ContractState.order(:name).collect { |cs| [cs.name, cs.id] }
+      f.input :report_state_id, label: 'Report', as: :select, collection: ReportState.order(:name).collect { |rs| [rs.name, rs.id] }
+      f.input :certificate_state_id, label: 'Certificate', as: :select, collection: CertificateState.order(:name).collect { |cs| [cs.name, cs.id] }
+      f.input :reading_prof_id, label: 'Certficate reading prof', as: :select, collection: ReadingProf.order(:name).collect { |p| [p.name, p.id] }
+      f.input :certificate_to_prof, as: :date_picker
+      f.input :certificate_signed_by_prof, as: :date_picker
+      f.input :certificate_signed_by_internship_officer, as: :date_picker
       f.input :internship_state, as: :select, collection: InternshipState.order(:name).collect { |is| [is.name, is.id] }
       f.input :comment
       f.actions
-
     end
-
   end
 
   show do |ad|
-      attributes_table do
-        row :student do |n|
-         link_to n.student.first_name << " " << n.student.last_name, "/admin/students/#{n.student_id}"
-        end
-        row :company
-        row :start_date
-        row :end_date
-				# TBD clean this up
-        row ('weekCount') {ad.duration.weeks}
-        row ('weekValidation') {ad.duration.week_validation_active_admin}
-        row :operational_area
-        row :tasks
-        row :supervisor_name
-        row :supervisor_email
-        row :programming_languages do |i|
-          i.programming_languages.map(&:name).join(", ")
-        end
-        row :orientation
-        row :semester
-        row :registration_state
-        row :payment_state
-        row :contract_state
-        row :report_state
-        row :certificate_state
-        row :reading_prof
-        row :certificate_to_prof
-        row :certificate_signed_by_prof
-        row :certificate_signed_by_internship_officer
-        row :internship_state
-        row :comment
-
+    attributes_table do
+      row :student do |n|
+        link_to n.student.first_name << ' ' << n.student.last_name, "/admin/students/#{n.student_id}"
       end
-      active_admin_comments
+      row :company
+      row :start_date
+      row :end_date
+      # TBD clean this up
+      row ('weekCount') { ad.duration.weeks }
+      row ('weekValidation') { ad.duration.week_validation_active_admin }
+      row :operational_area
+      row :tasks
+      row :supervisor_name
+      row :supervisor_email
+      row :programming_languages do |i|
+        i.programming_languages.map(&:name).join(', ')
+      end
+      row :orientation
+      row :semester
+      row :registration_state
+      row :payment_state
+      row :contract_state
+      row :report_state
+      row :certificate_state
+      row :reading_prof
+      row :certificate_to_prof
+      row :certificate_signed_by_prof
+      row :certificate_signed_by_internship_officer
+      row :internship_state
+      row :comment
     end
-
+    active_admin_comments
+  end
 end

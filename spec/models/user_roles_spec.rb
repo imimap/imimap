@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-#
 require 'rails_helper'
 
 describe 'User roles' do
@@ -9,7 +8,7 @@ describe 'User roles' do
   end
   it 'nonexistent roles cannot be assigned' do
     u = User.new
-    expect {u.role = :no_role}.to raise_error(ArgumentError)
+    expect { u.role = :no_role }.to raise_error(ArgumentError)
   end
   it 'saves role' do
     u = User.create(email: 'bla@blub.de',

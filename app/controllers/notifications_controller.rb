@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class NotificationsController < ApplicationController
   def destroy
     @noti = Notification.find(params[:id])
