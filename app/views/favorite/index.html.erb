@@ -6,7 +6,7 @@
 <div class="table-container">
 <table class="table">
 	<tbody>
-	  
+
 	<% @favorites.each do |favorite| %>
 	  <tr class="<%= cycle("even_row2", "odd_row2") %>">
 		<td><%= check_box_tag "favorite_ids[]", favorite.internship.id %></td>
@@ -41,8 +41,12 @@
 <% else %>
 
 	<div>
+		<h3>Favouriten sind derzeit ausgeschaltet</h3>
+			<% if false #TBD Search %>
 		<h3> <%= t "favorite.notfound.title" %> </h3>
+
 		<p> <%= t("favorite.notfound.message", :href => link_to(t("favorite.notfound.link"), internships_path)).html_safe %> </p>
+		<% end %>
 	</div>
 
 <% end %>
