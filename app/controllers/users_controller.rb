@@ -22,15 +22,14 @@ class UsersController < ApplicationController
   end
 
   def check_existing_user
-    if session[:enrolment_number]
-      student = Student.where(enrolment_number: session[:enrolment_number]).first
-      redirect_to root_url, error: 'Users exists. Please sign in with your email and password' if student && User.find_by_student_id(student.id)
-    end
+    return unless session[:enrolment_number]
+    student = Student.where(enrolment_number: session[:enrolment_number]).first
+    redirect_to root_url, error: 'Users exists. Please sign in with your email and password' if student && User.find_by_student_id(student.id)
   end
 
   def user_params
-    #  params.require(:user).permit(User::EDITABLE_ATTRIBUTES)
-    #  params.require(:user).permit(:email, :mailnotif, :publicmail, :student_id, :role, :password, :password_confirmation)
-    params.require(:user).permit!
+    params.require(:user).permit(User::EDITABLE_ATTRIBUTES_PW)
+    # params.require(:user).permit(:email, :mailnotif, :publicmail, :student_id, :role, :password, :password_confirmation)
+    # params.require(:user).permit!
   end
 end
