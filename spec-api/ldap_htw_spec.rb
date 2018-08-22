@@ -56,7 +56,7 @@ describe LDAPHTWAdapter do
     it 'host unreachable' do
       restore = ENV['LDAP']
       ENV['LDAP'] = "xx#{ENV['LDAP']}"
-      host, port, connectstring = ldap_adapter.config
+      host, _port, _connectstring = ldap_adapter.config
       authenticated = ldap_adapter.create(ldap_password: password).authenticate
       expect(authenticated).to be false
       expect(ldap_adapter.errors).not_to be_empty

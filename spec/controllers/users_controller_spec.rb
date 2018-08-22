@@ -55,11 +55,11 @@ RSpec.describe UsersController, type: :controller do
       get :show, params: { id: @current_user }
       expect(assigns(:internships)).to eq []
     end
-# TBD Comments
-#    it 'assigns @comments' do
-#      get :show, params: { id: @current_user }
-#      expect(assigns(:comments)).to eq []
-#    end
+    # TBD Comments
+    #    it 'assigns @comments' do
+    #      get :show, params: { id: @current_user }
+    #      expect(assigns(:comments)).to eq []
+    #    end
   end
 
   # no edit or update anymore, could be deleted

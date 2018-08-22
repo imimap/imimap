@@ -8,43 +8,43 @@
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Layout/CommentIndentation:
-  Exclude:
-    - 'spec/controllers/users_controller_spec.rb'
+# Layout/CommentIndentation:
+#   Exclude:
+#     - 'spec/controllers/users_controller_spec.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyleAlignWith, AutoCorrect, Severity.
 # SupportedStylesAlignWith: start_of_line, def
-Layout/DefEndAlignment:
-  Exclude:
-    - 'app/controllers/current_internships_controller.rb'
-    - 'db/migrate/20130523140518_rename_orientation_to_orientation_id_in_internship.rb'
+# Layout/DefEndAlignment:
+#   Exclude:
+#    - 'app/controllers/current_internships_controller.rb'
+#    - 'db/migrate/20130523140518_rename_orientation_to_orientation_id_in_internship.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyleAlignWith, AutoCorrect, Severity.
 # SupportedStylesAlignWith: keyword, variable, start_of_line
-Layout/EndAlignment:
-  Exclude:
-    - 'app/uploaders/file_uploader.rb'
+# Layout/EndAlignment:
+#   Exclude:
+#     - 'app/uploaders/file_uploader.rb'
 
 # Offense count: 1
 # Configuration parameters: AllowSafeAssignment.
-Lint/AssignmentInCondition:
-  Exclude:
-    - 'app/controllers/users_controller.rb'
+# Lint/AssignmentInCondition:
+#   Exclude:
+#     - 'app/controllers/users_controller.rb'
 
 # Offense count: 2
-Lint/ParenthesesAsGroupedExpression:
-  Exclude:
-    - 'app/admin/internships.rb'
+# Lint/ParenthesesAsGroupedExpression:
+#   Exclude:
+#     - 'app/admin/internships.rb'
 
 # Offense count: 3
-Lint/UselessAssignment:
-  Exclude:
-    - 'db/seeds.rb'
-    - 'spec-api/ldap_htw_spec.rb'
+# Lint/UselessAssignment:
+#   Exclude:
+#     - 'db/seeds.rb'
+#     - 'spec-api/ldap_htw_spec.rb'
 
 # Offense count: 20
 Metrics/AbcSize:
