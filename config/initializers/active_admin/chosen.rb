@@ -13,11 +13,13 @@ module ActiveAdmin
   end
 end
 
-class Formtastic::Inputs::SelectInput
-  def extra_input_html_options
-    {
-      class: 'chosen',
-      multiple: multiple?
-    }
+module Formtastic
+  module Inputs
+    class SelectInput
+      def extra_input_html_options
+        { class: 'chosen',
+          multiple: multiple? }
+      end
+    end
   end
 end

@@ -2,7 +2,7 @@
 
 class InternshipsController < ApplicationController
   respond_to :html, :json
-  before_action :get_programming_languages, :get_orientations, only: %i[new edit update]
+  before_action :programming_languages, :orientations, only: %i[new edit update]
 
   before_action :authorize_internship, only: %i[edit update destroy]
   # GET /internships

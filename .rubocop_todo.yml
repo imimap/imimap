@@ -57,8 +57,8 @@ Metrics/BlockLength:
   Max: 297
 
 # Offense count: 1
-Metrics/CyclomaticComplexity:
-  Max: 9
+# Metrics/CyclomaticComplexity:
+#   Max: 9
 
 # Offense count: 16
 # Configuration parameters: CountComments.
@@ -72,7 +72,7 @@ Metrics/PerceivedComplexity:
 # Offense count: 5
 Naming/AccessorMethodName:
   Exclude:
-    - 'app/controllers/application_controller.rb'
+#     - 'app/controllers/application_controller.rb'
     - 'app/helpers/application_helper.rb'
 
 # Offense count: 3
@@ -107,32 +107,32 @@ Style/AsciiComments:
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, EnforcedStyle.
 # SupportedStyles: nested, compact
-Style/ClassAndModuleChildren:
-  Exclude:
-    - 'app/controllers/users/confirmations_controller.rb'
-    - 'app/controllers/users/omniauth_callbacks_controller.rb'
-    - 'app/controllers/users/passwords_controller.rb'
-    - 'app/controllers/users/registrations_controller.rb'
-    - 'app/controllers/users/sessions_controller.rb'
-    - 'app/controllers/users/unlocks_controller.rb'
-    - 'config/initializers/active_admin/chosen.rb'
+# Style/ClassAndModuleChildren:
+#   Exclude:
+#    - 'app/controllers/users/confirmations_controller.rb'
+#    - 'app/controllers/users/omniauth_callbacks_controller.rb'
+#    - 'app/controllers/users/passwords_controller.rb'
+#    - 'app/controllers/users/registrations_controller.rb'
+#    - 'app/controllers/users/sessions_controller.rb'
+#    - 'app/controllers/users/unlocks_controller.rb'
+#    - 'config/initializers/active_admin/chosen.rb'
 
 # Offense count: 1
-Style/CommentedKeyword:
-  Exclude:
-    - 'app/admin/dashboard.rb'
+# Style/CommentedKeyword:
+#   Exclude:
+#     - 'app/admin/dashboard.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SingleLineConditionsOnly, IncludeTernaryExpressions.
 # SupportedStyles: assign_to_condition, assign_inside_condition
-Style/ConditionalAssignment:
-  Exclude:
-    - 'app/controllers/quicksearches_controller.rb'
+# Style/ConditionalAssignment:
+#   Exclude:
+#     - 'app/controllers/quicksearches_controller.rb'
 
 # Offense count: 6
-Style/DateTime:
-  Exclude:
+# Style/DateTime:
+#   Exclude:
 #     - 'spec/factories/internships.rb'
 #     - 'spec/factories/students.rb'
 
