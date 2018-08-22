@@ -11,4 +11,4 @@ echo "TRAVIS_EVENT_TYPE [${TRAVIS_EVENT_TYPE}]"
 echo "TRAVIS_PULL_REQUEST" [${TRAVIS_PULL_REQUEST}]
 echo "TRAVIS_TAG [${TRAVIS_TAG}]"
 
-if [ -z RAILS_MASTER_KEY ]; then echo RAILS_MASTER_KEY not set ; else echo RAILS_MASTER_KEY set; fi
+if [ -z RAILS_MASTER_KEY ]; then echo RAILS_MASTER_KEY missing ; else echo RAILS_MASTER_KEY exits; fi

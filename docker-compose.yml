@@ -23,6 +23,7 @@ services:
       - POSTGRES_PASSWORD=imimap
       - POSTGRES_USER=imi_map
       - POSTGRES_DB=imimap
+      - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
     depends_on:
       - postgresql
     volumes:
