@@ -9,11 +9,11 @@ FactoryBot.define do
     appreciation { 3 }
 
     factory :lowest_internship_rating do
-      tasks { 5 }
-      training_success { 5 }
-      atmosphere { 5 }
-      supervision { 5 }
-      appreciation { 5 }
+      tasks { 0 }
+      training_success { 0 }
+      atmosphere { 0 }
+      supervision { 0 }
+      appreciation { 0 }
     end
 
     factory :highest_internship_rating do
