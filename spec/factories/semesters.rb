@@ -3,6 +3,6 @@
 #
 FactoryBot.define do
   factory :semester do
-    name "semester name"
+    name { "semester name" }
   end
 end

@@ -5,6 +5,6 @@ FactoryBot.define do
   factory :favorite do
     user
     internship
-    comparebox false
+    comparebox { false }
   end
 end
