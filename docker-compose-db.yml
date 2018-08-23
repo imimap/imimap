@@ -23,6 +23,7 @@ services:
       - POSTGRES_PASSWORD=imimap
       - POSTGRES_USER=imi_map
       - POSTGRES_DB=imimap
+      - LDAP=${LDAP}
     depends_on:
       - postgresql
     volumes:
