@@ -12,7 +12,6 @@ services:
     volumes:
       - ./postgresql/data:/var/lib/postgresql/data
     restart: always
-
   imimap:
     image: imimap/imimap:${TAG}
     container_name: imimap
