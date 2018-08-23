@@ -21,6 +21,7 @@ services:
       - POSTGRES_USER=imi_map
       - POSTGRES_DB=imi_map_production
       - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
+      - LDAP=${LDAP}
       - RAILS_SERVE_STATIC_FILES=true
     depends_on:
       - postgresql

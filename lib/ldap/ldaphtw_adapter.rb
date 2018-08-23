@@ -7,7 +7,6 @@ class LDAPHTWAdapter
 
   def initialize(email:)
     @email = email
-    @errors = []
   end
 
   def valid
@@ -40,30 +39,26 @@ class LDAPHTWAdapter
     begin
       success = @netldap.bind
     rescue StandardError
-      report_issue(:ldap_could_not_connect, host)
+      Rails.logger.error("-- ldap -- coud not connect to host #{host} ")
       return false
     end
-    report_issue(:ldap_authentication_failed) unless success
+    Rails.logger.info("-- ldap -- authentication failed for #{ldap_username} ") unless success
     success
   end
 
   def config
     # ldap_host|ldap_port|ldap_htw
     ldapconfig = ENV['LDAP']
-    report_issue(:ldap_env_missing) unless ldapconfig
+    Rails.logger.error("-- ldap -- ENV['LDAP'] missing ") unless ldapconfig
     @host, @port, @connectstring = ldapconfig&.split('|')
   end
 
   private
 
-  def report_issue(key, info = '')
-    @errors << [key, info]
-  end
-
   def ldap_username
     m = /\A(.*)@.*htw-berlin.de\z/.match(email)
     return m[1] if m
-    report_issue(:ldap_email_not_valid, email)
+    Rails.logger.info("-- ldap -- email not valid #{email} ")
     nil
   end
 end

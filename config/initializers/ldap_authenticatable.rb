@@ -3,21 +3,6 @@
 require 'devise/strategies/authenticatable'
 require 'ldap/ldaphtw_adapter'
 
-def report_issue(message)
-  @logger.warn(message)
-  params[:ldap_status] = [] unless params[:ldap_status]
-  params[:ldap_status] << message
-end
-
-def self.issues
-  { ldap_env_missing:
-    'LDAP configuration missing - set LDAP environment variable',
-    ldap_could_not_connect:
-    'LDAP: Could not connect to server',
-    ldap_email_not_valid: "email couldn't be matched:",
-    ldap_authentication_failed: 'Authentication failed' }
-end
-
 module Devise
   module Strategies
     # Implements Authentication against HTW FB4 Ldap.
@@ -40,6 +25,7 @@ module Devise
       end
 
       def authenticate!
+        Rails.logger.info("-- ldap -- Attempting ldap authorization for #{ldap_email}")
         auth_successful = ldap_adapter.create(ldap_password: ldap_password).authenticate
         if auth_successful
           user = User.where(email: ldap_email).first
@@ -49,8 +35,9 @@ module Devise
           end
           return success!(user)
         else
-          message = 'ldap: no message'
+          message = 'ldap: auth not successfull'
           message = ldap_adapter.errors[0].join if ldap_adapter.errors.any?
+          report_issue(message)
           return raise(message)
         end
       end
