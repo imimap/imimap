@@ -47,9 +47,9 @@ class InternshipDuration
   def adjust(day)
     if day.friday?
       day + 3
-    elsif d.saturday?
+    elsif day.saturday?
       day + 2
-    elsif d.sunday?
+    elsif day.sunday?
       day + 1
     else
       day

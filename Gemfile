@@ -74,7 +74,7 @@ group :development, :test do
 
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails', '~> 3'
 
   gem 'capybara'
   gem 'launchy'
