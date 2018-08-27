@@ -5,11 +5,11 @@ To start (and build, if necessary) the containers run
 
     docker-compose up
 
-Migrate the database:
+## Migrate the database:
 
-    docker images -qa
-    docker exec -ti imimap-dev rake db:seed
+    docker exec -ti imimap-dev rake db:migrate
 
+    docker exec -ti postgresql-dev bash
 
 The imimap-dev container starts up unicorn on start, the server can be reached at
 

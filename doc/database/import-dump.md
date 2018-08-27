@@ -6,7 +6,7 @@ be recreated when the container restarts)
 
 thus, use docker-compose-db.yml :
 
-    docker-compose -f docker-compose-db.yml up
+    docker-compose  -f docker-compose.yml -f docker-compose-db.yml up
 
 this contains the following mappings:
 
