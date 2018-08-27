@@ -10,9 +10,7 @@ gem 'geocoder'
 gem 'nested_form'
 
 gem 'bootstrap', '~> 4.0.0'
-gem "bootstrap_form",
-    git: "https://github.com/bootstrap-ruby/bootstrap_form.git",
-    branch: "master"
+gem 'bootstrap_form', '>= 4.0.0.alpha1'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'prawn'
