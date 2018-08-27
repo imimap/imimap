@@ -74,7 +74,8 @@ n = 1
     reading_prof_id: reading_prof_id,
     certificate_to_prof: Faker::Date.forward(30),
     certificate_signed_by_prof: Faker::Date.forward(50),
-    certificate_signed_by_internship_officer: Faker::Date.backward(5)
+    certificate_signed_by_internship_officer: Faker::Date.backward(5),
+    company_address: company_address
   )
   n += 1
 end
