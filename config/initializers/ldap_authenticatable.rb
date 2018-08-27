@@ -35,10 +35,12 @@ module Devise
           end
           return success!(user)
         else
-          message = 'ldap: auth not successfull'
-          message = ldap_adapter.errors[0].join if ldap_adapter.errors.any?
-          report_issue(message)
-          return raise(message)
+          Rails.logger.info("-- ldap -- ldap authorization failed for #{ldap_email}")
+          # TBD: there is no test in place for a messup like this:
+          # message = 'ldap: auth not successfull'
+          # message = ldap_adapter.errors[0].join if ldap_adapter.errors.any?
+          # report_issue(message)
+          return raise("ldap authorization failed for #{ldap_email}")
         end
       end
     end
