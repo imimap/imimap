@@ -47,7 +47,8 @@ class InternshipsController < ApplicationController
     @comment = UserComment.new
     @answer = Answer.new
     @favorite = Favorite.where(internship_id: @internship.id, user_id: current_user.id)[0]
-    @company = @internship.company_address.company
+    @company = @internship.company
+  #TBD ST  @company = @internship.company_address.company
     @other_internships = @company.internships.reject { |x| x.id == @internship.id }.reject { |i| i.completed == false }
 
     @user_comments = @internship.user_comments.order('created_at DESC')
@@ -104,11 +105,12 @@ class InternshipsController < ApplicationController
   # If the user has no internship, the system asks him/her to create a new one
   # else the internship details are shown
   def internship_data
-    if Internship.where(user_id: current_user.id).last.nil?
-      render :no_internship_data
+    @internships = current_user.student.internships
+
+    if @internships.any?
+      redirect_to @internships.first
     else
-      @internship = Internship.where(user_id: current_user.id).last
-      redirect_to @internship
+      render :no_internship_data
     end
   end
 

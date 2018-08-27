@@ -18,7 +18,7 @@
         </div>
       </div>
     </div>
-  
+
     <div class="row">
       <div class="col-md-4">
         <div class="field" id="field-titles2">
@@ -33,7 +33,7 @@
         </div>
       </div>
     </div>
-  
+
     <div class="row">
         <div class="col-md-4">
           <div class="field" id="field-titles2">
@@ -41,7 +41,7 @@
           <span class="form-static"><%=@current_user.student.birthday%></span>
           </div>
         </div>
-  
+
         <div class="col-md-4">
           <div class="field" id="field-titles2">
             <%=t "students.attributes.birthplace" %>
@@ -49,7 +49,7 @@
           </div>
         </div>
       </div>
-    
+
       <div class="row">
         <div class="col-md-4">
           <div class="field" id="field-titles2">
@@ -57,7 +57,7 @@
             <span class="form-static"><%=@current_user.student.email%></span>
           </div>
         </div>
-  
+
         <div class="col-md-4">
           <div class="field" id="field-titles2">
           <%=t "students.attributes.phone" %>
@@ -65,9 +65,9 @@
           </div>
         </div>
       </div>
-  
+
       <h5>Address</h5>
-  
+
       <div class="row">
         <div class="col-md-4">
           <div class="field" id="field-titles2">
@@ -75,7 +75,7 @@
             <span class="form-static"><%=@current_user.student.street%></span>
           </div>
         </div>
-  
+
         <div class="col-md-4">
           <div class="field" id="field-titles2">
           <%=t "students.attributes.zip" %> :</b>
@@ -83,7 +83,7 @@
           </div>
         </div>
       </div>
-  
+
       <div class="row">
         <div class="col-md-4">
           <div class="field" id="field-titles2">
@@ -93,16 +93,16 @@
         </div>
       </div>
     </div>
-  
-    
+
+
 
   <div id="company" class="tabcontent">
     <h3>Company Details</h3>
-    <p>Select your internship company :</p> 
+    <p>Select your internship company :</p>
     <div class="row">
       <div class="col">
         <div class="field" id="field-titles">
-        <%= f.select :company_address_id, Company.order(:name).company_name_address.map { |c| [c.last, c.first]}, class: 'chzn-select', disabled: false, hide_label: true %> 
+        <%= f.select :company_address_id, Company.order(:name).company_name_address.map { |c| [c.last, c.first]}, class: 'chzn-select', disabled: false, hide_label: true %>
         <br/>
         <%= t "Company not found?" %><%= link_to t("companies.createNewCompany"), new_company_path(returnToForm: true) %>
         <br/>
@@ -110,7 +110,7 @@
         </div>
       </div>
     </div>
-    
+
     <h4>Supervisor</h4>
 
     <div class="row">
@@ -141,7 +141,7 @@
 
     <div class="col-md-4">
       <div class="field" id="field-titles">
-        <%= f.select :semester_id, get_semesters, {}, class: 'chzn-select' %>
+        <%= f.select :semester_id, semesters, {}, class: 'chzn-select' %>
       </div>
     </div>
   </div>
@@ -169,7 +169,7 @@
 
     <div class="col-md-4">
       <div class="field" id="field-titles">
-      <%= f.select :orientation_id, get_orientations, class: 'chzn-select' %>
+      <%= f.select :orientation_id, orientations, class: 'chzn-select' %>
       </div>
     </div>
   </div>
@@ -180,7 +180,7 @@
       <%= f.text_area :tasks, size: "4x5", placeholder: "Make and manage the company website, Make CSS for client websites" %>
       </div>
     </div>
- 
+
     <div class="col-md-4">
     <div class="field" id="field-titles">
     <%= f.select :programming_language_ids, @programming_languages, {}, { :multiple => true, class: 'chzn-select', hide_label: true} %>
@@ -207,7 +207,7 @@
   <div class="row">
     <div class="col-md-4">
       <div class="field" id="field-titles">
-      <%= f.select :reading_prof_id, ReadingProf.order(:id).map { |p| [p.name, p.id]}, class: 'chzn-select', disabled: false %> 
+      <%= f.select :reading_prof_id, ReadingProf.order(:id).map { |p| [p.name, p.id]}, class: 'chzn-select', disabled: false %>
       </div>
     </div>
   </div>
