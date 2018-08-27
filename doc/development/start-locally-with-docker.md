@@ -5,6 +5,8 @@ To start (and build, if necessary) the containers run
 
     docker-compose up
 
+## Rails Console
+    docker exec -ti imimap-dev rails c
 ## Migrate the database:
 
     docker exec -ti imimap-dev rake db:migrate

@@ -90,6 +90,7 @@ de:
         first_name: Vorname
         birthday: Geburtsdatum
         birthplace: Geburtsort
+        email: E-Mail
       comment:
         created_at: Erstellt am
 

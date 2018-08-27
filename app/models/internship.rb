@@ -56,6 +56,11 @@ class Internship < ApplicationRecord
     company_address.company
   end
 
+  def company_name
+    nil unless company_address
+    company_address.company.name
+  end
+
   def duration
     @duration || @duration = InternshipDuration.new(self)
   end

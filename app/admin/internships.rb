@@ -26,20 +26,28 @@ ActiveAdmin.register Internship do
   end
 
   form do |f|
-  inputs 'Student' do
-    f.input :student_id, as: :select, collection: Student.order(:last_name).collect { |s| ["#{s.enrolment_number}, #{s.last_name}, #{s.first_name}", s.id] }
-    f.semantic_errors :student
-  end
+    inputs 'Student' do
+      f.input :student_id, as: :select, collection: Student.order(:last_name).collect { |s| ["#{s.enrolment_number}, #{s.last_name}, #{s.first_name}", s.id] }
+      f.semantic_errors :student
+    end
 
-  inputs 'CompanyAddress' do
-    f.input :company_address_id,
-          as: :select,
-          collection: CompanyAddress.joins(:company).pluck(:name, :street, :city, :country, :id).map { |name, street, city, country, id| ["#{name}, #{street}, #{city}, #{country}", id]}
-  end
+    inputs 'CompanyAddress' do
+      f.input :company_address_id,
+              as: :select,
+              collection: CompanyAddress.joins(:company).order('companies.name').pluck(:name, :street, :city, :country, :id).map { |name, street, city, country, id| ["#{name}, #{street}, #{city}, #{country}", id] }
+    end
 
     f.inputs 'Internship' do
-      f.input :start_date, as: :date_picker
-      f.input :end_date, as: :date_picker
+      f.input :start_date, as: :datepicker,
+                           datepicker_options: {
+                             min_date: '2010-01-01',
+                             max_date: '2050-01-01'
+                           }
+      f.input :end_date, as: :datepicker,
+                         datepicker_options: {
+                           min_date: '2010-01-01',
+                           max_date: '2050-01-01'
+                         }
       f.input :operational_area
       f.input :tasks
       f.input :supervisor_name
