@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Internship do
+  permit_params InternshipsController.permitted_params
   filter :student_enrolment_number, as: :select, collection: proc { Student.all.map(&:enrolment_number).uniq }, label: 'Matrikel'
   filter :reading_prof
   filter :semester
@@ -24,18 +25,16 @@ ActiveAdmin.register Internship do
   end
 
   form do |f|
-    f.inputs 'Student' do
-      f.input :student_id, as: :select, collection: Student.order(:last_name).collect { |s| ["#{s.enrolment_number}, #{s.last_name}, #{s.first_name}", s.id] }
-      f.semantic_errors :student
-    end
+  inputs 'Student' do
+    f.input :student_id, as: :select, collection: Student.order(:last_name).collect { |s| ["#{s.enrolment_number}, #{s.last_name}, #{s.first_name}", s.id] }
+    f.semantic_errors :student
+  end
 
-    f.inputs 'CompanyAddress' do
-      f.input :company_address_id,
-              as: :select,
-              collection: CompanyAddress.joins(:company).pluck(:name, :street, :city, :country, :id).map { |name, street, city, country, id| ["#{name}, #{street}, #{city}, #{country}", id]}
-              
-
-    end
+  inputs 'CompanyAddress' do
+    f.input :company_address_id,
+          as: :select,
+          collection: CompanyAddress.joins(:company).pluck(:name, :street, :city, :country, :id).map { |name, street, city, country, id| ["#{name}, #{street}, #{city}, #{country}", id]}
+  end
 
     f.inputs 'Internship' do
       f.input :start_date, as: :date_picker
