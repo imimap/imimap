@@ -12,8 +12,10 @@ describe 'ActiveAdmin Admin User' do
     describe 'pages' do
       it 'index' do
         visit admin_users_path
-        # save_and_open_page
-        expect(page).to have_content @admin_user.email
+        one, two = @admin_user.email.split('@')
+        expect(page).to have_content one
+        expect(page).to have_content two
+        # expect(page).to have_content @admin_user.email
 
         # put some of new translations
         # expect(page).to have_content I18n.t('activerecord.models.admin_user.other')

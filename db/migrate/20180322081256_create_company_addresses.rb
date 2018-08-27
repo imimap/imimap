@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateCompanyAddresses < ActiveRecord::Migration[5.1]
   def change
     create_table :company_addresses do |t|
@@ -8,6 +10,8 @@ class CreateCompanyAddresses < ActiveRecord::Migration[5.1]
       t.string :country
       t.string :phone
       t.string :fax
+      t.float :latitude
+      t.float :longitude
 
       t.timestamps
     end

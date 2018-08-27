@@ -7,6 +7,8 @@ class RenameAddressFieldsInCompany < ActiveRecord::Migration[5.2]
       t.rename :country, :x_country
       t.rename :phone, :x_phone
       t.rename :fax, :x_fax
+      t.rename :longitude, :x_longitude
+      t.rename :latitude, :x_latitude
     end
   end
 end

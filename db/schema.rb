@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_27_172427) do
+ActiveRecord::Schema.define(version: 3018_08_27_172427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(version: 2018_08_27_172427) do
     t.string "website", limit: 255
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "latitude"
-    t.float "longitude"
+    t.float "x_latitude"
+    t.float "x_longitude"
     t.string "x_city", limit: 255
     t.string "x_country", limit: 255
     t.string "x_street", limit: 255
@@ -90,8 +90,6 @@ ActiveRecord::Schema.define(version: 2018_08_27_172427) do
     t.string "x_fax", limit: 255
     t.boolean "blacklisted", default: false
     t.integer "import_id"
-    t.bigint "company_address_id"
-    t.index ["company_address_id"], name: "index_companies_on_company_address_id"
   end
 
   create_table "company_addresses", force: :cascade do |t|
@@ -102,6 +100,8 @@ ActiveRecord::Schema.define(version: 2018_08_27_172427) do
     t.string "country"
     t.string "phone"
     t.string "fax"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_company_addresses_on_company_id"
@@ -368,6 +368,5 @@ ActiveRecord::Schema.define(version: 2018_08_27_172427) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "companies", "company_addresses"
   add_foreign_key "internships", "company_addresses"
 end

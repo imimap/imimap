@@ -17,7 +17,9 @@ namespace :imimap do
           street: c.street,
           zip: c.zip,
           phone: c.phone,
-          fax: c.fax
+          fax: c.fax,
+          latitude: c.latitude,
+          longitude: c.longitude
         )
         address.save!
         puts '.'
