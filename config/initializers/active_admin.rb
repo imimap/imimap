@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 ActiveAdmin.setup do |config|
+  # config.load_paths << [File.join(Rails.root, "app", "helpers")]
+
   # == Site Title
   #
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = 'Imi Maps'
+  config.site_title = 'Imi Map Administration'
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.

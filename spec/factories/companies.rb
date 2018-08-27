@@ -32,4 +32,5 @@ FactoryBot.define do
       create(:company_address_is24, company: company)
     end
   end
+
 end
