@@ -8,10 +8,10 @@ CompanyAddress.destroy_all
 intern_rating_id = InternshipRating.first
 
 n = 1
-20.times do
+for enrolment_number in 20001..20020
   Student.create!(
     import_id: Faker::Number.number(1),
-    enrolment_number: Faker::Number.number(10),
+    enrolment_number: enrolment_number,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
