@@ -1,0 +1,90 @@
+<div id="form-block4">
+  <h2 class="user_titel">Profil</h2>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field" id="field-titles2">
+        <%=t "students.attributes.enrolment_number" %> :</b>
+        <%=@current_user.student.enrolment_number%>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+  <div class="col-md-4">
+    <div class="field" id="field-titles2">
+    <b><%= t "users.attributes.first_name" %> :</b>
+    <%= @current_user.student.first_name %>
+    </div>
+  </div>
+  </div>
+  
+  <div class="row">
+  <div class="col-md-4">
+    <div class="field" id="field-titles2">
+  <b><%= t "users.attributes.last_name" %> :</b>
+    <%= @current_user.student.last_name %>
+    </div>
+  </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field" id="field-titles2">
+        <%=t "students.attributes.birthday" %><br />
+      <%=@current_user.student.birthday%>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="field" id="field-titles2">
+      <%=t "students.attributes.birthplace" %><br />
+      <%=@current_user.student.birthplace%>
+    </div>
+  </div>
+</div>
+  
+<div class="row">
+  <div class="col-md-4">
+    <div class="field" id="field-titles2">
+      <%=t "students.attributes.email" %><br />
+      <%=@current_user.student.email%>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="field" id="field-titles2">
+      <%=t "students.attributes.phone" %><br />
+      <%=@current_user.student.phone%>   
+    </div>
+  </div>
+</div>
+
+<h3>Address</h3>
+
+<div class="row">
+  <div class="col-md-4">
+   <div class="field" id="field-titles2">
+    <%=t "students.attributes.street" %><br />
+    <%=@current_user.student.street%>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+   <div class="field" id="field-titles2">
+    <%=t "students.attributes.zip" %><br />
+    <%=@current_user.student.zip%>
+  </div>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+   <div class="field" id="field-titles2">
+    <%=t "students.attributes.city" %><br />
+    <%=@current_user.student.city%>
+  </div>
+</div>
+</div>
+
+<%= link_to (t "buttons.next"), new_company_path,  class: "btn btn-success"  %>

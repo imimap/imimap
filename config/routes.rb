@@ -11,8 +11,9 @@ Rails.application.routes.draw do
         root 'overview#index', as: :authenticated_root
       end
       resources :internships
+      # TBD ST resources :internships, only: %i[new edit show update create rating]
       resources :companies
-      resources :users, only: %i[edit show update create new]
+      resources :users, only: %i[edit show update create new student_show]
       resources :user_verifications, only: %i[new create]
       resources :overview, only: %i[index]
       resources :internship_offer, only: %i[index show new create]
@@ -31,10 +32,17 @@ Rails.application.routes.draw do
       resources :complete_report, only: [:index]
       resources :internship_status, only: [:index]
       resources :finish_list, only: %i[create destroy index]
+      resources :company_addresses
+
       get 'login', to: 'devise/sessions#create', as: 'login'
       get 'logout', to: 'devise/sessions#destroy', as: 'logout'
       get 'statistic', to: 'statistic#overview'
       get 'debug', to: 'overview#debug', as: 'debug'
+      delete 'destroy', to: 'devise/notifications#destroy'
+      get 'student_show', to: 'users#student_show', as: 'student_show'
+      get 'rating', to: 'internships#rating', as: 'rating'
+      get 'newAddress/:company_id', to: 'company_addresses#new_address', as: 'new_address'
+      get 'select_company/', to: 'companies#select_company', as: 'select_company'
     end
     ActiveAdmin.routes(self)
   end

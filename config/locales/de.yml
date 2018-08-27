@@ -352,7 +352,7 @@ de:
         notLongEnough: "Die Praktikumsdauer ist kleiner als 4 Wochen"
         partInternship: "Wenn das Praktikum ein Teilpraktikum ist, ist es valide"
         longEnough: "Die Praktikumsdauer ist ausreichend"
-
+      reading_prof: "Hochschulbetreuer"
 
   users:
     name: "Benutzer"
@@ -397,6 +397,14 @@ de:
       birthday1: "Geburtsdatum *"
       birthplace: "Geburtsort"
       birthplace1: "Geburtsort *"
+      street: "Straße"
+      street1: "Straße *"
+      zip: "PLZ"
+      zip1: "PLZ *"
+      city: "Stadt"
+      city1: "Stadt *"
+      phone: "Telefon"
+      phone1: "Telefon *"
 
   comments:
     singular: "Kommentar"

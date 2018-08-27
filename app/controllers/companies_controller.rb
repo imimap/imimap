@@ -5,6 +5,8 @@ class CompaniesController < ApplicationController
   # GET /companies.json
   def index
     @companies = Company.all
+    # TBD ST
+    # @companies = Company.order(:name).where("name like ?", "%#{params[:term]}%")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -52,7 +54,7 @@ class CompaniesController < ApplicationController
         # case, but if Company#create isn't called from anywhere else,
         # why not. but if the company was specifically created for the
         # internship, it should be passed to the new internship.
-        format.html { redirect_to new_internship_path, notice: 'Company was successfully created.' }
+        format.html { redirect_to new_address_path(@company.id), notice: 'Company was successfully created.' }
         format.json { render json: @company, status: :created, location: @company }
       else
         format.html { render action: 'new' }
@@ -90,8 +92,13 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    params.require(:company).permit(:street, :city, :country, :zip, :main_language, :department,
-                                    :industry, :name, :number_employees, :website, :phone,
-                                    :blacklisted, :fax, :import_id, :latitude, :longitude)
+    params.require(:company).permit(:main_language,
+                    :industry, :name, :number_employees, :website,
+                    :blacklisted, :fax, :import_id, :latitude, :longitude)
+  end
+
+  def select_company
+    current_user
+    @company = Company.new
   end
 end

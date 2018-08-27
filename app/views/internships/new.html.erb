@@ -1,202 +1,248 @@
-<div class="row" id="form-block2">
-
-  <% if @internship.errors.any? %>
-  <div class="error_explanation">
-    <strong><%= pluralize(@internship.errors.count, "error") %> prohibited this internship from being saved:</strong>
-
-    <ul>
-      <% @internship.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
-    </ul>
+<div style= "height: 1200px" >
+  <div class="tab" >
+    <button class="tablinks round-tab" onclick="openCity(event, 'student')" id="defaultOpen">Personal Details</button>
+    <button class="tablinks round-tab" onclick="openCity(event, 'company')">Company Details</button>
+    <button class="tablinks round-tab" onclick="openCity(event, 'internship')">Internship Details</button>
   </div>
-  <% end %>
+  <%= bootstrap_form_for(@internship) do |f| %>
 
-  <%= nested_form_for @internship do |f| %>
+  <div id="student" class="tabcontent ">
+    <h3>Personal Details</h3>
+    <p>to update your personal data, please visit lsf.htw-berlin.de</p>
 
-  <%= f.fields_for :users do |u_form| %>
+    <div class="row">
+      <div class="col-md-4">
+        <div id="field-titles">
+        <%=t "students.attributes.enrolment_number" %><br />
+        <span class="form-static"><%=@current_user.student.enrolment_number%></span>
+        </div>
+      </div>
+    </div>
 
-  <h2>Student Information</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="field" id="field-titles2">
+        <%= t "users.attributes.first_name" %>
+        <span class="form-static"><%= @current_user.student.first_name %></span>
+        </div>
+      </div>
+    <div class="col-md-4">
+      <div class="field" id="field-titles2">
+        <%= t "users.attributes.last_name" %>
+        <span class="form-static"><%= @current_user.student.last_name %></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+          <div class="field" id="field-titles2">
+          <%=t "students.attributes.birthday" %>
+          <span class="form-static"><%=@current_user.student.birthday%></span>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="field" id="field-titles2">
+            <%=t "students.attributes.birthplace" %>
+            <span class="form-static"><%=@current_user.student.birthplace%></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="field" id="field-titles2">
+            <%=t "students.attributes.email" %>
+            <span class="form-static"><%=@current_user.student.email%></span>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="field" id="field-titles2">
+          <%=t "students.attributes.phone" %>
+          <span class="form-static"><%=@current_user.student.phone%></span>
+          </div>
+        </div>
+      </div>
+
+      <h5>Address</h5>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="field" id="field-titles2">
+            <%=t "students.attributes.street" %>
+            <span class="form-static"><%=@current_user.student.street%></span>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="field" id="field-titles2">
+          <%=t "students.attributes.zip" %> :</b>
+          <span class="form-static"><%=@current_user.student.zip%></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="field" id="field-titles2">
+          <%=t "students.attributes.city" %> :</b>
+          <span class="form-static"><%=@current_user.student.city%></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  <div id="company" class="tabcontent">
+    <h3>Company Details</h3>
+    <p>Select your internship company :</p>
+    <div class="row">
+      <div class="col">
+        <div class="field" id="field-titles">
+        <%= f.select :company_address_id, Company.order(:name).company_name_address.map { |c| [c.last, c.first]}, class: 'chzn-select', disabled: false, hide_label: true %>
+        <br/>
+        <%= t "Company not found?" %><%= link_to t("companies.createNewCompany"), new_company_path(returnToForm: true) %>
+        <br/>
+        <%= t "Found Company, but different Address?" %><%= link_to t("companies.createNewAddress"), select_company_path %>
+        </div>
+      </div>
+    </div>
+
+    <h4>Supervisor</h4>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="field" id="field-titles">
+          <%= f.text_field :supervisor_name %>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="field" id="field-titles">
+          <%= f.text_field :supervisor_email %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="internship" class="tabcontent">
+
+  <h3>Internship Details</h3>
 
   <div class="row">
     <div class="col-md-4">
-     <div class="field" id="field-titles">
-      <%= u_form.label t "students.attributes.enrolment_number" %><br />
-      <%=@current_user.student.enrolment_number%>
+      <div class="field" id="field-titles">
+        <%= f.text_field :title, placeholder: "Game design website in Italy" %>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="field" id="field-titles">
+        <%= f.select :semester_id, semesters, {}, class: 'chzn-select' %>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-md-4">
-   <div class="field" id="field-titles">
-    <%= u_form.label t "students.attributes.first_name" %><br />
-    <%=@current_user.student.first_name%>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="field" id="field-titles">
+      <%= f.date_field :start_date %>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="field" id="field-titles">
+        <%= f.date_field :end_date %>
+      </div>
+    </div>
   </div>
-</div>
-</div>
 
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field" id="field-titles">
+        <%= f.text_field :operational_area, placeholder: "Visual Reality, Website, 3D"%>
+      </div>
+    </div>
 
-<div class="row">
-  <div class="col-md-4">
-   <div class="field" id="field-titles">
-    <%= u_form.label t "students.attributes.last_name" %><br />
-    <%=@current_user.student.last_name%>
+    <div class="col-md-4">
+      <div class="field" id="field-titles">
+      <%= f.select :orientation_id, orientations, class: 'chzn-select' %>
+      </div>
+    </div>
   </div>
-</div>
-</div>
 
-<div class="row">
-  <div class="col-md-4">
-   <div class="field" id="field-titles">
-    <%= u_form.label t "students.attributes.birthday" %><br />
-    <%=@current_user.student.birthday%>
-  </div>
-</div>
-</div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field" id="field-titles">
+      <%= f.text_area :tasks, size: "4x5", placeholder: "Make and manage the company website, Make CSS for client websites" %>
+      </div>
+    </div>
 
-<div class="row">
-  <div class="col-md-4">
-   <div class="field" id="field-titles">
-    <%= u_form.label t "students.attributes.birthplace" %><br />
-    <%=@current_user.student.birthplace%>
-  </div>
-</div>
-</div>
-
-<div class="row">
-  <div class="col-md-4">
-   <div class="field" id="field-titles">
-    <%= u_form.label t "students.attributes.email" %><br />
-    <%=@current_user.student.email%>
-  </div>
-</div>
-</div>
-
-<h2>Select a Company</h2>
-
-<div class="field" id="field-titles">
- <%= f.label t "internships.attributes.company" %>
-<%= f.select :company_id, Company.order(:name).map { |c| [c.name, c.id]},{:selected => @company_last.id}, class: 'chzn-select', disabled: false %> <%= t "Company not found?" %>
- <%= link_to t("companies.createNewCompany"), new_company_path(returnToForm: true) %>
-</div>
-<br />
-
-<div class="row">
-  <div class="col-md-4">
+    <div class="col-md-4">
     <div class="field" id="field-titles">
-      <%= f.label t "internships.attributes.supervisor_name" %><br />
-      <%= f.text_field :supervisor_name, placeholder:  "supervisor in company" %>
+    <%= f.select :programming_language_ids, @programming_languages, {}, { :multiple => true, class: 'chzn-select', hide_label: true} %>
+  </div>
     </div>
   </div>
 
-  <div class="col-md-4">
-    <div class="field" id="field-titles">
-      <%= f.label t "internships.attributes.supervisor_email" %><br />
-      <%= f.text_field :supervisor_email, placeholder: "company supervisor e-mail" %>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field" id="field-titles">
+        <%= f.label t("internships.attributes.working_hours") + " / " + t("unit.week") %><br />
+        <%= f.text_field :working_hours, hide_label: true %>
+      </div>
     </div>
-  </div>
-</div>
 
-<h2>Internship specifications</h2>
-
-<div class="row">
-  <div class="col-md-4">
-    <div class="field" id="field-titles">
-      <%= f.label t "internships.attributes.title" %><br />
-      <%= f.text_field :title %>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-3">
-   <div class="field" id="field-titles">
-    <%= f.label t "internships.attributes.start_date" %><br />
-    <%= f.date_field :start_date %>
-  </div>
-</div>
-
-<div class="col-md-3">
- <div class="field" id="field-titles">
-  <%= f.label t "internships.attributes.end_date" %><br />
-  <%= f.date_field :end_date %>
-</div>
-</div>
-</div>
-
-<div class="row">
-  <div class="col-md-4">
-   <div class="field" id="field-titles">
-    <%= f.label t "internships.attributes.operational_area" %><br />
-    <%= f.text_field :operational_area %>
-  </div>
-</div>
-</div>
-
-<div class="row">
-  <div class="col-md-8">
-   <div class="field" id="field-titles">
-    <%= f.label t "internships.attributes.tasks" %><br />
-    <%= f.text_area :tasks, size: "30x5" %>
-  </div>
-</div>
-</div>
-
-<div class="row">
-  <div class="col-md-4">
-   <div class="field" id="field-titles">
-    <%= f.label t "internships.attributes.programming_language" %><br />
-    <%= f.select :programming_language_ids, @programming_languages, {}, { :multiple => true, class: 'chzn-select'} %>
-  </div>
-</div>
-
-<div class="col-md-4">
- <div class="field" id="field-titles">
-  <%= f.label t "internships.attributes.orientation" %><br />
-  <%= f.select :orientation_id, @orientations, {}, class: 'chzn-select' %>
-</div>
-</div>
-</div>
-
-<div class="row">
-
-  <div class="col-md-4">
-    <div class="field" id="field-titles">
-      <%= f.label t("internships.attributes.working_hours") + " / " + t("unit.week") %><br />
-      <%= f.text_field :working_hours %>
+    <div class="col-md-4">
+      <div class="field" id="field-titles">
+        <%= f.label t("internships.attributes.salary") + " € / " + t("unit.month") %><br />
+        <%= f.text_field :salary, hide_label: true %>
+      </div>
     </div>
   </div>
 
-  <div class="col-md-4">
-    <div class="field" id="field-titles">
-      <%= f.label t("internships.attributes.salary") + " € / " + t("unit.month") %><br />
-      <%= f.text_field :salary %>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field" id="field-titles">
+      <%= f.select :reading_prof_id, ReadingProf.order(:id).map { |p| [p.name, p.id]}, class: 'chzn-select', disabled: false %>
+      </div>
     </div>
   </div>
 
-</div>
-
-<div class="row">
-  <div class="col-md-4">
-   <div class="field" id="field-titles">
-    <%= f.label t "internships.attributes.semester" %><br />
-    <%= f.select :semester_id, get_semesters, {}, class: 'chzn-select' %>
+  <div class="row">
+    <div class="pull-right">
+      <div class="actions">
+      <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+      <i class="icon-ok icon-white"></i> <%= t("internships.create")%>
+      <% end %>
+      </div>
+    </div>
   </div>
-</div>
-</div>
-
-<br>
-<div class="row">
-  <div class="pull-right">
-   <div class="actions">
-    <%= button_tag(type: 'submit', class: "btn btn-success") do %>
-    <i class="icon-ok icon-white"></i> <%= t("internships.create")%>
     <% end %>
   </div>
-  <% end %>
-</div>
-<% end %>
-</div>
+  </div>
 </div>
 
+
+<script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+</div>

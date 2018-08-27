@@ -50,13 +50,14 @@ class ApplicationController < ActionController::Base
 
   helper_method :orientations
 
+  # TBD ST: only used in internships#new
   def semesters
     @semesters ||= Semester.order(:id).map do |s|
       [s.name, s.id]
     end
   end
 
-  helper_method :get_semesters
+  helper_method :semesters
 
   def notification_size
     Notification.where(user_id: current_user.try(:id)).size

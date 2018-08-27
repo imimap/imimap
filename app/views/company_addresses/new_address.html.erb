@@ -1,0 +1,67 @@
+<div class="container">
+<%= bootstrap_form_for(@company_address) do |f| %>
+    <% if @company_address.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@company_address.errors.count, "error") %> prohibited this company_address from being saved:</h2>
+  
+        <ul>
+        <% @company_address.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row">
+        <div class="col-md-4">
+          <div id="field-titles">
+          <h4>Make a new address for :</h4>
+          <span class="form-static"><%=@company.name%></span>
+          <%= f.hidden_field :company_id, :value => @company.id, hide_label: true %>
+          </div>
+        </div>
+      </div>
+    <div class="row">
+    <div class="col-md-4">
+        <div class="field" id="field-titles">
+          <%= f.text_field :street %>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="field" id="field-titles">
+          <%= f.number_field :zip %>
+        </div>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+        <div class="field" id="field-titles">
+          <%= f.text_field :city %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="field" id="field-titles">
+          <%= t("company_addresses.country")%>
+          <%= f.country_select :country, ["United States"], class: 'chzn-select' %>
+        </div>
+      </div>
+      </div>
+      <div class="row">
+  <div class="col-md-4">
+        <div class="field" id="field-titles">
+          <%= f.number_field :phone %>
+        </div>
+      </div>
+      </div>
+
+      <div class="row">
+    <div class="pull-right">
+     <div class="actions">
+      <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+      <i class="icon-ok icon-white"></i> <%= t("company_addresses.create")%>
+      <% end %>
+    </div>
+    </div>
+    </div>
+  <% end %>
+  </div>

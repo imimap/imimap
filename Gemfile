@@ -10,8 +10,11 @@ gem 'geocoder'
 gem 'nested_form'
 
 gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap_form', '>= 4.0.0.alpha1'
 gem 'jquery-rails'
-
+gem 'jquery-ui-rails'
+gem 'prawn'
+gem 'prawn-table'
 # see https://github.com/tzinfo/tzinfo/wiki/Resolving-TZInfo::DataSourceNotFound-Errors
 gem 'tzinfo-data'
 

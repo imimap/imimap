@@ -1,0 +1,40 @@
+<div class="container">
+  <%= bootstrap_form_for @internship do |f| %>
+    <h3>Internship Rating</h3>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="field" id="field-titles">
+          <%= f.check_box :recommend %>        
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="field" id="field-titles">
+        <%= f.label t("internships.attributes.living_costs") + " € / " + t("unit.month") %><br />
+        <%= f.text_field :living_costs, hide_label: true %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="field" id="field-titles">
+        <%= f.text_area :comment, size: "30x5" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="pull-right">
+        <div class="actions">
+          <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+          <i class="icon-ok icon-white"></i> <%= t("internships.edit_rating")%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <%end%>
+</div>

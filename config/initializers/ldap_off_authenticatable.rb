@@ -25,8 +25,8 @@ module Devise
         @student = Student.create(first_name: @givenname, last_name: @surname, enrolment_number: @enrolment_number, email: email)
         # TBD: this stores the ldap password in our database, and although encrypted, we shouldn't be doing this.
         @user = User.create(email: email, password: password, student_id: @student.id)
-        puts @user.inspect
-        puts @student.inspect
+        # puts @user.inspect
+        # puts @student.inspect
         success!(@user)
         #  end
       end

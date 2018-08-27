@@ -216,6 +216,7 @@ en:
         notLongEnough: "Intership is less than 4 weeks"
         partInternship: "If internship is a part internship it's valid"
         longEnough: "Internship is long enough"
+      reading_prof: "Reading professor"
 
 
   users:
@@ -247,18 +248,26 @@ en:
 
   students:
     attributes:
-      first_name: "given name"
-      first_name1: "given name *"
-      last_name: "last name"
-      last_name1: "last name *"
-      email: "email"
-      email1: "email *"
-      enrolment_number: "enrolment number"
-      enrolment_number1: "enrolment number *"
-      birthday: "birthday"
-      birthday1: "birthday *"
-      birthplace: "birthplace"
-      birthplace1: "birthplace *"
+      first_name: "Given name"
+      first_name1: "Given name *"
+      last_name: "Last name"
+      last_name1: "Last name *"
+      email: "Email"
+      email1: "Email *"
+      enrolment_number: "Enrolment number"
+      enrolment_number1: "Enrolment number *"
+      birthday: "Birthday"
+      birthday1: "Birthday *"
+      birthplace: "Birthplace"
+      birthplace1: "Birthplace *"
+      street: "Street"
+      street1: "Street *"
+      zip: "ZIP"
+      zip1: "ZIP *"
+      city: "City"
+      city1: "City *"
+      phone: "Telephone"
+      phone1: "Telephone *"
 
   comments:
     singular: "Comment"
