@@ -48,7 +48,11 @@ class Company < ApplicationRecord
   #def address_changed?
     #street_changed? || city_changed? || zip_changed? || country_changed?
   #end
-  
+
+  # TBD ST: needs refactoring - what does it do?
+  # it produces a list for a company selection box in the view.
+  # this and the map that follows in the view should be moved to a helper
+  # method.
   def self.company_name_address
     i = 0
     a = []
