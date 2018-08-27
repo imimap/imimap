@@ -2,7 +2,7 @@
 
 class UsersController < ApplicationController
   before_action :check_permission, only: %i[new create]
-  before_action :check_existing_user, only: %i[new create]
+  before_action :check_existing_user, only: %i[new create student_show]
 
   def create
     @user = User.new(user_params)
@@ -21,6 +21,11 @@ class UsersController < ApplicationController
       @user_first_name = 'not a student'
       @user_last_name = @user.email
     end
+  end
+
+  def student_show
+    current_user
+
   end
 
   private

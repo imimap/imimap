@@ -3,6 +3,7 @@
 Student.destroy_all
 Internship.destroy_all
 Company.destroy_all
+CompanyAddress.destroy_all
 
 intern_rating_id = InternshipRating.first
 
@@ -17,17 +18,21 @@ n = 1
     birthday: Faker::Date.birthday(18, 65),
     birthplace: Faker::Address.country
   )
-  Company.create!(
-    street: Faker::Address.street_address,
-    zip: Faker::Address.zip,
+  company = Company.create!(
     name: Faker::Company.name,
     number_employees: Faker::Number.number(3),
-    city: Faker::Address.city,
-    country: Faker::Address.country,
-    phone: Faker::PhoneNumber.phone_number,
     blacklisted: Faker::Boolean.boolean,
     import_id: Faker::Number.number(1),
     website: Faker::Internet.url('example.com')
+  )
+
+  company_address = CompanyAddress.create!(
+    company_id: company.id,
+    street: Faker::Address.street_address,
+    zip: Faker::Address.zip,
+    city: Faker::Address.city,
+    country: Faker::Address.country,
+    phone: Faker::PhoneNumber.phone_number
   )
 
   r_o = rand(Orientation.count) + 1

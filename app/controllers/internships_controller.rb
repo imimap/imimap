@@ -4,7 +4,7 @@ class InternshipsController < ApplicationController
   respond_to :html, :json
   before_action :programming_languages, :orientations, only: %i[new edit update]
 
-  before_action :authorize_internship, only: %i[edit update destroy]
+  before_action :authorize_internship, only: %i[edit update destroy rating]
   # GET /internships
   # GET /internships.json
 
@@ -15,11 +15,17 @@ class InternshipsController < ApplicationController
 
   def new
     @internship = Internship.new
+    @company = @internship.build_company
+    @student = @internship.student
+    @company_address = CompanyAddress.new
+    current_user
+    @reading_prof = ReadingProf.new
     @company_last = Company.last
   end
 
   def create
     @internship = Internship.new(internship_params)
+
     @internship.user_id = current_user.id
     @internship.student_id = current_user.student_id
 
@@ -41,12 +47,23 @@ class InternshipsController < ApplicationController
     @comment = UserComment.new
     @answer = Answer.new
     @favorite = Favorite.where(internship_id: @internship.id, user_id: current_user.id)[0]
-    @company = @internship.company
+    @company = @internship.company_address.company
     @other_internships = @company.internships.reject { |x| x.id == @internship.id }.reject { |i| i.completed == false }
 
     @user_comments = @internship.user_comments.order('created_at DESC')
 
-    respond_with(@internship)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = InternshipPdf.new(@internship)
+        send_data pdf.render, filename: "Internship Registration Form #{@current_user.student.last_name}.pdf",
+                              type: 'application/pdf'
+      end
+    end
+  end
+
+  def rating
+    @internship = Internship.find(params[:id])
   end
 
   # GET /internships/1/edit
@@ -100,8 +117,8 @@ class InternshipsController < ApplicationController
   # this was defined but not used.
   def internship_params
     params.require(:internship).permit(:attachments_attributes, :living_costs, :orientation_id,
-                                       :salary, :working_hours, :programming_language_ids,
-                                       :internship_rating_id, :company_id, :user_id, :title,
+                                       :salary, :working_hours,
+                                       :internship_rating_id, :user_id, :title,
                                        :recommend, :email_public, :semester_id, :description,
                                        :internship_report, :student_id, :start_date, :end_date,
                                        :operational_area, :tasks, :internship_state_id,
@@ -110,7 +127,7 @@ class InternshipsController < ApplicationController
                                        :certificate_signed_by_internship_officer,
                                        :certificate_signed_by_prof, :certificate_to_prof, :comment,
                                        :supervisor_email, :supervisor_name,
-                                       :internship_rating_attributes, :completed)
+                                       :internship_rating_attributes, :completed, :company_address_id, programming_language_ids: [])
   end
 
   def authorize_internship

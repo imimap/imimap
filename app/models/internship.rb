@@ -6,10 +6,11 @@ require 'time'
 class Internship < ApplicationRecord
   validates :semester_id, :student, presence: true
 
-  validates_presence_of :company
+  validates_presence_of :company_address
 
   belongs_to :user
   belongs_to :company
+  belongs_to :company_address
   belongs_to :orientation
   belongs_to :semester
   belongs_to :internship_rating
@@ -37,7 +38,8 @@ class Internship < ApplicationRecord
   # TBD: Test this. It probably didn't work before cleaning up the style.
   accepts_nested_attributes_for :company,
                                 reject_if: proc { |attr| attr['name'].blank? }
-
+  
+  
   def rating
     internship_rating.total_rating
   end

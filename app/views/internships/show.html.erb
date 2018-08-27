@@ -1,226 +1,280 @@
-<p id="notice"><%= notice %></p>
-<a href ="javascript:history.back()" class="btn btn-success btn-intern display_none icon-white icon-reply"> <%= t("buttons.back") %></a>
-<h2 class="intern-head"> <%= t"internships.details" %></h2>
-
 <div class="content-intern2">
 
- <div class=.row">
+<div class=.row">
 
-  <div class="col-md-8">
-    <div class="container-left">
-      <div class="container-left-text">
+ <div class="col-md-8">
+   <div class="container-left">
+     <div class="container-left-text">
 
-        <div class=.row" id="row-intern">
-          <div class="col-md-12">
-           <div class="row" id="row2-intern">
-            <div class="col-md-3" id="intern-title">
-              <%= t "internships.attributes.title" %></div>
-              <div class="col-md-8" id="intern-box">
-                <%= @internship.title %>
-              </div>
-            </div>
-          </div>
+       <div class=.row" id="row-intern">
+         <div class="col-md-12">
+          <div class="row" id="row2-intern">
+           <div class="col-md-3" id="intern-title">
+             <%= t "internships.attributes.title" %></div>
+             <div class="col-md-8" id="intern-box">
+               <%= @internship.title %>
+             </div>
+           </div>
+         </div>
 
-          <div class=.row" id="row-intern">
-            <div class="col-md-12">
-             <div class="row" id="row2-intern">
-              <div class="col-md-3" id="intern-title">
-                <%= t "internships.attributes.orientation" %></div>
-                <div class="col-md-8" id="intern-box">
-                  <%= @internship.orientation.try(:name) %>
-                </div>
-              </div>
-            </div>
-          </div>
+         <div class=.row" id="row-intern">
+ <div class="col-md-12">
+  <div class="row" id="row2-intern">
+   <div class="col-md-3" id="intern-title">
+     <%= t "internships.attributes.company_name" %></div>
+     <div class="col-md-8" id="intern-box">
+      <%= @internship.company_address.company.name %>
+    </div>
+  </div>
+</div>
+</div>
 
-          <div class=.row" id="row-intern">
-            <div class="col-md-12">
-             <div class="row" id="row2-intern">
-              <div class="col-md-3" id="intern-title">
-                <%= t "internships.attributes.programming_language" %></div>
-                <div class="col-md-8" id="intern-box">
-                  <%= @internship.programming_languages.map(&:name).join(", ") %>
-                </div>
-              </div>
-            </div>
-          </div>
+<div class=.row" id="row-intern">
+ <div class="col-md-12">
+  <div class="row" id="row2-intern">
+   <div class="col-md-3" id="intern-title">
+     <%= t "internships.attributes.company_address" %></div>
+     <div class="col-md-8" id="intern-box">
+      <%= @internship.company_address.street %>
+    </div>
+  </div>
+</div>
+</div>
 
-          <div class=.row" id="row-intern">
-            <div class="col-md-12">
-             <div class="row" id="row2-intern">
-              <div class="col-md-3" id="intern-title">
-                <%= t "internships.attributes.salary" %></div>
-                <div class="col-md-8" id="intern-box">
-                 <%= @internship.salary %> €/<%= t("unit.month")%>
+<div class=.row" id="row-intern">
+ <div class="col-md-12">
+  <div class="row" id="row2-intern">
+   <div class="col-md-3" id="intern-title">
+     <%= t "internships.attributes.company_website" %></div>
+     <div class="col-md-8" id="intern-box">
+      <%= @internship.company_address.company.website %>
+    </div>
+  </div>
+</div>
+</div>
+
+         <div class=.row" id="row-intern">
+           <div class="col-md-12">
+            <div class="row" id="row2-intern">
+             <div class="col-md-3" id="intern-title">
+               <%= t "internships.attributes.orientation" %></div>
+               <div class="col-md-8" id="intern-box">
+                 <%= @internship.orientation.try(:name) %>
                </div>
              </div>
            </div>
          </div>
 
-
          <div class=.row" id="row-intern">
-          <div class="col-md-12">
-           <div class="row" id="row2-intern">
-            <div class="col-md-3" id="intern-title">
-              <%= t "internships.attributes.working_hours" %></div>
-              <div class="col-md-8" id="intern-box">
-               <%= @internship.working_hours %>/<%= t("unit.week")%>
+           <div class="col-md-12">
+            <div class="row" id="row2-intern">
+             <div class="col-md-3" id="intern-title">
+               <%= t "internships.attributes.programming_language" %></div>
+               <div class="col-md-8" id="intern-box">
+                 <%= @internship.programming_languages.map(&:name).join(", ") %>
+               </div>
              </div>
            </div>
          </div>
-       </div>
+
+         <div class=.row" id="row-intern">
+           <div class="col-md-12">
+            <div class="row" id="row2-intern">
+             <div class="col-md-3" id="intern-title">
+               <%= t "internships.attributes.salary" %></div>
+               <div class="col-md-8" id="intern-box">
+                <%= @internship.salary %> €/<%= t("unit.month")%>
+              </div>
+            </div>
+          </div>
+        </div>
 
 
-       <div class=.row" id="row-intern">
-        <div class="col-md-12">
-         <div class="row" id="row2-intern">
-          <div class="col-md-3" id="intern-title">
-            <%= t "internships.attributes.living_costs" %></div>
-            <div class="col-md-8" id="intern-box">
-             <%= @internship.living_costs %> €/<%= t("unit.month")%>
-           </div>
-         </div>
-       </div>
-     </div>
+        <div class=.row" id="row-intern">
+         <div class="col-md-12">
+          <div class="row" id="row2-intern">
+           <div class="col-md-3" id="intern-title">
+             <%= t "internships.attributes.working_hours" %></div>
+             <div class="col-md-8" id="intern-box">
+              <%= @internship.working_hours %>/<%= t("unit.week")%>
+            </div>
+          </div>
+        </div>
+      </div>
 
-     <div class=.row" id="row-intern">
-      <div class="col-md-12">
-       <div class="row" id="row2-intern">
-        <div class="col-md-3" id="intern-title">
-          <%= t "internships.attributes.student" %></div>
-          <div class="col-md-8" id="intern-box">
-            <%= @internship.try(:student).try(:name) %>
+
+      <div class=.row" id="row-intern">
+       <div class="col-md-12">
+        <div class="row" id="row2-intern">
+         <div class="col-md-3" id="intern-title">
+           <%= t "internships.attributes.living_costs" %></div>
+           <div class="col-md-8" id="intern-box">
+            <%= @internship.living_costs %> €/<%= t("unit.month")%>
           </div>
         </div>
       </div>
     </div>
 
     <div class=.row" id="row-intern">
-      <div class="col-md-12">
-       <div class="row" id="row2-intern">
-        <div class="col-md-3" id="intern-title">
-          <%= t "users.attributes.email" %></div>
-          <div class="col-md-8" id="intern-box">
-            <%= @internship.student.user.email %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class=.row" id="row-intern">
-      <div class="col-md-12">
-       <div class="row" id="row2-intern">
-        <div class="col-md-3" id="intern-title">
-          <%= t "internships.attributes.semester" %></div>
-          <div class="col-md-8" id="intern-box">
-           <%= @internship.semester.name %>
+     <div class="col-md-12">
+      <div class="row" id="row2-intern">
+       <div class="col-md-3" id="intern-title">
+         <%= t "internships.attributes.student" %></div>
+         <div class="col-md-8" id="intern-box">
+           <%= @internship.try(:student).try(:name) %>
          </div>
        </div>
      </div>
    </div>
-
 
    <div class=.row" id="row-intern">
-    <div class="col-md-12">
-     <div class="row" id="row2-intern">
-      <div class="col-md-3" id="intern-title">
-        <%= t "internships.attributes.recommend" %></div>
-        <div class="col-md-8" id="intern-box">
-          <% if @internship.recommend %>
-          <i class="icon-thumbs-up icon-2x green-thumb"></i>
-          <% else %>
-          <i class="icon-thumbs-down icon-2x red-thumb"></i>
-          <% end %>
+     <div class="col-md-12">
+      <div class="row" id="row2-intern">
+       <div class="col-md-3" id="intern-title">
+         <%= t "users.attributes.email" %></div>
+         <div class="col-md-8" id="intern-box">
+           <%= @internship.student.email %>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div class=.row" id="row-intern">
+     <div class="col-md-12">
+      <div class="row" id="row2-intern">
+       <div class="col-md-3" id="intern-title">
+         <%= t "internships.attributes.semester" %></div>
+         <div class="col-md-8" id="intern-box">
+          <%= @internship.semester.name %>
         </div>
       </div>
     </div>
   </div>
 
-  <div class=.row" id="row-intern">
-    <div class="col-md-12">
-     <div class="row" id="row2-intern">
-      <div class="col-md-3" id="intern-title">
-        <%= t "internships.attributes.description" %></div>
-        <div class="col-md-8" id="intern-box">
-         <%= @internship.description %>
-       </div>
-     </div>
-   </div>
- </div>
-
  <div class=.row" id="row-intern">
-  <div class="col-md-12">
-   <div class="row" id="row2-intern">
-    <div class="col-md-3" id="intern-title">
-      <%= t "internships.attributes.tasks" %></div>
-      <div class="col-md-8" id="intern-box">
-       <%= @internship.tasks %>
-     </div>
-   </div>
- </div>
-</div>
-</div>
-
-<div class=.row" id="row-intern">
-  <div class="col-md-12">
-   <div class="row" id="row2-intern">
-    <div class="col-md-3" id="intern-title">
-      <%= t "internships.attributes.amoutOfDays" %></div>
-      <div class="col-md-8" id="intern-box">
-       <%= @internship.duration.days %>
-     </div>
-   </div>
- </div>
-</div>
-
-<div class=.row" id="row-intern">
-  <div class="col-md-12">
-   <div class="row" id="row2-intern">
-    <div class="col-md-3" id="intern-title">
-      <%= t "internships.attributes.amountOfWeeks" %></div>
-      <div class="col-md-8" id="intern-box">
-       <%= @internship.duration.weeks %>
-     </div>
-   </div>
- </div>
-</div>
-
-<div class=.row" id="row-intern">
-  <div class="col-md-12">
-   <div class="row" id="row2-intern">
-    <div class="col-md-3" id="intern-title">
-      <%= t "internships.attributes.weekValidation" %></div>
-      <div class="col-md-8" id="intern-box">
-        <% #tbd ... wtf.the mapping of the mapping of the mapping in all the wrong places.
-
-        if @internship.duration.week_validation == "notLongEnough" %>
-        <%= t "internships.attributes.weekVal.notLongEnough"%>
-        <% elsif @internship.duration.week_validation == "partInternship"  %>
-        <%= t "internships.attributes.weekVal.partInternship"%>
-        <% else # tbd ... wtf ... and here comes core business logic in the view...%>
-        <%= t "internships.attributes.weekVal.longEnough"%>
-        <% end %>
+   <div class="col-md-12">
+    <div class="row" id="row2-intern">
+     <div class="col-md-3" id="intern-title">
+       <%= t "internships.attributes.description" %></div>
+       <div class="col-md-8" id="intern-box">
+        <%= @internship.description %>
       </div>
     </div>
   </div>
 </div>
 
+<div class=.row" id="row-intern">
+ <div class="col-md-12">
+  <div class="row" id="row2-intern">
+   <div class="col-md-3" id="intern-title">
+     <%= t "internships.attributes.tasks" %></div>
+     <div class="col-md-8" id="intern-box">
+      <%= @internship.tasks %>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class=.row" id="row-intern">
+ <div class="col-md-12">
+  <div class="row" id="row2-intern">
+   <div class="col-md-3" id="intern-title">
+     <%= t "internships.attributes.amoutOfDays" %></div>
+     <div class="col-md-8" id="intern-box">
+      <%= @internship.duration.days %>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class=.row" id="row-intern">
+ <div class="col-md-12">
+  <div class="row" id="row2-intern">
+   <div class="col-md-3" id="intern-title">
+     <%= t "internships.attributes.amountOfWeeks" %></div>
+     <div class="col-md-8" id="intern-box">
+      <%= @internship.duration.weeks %>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class=.row" id="row-intern">
+ <div class="col-md-12">
+  <div class="row" id="row2-intern">
+   <div class="col-md-3" id="intern-title">
+     <%= t "internships.attributes.weekValidation" %></div>
+     <div class="col-md-8" id="intern-box">
+       <% #tbd ... wtf.the mapping of the mapping of the mapping in all the wrong places.
+
+       if @internship.duration.week_validation == "notLongEnough" %>
+       <%= t "internships.attributes.weekVal.notLongEnough"%>
+       <% elsif @internship.duration.week_validation == "partInternship"  %>
+       <%= t "internships.attributes.weekVal.partInternship"%>
+       <% else # tbd ... wtf ... and here comes core business logic in the view...%>
+       <%= t "internships.attributes.weekVal.longEnough"%>
+       <% end %>
+     </div>
+   </div>
+ </div>
+ </div>
+
+ <% if @internship.comment.present?%>
+ <div class=.row" id="row-intern">
+ <div class="col-md-12">
+  <div class="row" id="row2-intern">
+   <div class="col-md-3" id="intern-title">
+     <%= t "internships.attributes.comment" %></div>
+     <div class="col-md-8" id="intern-box">
+      <%= @internship.comment %>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class=.row" id="row-intern">
+   <div class="col-md-12">
+    <div class="row" id="row2-intern">
+     <div class="col-md-3" id="intern-title">
+       <%= t "internships.attributes.recommend" %></div>
+       <div class="col-md-8" id="intern-box">
+         <% if @internship.recommend %>
+         <i class="icon-thumbs-up icon-2x green-thumb"></i>
+         <% else %>
+         <i class="icon-thumbs-down icon-2x red-thumb"></i>
+         <% end %>
+       </div>
+     </div>
+   </div>
+ </div>
+
+ 
+<% end %>
+
+
+ <p><%= link_to "Print Registration Form (PDF)", internship_path(@internship, format: "pdf"), class: "btn btn-success" %></p>
+ 
+ <%= link_to({:controller => :internships, :action => :rating, :id => @internship.id},class: "btn btn-success") do %>
+  <i class = "icon-2x icon-large icon-white"> <%= t("buttons.rating") %> </i>
+  <% end %>
+
 <div id="edit">
- <%= link_to({:controller => :internships, :action => :edit, :id => @internship.id}, class: "btn btn-danger") do %>
- <i class = "icon-2x icon-large icon-white"> <%= t("buttons.edit") %> </i>
+<%= link_to({:controller => :internships, :action => :edit, :id => @internship.id}, class: "btn btn-danger") do %>
+<i class = "icon-2x icon-large icon-white"> <%= t("buttons.edit") %> </i>
+<% end %>
+
+<div id="favorite">
+ <% if @favorite %>
+ <%= link_to({:controller=>:favorite,:action=>:destroy, :id => @favorite.id }, {:method=>:destroy, remote: true, class: "btn btn-danger"}) do %>
+ <i class="icon-remove icon-large icon-white"> </i><%= t("favorite.delete") %>
  <% end %>
 
- <div id="favorite">
-  <% if @favorite %>
-  <%= link_to({:controller=>:favorite,:action=>:destroy, :id => @favorite.id }, {:method=>:destroy, remote: true, class: "btn btn-danger"}) do %>
-  <i class="icon-remove icon-large icon-white"> </i><%= t("favorite.delete") %>
-  <% end %>
-
-  <% else %>
-  <%= link_to({:controller=>:favorite,:action=>:create, :internship_id => @internship.id, :user_id => current_user.id}, {:method=>:post, remote: true, class: "btn btn-success"}) do %>
-  <i class="icon-heart icon-large icon-white"> </i><%= t("favorite.add") %>
-  <% end %>
-  <% end %>
+ <% else %>
+ <%= link_to({:controller=>:favorite,:action=>:create, :internship_id => @internship.id, :user_id => current_user.id}, {:method=>:post, remote: true, class: "btn btn-success"}) do %>
+ <i class="icon-heart icon-large icon-white"> </i><%= t("favorite.add") %>
+ <% end %>
+ <% end %>
 </div>
 <br/>
 
@@ -229,12 +283,12 @@
 <% @internship.attachments.each do |attachment| %>
 <a href="#myModal" role="button" class="btn btn-default" data-toggle="modal"><%= image_tag attachment.file_url(:thumb) %></a>
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
- <div class="modal-header">
-  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-  <h3 id="myModalLabel">Photo Gallery</h3>
+<div class="modal-header">
+ <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+ <h3 id="myModalLabel">Photo Gallery</h3>
 </div>
 <div class="modal-body">
-  <%= image_tag attachment.file_url %>
+ <%= image_tag attachment.file_url %>
 </div>
 <div class="modal-footer">
 </div>
@@ -262,85 +316,85 @@
 <br/>
 
 <div id="comment_div">
-  <div id="comment_form" style="display:none;">
-    <%= form_for(@comment, remote: true ) do |f| %>
-    <div class="field">
-      <%= f.hidden_field :internship_id, value: @internship.id %>
-      <%= f.label t "comments.attributes.body" %>
-      <%= f.text_field :body %>
-      <div class="actions">
-        <%= button_tag(type: 'submit', class: "btn btn-success") do %>
-        <i class="icon-ok icon-white icon-large"></i> <%= t"buttons.save" %>
-        <% end %>
-        <br/>
-        <br/>
-      </div>
-    </div>
-    <% end %>
-  </div>
+ <div id="comment_form" style="display:none;">
+   <%= form_for(@comment, remote: true ) do |f| %>
+   <div class="field">
+     <%= f.hidden_field :internship_id, value: @internship.id %>
+     <%= f.label t "comments.attributes.body" %>
+     <%= f.text_field :body %>
+     <div class="actions">
+       <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+       <i class="icon-ok icon-white icon-large"></i> <%= t"buttons.save" %>
+       <% end %>
+       <br/>
+       <br/>
+     </div>
+   </div>
+   <% end %>
+ </div>
 
-  <% @user_comments.each do |i| %>
-  <div class="comment" style="display:none;">
-    <div id="user"><%= i.user.name %>
-      <%= t "helpers.at" %>
-      <%= I18n.localize(i.created_at, :format => :long) %>
-      :</div>
-      <br/>
-      <br/>
-      <div id="sentence"><%= i.body %>
-        <% if current_user.id == i.user_id %>
-        <%= link_to " "+(t "buttons.destroy"),  {:controller => :user_comments, :action => 'destroy', :id => i.id}, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger pull-right delete icon-white icon-remove icon-large", remote: true  %>
-        <% end %>
-      </div>
-      <br/>
-    </div>
+ <% @user_comments.each do |i| %>
+ <div class="comment" style="display:none;">
+   <div id="user"><%= i.user.name %>
+     <%= t "helpers.at" %>
+     <%= I18n.localize(i.created_at, :format => :long) %>
+     :</div>
+     <br/>
+     <br/>
+     <div id="sentence"><%= i.body %>
+       <% if current_user.id == i.user_id %>
+       <%= link_to " "+(t "buttons.destroy"),  {:controller => :user_comments, :action => 'destroy', :id => i.id}, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger pull-right delete icon-white icon-remove icon-large", remote: true  %>
+       <% end %>
+     </div>
+     <br/>
+   </div>
 
-    <% if i.answer.present? %>
-    <div class="answer" style="display:none;">
-      <div id="user_2"><%= t "answers.from" %>
-        <%= i.answer.user.name %>
-        <%= t "helpers.at" %>
-        <%= i.answer.created_at.to_formatted_s(:long_ordinal) %>
-        :</div>
-        <br/>
-        <br/>
-        <div id="sentence_2"><%= i.answer.body %>
+   <% if i.answer.present? %>
+   <div class="answer" style="display:none;">
+     <div id="user_2"><%= t "answers.from" %>
+       <%= i.answer.user.name %>
+       <%= t "helpers.at" %>
+       <%= i.answer.created_at.to_formatted_s(:long_ordinal) %>
+       :</div>
+       <br/>
+       <br/>
+       <div id="sentence_2"><%= i.answer.body %>
 
 
-          <% if current_user.id == @internship.student.user.id %>
-          <%= link_to " "+(t "buttons.destroy"),  {:controller => :answers, :action => 'destroy', :id => i.answer.id}, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger pull-right delete icon-white icon-remove icon-large", remote: true %>
-          <% end %>
-        </div>
-        <br/>
-      </div>
+         <% if current_user.id == @internship.student.user.id %>
+         <%= link_to " "+(t "buttons.destroy"),  {:controller => :answers, :action => 'destroy', :id => i.answer.id}, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger pull-right delete icon-white icon-remove icon-large", remote: true %>
+         <% end %>
+       </div>
+       <br/>
+     </div>
 
-      <% else %>
+     <% else %>
 
-      <% if current_user.id == @internship.student.user.id %>
-      <br />
-      <%= form_for(@answer, remote: true) do |f| %>
-      <div class="answer_2" style="display:none">
-        <div id="answer_field"><div class="field">
-          <%= f.hidden_field :internship_id, value: @internship.id %>
-          <%= f.hidden_field :user_comment_id, value: i.id %>
-          <div id="user_3"><%= f.label t "answers.attributes.body" %></div>
-          <div id="sentence_3"><%= f.text_field :body %></div>
-          <div class="actions save_button">
-            <%= button_tag(type: 'submit', class: "btn btn-success") do %>
-            <i class="icon-ok icon-white icon-large"></i> <%= t"buttons.save" %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <% end %>
+     <% if current_user.id == @internship.student.user.id %>
+     <br />
+     <%= form_for(@answer, remote: true) do |f| %>
+     <div class="answer_2" style="display:none">
+       <div id="answer_field"><div class="field">
+         <%= f.hidden_field :internship_id, value: @internship.id %>
+         <%= f.hidden_field :user_comment_id, value: i.id %>
+         <div id="user_3"><%= f.label t "answers.attributes.body" %></div>
+         <div id="sentence_3"><%= f.text_field :body %></div>
+         <div class="actions save_button">
+           <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+           <i class="icon-ok icon-white icon-large"></i> <%= t"buttons.save" %>
+           <% end %>
+         </div>
+       </div>
+     </div>
+   </div>
+   <% end %>
 
-    <% end %>
+   <% end %>
 
-    <% end %>
+   <% end %>
 
-    <% end %>
-  </div>
+   <% end %>
+ </div>
 </div>
 </div>
 </div>
@@ -351,91 +405,92 @@
 </div>
 </div>
 <div class="col-md-4 comp-mob">
-  <div class="container-right">
-    <div class="ribbon">
-      <div class="ribbon-wrapper">
-        <div class="ribbon-front">
-          <h3 class="comp-head"> <%= t "internships.company_fact" %> </h3>
-        </div>
+ <div class="container-right">
+   <div class="ribbon">
+     <div class="ribbon-wrapper">
+       <div class="ribbon-front">
+         <h3 class="comp-head"> <%= t "internships.company_fact" %> </h3>
+       </div>
 
-        <div class="ribbon-edge-topright"></div>
+       <div class="ribbon-edge-topright"></div>
 
-        <div class="ribbon-edge-bottomright"></div>
+       <div class="ribbon-edge-bottomright"></div>
 
-        <div class="ribbon-back-right"></div>
-      </div>
-    </div>
+       <div class="ribbon-back-right"></div>
+     </div>
+   </div>
 
 
-    <div class="greenline display_none display_nonet"></div>
+   <div class="greenline display_none display_nonet"></div>
 
-    <div class="container-right-text">
-
-     <div id="company-title">
-      <%= t "companies.attributes.name"  %>
-    </div>
-    <div id="company-title-text">
-      <%= @company.name %>
-    </div>
+   <div class="container-right-text">
 
     <div id="company-title">
-      <%= t "companies.attributes.website"  %>
-    </div>
+     <%= t "companies.attributes.name"  %>
+   </div>
+   <div id="company-title-text">
+     <%= @company.name %>
+   </div>
+
+   <div id="company-title">
+     <%= t "companies.attributes.website"  %>
+   </div>
 
 
-    <div id="company-title-text">
-      <%= link_to @company.website, url_with_protocol(@company.website) , target: "_blank" if @company.website %>
-    </div>
+   <div id="company-title-text">
+     <%= link_to @company.website, url_with_protocol(@company.website) , target: "_blank" if @company.website %>
+   </div>
 
 
-    <div id="company-title">
-      <%= t "companies.attributes.phone"  %>
-    </div>
-    <div id="company-title-text">
-      <%= @company.phone %>
-    </div>
+   <div id="company-title">
+     <%= t "companies.attributes.company_address"  %>
+   </div>
+   <div id="company-title-text">
+     <%= @company.company_addresses.first.phone %>
+   </div>
 
 
-    <div id="company-title">
-      <%= t "companies.attributes.industry"  %>
-    </div>
-    <div id="company-title-text">
-      <%= @company.industry %>
-    </div>
-
-
-
-    <div id="company-title">
-      <%= t "companies.attributes.number_employees"  %>
-    </div>
-    <div id="company-title-text">
-      <%= @company.number_employees %>
-    </div>
+   <div id="company-title">
+     <%= t "companies.attributes.industry"  %>
+   </div>
+   <div id="company-title-text">
+     <%= @company.industry %>
+   </div>
 
 
 
-    <div id="company-title">
-      <%= t "companies.attributes.main_language"  %>
-    </div>
-    <div id="company-title-text">
-      <%= @company.main_language %>
-    </div>
+   <div id="company-title">
+     <%= t "companies.attributes.number_employees"  %>
+   </div>
+   <div id="company-title-text">
+     <%= @company.number_employees %>
+   </div>
 
-    <% if @other_internships.any? %>
-    <div id="company-title">
-      <%= t("internships.others")  %>
-    </div>
-    <br/>
-    <div id="company-title-text">
-      <% @other_internships.each do |other| %>
-      <div>
-        <%= link_to " #{other.title}", other, class: "btn btn-success icon-white icon-circle-arrow-right icon-large" %>
-      </div>
-      <br/>
-      <% end %>
-    </div>
-    <% end %>
 
-  </div>
+
+   <div id="company-title">
+     <%= t "companies.attributes.main_language"  %>
+   </div>
+   <div id="company-title-text">
+     <%= @company.main_language %>
+   </div>
+
+   <% if @other_internships.any? %>
+   <div id="company-title">
+     <%= t("internships.others")  %>
+   </div>
+   <br/>
+   <div id="company-title-text">
+     <% @other_internships.each do |other| %>
+     <div>
+       <%= link_to " #{other.title}", other, class: "btn btn-success icon-white icon-circle-arrow-right icon-large" %>
+     </div>
+     <br/>
+     <% end %>
+   </div>
+
+   <% end %>
+
+ </div>
 </div>
 </div>

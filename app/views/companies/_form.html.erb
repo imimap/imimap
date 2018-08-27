@@ -1,5 +1,5 @@
-<div class="row" id="form-block2">
-  <%= form_for(@company) do |f| %>
+<div class="container">
+  <%= bootstrap_form_for(@company) do |a| %>
   <% if @company.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
@@ -16,58 +16,13 @@
   <div class="row">
     <div class="col-md-4">
       <div class="field" id="field-titles">
-        <%= f.label t "companies.attributes.name" %><br/>
-        <%= f.text_field :name %>
+        <%= a.text_field :name%>
       </div>
     </div>
+    
     <div class="col-md-4">
       <div class="field" id="field-titles">
-        <%= f.label t "companies.attributes.street" %><br/>
-        <%= f.text_field :street %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="field" id="field-titles">
-        <%= f.label t "companies.attributes.zip" %><br/>
-        <%= f.number_field :zip %>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="row" style="margin-top:20px">
-    <div class="col-md-4">
-      <div class="field" id="field-titles">
-        <%= f.label t "companies.attributes.city" %><br/>
-        <%= f.text_field :city %>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="field" id="field-titles">
-        <%= f.label t "companies.attributes.country" %><br/>
-        <%= f.country_select :country, ["United States"], class: 'chzn-select' %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="field" id="field-titles">
-        <%= f.label t "companies.attributes.number_employees" %><br/>
-        <%= f.number_field :number_employees %>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="row" style="margin-top:20px">
-    <div class="col-md-4">
-      <div class="field" id="field-titles">
-        <%= f.label t "companies.attributes.industry" %><br />
-        <%= f.text_field :industry %>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="field" id="field-titles">
-        <%= f.label t "companies.attributes.main_language" %><br />
-        <%= f.text_field :main_language %>
+        <%= a.number_field :number_employees %>
       </div>
     </div>
   </div>
@@ -75,25 +30,35 @@
   <div class="row" style="margin-top:20px">
     <div class="col-md-4">
       <div class="field" id="field-titles">
-        <%= f.label t "companies.attributes.website" %><br />
-        <%= f.text_field :website %>
+        <%= a.text_field :industry %>
       </div>
     </div>
     <div class="col-md-4">
       <div class="field" id="field-titles">
-        <%= f.label t "companies.attributes.phone" %><br />
-        <%= f.number_field :phone %>
+        <%= a.text_field :main_language %>
       </div>
     </div>
   </div>
-
 
   <div class="row" style="margin-top:20px">
-    <div class="col-md-1 col-md-offset-9">
-      <div class="actions">
-        <%= f.submit t(params[:action] == 'new' ? 'companies.create' : 'companies.update'), class: "btn btn-success" %>
+    <div class="col-md-4">
+      <div class="field" id="field-titles">
+        <%= a.text_field :website %>
       </div>
-      <% end %>
     </div>
+    
   </div>
+
+
+  <div class="row">
+  <div class="pull-right">
+   <div class="actions">
+    <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+    <i class="icon-ok icon-white"></i> <%= t("companies.create")%>
+    <% end %>
+  </div>
+  </div>
+  </div>
+
+  <% end %>
 </div>

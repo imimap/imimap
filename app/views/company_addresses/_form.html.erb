@@ -1,0 +1,55 @@
+
+<%= form_for(@company_address) do |f| %>
+  <% if @company_address.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@company_address.errors.count, "error") %> prohibited this company_address from being saved:</h2>
+
+      <ul>
+      <% @company_address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-md-4">
+      <div class="field" id="field-titles">
+        <%= f.label t "companies.attributes.street" %><br/>
+        <%= f.text_field :street %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="field" id="field-titles">
+        <%= f.label t "companies.attributes.zip" %><br/>
+        <%= f.number_field :zip %>
+      </div>
+    </div>
+      <div class="col-md-4">
+      <div class="field" id="field-titles">
+        <%= f.label t "companies.attributes.city" %><br/>
+        <%= f.text_field :city %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="field" id="field-titles">
+        <%= f.label t "companies.attributes.country" %><br/>
+        <%= f.country_select :country, ["United States"], class: 'chzn-select' %>
+      </div>
+    </div>
+<div class="col-md-4">
+      <div class="field" id="field-titles">
+        <%= f.label t "companies.attributes.phone" %><br />
+        <%= f.number_field :phone %>
+      </div>
+    </div>
+
+    <div class="row">
+  <div class="pull-right">
+   <div class="actions">
+    <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+    <i class="icon-ok icon-white"></i> <%= t("company_addresses.create")%>
+    <% end %>
+  </div>
+  </div>
+  </div>
+<% end %>

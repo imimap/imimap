@@ -1,0 +1,2 @@
+module CompanyAddressesHelper
+end
