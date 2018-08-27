@@ -28,9 +28,15 @@ ActiveAdmin.register Internship do
       f.input :student_id, as: :select, collection: Student.order(:last_name).collect { |s| ["#{s.enrolment_number}, #{s.last_name}, #{s.first_name}", s.id] }
       f.semantic_errors :student
     end
-    f.inputs 'Company' do
-      f.input :company_id, as: :select, collection: Company.order(:name).collect { |c| ["#{c.name}, #{c.city}, #{c.country}", c.id] }
+
+    f.inputs 'CompanyAddress' do
+      f.input :company_address_id,
+              as: :select,
+              collection: CompanyAddress.joins(:company).pluck(:name, :street, :city, :country, :id).map { |name, street, city, country, id| ["#{name}, #{street}, #{city}, #{country}", id]}
+              
+
     end
+
     f.inputs 'Internship' do
       f.input :start_date, as: :date_picker
       f.input :end_date, as: :date_picker

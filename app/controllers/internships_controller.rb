@@ -118,18 +118,43 @@ class InternshipsController < ApplicationController
 
   # this was defined but not used.
   def internship_params
-    params.require(:internship).permit(:attachments_attributes, :living_costs, :orientation_id,
-                                       :salary, :working_hours,
-                                       :internship_rating_id, :user_id, :title,
-                                       :recommend, :email_public, :semester_id, :description,
-                                       :internship_report, :student_id, :start_date, :end_date,
-                                       :operational_area, :tasks, :internship_state_id,
-                                       :reading_prof_id, :payment_state_id, :registration_state_id,
-                                       :contract_state_id, :report_state_id, :certificate_state_id,
-                                       :certificate_signed_by_internship_officer,
-                                       :certificate_signed_by_prof, :certificate_to_prof, :comment,
-                                       :supervisor_email, :supervisor_name,
-                                       :internship_rating_attributes, :completed, :company_address_id, programming_language_ids: [])
+    params.require(:internship).permit(
+      :certificate_signed_by_internship_officer,
+      :certificate_signed_by_prof,
+      :certificate_state_id,
+      :certificate_to_prof,
+      :comment,
+      :company_address_id,
+      :contract_state_id,
+      :end_date,
+      :internship_state_id,
+      :operational_area,
+      :orientation_id,
+      :payment_state_id,
+      :reading_prof_id,
+      :recommend,
+      :registration_state_id,
+      :report_state_id,
+      :semester_id,
+      :start_date,
+      :student_id,
+      :supervisor_email,
+      :supervisor_name,
+      :tasks,
+
+      :title,
+      :user_id,
+      :working_hours,
+      :salary,
+      :living_costs,
+      :internship_rating_attributes,
+      :internship_rating_id,
+      :internship_report,
+      :description,
+      :email_public,
+      :completed,
+      programming_languages: []
+    )
   end
 
   def authorize_internship

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require_relative '../helpers/active_admin_spec_helpers.rb'
 
 describe 'ActiveAdmin Internship CRUD' do
   context 'logged in' do
@@ -19,6 +20,14 @@ describe 'ActiveAdmin Internship CRUD' do
         expect(page).to have_content I18n.t('activerecord.attributes.internship.supervisor_email')
         expect(page).to have_content I18n.t('activerecord.attributes.internship.supervisor_name')
         expect(page).to have_content I18n.t('activerecord.attributes.internship.comment')
+
+        expect(page).to have_content active_admin_date(internship.start_date)
+        expect(page).to have_content active_admin_date(internship.end_date)
+        expect(page).to have_content internship.tasks
+        expect(page).to have_content internship.comment
+        expect(page).to have_content internship.supervisor_email
+        expect(page).to have_content internship.supervisor_name
+
       end
     end
   end
