@@ -69,7 +69,7 @@ ActiveAdmin.register Internship do
       row :student do |n|
         link_to n.student.first_name << ' ' << n.student.last_name, "/admin/students/#{n.student_id}"
       end
-      row :company
+      row :company_v2
       row :start_date
       row :end_date
       # TBD clean this up

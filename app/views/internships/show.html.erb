@@ -23,7 +23,7 @@
    <div class="col-md-3" id="intern-title">
      <%= t "internships.attributes.company_name" %></div>
      <div class="col-md-8" id="intern-box">
-      <%= @internship.company_address.company.name %>
+      <%= @internship.company_v2.name %>
     </div>
   </div>
 </div>
@@ -249,12 +249,12 @@
    </div>
  </div>
 
- 
+
 <% end %>
 
 
  <p><%= link_to "Print Registration Form (PDF)", internship_path(@internship, format: "pdf"), class: "btn btn-success" %></p>
- 
+
  <%= link_to({:controller => :internships, :action => :rating, :id => @internship.id},class: "btn btn-success") do %>
   <i class = "icon-2x icon-large icon-white"> <%= t("buttons.rating") %> </i>
   <% end %>

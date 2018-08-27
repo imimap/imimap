@@ -16,7 +16,7 @@ ActiveAdmin.register_page 'Dashboard' do
         panel 'Recent Internships' do
           ul do
             Internship.last(10).reverse.map do |internship|
-              li link_to("#{internship.student.first_name} #{internship.student.last_name} at #{internship.company.name}", admin_internship_path(internship))
+              li link_to("#{internship.student.first_name} #{internship.student.last_name} at #{internship.company_v2.name}", admin_internship_path(internship))
             end
           end
         end

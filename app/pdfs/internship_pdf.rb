@@ -2,7 +2,7 @@ class InternshipPdf < Prawn::Document
     def initialize(internship)
         super()
         @student = internship.student
-        @company = internship.company
+        @company = internship.company_v2
         @internship = internship
         @company_address = internship.company_address
         @semester = internship.semester
@@ -78,7 +78,7 @@ class InternshipPdf < Prawn::Document
         :at => [250, 490]
         text_box ":   #{@company.industry}",
         :at => [350, 490]
-        
+
         move_down 30
         text "Address",
         :style => :bold
@@ -140,7 +140,7 @@ class InternshipPdf < Prawn::Document
         :at => [0, 260]
         text_box ":     #{@internship.tasks}",
         :at => [100, 260]
-        
+
     end
 
     def additional_information
@@ -182,7 +182,7 @@ class InternshipPdf < Prawn::Document
         text "Für alles gilt: Bitte leserlich schreiben!",
         :style => :bold
 
-        
+
         move_down 20
         text "Antrag",
         :style => :bold
@@ -208,20 +208,20 @@ class InternshipPdf < Prawn::Document
         text "- Gewünschten Hochschulbetreuer bitte unterstreichen. Es wird versucht den Wunsch zu berüchsichtigen."
 
         move_down 10
-        text "Zulassung zum Praktikum:",         
+        text "Zulassung zum Praktikum:",
         :style => :bold
         text "- Bitte ankreuzen, falls alle Leistungsnachweise vom 1. und 2. Semester erbracht worden sind."
         text "Unterschrift des Studenten hier nicht vergessen"
 
         move_down 20
-        text "Nachweis", 
+        text "Nachweis",
         :style => :bold
 
         move_down 10
         text "Praktikumszeugnis:",
         :style => :bold
         text "- Hier muss die Firma unterschreiben!"
-    
+
         move_down 10
         text "Praxisbegleitende Lehrveranstaltungen:",
         :style => :bold

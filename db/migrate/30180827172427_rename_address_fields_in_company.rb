@@ -10,5 +10,8 @@ class RenameAddressFieldsInCompany < ActiveRecord::Migration[5.2]
       t.rename :longitude, :x_longitude
       t.rename :latitude, :x_latitude
     end
+    change_table :internships do |t|
+      t.rename :company_id, :x_company_id
+    end
   end
 end

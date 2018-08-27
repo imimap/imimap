@@ -38,8 +38,6 @@ class Internship < ApplicationRecord
   # TBD: Test this. It probably didn't work before cleaning up the style.
   accepts_nested_attributes_for :company,
                                 reject_if: proc { |attr| attr['name'].blank? }
-  
-  
   def rating
     internship_rating.total_rating
   end
@@ -51,6 +49,11 @@ class Internship < ApplicationRecord
 
   def enrolment_number
     student.enrolment_number
+  end
+
+  def company_v2
+    nil unless company_address
+    company_address.company
   end
 
   def duration

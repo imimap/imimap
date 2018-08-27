@@ -194,7 +194,7 @@ ActiveRecord::Schema.define(version: 3018_08_27_172427) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "internship_rating_id", default: 1
-    t.integer "company_id"
+    t.integer "x_company_id"
     t.integer "user_id"
     t.string "title"
     t.boolean "recommend", default: true
