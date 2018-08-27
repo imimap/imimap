@@ -7,6 +7,7 @@ class CreateCompanyAddresses < ActiveRecord::Migration[5.1]
       t.string :city
       t.string :country
       t.string :phone
+      t.string :fax
 
       t.timestamps
     end

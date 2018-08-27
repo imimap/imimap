@@ -4,12 +4,12 @@
   <b><%= t "companies.attributes.name"  %> :</b>
   <%= @company.name %>
 </p>
-
+<% if false #TBD ST %>
 <p>
   <b><%= t "companies.attributes.address"  %>:</b>
   <%= "#{@company.street}, #{@company.zip} #{@company.city}, #{@company.country}" %>
 </p>
-
+<% end %>
 
 <p>
   <b><%= t "companies.attributes.website"  %> :</b>

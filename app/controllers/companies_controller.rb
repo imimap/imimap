@@ -4,7 +4,9 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.order(:name).where("name like ?", "%#{params[:term]}%")
+    @companies = Company.all
+    # TBD ST
+    # @companies = Company.order(:name).where("name like ?", "%#{params[:term]}%")
 
     respond_to do |format|
       format.html # index.html.erb

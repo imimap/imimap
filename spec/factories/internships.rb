@@ -2,10 +2,16 @@
 
 FactoryBot.define do
   factory :internship do
+    before(:create) do |i|
+      c = FactoryBot.create(:company)
+      i.company = c
+      i.company_address = c.company_addresses.first
+    end
+
     working_hours { 2.0 }
     living_costs  { 4.0 }
     internship_rating
-    company
+    # company
     user
     title { 'The Main Example Intership' }
     recommend { true }
@@ -34,5 +40,16 @@ FactoryBot.define do
     supervisor_name { 'internship supervisor name' }
     completed { false }
     internship_report { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'test.pdf')) }
+    after(:build) do |i|
+      c = FactoryBot.build(:company)
+      i.company = c
+      i.company_address = c.company_addresses.first
+    end
+    after(:create) do |i|
+      c = FactoryBot.create(:company)
+      i.company = c
+      i.company_address = c.company_addresses.first
+    end
+
   end
 end

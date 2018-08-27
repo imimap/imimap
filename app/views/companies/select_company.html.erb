@@ -13,11 +13,11 @@
   <% end %>
 
   <h3>Company Details</h3>
-  <p>Select your internship company :</p> 
+  <p>Select your internship company :</p>
   <div class="row">
     <div class="col-md-4">
       <div class="field" id="field-titles">
-      <%= f.select :id, Company.order(:name).map { |c| [c.name, c.id]}, class: 'chzn-select', disabled: false, hide_label: true %> 
+      <%= f.select :id, Company.order(:name).map { |c| [c.name, c.id]}, class: 'chzn-select', disabled: false, hide_label: true %>
       </div>
       <div class="actions btn btn-success">
         <span onclick="createAddress()" > GO </span>
@@ -31,7 +31,7 @@
 <script>
     function createAddress(){
         var selectedCompanyId = $("#company_id").val();
-        window.location.href="/newAddress/" + selectedCompanyId;
+        window.location.href=<%= new_address_path %> + selectedCompanyId;
     }
 
 </script>

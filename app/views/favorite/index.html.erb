@@ -11,7 +11,9 @@
 	  <tr class="<%= cycle("even_row2", "odd_row2") %>">
 		<td><%= check_box_tag "favorite_ids[]", favorite.internship.id %></td>
 	    <td><%= favorite.internship.title %></td>
+			<% if false # TBD ST %>
 	    <td><%= favorite.internship.company.address %></td>
+			<% end %>
 	    <td><%= favorite.internship.orientation.name %></td>
 	    <td><%= favorite.internship.programming_languages.map { |n| n.name }.join(", ") %></td>
 	    <td><%= link_to "", favorite.internship, class: "icon-white  icon-circle-arrow-right icon-2x button_intern" %></td>

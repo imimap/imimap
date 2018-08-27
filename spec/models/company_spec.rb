@@ -20,12 +20,6 @@ RSpec.describe Company, type: :model do
     end
   end
 
-  describe '#address' do
-    it 'builds the expected address string' do
-      expect(@company.address).to eq [@company.street, @company.zip, @company.city, @company.country].join(', ')
-    end
-  end
-
   describe '#enrolment_number' do
     it 'builds the expected enrolment_number result' do
       @company.internships << create(:internship)

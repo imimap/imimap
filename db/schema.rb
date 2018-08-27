@@ -79,7 +79,6 @@ ActiveRecord::Schema.define(version: 2018_03_26_213706) do
     t.float "latitude"
     t.float "longitude"
     t.string "main_language"
-    t.string "fax"
     t.boolean "blacklisted", default: false
     t.integer "import_id"
   end
@@ -91,6 +90,7 @@ ActiveRecord::Schema.define(version: 2018_03_26_213706) do
     t.string "city"
     t.string "country"
     t.string "phone"
+    t.string "fax"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_company_addresses_on_company_id"

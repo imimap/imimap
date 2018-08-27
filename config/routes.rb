@@ -10,7 +10,8 @@ Rails.application.routes.draw do
       authenticated :user do
         root 'overview#index', as: :authenticated_root
       end
-      resources :internships, only: %i[new edit show update create rating]
+      resources :internships
+      # TBD ST resources :internships, only: %i[new edit show update create rating]
       resources :companies
       resources :users, only: %i[edit show update create new student_show]
       resources :user_verifications, only: %i[new create]

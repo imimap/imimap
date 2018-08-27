@@ -96,6 +96,19 @@ The Staging host is available at: [https://imi-map-staging.f4.htw-berlin.de](htt
 Deployment is done via docker. This is documentation on how to test
 the production image locally: [./docker/set-up-staging-production.md](https://github.com/imimaps/imimaps/blob/master/.docker/set-up-staging-production.md)
 
+# Miscellany
+
+## FactoryBot, Factories
+
+Test Data for the Tests is created with the Gem "FactoryBot".
+After changed to the model and/or the factories, it's usually easier to
+first check on the factories and then run the test suite.
+
+    rake factory_bot:lint
+
+See
+    * https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md
+    
 # Generated Documentation
 
 Two gems are used to generate documentation: society and railroady.

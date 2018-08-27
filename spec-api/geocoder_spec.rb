@@ -8,7 +8,7 @@ describe 'how we expect to use the geocoder gem' do
   before :each do
     @company = build :company
 
-    @is24 = build :is24
+    @is24 = build :company_is24
     Geocoder.configure(lookup: :google, timeout: 100)
     Geocoder.configure(lookup: :google)
     Geocoder.configure(timeout: 100)

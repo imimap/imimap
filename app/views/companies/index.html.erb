@@ -12,15 +12,18 @@
 <table class="table">
   <tr>
     <th><%= t "companies.attributes.name" %></th>
+    <% if false #TBD ST %>
     <th><%= t "companies.attributes.street" %></th>
     <th><%= t "companies.attributes.zip"%> </th>
     <th><%= t "companies.attributes.city" %></th>
     <th><%= t "companies.attributes.country" %></th>
+    <th><%= t "companies.attributes.phone" %></th>
+    <% end %>
     <th><%= t "companies.attributes.number_employees" %></th>
     <th><%= t "companies.attributes.industry" %></th>
     <th><%= t "companies.attributes.main_language" %></th>
     <th><%= t "companies.attributes.website" %></th>
-    <th><%= t "companies.attributes.phone" %></th>
+
     <th></th>
     <th></th>
     <th></th>
@@ -29,10 +32,12 @@
 <% @companies.each do |company| %>
   <tr>
     <td><%= company.name %></td>
+    <% if false #TBD ST %>
     <td><%= company.street %></td>
     <td><%= company.zip %></td>
     <td><%= company.city %></td>
     <td><%= company.country %></td>
+    <% end %>
     <td><%= company.number_employees %></td>
     <td><%= company.industry %></td>
     <td><%= company.main_language %></td>
