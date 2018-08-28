@@ -3,6 +3,8 @@
 class CompanyAddressesController < ApplicationController
   before_action :set_company_address, only: %i[show edit update destroy]
 
+  
+
   # GET /company_addresses
   def index
     @company_addresses = CompanyAddress.all

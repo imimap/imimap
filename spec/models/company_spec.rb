@@ -5,6 +5,7 @@ require 'rails_helper'
 RSpec.describe Company, type: :model do
   before :each do
     @company = build :company
+    @company_address = @company.company_addresses.first
   end
 
   context 'given a valid Company' do
@@ -22,9 +23,9 @@ RSpec.describe Company, type: :model do
 
   describe '#enrolment_number' do
     it 'builds the expected enrolment_number result' do
-      @company.internships << create(:internship)
-      @company.internships << create(:internship)
-      @company.internships << create(:internship)
+      @company_address.internships << create(:internship)
+      @company_address.internships << create(:internship)
+      @company_address.internships << create(:internship)
       @student = build :student
 
       expect(@company.internships.size).to eq(3)
@@ -35,17 +36,17 @@ RSpec.describe Company, type: :model do
   describe '#average_rating' do
     context 'with only completed internships' do
       it 'calculates the correct average rating' do
-        @company.internships << create(:internship, completed: true)
-        @company.internships << create(:internship, completed: true)
-        @company.internships << create(:internship, completed: true)
+        @company_address.internships << create(:internship, completed: true)
+        @company_address.internships << create(:internship, completed: true)
+        @company_address.internships << create(:internship, completed: true)
         expect(@company.average_rating).to eq(3)
       end
     end
 
     context 'with internships having mixed completion states' do
       it 'calculates the correct average rating' do
-        @company.internships << create(:internship, completed: true)
-        @company.internships << create(:internship)
+        @company_address.internships << create(:internship, completed: true)
+        @company_address.internships << create(:internship)
         expect(@company.average_rating).to eq(3)
       end
     end

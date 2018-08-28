@@ -13,7 +13,7 @@ module InternshipSeeds
       living_costs: Faker::Number.number(3),
       student: student,
       company_address: company_address,
-      company: company_address.company,
+      # company: company_address.company,
       start_date: Faker::Date.backward(120),
       end_date: Faker::Date.forward(50),
       operational_area: Faker::Job.title,
