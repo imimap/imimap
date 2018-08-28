@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d9901844daae46f3aceea4dbf493d034)](https://app.codacy.com/app/kleinen/imimaps?utm_source=github.com&utm_medium=referral&utm_content=imimaps/imimaps&utm_campaign=Badge_Grade_Settings)
 [![Build Status](https://travis-ci.org/imimaps/imimaps.svg?branch=master)](https://travis-ci.org/imimaps/imimaps)
 
 ## Repositories & Travis CI
