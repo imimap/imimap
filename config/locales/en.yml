@@ -165,6 +165,8 @@ en:
       not_recommended: "Not Recommended"
 
   internships:
+    student: 'Student'
+    company_v2: 'Company'
     statistic: "Overview per Semester"
     my: "Meine Praktika"
     others: "Other internships done here"

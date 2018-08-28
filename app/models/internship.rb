@@ -47,6 +47,7 @@ class Internship < ApplicationRecord
       student.try(:user?) && !completed
   end
 
+  # TBD this makes no here.
   def enrolment_number
     student.enrolment_number
   end

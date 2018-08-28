@@ -4,6 +4,7 @@ require 'rails_helper'
 require_relative '../helpers/active_admin_spec_helpers.rb'
 
 describe 'ActiveAdmin Edit Internship' do
+  include CompanyAddressesHelper
   context 'logged in' do
     before :each do
       @admin_user = create :admin_user
@@ -19,11 +20,12 @@ describe 'ActiveAdmin Edit Internship' do
         expect(page).not_to have_content 'NoMethodError'
         expect(page).to have_content t('internships.edit.editinternship')
         old_ca = @internship.company_address
-        name = @ca.company.name
-        street = @ca.street
-        city = @ca.city
-        country = @ca.country
-        select "#{name}, #{street}, #{city}, #{country}", from: 'Company address'
+        # name = @ca.company.name
+        # street = @ca.street
+        # city = @ca.city
+        # country = @ca.country
+        # select "#{name}, #{street}, #{city}, #{country}", from: 'Company address'
+        select company_address_selector(company_address: @ca), from: 'Company address'
         click_on t('internships.update')
         expect(page).to have_content @ca.company.name
         expect(page).not_to have_content old_ca.company.name

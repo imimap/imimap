@@ -52,7 +52,9 @@ de:
         phone: Telefon
         blacklisted: schwarze Liste
       internship:
+        student: Student_in
         company: Firma
+        company_v2: Firma
         start_date: Anfangsdatum
         end_date: Enddatum
         weekCount: Anzahl der Wochen

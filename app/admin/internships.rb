@@ -8,10 +8,10 @@ ActiveAdmin.register Internship do
   filter :internship_state
 
   index do
-    column :student do |n|
-      link_to n.enrolment_number, "/admin/students/#{n.student_id}"
+    column :student do |i|
+      link_to i.student.name, "/admin/students/#{i.student_id}"
     end
-    column :company
+    column :company_v2
     column :semester
     column :internship_state
     column :report_state
@@ -19,14 +19,14 @@ ActiveAdmin.register Internship do
     column :certificate_to_prof
     column :certificate_signed_by_prof
     column :certificate_signed_by_internship_officer
-
     column :reading_prof
     actions
   end
 
   form do |f|
+
     inputs 'Student' do
-      f.input :student_id, as: :select, collection: Student.order(:last_name).collect { |s| ["#{s.enrolment_number}, #{s.last_name}, #{s.first_name}", s.id] }
+      f.input :student_id, as: :select, collection: Student.order(:last_name).collect { |s| [student_selector(student: s), s.id] }
       f.semantic_errors :student
     end
 
