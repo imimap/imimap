@@ -9,10 +9,10 @@ class ReportOverviewController < ApplicationController
     # TBD ST KM: wt? replace with proper search. Removing Country for
     # now.
     @internships = Internship.includes(:company, :student, :semester).where(semester_id: Semester.all)
-
+    @internships_companies = @internships.map{ |i| [i, i.company_v2] }
     @semesters = @internships.map(&:semester).uniq.map { |s| [s.name, s.id] }
 
-    @companies = @internships.collect(&:company)
+    @companies = @internships.collect(&:company_v2)
 
     # TBD ST KM:
     # @countries = @internships.collect(&:country)
