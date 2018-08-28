@@ -3,26 +3,24 @@ sudo: required
 services:
 - docker
 before_script:
-  - sudo /etc/init.d/postgresql stop
+- sudo /etc/init.d/postgresql stop
 script:
 - "./ci-cd/travis-test.sh"
 env:
   global:
   - IMIMAPS_ENVIRONMENT=docker
-  - secure: jCAXaoxiBIABJmzEDEeIGb7IHhQL/j1sUjoR95Exi5fn2XhMg2WNlDufdh+c4AHA1dWlNoVB7HRjrw3WazO7vQhelLbY+B+U2VTAvQ7UpYZw2yjxQXl5uyDfCKJu5d9mVjjGSTmpj2VNHsKgnR7UG8xWcGRtFHePDsYcrdpZ3mmaDH4WwBzmsADY4oRKkwtm+EtbZ9E0zJCIog0mIbButWo4NB9dnlqLVgw3gNMMxwvvxZFuQHoFS1NDXby3o+BB/Gs2zmDVm4SxdqnGO/OA7rLTaLMRYo8CAN5s/0jK9Kkh7qZswiRH9wY/yfF5gXR65UKYqyomMtFubCqdbDt6xoB9er7EGji/4v6cAAynxfnVAahBtTZrx80h26aYgsfSChjR+bS52Qf5KyYOstZpT/81PKMWqxfLjpQwPLl8TJkTbvSsRGLoYxRO/NeCxlmEQY3SbqPCUfbT90kWzARQKIFatx6m1joSb4sn2BVmsq4+5WCWDltubI636wr7Z5X/nnzPyVBj9qjEHQAa/148+6AOdtwjnM6WUfzPTFk1NvmzTQor2m4Mw158jB+fShpmyOTZSZvv7A3Ec3LwmWaDPQ/ERS2X3WTf+ZzA5KCHwmTbhCMgn1q0p4zZeVjKx6vFh1xow5M9dz02928qD/iOcbkgFI46S8hyjdGJiHWLaXQ=
-  - secure: TaKtPIzpgOiHJJ+DeekEK1+Q1t/r3h7uTWWqN1p0Zrx1wlDPDgAk6wlipu45hf6ff2FNu/XkKp3Cw5IgYyVpGBSDvccWNwv4Xcz9BLlg1/7ne7T+gwOUzQYPWe4pm8BEUvTsZx1J9EpFUC6IGVLN60t2sAimcMRDqfSwdWm9z9hvaRzTwQ9t6uiOzt9ZAOdbAcHHoG0A5OqAWCpMApzeijtZsKN5HEKePQis3S4blMmWqdrGlsJHYIv2rzzr6azMXydEvXsW2lDx4Krhpjepo4uCr5lGGv9bRu5jkpIl8vSuoDy3zAukUgclj0fvWBeBEgYb9DloTv3GDpTB5LHBtq9YqyuAsR6WH/jQRvhYo1lICqpMD/u3dFPDTsNg03t0/0E0xKgC7xeBACYzlfa1Y7xtnqTk6Rd0zq4hjHnb9ytp2CpKisuW9wI62vPMi+1c+0inNyo6X3+0gH6XGjMubZicmzvpweijtxu0UYRR0tSeWMz9waA8GBMfQJpVtUvSAhkKa4mpIFYYgzLh7ZqJpK4N6ExSitK9z6q/GKlxh3uOAy0UXTGZdEeGUuRabMaGOfV7kto3CMe+t12cQtLofgFNPW6dGOZp2y6EvgK3DeZWChUKtxKglsZekh19qmXNJ+E2cjMhK+eROVFFBvZkYKuqCsgw3sEtbYX56ChUzX4=
-  - secure: FUrsJFCahj2NK6MpMxQBVG9avWCoREQTSo80CDfTOS4JCOEhMZxYjmUc7GHN33LiaPQ2PrMc0k95HhkEk+MiJUbph/QpO1aTJBRaBG6ibB94gNxTE2vTV+MB68f8xQ4zoWn/JiK73oqWeEcSlQw7fKEb4WpEiKh0jM1UR8muImUPuu8FDQ1z6IJLMUld1M7Saev8jy1ZUzZELynaE9YakCOWJwFlRFmiCFMiITWrXIrR8Pp7Kdtn/L+Z67+diLB1AE6MkjDwT+zES3ET9Yy1DDV+8py9Ms0C1UspQiTLHmhEHCVL0wzzPx2flwsqsQdCTwocNFsgaJMVlUx2SbGr5ndr1v3U3U3qSb2b3t1h0se66Wjuys5pLVYKHzb1jzV5hhVzw+f3A0m9TJ5/WxGp7/f415q2dMssnL8WGoJDzk3rr0GtpLlZTpK5KNQ0KjGldGeFYNPPg3SjaS0afmFXja5kZeZGnkW3TcXgYKo6qKXj1A4RBYMzywVXm6399zc4r0sWDv7gj9NQq5urhAyeGwO2UUBreNeD+CEI6vcjYCkwmHLJrH1PngcM2WpOJmJZ7Hh27eonBAVkU7j1V0ptU/rXUug8jS/KreKTgUPISLpem6cbYTK5/EzrHY/Zc5zH5C80DkIXiol7fC064qMIAS/6NKN8pBIo79EPv/oWPkQ=
+  - secure: to+AQt8UImBpUZgPf9g3Nxw8kzShVzO1zSRAFBOJbqgbqOCJdOs8o0IBKNin4enlexUE7lH9VJIE4p1o00oowcTxKJTuBqbTLVpCCCNDlAAzd1dNwAEucGcXVK5mLyy1KEPwecF00vNwubKMuMeLb0r0ulRFyjRTg2WEGi7Wi1bi/7hzw0oYYQgRRHNme186ve1qExsNFycGD8VvQ/tHY4HlAbE/KSvlPfGjOtFS+r8VXDu5/oFgrCX+1s5QiZZoBbvzRfGFUbIdzoMZfyb/FVzsy3X3Zl/OXpbbaSO+dBKWI2c2yfI2ILFm6oCzAvYBPLh8nu8jtDBE50kCtJkxZ6u9ZYhsF1byG//doN6Ii8La+TVYfM4Z2qmunOTAeikgWq4eCCL4ZQE5kdjvantORxvh4CuoENKq09ydml8WbDCDsr57v2BZ0TmSqfW1I7cvyanhuY8XplXYFvp2StQxWA2vfNuwfUfsx8a9j/Id7fNSv6z5XJItQPW8LOnrc3dyX0avIK2bdWSBA72xxrhJ/xZgCg5CHCbUT1Q7zP3GjofvNEPjs7UnzXJAfm+cerCZZxa4wy1GkCNd/4uD8XCpHzim/mFvDsyROK8myU8Fe41wMkK27erL3ioBovg81Py71CDodBJT3dCO8mKZ9NCdGvaLGGPJ8gh5QfvfSvLmmEM=
+  - secure: PXdWY67qu+/7djK6gqmm7NRoaC8DUAmhooJmSHfDo3h7uBcGFAhMezy3rtw7UUQoOGEVqdzMuasmxOvj6DRRLFFqJ+AJZ7ctItdc1ZqnbO7Hlq3uVxd23FjPonWnwnVbzKenV/4DUMG9mwvND8BnSNazi9eR1L/KBlWNHcpNbRt/BY7+pmfmX7/5FVjN0p/Glm2sZOKJS4ADx0Ro/RHflVaxgh1lj/awMOlyxEQt6RKgzObgJ7B2kFcU4lP3NqkdpnM8LYuaWBno79ikhvDq+OMtZBMiNDx73p3cbkvT67qXzzYPwTLSh/3Udqqv7PiNSuQAqMvQISE9YXm9AsCjPq043E4Cg5EU51dLNY8c2quYasf2S0wXSVxCDl4ZUnht7yP5KaAGhE5lGhjhnKCwtLTWSqEGWD3fccMrVDzdnVE7OxCl0YpcdjC8F23ecLiPfQCfaH3kEMnHdMavy8jaiqXpYSh2stIVFh77ek125EfgTzZTji/IIxKTi+UupWiKqtkO7VFCeNHeSxmG2AJ7LoMulW+oaYNJxLwrKhVAvrO1Nb6d6Hpqsnc45+4HhdPXQTkx3Dq56G22RK5sqkXbtdP9uXykxhGb7Suzqw5JbjAe6uar6UgKWNazKqLsXhJhjTkAkzJ9nJA5WjChNSb3AlDPsewTcemoHaAY3APw9/Q=
 jobs:
   include:
   - stage: test
     script: "./ci-cd/travis-test.sh"
   - stage: build
     script: ci-cd/docker-build-and-push.sh
-    if: ((tag IS present) OR (branch = master))
-#    if: ((tag IS present) OR (branch = master)) AND (type != pull_request)
+    if: "((tag IS present) OR (branch = master))"
   - stage: deploy-staging
     script: "./ci-cd/travis-deploy.sh staging"
-    if: ( NOT (tag IS present)) AND (branch = master) AND (type != pull_request)
+    if: "( NOT (tag IS present)) AND (branch = master) AND (type != pull_request)"
   - stage: deploy-production
     script: "./ci-cd/travis-deploy.sh production"
-    if: (tag IS present) AND (type != pull_request)
+    if: "(tag IS present) AND (type != pull_request)"
