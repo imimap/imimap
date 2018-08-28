@@ -4,7 +4,6 @@ FactoryBot.define do
   factory :internship do
     before(:create) do |i|
       c = FactoryBot.create(:company)
-      i.company = c
       i.company_address = c.company_addresses.first
     end
 
@@ -42,12 +41,10 @@ FactoryBot.define do
     internship_report { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'test.pdf')) }
     after(:build) do |i|
       c = FactoryBot.build(:company)
-      i.company = c
       i.company_address = c.company_addresses.first
     end
     after(:create) do |i|
       c = FactoryBot.create(:company)
-      i.company = c
       i.company_address = c.company_addresses.first
     end
   end

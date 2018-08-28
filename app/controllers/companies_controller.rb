@@ -19,7 +19,7 @@ class CompaniesController < ApplicationController
   def show
     @company = Company.find(params[:id])
 
-    @internships = Internship.where('company_id = ?', @company.id)
+    @internships = @company.internships
 
     respond_to do |format|
       format.html # show.html.erb

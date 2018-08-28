@@ -2,7 +2,7 @@
 
 # Local Setup on Development Machine
 
-*** VERALTET ***
+*** VERALTET, Independent Coursework 2016/17, enthält aber gute Ideen / Hintergrund zu Docker ***
 
 Für das lokale Setup gibt es drei Möglichkeiten, rails auszuführen:
 - mit [Docker](#setup-mit-docker)

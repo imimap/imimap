@@ -47,7 +47,7 @@ class InternshipsController < ApplicationController
     @comment = UserComment.new
     @answer = Answer.new
     @favorite = Favorite.where(internship_id: @internship.id, user_id: current_user.id)[0]
-    @company = @internship.company
+    @company = @internship.company_v2
     # TBD ST  @company = @internship.company_address.company
     @other_internships = @company.internships.reject { |x| x.id == @internship.id }.reject { |i| i.completed == false }
 
@@ -70,7 +70,7 @@ class InternshipsController < ApplicationController
   # GET /internships/1/edit
   def edit
     @internship = Internship.find(params[:id])
-    @company = @internship.company
+    @company = @internship.company_v2
     @rating = @internship.internship_rating
   end
 
