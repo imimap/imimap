@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-TEXT = <<DELIM
+TEXT1 = <<DELIM
   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
   incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
   nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -11,7 +11,7 @@ DELIM
 
 FactoryBot.define do
   factory :answer do
-    body { TEXT }
+    body { TEXT1 }
     user_comment
     internship
   end

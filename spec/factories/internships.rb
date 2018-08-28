@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-TEXT = <<DELIM
+TEXT4 = <<DELIM
   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
   incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
   nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -25,12 +25,12 @@ FactoryBot.define do
     recommend { true }
     orientation
     email_public { true }
-    description { TEXT }
+    description { TEXT4 }
     semester
     salary { 8 }
     start_date { Date.today.to_date }
     end_date { Date.today.to_date + 7.days }
-    tasks { TEXT }
+    tasks { 'do this and that and the other thing' }
     operational_area { 'operational area' }
     student
     internship_state
