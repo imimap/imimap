@@ -32,7 +32,7 @@ class Company < ApplicationRecord
     i = 0
     a = []
     Company.all.each do |c|
-      j = 0
+      # j = 0
       c.company_addresses.each do |c_a|
         a[i] = []
         a[i] << c_a.id
