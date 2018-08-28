@@ -29,12 +29,10 @@ describe 'ActiveAdmin Create Student' do
       fill_in t('activerecord.attributes.student.birthday'), with: @student.birthday
       fill_in t('activerecord.attributes.student.email'), with: @student.email
 
-      #click_on t('helpers.submit.create', model: Student.model_name.human)
+      # click_on t('helpers.submit.create', model: Student.model_name.human)
       # click_on t('active_admin.create_model', model: Student.model_name.human)
       click_on 'Student_in anlegen'
       expect(page).to have_content @student.first_name
-
-
     end
   end
 end

@@ -37,7 +37,7 @@ module InternshipSeeds
     )
   end
 
-  def email_for_enrolment_number(enrolment_number: )
+  def email_for_enrolment_number(enrolment_number:)
     "s0#{enrolment_number}@student.htw-berlin.de"
   end
 

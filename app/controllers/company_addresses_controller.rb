@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class CompanyAddressesController < ApplicationController
-  before_action :set_company_address, only: [:show, :edit, :update, :destroy]
+  before_action :set_company_address, only: %i[show edit update destroy]
 
   # GET /company_addresses
   def index
@@ -7,8 +9,7 @@ class CompanyAddressesController < ApplicationController
   end
 
   # GET /company_addresses/1
-  def show
-  end
+  def show; end
 
   # GET /company_addresses/new
   def new
@@ -21,8 +22,7 @@ class CompanyAddressesController < ApplicationController
   end
 
   # GET /company_addresses/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /company_addresses
   def create
@@ -55,13 +55,14 @@ class CompanyAddressesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_company_address
-      @company_address = CompanyAddress.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def company_address_params
-      params.require(:company_address).permit(:street, :zip, :city, :country, :phone, :company_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_company_address
+    @company_address = CompanyAddress.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def company_address_params
+    params.require(:company_address).permit(:street, :zip, :city, :country, :phone, :company_id)
+  end
 end

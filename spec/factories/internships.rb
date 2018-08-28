@@ -50,6 +50,5 @@ FactoryBot.define do
       i.company = c
       i.company_address = c.company_addresses.first
     end
-
   end
 end

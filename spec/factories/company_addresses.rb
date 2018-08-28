@@ -41,5 +41,4 @@ FactoryBot.define do
     blacklisted { false }
     import_id { 2 }
   end
-
 end

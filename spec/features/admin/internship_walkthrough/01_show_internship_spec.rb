@@ -27,7 +27,6 @@ describe 'ActiveAdmin Internship CRUD' do
         expect(page).to have_content internship.comment
         expect(page).to have_content internship.supervisor_email
         expect(page).to have_content internship.supervisor_name
-
       end
     end
   end

@@ -93,8 +93,8 @@ class CompaniesController < ApplicationController
 
   def company_params
     params.require(:company).permit(:main_language,
-                    :industry, :name, :number_employees, :website,
-                    :blacklisted, :fax, :import_id, :latitude, :longitude)
+                                    :industry, :name, :number_employees, :website,
+                                    :blacklisted, :fax, :import_id, :latitude, :longitude)
   end
 
   def select_company
