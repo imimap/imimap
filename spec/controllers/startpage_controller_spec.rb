@@ -14,9 +14,9 @@ RSpec.describe StartpageController, type: :controller do
       end
 
       it 'returns http success - 2 ' do
-      # TBD this is a variation of 'returns http success' to gain 100% coverage
-      # as the href is computed in the controller. Can be removed after this is
-      # moved to a model method.
+        # TBD this is a variation of 'returns http success' to gain
+        # 100% coverage as the href is computed in the controller.
+        # Can be removed after this is moved to a model method.
 
         create :internship, completed: true
         create :internship, completed: true

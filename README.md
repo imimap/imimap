@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/imimaps/imimaps.svg?branch=master)](https://travis-ci.org/imimaps/imimaps)
+[![Build Status](https://travis-ci.org/imimap/imimap.svg?branch=master)](https://travis-ci.org/imimap/imimap)
 
 ## Repositories & Travis CI
 
@@ -108,7 +108,7 @@ first check on the factories and then run the test suite.
 
 See
     * https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md
-    
+
 # Generated Documentation
 
 Two gems are used to generate documentation: society and railroady.
