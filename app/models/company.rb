@@ -12,10 +12,10 @@ class Company < ApplicationRecord
   # #validates :number_employees, presence: true, allow_blank: false
   # #validates :website, presence: true, allow_blank: false
 
-  #geocoded_by :address
+  # geocoded_by :address
   # TBD: geocoding should only happen if necessary, see
   # https://github.com/alexreisner/geocoder#avoiding-unnecessary-api-requests
-  #after_validation :geocode, if: :address_changed?
+  # after_validation :geocode, if: :address_changed?
   # acts_as_gmappable :process_geocoding => false
 
   # associations
@@ -24,9 +24,9 @@ class Company < ApplicationRecord
   # CodeReviewSS17: delete?
   # accepts_nested_attributes_for :internships
 
-  #def address
-    #[street, zip, city, country].compact.join(', ')
-  #end
+  # def address
+  # [street, zip, city, country].compact.join(', ')
+  # end
 
   def enrolment_number
     internships.map { |x| x.student.enrolment_number }.join(', ')
@@ -45,9 +45,9 @@ class Company < ApplicationRecord
     r.to_f / size
   end
 
-  #def address_changed?
-    #street_changed? || city_changed? || zip_changed? || country_changed?
-  #end
+  # def address_changed?
+  # street_changed? || city_changed? || zip_changed? || country_changed?
+  # end
 
   # TBD ST: needs refactoring - what does it do?
   # it produces a list for a company selection box in the view.
@@ -57,19 +57,19 @@ class Company < ApplicationRecord
     i = 0
     a = []
     Company.all.each do |c|
-      j=0
+      j = 0
       c.company_addresses.each do |c_a|
-        a[i]=[]
+        a[i] = []
         a[i] << c_a.id
         a[i] << "#{c.name}, #{c_a.street}"
-        i = i + 1
+        i += 1
       end
     end
-   a
+    a
   end
 
   def company_name
-    self.try(:name)
+    try(:name)
   end
 
   def company_name=(name)

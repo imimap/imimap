@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Student do
+  permit_params StudentsController.permitted_params
   filter :enrolment_number, as: :select, collection: proc { Student.all.map(&:enrolment_number).uniq }, label: 'Matrikel'
   filter :last_name
   filter :first_name
@@ -32,7 +33,11 @@ ActiveAdmin.register Student do
       f.input :first_name
       f.input :last_name
       f.input :birthplace
-      f.input :birthday, as: :date, start_year: Time.now.year - 100, end_year: Time.now.year
+      f.input :birthday, as: :datepicker,
+                         datepicker_options: {
+                           min_date: '1950-01-01',
+                           max_date: '2020-01-01'
+                         }
       f.input :email
     end
     f.actions

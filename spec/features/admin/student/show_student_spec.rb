@@ -20,6 +20,16 @@ describe 'ActiveAdmin Student CRUD' do
         expect(page).to have_content student.email
       end
     end
+    describe 'edit student' do
+      it 'edits student' do
+        student = create(:student)
+        visit admin_student_path(id: student)
+        click_on t('active_admin.edit_model', model: Student.model_name.human)
+
+        expect(page).to have_content student.first_name
+        expect(page).to have_content student.last_name
+      end
+    end
   end
   context 'not logged in' do
     describe 'show student' do

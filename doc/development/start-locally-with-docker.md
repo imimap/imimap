@@ -5,10 +5,12 @@ To start (and build, if necessary) the containers run
 
     docker-compose up
 
-Migrate the database:
+## Rails Console
+    docker exec -ti imimap-dev rails c
+## Migrate the database:
 
-    docker images -qa
-    docker exec -ti imimap-dev rake db:seed
+    docker exec -ti imimap-dev rake db:migrate
+    docker exec -ti postgresql-dev bash
 
 
 The imimap-dev container starts up unicorn on start, the server can be reached at
@@ -23,6 +25,11 @@ and then run all the commands there that you would usally run, e.g.
 
     rails db:migrate
     rspec spec
+
+    rails db:drop RAILS_ENV=test
+    rails db:create RAILS_ENV=test
+    rails db:schema:load RAILS_ENV=test
+
 
 You can also directly migrate and run the tests:
 

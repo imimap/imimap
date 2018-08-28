@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
+include InternshipsHelper
 ActiveAdmin.register Internship do
+  permit_params InternshipsController.permitted_params
   filter :student_enrolment_number, as: :select, collection: proc { Student.all.map(&:enrolment_number).uniq }, label: 'Matrikel'
   filter :reading_prof
   filter :semester
@@ -24,16 +26,28 @@ ActiveAdmin.register Internship do
   end
 
   form do |f|
-    f.inputs 'Student' do
+    inputs 'Student' do
       f.input :student_id, as: :select, collection: Student.order(:last_name).collect { |s| ["#{s.enrolment_number}, #{s.last_name}, #{s.first_name}", s.id] }
       f.semantic_errors :student
     end
-    f.inputs 'Company' do
-      f.input :company_id, as: :select, collection: Company.order(:name).collect { |c| ["#{c.name}, #{c.city}, #{c.country}", c.id] }
+
+    inputs 'CompanyAddress' do
+      f.input :company_address_id,
+              as: :select,
+              collection: CompanyAddress.joins(:company).order('companies.name').pluck(:name, :street, :city, :country, :id).map { |name, street, city, country, id| ["#{name}, #{street}, #{city}, #{country}", id] }
     end
+
     f.inputs 'Internship' do
-      f.input :start_date, as: :date_picker
-      f.input :end_date, as: :date_picker
+      f.input :start_date, as: :datepicker,
+                           datepicker_options: {
+                             min_date: '2010-01-01',
+                             max_date: '2050-01-01'
+                           }
+      f.input :end_date, as: :datepicker,
+                         datepicker_options: {
+                           min_date: '2010-01-01',
+                           max_date: '2050-01-01'
+                         }
       f.input :operational_area
       f.input :tasks
       f.input :supervisor_name
@@ -63,7 +77,7 @@ ActiveAdmin.register Internship do
       row :student do |n|
         link_to n.student.first_name << ' ' << n.student.last_name, "/admin/students/#{n.student_id}"
       end
-      row :company
+      row :company_v2
       row :start_date
       row :end_date
       # TBD clean this up

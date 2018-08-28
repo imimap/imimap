@@ -25,7 +25,6 @@ class UsersController < ApplicationController
 
   def student_show
     current_user
-
   end
 
   private

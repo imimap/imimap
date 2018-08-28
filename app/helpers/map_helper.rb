@@ -2,7 +2,7 @@
 
 module MapHelper
   def company_locations_json
-    companies = Company.pluck(:city, :country, :latitude, :longitude)
+    companies = CompanyAddress.pluck(:city, :country, :latitude, :longitude)
     companies = companies.reject { |c| c.include?(nil) }
     companies = companies.map { |c| ["#{c[0]}, #{c[1]}", c[2], c[3]] }
     company_location_json_raw = companies.uniq { |c| c[0] }

@@ -6,7 +6,7 @@ be recreated when the container restarts)
 
 thus, use docker-compose-db.yml :
 
-    docker-compose -f docker-compose-db.yml up
+    docker-compose  -f docker-compose.yml -f docker-compose-db.yml up
 
 this contains the following mappings:
 
@@ -26,8 +26,24 @@ enter the postgres container and import the dump:
 psql --set ON_ERROR_STOP=on  -h localhost -U imi_map imimap < /var/lib/postgresql/dumps/imi-maps-2018-07-13.pgdump
 
 
+# Neu aufsetzen der persistenten Postgres-Datenbank
 
-    docker exec -ti  imimap-dev bash
+- container anhalten
+- rm -rf postgresql/data/
+- container starten:
+    docker-compose  -f docker-compose.yml -f docker-compose-db.yml up
+- bash auf postgres container
+    docker exec -ti postgresql-dev bash
+- dump einspielen
+    psql --set ON_ERROR_STOP=on  -h localhost -U imi_map imimap < /var/lib/postgresql/dumps/imi-map.pgdump
+
+## Datenbankmigration
+(nach aufsetzen der Datenbank mit Dump)
+    docker exec -ti imimap-dev bash
+    rails db:rollback  # RenameAddressFieldsInCompany must be last
+    rake imimap:move_address        # create an address object for each company
+    rake imimap:update_internships
+    rails db:migrate
 
 On Staging/Production Servers
 ==================================

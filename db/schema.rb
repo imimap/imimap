@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_26_213706) do
+ActiveRecord::Schema.define(version: 3018_08_27_172427) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "resource_id", null: false
@@ -76,9 +76,15 @@ ActiveRecord::Schema.define(version: 2018_03_26_213706) do
     t.string "website"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.float "latitude"
-    t.float "longitude"
+    t.float "x_latitude"
+    t.float "x_longitude"
+    t.string "x_city"
+    t.string "x_country"
+    t.string "x_street"
+    t.string "x_zip"
     t.string "main_language"
+    t.string "x_phone"
+    t.string "x_fax"
     t.boolean "blacklisted", default: false
     t.integer "import_id"
   end
@@ -91,6 +97,8 @@ ActiveRecord::Schema.define(version: 2018_03_26_213706) do
     t.string "country"
     t.string "phone"
     t.string "fax"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_company_addresses_on_company_id"
@@ -186,7 +194,7 @@ ActiveRecord::Schema.define(version: 2018_03_26_213706) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "internship_rating_id", default: 1
-    t.integer "company_id"
+    t.integer "x_company_id"
     t.integer "user_id"
     t.string "title"
     t.boolean "recommend", default: true

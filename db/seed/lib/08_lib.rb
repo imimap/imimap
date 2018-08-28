@@ -17,7 +17,7 @@ module InternshipSeeds
       start_date: Faker::Date.backward(120),
       end_date: Faker::Date.forward(50),
       operational_area: Faker::Job.title,
-      tasks: Faker::ChuckNorris.fact,
+      tasks: Faker::HitchhikersGuideToTheGalaxy.quote,
       supervisor_name: Faker::Name.last_name,
       supervisor_email: Faker::Internet.email,
       semester: Semester.all.sample(1).first,
@@ -30,14 +30,14 @@ module InternshipSeeds
       internship_state: InternshipState.all.sample(1).first,
       reading_prof: ReadingProf.all.sample(1).first,
 
-      comment: Faker::ChuckNorris.fact,
+      comment: Faker::HitchhikersGuideToTheGalaxy.marvin_quote,
       certificate_to_prof: Faker::Date.forward(30),
       certificate_signed_by_prof: Faker::Date.forward(50),
       certificate_signed_by_internship_officer: Faker::Date.backward(5)
     )
   end
 
-  def email_for_enrolment_number(enrolment_number: )
+  def email_for_enrolment_number(enrolment_number:)
     "s0#{enrolment_number}@student.htw-berlin.de"
   end
 
