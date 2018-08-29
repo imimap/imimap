@@ -70,13 +70,16 @@ Docker and docker-compose documentations.
 
 For adding a feature, follow the development workflow:
 
-1. Create a branch
-2. push the branch
-3. create a pull request
-4. if all tests pass, create a pull request
-5. ask someone for a code review for this pull request.
-6. add changes to your pull request.
-7. merge the pull request yourself. Usually a squash & rebase is best
+1. checkout master, pull changes (git pull origin master)
+2. Create a branch
+3. push the branch
+4. create a pull request
+5. if all tests pass, create a pull request
+6. ask someone for a code review for this pull request.
+7. add changes to your pull request.
+8. merge the pull request yourself. Usually a merge & squash is best
+9. delete the branch on github
+10. after the merge, go back to 1. - don't work on your branch anymore!
 
 Pull requests should have the issue id in their comment.
 No one is allowed to push to master directly.
