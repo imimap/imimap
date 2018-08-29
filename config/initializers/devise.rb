@@ -250,13 +250,3 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = "/my_engine/users/auth"
 end
-
-if Rails.configuration.devise_ldap == :off
-  Devise.setup do |config|
-    config.warden do |manager|
-      manager.default_strategies(scope: :user).unshift :ldap_off_authenticatable
-      puts 'WARNING: switched LDAP Authentification off, all passwords will be accepted'
-      puts "manager.default_strategies(:scope => :user).inspect #{manager.default_strategies(scope: :user).inspect}"
-    end
-  end
-end

@@ -28,6 +28,7 @@ module Devise
         Rails.logger.info("-- ldap -- Attempting ldap authorization for #{ldap_email}")
         auth_successful = ldap_adapter.create(ldap_password: ldap_password).authenticate
         if auth_successful
+          byebug
           user = User.where(email: ldap_email).first
           unless user
             rpw = SecureRandom.urlsafe_base64(24, false)
