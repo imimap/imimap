@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe InternshipOfferController, type: :controller do
+RSpec.describe InternshipOffersController, type: :controller do
   render_views
 
   before :each do

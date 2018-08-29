@@ -54,15 +54,18 @@ class CompanyAddressesController < ApplicationController
     redirect_to company_addresses_url, notice: 'Company address was successfully destroyed.'
   end
 
+  def company_address_params
+    params.require(:company_address).permit(permitted_params)
+  end
+
+  def self.permitted_params
+    %i[street zip city country phone company_id fax latitude longitude]
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_company_address
     @company_address = CompanyAddress.find(params[:id])
-  end
-
-  # Only allow a trusted parameter "white list" through.
-  def company_address_params
-    params.require(:company_address).permit(:street, :zip, :city, :country, :phone, :company_id)
   end
 end

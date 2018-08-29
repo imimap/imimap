@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Company do
+  permit_params CompaniesController.permitted_params
   filter :internships_student_enrolment_number, as: :select, collection: proc { Student.pluck(:enrolment_number) }, label: 'Matrikel'
   filter :name
   filter :city
@@ -15,33 +16,21 @@ ActiveAdmin.register Company do
       end
       str.html_safe
     end
-    column :name
-    column :number_employees
-    column :industry
-    column :website
-    column :address
-    column :main_language
-    column :phone
-    column :fax
-    column :blacklisted
+    CompaniesController.permitted_params.each do |a|
+      column a
+    end
     actions
   end
-
   show do |company|
     attributes_table do
-      row :id
-      row :name
-      row :number_employees
-      row :industry
-      row :website
-      row :city
-      row :country
-      row :street
-      row :zip
-      row :main_language
-      row :phone
-      row :fax
-      row :blacklisted
+      CompaniesController.permitted_params.each do |a|
+        row a
+      end
+      row :company_addresses do |company|
+        company.company_addresses.map do |ca|
+          link_to(company_address_selector(company_address: ca), admin_company_address_path(ca))
+        end.join(', ').html_safe
+      end
       row :internships do |_n|
         a = company.internships.map(&:id)
         str = ''
