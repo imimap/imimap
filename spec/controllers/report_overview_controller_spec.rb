@@ -7,7 +7,7 @@ RSpec.describe ReportOverviewController, type: :controller do
 
   before :each do
     @internship = create :internship
-    @current_user = login
+    @current_user = login_as_admin
     @current_user.email << 's0538144@htw-berlin.de'
   end
 

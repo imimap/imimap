@@ -6,7 +6,7 @@ RSpec.describe InternshipOffersController, type: :controller do
   render_views
 
   before :each do
-    @current_user = login
+    @current_user = login_as_admin
     @internship_offer = create :internship_offer
   end
 

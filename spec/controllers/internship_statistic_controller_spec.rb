@@ -6,7 +6,7 @@ RSpec.describe OverviewController, type: :controller do
   render_views
 
   before :each do
-    @current_user = login
+    @current_user = login_as_admin
   end
 
   describe 'template is shown' do

@@ -7,7 +7,7 @@ RSpec.describe OverviewController, type: :controller do
 
   before :each do
     @internship = create :internship, completed: true
-    @current_user = login
+    @current_user = login_as_admin
   end
 
   describe 'current user with invalid user_id' do

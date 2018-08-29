@@ -6,7 +6,7 @@ RSpec.describe FavoriteController, type: :controller do
   render_views
 
   before :each do
-    @current_user = login
+    @current_user = login_as_admin
     @internship = create :internship
     @favorite = create :favorite, internship: @internship
     @current_user.favorites << @favorite

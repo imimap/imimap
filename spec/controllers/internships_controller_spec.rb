@@ -6,8 +6,7 @@ RSpec.describe InternshipsController, type: :controller do
   render_views
 
   before :each do
-    @user = create(:user)
-    sign_in(@user)
+    @user = login_as_admin
   end
 
   describe 'GET #index' do
