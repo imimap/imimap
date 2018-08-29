@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register ProgrammingLanguage do
-  config.sort_order = 'id_asc'
+  permit_params %i[name]
   filter :name
+  config.sort_order = 'id_asc'
 
   index do
     column :name

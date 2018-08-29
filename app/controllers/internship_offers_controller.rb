@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Offers for Internship Positions
-class InternshipOfferController < ApplicationController
+class InternshipOffersController < ApplicationController
   def index
     @offers = InternshipOffer.all
   end
@@ -10,6 +10,7 @@ class InternshipOfferController < ApplicationController
     @offer = InternshipOffer.find(params[:id])
   end
 
+  # TBD there is no update, but an edit.
   def edit
     @offer = InternshipOffer.find(params[:id])
   end
@@ -32,9 +33,11 @@ class InternshipOfferController < ApplicationController
     end
   end
 
-  # TBD there is no update, but an edit.
-
   def internship_offer_params
-    params.require(:internship_offer).permit(:title, :body, :pdf)
+    params.require(:internship_offer).permit(permitted_params)
+  end
+
+  def self.permitted_params
+    %i[title body pdf]
   end
 end

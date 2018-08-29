@@ -19,7 +19,7 @@ by students of the Bachelor's Programme International Media Informatics at HTW B
 - email kleinen at htw-berlin.de for access rights.
 - clone the repository, e.g.
 
-    git clone git@github.com:imimaps/imimaps.git
+    git clone git@github.com:imimap/imimap.git
 
     cd imimaps
 
@@ -65,6 +65,22 @@ Note that they too run in the imimap-dev container.
 
 There are many different ways of working with the docker containers. Refer to the
 Docker and docker-compose documentations.
+
+## Pushing to the Repository / Development Workflow
+
+For adding a feature, follow the development workflow:
+
+1. Create a branch
+2. push the branch
+3. create a pull request
+4. if all tests pass, create a pull request
+5. ask someone for a code review for this pull request.
+6. add changes to your pull request.
+7. merge the pull request yourself. Usually a squash & rebase is best
+
+Pull requests should have the issue id in their comment.
+No one is allowed to push to master directly.
+The master branch will be deployed to the staging server.
 
 ## Rebuild the Docker Image
 

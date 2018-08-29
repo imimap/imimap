@@ -91,11 +91,16 @@ class CompaniesController < ApplicationController
     end
   end
 
-  def company_params
-    params.require(:company).permit(:main_language,
-                                    :industry, :name, :number_employees, :website,
-                                    :blacklisted, :fax, :import_id, :latitude, :longitude)
+  def self.permitted_params
+    %i[name website main_language industry number_employees
+       blacklisted]
   end
+
+  def company_params
+    params.require(:company).permit(CompaniesController.permitted_params)
+  end
+
+  private
 
   def select_company
     current_user

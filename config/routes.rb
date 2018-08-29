@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       resources :users, only: %i[edit show update create new student_show]
       resources :user_verifications, only: %i[new create]
       resources :overview, only: %i[index]
-      resources :internship_offer, only: %i[index show new create]
+      resources :internship_offers, only: %i[index show new create]
       resources :notifications, only: %i[destroy show]
       resources :favorite, only: %i[create destroy index]
       resources :current_internships, only: %i[index]

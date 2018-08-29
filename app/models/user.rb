@@ -26,8 +26,8 @@ class User < ApplicationRecord
   end
 
   EDITABLE_ATTRIBUTES = %i[email mailnotif publicmail student role].freeze
-  EDITABLE_ATTRIBUTES_PW = %i[email mailnotif publicmail student role password password_confirmation].freeze
-
+  EDITABLE_ATTRIBUTES_PW = %i[password password_confirmation].freeze
+  EDITABLE_ATTRIBUTES_ALL = EDITABLE_ATTRIBUTES + EDITABLE_ATTRIBUTES_PW
   ROLES = %i[admin prof examination_office user].freeze
   enum role: ROLES
 

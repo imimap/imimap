@@ -41,4 +41,24 @@ FactoryBot.define do
     blacklisted { false }
     import_id { 2 }
   end
+
+  factory :company_address_1, class: CompanyAddress do
+    city { 'City 1' }
+    country { 'USA' }
+    street { '11 Driveway' }
+    zip { '93827' }
+    phone { '+187345847' }
+    fax { '+187345888' }
+    company { create(:company_1) }
+  end
+
+  factory :company_address_2, class: CompanyAddress do
+    city { 'City 2' }
+    country { 'USA' }
+    street { '22 Driveway' }
+    zip { '93827' }
+    phone { '+187345847' }
+    fax { '+187345888' }
+    company { create(:company_2) }
+  end
 end
