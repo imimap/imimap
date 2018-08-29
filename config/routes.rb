@@ -26,7 +26,6 @@ Rails.application.routes.draw do
       resources :general
       resources :internship_searches
       resources :quicksearches, only: %i[index]
-      resources :favorite_compare, only: %i[index]
       resources :report_overview, only: [:index]
       resources :read_list, only: %i[create destroy index]
       resources :complete_report, only: [:index]
