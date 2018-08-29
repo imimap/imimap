@@ -39,4 +39,4 @@ Style/MethodMissingSuper:
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
 Metrics/LineLength:
-  Max: 468
+  Max: 300

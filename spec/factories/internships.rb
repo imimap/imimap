@@ -1,5 +1,14 @@
 # frozen_string_literal: true
 
+TEXT4 = <<DELIM
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+  eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+  sunt in culpa qui officia deserunt mollit anim id est laborum
+DELIM
+
 FactoryBot.define do
   factory :internship do
     before(:create) do |i|
@@ -16,12 +25,12 @@ FactoryBot.define do
     recommend { true }
     orientation
     email_public { true }
-    description { 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.' }
+    description { TEXT4 }
     semester
     salary { 8 }
     start_date { Date.today.to_date }
     end_date { Date.today.to_date + 7.days }
-    tasks { 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' }
+    tasks { 'do this and that and the other thing' }
     operational_area { 'operational area' }
     student
     internship_state
@@ -38,7 +47,10 @@ FactoryBot.define do
     supervisor_email { 'supervisor@bar.com' }
     supervisor_name { 'internship supervisor name' }
     completed { false }
-    internship_report { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'test.pdf')) }
+    internship_report do
+      Rack::Test::UploadedFile.new(File.join(Rails.root,
+                                             'spec', 'support', 'test.pdf'))
+    end
     after(:build) do |i|
       c = FactoryBot.build(:company)
       i.company_address = c.company_addresses.first
