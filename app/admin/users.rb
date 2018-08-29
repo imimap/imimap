@@ -1,21 +1,23 @@
 # frozen_string_literal: true
 
-# CodeReviewSS17 why was this file renamed from users.rb to user.rb?
-
 ActiveAdmin.register User do
   form do |f|
-    #  f.inputs
     f.inputs 'User Details' do
-      User::EDITABLE_ATTRIBUTES_PW.each do |a|
+      User::EDITABLE_ATTRIBUTES.each do |a|
         f.input a
       end
-      # f.input :email
-      # f.input :password
-      # f.input :password_confirmation
-      # f.input :role
     end
     actions
   end
+
+  # form title: 'Change Password' do |f|
+  #   inputs 'Password' do
+  #     User::EDITABLE_ATTRIBUTES_PW.each do |a|
+  #       f.input a
+  #     end
+  #   end
+  #   actions
+  # end
 
   # create_or_edit = Proc.new {
   #  @user            = User.find_or_create_by(params[:id])
@@ -36,9 +38,7 @@ ActiveAdmin.register User do
   controller do
     # This code is evaluated within the controller class
     def user_params
-      params.require(:user).permit(User::EDITABLE_ATTRIBUTES_PW)
-      # params.require(:user).permit(:email, :mailnotif, :publicmail, :student_id, :role, :password, :password_confirmation)
-      #  params.require(:user).permit!
+      params.require(:user).permit(User::EDITABLE_ATTRIBUTES_ALL)
     end
   end
 end

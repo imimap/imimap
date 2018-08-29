@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(User::EDITABLE_ATTRIBUTES_PW)
+    params.require(:user).permit(User::EDITABLE_ATTRIBUTES_ALL)
     # params.require(:user).permit(:email, :mailnotif, :publicmail, :student_id, :role, :password, :password_confirmation)
     # params.require(:user).permit!
   end
