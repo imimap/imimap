@@ -22,6 +22,12 @@ module ControllerTestHelper
     sign_in user
     user
   end
+
+  def login_as_admin
+    user = FactoryBot.create :admin
+    sign_in user
+    user
+  end
 end
 
 module I18nTestHelper

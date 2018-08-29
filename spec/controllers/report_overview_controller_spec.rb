@@ -22,11 +22,6 @@ RSpec.describe ReportOverviewController, type: :controller do
       expect(assigns(:internships)).to eq([@internship])
     end
 
-    it 'assigns @current_user' do
-      get :index
-      expect(assigns(:current_user)).to eq @current_user
-    end
-
     it 'assigns @semesters' do
       get :index
       expect(assigns(:semesters)).to eq([[@internship.semester.name, @internship.semester.id]])

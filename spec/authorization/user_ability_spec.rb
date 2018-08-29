@@ -3,6 +3,14 @@
 require 'rails_helper'
 require 'cancan/matchers'
 
+# This is just a start created quickly from the
+# example in the cancancan documentation.
+# Not sure if this is the way to go, though;
+# probably it is only useful for more complicated
+# cases as with conditions over associations;
+# probably better to create feature tests for
+# crucial things like no one getting
+# access to internships#index
 describe 'User Role' do
   describe 'abilities' do
     subject(:ability) { Ability.new(user) }
@@ -13,9 +21,10 @@ describe 'User Role' do
 
       it { is_expected.not_to be_able_to(:read, Internship.new) }
       it { is_expected.to be_able_to(:create, Internship) }
-
     end
     context 'when is a regular user with own internship' do
+      # TBD: replace this with a factory creating user with student with
+      # internship and just have an elegant let here
       before :each do
         student = create(:student2)
         @own_internship = create(:internship, student: student)
@@ -27,9 +36,6 @@ describe 'User Role' do
         expect(@own_internship.student.user).to eq @user
       end
       it { is_expected.to be_able_to(:read, @own_internship) }
-
-
-
     end
   end
 end

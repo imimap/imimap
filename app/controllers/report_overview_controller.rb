@@ -6,6 +6,7 @@ class ReportOverviewController < ApplicationController
   # GET /report_overview
   # GET /report_overview.json
   def index
+    authorize! :index, Internship
     # TBD ST KM: wt? replace with proper search. Removing Country for
     # now.
     @internships = Internship.includes(:company, :student, :semester)
