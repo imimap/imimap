@@ -78,7 +78,8 @@ For adding a feature, follow the development workflow:
 6. ask someone for a code review for this pull request.
 7. add changes to your pull request.
 8. merge the pull request yourself. Usually a merge & squash is best
-9. after the merge, go back to 1. - don't work on your branch anymore!
+9. delete the branch on github
+10. after the merge, go back to 1. - don't work on your branch anymore!
 
 Pull requests should have the issue id in their comment.
 No one is allowed to push to master directly.
