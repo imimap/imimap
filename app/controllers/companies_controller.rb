@@ -96,11 +96,11 @@ class CompaniesController < ApplicationController
        blacklisted]
   end
 
-  private
-
   def company_params
-    params.require(:company).permit(permitted_params)
+    params.require(:company).permit(CompaniesController.permitted_params)
   end
+
+  private
 
   def select_company
     current_user
