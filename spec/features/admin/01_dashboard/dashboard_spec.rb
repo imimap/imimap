@@ -9,7 +9,7 @@ describe 'The Dashboard' do
     I18n.locale = 'de'
     @internship = create(:internship)
   end
-  it 'is shown' do
+  it 'shows internship and students' do
     visit admin_root_path
     expect(page).to have_content @internship.company_v2.name
     expect(page).to have_content @internship.student.first_name
