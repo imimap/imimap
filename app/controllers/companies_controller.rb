@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class CompaniesController < ApplicationController
+  load_and_authorize_resource
   # GET /companies
   # GET /companies.json
   def index

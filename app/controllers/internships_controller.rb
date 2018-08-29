@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class InternshipsController < ApplicationController
+  load_and_authorize_resource
   respond_to :html, :json
   before_action :programming_languages, :orientations, only: %i[new edit update]
 
@@ -10,12 +11,18 @@ class InternshipsController < ApplicationController
 
   include InternshipsHelper
   def index
+    authorize! :list, Internship
     @internship_count = Internship.all.count
   end
 
   def new
+    # TBD ST: what is this?
+    # creation of company Address redirects here. 
+    # there is no handover of the company_address_id 
+    # that should have just been created - oh, company_last
+    # should do that. needs to be fixed.
     @internship = Internship.new
-    @company = @internship.build_company
+    # @company = @internship.build_company
     @student = @internship.student
     @company_address = CompanyAddress.new
     current_user
@@ -105,7 +112,7 @@ class InternshipsController < ApplicationController
   # If the user has no internship, the system asks him/her to create a new one
   # else the internship details are shown
   def internship_data
-    @internships = current_user.student.internships
+    @internships = current_user.student.nil? ? [] : current_user.student.internships
 
     if @internships.any?
       redirect_to @internships.first
@@ -158,19 +165,9 @@ class InternshipsController < ApplicationController
 
   private
 
-  # this was defined but not used.
   def internship_params
     params.require(:internship).permit(
-      permitted_params
+      InternshipsController.permitted_params
     )
-  end
-
-  def authorize_internship
-    internship = Internship.where(id: params[:id]).first
-    if current_user.student && internship && internship.student_id != current_user.student.id
-      redirect_to overview_index_path, notice: "You're not allowed to edit this internship"
-    elsif internship.nil?
-      redirect_to overview_index_path, notice: "You're not allowed to edit this internship"
-    end
   end
 end

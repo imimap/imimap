@@ -2,6 +2,7 @@
 
 # Offers for Internship Positions
 class InternshipOffersController < ApplicationController
+  load_and_authorize_resource
   def index
     @offers = InternshipOffer.all
   end

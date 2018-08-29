@@ -4,6 +4,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_locale
   before_action :authenticate_user!
+  check_authorization unless: :devise_or_active_admin_controller?
+
+  def devise_or_active_admin_controller?
+    devise_controller? || active_admin_controller?
+  end
+
+  def active_admin_controller?
+    self.class.name.split('::').first == 'Admin'
+  end
 
   def authenticate_active_admin_user!
     user = authenticate_user!
