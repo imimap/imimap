@@ -7,7 +7,7 @@ RSpec.describe NotificationsController, type: :controller do
 
   before :each do
     @notification = create :notification, link: 'http://localhost'
-    @current_user = login
+    @current_user = login_as_admin
   end
 
   describe 'DELETE #destroy' do

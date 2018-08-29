@@ -7,7 +7,7 @@ RSpec.describe ReportOverviewController, type: :controller do
 
   before :each do
     @internship = create :internship
-    @current_user = login
+    @current_user = login_as_admin
     @current_user.email << 's0538144@htw-berlin.de'
   end
 
@@ -20,11 +20,6 @@ RSpec.describe ReportOverviewController, type: :controller do
     it 'assigns @internships' do
       get :index
       expect(assigns(:internships)).to eq([@internship])
-    end
-
-    it 'assigns @current_user' do
-      get :index
-      expect(assigns(:current_user)).to eq @current_user
     end
 
     it 'assigns @semesters' do

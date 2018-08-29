@@ -6,7 +6,7 @@ RSpec.describe SearchController, type: :controller do
   render_views
 
   before :each do
-    @current_user = login
+    @current_user = login_as_admin
     @internship = create :internship
     @internship.programming_languages << create(:programming_language)
   end

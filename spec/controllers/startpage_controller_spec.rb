@@ -28,7 +28,7 @@ RSpec.describe StartpageController, type: :controller do
 
     context 'when logged in' do
       it 'redirects to overview#index' do
-        login
+        login_as_admin
         get :new
         expect(response).to redirect_to(:overview_index)
       end

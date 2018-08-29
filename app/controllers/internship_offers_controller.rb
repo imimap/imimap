@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Offers for Internship Positions
-class InternshipOffersController < ApplicationController
+class InternshipOffersController < ApplicationResourceController
   def index
     @offers = InternshipOffer.all
   end

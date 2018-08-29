@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class FinishListController < ApplicationController
+class FinishListController < ApplicationResourceController
   # check the user if current user nil or not
   respond_to :html, :json
 

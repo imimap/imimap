@@ -2,6 +2,7 @@
 
 # Start Page with Map overview
 class OverviewController < ApplicationController
+  skip_authorization_check only: [:index]
   include MapHelper
   def index
     @map_view = true

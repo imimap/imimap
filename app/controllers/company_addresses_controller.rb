@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CompanyAddressesController < ApplicationController
+class CompanyAddressesController < ApplicationResourceController
   before_action :set_company_address, only: %i[show edit update destroy]
 
   # GET /company_addresses
@@ -55,7 +55,7 @@ class CompanyAddressesController < ApplicationController
   end
 
   def company_address_params
-    params.require(:company_address).permit(permitted_params)
+    params.require(:company_address).permit(CompanyAddressesController.permitted_params)
   end
 
   def self.permitted_params

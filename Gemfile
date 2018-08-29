@@ -19,6 +19,7 @@ gem 'prawn-table'
 gem 'tzinfo-data'
 
 gem 'activeadmin', '~> 1.1'
+gem 'cancancan', '~> 2.2'
 gem 'devise', ' ~> 4.3'
 gem 'formtastic', '~> 3'
 
