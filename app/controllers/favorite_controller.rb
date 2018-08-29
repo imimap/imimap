@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class FavoriteController < ApplicationController
+class FavoriteController < ApplicationResourceController
   def create
     @favorite = Favorite.new
     @favorite.internship_id = params[:internship_id]

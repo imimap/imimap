@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-class InternshipsController < ApplicationController
-  load_and_authorize_resource
+class InternshipsController < ApplicationResourceController
   respond_to :html, :json
   before_action :programming_languages, :orientations, only: %i[new edit update]
 
@@ -17,8 +16,8 @@ class InternshipsController < ApplicationController
 
   def new
     # TBD ST: what is this?
-    # creation of company Address redirects here. 
-    # there is no handover of the company_address_id 
+    # creation of company Address redirects here.
+    # there is no handover of the company_address_id
     # that should have just been created - oh, company_last
     # should do that. needs to be fixed.
     @internship = Internship.new

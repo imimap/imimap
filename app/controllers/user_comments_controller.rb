@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UserCommentsController < ApplicationController
+class UserCommentsController < ApplicationResourceController
   # GET /companies/new
   # GET /companies/new.json
 

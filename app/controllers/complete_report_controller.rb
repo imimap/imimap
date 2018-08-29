@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CompleteReportController < ApplicationController
+class CompleteReportController < ApplicationResourceController
   respond_to :html, :json
   before_action :authorize_role_prof
 

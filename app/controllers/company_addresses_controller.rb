@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-class CompanyAddressesController < ApplicationController
-  load_and_authorize_resource
+class CompanyAddressesController < ApplicationResourceController
   before_action :set_company_address, only: %i[show edit update destroy]
 
   # GET /company_addresses

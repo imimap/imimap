@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ReadListController < ApplicationController
+class ReadListController < ApplicationResourceController
   before_action :authorize_role_prof
 
   respond_to :html, :json

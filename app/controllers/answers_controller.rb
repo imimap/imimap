@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class AnswersController < ApplicationController
+  load_and_authorize_resource
   def create
     @answer = Answer.new(answer_params)
     @answer.user_id = current_user.id if current_user
