@@ -79,6 +79,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'rspec-rails', '~> 3'
+  gem 'rspec-mocks'
 
   gem 'capybara'
   gem 'launchy'

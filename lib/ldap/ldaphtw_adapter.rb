@@ -9,12 +9,8 @@ class LDAPHTWAdapter
     @email = email
   end
 
-  def valid
-    valid?
-  end
-
-  def valid?
-    config && ldap_username
+  def self.substitute_netldap(mock:)
+    @@netldap_mock = mock
   end
 
   def create(ldap_password:)
@@ -22,6 +18,10 @@ class LDAPHTWAdapter
     @netldap = Net::LDAP.new(ldap_conf(ldap_host, ldap_port, ldap_htw,
                                        ldap_username, ldap_password))
     self
+  end
+
+  def netldap
+    @@netldap_mock || @netldap
   end
 
   def ldap_conf(ldap_host, ldap_port, ldap_htw, ldap_username, ldap_password)
@@ -35,9 +35,17 @@ class LDAPHTWAdapter
       } }
   end
 
+  def valid
+    valid?
+  end
+
+  def valid?
+    config && ldap_username
+  end
+
   def authenticate
     begin
-      success = @netldap.bind
+      success = netldap.bind
     rescue StandardError
       Rails.logger.error("-- ldap -- coud not connect to host #{host} ")
       return false
