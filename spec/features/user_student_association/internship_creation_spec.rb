@@ -33,7 +33,16 @@ describe 'Internship creation and editing' do
       expect(user.email).to eq "s#{enrolment_number}@htw-berlin.de"
       expect(user.student).to eq student
     end
-    it 'student object is created if not present'
+    it 'student object is created if not present' do
+      enrolment_number = '47112'
+      expect do
+        sign_in_with(enrolment_number: enrolment_number)
+      end.to change { Student.count }.by(1)
+      student = Student.last
+      user = User.last
+      expect(user.email).to eq "s#{enrolment_number}@htw-berlin.de"
+      expect(user.student).to eq student
+    end
   end
 
   context 'second time - user already present' do
