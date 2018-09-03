@@ -66,4 +66,14 @@ class User < ApplicationRecord
     # remove leading 0
     match[1].sub(/^0+/, '')
   end
+
+  def self.find_or_create(email:)
+    user = User.where(email: email).first
+    unless user
+      rpw = SecureRandom.urlsafe_base64(24, false)
+      user = User.create(email: email, password: rpw, password_confirmation: rpw)
+    end
+    Student.find_or_create_for(user: user)
+    user
+  end
 end

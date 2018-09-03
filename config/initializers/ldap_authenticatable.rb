@@ -28,19 +28,7 @@ module Devise
         Rails.logger.info("-- ldap -- Attempting ldap authorization for #{ldap_email}")
         auth_successful = ldap_adapter.create(ldap_password: ldap_password).authenticate
         if auth_successful
-          user = User.where(email: ldap_email).first
-          unless user
-            rpw = SecureRandom.urlsafe_base64(24, false)
-            user = User.create(email: ldap_email, password: rpw, password_confirmation: rpw)
-            enrolment_number = User.enrolment_number_from(email: ldap_email)
-          end
-          unless user.student
-            student = Student.where(enrolment_number: enrolment_number)
-                             .first_or_create(enrolment_number: enrolment_number,
-                                              email: ldap_email)
-            user.student = student
-            user.save!
-          end
+          user = User.find_or_create(email: ldap_email)
           return success!(user)
         else
           Rails.logger.info("-- ldap -- ldap authorization failed for #{ldap_email}")
