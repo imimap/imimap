@@ -47,7 +47,7 @@ class User < ApplicationRecord
     if student
       student.enrolment_number
     else
-      enrolment_number_from_email(email)
+      enrolment_number_from(email: email)
     end
   end
   STUDENT_MAIL_REGEX = /s(\d{6})@htw-berlin.de/
@@ -55,8 +55,25 @@ class User < ApplicationRecord
     !STUDENT_MAIL_REGEX.match(email1).nil?
   end
 
-  def enrolment_number_from_email(email1)
-    match = STUDENT_MAIL_REGEX.match(email1)
-    match ? match[1] : nil
+  def self.email_for(enrolment_number:)
+    er = enrolment_number.rjust(6, '0')
+    "s#{er}@htw-berlin.de"
+  end
+
+  def self.enrolment_number_from(email:)
+    match = STUDENT_MAIL_REGEX.match(email)
+    return nil unless match
+    # remove leading 0
+    match[1].sub(/^0+/, '')
+  end
+
+  def self.find_or_create(email:)
+    user = User.where(email: email).first
+    unless user
+      rpw = SecureRandom.urlsafe_base64(24, false)
+      user = User.create(email: email, password: rpw, password_confirmation: rpw)
+    end
+    Student.find_or_create_for(user: user)
+    user
   end
 end

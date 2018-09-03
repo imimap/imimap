@@ -434,6 +434,7 @@ DEPENDENCIES
   rails (~> 5.2.1)
   rails-controller-testing
   rails-observers
+  rspec-mocks
   rspec-rails (~> 3)
   rubocop
   rubocop-rspec

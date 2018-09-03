@@ -63,7 +63,6 @@ Rails.application.configure do
   # IMI-Maps specific begin
   config.assets.unknown_asset_fallback = false
   Rails.application.routes.default_url_options[:host] = 'localhost:3000'
-  config.devise_ldap = :on
   # IMI-Maps specific end
 
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker

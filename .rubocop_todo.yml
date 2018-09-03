@@ -28,7 +28,7 @@ Metrics/MethodLength:
 
 # Offense count: 171
 Style/Documentation:
-  Enabled: false
+  Enabled: true
 
 # Offense count: 1
 Style/MethodMissingSuper:
