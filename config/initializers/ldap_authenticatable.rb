@@ -32,6 +32,14 @@ module Devise
           unless user
             rpw = SecureRandom.urlsafe_base64(24, false)
             user = User.create(email: ldap_email, password: rpw, password_confirmation: rpw)
+            enrolment_number = User.enrolment_number_from(email: ldap_email)
+          end
+          unless user.student
+            student = Student.where(enrolment_number: enrolment_number)
+                             .first_or_create(enrolment_number: enrolment_number,
+                                              email: ldap_email)
+            user.student = student
+            user.save!
           end
           return success!(user)
         else
