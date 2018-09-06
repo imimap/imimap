@@ -61,6 +61,12 @@ DATENMIGRATION - s.u. - AUSFÜHREN!
     rake imimap:update_internships
     rails db:migrate
 
+### create a user with admin role.
+  docker exec -ti imimap-dev bash
+  rails console
+  User.create(email: 'admin@htw-berlin.de', password: 'geheim12', password_confirmation: 'geheim12', role: :admin)
+
+
 On Staging/Production Servers
 ==================================
 
