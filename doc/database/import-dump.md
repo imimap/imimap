@@ -33,17 +33,28 @@ rails db:migrate
 
 # Neu aufsetzen der persistenten Postgres-Datenbank
 
+(imi-map-2018-09-06.pgdump durch entsprechenden dateinamen des dumps ersetzen)
+
 - container anhalten
-- rm -rf postgresql/data/
+- alte datenbank löschen:
+   rm -rf postgresql/data/
 - container starten:
     docker-compose  -f docker-compose.yml -f docker-compose-db.yml up
+- dump nach postgresql/dumps kopieren: e.g.
+   cp ../../dumps/imi-map-2018-09-06.pgdump postgresql/dumps/
 - bash auf postgres container
     docker exec -ti postgresql-dev bash
 - dump einspielen
-    psql --set ON_ERROR_STOP=on  -h localhost -U imi_map imimap < /var/lib/postgresql/dumps/imi-map.pgdump
+    psql --set ON_ERROR_STOP=on  -h localhost -U imi_map imimap < /var/lib/postgresql/dumps/imi-map-2018-09-06.pgdump
+
+dann Datenbank auf neuste Version migrieren
+   docker exec -ti imimap-dev bash
+   rails db:migrate
+
+DATENMIGRATION - s.u. - AUSFÜHREN!
 
 ## Datenbankmigration
-(nach aufsetzen der Datenbank mit Dump)
+(nach aufsetzen der Datenbank mit Dump, s.o.)
     docker exec -ti imimap-dev bash
     rails db:rollback  # RenameAddressFieldsInCompany must be last
     rake imimap:move_address        # create an address object for each company
