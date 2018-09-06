@@ -244,6 +244,7 @@ de:
     general: "Allgemeine Infos"
     favorite: "Favoriten"
     tabtitle: "IMI Map | Hochschule für Technik und Wirtschaft"
+    current_internships: 'Praktika'
   choose:
     country: "Wähle ein Land"
     orientation: "Wähle eine Orientierung"

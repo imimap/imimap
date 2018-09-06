@@ -4,13 +4,14 @@ class InternshipsController < ApplicationResourceController
   respond_to :html, :json
   before_action :programming_languages, :orientations, only: %i[new edit update]
 
-  before_action :authorize_internship, only: %i[edit update destroy rating]
   # GET /internships
   # GET /internships.json
 
   include InternshipsHelper
   def index
     authorize! :list, Internship
+    @semester = Semester.last
+    @internships = Internship.where(semester_id: @semester)
     @internship_count = Internship.all.count
   end
 

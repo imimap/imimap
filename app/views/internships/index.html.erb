@@ -1,4 +1,25 @@
 
 <h2><%= t "search.title" %></h2>
 
-Hello. There are <%= @internship_count %> internships in the system.
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Start Date</th>
+    <th>End Date</th></tr>
+<% @internships.each do |internship| %>
+<tr>
+  <td>
+    <%= internship.student.first_name %>
+  </td>
+
+  <td>
+    <%= internship.start_date %>
+  </td>
+  <td>
+    <%= internship.end_date %>
+  </td>
+</tr>
+<% end %>
+</table>
+
+Hello. Found <%= @internship_count %> internships.
