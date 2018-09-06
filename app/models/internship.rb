@@ -47,11 +47,6 @@ class Internship < ApplicationRecord
       student.try(:user?) && !completed
   end
 
-  # TBD this makes no here.
-  def enrolment_number
-    student.enrolment_number
-  end
-
   def company_v2
     nil unless company_address
     company_address.company
@@ -67,21 +62,6 @@ class Internship < ApplicationRecord
   end
   after_save do
     @duration = nil
-  end
-
-  # CodeReviewSS17
-  # CSV is a view and should not be in the model.
-  # modify to accept hash options for .xls file (needed for prof reports?)
-  def self.to_csv(options = {})
-    CSV.generate(options) do |csv|
-      # CodeReviewSS17 this duplicates field names
-      csv << %w[semester enrolment_number student start_date end_date]
-      all.each do |internship|
-        csv << [internship.semester.name, internship.student.enrolment_number,
-                internship.student.name, internship.start_date,
-                internship.end_date]
-      end
-    end
   end
 
   # CodeReview: form and logic of missing end date needs to be adapted

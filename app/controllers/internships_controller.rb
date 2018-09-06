@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# The Internships controller
 class InternshipsController < ApplicationResourceController
   respond_to :html, :json
   before_action :programming_languages, :orientations, only: %i[new edit update]
@@ -11,8 +12,11 @@ class InternshipsController < ApplicationResourceController
   def index
     authorize! :list, Internship
     @semester = Semester.last
-    @internships = Internship.where(semester_id: @semester)
-    @internship_count = Internship.all.count
+    internships = Internship.where(semester_id: @semester)
+    @internship_count = internships.count
+    @complete_internships = internships.map do |i|
+      complete_internship(i)
+    end
   end
 
   def new

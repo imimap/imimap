@@ -1,25 +1,27 @@
-
-<h2><%= t "search.title" %></h2>
+<h3>Internships in <%= @semester.name %></h3>
+Found <%= @internship_count %> internships.
 
 <table>
   <tr>
-    <th>First Name</th>
-    <th>Start Date</th>
-    <th>End Date</th></tr>
-<% @internships.each do |internship| %>
+    <th><%= t('complete_internship.first_name') %></th>
+    <th><%= t('complete_internship.last_name') %></th>
+    <th><%= t('complete_internship.enrolment_number') %></th>
+    <th><%= t('complete_internship.company') %></th>
+    <th><%= t('complete_internship.city') %></th>
+    <th><%= t('complete_internship.country') %></th>
+    <th><%= t('complete_internship.start_date') %></th>
+    <th><%= t('complete_internship.end_date') %></th>
+</tr>
+<% @complete_internships.each do |ci| %>
 <tr>
-  <td>
-    <%= internship.student.first_name %>
-  </td>
-
-  <td>
-    <%= internship.start_date %>
-  </td>
-  <td>
-    <%= internship.end_date %>
-  </td>
+  <td><%= ci.first_name %></td>
+  <td><%= ci.last_name %></td>
+  <td><%= ci.enrolment_number %></td>
+  <td><%= ci.company %></td>
+  <td><%= ci.city %></td>
+  <td><%= ci.country %></td>
+  <td><%= ci.start_date %></td>
+  <td><%= ci.end_date %></td>
 </tr>
 <% end %>
 </table>
-
-Hello. Found <%= @internship_count %> internships.
