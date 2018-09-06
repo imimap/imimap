@@ -9,8 +9,15 @@ class LDAPHTWAdapter
     @email = email
   end
 
+  @netldap_mock = nil
   def self.substitute_netldap(mock:)
-    @@netldap_mock = mock
+    @netldap_mock = mock
+  end
+  def self.netldap_mock
+    @netldap_mock
+  end
+  def netldap_mock
+    self.class.netldap_mock
   end
 
   def create(ldap_password:)
@@ -21,7 +28,7 @@ class LDAPHTWAdapter
   end
 
   def netldap
-    @@netldap_mock || @netldap
+    self.netldap_mock || @netldap
   end
 
   def ldap_conf(ldap_host, ldap_port, ldap_htw, ldap_username, ldap_password)
@@ -55,10 +62,14 @@ class LDAPHTWAdapter
   end
 
   def config
-    # ldap_host|ldap_port|ldap_htw
-    ldapconfig = ENV['LDAP']
-    Rails.logger.error("-- ldap -- ENV['LDAP'] missing ") unless ldapconfig
-    @host, @port, @connectstring = ldapconfig&.split('|')
+    if netldap_mock.nil?
+      # ldap_host|ldap_port|ldap_htw
+      ldapconfig = ENV['LDAP']
+      Rails.logger.error("-- ldap -- ENV['LDAP'] missing ") unless ldapconfig
+      @host, @port, @connectstring = ldapconfig&.split('|')
+    else
+      @host, @port, @connectstring = 'some.host.de', 4711, 'xxxx'
+    end
   end
 
   private
