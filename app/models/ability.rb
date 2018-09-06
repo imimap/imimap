@@ -7,7 +7,7 @@ class Ability
   def initialize(user)
     cannot :index, Internship
     can :create, Internship
-    can :update, Internship, approved: false
+    can :update, Internship, approved: false,  student: { user: user }
     can :read,   Internship, student: { user: user }
     can :update, Student, user: { id: user.id }
     can %i[read update], User, id: user.id
