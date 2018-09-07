@@ -23,10 +23,10 @@ FactoryBot.define do
   end
 
   factory :company_address_for_edit, class: CompanyAddress do
-    city { 'Foster City' }
+    city { 'Berkeley' }
     country { 'USA' }
-    street { '10 Driveway' }
-    zip { '93827' }
+    street { '2454 Telegraph Avenue' }
+    zip { '94704' }
     phone { '+187345847' }
     fax { '+187345888' }
     company { create(:company_for_edit) }
@@ -42,21 +42,22 @@ FactoryBot.define do
     import_id { 2 }
   end
 
+#github
   factory :company_address_1, class: CompanyAddress do
-    city { 'City 1' }
+    city { 'San Francisco' }
     country { 'USA' }
-    street { '11 Driveway' }
-    zip { '93827' }
+    street { '88 Colin P Kelly Jr St' }
+    zip { '94107' }
     phone { '+187345847' }
     fax { '+187345888' }
     company { create(:company_1) }
   end
-
+# amazon locker lasse
   factory :company_address_2, class: CompanyAddress do
-    city { 'City 2' }
-    country { 'USA' }
-    street { '22 Driveway' }
-    zip { '93827' }
+    city { 'Berlin' }
+    country { 'Germany' }
+    street { 'Karl-Marx-Straße 267' }
+    zip { '12057' }
     phone { '+187345847' }
     fax { '+187345888' }
     company { create(:company_2) }
