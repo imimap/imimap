@@ -36,8 +36,6 @@ gem 'mini_magick'
 gem 'paperclip', '~> 5.2'
 
 gem 'chosen-rails'
-# for map on startpage and overview
-gem 'leaflet-rails'
 
 gem 'kaminari'
 
