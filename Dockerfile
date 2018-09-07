@@ -26,6 +26,7 @@ RUN apk update && apk add --no-cache fontconfig curl && \
 # build deps
 RUN set -ex \
   && apk add --no-cache --virtual .builddeps \
+       git \
        linux-headers \
        libpq \
        tzdata \
