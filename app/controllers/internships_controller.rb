@@ -11,11 +11,13 @@ class InternshipsController < ApplicationResourceController
   include InternshipsHelper
   def index
     authorize! :list, Internship
-    @semester = Semester.last
-    internships = Internship.where(semester_id: @semester)
+    semester = Semester.last
+    @semester_name = semester ? semester.name : '(no semester)'
+    byebug
+    internships = Internship.where(semester: semester)
     @internship_count = internships.count
     @complete_internships = internships.map do |i|
-      complete_internship(i)
+      CompleteInternship.from(i)
     end
   end
 
