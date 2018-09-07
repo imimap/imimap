@@ -14,6 +14,8 @@ class InternshipsController < ApplicationResourceController
     @semester_name = semester ? semester.name : '(no semester)'
     internships = Internship.where(semester: semester)
     @internship_count = internships.count
+    # make rails load the file
+    CompleteInternship if @internship_count.zero?
     @complete_internships = internships.map do |i|
       CompleteInternship.from(i)
     end
