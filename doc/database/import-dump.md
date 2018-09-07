@@ -67,18 +67,46 @@ DATENMIGRATION - s.u. - AUSFÜHREN!
     rails console
     User.create(email: 'admin@htw-berlin.de', password: 'geheim12', password_confirmation: 'geheim12', role: :admin)
 
+# On Staging/Production Servers
 
-On Staging/Production Servers
-==================================
+## SKIP: Stop container (braucht man nicht)
 
+    ssh deployer@imi-map-production.f4.htw-berlin.de
+    docker-compose down
 
-export TAG=
-export RAILS_MASTER_KEY=
-export LDAP=
+## SKIP: Delete old database (!!) (wenn Server über travis gestartet)
 
-docker-compose -f docker-compose-production.yml up
+    sudo rm -rf postgresql/data/
 
+## Copy dump
 
+In two steps as mounted dirs belong root.
 
-docker-compose exec  imimap bash
-rails db:setup DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+### copy
+
+    scp ../../dumps/imi-map-2018-09-06.pgdump deployer@imi-map-production.f4.htw-berlin.de:/home/deployer
+
+### On production box
+
+    sudo mkdir postgresql/dumps
+    sudo mv imi-map-2018-09-06.pgdump postgresql/dumps/
+
+## Start container
+
+    easiest and cleanest: rebuild deploy-production from travis
+
+## Import dump
+
+Falls der Server über das Deployment-Script gestartet wurde, wurde eine neue DB angelegt und migriert, daher:
+
+    docker exec -ti imimap bash
+    rake db:drop DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+    rake db:create
+
+-- wie lokal, container name ohne -dev, anderer database name
+    imi_map_production (steht im docker-compose-production file)
+
+    docker exec -ti postgresql bash
+    psql --set ON_ERROR_STOP=on  -h localhost -U imi_map imi_map_production < /var/lib/postgresql/data/imi-map-2018-09-06.pgdump
+
+    Dann Migration und Datenmigration wie lokal ausführen.
