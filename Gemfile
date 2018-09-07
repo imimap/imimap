@@ -3,7 +3,9 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 5.2.1'
-
+gem 'rubyzip', '~> 1.1.0'
+gem 'axlsx', '2.1.0.pre'
+gem 'axlsx_rails'
 gem 'carrierwave'
 gem 'country_select'
 gem 'geocoder'

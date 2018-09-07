@@ -17,12 +17,16 @@ class InternshipsController < ApplicationResourceController
     @complete_internships = internships.map do |i|
       CompleteInternship.from(i)
     end
+    @header_names = COMPLETE_INTERNSHIP_MEMBERS.map do | m |
+      t("complete_internship.#{m}")
+    end
     respond_to do |format|
       format.html
       format.csv do
         send_data CompleteInternship.to_csv(@complete_internships)
       end
-      format.xls
+      # see https://github.com/straydogstudio/axlsx_rails
+      format.xlsx
     end
   end
 

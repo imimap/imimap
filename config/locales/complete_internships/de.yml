@@ -1,0 +1,10 @@
+de:
+  complete_internship:
+    first_name: Vorname
+    last_name: Nachname
+    enrolment_number: Matrikelnummer
+    company: Firma
+    city: Stadt
+    country: Land
+    start_date: Von
+    end_date: Bis

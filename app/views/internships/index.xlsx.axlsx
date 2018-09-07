@@ -1,0 +1,7 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Internships") do |sheet|
+  sheet.add_row @header_names
+  @complete_internships.each do |ci|
+    sheet.add_row ci.to_a
+  end
+end
