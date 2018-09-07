@@ -4,19 +4,35 @@ require 'rails_helper'
 
 describe 'current internships:' do
   context 'a student' do
-    it 'doesnt see the link in the main menu'
-    it 'cannot see the list of internships'
+    before :each do
+      @user = create(:student_user)
+      sign_in(@user)
+    end
+    it 'doesnt see the link in the main menu' do
+      visit root_path
+      expect(page).not_to have_content(t('header.current_internships'))
+    end
+    it 'cannot see the list of internships' do
+      visit internships_path
+      expect(page).to have_content('CanCan::AccessDenied')
+    end
   end
-  context 'a prof' do
-    it 'sees the link in the main menu'
-    it 'can see the list of internships'
-  end
-  context 'an admin' do
-    it 'sees the link in the main menu'
-    it 'can see the list of internships'
-  end
-  context 'an employee in the examination office' do
-    it 'sees the link in the main menu'
-    it 'can see the list of internships'
+
+  %i[prof admin examination_office].each do |role|
+    context "with role #{role}" do
+      before :each do
+        @user = create(role)
+        sign_in(@user)
+        @internship = create(:internship)
+      end
+      it 'sees the link in the main menu' do
+        visit root_path
+        expect(page).to have_content(t('header.current_internships'))
+      end
+      it 'can see the list of internships' do
+        visit internships_path
+        expect(page).to have_content(@internship.start_date)
+      end
+    end
   end
 end

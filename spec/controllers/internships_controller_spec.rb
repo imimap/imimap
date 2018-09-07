@@ -30,10 +30,8 @@ RSpec.describe InternshipsController, type: :controller do
       end
       include InternshipsHelper
       it 'assigns @complete_internships' do
-
         expect(assigns(:complete_internships)).to eq([CompleteInternship.from(@internship)])
       end
-
       it 'assigns @internships' do
         expect(assigns(:internship_count)).to eq(1)
       end

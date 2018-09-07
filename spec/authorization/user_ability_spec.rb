@@ -18,8 +18,9 @@ describe 'User Role' do
 
     context 'when is a regular user' do
       let(:user) { create(:user) }
-
-      it { is_expected.not_to be_able_to(:read, Internship.new) }
+      it { is_expected.not_to be_able_to(:index, Internship) }
+      it { is_expected.not_to be_able_to(:list, Internship) }
+      it { is_expected.not_to be_able_to(:show, Internship.new) }
       it { is_expected.to be_able_to(:create, Internship) }
     end
     context 'when is a regular user with own internship' do
@@ -35,7 +36,7 @@ describe 'User Role' do
       it 'assigns the right things' do
         expect(@own_internship.student.user).to eq @user
       end
-      it { is_expected.to be_able_to(:read, @own_internship) }
+      it { is_expected.to be_able_to(:show, @own_internship) }
     end
   end
 end

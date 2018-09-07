@@ -5,10 +5,11 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    cannot :index, Internship
+    return unless user.present?
+
     can :create, Internship
     can :update, Internship, approved: false,  student: { user: user }
-    can :read,   Internship, student: { user: user }
+    can :show,   Internship, student: { user: user }
     can :update, Student, user: { id: user.id }
     can %i[read update], User, id: user.id
     can :create, [Company, CompanyAddress]
@@ -22,6 +23,7 @@ class Ability
 
     return unless user.prof? || user.examination_office? || user.admin?
     can :index, Internship
+    can :list, Internship
     can :read, :all
 
     return unless user.admin?
