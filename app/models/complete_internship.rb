@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
-CompleteInternship = Struct.new(:first_name,
-                                :last_name,
-                                :enrolment_number,
-                                :company,
-                                :city,
-                                :country,
-                                :start_date,
-                                :end_date)
+MEMBERS = %i[first_name
+             last_name
+             enrolment_number
+             company
+             city
+             country
+             start_date
+             end_date].freeze
+CompleteInternship = Struct.new(*MEMBERS)
 def CompleteInternship.from(int)
   ci = CompleteInternship.new
   if int.student.nil?
@@ -34,4 +35,13 @@ def CompleteInternship.from(int)
   ci.start_date = int.start_date
   ci.end_date = int.end_date
   ci
+end
+
+def CompleteInternship.to_csv(complete_internships)
+  CSV.generate do |csv|
+    csv << MEMBERS
+    complete_internships.each do |ci|
+      csv << ci.to_a
+    end
+  end
 end

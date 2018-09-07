@@ -17,6 +17,13 @@ class InternshipsController < ApplicationResourceController
     @complete_internships = internships.map do |i|
       CompleteInternship.from(i)
     end
+    respond_to do |format|
+      format.html
+      format.csv do
+        send_data CompleteInternship.to_csv(@complete_internships)
+      end
+      format.xls
+    end
   end
 
   def new

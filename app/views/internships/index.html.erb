@@ -25,3 +25,9 @@ Found <%= @internship_count %> internships.
 </tr>
 <% end %>
 </table>
+
+<p>
+  Download:
+  <%= link_to "CSV", internships_path(format: "csv") %> |
+  <%= link_to "Excel", internships_path(format: "xls") %>
+</p>
