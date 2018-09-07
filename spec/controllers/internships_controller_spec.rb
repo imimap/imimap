@@ -18,75 +18,26 @@ RSpec.describe InternshipsController, type: :controller do
 
     context 'assignments' do
       before :each do
-        @internship = create :internship, completed: true, living_costs: 42,
-                                          salary: 84
+        @semester = create(:ws2018)
+        @internship = create(:internship, completed: true, living_costs: 42,
+                                          salary: 84, semester: @semester)
+
+        get :index
       end
 
+      it 'assigns @semester_name' do
+        expect(assigns(:semester_name)).to eq(@semester.name)
+      end
+      include InternshipsHelper
+      it 'assigns @complete_internships' do
+        expect(assigns(:complete_internships)).to eq([CompleteInternship.from(@internship)])
+      end
       it 'assigns @internships' do
-        get :index
         expect(assigns(:internship_count)).to eq(1)
       end
     end
   end
 end
-# it 'assigns @current_user' do
-#  get :index
-#  expect(assigns(:current_user)).to eq @current_user
-# end
-#
-# it 'assigns @companies' do
-#  pending
-#  get :index
-#  expect(assigns(:companies)).to eq([@internship.company])
-# end
-#
-# it 'assigns @countries' do
-#  pending
-#  get :index
-#  expect(assigns(:countries)).to eq([@internship.company.country])
-# end
-#
-# it 'assigns @semesters' do
-#  pending
-#  get :index
-#  expect(assigns(:semesters)).to eq([[@internship.semester.name, @internship.semester.id]])
-# end
-#
-# it 'assigns @orientations' do
-#  pending
-#  get :index
-#  expect(assigns(:orientations)).to eq([[@internship.orientation.name, @internship.orientation.id]])
-# end
-#
-# it 'assigns @living_costs_max' do
-#  pending
-#  get :index
-#  expect(assigns(:living_costs_max)).to eq(42)
-# end
-#
-# it 'assigns @salary_max' do
-#  pending
-#  get :index
-#  expect(assigns(:salary_max)).to eq(84)
-# end
-#
-# it 'assigns @internships differently with progamming_language_ids' do
-#  pending
-#  programming_language_a = create(:programming_language)
-#  programming_language_b = create(:programming_language)
-#
-#  @internship.programming_languages << programming_language_a
-#
-#  @internship1 = create :internship, completed: true
-#  @internship1.programming_languages << programming_language_b
-#
-#  get :index, params: { programming_language_ids: [programming_language_a.id, programming_language_b.id] }
-#  expect(assigns(:internships)).to eq([])
-# end
-#  end
-
-#  end
-
 # describe 'GET #show' do
 #  before :each do
 #    @internship = create :internship, completed: true

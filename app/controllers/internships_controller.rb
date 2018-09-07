@@ -1,17 +1,35 @@
 # frozen_string_literal: true
 
+# The Internships controller
 class InternshipsController < ApplicationResourceController
   respond_to :html, :json
   before_action :programming_languages, :orientations, only: %i[new edit update]
 
-  before_action :authorize_internship, only: %i[edit update destroy rating]
   # GET /internships
   # GET /internships.json
 
   include InternshipsHelper
   def index
-    authorize! :list, Internship
-    @internship_count = Internship.all.count
+    semester = Semester.last
+    @semester_name = semester ? semester.name : '(no semester)'
+    internships = Internship.where(semester: semester)
+    @internship_count = internships.count
+    # make rails load the file
+    CompleteInternship if @internship_count.zero?
+    @complete_internships = internships.map do |i|
+      CompleteInternship.from(i)
+    end
+    @header_names = COMPLETE_INTERNSHIP_MEMBERS.map do | m |
+      t("complete_internship.#{m}")
+    end
+    respond_to do |format|
+      format.html
+      format.csv do
+        send_data CompleteInternship.to_csv(@complete_internships)
+      end
+      # see https://github.com/straydogstudio/axlsx_rails
+      format.xlsx
+    end
   end
 
   def new

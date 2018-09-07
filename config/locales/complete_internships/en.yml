@@ -1,0 +1,10 @@
+en:
+  complete_internship:
+    first_name: First Name
+    last_name: Last Name
+    enrolment_number: Enrolment Number
+    company: Company
+    city: City
+    country: Country
+    start_date: Start
+    end_date: End

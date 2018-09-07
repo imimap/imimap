@@ -21,6 +21,7 @@ ADD . $APP_HOME
 # build deps
 RUN set -ex \
   && apk add --no-cache --virtual .builddeps \
+  git \
   linux-headers \
   libpq \
   build-base \

@@ -41,12 +41,6 @@ RSpec.describe Internship, type: :model do
     end
   end
 
-  describe '#enrolment_number' do
-    it 'should return the correct enrolment_number' do
-      expect(internship.enrolment_number).to eq(internship.student.enrolment_number)
-    end
-  end
-
   describe 'trigger InternshipObserver#after_update' do
     it 'should trigger after_upate in the observer' do
       internship = create :internship

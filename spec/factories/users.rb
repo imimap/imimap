@@ -25,4 +25,12 @@ FactoryBot.define do
     mailnotif { true }
   end
 
+  factory :examination_office, class: User do
+    email
+    password { 'foofoofoo123123' }
+    password_confirmation { 'foofoofoo123123' }
+    publicmail { true }
+    mailnotif { true }
+    role { :examination_office }
+  end
 end
