@@ -19,10 +19,6 @@ class ApplicationController < ActionController::Base
     throw(:warden) unless user.admin?
   end
 
-  def authorize_role_examination_office; end
-
-  def authorize_role_professor; end
-
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end
@@ -30,17 +26,6 @@ class ApplicationController < ActionController::Base
   def default_url_options(_options = {})
     { locale: I18n.locale }
   end
-
-  # we use devise logic instead
-  # def current_user
-  #   @current_user = User.find(session[:user_id]) if session[:user_id]
-  #   #@current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
-  #   rescue ActiveRecord::RecordNotFound
-  #     session.destroy
-  #     nil
-  # end
-
-  # helper_method :current_user
 
   def programming_languages
     @programming_languages ||= ProgrammingLanguage.order(:name).map do |p|

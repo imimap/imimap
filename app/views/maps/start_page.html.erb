@@ -1,4 +1,6 @@
-<%= @company_location_json.inspect %>
+<% if @company_location_json.nil? %>
+No Companies to show on Map.
+<% end %>
 
 <div id="mapid" style="width: 100%; height: 800px;;"></div>
 <script>
@@ -21,7 +23,7 @@
 
 var companiesInternship = JSON.parse('<%= @company_location_json %>')
 
-  var marker = L.marker([52.4569311, 13.5242551]).bindPopup("Length is: <%= @company_location_json.length %>"+companiesInternship.length).addTo(mymap);
+  var marker = L.marker([52.4569311, 13.5242551]).bindPopup("HTW Berlin").addTo(mymap);
 
 
 	var popup = L.popup();
