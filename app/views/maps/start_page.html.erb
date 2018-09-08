@@ -1,0 +1,31 @@
+
+<% flash.each do |key, value| %>
+    <div class="<%= flash_class(key) %>">
+      <%= value %>
+    </div>
+<% end %>
+
+<div id="map-container">
+  <div id="mapid"> </div>
+</div>
+<script type="text/javascript">
+    var companiesInternship = JSON.parse('<%= @company_location_json %>')
+    var mymap = L.map('mapid').setView([52.4569311, 13.5242551], 2);
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+       }).addTo(mymap);
+    var marker = L.marker([52.4569311, 13.5242551]).bindPopup("HTW Berlin").addTo(mymap);
+    for (var i = 0; i < companiesInternship.length; i++) {
+      if ((companiesInternship[i][1] != null ) && (companiesInternship[i][2] != null ))
+        marker = new L.marker([companiesInternship[i][1], companiesInternship[i][2]])
+            .bindPopup(companiesInternship[i][0])
+            .addTo(mymap);
+    }
+</script>
+
+  <!--
+
+  <div id="map-container">
+    <div class="startmap" id="mapid"></div>
+  </div>
+-->

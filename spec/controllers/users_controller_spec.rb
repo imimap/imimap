@@ -35,7 +35,7 @@ RSpec.describe UsersController, type: :controller do
   #     it 'should redirect ot overview#index' do
   #       session[:enrolment_number] = 42.to_s
   #       post :create, user_creation_form: attributes_for(:user, password: "foofoofoo", password_confirmation: "foofoofoo", first_name: "first name", last_name: "last name", birthday: "12.12.2005", birthplace: "foo")
-  #       expect(response).to redirect_to overview_index_path
+  #       expect(response).to redirect_to root_path
   #     end
   #   end
   # end

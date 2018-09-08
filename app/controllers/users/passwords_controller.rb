@@ -5,7 +5,7 @@ module Users
     protected
 
     def after_resetting_password_path_for(resource)
-      overview_index_path(resource)
+      root_path(resource)
     end
 
     # GET /resource/password/new
