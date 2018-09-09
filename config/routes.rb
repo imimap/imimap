@@ -5,21 +5,20 @@ Rails.application.routes.draw do
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
     devise_scope :user do
       devise_for :users, controllers: { registrations: 'users/registrations', passwords: 'users/passwords' }
-      root to: 'startpage#new'
       # This is needed for ActiveAdmin
       authenticated :user do
-        root 'overview#index', as: :authenticated_root
+        root 'maps#map_view', as: :authenticated_root
       end
+      root 'maps#peek_preview'
+
       resources :internships
       # TBD ST resources :internships, only: %i[new edit show update create rating]
       resources :companies
       resources :users, only: %i[edit show update create new student_show]
       resources :user_verifications, only: %i[new create]
-      resources :overview, only: %i[index]
       resources :internship_offers, only: %i[index show new create]
       resources :notifications, only: %i[destroy show]
       resources :favorite, only: %i[create destroy index]
-      resources :startpage, only: %i[create]
       resources :user_comments, only: %i[destroy update create new]
       resources :answers, only: %i[create update destroy]
       resources :general
@@ -35,7 +34,6 @@ Rails.application.routes.draw do
       get 'login', to: 'devise/sessions#create', as: 'login'
       get 'logout', to: 'devise/sessions#destroy', as: 'logout'
       get 'statistic', to: 'statistic#overview'
-      get 'debug', to: 'overview#debug', as: 'debug'
       delete 'destroy', to: 'devise/notifications#destroy'
       get 'student_show', to: 'users#student_show', as: 'student_show'
       get 'rating', to: 'internships#rating', as: 'rating'

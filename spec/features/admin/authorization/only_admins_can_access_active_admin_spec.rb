@@ -10,7 +10,12 @@ describe 'ActiveAdmin Authorization' do
     end
     it 'have no access admin area' do
       visit admin_root_path
+      # be on the student page
       expect(page).to have_content t('devise.failure.already_authenticated')
+      expect(page).to have_content t('header.internship')
+      # not the admin area
+      expect(page).not_to have_content t('active_admin.dashboard')
+      expect(page).not_to have_content t('active_admin.dashboard_welcome.welcome')
     end
   end
 
@@ -21,7 +26,12 @@ describe 'ActiveAdmin Authorization' do
     end
     it 'have no access admin area' do
       visit admin_root_path
+      # be on the prof page
       expect(page).to have_content t('devise.failure.already_authenticated')
+      expect(page).to have_content t('header.current_internships')
+      # not the admin area
+      expect(page).not_to have_content t('active_admin.dashboard')
+      expect(page).not_to have_content t('active_admin.dashboard_welcome.welcome')
     end
   end
 
@@ -30,9 +40,10 @@ describe 'ActiveAdmin Authorization' do
       @admin = create(:admin)
       sign_in(@admin)
     end
-    it 'have no access admin area' do
+    it 'have access admin area' do
       visit admin_root_path
       expect(page).to have_content t('active_admin.dashboard')
+      expect(page).to have_content t('active_admin.dashboard_welcome.welcome')
     end
   end
 end

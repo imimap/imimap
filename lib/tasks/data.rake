@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-namespace :data do
+namespace :imimap do
   desc 'map old database data to new format'
   task map_old_data: :environment do
     require 'database_parser'
@@ -15,14 +15,16 @@ namespace :data do
     parser.import_internships
   end
 
-  desc 'geocode all companies'
+  desc 'geocode all company addresses'
   task geocode_companies: :environment do
-    Company.find_each do |company|
-      if company.latitude.nil?
-        result = company.geocode
+    CompanyAddress.find_each do |ca|
+      if ca.latitude.nil?
+        result = ca.geocode
         if result.present?
           puts "RESULT: #{result}"
-          company.update_attributes(latitude: result[0], longitude: result[1])
+          ca.update_attributes(latitude: result[0], longitude: result[1])
+        else
+          puts "couldn't geocode #{ca.address} (#{ca.id})"
         end
       end
     end

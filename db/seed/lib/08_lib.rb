@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require_relative './08_addresses.rb'
 def create_internship(student:, company_address:)
   Semester.find(Semester.pluck(:id).sample)
 
@@ -72,14 +72,7 @@ def create_student(enrolment_number:, with_internship:, with_user:)
     website: Faker::Internet.url('example.com')
   )
 
-  company_address = CompanyAddress.create!(
-    company_id: company.id,
-    street: Faker::Address.street_address,
-    zip: Faker::Address.zip,
-    city: Faker::Address.city,
-    country: Faker::Address.country,
-    phone: Faker::PhoneNumber.phone_number
-  )
+  company_address = geocoded_address(company: company)
 
   create_internship(student: student, company_address: company_address)
 end
