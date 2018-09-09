@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
     devise_scope :user do
       devise_for :users, controllers: { registrations: 'users/registrations', passwords: 'users/passwords' }
-      root 'maps#peek_preview'
-      # get 'debug', to: 'maps#debug', as: 'debug'
       # This is needed for ActiveAdmin
       authenticated :user do
-        root 'maps#start_page', as: :authenticated_root
+        root 'maps#map_view', as: :authenticated_root
       end
+      root 'maps#peek_preview'
+
       resources :internships
       # TBD ST resources :internships, only: %i[new edit show update create rating]
       resources :companies

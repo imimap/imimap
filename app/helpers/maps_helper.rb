@@ -10,7 +10,7 @@ module MapsHelper
     company_location_json_raw.each do |x|
       x[0] = x[0].tr('\'', ' ')
     end
-    company_location_json_raw << ['HTW, Berlin', 52.4569311, 13.5242551]
+    company_location_json_raw << ['HTW Berlin', 52.4569311, 13.5242551]
     company_location_json_raw.to_json.html_safe
   end
 end

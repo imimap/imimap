@@ -7,7 +7,7 @@ No Companies to show on Map.
 
   // 2 shows whole world,
   // 13 a part of the city
-  var mymap = L.map('mapid').setView([52.4569311, 13.5242551], 11);
+  var mymap = L.map('mapid').setView([52.4569311, 13.5242551], <%= @zoom %>);
 
   L.Icon.Default.imagePath = "leaflet-icons/";
 
@@ -24,8 +24,7 @@ No Companies to show on Map.
 
 var companiesInternship = JSON.parse('<%= @company_location_json %>')
 
-  var marker = L.marker([52.4569311, 13.5242551]).bindPopup("HTW Berlin").addTo(mymap);
-
+  //var marker = L.marker([52.4569311, 13.5242551]).bindPopup("HTW Berlin").addTo(mymap);
 
 	var popup = L.popup();
 

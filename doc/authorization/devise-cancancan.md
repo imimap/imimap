@@ -14,6 +14,8 @@ Andere Rollen werden über cancancan differnziert.
 
 ## CanCanCan
 
+see [https://github.com/CanCanCommunity/cancancan](https://github.com/CanCanCommunity/cancancan)
+
 Rechte sind in ability.rb definiert
 
 in ApplicationController wird sichergestellt, dass ein Fehler geworfen wird wenn cancancan nicht gefragt wurde
@@ -26,3 +28,9 @@ in ApplicationResourceController für alle Controller & Actions global angeschal
 
 - damit wird die Authorization für den jeweiligen
 Controller & Action ausgeführt.
+
+### Maps Authorization
+Da CanCan nicht über Controller, sondern Resourcen authorisiert,
+geschieht dies über Internship.
+
+hier sind 
