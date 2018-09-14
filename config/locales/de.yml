@@ -81,6 +81,7 @@ de:
         body: Beschreibung
         created_at: Erstellt am
         updated_at: Ergänzt am
+        share: Neues Praktikumsangebot erstellen
       orientation:
         internships: Praktika
       semester:

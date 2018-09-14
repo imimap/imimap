@@ -19,6 +19,11 @@ en:
     message: "The page you were looking for doesn't exist.<br/>You may have mistyped the address or the page may have moved."
   activerecord:
     attributes:
+      internship_offer:
+        body: Description
+        created_at: Erstellt am
+        updated_at: Ergänzt am
+        share: Share Internship Offer
       admin_user:
         id: ID
         email: E-Mail
@@ -167,7 +172,6 @@ en:
       email: "E-Mail"
       recommended: "Recommended"
       not_recommended: "Not Recommended"
-
   internships:
     student: 'Student'
     company_v2: 'Company'
@@ -223,8 +227,6 @@ en:
         partInternship: "If internship is a part internship it's valid"
         longEnough: "Internship is long enough"
       reading_prof: "Reading professor"
-
-
   users:
     name: "Users"
     create: "Create User"
