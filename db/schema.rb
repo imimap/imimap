@@ -160,6 +160,8 @@ ActiveRecord::Schema.define(version: 3018_08_27_172427) do
     t.string "pdf"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string "city"
+    t.string "country"
   end
 
   create_table "internship_ratings", id: :serial, force: :cascade do |t|
