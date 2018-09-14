@@ -106,6 +106,9 @@ en:
     favorite: "Favorite"
     tabtitle: "IMI Map | University of Applied Sciences"
     current_internships: 'Internships'
+    title: "Title"
+    city: "City"
+    country: "Country"
 
   search:
     explanation:
