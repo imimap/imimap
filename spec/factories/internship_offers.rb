@@ -14,5 +14,21 @@ FactoryBot.define do
     title { 'internship offer title' }
     body { TEXT3 }
     pdf { 'internship offer pdf' }
+    city { 'London' }
+    country { 'UK' }
+  end
+  factory :io2, class: InternshipOffer do
+    title { 'internship offer title' }
+    body { TEXT3 }
+    pdf { 'internship offer pdf' }
+    city { 'San Francisco' }
+    country { 'USA' }
+  end
+  factory :io3, class: InternshipOffer do
+    title { 'internship offer title' }
+    body { TEXT3 }
+    pdf { 'internship offer pdf' }
+    city { 'Paris' }
+    country { 'Frankreich' }
   end
 end
