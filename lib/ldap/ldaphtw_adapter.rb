@@ -75,7 +75,8 @@ class LDAPHTWAdapter
   private
 
   def ldap_username
-    m = /\A(.*)@.*htw-berlin.de\z/.match(email)
+    return nil if email.nil?
+    m = /\A(.*)@.*htw-berlin.de\z/.match(email.strip)
     return m[1] if m
     Rails.logger.info("-- ldap -- email not valid #{email} ")
     nil

@@ -75,7 +75,7 @@ GEM
       activesupport (>= 3.0.0)
     arel (9.0.0)
     ast (2.4.0)
-    autoprefixer-rails (9.1.3)
+    autoprefixer-rails (9.1.4)
       execjs
     axlsx_rails (0.5.2)
       actionpack (>= 3.1)
@@ -89,7 +89,7 @@ GEM
       debug_inspector (>= 0.0.1)
     bootsnap (1.3.1)
       msgpack (~> 1.0)
-    bootstrap (4.0.0)
+    bootstrap (4.1.3)
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
@@ -411,7 +411,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap
-  bootstrap (~> 4.0.0)
+  bootstrap (~> 4.1.3)
   bootstrap_form (>= 4.0.0.alpha1)
   byebug
   cancancan (~> 2.2)
