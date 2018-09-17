@@ -1,8 +1,6 @@
 AllCops:
   Exclude:
-    - "db/schema.rb"
-    - "db/migration/*"
-    - db/migrate/20130523140518_rename_orientation_to_orientation_id_in_internship.rb
+    - 'db/schema.rb'
+    - 'db/migrate/*'
     - 'bin/setup'
     - 'bin/update'
-inherit_from: .rubocop_todo.yml
