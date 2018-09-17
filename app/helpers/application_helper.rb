@@ -28,7 +28,7 @@ module ApplicationHelper
                        root_path(locale: loc)
                      else
                        params.permit(:locale).merge(locale: loc)
-      end
+                     end
       concat content_tag(:li, (link_to_unless_current loc, locale_param),
                          class: "locale-#{loc}")
     end

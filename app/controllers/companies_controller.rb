@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Companies Controller
 class CompaniesController < ApplicationResourceController
   # GET /companies
   # GET /companies.json

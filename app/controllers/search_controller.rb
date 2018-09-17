@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# TBD might be reused for the new search.
 class SearchController < ApplicationController
   def index
     @internships = Internship.all

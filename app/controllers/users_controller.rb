@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Users Controller
 class UsersController < ApplicationResourceController
   before_action :check_permission, only: %i[new create]
   before_action :check_existing_user, only: %i[new create student_show]

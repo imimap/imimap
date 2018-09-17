@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Generates PDF for Internship Application
 class InternshipPdf < Prawn::Document
   def initialize(internship)
     super()

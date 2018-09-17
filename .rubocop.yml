@@ -1,3 +1,4 @@
+
 AllCops:
   Exclude:
     - 'db/schema.rb'
@@ -9,7 +10,10 @@ Metrics/AbcSize:
     - 'app/admin'
 
 # those should eventually be deleted or fixed.
-# Offense count: 1
+
 Style/MethodMissingSuper:
   Exclude:
     - 'app/helpers/rating_renderer.rb'
+Metrics/BlockLength:
+  Exclude:
+    - 'config/routes.rb'

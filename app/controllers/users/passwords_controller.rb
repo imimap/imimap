@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
+# Devise Controllers
 module Users
+  # Devise Controllers
   class PasswordsController < Devise::PasswordsController
     protected
 

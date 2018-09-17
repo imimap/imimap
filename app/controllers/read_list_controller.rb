@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# TBD: Consolidate Report Lists
 class ReadListController < ApplicationResourceController
   before_action :authorize_role_prof
 

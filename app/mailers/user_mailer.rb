@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# TBD - still working?
 class UserMailer < ActionMailer::Base
   default from: 'imi.praktiinfo@gmail.com'
 
@@ -7,17 +8,20 @@ class UserMailer < ActionMailer::Base
   # :nocov:
   def registration_confirmation(user)
     @user = user
-    mail(to: "#{user.name} #{user.last_name} <#{user.email}>", subject: '(IMI-Map) Registered')
+    mail(to: "#{user.name} #{user.last_name} <#{user.email}>",
+         subject: '(IMI-Map) Registered')
   end
 
   def create_internship_confirmation(user)
     @user = user
-    mail(to: "#{user.name} <#{user.email}>", subject: '(IMI-Map) New Internship is created')
+    mail(to: "#{user.name} <#{user.email}>",
+         subject: '(IMI-Map) New Internship is created')
   end
 
   def notification_to_email(user)
     @user = user
-    mail(to: "#{user.name} <#{user.email}>", subject: '(IMI-Map) New Notification')
+    mail(to: "#{user.name} <#{user.email}>",
+         subject: '(IMI-Map) New Notification')
   end
 
   # :nocov:
