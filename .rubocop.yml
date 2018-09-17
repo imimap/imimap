@@ -17,3 +17,4 @@ Style/MethodMissingSuper:
 Metrics/BlockLength:
   Exclude:
     - 'config/routes.rb'
+    - 'spec/factories/*'

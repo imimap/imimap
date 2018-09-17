@@ -48,4 +48,4 @@ Naming/UncommunicativeMethodParamName:
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
 Metrics/LineLength:
-  Max: 462
+  Max: 300
