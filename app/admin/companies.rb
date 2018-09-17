@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+include ApplicationHelper
 
 ActiveAdmin.register Company do
   permit_params CompaniesController.permitted_params
@@ -9,18 +10,14 @@ ActiveAdmin.register Company do
 
   index do
     column :internships do |n|
-      a = n.internships.map(&:id)
-      str = ''
-      a.each do |x|
-        str += link_to x, "/admin/internships/#{x}"
-      end
-      str.html_safe
+        readable_links n.internships.map(&:id)
     end
     CompaniesController.permitted_params.each do |a|
       column a
     end
     actions
   end
+
   show do |company|
     attributes_table do
       CompaniesController.permitted_params.each do |a|

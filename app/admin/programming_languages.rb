@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+include ApplicationHelper
 
 ActiveAdmin.register ProgrammingLanguage do
   permit_params %i[name]
@@ -8,12 +9,7 @@ ActiveAdmin.register ProgrammingLanguage do
   index do
     column :name
     column :internships do |n|
-      a = n.internships.map(&:id)
-      str = ''
-      a.each do |x|
-        str += link_to x, "/admin/internships/#{x}"
-      end
-      str.html_safe
+      readable_links n.internships.map(&:id)
     end
     actions
   end
@@ -24,12 +20,7 @@ ActiveAdmin.register ProgrammingLanguage do
       row :name
 
       row :internships do |_n|
-        a = language.internships.map(&:id)
-        str = ''
-        a.each do |x|
-          str += link_to x, "/admin/internships/#{x}"
-        end
-        str.html_safe
+        readable_links language.internships.map(&:id)
       end
     end
     active_admin_comments

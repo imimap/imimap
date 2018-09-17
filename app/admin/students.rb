@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+include ApplicationHelper
 ActiveAdmin.register Student do
   permit_params StudentsController.permitted_params
   filter :enrolment_number, as: :select, collection: proc { Student.all.map(&:enrolment_number).uniq }, label: 'Matrikel'
@@ -12,12 +12,8 @@ ActiveAdmin.register Student do
       link_to n.enrolment_number, "/admin/students/#{n.id}"
     end
     column :internships do |n|
-      a = n.internships.map(&:id)
-      str = ''
-      a.each do |x|
-        str += link_to x, "/admin/internships/#{x}"
-      end
-      str.html_safe
+      readable_links n.internships.map(&:id)
+
     end
     column :last_name
     column :first_name
@@ -53,12 +49,7 @@ ActiveAdmin.register Student do
       row :email
 
       row :internships do |_n|
-        a = student.internships.map(&:id)
-        str = ''
-        a.each do |x|
-          str += link_to x, "/admin/internships/#{x}"
-        end
-        str.html_safe
+        readable_links student.internships.map(&:id)
       end
     end
     active_admin_comments
