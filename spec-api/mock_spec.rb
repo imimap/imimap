@@ -23,7 +23,7 @@ describe 'die' do
       expect(die_mock.roll).to eq 4
     end
     it 'call without expect' do
-      expect { die_mock.roll}.to raise_error
+      expect { die_mock.roll }.to raise_error
     end
   end
   context 'mock for class' do
@@ -33,7 +33,7 @@ describe 'die' do
       expect(die_mock.roll).to eq 3
     end
     it 'call without expect' do
-        expect { die_mock.roll}.to raise_error
+      expect { die_mock.roll }.to raise_error
     end
   end
 end

@@ -24,7 +24,6 @@ ActiveAdmin.register Internship do
   end
 
   form do |f|
-
     inputs 'Student' do
       f.input :student_id, as: :select, collection: Student.order(:last_name).collect { |s| [student_selector(student: s), s.id] }
       f.semantic_errors :student

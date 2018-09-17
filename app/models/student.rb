@@ -24,7 +24,7 @@ class Student < ApplicationRecord
     email = user.email
     enrolment_number = User.enrolment_number_from(email: email)
     student = Student.where(enrolment_number: enrolment_number)
-                      .first_or_create(enrolment_number: enrolment_number,
+                     .first_or_create(enrolment_number: enrolment_number,
                                       email: email)
     user.student = student
     user.save!
