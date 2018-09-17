@@ -9,22 +9,30 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 module ImiMaps
+  # THE Rails Application.
   class Application < Rails::Application
     # IMI-Map settings
-    config.active_record.observers = :user_comment_observer, :answer_observer, :internship_observer, :user_observer
-    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**/*.{rb,yml}').to_s]
+    config.active_record.observers = :user_comment_observer,
+                                     :answer_observer,
+                                     :internship_observer,
+                                     :user_observer
+    custom_locales = Rails.root.join('config', 'locales', '**/*.{rb,yml}').to_s
+    config.i18n.load_path += Dir[custom_locales]
     config.i18n.default_locale = :de
     config.i18n.available_locales = %i[de en]
-    # required by heroku. http://guides.rubyonrails.org/v3.2.8/asset_pipeline.html
+    # required by heroku.
+    # http://guides.rubyonrails.org/v3.2.8/asset_pipeline.html
     config.assets.initialize_on_precompile = false
 
-    # TBD Update: distribute this over the environments with appropriate settings from ENV variable
+    # TBD Update: distribute this over the environments with appropriate
+    # settings from ENV variable
     config.action_mailer.default_url_options = { host: 'localhost' }
     # IMI-Map settings end
 
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.0
-    # Settings in config/environments/* take precedence over those specified here.
+    # Settings in config/environments/* take precedence over those specified
+    # here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
   end

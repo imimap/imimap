@@ -25,8 +25,8 @@ ActiveAdmin.register Company do
       CompaniesController.permitted_params.each do |a|
         row a
       end
-      row :company_addresses do |company|
-        company.company_addresses.map do |ca|
+      row :company_addresses do |a_company|
+        a_company.company_addresses.map do |ca|
           link_to(company_address_selector(company_address: ca),
                   admin_company_address_path(ca))
         end.join(', ').html_safe

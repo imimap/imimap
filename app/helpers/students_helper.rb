@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Helper for Students Views
 module StudentsHelper
   def student_selector(student:)
     s = student

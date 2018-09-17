@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# TBD: will we still need this?
 class RatingRenderer
   attr_reader :rating
 

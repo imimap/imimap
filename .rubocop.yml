@@ -4,3 +4,12 @@ AllCops:
     - 'db/migrate/*'
     - 'bin/setup'
     - 'bin/update'
+Metrics/AbcSize:
+  Exclude:
+    - 'app/admin'
+
+# those should eventually be deleted or fixed.
+# Offense count: 1
+Style/MethodMissingSuper:
+  Exclude:
+    - 'app/helpers/rating_renderer.rb'

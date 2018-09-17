@@ -12,19 +12,11 @@ AllCops:
     - 'db/migrate/*'
     - 'bin/setup'
     - 'bin/update'
-    
-# Offense count: 1
-Lint/ShadowingOuterLocalVariable:
-  Exclude:
-    - 'app/admin/companies.rb'
 
-# Offense count: 1
-Lint/UselessAssignment:
-  Exclude:
-    - 'spec-api/ldap_htw_spec.rb'
 
 # Offense count: 27
 Metrics/AbcSize:
+  Exclude:
   Max: 53
 
 # Offense count: 55
@@ -50,14 +42,6 @@ Naming/UncommunicativeMethodParamName:
   Exclude:
     - 'app/helpers/active_admin_helper.rb'
 
-# Offense count: 60
-Style/Documentation:
-  Enabled: false
-
-# Offense count: 1
-Style/MethodMissingSuper:
-  Exclude:
-    - 'app/helpers/rating_renderer.rb'
 
 # Offense count: 326
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
