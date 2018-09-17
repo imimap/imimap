@@ -8,6 +8,8 @@
       <th><%= t("header.title") %></th>
       <th><%= t("header.city") %></th>
       <th><%= t("header.country") %></th>
+      <th><%= t("header.orientation") %></th>
+
     </tr>
   </thead>
 
@@ -18,6 +20,8 @@
         <td><%= link_to x.title, x %></td>
         <td><%=x.city %></td>
         <td><%=x.country %></td>
+        <td><%=x.orientation_id%></td>
+        <!-- Name needs to be added instead of ID -->
       </tr>
     <% end %>
   </tbody>

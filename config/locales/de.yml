@@ -249,6 +249,7 @@ de:
     title: "Titel"
     city: "Stadt"
     country: "Land"
+    orientation: "Schwerpunkt"
   choose:
     country: "Wähle ein Land"
     orientation: "Wähle eine Orientierung"

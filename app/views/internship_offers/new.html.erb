@@ -42,10 +42,20 @@
                 </div>
 
 
+              <div class="row">
+                <div class="col-md-4">
+                <div class="field" id="field-titles">
+                <%= f.select :orientation_id, orientations, class: 'chzn-select' %>
+                </div>
+              </div>
+            </div>
+
+
                 <div class="row">
                   <div class="col-md-10">
 
                     <br/>
+
 
                     <div class="field" id="field-titles">
                       <%= f.label t "internships.attributes.internship_report"  %>
@@ -71,6 +81,6 @@
 
   </div>
 </div>
-      </div>
+</div>
 
   <% end %>

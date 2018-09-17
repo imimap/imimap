@@ -114,6 +114,7 @@ en:
     title: "Title"
     city: "City"
     country: "Country"
+    orientation: "Orientation"
 
   search:
     explanation:
