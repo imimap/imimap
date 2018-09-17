@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-include ApplicationHelper
 
 ActiveAdmin.register ProgrammingLanguage do
   permit_params %i[name]

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-include ApplicationHelper
+
 ActiveAdmin.register Student do
   permit_params StudentsController.permitted_params
   filter :enrolment_number, as: :select, collection: proc { Student.all.map(&:enrolment_number).uniq }, label: 'Matrikel'
@@ -13,7 +13,6 @@ ActiveAdmin.register Student do
     end
     column :internships do |n|
       readable_links n.internships.map(&:id)
-
     end
     column :last_name
     column :first_name

@@ -1,18 +1,16 @@
 # frozen_string_literal: true
-include ApplicationHelper
 
 ActiveAdmin.register Semester do
   permit_params %i[name]
   filter :name
 
   index do
-   column :name
-   column :internships do |n|
-     readable_links n.internships.map(&:id)
-
-   end
-   actions
- end
+    column :name
+    column :internships do |n|
+      readable_links n.internships.map(&:id)
+    end
+    actions
+  end
 
   show do |semester|
     attributes_table do

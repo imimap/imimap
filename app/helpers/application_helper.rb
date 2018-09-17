@@ -43,16 +43,4 @@ module ApplicationHelper
       concat content_tag(:li, (link_to_unless_current loc, locale_param), class: "locale-#{loc}")
     end
   end
-
-def readable_links(a)
-  str = ''
-  limit = a.count
-  counter = 0
-  a.each do |x|
-    counter += 1
-    str += link_to x, "/admin/internships/#{x}"
-    str += ", " if counter < limit
-  end
-  str.html_safe
-end
 end

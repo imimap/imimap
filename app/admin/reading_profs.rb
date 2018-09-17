@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-include ApplicationHelper
 
 ActiveAdmin.register ReadingProf do
   permit_params %i[name]
@@ -19,7 +18,7 @@ ActiveAdmin.register ReadingProf do
       row :name
 
       row :internships do |_n|
-      readable_links prof.internships.map(&:id)
+        readable_links prof.internships.map(&:id)
       end
     end
     active_admin_comments

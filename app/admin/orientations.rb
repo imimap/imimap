@@ -1,6 +1,4 @@
 # frozen_string_literal: true
-include ApplicationHelper
-
 
 ActiveAdmin.register Orientation do
   permit_params %i[name]
@@ -9,7 +7,7 @@ ActiveAdmin.register Orientation do
   index do
     column :name
     column :internships do |n|
-        readable_links n.internships.map(&:id)
+      readable_links n.internships.map(&:id)
     end
     actions
   end
@@ -21,8 +19,8 @@ ActiveAdmin.register Orientation do
 
       row :internships do |_n|
         readable_links orientation.internships.map(&:id)
+      end
+      active_admin_comments
     end
-    active_admin_comments
   end
-end
 end
