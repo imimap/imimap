@@ -7,5 +7,5 @@ class Orientation < ApplicationRecord
   validates :name, presence: true
 
   has_many :internships
-  belongs_to :internship_offer
+  has_many :internship_offers
 end
