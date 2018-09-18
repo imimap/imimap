@@ -8,5 +8,4 @@ describe 'Internship creation and editing:' do
     LDAPHTWAdapter.substitute_netldap(mock: ldap_mock)
     allow(ldap_mock).to receive(:bind).and_return(true)
   end
-
 end

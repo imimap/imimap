@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# TBD: reconsolidate all Reports List.
 class FinishList < ApplicationRecord
   # attr_accessible :user_id, :internship_id
 

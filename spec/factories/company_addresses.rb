@@ -42,7 +42,7 @@ FactoryBot.define do
     import_id { 2 }
   end
 
-#github
+  # github
   factory :company_address_1, class: CompanyAddress do
     city { 'San Francisco' }
     country { 'USA' }
@@ -52,7 +52,7 @@ FactoryBot.define do
     fax { '+187345888' }
     company { create(:company_1) }
   end
-# amazon locker lasse
+  # amazon locker lasse
   factory :company_address_2, class: CompanyAddress do
     city { 'Berlin' }
     country { 'Germany' }

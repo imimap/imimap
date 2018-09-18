@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require_relative './08_addresses.rb'
 def create_internship(student:, company_address:)
   Semester.find(Semester.pluck(:id).sample)

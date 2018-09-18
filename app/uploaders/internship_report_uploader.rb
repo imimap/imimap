@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# TBD: does this still work?
 class InternshipReportUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick

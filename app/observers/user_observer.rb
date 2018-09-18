@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# TBD refactor observers
+# https://github.com/rails/rails-observers
 class UserObserver < ActiveRecord::Observer
   def after_create(model)
     return unless model.student&.internships

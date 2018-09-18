@@ -1,8 +1,20 @@
+
 AllCops:
   Exclude:
-    - "db/schema.rb"
-    - "db/migration/*"
-    - db/migrate/20130523140518_rename_orientation_to_orientation_id_in_internship.rb
+    - 'db/schema.rb'
+    - 'db/migrate/*'
     - 'bin/setup'
     - 'bin/update'
-inherit_from: .rubocop_todo.yml
+Metrics/AbcSize:
+  Exclude:
+    - 'app/admin'
+
+# those should eventually be deleted or fixed.
+
+Style/MethodMissingSuper:
+  Exclude:
+    - 'app/helpers/rating_renderer.rb'
+Metrics/BlockLength:
+  Exclude:
+    - 'config/routes.rb'
+    - 'spec/factories/*'

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register User do
-  permit_params User::EDITABLE_ATTRIBUTES_ALL
+  # permit_params User::EDITABLE_ATTRIBUTES_ALL
   form do |f|
     f.inputs 'User Details' do
       User::EDITABLE_ATTRIBUTES.each do |a|
@@ -19,5 +19,4 @@ ActiveAdmin.register User do
   #   end
   #   actions
   # end
-  
 end

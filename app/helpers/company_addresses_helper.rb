@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Methods for the CompanyAddresses Views
 module CompanyAddressesHelper
   def company_address_selector(company_address:)
     name = company_address.company.name

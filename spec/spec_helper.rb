@@ -4,7 +4,7 @@ require 'simplecov'
 
 SimpleCov.start do
   # ignore active admin
-  add_filter 'app/admin'
+  # add_filter 'app/admin'
 
   # ignore initializers
   # add_filter 'config/initializers'

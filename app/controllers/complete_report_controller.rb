@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# TBD Consolidate Report Lists
 class CompleteReportController < ApplicationResourceController
   respond_to :html, :json
   before_action :authorize_role_prof

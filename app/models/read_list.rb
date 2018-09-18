@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# TBD: Consolidate Report Lists.
 class ReadList < ApplicationRecord
   # attr_accessible :user_id, :internship_id
 

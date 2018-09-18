@@ -7,14 +7,7 @@ ActiveAdmin.register Semester do
   index do
     column :name
     column :internships do |n|
-      a = n.internships.map(&:id)
-      # TBD: created Issue
-      # Fix little non-ruby/non-rails things in ActiveAdmin #229
-      str = ''
-      a.each do |x|
-        str += link_to x, "/admin/internships/#{x}"
-      end
-      str.html_safe
+      readable_links n.internships.map(&:id)
     end
     actions
   end

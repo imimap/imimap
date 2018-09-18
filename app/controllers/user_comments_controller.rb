@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# TBD - Where are they used
 class UserCommentsController < ApplicationResourceController
   # GET /companies/new
   # GET /companies/new.json

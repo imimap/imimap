@@ -54,6 +54,4 @@ Geocoder::Lookup::Test.add_stub(
   ]
 )
 
-
-
 # Geocoder.search("Wilhelminenhofstr. 75 A, 12459 Berlin, Germany")

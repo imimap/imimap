@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Controller
 class InternshipStatusController < ApplicationController
   respond_to :html, :json
 

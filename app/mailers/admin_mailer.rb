@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# TBD - still working?
 class AdminMailer < ActionMailer::Base
   # This class appears to be unused. Thus: excluding from coverage
   # :nocov:

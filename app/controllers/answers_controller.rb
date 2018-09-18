@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# ??
 class AnswersController < ApplicationController
   load_and_authorize_resource
   def create

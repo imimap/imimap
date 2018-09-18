@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# TBD refactor observers
+# https://github.com/rails/rails-observers
 class UserCommentObserver < ActiveRecord::Observer
   def after_save(comment)
     noti = Notification.new

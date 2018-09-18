@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# To mark an internship as Favorite
 class Favorite < ApplicationRecord
   # attr_accessible :user_id, :internship_id, :comparebox
 

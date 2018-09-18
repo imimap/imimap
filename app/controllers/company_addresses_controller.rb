@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Controller for CompanyAddresses
 class CompanyAddressesController < ApplicationResourceController
   before_action :set_company_address, only: %i[show edit update destroy]
 
