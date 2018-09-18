@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_17_111116) do
+ActiveRecord::Schema.define(version: 2018_09_18_092757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -162,7 +162,8 @@ ActiveRecord::Schema.define(version: 2018_09_17_111116) do
     t.datetime "updated_at"
     t.string "city"
     t.string "country"
-    t.integer "orientation_id"
+    t.bigint "orientation_id"
+    t.index ["orientation_id"], name: "index_internship_offers_on_orientation_id"
   end
 
   create_table "internship_ratings", id: :serial, force: :cascade do |t|
@@ -371,5 +372,6 @@ ActiveRecord::Schema.define(version: 2018_09_17_111116) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "internship_offers", "orientations"
   add_foreign_key "internships", "company_addresses"
 end
