@@ -12,7 +12,7 @@ ActiveAdmin.register Student do
       link_to n.enrolment_number, "/admin/students/#{n.id}"
     end
     column :internships do |n|
-      readable_links n.internships.map(&:id)
+      link_list_to n.internships
     end
     column :last_name
     column :first_name
@@ -48,7 +48,7 @@ ActiveAdmin.register Student do
       row :email
 
       row :internships do |_n|
-        readable_links student.internships.map(&:id)
+        link_list_to student.internships
       end
     end
     active_admin_comments

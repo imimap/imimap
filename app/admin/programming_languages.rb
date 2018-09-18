@@ -8,7 +8,7 @@ ActiveAdmin.register ProgrammingLanguage do
   index do
     column :name
     column :internships do |n|
-      readable_links n.internships.map(&:id)
+      link_list_to n.internships
     end
     actions
   end
@@ -19,7 +19,7 @@ ActiveAdmin.register ProgrammingLanguage do
       row :name
 
       row :internships do |_n|
-        readable_links language.internships.map(&:id)
+        link_list_to language.internships
       end
     end
     active_admin_comments

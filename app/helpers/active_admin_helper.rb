@@ -4,16 +4,12 @@
 # They need to be included in the needed classes
 # as below.
 module ActiveAdminHelper
-  def readable_links(a)
-    str = ''
-    limit = a.count
-    counter = 0
-    a.each do |x|
-      counter += 1
-      str += link_to x, "/admin/internships/#{x}"
-      str += ', ' if counter < limit
+  def link_list_to(a)
+    links = a.map do |internship|
+      internship_id = internship.id
+      link_to internship_id, admin_internship_path(internship_id)
     end
-    str.html_safe
+    links.join(', ').html_safe
   end
 end
 
