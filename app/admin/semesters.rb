@@ -7,7 +7,7 @@ ActiveAdmin.register Semester do
   index do
     column :name
     column :internships do |n|
-      readable_links n.internships.map(&:id)
+      link_to_list n.internships
     end
     actions
   end
@@ -21,12 +21,7 @@ ActiveAdmin.register Semester do
         "Total: #{count}"
       end
       row :internships do |_n|
-        a = semester.internships
-        links = a.map do |internship|
-          internship_id = internship.id
-          link_to internship_id, "/admin/internships/#{internship_id}"
-        end
-        links.join(', ').html_safe
+        link_to_list semester.internships
       end
     end
     active_admin_comments

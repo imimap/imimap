@@ -7,7 +7,7 @@ ActiveAdmin.register Orientation do
   index do
     column :name
     column :internships do |n|
-      readable_links n.internships.map(&:id)
+      link_to_list n.internships
     end
     actions
   end
@@ -18,7 +18,7 @@ ActiveAdmin.register Orientation do
       row :name
 
       row :internships do |_n|
-        readable_links orientation.internships.map(&:id)
+        link_to_list orientation.internships
       end
       active_admin_comments
     end
