@@ -3,7 +3,7 @@
 # for job offers.
 class InternshipOffer < ApplicationRecord
   has_one :user
-  has_one :orientation
+  belongs_to :orientation
 
   mount_uploader :pdf, InternshipReportUploader
 end
