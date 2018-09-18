@@ -8,7 +8,7 @@ ActiveAdmin.register ProgrammingLanguage do
   index do
     column :name
     column :internships do |n|
-      link_list_to n.internships
+      link_to_list n.internships
     end
     actions
   end
@@ -19,7 +19,7 @@ ActiveAdmin.register ProgrammingLanguage do
       row :name
 
       row :internships do |_n|
-        link_list_to language.internships
+        link_to_list language.internships
       end
     end
     active_admin_comments

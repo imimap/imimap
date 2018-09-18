@@ -12,7 +12,7 @@ ActiveAdmin.register Company do
 
   index do
     column :internships do |n|
-      link_list_to n.internships
+      link_to_list n.internships
     end
     CompaniesController.permitted_params.each do |a|
       column a
@@ -32,7 +32,7 @@ ActiveAdmin.register Company do
         end.join(', ').html_safe
       end
       row :internships do |_n|
-        link_list_to company.internships
+        link_to_list company.internships
       end
     end
   end

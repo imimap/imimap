@@ -7,7 +7,7 @@ ActiveAdmin.register ReadingProf do
   index do
     column :name
     column :internships do |n|
-      link_list_to n.internships
+      link_to_list n.internships
     end
     actions
   end
@@ -18,7 +18,7 @@ ActiveAdmin.register ReadingProf do
       row :name
 
       row :internships do |_n|
-        link_list_to prof.internships
+        link_to_list prof.internships
       end
     end
     active_admin_comments

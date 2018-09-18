@@ -7,7 +7,7 @@ ActiveAdmin.register Semester do
   index do
     column :name
     column :internships do |n|
-      link_list_to n.internships
+      link_to_list n.internships
     end
     actions
   end
@@ -21,7 +21,7 @@ ActiveAdmin.register Semester do
         "Total: #{count}"
       end
       row :internships do |_n|
-        link_list_to semester.internships
+        link_to_list semester.internships
       end
     end
     active_admin_comments
