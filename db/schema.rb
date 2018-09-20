@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_14_134128) do
+ActiveRecord::Schema.define(version: 2018_09_20_090705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,15 +79,15 @@ ActiveRecord::Schema.define(version: 2018_09_14_134128) do
     t.string "website"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.float "x_latitude"
-    t.float "x_longitude"
-    t.string "x_city"
-    t.string "x_country"
-    t.string "x_street"
-    t.string "x_zip"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "city"
+    t.string "country"
+    t.string "street"
+    t.string "zip"
     t.string "main_language"
-    t.string "x_phone"
-    t.string "x_fax"
+    t.string "phone"
+    t.string "fax"
     t.boolean "blacklisted", default: false
     t.integer "import_id"
   end
@@ -162,6 +162,8 @@ ActiveRecord::Schema.define(version: 2018_09_14_134128) do
     t.datetime "updated_at"
     t.string "city"
     t.string "country"
+    t.bigint "orientation_id"
+    t.index ["orientation_id"], name: "index_internship_offers_on_orientation_id"
   end
 
   create_table "internship_ratings", id: :serial, force: :cascade do |t|
@@ -199,7 +201,7 @@ ActiveRecord::Schema.define(version: 2018_09_14_134128) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "internship_rating_id", default: 1
-    t.integer "x_company_id"
+    t.integer "company_id"
     t.integer "user_id"
     t.string "title"
     t.boolean "recommend", default: true
@@ -370,5 +372,6 @@ ActiveRecord::Schema.define(version: 2018_09_14_134128) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "internship_offers", "orientations"
   add_foreign_key "internships", "company_addresses"
 end
