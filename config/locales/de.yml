@@ -51,6 +51,11 @@ de:
         main_language: Hauptsprache
         phone: Telefon
         blacklisted: schwarze Liste
+        city: Stadt
+        country: Land
+        zip: PLZ
+        latitude: Breitengrad
+        longitude: Längengrad
       internship:
         student: Student_in
         company: Firma
