@@ -11,3 +11,13 @@ von lokal:
     scp deployer@imi-map-production.f4.htw-berlin.de:/home/deployer/postgresql/dumps/imi-map-2018-09-14.pgdump .
 
 credentials stehen in docker-compose-production.yml
+
+
+## start doing it in one command from local, doesn't work yet but with dates:
+
+
+ssh deployer@imi-map-production.f4.htw-berlin.de "docker exec -ti postgresql pg_dump -h localhost -U imi_map  imi_map_production > /var/lib/postgresql/dumps/imi-map-`date +%Y-%m-%d`.pgdump"
+
+### this works:
+
+scp deployer@imi-map-production.f4.htw-berlin.de:/home/deployer/postgresql/dumps/imi-map-`date +%Y-%m-%d`.pgdump .
