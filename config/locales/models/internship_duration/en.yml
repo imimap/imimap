@@ -1,0 +1,7 @@
+en:
+  internship_duration_validation:
+    negative: 'Duration is negative (wrong date/year?)'
+    too_short: 'Intership is less than 4 weeks'
+    ok_for_part:  "if internship is a part internship it's valid"
+    ok: 'Internship is long enough'
+    date_missing: 'Start/End Date missing'

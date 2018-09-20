@@ -27,12 +27,17 @@ describe 'ActiveAdmin Internship / Index' do
     it 'has link to Student' do
       visit admin_internships_path
       click_on @internship.student.name
-      expect(current_path).to eq admin_student_path(id: @internship.student) # , locale: I18n.locale)
+      expect(current_path).to eq admin_student_path(
+        id: @internship.student,
+        locale: I18n.locale
+      )
     end
     it 'has link to Internship' do
       visit admin_internships_path
       click_on t('active_admin.view')
-      expect(current_path).to eq admin_internship_path(id: @internship, locale: I18n.locale)
+      expect(current_path).to eq admin_internship_path(
+        id: @internship, 
+        locale: I18n.locale)
     end
   end
 end
