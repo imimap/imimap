@@ -18,7 +18,9 @@ class InternshipDuration
   end
 
   def do_validation(weeks)
-    if weeks < 4
+    if weeks < 0
+      :not_valid
+    elsif weeks < 4
       :too_short
     elsif weeks < 19
       :ok_for_part
@@ -33,12 +35,14 @@ class InternshipDuration
   def week_validation
     { too_short: 'notLongEnough',
       ok_for_part: 'partInternship',
+      not_valid: 'notValid',
       ok: 'longEnough' }[validation]
   end
 
   def week_validation_active_admin
     { too_short: 'Intership is less than 4 weeks',
       ok_for_part: "if internship is a part internship it's valid",
+      not_valid: 'Internship is not valid, please check again.',
       ok: 'Internship is long enough' }[validation]
   end
 
