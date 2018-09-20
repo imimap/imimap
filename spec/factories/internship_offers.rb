@@ -22,13 +22,13 @@ FactoryBot.define do
     body { TEXT3 }
     pdf { 'internship offer pdf' }
     city { 'San Francisco' }
-    country { 'USA' }
+    country { 'US' }
   end
   factory :io3, class: InternshipOffer do
     title { 'internship offer title' }
     body { TEXT3 }
     pdf { 'internship offer pdf' }
     city { 'Paris' }
-    country { 'Frankreich' }
+    country { 'FR' }
   end
 end

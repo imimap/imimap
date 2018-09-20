@@ -13,7 +13,7 @@ RSpec.describe CompanyAddress, type: :model do
         eq [@company_address.street,
             @company_address.zip,
             @company_address.city,
-            @company_address.country].join(', ')
+            @company_address.country_name].join(', ')
       )
     end
   end

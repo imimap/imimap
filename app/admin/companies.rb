@@ -7,8 +7,6 @@ ActiveAdmin.register Company do
          collection: proc { Student.pluck(:enrolment_number) },
          label: 'Matrikel'
   filter :name
-  filter :city
-  filter :country
 
   index do
     column :internships do |n|

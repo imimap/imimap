@@ -21,13 +21,12 @@ describe 'Display of Internship Offers' do
     end
 
     it 'shows one offer' do
-      pending
       io = @ios[1]
       visit internship_offer_path(:de, io.id)
       expect(page).to have_content(io.title)
       expect(page).to have_content(io.city)
       expect(page).to have_content(io.country)
-      expect(page).to have_content(io.body)
+      expect(page).to have_content(io.body[0..20].strip)
       expect(page).to have_content(io.pdf)
     end
 

@@ -32,6 +32,7 @@ describe 'current internships:' do
       it 'can see the list of internships' do
         visit internships_path
         expect(page).to have_content(@internship.start_date)
+        expect(page).to have_content(@internship.company_address.country_name)
       end
     end
   end
