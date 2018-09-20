@@ -1,0 +1,7 @@
+de:
+  internship_duration_validation:
+    negative: 'Dauer ist negativ (falsches Datum/Jahr?)'
+    too_short: 'Auch für ein Teilpraktikum zu kurz'
+    ok_for_part:  "lang genug für ein Teilpraktikum"
+    ok: 'Das Praktikum ist lang genug'
+    date_missing: 'Anfangs- und/oder Endedatum fehlt'
