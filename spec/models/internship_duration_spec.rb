@@ -39,7 +39,7 @@ RSpec.describe InternshipDuration, type: :model do
         @duration = InternshipDuration.new(tc.internship)
       end
       it 'weeks are computed correctly' do
-        expect(@duration.weeks).to eq(tc.weeks)
+        expect(@duration.weeks).to eq(tc.weeks.round(2))
       end
       it 'validation marker is set correctly' do
         expect(@duration.validation).to eq(tc.validation)

@@ -11,9 +11,8 @@ ActiveAdmin.register Internship do
   filter :internship_state
 
   index do
-    column :id do |i|
-      link_to i.id, admin_internship_path(i.id)
-    end
+    column(:id) { |i| link_to i.id, admin_internship_path(i.id) }
+
     column :student do |i|
       link_to i.student.name, admin_student_path(i.student_id)
     end
