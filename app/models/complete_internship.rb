@@ -30,7 +30,7 @@ def CompleteInternship.from(int)
     ci.country = '(no country)'
   else
     ci.city = int.company_address.city
-    ci.country = int.company_address.country
+    ci.country = int.company_address.country_name
   end
   ci.start_date = int.start_date
   ci.end_date = int.end_date

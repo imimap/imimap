@@ -17,12 +17,19 @@ def geocoded_address(company:)
     result = Geocoder.search("#{rand(-80..80) + rand}, #{rand(-180..180) + rand}").first
     result = nil unless result.data['error'].nil?
   end
+
+  country_code = if result.country_code
+                   result.country_code.upcase
+                 else
+                   'UK'
+                 end
+
   CompanyAddress.create!(
     company: company,
     street: result.street || result.village,
     zip: result.postal_code,
     city: result.city || result.state,
-    country: result.country,
+    country: country_code,
     phone: Faker::PhoneNumber.phone_number
   )
 end

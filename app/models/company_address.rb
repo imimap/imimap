@@ -34,7 +34,9 @@ class CompanyAddress < ApplicationRecord
   # country is now a ISO3166-2 code. Use this method to get a
   # localized country name.
   def country_name(locale = I18n.locale)
+    return nil unless country
     iso_country = ISO3166::Country[country]
+    return country unless iso_country
     iso_country.translations[locale.to_s] || iso_country.name
   end
 end
