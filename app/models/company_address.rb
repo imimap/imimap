@@ -8,14 +8,18 @@ class CompanyAddress < ApplicationRecord
   validates_presence_of :company
 
   def one_line
-    [street, zip, city, country].compact.join(', ')
+    [street, zip, city, country_name].compact.join(', ')
   end
 
-  def address
-    "#{street}, #{zip} #{city}, #{country}"
+  def address(locale = I18n.locale)
+    "#{street}, #{zip} #{city}, #{country_name(locale)}"
   end
 
-  geocoded_by :address
+  def address_en
+    address(:en)
+  end
+
+  geocoded_by :address_en
   after_validation :geocode, if: :address_changed?
 
   # TBD: geocoding should only happen if necessary, see
@@ -25,5 +29,12 @@ class CompanyAddress < ApplicationRecord
 
   def address_changed?
     street_changed? || city_changed? || zip_changed? || country_changed?
+  end
+
+  # country is now a ISO3166-2 code. Use this method to get a
+  # localized country name.
+  def country_name(locale = I18n.locale)
+    iso_country = ISO3166::Country[country]
+    iso_country.translations[locale.to_s] || iso_country.name
   end
 end

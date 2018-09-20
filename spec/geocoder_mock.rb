@@ -14,7 +14,7 @@ Geocoder::Lookup::Test.add_stub(
   ]
 )
 Geocoder::Lookup::Test.add_stub(
-  '2454 Telegraph Avenue, 94704 Berkeley, USA', [
+  '2454 Telegraph Avenue, 94704 Berkeley, United States', [
     {
       'coordinates'  => [37.8658222196983, -122.25877850794],
       'address'      => '2454, Telegraph Avenue, Southside, Berkeley, Alameda County, California, 94704, USA',

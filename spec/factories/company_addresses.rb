@@ -4,7 +4,7 @@
 FactoryBot.define do
   factory :company_address_htw, class: CompanyAddress do
     city { 'Berlin' }
-    country { 'Germany' }
+    country { 'DE' }
     street { 'Wilhelminenhofstr. 75 A' }
     zip { '12459' }
     phone { '+49123456789' }
@@ -14,7 +14,7 @@ FactoryBot.define do
 
   factory :company_address_is24, class: CompanyAddress do
     city { 'Berlin' }
-    country { 'Germany' }
+    country { 'DE' }
     street { 'Andreasstr. 10' }
     zip { '10243' }
     phone { '+49123456789' }
@@ -24,7 +24,7 @@ FactoryBot.define do
 
   factory :company_address_for_edit, class: CompanyAddress do
     city { 'Berkeley' }
-    country { 'USA' }
+    country { 'US' }
     street { '2454 Telegraph Avenue' }
     zip { '94704' }
     phone { '+187345847' }
@@ -45,7 +45,7 @@ FactoryBot.define do
   # github
   factory :company_address_1, class: CompanyAddress do
     city { 'San Francisco' }
-    country { 'USA' }
+    country { 'US' }
     street { '88 Colin P Kelly Jr St' }
     zip { '94107' }
     phone { '+187345847' }
@@ -55,7 +55,7 @@ FactoryBot.define do
   # amazon locker lasse
   factory :company_address_2, class: CompanyAddress do
     city { 'Berlin' }
-    country { 'Germany' }
+    country { 'DE' }
     street { 'Karl-Marx-Straße 267' }
     zip { '12057' }
     phone { '+187345847' }
