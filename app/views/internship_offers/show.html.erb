@@ -1,6 +1,13 @@
 <a href ="javascript:history.back()" class="btn btn-success btn-intern display_none icon-white icon-reply intern_button"></a>
 <div id="form-block4">
 <h3> <%= @offer.title %></h3>
+<dl>
+  <dt>Country</dt>
+  <dd><%= @offer.country %></dd>
+  <dt>City</dt>
+  <dd><%= @offer.city %></dd>
+</dl>
+
 <% if @offer.body.present? %>
 <p id="internship_off_text"> <%= @offer.body %> </p>
 <% end %>

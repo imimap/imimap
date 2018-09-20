@@ -12,12 +12,12 @@
   </thead>
 
 <tbody>
-    <% @offers.each do |x| %>
+    <% @offers.each do |internship_offer| %>
     <% counter +=1 %>
       <tr>
-        <td><%= link_to x.title, x %></td>
-        <td><%=x.city %></td>
-        <td><%=x.country %></td>
+        <td><%= link_to internship_offer.title, internship_offer %></td>
+        <td><%= internship_offer.city %></td>
+        <td><%= internship_offer.country %></td>
       </tr>
     <% end %>
   </tbody>
