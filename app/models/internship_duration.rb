@@ -9,7 +9,7 @@ class InternshipDuration
       @start_date = internship.start_date
       @end_date = adjust(internship.end_date)
       @days = @end_date - @start_date
-      @weeks = @days.to_f / 7
+      @weeks = ((@days.to_f / 7)*100).round / 100.0
       @validation = do_validation(@weeks)
     else
       @days = @weeks = 0
