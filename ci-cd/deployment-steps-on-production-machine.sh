@@ -9,6 +9,8 @@ exit_on_error () {
       exit $sshexit
   fi
 }
+echo "+++ stopping docker containers"
+docker-compose -f docker-compose-production.yml down
 echo "+++ pulling and starting docker containers"
 docker-compose -f docker-compose-production.yml up -d
 exit_on_error $?
