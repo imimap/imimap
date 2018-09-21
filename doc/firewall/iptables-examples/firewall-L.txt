@@ -1,0 +1,42 @@
+root@imi-map-production:~# iptables -L -v --line-numbers
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+num   pkts bytes target     prot opt in     out     source               destination
+1      287 21055 ACCEPT     all  --  any    any     anywhere             anywhere             state RELATED,ESTABLISHED
+2        2   100 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:ssh
+3        0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:https
+4        0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:http
+5        0     0 ACCEPT     all  --  lo     any     anywhere             anywhere
+6       14   564 DROP       all  --  any    any    !141.45.0.0/16        anywhere
+7        0     0 ACCEPT     icmp --  any    any     anywhere             anywhere
+8        0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:ssh
+9        0     0 DROP       all  --  any    any     anywhere             anywhere
+
+Chain FORWARD (policy DROP 0 packets, 0 bytes)
+num   pkts bytes target     prot opt in     out     source               destination
+1        0     0 ACCEPT     all  --  docker0 eth0    anywhere             anywhere
+2        0     0 ACCEPT     all  --  eth0   docker0  anywhere             anywhere
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+num   pkts bytes target     prot opt in     out     source               destination
+1      171 21313 ACCEPT     all  --  any    any     anywhere             anywhere             state RELATED,ESTABLISHED
+2        0     0 ACCEPT     tcp  --  any    any     anywhere             unknown.eserver-ru.com/20  tcp dpt:http
+3        0     0 ACCEPT     tcp  --  any    any     anywhere             141.45.144.0/20      tcp dpt:ldap
+4        0     0 ACCEPT     udp  --  any    any     anywhere             141.45.144.0/20      udp dpt:ldap
+5        0     0 ACCEPT     tcp  --  any    any     anywhere             141.45.144.0/20      tcp dpt:ldaps
+6        0     0 ACCEPT     udp  --  any    any     anywhere             141.45.144.0/20      udp dpt:ldaps
+7        0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:ssh
+8        0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:https
+9        0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:http
+10       0     0 ACCEPT     all  --  any    lo      anywhere             anywhere
+11       0     0 DROP       all  --  any    any     anywhere            !141.45.0.0/16
+12       0     0 ACCEPT     icmp --  any    any     anywhere             anywhere
+13       0     0 ACCEPT     udp  --  any    any     anywhere             anywhere             udp dpt:domain
+14       0     0 ACCEPT     udp  --  any    any     anywhere             anywhere             udp dpt:ntp
+15       0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:ntp
+16       0     0 DROP       all  --  any    any     anywhere             anywhere
+
+Chain DOCKER (0 references)
+num   pkts bytes target     prot opt in     out     source               destination
+
+Chain DOCKER-ISOLATION (0 references)
+num   pkts bytes target     prot opt in     out     source               destination
