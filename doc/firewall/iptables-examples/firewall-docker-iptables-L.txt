@@ -1,0 +1,51 @@
+root@imi-map-production:~# iptables -L --line-numbers
+Chain INPUT (policy ACCEPT)
+num  target     prot opt source               destination
+1    ACCEPT     all  --  anywhere             anywhere             state RELATED,ESTABLISHED
+2    ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:ssh
+3    ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:https
+4    ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:http
+5    ACCEPT     all  --  anywhere             anywhere
+6    DROP       all  -- !141.45.0.0/16        anywhere
+7    ACCEPT     icmp --  anywhere             anywhere
+8    ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:ssh
+9    DROP       all  --  anywhere             anywhere
+
+Chain FORWARD (policy DROP)
+num  target     prot opt source               destination
+1    DOCKER-ISOLATION  all  --  anywhere             anywhere
+2    ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED
+3    DOCKER     all  --  anywhere             anywhere
+4    ACCEPT     all  --  anywhere             anywhere
+5    ACCEPT     all  --  anywhere             anywhere
+6    ACCEPT     all  --  anywhere             anywhere
+7    ACCEPT     all  --  anywhere             anywhere
+
+Chain OUTPUT (policy ACCEPT)
+num  target     prot opt source               destination
+1    ACCEPT     all  --  anywhere             anywhere             state RELATED,ESTABLISHED
+2    ACCEPT     tcp  --  anywhere             unknown.eserver-ru.com/20  tcp dpt:http
+3    ACCEPT     tcp  --  anywhere             141.45.144.0/20      tcp dpt:ldap
+4    ACCEPT     udp  --  anywhere             141.45.144.0/20      udp dpt:ldap
+5    ACCEPT     tcp  --  anywhere             141.45.144.0/20      tcp dpt:ldaps
+6    ACCEPT     udp  --  anywhere             141.45.144.0/20      udp dpt:ldaps
+7    ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:ssh
+8    ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:https
+9    ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:http
+10   ACCEPT     all  --  anywhere             anywhere
+11   DROP       all  --  anywhere            !141.45.0.0/16
+12   ACCEPT     icmp --  anywhere             anywhere
+13   ACCEPT     udp  --  anywhere             anywhere             udp dpt:domain
+14   ACCEPT     udp  --  anywhere             anywhere             udp dpt:ntp
+15   ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:ntp
+16   DROP       all  --  anywhere             anywhere
+
+Chain DOCKER (1 references)
+num  target     prot opt source               destination
+1    ACCEPT     tcp  --  anywhere             172.18.0.2           tcp dpt:postgresql
+2    ACCEPT     tcp  --  anywhere             172.18.0.3           tcp dpt:http
+
+Chain DOCKER-ISOLATION (1 references)
+num  target     prot opt source               destination
+1    DROP       all  --  anywhere             anywhere
+2    DROP       all  --  anywhere             anywhere

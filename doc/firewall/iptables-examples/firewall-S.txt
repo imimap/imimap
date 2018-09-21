@@ -1,0 +1,43 @@
+root@imi-map-production:~# iptables -S
+-P INPUT ACCEPT
+-P FORWARD ACCEPT
+-P OUTPUT ACCEPT
+-N DOCKER
+-N DOCKER-ISOLATION
+root@imi-map-production:~# ./firewall.sh
+iptables: Chain already exists.
+root@imi-map-production:~# iptables -S > firewall-S.txt
+root@imi-map-production:~# iptables -S
+-P INPUT ACCEPT
+-P FORWARD DROP
+-P OUTPUT ACCEPT
+-N DOCKER
+-N DOCKER-ISOLATION
+-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 443 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -i lo -j ACCEPT
+-A INPUT ! -s 141.45.0.0/16 -j DROP
+-A INPUT -p icmp -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+-A INPUT -j DROP
+-A FORWARD -i docker0 -o eth0 -j ACCEPT
+-A FORWARD -i eth0 -o docker0 -j ACCEPT
+-A OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A OUTPUT -d 91.189.80.0/20 -p tcp -m tcp --dport 80 -j ACCEPT
+-A OUTPUT -d 141.45.144.0/20 -p tcp -m tcp --dport 389 -j ACCEPT
+-A OUTPUT -d 141.45.144.0/20 -p udp -m udp --dport 389 -j ACCEPT
+-A OUTPUT -d 141.45.144.0/20 -p tcp -m tcp --dport 636 -j ACCEPT
+-A OUTPUT -d 141.45.144.0/20 -p udp -m udp --dport 636 -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 22 -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 443 -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 80 -j ACCEPT
+-A OUTPUT -o lo -j ACCEPT
+-A OUTPUT ! -d 141.45.0.0/16 -j DROP
+-A OUTPUT -p icmp -j ACCEPT
+-A OUTPUT -p udp -m udp --dport 53 -j ACCEPT
+-A OUTPUT -p udp -m udp --dport 123 -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 123 -j ACCEPT
+-A OUTPUT -j DROP
+r
