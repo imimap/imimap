@@ -30,7 +30,8 @@ RSpec.describe InternshipDuration, type: :model do
     TC.new('for an internship with more than 19 weeks', InternshipDummy.new(Date.new(2017, 10, 2), Date.new(2018, 3, 7)), 22.285714285714285, :ok),
     TC.new('for an internship without an end_date', InternshipDummy.new(Date.new(2017, 10, 2), nil), 0, :date_missing),
     TC.new('for an internship without an start_date', InternshipDummy.new(nil, Date.new(2017, 10, 2)), 0, :date_missing),
-    TC.new('for an internship without any dates', InternshipDummy.new(nil, nil), 0, :date_missing)
+    TC.new('for an internship without any dates', InternshipDummy.new(nil, nil), 0, :date_missing),
+    TC.new('for an internship with a negative duartion', InternshipDummy.new(Date.new(2018, 11, 17), Date.new(2018, 10, 17)), -4.43, :negative)
   ]
 
   testcases.each do |tc|
