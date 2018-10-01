@@ -27,13 +27,17 @@ Parallel in beide Container gehen.
 
 ### 1.Clean old database
 
-docker exec -ti imimap-dev bash
-rails db:drop
-rails db:create
+    docker exec -ti imimap-dev bash
+    rails db:drop
+    rails db:create
 
 ### 2. Import Dump
 
     docker exec -ti postgresql-dev bash
     psql --set ON_ERROR_STOP=on  -h localhost -U imi_map imimap < /var/lib/postgresql/dumps/imi-map-$(date +%Y-%m-%d).pgdump
+
+noch nicht ausprobiert: 
+    docker exec -ti postgresql-dev psql --set ON_ERROR_STOP=on  -h localhost -U imi_map imimap < /var/lib/postgresql/dumps/imi-map-$(date +%Y-%m-%d).pgdump
+
 
 (or the appropriate file name of the dump)
