@@ -23,4 +23,4 @@ jobs:
     if: "( NOT (tag IS present)) AND (branch = master) AND (type != pull_request)"
   - stage: deploy-production
     script: "./ci-cd/travis-deploy.sh production"
-    if: "(tag IS present) AND (branch = master) AND (type != pull_request)"
+    if: "(tag IS present) AND (type != pull_request)"

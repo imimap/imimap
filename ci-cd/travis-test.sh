@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 echo "$0: starting build for IMIMAPS_ENVIRONMENT ${IMIMAPS_ENVIRONMENT}"
 
+  echo "--------- ./ci-cd/deploy00-echo-settings.sh"
+  . ./ci-cd/deploy00-echo-settings.sh
 
   echo "--------- sudo netstat -nlp | grep 5432"
   sudo netstat -nlp | grep 5432
