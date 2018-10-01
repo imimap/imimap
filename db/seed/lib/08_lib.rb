@@ -68,7 +68,7 @@ def create_student(enrolment_number:, with_internship:, with_user:)
   company = Company.create!(
     name: Faker::Company.name,
     number_employees: Faker::Number.number(3),
-    blacklisted: Faker::Boolean.boolean,
+    excluded_from_search: Faker::Boolean.boolean,
     import_id: Faker::Number.number(1),
     website: Faker::Internet.url('example.com')
   )

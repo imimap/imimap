@@ -50,7 +50,7 @@ de:
         address: Adresse
         main_language: Hauptsprache
         phone: Telefon
-        blacklisted: schwarze Liste
+        excluded_from_search: ausgenommen von der Suche
       internship:
         student: Student_in
         company: Firma
@@ -110,6 +110,9 @@ de:
       company:
         one: Firma
         other: Firmen
+      company_address:
+        one: Firmenadresse
+        other: Firmenadressen
       internship_offer:
         one: Praktikumsangebot
         other: Praktikumsangebote
