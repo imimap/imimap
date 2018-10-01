@@ -110,6 +110,9 @@ de:
       company:
         one: Firma
         other: Firmen
+      company_address:
+        one: Firmenadresse
+        other: Firmenadressen
       internship_offer:
         one: Praktikumsangebot
         other: Praktikumsangebote

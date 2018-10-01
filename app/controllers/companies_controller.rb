@@ -93,7 +93,7 @@ class CompaniesController < ApplicationResourceController
   end
 
   def self.permitted_params
-    %i[name website main_language industry number_employees
+    %i[name website main_language industry number_employees comment
        blacklisted]
   end
 

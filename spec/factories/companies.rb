@@ -15,6 +15,7 @@ FactoryBot.define do
     after(:create) do |company, _evaluator|
       create(:company_address_htw, company: company)
     end
+    comment { 'this says something about the company' }
   end
 
   factory :company_is24, class: Company do
@@ -31,6 +32,7 @@ FactoryBot.define do
     after(:create) do |company, _evaluator|
       create(:company_address_is24, company: company)
     end
+    comment { 'this says something about the company' }
   end
 
   factory :company_1, class: Company do
@@ -47,6 +49,7 @@ FactoryBot.define do
     after(:create) do |company, _evaluator|
       create(:company_address_1, company: company)
     end
+    comment { 'this says something about the company' }
   end
 
   factory :company_2, class: Company do
@@ -63,5 +66,6 @@ FactoryBot.define do
     after(:create) do |company, _evaluator|
       create(:company_address_2, company: company)
     end
+    comment { 'this says something about the company' }
   end
 end
