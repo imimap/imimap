@@ -3,11 +3,16 @@
 ## Repositories & Travis CI
 
 ### Current Main Repository with CI/CD:
-* [https://github.com/imimaps/imimaps](https://github.com/imimaps/imimaps)
-* [Branch and Stages Overview on Travis CI](https://travis-ci.org/imimaps/imimaps/branches)
 
+* [Travis Build History](https://travis-ci.org/imimap/imimap/builds)
+* [https://github.com/imimap/imimap](https://github.com/imimap/imimap)
+* [Branch and Stages Overview on Travis CI](https://travis-ci.org/imimap/imimap/branches)
+
+## Servers
+* [Production](http://imi-map-production.f4.htw-berlin.de)
+* [Staging](http://imi-map-staging.f4.htw-berlin.de)
 ## General Project Info
-The [IMI Map](http://imi-map.f4.htw-berlin.de) supports students at the University of Applied Sciences Berlin in finding an internship abroad.
+The [IMI Map](http://imi-map-production.f4.htw-berlin.de) supports students at the University of Applied Sciences Berlin in finding an internship abroad.
 
 It is an ongoing project developed in different projects and individual thesis work
 by students of the Bachelor's Programme International Media Informatics at HTW Berlin.
@@ -21,7 +26,7 @@ by students of the Bachelor's Programme International Media Informatics at HTW B
 
     git clone git@github.com:imimap/imimap.git
 
-    cd imimaps
+    cd imimap
 
 ## Running Rails locally
     IMI-Map Development should be done within a docker container, local Development is discouraged. If you do it nonetheless, be careful not to
