@@ -94,7 +94,7 @@ class CompaniesController < ApplicationResourceController
 
   def self.permitted_params
     %i[name website main_language industry number_employees comment
-       blacklisted]
+       excluded_from_search]
   end
 
   def company_params

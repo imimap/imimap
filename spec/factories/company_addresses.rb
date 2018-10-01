@@ -38,7 +38,7 @@ FactoryBot.define do
     industry { 'IT' }
     website { 'www.company.de' }
     main_language { 'English' }
-    blacklisted { false }
+    excluded_from_search { false }
     import_id { 2 }
   end
 
