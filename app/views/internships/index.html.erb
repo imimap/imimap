@@ -13,6 +13,7 @@
       <th><%= t('complete_internship.country') %></th>
       <th><%= t('complete_internship.start_date') %></th>
       <th><%= t('complete_internship.end_date') %></th>
+      <th>status</th>
     </tr>
   </thead>
   <tbody>
@@ -26,6 +27,8 @@
     <td><%= ci.country %></td>
     <td><%= ci.start_date %></td>
     <td><%= ci.end_date %></td>
+    <td><%= ci.internship_state %></td>
+
   </tr>
 
   <% end %>
