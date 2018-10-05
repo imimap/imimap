@@ -8,7 +8,11 @@ COMPLETE_INTERNSHIP_MEMBERS = %i[first_name
                                  country
                                  start_date
                                  end_date
-                                internship_state].freeze
+                                 internship_state
+                                 contract_state
+                                 registration_state
+                                 certificate_state].freeze
+
 CompleteInternship = Struct.new(*COMPLETE_INTERNSHIP_MEMBERS)
 def CompleteInternship.from(int)
   ci = CompleteInternship.new
@@ -36,16 +40,12 @@ def CompleteInternship.from(int)
   ci.start_date = int.start_date
   ci.end_date = int.end_date
 
-  ci.internship_state = InternshipState.find(int.internship_state_id).name
-
-  if ci.internship_state != "passed"
-  ci.internship_state = "Contract: " + ContractState.find(int.contract_state_id).name + "; "+ "Registration: " + RegistrationState.find(int.registration_state_id).name + "; " +
-    "Certificate: " + CertificateState.find(int.certificate_state_id).name
-  end
+  ci.internship_state = int.internship_state.name if int.internship_state
+  ci.contract_state = int.contract_state.name if int.contract_state
+  ci.registration_state = int.registration_state.name if int.registration_state
+  ci.certificate_state = int.certificate_state.name if int.certificate_state
   ci
-
 end
-
 
 def CompleteInternship.to_csv(complete_internships)
   CSV.generate do |csv|

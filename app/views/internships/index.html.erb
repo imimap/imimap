@@ -27,7 +27,15 @@
     <td><%= ci.country %></td>
     <td><%= ci.start_date %></td>
     <td><%= ci.end_date %></td>
-    <td><%= ci.internship_state %></td>
+    <% if ci.internship_state == "passed" %>
+      <td><%= ci.internship_state %></td>
+    <% else %>
+      <td>Contract: <%= ci.contract_state %><br/>
+Registration: <%= ci.registration_state %><br/>
+Certificate: <%= ci.certificate_state %><br/>
+      </td>
+    <% end %>
+
 
   </tr>
 
