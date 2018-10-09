@@ -1,7 +1,5 @@
 <div id="form-block4">
 <h3>Internships in <%= @semester_name %></h3>
-
-
 <table class="table table-striped">
   <thead>
     <tr>
@@ -13,7 +11,7 @@
       <th><%= t('complete_internship.country') %></th>
       <th><%= t('complete_internship.start_date') %></th>
       <th><%= t('complete_internship.end_date') %></th>
-      <th>status</th>
+      <th><%= t('complete_internship.internship_state')%></th>
     </tr>
   </thead>
   <tbody>
@@ -35,10 +33,7 @@ Registration: <%= ci.registration_state %><br/>
 Certificate: <%= ci.certificate_state %><br/>
       </td>
     <% end %>
-
-
   </tr>
-
   <% end %>
   </tbody>
 </table>

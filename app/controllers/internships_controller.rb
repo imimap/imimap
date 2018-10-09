@@ -21,7 +21,7 @@ class InternshipsController < ApplicationResourceController
     end
     @header_names = COMPLETE_INTERNSHIP_MEMBERS.map do |m|
       t("complete_internship.#{m}")
-    end
+    end # ist das nicht überflüssig?
     respond_to do |format|
       format.html
       format.csv do
