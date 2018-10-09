@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_01_141836) do
+ActiveRecord::Schema.define(version: 2018_10_09_143756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -217,7 +217,7 @@ ActiveRecord::Schema.define(version: 2018_10_01_141836) do
     t.date "certificate_signed_by_internship_officer"
     t.date "certificate_signed_by_prof"
     t.date "certificate_to_prof"
-    t.string "comment", limit: 255
+    t.text "comment"
     t.string "supervisor_email", limit: 255
     t.string "supervisor_name", limit: 255
     t.boolean "completed", default: false
