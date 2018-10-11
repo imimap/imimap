@@ -9,7 +9,10 @@ class InternshipsController < ApplicationResourceController
   # GET /internships.json
 
   include InternshipsHelper
+  include CompleteInternshipHelper
+
   def index
+
     semester = Semester.last
     @semester_name = semester ? semester.name : '(no semester)'
     internships = Internship.where(semester: semester)
@@ -19,6 +22,7 @@ class InternshipsController < ApplicationResourceController
     @complete_internships = internships.map do |i|
       CompleteInternship.from(i)
     end
+    @field_names = COMPLETE_INTERNSHIP_MEMBERS
     @header_names = COMPLETE_INTERNSHIP_MEMBERS.map do |m|
       t("complete_internship.#{m}")
     end

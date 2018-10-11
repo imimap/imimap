@@ -11,7 +11,7 @@
   <tbody>
   <% @complete_internships.each do |ci| %>
     <tr>
-    <% COMPLETE_INTERNSHIP_MEMBERS.each do |field|%>
+    <% @field_names.each do |field|%>
     <td> <%= ci.send("#{field}") %></td>
     <%end%>
     </tr>
