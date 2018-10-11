@@ -26,10 +26,14 @@ module CompleteInternshipHelper
     ci.start_date = int.start_date
     ci.end_date = int.end_date
 
-    ci.internship_state = int.internship_state.name if int.internship_state
-    ci.contract_state = int.contract_state.name if int.contract_state
-    ci.registration_state = int.registration_state.name if int.registration_state
-    ci.certificate_state = int.certificate_state.name if int.certificate_state
+    if int.internship_state.name == "passed"
+    ci.internship_state = int.internship_state.name
+  else
+    contr = int.contract_state.name
+    reg = int.registration_state.name
+    cert = int.certificate_state.name
+    ci.internship_state = 'Contract: ' + contr + '; Registration: ' + reg + '; Certificate: ' + cert
+  end
     ci
   end
 
