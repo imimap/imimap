@@ -16,40 +16,40 @@ ActiveRecord::Schema.define(version: 2018_10_09_143756) do
   enable_extension "plpgsql"
 
   create_table "active_admin_comments", id: :serial, force: :cascade do |t|
-    t.string "resource_id", limit: 255, null: false
-    t.string "resource_type", limit: 255, null: false
+    t.string "resource_id", null: false
+    t.string "resource_type", null: false
+    t.string "author_type"
     t.integer "author_id"
-    t.string "author_type", limit: 255
     t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "namespace", limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string "namespace"
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
-    t.index ["resource_type", "resource_id"], name: "index_admin_notes_on_resource_type_and_resource_id"
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
   create_table "admin_users", id: :serial, force: :cascade do |t|
-    t.string "email", limit: 255, default: "", null: false
-    t.string "encrypted_password", limit: 255, default: "", null: false
-    t.string "reset_password_token", limit: 255
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer "sign_in_count", default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip", limit: 255
-    t.string "last_sign_in_ip", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
   create_table "answers", id: :serial, force: :cascade do |t|
     t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer "user_comment_id"
     t.integer "user_id"
     t.integer "internship_id"
@@ -57,29 +57,29 @@ ActiveRecord::Schema.define(version: 2018_10_09_143756) do
 
   create_table "attachments", id: :serial, force: :cascade do |t|
     t.text "description"
-    t.string "file", limit: 255
+    t.string "file"
+    t.string "attachable_type"
     t.integer "attachable_id"
-    t.string "attachable_type", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["attachable_id"], name: "index_attachments_on_attachable_id"
   end
 
   create_table "certificate_states", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
-    t.string "name_de", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "name_de"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "companies", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
+    t.string "name"
     t.integer "number_employees"
-    t.string "industry", limit: 255
-    t.string "website", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "main_language", limit: 255
+    t.string "industry"
+    t.string "website"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string "main_language"
     t.boolean "excluded_from_search", default: false
     t.integer "import_id"
     t.text "comment"
@@ -101,43 +101,43 @@ ActiveRecord::Schema.define(version: 2018_10_09_143756) do
   end
 
   create_table "contract_states", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
-    t.string "name_de", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "name_de"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "downloads", id: :serial, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "email_processors", id: :serial, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "faqs", id: :serial, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "favorite_compares", id: :serial, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "favorites", id: :serial, force: :cascade do |t|
     t.integer "user_id"
     t.integer "internship_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean "comparebox"
   end
 
   create_table "financings", id: :serial, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "finish_lists", id: :serial, force: :cascade do |t|
@@ -148,11 +148,11 @@ ActiveRecord::Schema.define(version: 2018_10_09_143756) do
   end
 
   create_table "internship_offers", id: :serial, force: :cascade do |t|
-    t.string "title", limit: 255
+    t.string "title"
     t.text "body"
-    t.string "pdf", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "pdf"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string "city"
     t.string "country"
   end
@@ -163,49 +163,49 @@ ActiveRecord::Schema.define(version: 2018_10_09_143756) do
     t.integer "atmosphere", limit: 2
     t.integer "supervision", limit: 2
     t.integer "appreciation", limit: 2
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "internship_searches", id: :serial, force: :cascade do |t|
-    t.string "country", limit: 255
-    t.string "city", limit: 255
-    t.string "industry", limit: 255
-    t.string "orientation", limit: 255
+    t.string "country"
+    t.string "city"
+    t.string "industry"
+    t.string "orientation"
     t.integer "min_salary"
     t.integer "max_salary"
     t.integer "rating"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "internship_states", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
-    t.string "name_de", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "name_de"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "internships", id: :serial, force: :cascade do |t|
     t.float "working_hours"
     t.float "living_costs"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer "internship_rating_id", default: 1
     t.integer "x_company_id"
     t.integer "user_id"
-    t.string "title", limit: 255
+    t.string "title"
     t.boolean "recommend", default: true
     t.integer "orientation_id"
     t.boolean "email_public"
     t.text "description"
     t.integer "semester_id"
-    t.string "internship_report", limit: 255
+    t.string "internship_report"
     t.integer "salary"
     t.date "start_date"
     t.date "end_date"
     t.text "tasks"
-    t.string "operational_area", limit: 255
+    t.string "operational_area"
     t.integer "student_id"
     t.integer "internship_state_id"
     t.integer "reading_prof_id"
@@ -218,8 +218,8 @@ ActiveRecord::Schema.define(version: 2018_10_09_143756) do
     t.date "certificate_signed_by_prof"
     t.date "certificate_to_prof"
     t.text "comment"
-    t.string "supervisor_email", limit: 255
-    t.string "supervisor_name", limit: 255
+    t.string "supervisor_email"
+    t.string "supervisor_name"
     t.boolean "completed", default: false
     t.bigint "company_address_id"
     t.index ["company_address_id"], name: "index_internships_on_company_address_id"
@@ -232,12 +232,12 @@ ActiveRecord::Schema.define(version: 2018_10_09_143756) do
   end
 
   create_table "locations", id: :serial, force: :cascade do |t|
-    t.string "street", limit: 255
-    t.string "zip", limit: 255
-    t.string "country", limit: 255
-    t.string "city", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "street"
+    t.string "zip"
+    t.string "country"
+    t.string "city"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer "company_id"
   end
 
@@ -245,40 +245,40 @@ ActiveRecord::Schema.define(version: 2018_10_09_143756) do
     t.integer "user_id"
     t.text "text"
     t.boolean "read"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "link", limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string "link"
   end
 
   create_table "orientations", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "payment_states", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
-    t.string "name_de", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "name_de"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "posts", id: :serial, force: :cascade do |t|
     t.text "body"
-    t.string "email", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "programming_languages", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "quicksearches", id: :serial, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "read_lists", id: :serial, force: :cascade do |t|
@@ -289,40 +289,40 @@ ActiveRecord::Schema.define(version: 2018_10_09_143756) do
   end
 
   create_table "reading_profs", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "registration_states", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
-    t.string "name_de", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "name_de"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "report_states", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
-    t.string "name_de", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "name_de"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "semesters", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "students", id: :serial, force: :cascade do |t|
-    t.string "enrolment_number", limit: 255
-    t.string "last_name", limit: 255
-    t.string "first_name", limit: 255
+    t.string "enrolment_number"
+    t.string "last_name"
+    t.string "first_name"
     t.date "birthday"
-    t.string "birthplace", limit: 255
-    t.string "email", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "birthplace"
+    t.string "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer "import_id"
     t.string "city"
     t.string "street"
@@ -332,22 +332,22 @@ ActiveRecord::Schema.define(version: 2018_10_09_143756) do
 
   create_table "user_comments", id: :serial, force: :cascade do |t|
     t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer "user_id"
     t.integer "internship_id"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
     t.string "email", default: "", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "old_pass_digest", limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string "old_pass_digest"
     t.boolean "publicmail"
     t.boolean "mailnotif"
     t.integer "student_id"
-    t.string "auth_token", limit: 255
-    t.string "password_reset_token", limit: 255
+    t.string "auth_token"
+    t.string "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
