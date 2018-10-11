@@ -1,33 +1,20 @@
 <div id="form-block4">
 <h3>Internships in <%= @semester_name %></h3>
-
-
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= t('complete_internship.first_name') %></th>
-      <th><%= t('complete_internship.last_name') %></th>
-      <th><%= t('complete_internship.enrolment_number') %></th>
-      <th><%= t('complete_internship.company') %></th>
-      <th><%= t('complete_internship.city') %></th>
-      <th><%= t('complete_internship.country') %></th>
-      <th><%= t('complete_internship.start_date') %></th>
-      <th><%= t('complete_internship.end_date') %></th>
+      <% @header_names.each do |heading| %>
+      <th><%= heading %></th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
   <% @complete_internships.each do |ci| %>
-  <tr>
-    <td><%= ci.first_name %></td>
-    <td><%= ci.last_name %></td>
-    <td><%= ci.enrolment_number %></td>
-    <td><%= ci.company %></td>
-    <td><%= ci.city %></td>
-    <td><%= ci.country %></td>
-    <td><%= ci.start_date %></td>
-    <td><%= ci.end_date %></td>
-  </tr>
-
+    <tr>
+    <% @field_names.each do |field|%>
+    <td> <%= ci.send("#{field}") %></td>
+    <%end%>
+    </tr>
   <% end %>
   </tbody>
 </table>
