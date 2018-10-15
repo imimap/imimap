@@ -84,7 +84,7 @@ FactoryBot.define do
     tasks { TEXT4 }
     operational_area { 'operational area' }
     student
-    internship_state
+    internship_state { create :internship_state_aep }
     reading_prof
     payment_state
     registration_state
