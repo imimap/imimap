@@ -23,7 +23,9 @@ echo "$0: starting build for IMIMAPS_ENVIRONMENT ${IMIMAPS_ENVIRONMENT}"
     docker exec -ti imimap-dev ./ci-cd/wait-for-db-connection.sh
     docker exec -e RAILS_ENV=test -ti imimap-dev rake db:create RAILS_ENV=test
     docker exec -e RAILS_ENV=test -ti imimap-dev rake db:migrate RAILS_ENV=test
+    if [ $? != 0 ]; then exit 1; fi
     docker exec -e RAILS_ENV=test -ti imimap-dev rake db:migrate:status RAILS_ENV=test
     docker exec -e RAILS_ENV=test -ti imimap-dev rspec spec
+    if [ $? != 0 ]; then exit 1; fi
     docker exec -e RAILS_ENV=test -ti imimap-dev rake assets:precompile
   fi
