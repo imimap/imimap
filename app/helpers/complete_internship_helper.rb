@@ -43,12 +43,19 @@ CompleteInternship = Struct.new(*COMPLETE_INTERNSHIP_MEMBERS) do
     ci = self
     ci.start_date = int.start_date
     ci.end_date = int.end_date
-    if int.internship_state.name == 'passed'
-      ci.internship_state = int.internship_state.name
+    ci.internship_state = ''
+    if int.internship_state && int.internship_state.name == 'passed'
+      ci.internship_state += int.internship_state.name
     else
-      ci.internship_state = "Contract: #{int.contract_state.name}; "
-      ci.internship_state += "Registration: #{int.registration_state.name}; "
-      ci.internship_state += "Certificate: #{int.certificate_state.name}"
+      if int.contract_state
+        ci.internship_state += "Contract: #{int.contract_state.name}; "
+      end
+      if int.registration_state
+        ci.internship_state += "Registration: #{int.registration_state.name}; "
+      end
+      if int.certificate_state
+        ci.internship_state += "Certificate: #{int.certificate_state.name}"
+      end
     end
   end
 end
