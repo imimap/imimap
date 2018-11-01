@@ -59,23 +59,23 @@ module CompleteInternshipHelper
 
     def add_contract_state(int)
       ci = self
-      if int.contract_state
-        ci.internship_state += "Contract: #{int.contract_state.name}; "
-      end
+      return unless int.contract_state
+
+      ci.internship_state += "Contract: #{int.contract_state.name}; "
     end
 
     def add_registration_state(int)
       ci = self
-      if int.registration_state
-        ci.internship_state += "Registration: #{int.registration_state.name}; "
-      end
+      return unless int.registration_state
+
+      ci.internship_state += "Registration: #{int.registration_state.name}; "
     end
 
     def add_certificate_state(int)
       ci = self
-      if int.certificate_state
-        ci.internship_state += "Certificate: #{int.certificate_state.name}"
-      end
+      return unless int.certificate_state
+
+      ci.internship_state += "Certificate: #{int.certificate_state.name}"
     end
   end
 
