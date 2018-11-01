@@ -69,5 +69,4 @@ RSpec.configure do |config|
 
   config.include CompleteInternshipHelper, type: :controller
   config.include CompleteInternshipHelper, type: :helper
-
 end

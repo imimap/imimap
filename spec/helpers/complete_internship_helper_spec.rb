@@ -30,16 +30,15 @@ RSpec.describe CompleteInternshipHelper, type: :helper do
       end
     end
   end
-
   context 'with internship with missing states' do
-      before :each do
+    before :each do
       @internship = create :internship_without_states
-      end
-      describe 'internship_state' do
-        it "doesn't throw exceptions" do
-          ci = CompleteInternship.from(@internship)
-          expect(ci.internship_state).to eq('')
-        end
+    end
+    describe 'internship_state' do
+      it "doesn't throw exceptions" do
+        ci = CompleteInternship.from(@internship)
+        expect(ci.internship_state).to eq('')
       end
     end
   end
+end

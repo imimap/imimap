@@ -42,18 +42,39 @@ module CompleteInternshipHelper
       ci.start_date = int.start_date
       ci.end_date = int.end_date
       ci.internship_state = ''
+      add_internship_state(int)
+    end
+
+    def add_internship_state(int)
+      ci = self
+      ci.internship_state = ''
       if int.internship_state && int.internship_state.name == 'passed'
         ci.internship_state += int.internship_state.name
       else
-        if int.contract_state
-          ci.internship_state += "Contract: #{int.contract_state.name}; "
-        end
-        if int.registration_state
-          ci.internship_state += "Registration: #{int.registration_state.name}; "
-        end
-        if int.certificate_state
-          ci.internship_state += "Certificate: #{int.certificate_state.name}"
-        end
+        add_contract_state(int)
+        add_registration_state(int)
+        add_certificate_state(int)
+      end
+    end
+
+    def add_contract_state(int)
+      ci = self
+      if int.contract_state
+        ci.internship_state += "Contract: #{int.contract_state.name}; "
+      end
+    end
+
+    def add_registration_state(int)
+      ci = self
+      if int.registration_state
+        ci.internship_state += "Registration: #{int.registration_state.name}; "
+      end
+    end
+
+    def add_certificate_state(int)
+      ci = self
+      if int.certificate_state
+        ci.internship_state += "Certificate: #{int.certificate_state.name}"
       end
     end
   end
