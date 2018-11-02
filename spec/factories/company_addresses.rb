@@ -46,7 +46,7 @@ FactoryBot.define do
   factory :company_address_1, class: CompanyAddress do
     city { 'San Francisco' }
     country { 'US' }
-    street { '88 Colin P Kelly Jr St' }
+    street { '88 Colin P Kelly Junior St' }
     zip { '94107' }
     phone { '+187345847' }
     fax { '+187345888' }
