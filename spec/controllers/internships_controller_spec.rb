@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+
+include CompleteInternshipHelper
 RSpec.describe InternshipsController, type: :controller do
   include Devise::Test::ControllerHelpers
+  include InternshipsHelper
   render_views
 
   before :each do
@@ -28,7 +31,7 @@ RSpec.describe InternshipsController, type: :controller do
       it 'assigns @semester_name' do
         expect(assigns(:semester_name)).to eq(@semester.name)
       end
-      include InternshipsHelper
+
       it 'assigns @complete_internships' do
         expect(assigns(:complete_internships)).to eq([CompleteInternship.from(@internship)])
       end
