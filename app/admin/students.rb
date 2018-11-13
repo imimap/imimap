@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Student do
+  menu priority: 3
   permit_params StudentsController.permitted_params
   filter :enrolment_number, as: :select, collection: proc { Student.all.map(&:enrolment_number).uniq }, label: 'Matrikel'
   filter :last_name

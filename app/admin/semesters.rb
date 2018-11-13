@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Semester do
+  menu priority: 8
   permit_params %i[name]
   filter :name
 
