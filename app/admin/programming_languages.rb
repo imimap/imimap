@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register ProgrammingLanguage do
+  menu priority: 11
   permit_params %i[name]
   filter :name
   config.sort_order = 'id_asc'

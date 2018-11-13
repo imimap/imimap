@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register ReadingProf do
+  menu priority: 9
   permit_params %i[name]
   filter :name
 

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Orientation do
+  menu priority: 10
   permit_params %i[name]
   filter :name
 
