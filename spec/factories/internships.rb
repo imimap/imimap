@@ -209,6 +209,47 @@ FactoryBot.define do
         )
       )
     end
+  end
+
+    factory :internship_without_name, class: Internship do
+      before(:create) do |i|
+        c = FactoryBot.create(:company_2)
+        i.company_address = c.company_addresses.first
+      end
+
+      working_hours { 2.0 }
+      living_costs  { 4.0 }
+      internship_rating
+      # company
+      user
+      title { 'The Main Example Intership' }
+      recommend { true }
+      orientation
+      email_public { true }
+      description { TEXT4 }
+      semester
+      salary { 8 }
+      start_date { Date.today.to_date }
+      end_date { Date.today.to_date + 7.days }
+      tasks { TEXT4 }
+      operational_area { 'operational area' }
+      student3
+      reading_prof
+      payment_state
+      certificate_signed_by_internship_officer { Date.today.to_date }
+      certificate_signed_by_prof { Date.today.to_date }
+      certificate_to_prof { Date.today.to_date }
+      comment { 'internship comment' }
+      supervisor_email { 'supervisor@bar.com' }
+      supervisor_name { 'internship supervisor name' }
+      completed { false }
+      internship_report do
+        Rack::Test::UploadedFile.new(
+          File.join(
+            Rails.root, 'spec', 'support', 'test.pdf'
+          )
+        )
+      end
 
     after(:build) do |i|
       c = FactoryBot.build(:company_2)

@@ -25,4 +25,17 @@ FactoryBot.define do
       student.user ||= FactoryBot.build(:user, student: student)
     end
   end
+
+  factory :student3, class: Student do
+    first_name {''}
+    last_name {''}
+    enrolment_number { '32394894' }
+    birthday { Date.today - 28.years }
+    birthplace { 'Berlin' }
+    email { 'meow@test.org' }
+    # user
+    after(:build) do |student|
+      student.user ||= FactoryBot.build(:user, student: student)
+    end
+  end
 end

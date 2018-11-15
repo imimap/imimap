@@ -14,23 +14,31 @@ module CompleteInternshipHelper
   CompleteInternship = Struct.new(*COMPLETE_INTERNSHIP_MEMBERS) do
     def add_student_info(int)
       ci = self
-      if int.student.nil?
-        ci.first_name = '(no student)'
-        ci.last_name = '(no student)'
-        ci.enrolment_number = '(none)'
+      if int.student.first_name.nil?
+        ci.first_name = t(complete_internship.no_entry)
       else
         ci.first_name = int.student.first_name
+      end
+
+      if int.student.last_name.nil?
+        ci.last_name = t(complete_internship.no_entry)
+      else
         ci.last_name = int.student.last_name
+      end
+
+      if int.student.enrolment_number.nil?
+        ci.enrolment_number = t(complete_internship.no_entry)
+      else
         ci.enrolment_number = int.student.enrolment_number
       end
     end
 
     def add_company_info(int)
       ci = self
-      ci.company = int.company_v2.nil? ? '(no company)' : int.company_v2.name
+      ci.company = int.company_v2.nil? ? t(complete_internship.no_entry) : int.company_v2.name
       if int.company_address.nil?
-        ci.city = '(no city)'
-        ci.country = '(no country)'
+        ci.city = t(complete_internship.no_entry)
+        ci.country = t(complete_internship.no_entry)
       else
         ci.city = int.company_address.city
         ci.country = int.company_address.country_name

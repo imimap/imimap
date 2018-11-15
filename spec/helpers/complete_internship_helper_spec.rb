@@ -41,4 +41,18 @@ RSpec.describe CompleteInternshipHelper, type: :helper do
       end
     end
   end
+
+  context 'with internship with missing student' do
+    before :each do
+      @internship = create :internship_without_name
+    end
+    describe 'add_student_info' do
+      it "shows the string no entry for names" do
+          ci = CompleteInternship.from(@internship)
+          expect(ci.first_name).to eq(t(complete_internship.no_entry))
+          expect(ci.last_name).to eq(t(complete_internship.no_entry))
+          expect(ci.enrolment_number).to eq(t(complete_internship.no_entry))
+      end
+    end
+  end
 end
