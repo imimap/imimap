@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-
 # Specs in this file have access to a helper object that includes
 # the ApplicationHelper. For example:
 #
@@ -22,11 +21,18 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
-  # I don't know what was supposed to happen here...
-  # get empty array?
   describe '#notifications' do
     it 'should return the correct notifications' do
-      # expect(helper.notifications).to eq []
+      expect(helper.notifications).to eq []
     end
   end
+
+# we don't think this is even used somewhere
+  # describe '#render_stars' do
+  #   it 'should render the correct number of stars' do
+  #   end
+  # end
+
+
+
 end

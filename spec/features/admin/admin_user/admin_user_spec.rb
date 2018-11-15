@@ -15,10 +15,19 @@ describe 'ActiveAdmin Admin User' do
         one, two = @admin_user.email.split('@')
         expect(page).to have_content one
         expect(page).to have_content two
-        # expect(page).to have_content @admin_user.email
+      end
+    end
 
-        # put some of new translations
-        # expect(page).to have_content I18n.t('activerecord.models.admin_user.other')
+    # we check if changing the mail address of a user without
+    # without touching the password works
+    # if so, we get redirected
+    describe 'controller' do
+      it 'update' do
+        visit admin_users_path
+        # if @admin_user.password.blank? && @admin_user.password_confirmation.blank?
+        @admin_user.email = 'test.mail@htw.de'
+        expect(current_path).to eq admin_users_path
+        assert_equal('test.mail@htw.de', @admin_user.email)
       end
     end
   end
