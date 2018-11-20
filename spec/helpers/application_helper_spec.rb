@@ -27,12 +27,9 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
-# we don't think this is even used somewhere
+  # we don't think this is even used somewhere
   # describe '#render_stars' do
   #   it 'should render the correct number of stars' do
   #   end
   # end
-
-
-
 end

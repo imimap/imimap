@@ -18,13 +18,12 @@ describe 'ActiveAdmin Admin User' do
       end
     end
 
-    # we check if changing the mail address of a user without
+    # we check if changing the mail address of a user
     # without touching the password works
     # if so, we get redirected
     describe 'controller' do
       it 'update' do
         visit admin_users_path
-        # if @admin_user.password.blank? && @admin_user.password_confirmation.blank?
         @admin_user.email = 'test.mail@htw.de'
         expect(current_path).to eq admin_users_path
         assert_equal('test.mail@htw.de', @admin_user.email)
