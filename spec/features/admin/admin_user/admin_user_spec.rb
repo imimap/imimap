@@ -23,13 +23,17 @@ describe 'ActiveAdmin Admin User' do
     describe 'controller' do
       it 'update' do
         @user = create(:user)
-        visit admin_users_path(id: @user)
-        click_on t('users.edit.edituser')
+        # visit admin_user_path(id: @user)
+        # click_on t('active_admin.edit_model',model: User.model_name.human)
+        visit edit_admin_user_path(id: @user)
         expect(page).not_to have_content 'NoMethodError'
-        expect(page).to have_content t('users.edit.edituser')
+        # save_and_open_page # um zu sehen was man sieht...
+        # das funktioniert nicht weil es ein button ist:
+        # expect(page).to have_content t('helpers.submit.update', model: User.model_name.human)
         old_email = @user.email
-        fill_in t('activerecord.attributes.user.email'), with: 'testmail@htw-berlin.de'
-        click_on t('users.update')
+        # nb: there is no translation yet for User.human_attribute_name(:email)
+        fill_in User.human_attribute_name(:email), with: 'testmail@htw-berlin.de'
+        click_on t('helpers.submit.update', model: User.model_name.human)
         expect(page).to have_content 'testmail@htw-berlin.de'
         expect(page).not_to have_content old_email
       end
