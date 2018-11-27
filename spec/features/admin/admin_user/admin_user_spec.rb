@@ -20,13 +20,18 @@ describe 'ActiveAdmin Admin User' do
 
     # we check if changing the mail address of a user
     # without touching the password works
-    # if so, we get redirected
     describe 'controller' do
       it 'update' do
-        visit admin_users_path
-        @admin_user.email = 'test.mail@htw.de'
-        expect(current_path).to eq admin_users_path
-        assert_equal('test.mail@htw.de', @admin_user.email)
+        @user = create(:user)
+        visit admin_users_path(id: @user)
+        click_on t('users.edit.edituser')
+        expect(page).not_to have_content 'NoMethodError'
+        expect(page).to have_content t('users.edit.edituser')
+        old_email = @user.email
+        fill_in t('activerecord.attributes.user.email'), with: 'testmail@htw-berlin.de'
+        click_on t('users.update')
+        expect(page).to have_content 'testmail@htw-berlin.de'
+        expect(page).not_to have_content old_email
       end
     end
   end
