@@ -1,0 +1,25 @@
+de:
+  errors:
+    models:
+      user:
+        attributes:
+          password:
+            confirmation: "Password stimmen nicht überein"
+            too_short: "ist zu kurz"
+          email:
+            taken: "ist schon belegt"
+      internship:
+        attributes:
+          title:
+            blank: "darf nicht fehlen"
+          living_costs:
+            blank: "darf nicht fehlen"
+          salary:
+            blank: "darf nicht fehlen"
+          working_hours:
+            blank: "darf nicht fehlen"
+          programming_language_ids:
+            blank: "darf nicht fehlen"
+    messages:
+      blank: "darf nicht freigelassen werden"
+      record_invalid: "Fehlerhafte Angaben: %{errors}"

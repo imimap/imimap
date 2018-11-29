@@ -9,3 +9,8 @@ de:
     start_date: Von
     end_date: Bis
     internship_state: Praktikumsstatus
+
+  helpers:
+    reset: "Zurücksetzen"
+    at: "am"
+    at2: "bei"

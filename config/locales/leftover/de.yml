@@ -1,0 +1,89 @@
+de:
+
+  favorite:
+    delete: "Aus Favoriten löschen"
+    add: "Zu Favoriten hinzufügen"
+    notfound:
+      title: "keine Favoriten angelegt"
+      message: "Anscheinend hast du noch keine Praktika als Favoriten gespeichert. <br/> Du kannst %{href} benutzen um Praktika zu finden."
+      link: "die Suche"
+
+  favorite_compare:
+    title: "Favoriten Vergleichen"
+    column1: "Erstes Praktikum"
+    column2: "Zweites Praktikum"
+    column3: "Drittes Praktikum"
+
+  faq:
+    title: "FAQs"
+    title2: "Internship FAQs"
+    frage1:
+      html: "<p><b>Kann ich mein Praktikum in mehreren Abschnitten absolvieren?</b></p><p>Es ist möglich, dass Praktikum in drei Abschnitte (Dauer: mindestens vier Wochen) zu unterteilen. </br>Für jeden Teilabschnitt muss ein separater Bericht angefertigt werden.</p>"
+    frage2:
+      html: "<p><b>Wann sind die Praktikumsberichte fällig?</b></p><p>Spätestens vier Wochen nach Abschluss des Praktikums. Der Bericht sollte ca. 20 Seiten umfassen und </br>geheftet sein (keine losen Blattsammlungen). Bitte bei dem oder der Praktikumsbeauftragten einreichen.</p>"
+    frage3:
+      html: "<p><b>Wo melde ich mich für die praktikumsbegleitenden Lehrveranstaltungen an?</b></p><p>Im LSF. Beachte, dass die Kurse immer in den vorlesungsfreien Zeiten angeboten werden. </br> Bis auf AEP können sie auch vor dem Praktikum belegt werden.</p>"
+    frage4:
+      html: "<p><b>Wann sollte ich mit der Praktikumssuche zu beginnen?</b></p><p>So schnell wie möglich. Es ist wichtig, genügend Zeit haben um nach geeigneten Praktika zu suchen </br> und sich zu bewerben. Besonders in Ländern, für die man ein Visum benötigt und/oder wenn man </br> Stipedendien oder andere Förderungsmöglichkeiten beantragen will.</br> Ca. ein Semester vorher sollte man anfangen sich zu bewerben.</p>"
+    title3: "IMI Map FAQs"
+    frageI1:
+      html: "<p><b>Kann ich meinen Praktikum-Erfahrungsbericht bearbeiten, nachdem er auf IMI Map veröffentlicht wurde? </b></p><p>Ja, Du kannst den Erfahrungsbericht bearbeiten, nachdem er auf IMI Map veröffentlicht wurde.</br>Befolgen diese Schritte: 'Konto' → 'Erfahrungsbericht' → 'Bearbeiten'.</p>"
+    frageI2:
+      html: "<p><b>Wie kann ich einen zweiten Erfahrungsbericht abgeben?</b></p><p>Wenn du dein Praktikum in mehreren Unternehmen absolviert hast, dann kannst du für jedes Unternehmen einen Erfahrungsbericht erstellen. </br>Hierfür musst du dem Zuständigen eine Mail schreiben (Mail), der das für dich freischaltet. </br>Nach der Freischaltung erscheint der Button 'Erfahrungsbericht erstellen' unter 'Konto'.</p>"
+
+  general:
+    title: "Allgemeine Infos zum Praktikum"
+    text1:
+     html: "<h3><b>Auslandspraktikum</b></h3><p>Internationale Praxis wird im Internationalen Studiengang Medieninformatik groß geschrieben. Um euch eigene fachliche Erfahrungen im Verlauf des Studiums zu ermöglichen, ist für das 4. Semester ein Auslandspraktikum vorgesehen. Auf der Grundlage des in den Lehrveranstaltungen erworbenen Wissens sollen anwendungsbezogene Kenntnisse und praktische Erfahrungen vermittelt und die Bearbeitung konkreter Probleme im angestrebten beruflichen Tätigkeitsfeld unter Anleitung ermöglicht werden. Das Auslandspraktikum macht euch mit eurem späteren Beruf vertraut und regt zur individuellen Gestaltung der zwei Semester des Spezialisierungsjahres an.</p><h3><b>Voraussetzungen vor Antritt</b></h3><p>Alle Kurse des ersten und zweiten Semesters müssen erfolgreich bestanden sein. Die Studierenden suchen sich selbstständig ein Unternehmen, bei dem sie mindestens 16 Wochen (Studienordnung von 2008) bzw. 19 Wochen (Studienordnung von 2012) ihr Praktikum im Ausland (ein anderes Land als das, indem die Hochschulberechtigung erworben wurde) absolvieren können. Vor Beginn des Praktikums muss ein Praktikumsvertrag mit dem ausgesuchten Unternehmen abgeschlossen und von der HTW Berlin geprüft werden.</p> <h3><b>Beantragung des Praktikums</b> </h3><p>Mit dem Praktikumsbetrieb ist ein Praktikumsvertrag abzuschließen. Als Vorlage kann hier die HTW-Vorlage dienen</p>"
+    text2:
+     html: "Als nächstes ist dieser Praktikumsantrag auszufüllen"
+    text3:
+     html: "Danach meldest Du dich bitte beim Praktikumsbeauftragten (bitte nur während der Sprechzeiten) an mit folgenden Unterlagen:"
+    text4: "dem vollständig ausgefüllten und unterschrieben Antrag im Original"
+    text5: "den ausgedruckten LSF-Semesterbescheinigungen der bestandenen Kurse des 1. und 2. Semesters"
+    text6: "dem Originalvertrag mit dem Praktikumsunternehmen"
+    text7:
+     html: "<p>Diese Unterlagen bleiben an der HTW. Falls Du Kopien für BaföG, Semesterticket Rückerstattung oder Stipendien benötigst, fertige diese bitte vorher selber an und lasse dir diese vom Praktikumsbeauftragten unterschreiben. Falls Du selbst ein Original des Praktikumsvertrags behalten willst, bitte das Praktikumsunternehmen, genügend Originale auszustellen (in der Regel drei: je eins für das Unternehmen, für Dich und für die HTW Berlin).</br></br>Die Unterlagen sollten bis zum Vorlesungsende des Semesters, das dem Praktikumssemester voraus geht, beim Praktikumsbeauftragten sein. Der Praktikumsbeauftragte prüft anhand der Unterlagen, ob das Praktikum im Nachhinein entsprechend der Prüfungsordnung auch anerkannt wird (z. B. Dauer und inhaltliche Eignung). Solange die Unterlagen nicht vollständig sind oder nicht im Original vorliegen, kann keine Zulassung zum Praktikum erfolgen.</br></br>Um die Semesterticket-Gebühren zurückerstattet zu bekommen gibt es hier einen Antrag, der vor dem Antritt des Praktikumssemesters beim Semesterticketbüro abgeben werden muss.<p>"
+    text8:
+     html: "</br><p>Der/die im Praktikumsantrag angegebene Hochschulbetreuer/in ist ein Vorschlag Deinerseits. Aus organisatorischen Gründen muss im Ausnahmefall eventuell aber auch davon abgewichen werden. Der/die Hochschulbetreuer/in wird nach Abschluss des Praktikums Deinen Praktikumsbericht lesen.</br></br></p>"
+    text9:
+     html: "<h3><b>Anerkennung des Praktikums</b></h3><p>Der vollständig ausgefüllte Praktikumsnachweis und Praktikumsbericht müssen dem Praktikumsbeauftragten vorgelegt und der Pflichtkurs für das Praxissemester — Auswertung von Erfahrungen am Arbeitsplatz (AEP) — muss erfolgreich abgeschlossen sein. Dann wird das Praktikum anerkannt.</p>"
+
+  financing:
+    title: "Finanzierung"
+    title3: "Auslandsbafög"
+    text1:
+      html: "<h4>Welche Finanzierungsmöglichkeiten gibt es?</h4></br><p>Ein Auslandspraktikum will gut geplant sein. Auch wenn manche Praktika vergütet sind, so sind die Lebenshaltungskosten häufig deutlich höher. Dazu kommen Fahrtkosten, Versicherungsbeiträge etc. Bitte lass Dich deshalb rechtzeitig — gerne auch zwei bis drei Semester vor dem geplanten Praktikum — beraten. Je früher Du beginnst, Dein Auslandspraktikum vorzubereiten, desto mehr Möglichkeiten stehen Dir offen. Beachte bitte daher die Bewerbungsfristen der verschiedenen Stipendienprogramme und die lange Bearbeitungszeit beim Auslands-BAföG. Bei manchen Stipendienprogrammen musst Du Dich ca. zehn Monate vor Praktikumsbeginn bewerben, jedoch muss zu diesem Zeitpunkt noch keine Praktikumszusage vorliegen. </br>Das International Office der HTW Berlin bietet Beratungen zu Fördermöglichkeiten von Auslandspraktika und hat auch ausführliche Online-Informationen zu diesem Thema.<p>"
+    text2: "Eine ausführliche Liste von Förderprogrammen findest Du hier:"
+    text3:
+      html: "<p>Auslands-BAföG ist die tolle finanzielle Förderung von Vater Staat für ein ganzes Studium, Teilstudium Praktikum oder ein Schüleraustausch im europäischen und außereuropäischen Ausland! Bekommt ihr Inlands-BAföG, bekommt ihr sicher(!) Auslands-BAföG, bekommt ihr kein Inlands-BAföG, könnt ihr trotzdem Auslands-BAföG bekommen! Durch die höheren Kosten im Ausland kommt für viel mehr von euch eine staatliche Förderung in Frage.</p>"
+    text4: "mehr Informationen"
+    text5:
+      html: "<h3><strong>Förderprogramme</strong></h3>"
+    text6: "Dies sind die bekanntesten Förderprogramme für IMIs:"
+
+    progs:
+     title1: "Programm"
+     title2: "Inhalt"
+     title3: "Dauer"
+     title4: "Region"
+    prog1:
+       namen: "Auslands-BAföG"
+       fact: "Darlehen und Zuschüsse für fachbezogene Pflichtpraktika. Bekommt ihr Inlands-BAföG, bekommt ihr sicher(!) Auslands-BAföG, bekommt ihr kein Inlands-BAföG, könnt ihr trotzdem Auslands-BAföG bekommen!"
+       duration: "max. 12 Monate"
+       region: "weltweit"
+    prog2:
+       namen: "ERASMUS Placement"
+       fact: "Zuschüsse für Fachpraktika"
+       duration: "3-12  Monate"
+       region: "Europa"
+    prog3:
+       namen: "PROMOS Praktika"
+       fact: "Reisekostenzuschüsse für Auslandspflicht-Praktika"
+       duration: "3-6  Monate"
+       region: "bevorzugt Asien, Afrika, Lateinamerika"
+    prog4:
+       namen: "DAAD: Carlo-Schmid-Programm"
+       fact: "länderabhängige Voll-Stipendien,  Reisekosten-Zuschüsse für Praktika in internat. Organisationen, EU-Organisationen oder NGO's"
+       duration: "A: 3 - 6 Monate, B: 4 - 10 Monate"
+       region: "weltweit"

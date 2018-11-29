@@ -1,0 +1,124 @@
+de:
+  activerecord:
+    attributes:
+      user:
+        password: "Passwort"
+
+      admin_user:
+        id: ID
+        email: E-Mail
+        encrypted_Password: Verschlüsseltes Passwort
+        reset_password_token: Passwort-Reset-Token
+        reset_password_sent_at: Passwort-Reset-Anweisungen gesendet am
+        remember_created_at: Passwort merken seit
+        sign_in_count: Anzahl Logins
+        current_sign_in_at: Aktuell angemeldet seit
+        last_sign_in_at: Letzter Login am
+        current_sign_in_ip: Aktuelle IP-Adresse
+        last_sign_in_ip: Letzte IP-Adresse
+        created_at: Erstellt am
+        updated_at: Aktualisiert am
+      user:
+        publicmail: E-Mail veröffentlicht
+        mailnotif: Benachrichtigungen
+      reading_prof:
+        name: Name
+        internships: Praktikum
+      company:
+        internships: Praktikum
+        industry: Industrie
+        number_employees: Angestelltenanzahl
+        website: Webseite
+        address: Adresse
+        main_language: Hauptsprache
+        phone: Telefon
+        excluded_from_search: ausgenommen von der Suche
+      internship:
+        student: Student_in
+        company: Firma
+        company_v2: Firma
+        start_date: Anfangsdatum
+        end_date: Enddatum
+        weekCount: Anzahl der Wochen
+        weekValidation: Validierung
+        operational_area: Orientierung
+        tasks: Aufgaben
+        supervisor_name: Betreuername
+        supervisor_email: E-Mail des Betreuers
+        registration_state: Regisstrierungsstatus
+        payment_state: Bezahlungsstatus
+        contract_state: Vertragsstatus
+        internship_state: Praktikumsstatus
+        comment: Kommentar
+        semester: Semester
+        certificate_to_prof: Praktikumsnachweis an Prof
+        certificate_signed_by_prof: Praktikumsnachweis unterschrieben von Prof
+        certificate_signed_by_internship_officer: Praktikumsnachweis unterschrieben von Betreuer/in
+        report_state: Berichtstatus
+        certificate_state: Nachweisstatus
+        reading_prof: Prof
+      programming_language:
+        internships: Praktika
+      internship_offer:
+        body: Beschreibung
+        created_at: Erstellt am
+        updated_at: Ergänzt am
+        share: Neues Praktikumsangebot erstellen
+      orientation:
+        internships: Praktika
+      semester:
+        internships: Praktika
+      student:
+        internships: Praktika
+        enrolment_number: Matrikel
+        last_name: Nachname
+        first_name: Vorname
+        birthday: Geburtsdatum
+        birthplace: Geburtsort
+        email: E-Mail
+      comment:
+        created_at: Erstellt am
+    models:
+      admin_user:
+        one: Administrator
+        other: Administratoren
+      comment:
+        one: Kommentar
+        other: Kommentare
+      internship:
+        one: Praktikum
+        other: Praktika
+      company:
+        one: Firma
+        other: Firmen
+      company_address:
+        one: Firmenadresse
+        other: Firmenadressen
+      internship_offer:
+        one: Praktikumsangebot
+        other: Praktikumsangebote
+      orientation:
+        one: Schwerpunkt
+        other: Schwerpunkte
+      programming_language:
+        one: Programmiersprache
+        other: Programmiersprachen
+      reading_prof:
+        one: Professor_in
+        other: Professor_innen
+      semester:
+        one: Semester
+        other: Semester
+      student:
+        one: Student_in
+        other: Student_innen
+      user:
+        one: Benutzer_in
+        other: Benutzer_innen
+    errors:
+      messages:
+        record_invalid: 'Gültigkeitsprüfung ist fehlgeschlagen: %{errors}'
+        restrict_dependent_destroy:
+          has_one: Datensatz kann nicht gelöscht werden, da ein abhängiger %{record}-Datensatz
+            existiert.
+          has_many: Datensatz kann nicht gelöscht werden, da abhängige %{record} existieren.

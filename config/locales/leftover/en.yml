@@ -1,0 +1,89 @@
+en:
+  favorite:
+    delete: "Delete from favorites"
+    add: "Add to favorites"
+    notfound:
+      title: "unfortunately no favorites were found"
+      message: "Apparently you have not saved any internships as favorites yet. <br/> Check out %{href} to find internships."
+      link: "the search"
+
+  favorite_compare:
+    title: "Compare Favorites"
+    column1: "First Internship"
+    column2: "Second Internship"
+    column3: "Third Internship"
+
+  faq:
+    title: "FAQs"
+    title2: "Internship FAQs"
+    frage1:
+      html: "<p><b>Can I complete my internship in several sections?</b></p><p>It is possible to divide the internship in three sections (each lasting at least four weeks).</br>A separate report must be made for each section.</p>"
+    frage2:
+      html: "<p><b>When are the internship reports due?</b></p><p>No later than four weeks after the completion of the internship. The report should include about 20 pages</br>and be stapled (no loose-leaf). Please submit it to the internship coordinator.</p>"
+    frage3:
+      html: "<p><b>Where do I register for the internship accompanying courses?</b></p><p>In LSF. Note that the courses are always offered during the semester breaks.</br>Apart from AEP, they can also be attended before the placement.</p>"
+    frage4:
+      html: "<p><b>When should I start looking for internships?</b></p><p>As soon as possible. It is important to have enough time to search for suitable internships and to apply. </br>Especially in countries for which a visa is required and / or if you want to apply for scholarships.</p>"
+    title3: "IMI Map FAQs"
+    frageI1:
+      html: "<p><b>Can I edit my internship-review after it has been submitted?</b></p><p>Yes, you can edit your internship review after it has been submited. Follow these steps: 'Account' → 'Internship Report' → 'Edit'.</p>"
+    frageI2:
+       html: "<p><b>How do I post a second intership-review?</b></p><p>If you have completed your internship in several companies, you can create one experience report for each company.</br> For this you have to write a mail to the person responsible (mail), which unlocks it for you.</br> After activation, the button 'Create review' under 'Account' will appear.</p>"
+
+  general:
+    title: "General Internship Information"
+    text1:
+     html: "A practical training component is integrated in the IMI Bachelor's degree study programm at the HTW,  in the form of a practical training term. You may do your internship in Germany (if you are from outside Germany) or abroad (obligatory for german students)<h3><strong>Formal Issues</strong></h3>All courses of the first and second semester must be completed successfully. The students themselves have to look for an internship placement abroad. The duration of the internship has to be at least 16 weeks (Study Regulations of 2008) or 19 weeks (Study Regulations of 2012). Prior to the beginning of the internship the internship contract with the selected company has to be shown to and excepted  by the HTW Berlin. <h3> <b> Internship Application </b> </h3> You have to to conclude a contract with the Company first. You may use the HTW Template."
+    text2:
+     html: "Fill in this internship application"
+    text3:
+     html: "</br>Hand in all the application documents to the internship coordinator (during office hours). The application documents comprise:"
+    text4: "fully completed and signed internship application form in the original"
+    text5: "printed LSF-certificate, prooving that you passed all the courses of the 1st and 2nd semester"
+    text6: "the contract with the company in the original"
+    text7:
+     html: "These documents remain at the HTW. If you need copies for BaföG, semester ticket refund or scholarships, you have to prepare those yourself and get them signed by the internship coordinator. If you want to keep an original copy of the placement agreement, please ask the compan yourself, to provide enough originals (usually three: one for the company, one for you and one for the HTW Berlin).</br></br>All these documents should be handed in before the end of lectures of the semester prior to the semester in which you plan to conduct your internship. As long as the idocuments are not complete or not handed in in original you can not be admitted to the internship.</br></br> In order to receive a refund for the semester ticket fee, you have to fill in the request (only available in german) and send it to the semester ticket office before the start of the internship semester. "
+    text8:
+     html: ""
+    text9:
+     html: "<h3><b>Approval of the internship</b></h3>The fully completed certificate of internship completion (signed and stamped by the company) and the internship report must be handed  in to the internship coordinator and the compulsory course AEP — Auswertung von Erfahrungen am Arbeitsplatz — must be completed successfully. Only then the internship can be approved. "
+
+  financing:
+    title:  "Financing"
+    title2: "Scholarships"
+    title3: "Auslandsbafög"
+    text1:
+      html: "<h3><strong>Which ways of fundings are available?</strong></h3>An internship abroad should be well planned. Although some internships are paid, the living costs are often much higher than here. Additionally you may have to pay things like:  travel costs and insurance. Therefore, please inform yourself - also two to three semesters prior to the planned internship. The sooner you begin to prepare your internship, the more options are open to you. Please note the application deadlines for various scholarship programs and the long processing time for Auslands-BAföG. For some scholarship programs you have to apply about ten months prior to starting, but at this time you don't need to have a placement promise. The International Office of HTW Berlin offers advice on funding opportunities of internships and also provides detailed information online about this topic."
+    text2: "You can find a more detailed list of funding programs here:"
+    text3:
+      html: "<p>Auslands-BAföG is the great financial support for an entire study, part-study internship or a student exchange in European and non-European countries! If you receive Bafög here, you sure get AUslandsbafög, if you get no Bafög here, you can still get Auslands-BAföG! Due to the higher costs abroad Auslands-Bafög come to question for a lot more of you.</p>"
+    text4: "more Information"
+    text5:
+      html: "<h3><strong>Funding programs</strong></h3>"
+    text6: "These are some of the most popular funding programs for IMIs:"
+
+    progs:
+     title1: "Program"
+     title2: "Short Facts"
+     title3: "Duration"
+     title4: "Region"
+    prog1:
+      namen: "Auslands-BAföG"
+      fact: "Loans and Grants for spezialized compulsory insternships"
+      duration: "max. 12 month"
+      region: "worldwide"
+    prog2:
+       namen: "ERASMUS Placement"
+       fact: "Allowance for practical training (Fachpraktikum) "
+       duration: "3-12  month"
+       region: "Europa"
+    prog3:
+       namen: "PROMOS Praktika"
+       fact: "Travel allowance for compulsory international internships"
+       duration: "3-6  month"
+       region: "preferably in Asia, Africa, Latin America"
+    prog4:
+       namen: "DAAD: Carlo-Schmid-Programm"
+       fact: "Full scholarships depending on country, travel allowance for interships in international organisations, EU-Organisations or NGO's"
+       duration: "A: 3 - 6 month, or  B: 4 - 10 month"
+       region: "worldwide"

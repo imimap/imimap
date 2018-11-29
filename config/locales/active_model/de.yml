@@ -1,0 +1,11 @@
+de:
+  activemodel:
+      errors:
+        messages:
+          blank: "darf nicht freigelassen werden"
+        models:
+          user_creation_form:
+            attributes:
+              password: "Password"
+              password_confirmation: "Passwordbestätigung"
+              email: "Email"

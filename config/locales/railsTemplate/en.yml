@@ -1,12 +1,20 @@
----
 en:
-  activerecord:
-    errors:
-      messages:
-        record_invalid: "Validation failed: %{errors}"
-        restrict_dependent_destroy:
-          has_one: "Cannot delete record because a dependent %{record} exists"
-          has_many: "Cannot delete record because dependent %{record} exist"
+  ldap:
+    authorization_failed: "Authorization via LDAP failed."
+  sign_up:
+    here: "Sign up here"
+    username: "Username (e.g. s05xxxxx)"
+    password: "Password"
+  noti:
+    report: "You can create your internship report now!"
+    comment: "Someone commented on your internship"
+    answer: "Someone answered on your comment"
+    void: "Sorry, no notifications available"
+  results:
+    found: "result(s) found"
+  error:
+    message: "The page you were looking for doesn't exist.<br/>You may have mistyped the address or the page may have moved."
+
   date:
     abbr_day_names:
     - Sun
@@ -213,3 +221,99 @@ en:
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
+
+  header:
+    admin: "Admin"
+    reportOverview: "Report Overview"
+    completeList: "Completed Report"
+    readList: "Reading List Report"
+    unreadList: "Unread Report"
+    curInternships: "current Internships"
+    account: "My account"
+    search: "Advanced search"
+    overview: "Home"
+    start: "Home"
+    statistic: "Statistics"
+    exchange: "Internship offers"
+    guide: "Guide"
+    internship: "My Internship"
+    logout: "Logout"
+    faq: "FAQs"
+    downloads: "Downloads"
+    financing: "Financing"
+    general: "General Info"
+    favorite: "Favorite"
+    tabtitle: "IMI Map | University of Applied Sciences"
+    current_internships: 'Internships'
+    title: "Title"
+    city: "City"
+    country: "Country"
+
+  choose:
+    country: "Choose a country"
+    orientation: "Choose an orientation"
+    semester: "Choose a semester"
+    language: "Choose a programming language"
+
+  search:
+    explanation:
+      html: "The diagrams give you an overview of the most common criteria for internships. </br> Simply click the bars to add the criteria to your search"
+    criteria: "Select your search criteria:"
+    title: "Search"
+    salary: "Monthly salary (min)"
+    livingCost: "Cost of living/month (max)"
+    rating: "Rating (min)"
+    resultnr: "results found!"
+    button: "Search"
+  buttons:
+    show: "Show"
+    edit: "Edit"
+    destroy: "Destroy"
+    back: "Back"
+    newcompany: "New Company"
+    newinternship: "New Internship"
+    newuser: "New User"
+    save: "Save"
+    done_intership_here: "Have you done your internship here, too?"
+    change_details: "Change Details"
+    compare: "Compare"
+
+  comments:
+    singular: "Comment"
+    plural: "Comments"
+    attributes:
+      body: "Your comment:"
+
+  answers:
+    from: "Reply from"
+    attributes:
+      body: "Reply"
+
+  download:
+    form: "Forms"
+    text1: "The required forms are listed below for download:"
+    text2: "Registration for internship"
+    text3: "Certificate of internship completion"
+    text4: "Example contract"
+    text5: "ger."
+    text6: "Request a refund of the semester ticket fees"
+
+  msg:
+    logout: "You have successfully logged out"
+    invalid: "Password or email is invalid"
+  unit:
+   month: "per month"
+   week: "per week"
+  attachment:
+   remove: "Remove picture"
+   add: "Add picture"
+  mail:
+   greeting: "Good Day!</br>"
+   registerRequest:
+    html: "</br>You completed your internship at the HTW succesfully. </br> We kindly remind you to register (if you haven't yet)and complete your internship experience report on IMI Map: imi-map.f4.htw-berlin.de </br> "
+   registerRequestSubject: "Come and join IMI-Map. IMI internship experience report"
+   forgotPsw:
+    html: "</br>Forgot you password? </br> Please click on the link below to request a new password:</br>"
+   forgotPswSubject: "You requested a new password on IMI Map"
+   goodbye:
+    html: "</br>Kind Regards. </br> IMI Map Team"
