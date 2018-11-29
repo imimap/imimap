@@ -9,3 +9,10 @@ en:
     start_date: Start
     end_date: End
     internship_state: Internship State
+
+  helpers:
+    reset: "Reset"
+    at: "at"
+    at2: "at"
+    summer: "summer"
+    winter: "winter"

@@ -1,0 +1,11 @@
+en:
+  activemodel:
+    errors:
+      messages:
+        blank: "can't be empty"
+      models:
+        user_creation_form:
+          attributes:
+            password: "password"
+            password_confirmation: "password confirmation"
+            email: "email"

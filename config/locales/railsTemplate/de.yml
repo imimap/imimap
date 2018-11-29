@@ -1,13 +1,20 @@
----
 de:
-  activerecord:
-    errors:
-      messages:
-        record_invalid: 'Gültigkeitsprüfung ist fehlgeschlagen: %{errors}'
-        restrict_dependent_destroy:
-          has_one: Datensatz kann nicht gelöscht werden, da ein abhängiger %{record}-Datensatz
-            existiert.
-          has_many: Datensatz kann nicht gelöscht werden, da abhängige %{record} existieren.
+  ldap:
+    authorization_failed: "Benutzername oder Passwort nicht korrekt!"
+  sign_up:
+    here: "Neu anmelden"
+    username: "Username (e.g. s05xxxxx)"
+    password: "Password"
+  noti:
+    report: "Du kannst nun deinen Praktikumsbericht anlegen"
+    comment: "Jemand hat deinen Praktikumsbericht kommentiert"
+    answer: "Jemand hat deinen Kommentar beantwortet"
+    void: "Du hast derzeit keine Benachrichtigungen"
+  results:
+    found: "Suchergebnis(se) gefunden"
+  error:
+    message: "Die Seite die Sie aufrufen wollten existiert nicht.<br/>Vielleicht haben Sie sich verschrieben oder die Seite ist umgezogen."
+
   date:
     abbr_day_names:
     - So
@@ -220,3 +227,96 @@ de:
       long: "%A, %d. %B %Y, %H:%M Uhr"
       short: "%d. %B, %H:%M Uhr"
     pm: nachmittags
+
+  header:
+    admin: "Admin"
+    reportOverview: "Berichte Übersicht"
+    completeList: "Angegebene Berichte"
+    readList: "Gelesene Berichte"
+    unreadList: "Ungelesene Berichte"
+    curInternships: "aktuelle Praktika"
+    account: "Konto"
+    search: "Erweiterte Suche"
+    overview: "Start"
+    statistic: "Statistik"
+    start: "Start"
+    exchange: "Praktikumsangebote"
+    guide: "Guide"
+    internship: "Mein Praktikum"
+    logout: "Abmelden"
+    faq: "FAQs"
+    downloads: "Downloads"
+    financing: "Finanzierung"
+    general: "Allgemeine Infos"
+    favorite: "Favoriten"
+    tabtitle: "IMI Map | Hochschule für Technik und Wirtschaft"
+    current_internships: 'Praktika'
+    title: "Titel"
+    city: "Stadt"
+    country: "Land"
+  choose:
+    country: "Wähle ein Land"
+    orientation: "Wähle eine Orientierung"
+    semester: "Wähle ein Semester"
+    language: "Wähle eine Programmiersprache"
+  search:
+    explanation:
+      html: "Die Diagramme zeigen dir die häufigsten Kriterien von unseren Praktika. </br>Klick auf eine der Säulen um sie für deine Suche auszuwählen"
+    criteria: "Wähle deine Suchkriterien:"
+    title: "Suche"
+    salary: "Monatliches Gehalt (min)"
+    livingCost: "Lebenshaltungskosten/Monat (max)"
+    rating: "Bewertung (min)"
+    resultnr: "Ergebnisse gefunden!"
+    button: "Suchen"
+  buttons:
+    show: "Anzeigen"
+    edit: "Bearbeiten"
+    destroy: "Löschen"
+    back: "Zurück"
+    newcompany: "Neue Firma"
+    newinternship: "Neues Praktikum"
+    newuser: "Neuer Benutzer"
+    save: "Speichern"
+    done_intership_here: "Hast du auch dein Praktikum hier gemacht?"
+    compare: "Vergleichen"
+
+  comments:
+    singular: "Kommentar"
+    plural: "Kommentare"
+    attributes:
+      body: "Dein Kommentar:"
+
+  answers:
+    from: "Antwort von"
+    attributes:
+      body: "Antwort"
+
+  download:
+    form: "Formulare"
+    text1: "Hier könnt Ihr alle wichtigen Dokumente, die ihr im Rahmen des Praktikums benötigt, herunterladen:"
+    text2: "Praktikumsantrag"
+    text3: "Praktikumsnachweis"
+    text4: "Praktikumsvertrag HTW Beispiel"
+    text5: "deu."
+    text6: "Antrag auf Rückerstattung der Semesterticket-Gebühren"
+
+  msg:
+    logout: "Du hast dich erfolgreich abgemeldet"
+    invalid: "Email oder Passwort falsch"
+  unit:
+    month: "pro Monat"
+    week: "pro Woche"
+  attachment:
+   remove: "Bild entfernen"
+   add: "Bild hinzufügen"
+  mail:
+   greeting: "Guten Tag,</br> "
+   registerRequest:
+    html: "Du hast dein Praktikum des IMI Studiengangs an der HTW erfolgreich abgeschlossen. </br> Wir möchten Dich bitten deinen Praktikum-Erfahrungsbericht abzugeben auf: imi-map.f4.htw-berlin.de </br> Falls du dich noch nicht auf IMI Map registriert hast musst du dies zuerst tun. </br>Vielen Dank.</br> "
+   registerRequestSubject: "Bitte registriere dich auf IMI Map"
+   forgotPsw:
+    html: "</br>Du hast Dein Passwort vergessen? </br> Dann klicke bitte auf diesen Link:</br>"
+   forgotPswSubject: "Du hast ein neues Passwort angefordert für IMI Map"
+   goodbye:
+    html: "</br>Liebe Grüße. </br>Dein IMI Map Team"

@@ -1,0 +1,17 @@
+en:
+  errors:
+    models:
+      internship:
+        attributes:
+          title:
+            blank: "can't be empty"
+          living_costs:
+            blank: "can't be empty"
+          salary:
+            blank: "can't be empty"
+          working_hours:
+            blank: "can't be empty"
+          programming_language_ids:
+            blank: "can't be empty"
+    messages:
+      record_invalid: "Missing information: %{errors}"
