@@ -1,7 +1,9 @@
 start:
 	docker-compose up -d
+# caution: deletes all images!
 stop:
 	docker-compose down --rmi all -v --remove-orphans
+# caution: deletes all images!
 restart:
 	docker-compose down --rmi all -v --remove-orphans
 	docker-compose up -d
