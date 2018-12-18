@@ -15,10 +15,29 @@ describe 'ActiveAdmin Admin User' do
         one, two = @admin_user.email.split('@')
         expect(page).to have_content one
         expect(page).to have_content two
-        # expect(page).to have_content @admin_user.email
+      end
+    end
 
-        # put some of new translations
-        # expect(page).to have_content I18n.t('activerecord.models.admin_user.other')
+    # we check if changing the mail address of a user
+    # without touching the password works
+    describe 'controller' do
+      it 'update' do
+        @user = create(:user)
+        # visit admin_user_path(id: @user)
+        # click_on t('active_admin.edit_model',model: User.model_name.human)
+        visit edit_admin_user_path(id: @user)
+        expect(page).not_to have_content 'NoMethodError'
+        # save_and_open_page # um zu sehen was man sieht...
+        # das funktioniert nicht weil es ein button ist:
+        # expect(page).to
+        # have_content t('helpers.submit.update', model: User.model_name.human)
+        old_email = @user.email
+        # nb: there is no translation yet for User.human_attribute_name(:email)
+        fill_in User.human_attribute_name(:email),
+                with: 'testmail@htw-berlin.de'
+        click_on t('helpers.submit.update', model: User.model_name.human)
+        expect(page).to have_content 'testmail@htw-berlin.de'
+        expect(page).not_to have_content old_email
       end
     end
   end
