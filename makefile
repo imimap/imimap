@@ -18,4 +18,5 @@ db_seed:
 prod_ssh:
 	ssh deployer@imi-map-production.f4.htw-berlin.de
 prod_dump:
-	ssh deployer@imi-map-production.f4.htw-berlin.de "docker exec postgresql pg_dump -h localhost -U imi_map  imi_map_production" > imi-map-$(shell date +%Y-%m-%d).pgdump
+	mkdir -p dumps
+	ssh deployer@imi-map-production.f4.htw-berlin.de "docker exec postgresql pg_dump -h localhost -U imi_map  imi_map_production" > dumps/imi-map-$(shell date +%Y-%m-%d).pgdump
