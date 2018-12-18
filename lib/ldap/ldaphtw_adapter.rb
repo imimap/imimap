@@ -39,13 +39,16 @@ class LDAPHTWAdapter
       #              verify_mode: OpenSSL::SSL::VERIFY_NONE },
 
       encryption: {
-        method:      :simple_tls,
-        #verify_mode: OpenSSL::SSL::VERIFY_NONE
+        method: :simple_tls,
         tls_options: {
-          ca_file: './certs/CA-HTW-cert.pem',
-            #ca_file: '/Users/kleinen/mine/current/htw/imimap/code/imimap/certs/CA-HTW-cert.pem',
-                       ssl_version: 'TLSv1_1' }
+          verify_mode: OpenSSL::SSL::VERIFY_PEER,
+          ca_file: './certs/CA-HTW-cert.pem'
+          # ssl_version: TLSv1_1'
+        },
+        # connect_timeout: 30,
+        verbose: true
       },
+
       auth: {
         method: :simple,
         username: "CN=#{ldap_username},#{ldap_htw}",
@@ -65,7 +68,7 @@ class LDAPHTWAdapter
     begin
       success = netldap.bind
     rescue StandardError => e
-      Rails.logger.error("-- ldap -- coud not connect to host #{host} ")
+      Rails.logger.error("-- ldap -- could not connect to host #{host} ")
       Rails.logger.error(e.message)
       return false
     end
