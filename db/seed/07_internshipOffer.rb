@@ -4,6 +4,8 @@
   InternshipOffer.create!(
     title: "#{Faker::Job.title}, #{Faker::Job.field}",
     body: Faker::Lorem.paragraph(2, false, 4),
-    active: rand(2) == 0 ? true : false
+    active: rand(2).zero?,
+    city: Faker::Address.city,
+    country: Faker::Address.country
   )
 end
