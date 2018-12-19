@@ -3,7 +3,7 @@
 # Offers for Internship Positions
 class InternshipOffersController < ApplicationResourceController
   def index
-    @offers = InternshipOffer.all
+    @offers = InternshipOffer.where(active: :true)
   end
 
   def show
