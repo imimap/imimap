@@ -27,3 +27,10 @@ echo "------ deploying tag ${DEPLOYMENT_TAG} -------  "
 . ./ci-cd/deploy05-docker-deploy.sh
 
 echo "------ deployment done -------  "
+
+
+# to test this file locally:
+# export TRAVIS_TAG=....
+# export RAILS_MASTER_KEY=...
+# export LDAP=...
+# copy key file e.g. id_rsa_staging to app home
