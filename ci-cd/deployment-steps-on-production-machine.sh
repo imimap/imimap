@@ -9,6 +9,10 @@ exit_on_error () {
       exit $sshexit
   fi
 }
+echo "+++ starting deployment on machine"
+if [ -z RAILS_MASTER_KEY ]; then echo RAILS_MASTER_KEY missing ; else echo RAILS_MASTER_KEY exists; fi
+if [ -z LDAP ]; then echo LDAP missing ; else echo LDAP exists; fi
+
 echo "+++ stopping docker containers"
 docker-compose -f docker-compose-production.yml down
 echo "+++ pulling and starting docker containers"

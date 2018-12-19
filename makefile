@@ -15,8 +15,10 @@ db_migrate:
 	docker-compose exec imimap rails db:migrate
 db_seed:
 	docker-compose exec imimap rails db:seed
-prod_ssh:
+ssh_prod:
 	ssh deployer@imi-map-production.f4.htw-berlin.de
+ssh_staging:
+	ssh deployer@imi-map-staging.f4.htw-berlin.de
 prod_dump:
 	mkdir -p dumps
 	ssh deployer@imi-map-production.f4.htw-berlin.de "docker exec postgresql pg_dump -h localhost -U imi_map  imi_map_production" > dumps/imi-map-$(shell date +%Y-%m-%d).pgdump
