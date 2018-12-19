@@ -22,6 +22,8 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
+    # use this to always have a flash notice for testing
+    # flash[:notice] = 'The flash notice'
   end
 
   def default_url_options(_options = {})

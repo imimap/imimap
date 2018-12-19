@@ -7,6 +7,7 @@ Internship.destroy_all
 Company.destroy_all
 CompanyAddress.destroy_all
 
+# if users are created, the password is geheim12
 (20_001..20_020).each do |er|
   create_student(enrolment_number: er, with_internship: false, with_user: true)
 end
