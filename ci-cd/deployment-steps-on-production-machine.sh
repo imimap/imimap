@@ -9,38 +9,38 @@ exit_on_error () {
       exit $sshexit
   fi
 }
-echo "+++ starting deployment on machine"
-if [ -z RAILS_MASTER_KEY ]; then echo RAILS_MASTER_KEY missing ; else echo RAILS_MASTER_KEY exists; fi
-if [ -z LDAP ]; then echo LDAP missing ; else echo LDAP exists; fi
+echo "+++++ starting deployment on machine for TAG:[${TAG}]"
+if [ -z ${RAILS_MASTER_KEY} ]; then echo RAILS_MASTER_KEY missing ; else echo RAILS_MASTER_KEY exists; fi
+if [ -z ${LDAP} ]; then echo LDAP missing ; else echo LDAP exists; fi
 
-echo "+++ stopping docker containers"
+echo "+++++ stopping docker containers"
 docker-compose -f docker-compose-production.yml down
-echo "+++ pulling and starting docker containers"
+echo "+++++ pulling and starting docker containers"
 docker-compose -f docker-compose-production.yml up -d
 exit_on_error $?
 
-echo "+++ Clean assets "
+echo "+++++ Clean assets "
 rm -rf nginx-assets
 mkdir -p nginx-assets
-echo "+++ copy assets from container to dir on host"
+echo "+++++ copy assets from container to dir on host"
 docker cp imimap:/usr/src/app/public/assets nginx-assets
 exit_on_error $?
 
-# echo "+++ Asset precompilation "
+# echo "+++++ Asset precompilation "
 # docker-compose -f docker-compose-production.yml exec imimap rake assets:precompile
 # exit_on_error $?
 
-# echo "+++ instead copy the precompiled assets to new dir"
+# echo "+++++ instead copy the precompiled assets to new dir"
 #       - ./rails/public:/usr/src/app/nginx-assets
 # rm -rf ./rails/public # clear out assets directory from host,
 # then copy assets to mounted dir to make them accessible from outside the container.
 # docker-compose -f docker-compose-production.yml exec imimap cp -r ./public/assets ./nginx-assets
 # exit_on_error $?
 
-echo "+++ Wait for postgres"
+echo "+++++ Wait for postgres"
 docker-compose -f docker-compose-production.yml exec imimap ./ci-cd/wait-for-db-connection.sh
 exit_on_error $?
 
-echo "+++ Database Migration"
+echo "+++++ Database Migration"
 docker-compose -f docker-compose-production.yml exec imimap bundle exec rake db:migrate
 exit_on_error $?

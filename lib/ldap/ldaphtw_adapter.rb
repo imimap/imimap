@@ -81,7 +81,7 @@ class LDAPHTWAdapter
       # ldap_host|ldap_port|ldap_htw
       ldapconfig = ENV['LDAP']
       Rails.logger.error("-- ldap -- ENV['LDAP'] missing ") unless ldapconfig
-      @host, @port, @connectstring = ldapconfig&.split('|')
+      @host, @port, @connectstring = ldapconfig&.split('/')
     else
       @host = 'some.host.de'
       @port = 4711

@@ -27,3 +27,9 @@ echo "------ deploying tag ${DEPLOYMENT_TAG} -------  "
 . ./ci-cd/deploy05-docker-deploy.sh
 
 echo "------ deployment done -------  "
+
+
+# to test this file locally:
+# export TRAVIS_TAG=ffc7b6b
+
+# copy key
