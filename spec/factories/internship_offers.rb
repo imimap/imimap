@@ -11,24 +11,35 @@ DELIM
 
 FactoryBot.define do
   factory :internship_offer do
-    title { 'internship offer title' }
+    title { 'Cool Internship Position 1' }
     body { TEXT3 }
     pdf { 'internship offer pdf' }
     city { 'London' }
     country { 'UK' }
+    active { true }
   end
   factory :io2, class: InternshipOffer do
-    title { 'internship offer title' }
+    title { 'Cool Internship Position 2' }
     body { TEXT3 }
     pdf { 'internship offer pdf' }
     city { 'San Francisco' }
     country { 'US' }
+    active { true }
   end
   factory :io3, class: InternshipOffer do
-    title { 'internship offer title' }
+    title { 'Cool Internship Position 3' }
     body { TEXT3 }
     pdf { 'internship offer pdf' }
     city { 'Paris' }
     country { 'FR' }
+    active { true }
+  end
+  factory :iox, class: InternshipOffer do
+    title { 'Not so cool Internship Position' }
+    body { TEXT4 }
+    pdf { 'internship offer pdf' }
+    city { 'Bielefeld' }
+    country { 'DE' }
+    active { false }
   end
 end
