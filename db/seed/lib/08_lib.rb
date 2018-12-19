@@ -38,7 +38,7 @@ def create_internship(student:, company_address:)
 end
 
 def email_for_enrolment_number(enrolment_number:)
-  "s0#{enrolment_number}@student.htw-berlin.de"
+  "s0#{enrolment_number}@htw-berlin.de"
 end
 
 def create_user_for_student(student:)
