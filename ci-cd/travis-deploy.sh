@@ -30,6 +30,7 @@ echo "------ deployment done -------  "
 
 
 # to test this file locally:
-# export TRAVIS_TAG=ffc7b6b
-
-# copy key
+# export TRAVIS_TAG=....
+# export RAILS_MASTER_KEY=...
+# export LDAP=...
+# copy key file e.g. id_rsa_staging to app home
