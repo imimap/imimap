@@ -31,7 +31,7 @@ describe 'ActiveAdmin edit internship' do
         @programming_language = create(:programming_language)
         visit edit_admin_internship_path(id: @internship)
         have_select Internship.human_attribute_name(:programming_languages),
-                                                    with: @programming_language.name
+                with: @programming_language.name
         click_on t('helpers.submit.update', model: Internship.model_name.human)
         expect(page).to have_content @programming_language.name
       end
