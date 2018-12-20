@@ -38,6 +38,7 @@ class Internship < ApplicationRecord
   # TBD: Test this. It probably didn't work before cleaning up the style.
   accepts_nested_attributes_for :company,
                                 reject_if: proc { |attr| attr['name'].blank? }
+  accepts_nested_attributes_for :programming_languages
   def rating
     internship_rating.total_rating
   end
