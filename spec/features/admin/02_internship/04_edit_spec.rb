@@ -28,13 +28,12 @@ describe 'ActiveAdmin edit internship' do
     end
     describe 'controller' do
       it 'update' do
-        @internship = create(:internship)
         @programming_language = create(:programming_language)
         visit edit_admin_internship_path(id: @internship)
-        fill_in Internships.human_attribute_name(:programming_language),
-                with: @programming_language
-        click_on t('helpers.submit.update', model: Internships.model_name.human)
-        expect(page).to have_content @programming_language
+        have_select Internship.human_attribute_name(:programming_languages),
+                                                    with: @programming_language.name
+        click_on t('helpers.submit.update', model: Internship.model_name.human)
+        expect(page).to have_content @programming_language.name
       end
     end
   end
