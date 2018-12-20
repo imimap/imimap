@@ -2,12 +2,12 @@
 
 FactoryBot.define do
   factory :semester do
-    name { 'semester name' }
+    name { 'WS 11/12' }
   end
   factory :ws2018, class: Semester do
-    name { 'WS 2018/19' }
+    name { 'WS 18/19' }
   end
   factory :ss2018, class: Semester do
-    name { 'SS 2018' }
+    name { 'SS 18' }
   end
 end
