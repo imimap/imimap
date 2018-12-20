@@ -62,4 +62,14 @@ FactoryBot.define do
     fax { '+187345888' }
     company { create(:company_2) }
   end
+
+  factory :company_address_with_changing_country, class: CompanyAddress do
+    city { 'SomeCity' }
+    country { 'US' }
+    street { '2454 Telegraph Avenue' }
+    zip { '12345' }
+    phone { '+187345847' }
+    fax { '+187345888' }
+    company { create(:company_for_edit) }
+  end
 end

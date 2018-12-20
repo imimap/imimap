@@ -33,6 +33,16 @@ de:
         main_language: Hauptsprache
         phone: Telefon
         excluded_from_search: ausgenommen von der Suche
+      company_address:
+        street: Straße
+        zip: Postleitzahl
+        city: Stadt
+        country: Land
+        phone: Telefon
+        fax: Fax
+        latitude: Breite
+        longitude: Länge
+        company: Firma
       internship:
         student: Student_in
         company: Firma
