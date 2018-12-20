@@ -40,7 +40,7 @@ en:
     company_fact: "Company Short Facts"
     createInternship: "You do not have an internship yet"
     index:
-      title: "Listing internships"
+      title: "Internships in"
     edit:
       editinternship: "Editing Internship"
     new:

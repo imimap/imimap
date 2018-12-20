@@ -1,5 +1,9 @@
-<div id="form-block4">
-<h3>Internships in <%= @semester_name %></h3>
+<div id="form-block-wide">
+<h3><%= t('internships.index.title')%> <%= @semester.name %></h3>
+<%= form_tag(internships_path, method: "get") do %>
+  <%= select_tag(:semester_id, options_for_select(@semester_options,@semester.id), class: 'chzn-select') %>
+  <%= submit_tag("Select") %>
+<% end %>
 <table class="table table-striped">
   <thead>
     <tr>
