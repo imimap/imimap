@@ -149,7 +149,6 @@ class InternshipsController < ApplicationResourceController
     a << REPORT_ATTRIBUTES
     a << NOT_USED_ATTRIBUTES
     a << WORK_DESCRIPTION_ATTRIBUTES
-    a << PROGRAMMING_LANGUAGES
     a << SUPERVISOR_ATTRIBUTES
     a << REVIEW_ATTRIBUTES
     # these should be last because it's a hash!!!
@@ -180,7 +179,8 @@ class InternshipsController < ApplicationResourceController
                          internship_rating_attributes
                          internship_rating_id
                          email_public].freeze
-NESTED_ATTRIBUTES = [{ programming_languages: [] }].freeze
+
+  NESTED_ATTRIBUTES = { programming_language_ids: [] }.freeze
 
   # title (job title, usually not used, not part of active admin)
   # orientation_id (not used)

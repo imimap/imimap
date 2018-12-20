@@ -74,3 +74,4 @@ rails/public
 
 # Ignore dumps
 *.pgdump
+dumps/*
