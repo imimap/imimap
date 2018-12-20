@@ -2,7 +2,7 @@
 
 ActiveAdmin.register Internship do
   menu priority: 6
-  permit_params InternshipsController.permitted_params
+  permit_params(*InternshipsController.permitted_params)
   filter :student_enrolment_number,
          as: :select,
          collection: proc { Student.all.map(&:enrolment_number).uniq },

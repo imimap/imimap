@@ -154,9 +154,10 @@ class InternshipsController < ApplicationResourceController
     a << REPORT_ATTRIBUTES
     a << NOT_USED_ATTRIBUTES
     a << WORK_DESCRIPTION_ATTRIBUTES
-    a << NESTED_ATTRIBUTES
     a << SUPERVISOR_ATTRIBUTES
     a << REVIEW_ATTRIBUTES
+    # these should be last because it's a hash!!!
+    a << NESTED_ATTRIBUTES
     a
   end
 
@@ -172,7 +173,6 @@ class InternshipsController < ApplicationResourceController
   NOT_USED_ATTRIBUTES = %i[completed user_id].freeze
   WORK_DESCRIPTION_ATTRIBUTES = %i[operational_area
                                    orientation_id description title tasks].freeze
-  NESTED_ATTRIBUTES = [{ programming_languages: [] }].freeze
   SUPERVISOR_ATTRIBUTES = %i[supervisor_email
                              supervisor_name].freeze
 
@@ -184,6 +184,8 @@ class InternshipsController < ApplicationResourceController
                          internship_rating_attributes
                          internship_rating_id
                          email_public].freeze
+
+  NESTED_ATTRIBUTES = { programming_language_ids: [] }.freeze
 
   # title (job title, usually not used, not part of active admin)
   # orientation_id (not used)
