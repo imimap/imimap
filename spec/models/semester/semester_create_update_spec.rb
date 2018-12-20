@@ -7,7 +7,9 @@ RSpec.describe Semester, type: :model do
     [['SS 13', 2013.1],
      ['WS 12/13', 2012.2],
      ['WS 15/16', 2015.2],
-     ['SS 11', 2011.1]]
+     ['SS 11', 2011.1],
+     ['WS 05/06', 2005.2],
+     ['SS 00', 2000.1]]
   end
 
   describe 'create' do
@@ -25,5 +27,4 @@ RSpec.describe Semester, type: :model do
       end
     end
   end
-  
 end
