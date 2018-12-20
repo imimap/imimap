@@ -28,8 +28,8 @@ RSpec.describe InternshipsController, type: :controller do
         get :index
       end
 
-      it 'assigns @semester_name' do
-        expect(assigns(:semester_name)).to eq(@semester.name)
+      it 'assigns @semester' do
+        expect(assigns(:semester)).to eq(@semester)
       end
 
       it 'assigns @complete_internships' do

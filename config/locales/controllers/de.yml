@@ -38,7 +38,8 @@ de:
     company_fact: "Arbeitsplatz Kurzinfo"
     createInternship: "Du hast noch kein Praktikum eingetragen"
     index:
-      title: "Liste von Praktika"
+      title: "Praktika im"
+      select: 'anzeigen'
     edit:
       editinternship: "Praktikum bearbeiten"
     new:
