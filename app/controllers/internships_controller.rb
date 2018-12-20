@@ -12,9 +12,14 @@ class InternshipsController < ApplicationResourceController
   include CompleteInternshipHelper
 
   def index
-    semester = Semester.last
-    @semester_name = semester ? semester.name : '(no semester)'
-    internships = Internship.where(semester: semester)
+    @semester = if params[:semester_id]
+                 Semester.find(params[:semester_id])
+               else
+                 Semester.current
+               end
+    @semester_options = Semester.all.map { |s| [s.name, s.id] }
+
+    internships = Internship.where(semester: @semester)
     @internship_count = internships.count
     # make rails load the file
     CompleteInternship if @internship_count.zero?

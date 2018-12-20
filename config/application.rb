@@ -12,6 +12,9 @@ module ImiMaps
   # THE Rails Application.
   class Application < Rails::Application
     # IMI-Map settings
+    config.autoload_paths += %W[#{config.root}/lib]
+    config.autoload_paths += %W[#{config.root}/lib/model]
+    # config.autoload_paths += Dir["#{config.root}/lib/**/"]
     config.active_record.observers = :user_comment_observer,
                                      :answer_observer,
                                      :internship_observer,
