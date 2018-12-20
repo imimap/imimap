@@ -1,5 +1,7 @@
 start:
 	docker-compose up -d
+start_db:
+	docker-compose -f docker-compose-db.yml -f docker-compose.yml up -d
 stop:
 	docker-compose down --rmi all -v --remove-orphans
 restart:

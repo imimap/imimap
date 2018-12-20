@@ -9,9 +9,10 @@ class Semester < ApplicationRecord
   has_many :internships
   before_save :sid_or_name
 
-  def sid_or_name
-    self.sid = name2sid(name) if sid.nil? && !name.nil?
-    self.name = sid2name(sid) if name.nil? && !sid.nil?
+  default_scope { order(sid: :desc) }
+
+  def self.current
+    Semester.for_date(Date.today)
   end
 
   def self.for_date(date)
@@ -28,6 +29,11 @@ class Semester < ApplicationRecord
 
   def year
     sid2year(sid)
+  end
+
+  def sid_or_name
+    self.sid = name2sid(name) if sid.nil? && !name.nil?
+    self.name = sid2name(sid) if name.nil? && !sid.nil?
   end
 
   def start_day
