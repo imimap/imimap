@@ -14,12 +14,14 @@ describe 'ActiveAdmin show internship' do
       it 'shows internship' do
         internship = create(:internship)
         visit admin_internship_path(id: internship)
-        expect(page).to have_content active_admin_date(internship.start_date)
-        expect(page).to have_content active_admin_date(internship.end_date)
-        expect(page).to have_content internship.tasks
-        expect(page).to have_content internship.comment
-        expect(page).to have_content internship.supervisor_email
-        expect(page).to have_content internship.supervisor_name
+        ['activerecord.attributes.internship.start_date',
+         'activerecord.attributes.internship.end_date',
+         'activerecord.attributes.internship.tasks',
+         'activerecord.attributes.internship.supervisor_email',
+         'activerecord.attributes.internship.supervisor_name',
+         'activerecord.attributes.internship.comment'].each do |i18n_key|
+          expect(page).to have_content(I18n.t(i18n_key))
+        end
       end
     end
   end

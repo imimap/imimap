@@ -12,9 +12,9 @@ FactoryBot.define do
     after(:build) do |company, _evaluator|
       create(:company_address_htw, company: company)
     end
-    after(:create) do |company, _evaluator|
-      create(:company_address_htw, company: company)
-    end
+    # after(:create) do |company, _evaluator|
+    #  create(:company_address_htw, company: company)
+    # end
     comment { 'this says something about the company' }
   end
 
@@ -29,9 +29,9 @@ FactoryBot.define do
     after(:build) do |company, _evaluator|
       create(:company_address_is24, company: company)
     end
-    after(:create) do |company, _evaluator|
-      create(:company_address_is24, company: company)
-    end
+    # after(:create) do |company, _evaluator|
+    #  create(:company_address_is24, company: company)
+    # end
     comment { 'this says something about the company' }
   end
 
@@ -46,9 +46,9 @@ FactoryBot.define do
     after(:build) do |company, _evaluator|
       create(:company_address_1, company: company)
     end
-    after(:create) do |company, _evaluator|
-      create(:company_address_1, company: company)
-    end
+    #  after(:create) do |company, _evaluator|
+    #    create(:company_address_1, company: company)
+    #  end
     comment { 'this says something about the company' }
   end
 
@@ -63,9 +63,21 @@ FactoryBot.define do
     after(:build) do |company, _evaluator|
       create(:company_address_2, company: company)
     end
-    after(:create) do |company, _evaluator|
-      create(:company_address_2, company: company)
-    end
+    #  after(:create) do |company, _evaluator|
+    #    create(:company_address_2, company: company)
+    #  end
     comment { 'this says something about the company' }
   end
+
+  factory :company_without_address, class: Company do
+    name { 'Brillenmode am Lausitzer Platz' }
+    number_employees { 10 }
+    industry { 'Optiker' }
+    website { 'https://www.brillenmode-berlin.de' }
+    main_language { 'German' }
+    excluded_from_search { false }
+    import_id { 6 }
+    comment { 'ein kleiner optiker' }
+  end
+
 end

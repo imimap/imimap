@@ -1,6 +1,16 @@
 en:
   activerecord:
     attributes:
+      company_address:
+        street: Street
+        zip: ZIP
+        city: City
+        country: Country
+        phone: Phone
+        fax: Fax
+        latitude: Latitude
+        longitude: Longitude
+        company: Company
       internship_offer:
         body: Description
         created_at: Created at
