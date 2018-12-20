@@ -3,7 +3,7 @@
 require 'rails_helper'
 require_relative '../helpers/active_admin_spec_helpers.rb'
 
-describe 'ActiveAdmin Internship CRUD' do
+describe 'ActiveAdmin show internship' do
   context 'logged in' do
     before :each do
       @admin_user = create :admin_user

@@ -3,7 +3,7 @@
 require 'rails_helper'
 require_relative '../helpers/active_admin_spec_helpers.rb'
 
-describe 'ActiveAdmin Internship / Index' do
+describe 'ActiveAdmin index internship' do
   context '(logged in)' do
     before :each do
       @admin_user = create :admin_user
@@ -36,7 +36,7 @@ describe 'ActiveAdmin Internship / Index' do
       visit admin_internships_path
       click_on t('active_admin.view')
       expect(current_path).to eq admin_internship_path(
-        id: @internship, 
+        id: @internship,
         locale: I18n.locale)
     end
   end
