@@ -40,6 +40,9 @@ de:
     index:
       title: "Praktika im"
       select: 'anzeigen'
+      export:
+        csv: 'CSV'
+        excel: 'Excel'
     edit:
       editinternship: "Praktikum bearbeiten"
     new:
