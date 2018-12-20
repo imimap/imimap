@@ -39,6 +39,7 @@ de:
     createInternship: "Du hast noch kein Praktikum eingetragen"
     index:
       title: "Praktika im"
+      select: 'anzeigen'
     edit:
       editinternship: "Praktikum bearbeiten"
     new:

@@ -15,6 +15,11 @@ namespace :imimap do
     parser.import_internships
   end
 
+  desc 'save all semester to initialize sid'
+  task update_semesters: :environment do
+    Semester.all.each(&:save)
+  end
+
   desc 'geocode all company addresses'
   task geocode_companies: :environment do
     CompanyAddress.find_each do |ca|

@@ -41,6 +41,7 @@ en:
     createInternship: "You do not have an internship yet"
     index:
       title: "Internships in"
+      select: 'Select'
     edit:
       editinternship: "Editing Internship"
     new:
