@@ -2,37 +2,30 @@
 
 require 'rails_helper'
 
-describe 'ActiveAdmin Create Student' do
+describe 'ActiveAdmin Create Student from index path' do
   before :each do
-    @admin_user = create :admin_user
-    sign_in @admin_user
-    I18n.locale = 'en'
+    sign_in create(:admin_user)
     @student = build(:student)
+    visit admin_students_path
   end
-  describe 'from index' do
-    before :each do
-      visit admin_students_path
-      expect(I18n.locale).to eq :de
+  it 'create button is available' do
+    expect(page).to have_content I18n.t('activerecord.models.student.other')
+    click_on t('active_admin.create_model', model: Student.model_name.human)
+    expect(page).to have_content t('active_admin.create_model',
+                                   model: Student.model_name.human)
+  end
+  it 'create works' do
+    click_on t('active_admin.create_model', model: Student.model_name.human)
+    field_names = %w[enrolment_number first_name last_name
+                     birthplace birthday email]
+    field_names.each do |field_name|
+      fill_in t("activerecord.attributes.student.#{field_name}"),
+              with: @student.send(field_name)
     end
-    it 'create button is available' do
-      expect(page).to have_content I18n.t('activerecord.models.student.other')
-      click_on t('active_admin.create_model', model: Student.model_name.human)
-      expect(page).to have_content t('active_admin.create_model', model: Student.model_name.human)
-    end
-    it 'create works' do
-      click_on t('active_admin.create_model', model: Student.model_name.human)
-      fill_in t('activerecord.attributes.student.enrolment_number'), with: @student.enrolment_number
-
-      fill_in t('activerecord.attributes.student.first_name'), with: @student.first_name
-      fill_in t('activerecord.attributes.student.last_name'), with: @student.last_name
-      fill_in t('activerecord.attributes.student.birthplace'), with: @student.birthplace
-      fill_in t('activerecord.attributes.student.birthday'), with: @student.birthday
-      fill_in t('activerecord.attributes.student.email'), with: @student.email
-
-      # click_on t('helpers.submit.create', model: Student.model_name.human)
-      # click_on t('active_admin.create_model', model: Student.model_name.human)
-      click_on 'Student_in anlegen'
-      expect(page).to have_content @student.first_name
+    click_on 'Student_in anlegen'
+    expect(page).to have_content('21. Dezember 1990')
+    (field_names - %w[birthday]).each do |field_name|
+      expect(page).to have_content @student.send(field_name)
     end
   end
 end

@@ -20,6 +20,7 @@ class Semester < ApplicationRecord
     sid = SemesterHelper.date2sid(date)
     s = Semester.where(sid: sid).first
     return s unless s.nil?
+
     Semester.create(sid: sid)
   end
 

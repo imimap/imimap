@@ -31,5 +31,4 @@ describe 'method call with array and hash' do
     expect(params[1]).to eq 2
     expect(params[2]).to eq(a: :b)
   end
-
 end

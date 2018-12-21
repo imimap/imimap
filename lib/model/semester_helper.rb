@@ -7,14 +7,20 @@ module SemesterHelper
   SEM_NO = { 'SS': 1, 'WS': 2 }.freeze
   NO_SEM = SEM_NO.invert
 
-  def self.start_day_for(a_year, a_wos)
-    a_wos == SUMMER ? Date.new(a_year, 4, 1) : Date.new(a_year, 10, 1)
+  def self.start_day_for(a_year, winter_or_summer)
+    if winter_or_summer == SUMMER
+      Date.new(a_year, 4, 1)
+    else
+      Date.new(a_year, 10, 1)
+    end
   end
 
   def self.date2sid(date)
     year = date.year
     return (year - 1).to_f + 0.2 if date < start_day_for(year, SUMMER)
+
     return year.to_f + 0.1 if date < start_day_for(year, WINTER)
+
     year.to_f + 0.2
   end
 
@@ -32,9 +38,11 @@ module SemesterHelper
   def name2sid(name)
     m = %r{(WS|SS) (\d\d)(\/\d\d)?}.match(name)
     raise "couldn't match #{name}" unless m
+
     year = 2000 + m[2].to_i
     sow_code = SEM_NO[m[1].to_sym]
     raise "invalid semester marker in #{name}" unless sow_code
+
     year + sow_code.to_f / 10
   end
 
