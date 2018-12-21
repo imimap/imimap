@@ -1,3 +1,8 @@
+# use this to see a clean rubocop.
+# should be commented out as it also hides new violations -
+# to check remove the #
+inherit_from: .rubocop_todo.yml
+
 
 AllCops:
   Exclude:
