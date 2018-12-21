@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/imimap/imimap.svg?branch=master)](https://travis-ci.org/imimap/imimap)
+ [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d9901844daae46f3aceea4dbf493d034)](https://www.codacy.com/app/kleinen/imimap?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=imimap/imimap&amp;utm_campaign=Badge_Grade)
 
 ## Repositories & Travis CI
 
