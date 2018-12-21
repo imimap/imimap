@@ -28,7 +28,7 @@
 <p>Found <%= @internship_count %> internships.</p>
 <p>
   Download:
-  <%= link_to "CSV", internships_path(format: "csv") %> |
-  <%= link_to "Excel", internships_path(format: "xlsx") %>
+  <%= link_to t('internships.index.export.csv'), internships_path(semester_id: @semester.id, format: "csv") %> |
+  <%= link_to t('internships.index.export.excel'), internships_path(semester_id: @semester.id, format: "xlsx") %>
 </p>
 </div>

@@ -36,6 +36,8 @@ class InternshipsController < ApplicationResourceController
         send_data CompleteInternship.to_csv(@complete_internships)
       end
       # see https://github.com/straydogstudio/axlsx_rails
+      # @header_names and @complete_internships are used in
+      # app/views/internships/index.xlsx.axlsx
       format.xlsx
     end
   end

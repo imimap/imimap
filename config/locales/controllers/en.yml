@@ -42,6 +42,9 @@ en:
     index:
       title: "Internships in"
       select: 'Select'
+      export:
+        csv: 'CSV'
+        excel: 'Excel'
     edit:
       editinternship: "Editing Internship"
     new:
