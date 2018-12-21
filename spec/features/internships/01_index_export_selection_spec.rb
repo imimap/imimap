@@ -19,7 +19,7 @@ describe 'internship - index selection' do
     body = page.body
     expect(body.lines.size).to eq 2
     ci = CompleteInternshipHelper::CompleteInternship.from(@internship2)
-    CompleteInternshipHelper::COMPLETE_INTERNSHIP_MEMBERS.each do | field |
+    CompleteInternshipHelper::COMPLETE_INTERNSHIP_MEMBERS.each do |field|
       expect(body).to include(ci.send(field).to_s)
     end
   end
