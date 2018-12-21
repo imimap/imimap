@@ -32,7 +32,7 @@ namespace :imimap do
          .merge('United States' => 'US',
                 'United Kingdom' => 'GB',
                 'Czech Republic' => 'CZ')
-                # puts CC.inspect
+    # puts CC.inspect
 
     puts "Going to update #{cas.count} CompanyAddresses"
     counter = 0

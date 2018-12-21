@@ -13,9 +13,9 @@ class InternshipsController < ApplicationResourceController
 
   def index
     @semester = if params[:semester_id]
-                 Semester.find(params[:semester_id])
-               else
-                 Semester.current
+                  Semester.find(params[:semester_id])
+                else
+                  Semester.current
                end
     @semester_options = Semester.all.map { |s| [s.name, s.id] }
 

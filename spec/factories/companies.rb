@@ -79,5 +79,4 @@ FactoryBot.define do
     import_id { 6 }
     comment { 'ein kleiner optiker' }
   end
-
 end
