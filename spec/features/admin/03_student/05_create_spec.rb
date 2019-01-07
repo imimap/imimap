@@ -23,7 +23,8 @@ describe 'ActiveAdmin Create Student from index path' do
               with: @student.send(field_name)
     end
     click_on 'Student_in anlegen'
-    expect(page).to have_content('21. Dezember 1990')
+    date_string = I18n.l(@student.birthday, format: :long)
+    expect(page).to have_content(date_string)
     (field_names - %w[birthday]).each do |field_name|
       expect(page).to have_content @student.send(field_name)
     end
