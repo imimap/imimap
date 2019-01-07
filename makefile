@@ -9,6 +9,7 @@ rebuild:
 	docker-compose up -d --build --force-recreate imimap
 test:
 	docker-compose exec imimap rails db:create RAILS_ENV=test
+	docker-compose exec imimap rails db:migrate RAILS_ENV=test
 	docker-compose exec imimap rspec
 import: $(file)
 	docker-compose exec imimap sh -c "rails db:drop ; rails db:create"
