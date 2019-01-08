@@ -34,6 +34,6 @@ describe 'method call with array and hash' do
 
   it 'doesnt unpack params without the star' do
     params = the_method(method_returning_params)
-    expect(params[0]).to eq [1, 2, {:a=>:b}]
+    expect(params[0]).to eq [1, 2, { a: :b }]
   end
 end
