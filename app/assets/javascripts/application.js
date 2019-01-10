@@ -17,6 +17,6 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require leaflet
+//= require turbolinks
+//= require init
 //= require_tree .
-//= require_self
-//=

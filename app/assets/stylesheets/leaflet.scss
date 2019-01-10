@@ -90,24 +90,24 @@
 	height: 0;
 	-moz-box-sizing: border-box;
 	     box-sizing: border-box;
-	z-index: 800;
+	z-index: 380;
 	}
 /* workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=888319 */
 .leaflet-overlay-pane svg {
 	-moz-user-select: none;
 	}
 
-.leaflet-pane         { z-index: 400; }
+.leaflet-pane         { z-index: 330; }
 
-.leaflet-tile-pane    { z-index: 200; }
-.leaflet-overlay-pane { z-index: 400; }
-.leaflet-shadow-pane  { z-index: 500; }
-.leaflet-marker-pane  { z-index: 600; }
-.leaflet-tooltip-pane   { z-index: 650; }
-.leaflet-popup-pane   { z-index: 700; }
+.leaflet-tile-pane    { z-index: 330; }
+.leaflet-overlay-pane { z-index: 340; }
+.leaflet-shadow-pane  { z-index: 350; }
+.leaflet-marker-pane  { z-index: 360; }
+.leaflet-tooltip-pane   { z-index: 370; }
+.leaflet-popup-pane   { z-index: 380; }
 
-.leaflet-map-pane canvas { z-index: 100; }
-.leaflet-map-pane svg    { z-index: 200; }
+.leaflet-map-pane canvas { z-index: 300; }
+.leaflet-map-pane svg    { z-index: 301; }
 
 .leaflet-vml-shape {
 	width: 1px;
@@ -131,7 +131,7 @@
 .leaflet-top,
 .leaflet-bottom {
 	position: absolute;
-	z-index: 1000;
+	z-index: 400;
 	pointer-events: none;
 	}
 .leaflet-top {
@@ -270,6 +270,7 @@
 /* general typography */
 .leaflet-container {
 	font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+  z-index: 400;
 	}
 
 
@@ -349,13 +350,16 @@
 	background: #fff;
 	border-radius: 5px;
 	}
+
 .leaflet-control-layers-toggle {
-	background-image: url(images/layers.png);
+  //noinspection CssUnknownTarget
+  background-image: url(images/layers.png);
 	width: 36px;
 	height: 36px;
 	}
 .leaflet-retina .leaflet-control-layers-toggle {
-	background-image: url(images/layers-2x.png);
+  //noinspection CssUnknownTarget
+  background-image: url(images/layers-2x.png);
 	background-size: 26px 26px;
 	}
 .leaflet-touch .leaflet-control-layers-toggle {
@@ -396,7 +400,8 @@
 
 /* Default icon URLs */
 .leaflet-default-icon-path {
-	background-image: url(images/marker-icon.png);
+  //noinspection CssUnknownTarget
+  background-image: url(images/marker-icon.png);
 	}
 
 
