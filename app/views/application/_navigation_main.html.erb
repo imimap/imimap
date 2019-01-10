@@ -21,7 +21,7 @@
         <li class="nav-item im-nav-item<%= 'active' if current_page?(internships_path) %>"><%= link_to t("header.current_internships"), internships_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
       <% end %>
       <% if current_user.admin? %>
-        <li class="nav-item im-nav-item"><%= link_to t("header.admin"),  admin_root_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
+        <li class="nav-item im-nav-item"><%= link_to t("header.admin"),  admin_root_path, class: 'nav-link im-nav-link imi-map-navlink', target: "_blank", rel: "noopener noreferrer" %></li>
       <% end %>
       <% if false %>
       # to be reinstantiated later....

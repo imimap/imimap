@@ -1,24 +1,24 @@
-
 <% unless @internships %>
-No Data.
+    No Data.
 <% else %>
-<h3><%= t "internships.statistic" %></h3>
-<div class = "container">
-  <div class = "row">
-    <div class = "colum-md-6">
-        <div class = "colum-md-6">
+    <h3><%= t "internships.statistic" %></h3>
+    <div class="container">
+        <div class="row">
+            <div class="colum-md-6">
+                <div class="colum-md-6">
+                </div>
+                <div class="colum-md-6">
+                    <%= form_tag(statistic_path, method: 'get') do |f| %>
+                        <%= select_tag(:semester_id, options_for_select(@semester_options, @semester_id)) %>
+                        <%= submit_tag("Search") %>
+                    <% end %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colum-md-12">
+                    <%= column_chart @internships, colors: ["#77b900", "#999"] %>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class = "colum-md-6">
-    <%= form_tag(statistic_path, method: 'get') do |f| %>
-    <%= select_tag(:semester_id, options_for_select(@semester_options,@semester_id)) %>
-    <%= submit_tag("Search") %>
-    <% end %>
-  </div>
-</div>
-  <div class = "row">
-      <div class = "colum-md-12">
-  <%= column_chart @internships, colors: ["#77b900", "#999"] %>
-</div>
-</div>
-</div>
 <% end %>

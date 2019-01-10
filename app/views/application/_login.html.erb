@@ -3,14 +3,12 @@
   <div class = "row">
     <div class = "col">
       <%= form_for :user, url: session_path(:user), html: {class: "form-inline imimap-inverse"} do |f| %>
-          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-            <%= f.label :email, class: "form-label imimap-inverse"%>
-            <%= f.email_field :email, autofocus: true, class: "form-control mb-2 mr-sm-2 mb-sm-0", placeholder: "s012345@htw-berlin.de"%>
+          <div class="input-group col-4">
+            <%= f.email_field :email, autofocus: true, class: "form-control mb-2 mr-sm-2 mb-sm-0", placeholder: "E-Mail (s012345@htw-berlin.de)"%>
           </div>
 
-          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-            <%= f.label :password, class: "form-label imimap-inverse" %>
-            <%= f.password_field :password, autocomplete: "off", class: "form-control mb-2 mr-sm-2 mb-sm-0" %>
+          <div class="input-group">
+            <%= f.password_field :password, autocomplete: "off", class: "form-control mb-2 mr-sm-2 mb-sm-0", placeholder: "Password"%>
           </div>
 
           <div class="form-check mb-2 mr-sm-2 mb-sm-0">
@@ -20,7 +18,7 @@
 
 
           <div id="submit">
-            <%= f.submit t('devise.sessions.submit') %>
+            <%= f.submit t('devise.sessions.submit'), class: "btn"%>
           </div>
 
       <% end %>

@@ -1,87 +1,42 @@
 <h1><%= t "search.title" %></h1>
-<%= form_tag(internships_path, :method => 'get') do %>
-<div class=.row">
-<div class="col-md-3">
-<%= select_tag :country, options_for_select((@countries).distinct), { :multiple => true , class: 'chzn-select', 'data-placeholder'=>t("choose.country"), style: "width:100%"} %>
-</div>
-<div class="col-md-3">
-<%= select_tag :semester, options_for_select(@semesters),  { :multiple => true , class: 'chzn-select', 'data-placeholder'=>t("choose.semester"), style: "width:100%"}  %>
-</div>
-<div class="col-md-3">
-<%= select_tag :orientation, options_for_select(@orientations),  { :multiple => true , class: 'chzn-select', 'data-placeholder'=>t("choose.orientation"), style: "width:100%"}  %>
-</div>
-<div class="col-md-3">
-<%= select_tag :programming_language_ids, options_for_select(@programming_languages), { :multiple => true , class: 'chzn-select', 'data-placeholder'=>t("choose.language"), style: "width:100%"}  %>
-</div>
-</div>
-<br/>
-<div class=.row">
-<div class="col-md-4">
-        <span><%= t "search.salary" %></span>
-        <span id="salary_span"></span>
-        <input name="salary[]" type="text" id="salary" style="display:none" readonly />
-        <div id="salary_slider">
+
+<div class="card-deck">
+
+    <div class="card" style="width: 18rem;">
+        <h5 class="card-header">Countries</h5>
+        <div class="card-body">
+            <ul id="search-countries" class="list-group list-group-flush">
+                Example
+                <span class="badge badge-primary badge-pill">14</span>
+            </ul>
+
         </div>
     </div>
-<div class="col-md-4">
-        <span><%= t "search.livingCost"%></span>
-        <span id="living_costs_span"></span>
-        <input name="living_costs[]" type="text" id="living_costs" style="display:none" readonly />
-        <div id="living_costs_slider">
-        </div>
+
+    <div class="card" style="width: 18rem;">
+        <ul id="search-orientations" class="list-group list-group-flush">
+            <li class="badge badge-primary">Example</li>
+        </ul>
     </div>
-<div class="col-md-4">
-        <span><%= t "search.rating" %></span>
-        <span id="rating_span"></span>
-        <input name="rating[]" type="text" id="rating" style="display:none" readonly />
-        <div id="rating_slider">
+
+
+    <div class="card" style="width: 18rem;">
+        <ul id="search-countries" class="list-group list-group-flush">
+
+        </ul>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+                <input type="radio" name="options" id="option1" autocomplete="off" checked> Small
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option2" autocomplete="off"> Mid-Size
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option3" autocomplete="off"> Large
+            </label>
         </div>
     </div>
 </div>
-<br/>
-<%= submit_tag t("search.title"), :name => nil, :class => "btn btn-success", :id => "search_button" %>
-
-<% end %>
-<script> 
-        $( "#salary_slider" ).slider({
-            min: 0,
-            max: <%= @salary_max %>,
-            value: 0,
-            slide: function( event, ui ) {
-                $( "#salary" ).val( ui.value );
-                $( "#salary_span" )[0].innerHTML = ( ui.value+" €" );
-            }
-
-        });
-        
-        $( "#salary" ).val( $( "#salary_slider" ).slider( "value" ) );
-        $( "#salary_span")[0].innerHTML = ( $( "#salary_slider" ).slider( "value" ) + " €")
-        
-         $( "#living_costs_slider" ).slider({
-            min: 1,
-            max: <%= @living_costs_max %>,
-            value: <%= @living_costs_max %>,
-            slide: function( event, ui ) {
-                $( "#living_costs" ).val( ui.value );
-                $( "#living_costs_span" )[0].innerHTML = ( ui.value+" €" );
-            }
-        });
-
-        $( "#living_costs" ).val( $( "#living_costs_slider" ).slider( "value" ) );
-        $( "#living_costs_span")[0].innerHTML = ( $( "#living_costs_slider" ).slider( "value" ) + " €")
-
-
-         $( "#rating_slider" ).slider({
-            min: 1,
-            max: 5,
-            value: 1,
-            slide: function( event, ui ) {
-                $( "#rating" ).val( ui.value );
-                $( "#rating_span" )[0].innerHTML = ( ui.value );
-            }
-        });
-
-        $( "#rating" ).val( $( "#rating_slider" ).slider( "value" ) );
-        $( "#rating_span")[0].innerHTML = ( $( "#rating_slider" ).slider( "value" ) )
-
-   </script> 
