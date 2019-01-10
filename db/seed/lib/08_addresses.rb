@@ -11,24 +11,25 @@ def faker_address(company:)
   )
 end
 
-def geocoded_address(company:)
+def random_place_on_earth
   result = nil
   while result.nil?
-    result = Geocoder.search("#{rand(-80..80) + rand}, #{rand(-180..180) + rand}").first
+    rl = Geocoder.search("#{rand(-80..80) + rand}, #{rand(-180..180) + rand}")
+    result = rl.first
     result = nil unless result.data['error'].nil?
   end
+  country_code = result.country_code ? result.country_code.upcase : 'GB'
+  [result, country_code]
+end
 
-  country_code = if result.country_code
-                   result.country_code.upcase
-                 else
-                   'UK'
-                 end
+def geocoded_address(company:)
+  location, country_code = random_place_on_earth
 
   CompanyAddress.create!(
     company: company,
-    street: result.street || result.village,
-    zip: result.postal_code,
-    city: result.city || result.state,
+    street: location.street || location.village,
+    zip: location.postal_code,
+    city: location.city || location.state,
     country: country_code,
     phone: Faker::PhoneNumber.phone_number
   )
