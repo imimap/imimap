@@ -26,6 +26,7 @@ module ImiMaps
     # required by heroku.
     # http://guides.rubyonrails.org/v3.2.8/asset_pipeline.html
     config.assets.initialize_on_precompile = false
+    config.encoding = "utf-8"
 
     # TBD Update: distribute this over the environments with appropriate
     # settings from ENV variable

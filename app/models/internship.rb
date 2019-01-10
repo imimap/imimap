@@ -75,4 +75,21 @@ class Internship < ApplicationRecord
       d.strftime('%Y-%m-%d')
     end
   end
+
+  def self.addresses
+    joins(:company_address)
+      .where.not(company_addresses: { latitude: nil })
+  end
+
+  def self.current_addresses
+    joins(:company_address)
+      .where(semester: Semester.last)
+      .where.not(company_addresses: { latitude: nil })
+  end
+
+  def self.country_count
+    joins(:company_addresses)
+      .group_by(:country)
+      .count
+  end
 end

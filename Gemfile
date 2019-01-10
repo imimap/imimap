@@ -25,6 +25,7 @@ gem 'activeadmin', '~> 1.1'
 gem 'cancancan', '~> 2.2'
 gem 'devise', ' ~> 4.3'
 gem 'formtastic', '~> 3'
+gem 'turbolinks', '~> 5.2.0'
 
 # TBD Update: Observers have been removed in 4.0
 # replace with ActiveRecord callbacks, maybe refactor as aspect

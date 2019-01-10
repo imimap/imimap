@@ -7,4 +7,7 @@ class Orientation < ApplicationRecord
   validates :name, presence: true
 
   has_many :internships
+
+  # Get List of all orientations.
+  scope :names, -> { pluck(:name) }
 end

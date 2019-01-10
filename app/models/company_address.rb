@@ -39,4 +39,8 @@ class CompanyAddress < ApplicationRecord
     return country unless iso_country
     iso_country.translations[locale.to_s] || iso_country.name
   end
+
+  # Get a list of all Countries available + number of entries per country
+  scope :countries, -> { group(:country).count }
+
 end

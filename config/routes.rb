@@ -22,8 +22,13 @@ Rails.application.routes.draw do
       resources :user_comments, only: %i[destroy update create new]
       resources :answers, only: %i[create update destroy]
       resources :general
-      resources :internship_searches
-      resources :quicksearches, only: %i[index]
+      resources :search do
+        collection do
+          get 'filter'
+        end
+      end
+      # resources :internship_searches
+      # resources :quicksearches, only: %i[index]
       resources :report_overview, only: [:index]
       resources :read_list, only: %i[create destroy index]
       resources :complete_report, only: [:index]
@@ -40,8 +45,8 @@ Rails.application.routes.draw do
       get 'newAddress/:company_id', to: 'company_addresses#new_address', as: 'new_address'
       get 'select_company/', to: 'companies#select_company', as: 'select_company'
     end
-    ActiveAdmin.routes(self)
   end
+  ActiveAdmin.routes(self)
   # TBD Review: what is this special route for outside of the other scopes?
   get 'my_internship', to: 'internships#internship_data', as: 'my_internship'
 end
