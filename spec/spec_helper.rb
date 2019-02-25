@@ -16,6 +16,25 @@ end
 require 'factory_bot_rails'
 require 'database_cleaner'
 
+module CapybaraLoginTestHelper
+  def user_password
+    'geheim123'
+  end
+
+  def sign_in_with(enrolment_number:)
+    email = User.email_for(enrolment_number: enrolment_number)
+    sign_in_with_mail(email: email)
+  end
+
+  def sign_in_with_mail(email:)
+    visit root_path
+    fill_in 'user_email', with: email
+    fill_in 'user_password', with: user_password
+    click_on I18n.t('devise.sessions.submit')
+    expect(page).to have_content t('devise.sessions.signed_in')
+  end
+end
+
 module ControllerTestHelper
   def login
     user = FactoryBot.create :user
@@ -167,5 +186,6 @@ RSpec.configure do |config|
   # end
 
   config.include ControllerTestHelper, type: :controller
+  config.include CapybaraLoginTestHelper, type: :feature
   config.include I18nTestHelper
 end
