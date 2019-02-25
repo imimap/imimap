@@ -91,3 +91,49 @@ describe 'Student login:' do
     end
   end
 end
+
+def sign_in_with_mail(email:)
+  visit root_path
+  fill_in 'user_email', with: email
+  fill_in 'user_password', with: user_password
+  click_on I18n.t('devise.sessions.submit')
+  expect(page).to have_content t('devise.sessions.signed_in')
+end
+
+describe 'Non-Student login:' do
+  before(:each) do
+    @ldap_mock = ldap_mock = instance_double('Net::LDAP')
+    LDAPHTWAdapter.substitute_netldap(mock: ldap_mock)
+    allow(ldap_mock).to receive(:bind).and_return(true)
+  end
+
+  context 'first time - no user present' do
+    it 'user is created' do
+      expect do
+        sign_in_with_mail(email: 'testperson@htw-berlin.de')
+      end.to change { User.count }.by(1)
+    end
+
+    it 'student object is not created' do
+      expect do
+        sign_in_with_mail(email: 'testperson@htw-berlin.de')
+      end.to change { Student.count }.by(0)
+    end
+  end
+
+  context 'second time - user already present' do
+    before :each do
+      @user = create(:user_without_student, email: 'testperson@htw-berlin.de')
+    end
+    it 'logs in and no student is created' do
+      expect do
+        sign_in_with_mail(email: 'testperson@htw-berlin.de')
+      end.to change { Student.count }.by(0)
+    end
+    it 'logs in and no user is created' do
+      expect do
+        sign_in_with_mail(email: 'testperson@htw-berlin.de')
+      end.to change { User.count }.by(0)
+    end
+  end
+end
