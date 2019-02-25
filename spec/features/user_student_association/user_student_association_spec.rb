@@ -2,18 +2,6 @@
 
 require 'rails_helper'
 
-def user_password
-  'geheim'
-end
-
-def sign_in_with(enrolment_number:)
-  visit root_path
-  fill_in 'user_email', with: User.email_for(enrolment_number: enrolment_number)
-  fill_in 'user_password', with: user_password
-  click_on I18n.t('devise.sessions.submit')
-  expect(page).to have_content t('devise.sessions.signed_in')
-end
-
 describe 'Student login:' do
   before(:each) do
     @ldap_mock = ldap_mock = instance_double('Net::LDAP')
@@ -90,14 +78,6 @@ describe 'Student login:' do
       expect(user.student.email).to eq @email
     end
   end
-end
-
-def sign_in_with_mail(email:)
-  visit root_path
-  fill_in 'user_email', with: email
-  fill_in 'user_password', with: user_password
-  click_on I18n.t('devise.sessions.submit')
-  expect(page).to have_content t('devise.sessions.signed_in')
 end
 
 describe 'Non-Student login:' do
