@@ -73,11 +73,11 @@ class User < ApplicationRecord
 
   def self.find_or_create(email:, password:)
     user = User.where(email: email).first
-    unless user
-      # rpw = SecureRandom.urlsafe_base64(24, false)
-      pwd = password
-      user = User.create(email: email, password: pwd, password_confirmation: pwd)
+    if user
+      old_pw = user.encrypted_password
+      user.update_attributes(password: password) unless password == old_pw
     end
+    user ||= User.create(email: email, password: password, password_confirmation: password)
     Student.find_or_create_for(user: user)
     user
   end
