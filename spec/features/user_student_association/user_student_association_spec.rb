@@ -2,23 +2,9 @@
 
 require 'rails_helper'
 
-def user_password
-  'geheim'
-end
-
-def sign_in_with(enrolment_number:)
-  visit root_path
-  fill_in 'user_email', with: User.email_for(enrolment_number: enrolment_number)
-  fill_in 'user_password', with: user_password
-  click_on I18n.t('devise.sessions.submit')
-  expect(page).to have_content t('devise.sessions.signed_in')
-end
-
 describe 'Student login:' do
   before(:each) do
-    @ldap_mock = ldap_mock = instance_double('Net::LDAP')
-    LDAPHTWAdapter.substitute_netldap(mock: ldap_mock)
-    allow(ldap_mock).to receive(:bind).and_return(true)
+    connect_to_ldap
   end
 
   context 'first time - no user present' do
@@ -88,6 +74,31 @@ describe 'Student login:' do
       sign_in_with(enrolment_number: @enrolment_number)
       user = User.where(email: @email).first
       expect(user.student.email).to eq @email
+    end
+  end
+end
+
+describe 'Non-Student login:' do
+  before(:each) do
+    connect_to_ldap
+  end
+
+  context 'first time - no user present' do
+    it 'user is created but no student object' do
+      expect do
+      expect{sign_in_with_mail(email: 'testperson@htw-berlin.de')}.to change{User.count}.by(1)
+      end.to change { Student.count }.by(0)
+    end
+  end
+
+  context 'second time - user already present' do
+    before :each do
+      @user = create(:user_without_student, email: 'testperson@htw-berlin.de')
+    end
+    it 'logs in and no student and user is created' do
+      expect do
+        expect{sign_in_with_mail(email: 'testperson@htw-berlin.de')}.to change{Student.count}.by(0)
+      end.to change { User.count }.by(0)
     end
   end
 end

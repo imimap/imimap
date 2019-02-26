@@ -74,7 +74,7 @@ class User < ApplicationRecord
       rpw = SecureRandom.urlsafe_base64(24, false)
       user = User.create(email: email, password: rpw, password_confirmation: rpw)
     end
-    Student.find_or_create_for(user: user)
+    Student.find_or_create_for(user: user) if user.student_email?(email)
     user
   end
 end
