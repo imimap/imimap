@@ -1,0 +1,31 @@
+<div id="company" class="tabcontent">
+  <h3>Company Details</h3>
+  <p>Select your internship company :</p>
+  <div class="row">
+    <div class="col">
+      <div class="field" id="field-titles">
+      <%= f.select :company_address_id, Company.order(:name).company_name_address.map { |c| [c.last, c.first]}, class: 'chzn-select', disabled: false, hide_label: true %>
+      <br/>
+      <%= t "Company not found?" %><%= link_to t("companies.createNewCompany"), new_company_path(returnToForm: true) %>
+      <br/>
+      <%= t "Found Company, but different Address?" %><%= link_to t("companies.createNewAddress"), select_company_path %>
+      </div>
+    </div>
+  </div>
+
+  <h4>Supervisor</h4>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field" id="field-titles">
+        <%= f.text_field :supervisor_name %>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="field" id="field-titles">
+        <%= f.text_field :supervisor_email %>
+      </div>
+    </div>
+  </div>
+</div>

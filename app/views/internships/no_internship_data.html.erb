@@ -2,16 +2,15 @@
 
 <p>	Hier werden Sie demnächst Ihr Praktikum anlegen und den Status der Bearbeitung
 	sehen können. Wenn Sie Interesse haben, das mit uns zu testen, schicken Sie
-	uns eine email: imi-praktikum@infrastructure.de</p>
+	uns eine email: imi-praktikum@htw-berlin.de</p>
 
 <% unless Rails.env == "production" %> Nicht in Production sichtbar:
 <% if current_user.student? %>
 <div id="askForCreation">
 	<%= t "internships.createInternship" %>
 	<br />
-	<%= link_to t("internships.createYourInternship")+ " - old version",  new_internship_path %>
+	<%= link_to t("internships.createYourInternship"),  new_internship_path %>
 	<br />
-	<%= link_to t("internships.createYourInternship")+ " - st",  student_show_path %>
 </div>
 <% end %>
 <% end %>
