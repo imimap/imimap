@@ -75,7 +75,7 @@ GEM
       activesupport (>= 3.0.0)
     arel (9.0.0)
     ast (2.4.0)
-    autoprefixer-rails (9.4.4)
+    autoprefixer-rails (9.4.9)
       execjs
     axlsx_rails (0.5.2)
       actionpack (>= 3.1)
@@ -89,11 +89,11 @@ GEM
       debug_inspector (>= 0.0.1)
     bootsnap (1.3.2)
       msgpack (~> 1.0)
-    bootstrap (4.1.3)
-      autoprefixer-rails (>= 6.0.3)
-      popper_js (>= 1.12.9, < 2)
-      sass (>= 3.5.2)
-    bootstrap_form (4.0.0)
+    bootstrap (4.3.1)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 1.14.3, < 2)
+      sassc-rails (>= 2.0.0)
+    bootstrap_form (4.1.0)
       rails (>= 5.0)
     builder (3.2.3)
     byebug (10.0.2)
@@ -160,7 +160,7 @@ GEM
       railties (>= 3.0.0)
     faker (1.9.1)
       i18n (>= 0.7)
-    ffi (1.10.0)
+    ffi (1.9.25)
     font-awesome-sass-rails (3.0.2.2)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
@@ -168,7 +168,7 @@ GEM
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
     geocoder (1.5.0)
-    globalid (0.4.1)
+    globalid (0.4.2)
       activesupport (>= 4.2.0)
     groupdate (3.2.1)
       activesupport (>= 3)
@@ -176,7 +176,7 @@ GEM
       actionpack (>= 4.1)
       activesupport (>= 4.1)
     htmlentities (4.3.4)
-    i18n (1.5.1)
+    i18n (1.5.3)
       concurrent-ruby (~> 1.0)
     i18n_data (0.8.0)
     inherited_resources (1.9.0)
@@ -234,7 +234,7 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (5.1.0)
     nio4r (2.3.1)
-    nokogiri (1.10.0)
+    nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     paperclip (5.3.0)
@@ -352,6 +352,15 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    sassc (2.0.0)
+      ffi (~> 1.9.6)
+      rake
+    sassc-rails (2.1.0)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     simplecov (0.16.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
@@ -410,8 +419,8 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap
-  bootstrap (~> 4.1.3)
-  bootstrap_form (>= 4.0.0.alpha1)
+  bootstrap (>= 4.3.1)
+  bootstrap_form (>= 4.0.0)
   byebug
   cancancan (~> 2.2)
   capistrano
