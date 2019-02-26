@@ -4,9 +4,7 @@ require 'rails_helper'
 
 describe 'Student login:' do
   before(:each) do
-    @ldap_mock = ldap_mock = instance_double('Net::LDAP')
-    LDAPHTWAdapter.substitute_netldap(mock: ldap_mock)
-    allow(ldap_mock).to receive(:bind).and_return(true)
+    connect_to_ldap
   end
 
   context 'first time - no user present' do
@@ -82,21 +80,13 @@ end
 
 describe 'Non-Student login:' do
   before(:each) do
-    @ldap_mock = ldap_mock = instance_double('Net::LDAP')
-    LDAPHTWAdapter.substitute_netldap(mock: ldap_mock)
-    allow(ldap_mock).to receive(:bind).and_return(true)
+    connect_to_ldap
   end
 
   context 'first time - no user present' do
-    it 'user is created' do
+    it 'user is created but no student object' do
       expect do
-        sign_in_with_mail(email: 'testperson@htw-berlin.de')
-      end.to change { User.count }.by(1)
-    end
-
-    it 'student object is not created' do
-      expect do
-        sign_in_with_mail(email: 'testperson@htw-berlin.de')
+      expect{sign_in_with_mail(email: 'testperson@htw-berlin.de')}.to change{User.count}.by(1)
       end.to change { Student.count }.by(0)
     end
   end
@@ -105,14 +95,9 @@ describe 'Non-Student login:' do
     before :each do
       @user = create(:user_without_student, email: 'testperson@htw-berlin.de')
     end
-    it 'logs in and no student is created' do
+    it 'logs in and no student and user is created' do
       expect do
-        sign_in_with_mail(email: 'testperson@htw-berlin.de')
-      end.to change { Student.count }.by(0)
-    end
-    it 'logs in and no user is created' do
-      expect do
-        sign_in_with_mail(email: 'testperson@htw-berlin.de')
+        expect{sign_in_with_mail(email: 'testperson@htw-berlin.de')}.to change{Student.count}.by(0)
       end.to change { User.count }.by(0)
     end
   end
