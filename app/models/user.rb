@@ -40,18 +40,20 @@ class User < ApplicationRecord
   # note that student is not a role.
   def student?
     return true if student
+
     student_email?(email)
   end
 
   def enrolment_number
     return nil unless student?
+
     if student
       student.enrolment_number
     else
       enrolment_number_from(email: email)
     end
   end
-  STUDENT_MAIL_REGEX = /s(\d{6})@htw-berlin.de/
+  STUDENT_MAIL_REGEX = /s(\d{6})@htw-berlin.de/.freeze
   def student_email?(email1)
     !STUDENT_MAIL_REGEX.match(email1).nil?
   end
@@ -64,16 +66,18 @@ class User < ApplicationRecord
   def self.enrolment_number_from(email:)
     match = STUDENT_MAIL_REGEX.match(email)
     return nil unless match
+
     # remove leading 0
     match[1].sub(/^0+/, '')
   end
 
-  def self.find_or_create(email:)
+  def self.find_or_create(email:, password:)
     user = User.where(email: email).first
-    unless user
-      rpw = SecureRandom.urlsafe_base64(24, false)
-      user = User.create(email: email, password: rpw, password_confirmation: rpw)
+    if user
+      old_pw = user.encrypted_password
+      user.update_attributes(password: password) unless password == old_pw
     end
+    user ||= User.create(email: email, password: password, password_confirmation: password)
     Student.find_or_create_for(user: user) if user.student_email?(email)
     user
   end
