@@ -21,15 +21,15 @@ module CapybaraLoginTestHelper
     'geheim123'
   end
 
-  def sign_in_with(enrolment_number:)
+  def sign_in_with(enrolment_number:, password: user_password)
     email = User.email_for(enrolment_number: enrolment_number)
-    sign_in_with_mail(email: email)
+    sign_in_with_mail(email: email, password: password)
   end
 
-  def sign_in_with_mail(email:)
+  def sign_in_with_mail(email:, password: user_password)
     visit root_path
     fill_in 'user_email', with: email
-    fill_in 'user_password', with: user_password
+    fill_in 'user_password', with: password
     click_on I18n.t('devise.sessions.submit')
     expect(page).to have_content t('devise.sessions.signed_in')
   end
