@@ -1,0 +1,2 @@
+class CompleteInternship < ApplicationRecord
+end
