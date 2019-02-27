@@ -10,7 +10,8 @@ class Student < ApplicationRecord
   # validates :last_name, :first_name, :email, :enrolment_number, presence: true
   # validates_uniqueness_of :enrolment_number
 
-  has_many :internships
+  has_one :complete_internship
+  has_many :internships, through: :complete_internship
   has_one :user
 
   def user?

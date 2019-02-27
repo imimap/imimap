@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :complete_internships
   get 'password_resets/new'
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
     devise_scope :user do
