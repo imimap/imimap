@@ -1,0 +1,60 @@
+<%= bootstrap_form_for(@student) do |f| %>
+<div id="student" class="tabcontent ">
+  <h3>Personal Details</h3>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div id="field-titles">
+      <%=t "students.attributes.enrolment_number" %><br />
+    <span class="form-control-static"><%=@current_user.student.enrolment_number%></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field" id="field-titles2">
+      <%= f.text_field :first_name %>
+      </div>
+    </div>
+
+  <div class="col-md-4">
+    <div class="field" id="field-titles2">
+      <%= f.text_field :last_name %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-md-4">
+        <div class="field" id="field-titles2">
+            <%= f.text_field :birthday %>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="field" id="field-titles2">
+          <%= f.text_field :birthplace %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="field" id="field-titles2">
+        <%= f.text_field :email %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="field" id="field-titles2">
+        <%= f.submit %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% end %>

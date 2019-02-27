@@ -24,7 +24,7 @@ class UsersController < ApplicationResourceController
     end
   end
 
-  def student_show
+  def student_show #old
     current_user
   end
 
