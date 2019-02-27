@@ -21,14 +21,8 @@
       </tr>
     <% end %>
   </tbody>
-  <tfoot>
-    <tr>
-      <th></th>
-      <th></th>
-      <th>There are currently <%= counter %> Internship Offers.</th>
-    </tr>
-</tfoot>
 </table>
+<p>There are currently <%= counter %> Internship Offers.</p>
 <% if can? :create, InternshipOffer %>
 <div id="askForCreation">
   <%= "If you want to share any info regarding available internship position, please share here" %>

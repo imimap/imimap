@@ -134,3 +134,12 @@ de:
       city1: "Stadt *"
       phone: "Telefon"
       phone1: "Telefon *"
+
+  welcome:
+    help:
+      header: "Hilfe"
+      question1: "Ich bin mir nicht sicher, was ich in einige Felder des Formulars eintragen soll."
+      answer1: "Du kannst einige Felder des Formulars einfach frei lassen. Diese werden, wenn du deine Anmeldung einreichst, mit dem/der Praktikumsbeauftragten besprochen."
+      question2: "Ich habe ein anderes problem. Was soll ich tun?"
+      answer2_checklist: "Schau dir noch ein mal die Checkliste an."
+      answer2_contact: "Wenn deine Frage sich dadurch nicht geklärt hat schicke eine E-Mail an das Team der Praktikumsverwaltung."

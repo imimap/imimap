@@ -1,6 +1,5 @@
 class WelcomeController < ApplicationController
   skip_authorization_check
-  def help
-
-  end
+  # renders the help site
+  def help; end
 end
