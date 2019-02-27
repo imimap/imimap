@@ -5,7 +5,7 @@ class CreateCompleteInternships < ActiveRecord::Migration[5.2]
       t.integer :semester_of_study
       t.boolean :aep
       t.boolean :passed
-
+      t.references :student
       t.timestamps
     end
   end

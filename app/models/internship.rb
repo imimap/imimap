@@ -15,6 +15,8 @@ class Internship < ApplicationRecord
   belongs_to :semester
   belongs_to :internship_rating
   belongs_to :student
+  belongs_to :complete_internship
+  has_one :student_new, through: :complete_internship
   belongs_to :internship_state
   belongs_to :payment_state
   belongs_to :registration_state
