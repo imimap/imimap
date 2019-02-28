@@ -50,7 +50,7 @@ class User < ApplicationRecord
     if student
       student.enrolment_number
     else
-      enrolment_number_from(email: email)
+      User.enrolment_number_from(email: email)
     end
   end
   STUDENT_MAIL_REGEX = /s(\d{6})@htw-berlin.de/.freeze

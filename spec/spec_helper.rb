@@ -34,10 +34,10 @@ module CapybaraLoginTestHelper
     expect(page).to have_content t('devise.sessions.signed_in')
   end
 
-  def connect_to_ldap
+  def allow_ldap_login(success: true)
     @ldap_mock = ldap_mock = instance_double('Net::LDAP')
     LDAPHTWAdapter.substitute_netldap(mock: ldap_mock)
-    allow(ldap_mock).to receive(:bind).and_return(true)
+    allow(ldap_mock).to receive(:bind).and_return(success)
   end
 end
 
