@@ -18,7 +18,14 @@ ActiveAdmin.register Internship do
                 .joins(:company)
                 .order('companies.name')
                 .pluck(:name, :street, :city, :country, :id)
-                .map { |name, street, city, country, id| ["#{name}, #{street}, #{city}, #{country}", id] }
+                .map { |name, street, city, country, id|
+                            [
+                              "#{name},
+                               #{street},
+                               #{city},
+                                #{country}", id
+                            ]
+                          }
     end
 
     f.inputs 'Internship' do
@@ -43,37 +50,45 @@ ActiveAdmin.register Internship do
       f.input :semester_id,
               label: 'Semester',
               as: :select,
-              collection: Semester.order(:name).collect { |s| [s.name, s.id] }
+              collection: Semester.order(:name)
+                                  .collect { |s| [s.name, s.id] }
       f.input :registration_state_id,
               label: 'Registration',
               as: :select,
-              collection: RegistrationState.order(:name).collect { |rs| [rs.name, rs.id] }
+              collection: RegistrationState.order(:name)
+                                           .collect { |rs| [rs.name, rs.id] }
       f.input :payment_state_id,
               label: 'Payment',
               as: :select,
-              collection: PaymentState.order(:name).collect { |ps| [ps.name, ps.id] }
+              collection: PaymentState.order(:name)
+                                      .collect { |ps| [ps.name, ps.id] }
       f.input :contract_state_id,
               label: 'Contract',
               as: :select,
-              collection: ContractState.order(:name).collect { |cs| [cs.name, cs.id] }
+              collection: ContractState.order(:name)
+                                       .collect { |cs| [cs.name, cs.id] }
       f.input :report_state_id,
               label: 'Report',
               as: :select,
-              collection: ReportState.order(:name).collect { |rs| [rs.name, rs.id] }
+              collection: ReportState.order(:name)
+                                     .collect { |rs| [rs.name, rs.id] }
       f.input :certificate_state_id,
               label: 'Certificate',
               as: :select,
-              collection: CertificateState.order(:name).collect { |cs| [cs.name, cs.id] }
+              collection: CertificateState.order(:name)
+                                          .collect { |cs| [cs.name, cs.id] }
       f.input :reading_prof_id,
               label: 'Certficate reading prof',
               as: :select,
-              collection: ReadingProf.order(:name).collect { |p| [p.name, p.id] }
+              collection: ReadingProf.order(:name)
+                                     .collect { |p| [p.name, p.id] }
       f.input :certificate_to_prof, as: :date_picker
       f.input :certificate_signed_by_prof, as: :date_picker
       f.input :certificate_signed_by_internship_officer, as: :date_picker
       f.input :internship_state,
               as: :select,
-              collection: InternshipState.order(:name).collect { |is| [is.name, is.id] }
+              collection: InternshipState.order(:name)
+                                         .collect { |is| [is.name, is.id] }
       f.input :comment
       f.actions
     end

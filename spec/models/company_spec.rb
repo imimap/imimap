@@ -30,7 +30,7 @@ RSpec.describe Company, type: :model do
 
       expect(@company.internships.size).to eq(3)
       expect(@company.enrolment_number)
-      .to eq(Array.new(3, @student.enrolment_number).join(', '))
+        .to eq(Array.new(3, @student.enrolment_number).join(', '))
     end
   end
 
