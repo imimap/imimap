@@ -8,14 +8,16 @@ class Die
   end
 end
 
-describe 'die' do
+describe 'regular die' do
   let(:die) { Die.new }
   context 'real die' do
     it 'rolls a 6' do
       expect(die.roll).to eq 6
     end
   end
+end
 
+describe 'die' do
   context 'test double for instance' do
     let(:die_mock) { double('die') }
     it 'rolls a 4' do

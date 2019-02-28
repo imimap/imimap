@@ -33,27 +33,27 @@ class LDAPHTWAdapter
     netldap_mock || @netldap
   end
 
+  def ldap_tls_options
+    { verify_mode: OpenSSL::SSL::VERIFY_PEER,
+      ca_file: './certs/CA-HTW-cert.pem' }
+  end
+
+  def ldap_auth_options(ldap_htw, ldap_username, ldap_password)
+    { method: :simple,
+      username: "CN=#{ldap_username},#{ldap_htw}",
+      password: ldap_password }
+  end
+
   def ldap_conf(ldap_host, ldap_port, ldap_htw, ldap_username, ldap_password)
     { host: ldap_host, port: ldap_port,
-      # encryption: { method: :simple_tls,
-      #              verify_mode: OpenSSL::SSL::VERIFY_NONE },
-
       encryption: {
         method: :simple_tls,
-        tls_options: {
-          verify_mode: OpenSSL::SSL::VERIFY_PEER,
-          ca_file: './certs/CA-HTW-cert.pem'
-          # ssl_version: TLSv1_1'
-        },
+        tls_options: ldap_tls_options,
         # connect_timeout: 30,
         verbose: true
       },
 
-      auth: {
-        method: :simple,
-        username: "CN=#{ldap_username},#{ldap_htw}",
-        password: ldap_password
-      } }
+      auth: ldap_auth_options(ldap_htw, ldap_username, ldap_password) }
   end
 
   def valid
@@ -64,15 +64,24 @@ class LDAPHTWAdapter
     config && ldap_username
   end
 
+  def log_error(host:, exception:)
+    Rails.logger.error("-- ldap -- could not connect to host #{host} ")
+    Rails.logger.error(exception.message)
+  end
+
+  def log_auth_failed(ldap_username:)
+    Rails.logger
+         .info("-- ldap -- authentication failed for #{ldap_username} ")
+  end
+
   def authenticate
     begin
       success = netldap.bind
     rescue StandardError => e
-      Rails.logger.error("-- ldap -- could not connect to host #{host} ")
-      Rails.logger.error(e.message)
+      log_error(host: host, exception: e)
       return false
     end
-    Rails.logger.info("-- ldap -- authentication failed for #{ldap_username} ") unless success
+    log_auth_failed(ldap_username: ldap_username) unless success
     success
   end
 
