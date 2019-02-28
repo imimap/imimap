@@ -1,6 +1,5 @@
 <div id="form-block4">
   <h3><%= t("header.exchange") %></h3>
-  <% counter = 0 %>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -11,7 +10,6 @@
     </thead>
     <tbody>
       <% @offers.each do |internship_offer| %>
-        <% counter +=1 %>
         <tr>
           <td><%= link_to internship_offer.title, internship_offer %></td>
           <td><%= internship_offer.city %></td>
@@ -20,7 +18,7 @@
       <% end %>
     </tbody>
   </table>
-  <p><%= t("internship_offers.number_of") %> <%= counter %> <%= t("internship_offers.header") %>.</p>
+  <p><%= t("internship_offers.number_of") %> <%= @offers.size %> <%= t("internship_offers.header") %>.</p>
   <% if can? :create, InternshipOffer %>
     <div id="askForCreation">
         <%= "If you want to share any info regarding available internship position, please share here" %>
