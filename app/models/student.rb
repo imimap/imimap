@@ -21,6 +21,7 @@ class Student < ApplicationRecord
 
   def self.find_or_create_for(user:)
     return user.student if user.student
+
     email = user.email
     enrolment_number = User.enrolment_number_from(email: email)
     student = Student.where(enrolment_number: enrolment_number)

@@ -9,6 +9,7 @@ module Devise
     class LdapAuthenticatable < Authenticatable
       def ldap_email
         return nil if params.nil?
+
         params[:user][:email] if params && params[:user]
       end
 
