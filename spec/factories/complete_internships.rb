@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :complete_internship do
-    semester { 'MyString' }
-    semester_of_study { 1 }
+    semester
+    semester_of_study { 4 }
     aep { false }
     passed { false }
   end

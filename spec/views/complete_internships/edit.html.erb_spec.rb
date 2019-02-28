@@ -5,12 +5,7 @@ require 'rails_helper'
 RSpec.describe 'complete_internships/edit', type: :view do
   before(:each) do
     @complete_internship = assign(:complete_internship,
-                                  CompleteInternship.create!(
-                                    semester: 'MyString',
-                                    semester_of_study: 1,
-                                    aep: false,
-                                    passed: false
-                                  ))
+                                  create(:complete_internship))
   end
 
   it 'renders the edit complete_internship form' do

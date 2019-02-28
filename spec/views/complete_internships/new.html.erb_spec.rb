@@ -4,12 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'complete_internships/new', type: :view do
   before(:each) do
-    assign(:complete_internship, CompleteInternship.new(
-                                   semester: 'MyString',
-                                   semester_of_study: 1,
-                                   aep: false,
-                                   passed: false
-                                 ))
+    assign(:complete_internship, create(:complete_internship))
   end
 
   it 'renders new complete_internship form' do
