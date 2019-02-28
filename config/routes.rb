@@ -41,6 +41,7 @@ Rails.application.routes.draw do
       get 'rating', to: 'internships#rating', as: 'rating'
       get 'newAddress/:company_id', to: 'company_addresses#new_address', as: 'new_address'
       get 'select_company/', to: 'companies#select_company', as: 'select_company'
+      get 'help', to: 'welcome#help'
     end
     ActiveAdmin.routes(self)
   end

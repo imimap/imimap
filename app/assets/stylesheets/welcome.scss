@@ -1,0 +1,10 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+ol.list-marker-inside {
+  /* since the wrapper clips the x overflow we need to set the
+  numbering in front of list items inside the item, so they
+  don't get cut off */
+  list-style-position: inside;
+}
