@@ -23,12 +23,14 @@ describe 'ActiveAdmin User' do
     end
     it 'creates user' do
       visit new_admin_user_path
-      expect(page).to have_content t('active_admin.create_model', model: User.model_name.human)
+      expect(page).to have_content t('active_admin.create_model',
+                                     model: User.model_name.human)
       # TBD write actual test
     end
     it 'edits user' do
       visit edit_admin_user_path(id: @prof.id)
-      expect(page).to have_content t('active_admin.edit_model', model: User.model_name.human)
+      expect(page).to have_content t('active_admin.edit_model',
+                                     model: User.model_name.human)
       # TBD write actual test
     end
   end

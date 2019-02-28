@@ -3,5 +3,5 @@
 require 'rails_helper'
 
 RSpec.describe CompleteInternship, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  # computation of complete internship duration
 end

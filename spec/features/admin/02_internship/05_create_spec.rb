@@ -22,7 +22,8 @@ describe 'ActiveAdmin create internship' do
     semester = create(:ws2018)
     visit new_admin_internship_path
 
-    select company_address_selector(company_address: ca), from: 'Company address'
+    select company_address_selector(company_address: ca),
+           from: 'Company address'
     select student_selector(student: student), from: 'Student'
     select semester.name, from: 'Semester'
     click_on 'Praktikum anlegen'
@@ -35,7 +36,8 @@ describe 'ActiveAdmin create internship' do
     student = create(:student2)
     semester = create(:ws2018)
     visit new_admin_internship_path
-    select company_address_selector(company_address: ca), from: 'Company address'
+    select company_address_selector(company_address: ca),
+           from: 'Company address'
     select student_selector(student: student), from: 'Student'
     select semester.name, from: 'Semester'
     click_on 'Praktikum anlegen'
