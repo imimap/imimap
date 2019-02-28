@@ -13,7 +13,7 @@ class InternshipsController < ApplicationResourceController
   include CompleteInternshipDataHelper
 
   def index
-    @semester = semester_from_params(params[:semester_id])
+    @semester = semester_from_params(params)
     @semester_options = Semester.all.map { |s| [s.name, s.id] }
 
     internships = Internship.where(semester: @semester)

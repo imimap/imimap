@@ -4,8 +4,8 @@
 # They need to be included in the needed classes
 # as below.
 module ActiveAdminHelper
-  def link_to_list(a)
-    links = a.map do |internship|
+  def link_to_list(internships)
+    links = internships.map do |internship|
       internship_id = internship.id
       link_to internship_id, admin_internship_path(internship_id)
     end

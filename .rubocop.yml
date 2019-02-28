@@ -22,6 +22,7 @@ Metrics/AbcSize:
 Metrics/BlockLength:
   Exclude:
     - 'app/admin/internships/internships_form.rb' #Internship
+    - 'config/**/*'
     - 'spec/**/*'
     - 'config/routes.rb'
     - 'spec/factories/*'

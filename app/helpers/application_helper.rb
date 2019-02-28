@@ -3,8 +3,8 @@
 # View Helper Methods for all Controllers.
 module ApplicationHelper
   def semester_from_params(params)
-    if params && params[:semester_id]
-      Semester.find(params[:semester_id])
+    if params && params['semester_id']
+      Semester.find(params['semester_id'])
     else
       Semester.current
     end
