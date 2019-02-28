@@ -1,44 +1,31 @@
 
-# Internship is too big and holds too many attributes.
-# thus, the following violations will be easier to remove once
-# Internship is refactored.
-# app/admin/internships/internships_form.rb
-# db/seed/lib/08_lib.rb: depends on Internship too heavy.
-Metrics/BlockLength:
-  Exclude:
-    - app/admin/internships/internships_form.rb
-Metrics/MethodLength:
-  Exclude:
-    - 'db/seed/lib/08_lib.rb'
-
-Metrics/AbcSize:
-  Exclude:
-    - 'db/seed/lib/08_lib.rb'
-
 AllCops:
   Exclude:
-    - 'spec/*'
     - 'db/schema.rb'
     - 'db/migrate/*'
     - 'bin/setup'
     - 'bin/update'
 
+# Internship refactoring dependent marked with #Internship
+# those should eventually be deleted or fixed: marked with #TBD
 Metrics/AbcSize:
   Exclude:
+    - 'db/seed/lib/08_lib.rb' #Internship
     - 'app/admin'
 
-
-
-# those should eventually be deleted or fixed.
-
-Style/MethodMissingSuper:
-  Exclude:
-    - 'app/helpers/rating_renderer.rb'
 Metrics/BlockLength:
   Exclude:
+    - app/admin/internships/internships_form.rb #Internship
+    - 'spec/**/*'
     - 'config/routes.rb'
     - 'spec/factories/*'
     - 'app/admin/*'
+
 Metrics/ClassLength:
   Exclude:
-    - 'app/pdfs/internship_pdf.rb'
+    - 'app/pdfs/internship_pdf.rb' #Internship
+
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/seed/lib/08_lib.rb' #Internship

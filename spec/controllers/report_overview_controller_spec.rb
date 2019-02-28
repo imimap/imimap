@@ -24,7 +24,9 @@ RSpec.describe ReportOverviewController, type: :controller do
 
     it 'assigns @semesters' do
       get :index
-      expect(assigns(:semesters)).to eq([[@internship.semester.name, @internship.semester.id]])
+      expect(assigns(:semesters))
+        .to eq([[@internship.semester.name,
+                 @internship.semester.id]])
     end
   end
 end
