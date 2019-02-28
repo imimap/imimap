@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-include CompleteInternshipHelper
+include CompleteInternshipDataHelper
 RSpec.describe InternshipsController, type: :controller do
   include Devise::Test::ControllerHelpers
   include InternshipsHelper
@@ -33,7 +33,7 @@ RSpec.describe InternshipsController, type: :controller do
       end
 
       it 'assigns @complete_internships' do
-        expect(assigns(:complete_internships)).to eq([CompleteInternship.from(@internship)])
+        expect(assigns(:complete_internships)).to eq([CompleteInternshipData.from(@internship)])
       end
       it 'assigns @internships' do
         expect(assigns(:internship_count)).to eq(1)

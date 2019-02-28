@@ -35,11 +35,16 @@ RSpec.describe User, type: :model do
   end
 
   describe '#enrolment_number' do
-    it 'should return nil if no student is present' do
+    it 'should return enrolment_number from email if no student present' do
       user.student = nil
+      matrikel = User.enrolment_number_from(email: user.email)
+      expect(user.enrolment_number).to eq matrikel
+    end
+    it 'should return nil it cannot be determined' do
+      user.student = nil
+      user.email = 'not.a@student.de'
       expect(user.enrolment_number).to eq nil
     end
-
     it 'should return the correct enrolment_number' do
       expect(user.enrolment_number).to eq user.student.enrolment_number
     end

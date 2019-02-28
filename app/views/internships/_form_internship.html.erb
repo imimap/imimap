@@ -1,0 +1,97 @@
+<div id="internship" class="tabcontent">
+
+<h3>Internship Details</h3>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="field" id="field-titles">
+      <%= f.text_field :title, placeholder: "Game design website in Italy" %>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="field" id="field-titles">
+      <%= f.select :semester_id, semesters, {}, class: 'chzn-select' %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <div class="field" id="field-titles">
+    <%= f.date_field :start_date %>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="field" id="field-titles">
+      <%= f.date_field :end_date %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="field" id="field-titles">
+      <%= f.text_field :operational_area, placeholder: "Visual Reality, Website, 3D"%>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="field" id="field-titles">
+    <%= f.select :orientation_id, orientations, class: 'chzn-select' %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="field" id="field-titles">
+    <%= f.text_area :tasks, size: "4x5", placeholder: "Make and manage the company website, Make CSS for client websites" %>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+  <div class="field" id="field-titles">
+  <%= f.select :programming_language_ids, @programming_languages, {}, { :multiple => true, class: 'chzn-select', hide_label: true} %>
+</div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="field" id="field-titles">
+      <%= f.label t("internships.attributes.working_hours") + " / " + t("unit.week") %><br />
+      <%= f.text_field :working_hours, hide_label: true %>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="field" id="field-titles">
+      <%= f.label t("internships.attributes.salary") + " € / " + t("unit.month") %><br />
+      <%= f.text_field :salary, hide_label: true %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="field" id="field-titles">
+    <%= f.select :reading_prof_id, ReadingProf.order(:id).map { |p| [p.name, p.id]}, class: 'chzn-select', disabled: false %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="pull-right">
+    <div class="actions">
+    <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+    <i class="icon-ok icon-white"></i> <%= t("internships.create")%>
+    <% end %>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</div>

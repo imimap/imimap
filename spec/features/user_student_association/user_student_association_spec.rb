@@ -4,7 +4,7 @@ require 'rails_helper'
 
 describe 'Student login:' do
   before(:each) do
-    connect_to_ldap
+    allow_ldap_login
   end
 
   context 'first time - no user present' do
@@ -80,7 +80,7 @@ end
 
 describe 'Non-Student login:' do
   before(:each) do
-    connect_to_ldap
+    allow_ldap_login
   end
 
   context 'first time - no user present' do

@@ -10,6 +10,7 @@ class Ability
     can :create, Internship
     can :update, Internship, approved: false,  student: { user: user }
     can :show,   Internship, student: { user: user }
+    can %i[show], Student, user: { id: user.id }
     can :update, Student, user: { id: user.id }
     can %i[read update], User, id: user.id
     can :create, [Company, CompanyAddress]

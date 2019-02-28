@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Composes all Internship Information in one Class to pass to the view
-module CompleteInternshipHelper
+module CompleteInternshipDataHelper
   COMPLETE_INTERNSHIP_MEMBERS = %i[first_name
                                    last_name
                                    enrolment_number
@@ -11,7 +11,7 @@ module CompleteInternshipHelper
                                    start_date
                                    end_date
                                    internship_state].freeze
-  CompleteInternship = Struct.new(*COMPLETE_INTERNSHIP_MEMBERS) do
+  CompleteInternshipData = Struct.new(*COMPLETE_INTERNSHIP_MEMBERS) do
     def add_student_info(int)
       ci = self
       if int.student.nil?
@@ -79,15 +79,15 @@ module CompleteInternshipHelper
     end
   end
 
-  def CompleteInternship.from(int)
-    ci = CompleteInternship.new
+  def CompleteInternshipData.from(int)
+    ci = CompleteInternshipData.new
     ci.add_student_info(int)
     ci.add_company_info(int)
     ci.add_status_info(int)
     ci
   end
 
-  def CompleteInternship.to_csv(complete_internships)
+  def CompleteInternshipData.to_csv(complete_internships)
     CSV.generate do |csv|
       csv << COMPLETE_INTERNSHIP_MEMBERS
       complete_internships.each do |ci|

@@ -29,6 +29,7 @@
     </ul>
 <% end # TDB Notifications %>
 
+    <% if current_user.student? && FT.on?(:student_can_edit_internship, current_user) %>
     <li class = "imimap-nav-right-li">
       <%= link_to help_path do %>
         <i class="icon-question-sign icon-large"></i>
@@ -38,10 +39,11 @@
     <li> &nbsp</li>
 
     <li class = "imimap-nav-right-li">
-      <%= link_to current_user  do %>
+      <%= link_to student_path(current_user) do %>
         <i class="icon-user icon-large"></i>
       <% end %>
     </li>
+    <% end %>
 
     <li class="dropdown imimap-nav-right-li">
       <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog icon-large"></i></a>

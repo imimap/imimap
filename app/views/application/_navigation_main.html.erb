@@ -14,7 +14,7 @@
     <ul class="navbar-nav ">
       <li class="nav-item im-nav-item<%= 'active' if current_page?(root_path) %>"><%= link_to t("header.overview"), root_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
       <li class="nav-item im-nav-item<%= 'active' if current_page?(internship_offers_path) %>"><%= link_to t("header.exchange"), internship_offers_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
-      <% if current_user.student? %>
+      <% if current_user.student? && FT.on?(:student_can_edit_internship, current_user) %>
         <li class="nav-item im-nav-item<%= 'active' if current_page?(my_internship_path) %>"><%= link_to t("header.internship"),  my_internship_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
       <% end %>
       <% if can? :index, Internship %>
