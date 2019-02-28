@@ -39,4 +39,9 @@ class Student < ApplicationRecord
     user.save!
     student
   end
+
+  def last_internship
+    max_id = internships.pluck(:id).max
+    Internship.find(max_id)
+  end
 end

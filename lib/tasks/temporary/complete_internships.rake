@@ -19,17 +19,17 @@ namespace :imimap do
     students = Student.all
     puts "Going to create complete_internships for #{students.count} students"
     ActiveRecord::Base.transaction do
-      students.each do |s|
-        internships = s.internships
+      students.each do |student|
+        internships = student.internships
         next if internships.empty?
 
-        unless s.complete_internship.nil?
+        unless student.complete_internship.nil?
           puts "complete internship exists for student #{s.id}, skipping"
           next
         end
-        max_id = internships.pluck(:id).max
-        last_internship = Internship.find(max_id)
-        ci = complete_internship_for(student: s, internship: last_internship)
+        last_internship = student.last_internship
+        ci = complete_internship_for(student: student,
+                                     internship: last_internship)
         ci.save!
         internships.each do |tp|
           # irgendwie beziehung der tps zu ci herstellen

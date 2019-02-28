@@ -98,13 +98,14 @@ ActiveRecord::Schema.define(version: 2019_02_28_084539) do
   end
 
   create_table "complete_internships", force: :cascade do |t|
-    t.string "semester"
+    t.integer "semester_id"
     t.integer "semester_of_study"
     t.boolean "aep"
     t.boolean "passed"
     t.integer "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["semester_id"], name: "index_complete_internships_on_semester_id"
     t.index ["student_id"], name: "index_complete_internships_on_student_id"
   end
 
