@@ -5,6 +5,8 @@ AllCops:
     - 'db/migrate/*'
     - 'bin/setup'
     - 'bin/update'
+    - 'app/pdfs/internship_pdf.rb' #Internship
+
 
 # Internship refactoring dependent marked with #Internship
 # those should eventually be deleted or fixed: marked with #TBD
@@ -20,10 +22,6 @@ Metrics/BlockLength:
     - 'config/routes.rb'
     - 'spec/factories/*'
     - 'app/admin/*'
-
-Metrics/ClassLength:
-  Exclude:
-    - 'app/pdfs/internship_pdf.rb' #Internship
 
 
 Metrics/MethodLength:
