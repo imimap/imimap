@@ -34,13 +34,17 @@ class UserCommentsController < ApplicationResourceController
 
     respond_to do |format|
       if @comment.update_attributes(user_comment_params)
-        format.html { redirect_to @comment,
-          notice: 'Comment was successfully updated.' }
+        format.html do
+          redirect_to @comment,
+                      notice: 'Comment was successfully updated.'
+        end
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @comment.errors,
-          status: :unprocessable_entity }
+        format.json do
+          render json: @comment.errors,
+                 status: :unprocessable_entity
+        end
       end
     end
   end

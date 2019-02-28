@@ -21,10 +21,12 @@ class ReadListController < ApplicationResourceController
 
     respond_to do |format|
       format.html { redirect_to(read_list_index_path) }
-      format.js { render layout: false,
-        locals: { current_user: @current_user,
-          internship: @internship,
-          read_list: @read_list } }
+      format.js do
+        render layout: false,
+               locals: { current_user: @current_user,
+                         internship: @internship,
+                         read_list: @read_list }
+      end
     end
   end
 
@@ -34,9 +36,11 @@ class ReadListController < ApplicationResourceController
 
     respond_to do |format|
       format.html { redirect_to read_list_index_path }
-      format.js { render layout: false,
-        locals: { current_user: @current_user,
-          internship: @internship, read_list: @read_list } }
+      format.js do
+        render layout: false,
+               locals: { current_user: @current_user,
+                         internship: @internship, read_list: @read_list }
+      end
     end
   end
 
@@ -49,10 +53,12 @@ class ReadListController < ApplicationResourceController
 
     respond_to do |format|
       format.html { redirect_to read_list_index_path }
-      format.js { render layout: false,
-         locals: { current_user: @current_user,
-           internship: @internship,
-           read_list: @read_list } }
+      format.js do
+        render layout: false,
+               locals: { current_user: @current_user,
+                         internship: @internship,
+                         read_list: @read_list }
+      end
     end
   end
 end

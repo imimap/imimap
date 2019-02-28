@@ -21,14 +21,15 @@ class SearchController < ApplicationController
 
     @semesters = Semester.where(
       id: @internships.collect(&:semester_id)
-      .distinct)
-      .map { |s| [s.name, s.id] }
+      .distinct
+    )
+                         .map { |s| [s.name, s.id] }
 
     @orientations = Orientation
-    .where(id: @internships
+                    .where(id: @internships
       .collect(&:orientation_id))
-      .distinct
-      .map { |o| [o.name, o.id] }
+                    .distinct
+                    .map { |o| [o.name, o.id] }
 
     @living_costs_max = @internships.collect(&:living_costs).max
 

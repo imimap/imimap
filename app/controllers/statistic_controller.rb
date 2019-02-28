@@ -2,16 +2,12 @@
 
 # Prepares Statistic View TBD - delete or create working one
 class StatisticController < ApplicationController
+  include ApplicationHelper
   def overview
     return if Semester.count.zero? || Internship.count.zero?
 
-    @semester_id = if params[:semester_id].nil?
-                     Semester.last.id
-                   else
-                     params[:semester_id].to_i
-                   end
-    @semester = Semester.find(@semester_id)
-    @semester_options = Semester.all.map { |s| [s.name, s.id] }
+    @semester = semester_from_params(params[:semester_id])
+    @semester_options = Semester.pluck(:name, :id)
     @internships = Internship.joins(:company)
                              .where(semester_id: @semester_id)
                              .group(:country).count

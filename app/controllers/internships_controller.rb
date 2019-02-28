@@ -2,6 +2,7 @@
 
 # The Internships controller
 class InternshipsController < ApplicationResourceController
+  include ApplicationHelper
   respond_to :html, :json
   before_action :programming_languages, :orientations, only: %i[new edit update]
 
@@ -12,11 +13,7 @@ class InternshipsController < ApplicationResourceController
   include CompleteInternshipDataHelper
 
   def index
-    @semester = if params[:semester_id]
-                  Semester.find(params[:semester_id])
-                else
-                  Semester.current
-                end
+    @semester = semester_from_params(params[:semester_id])
     @semester_options = Semester.all.map { |s| [s.name, s.id] }
 
     internships = Internship.where(semester: @semester)

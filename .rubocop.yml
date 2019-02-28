@@ -6,6 +6,7 @@ AllCops:
     - 'bin/setup'
     - 'bin/update'
     - 'app/pdfs/internship_pdf.rb' #Internship
+    - 'app/controllers/report_overview_controller.rb' # delete
 
 
 # Internship refactoring dependent marked with #Internship
@@ -16,6 +17,7 @@ Metrics/AbcSize:
     - 'app/admin'
     - 'app/controllers/internships_controller.rb'
     - 'app/models/ability.rb'
+    - 'app/controllers/search_controller.rb'
 
 Metrics/BlockLength:
   Exclude:
@@ -35,3 +37,4 @@ Metrics/MethodLength:
     - 'app/controllers/favorite_controller.rb' # delete?
     - 'app/controllers/finish_list_controller.rb' # delete?
     - 'app/controllers/internships_controller.rb'
+    - 'app/controllers/search_controller.rb'
