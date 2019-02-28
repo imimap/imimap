@@ -3,6 +3,7 @@
 # to check remove the #
 # inherit_from: .rubocop_todo.yml
 
+# db/seed/lib/08_lib.rb: depends on Internship too heavy.
 
 AllCops:
   Exclude:
@@ -13,6 +14,11 @@ AllCops:
 Metrics/AbcSize:
   Exclude:
     - 'app/admin'
+    - 'db/seed/lib/08_lib.rb'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/seed/lib/08_lib.rb'
 
 # those should eventually be deleted or fixed.
 
