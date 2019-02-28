@@ -19,7 +19,8 @@ describe 'Student login:' do
       student = create(:student, enrolment_number: enrolment_number)
       sign_in_with(enrolment_number: enrolment_number)
       user = User.last
-      expect(user.email).to eq User.email_for(enrolment_number: enrolment_number)
+      expect(user.email)
+        .to eq User.email_for(enrolment_number: enrolment_number)
       expect(user.student).to eq student
     end
     it 'student object is created if not present' do
@@ -29,7 +30,8 @@ describe 'Student login:' do
       end.to change { Student.count }.by(1)
       student = Student.last
       user = User.last
-      expect(user.email).to eq User.email_for(enrolment_number: enrolment_number)
+      expect(user.email)
+        .to eq User.email_for(enrolment_number: enrolment_number)
       expect(user.student).to eq student
     end
   end
@@ -86,7 +88,8 @@ describe 'Non-Student login:' do
   context 'first time - no user present' do
     it 'user is created but no student object' do
       expect do
-        expect { sign_in_with_mail(email: 'testperson@htw-berlin.de') }.to change { User.count }.by(1)
+        expect { sign_in_with_mail(email: 'testperson@htw-berlin.de') }
+          .to change { User.count }.by(1)
       end.to change { Student.count }.by(0)
     end
   end
@@ -97,7 +100,8 @@ describe 'Non-Student login:' do
     end
     it 'logs in and no student and user is created' do
       expect do
-        expect { sign_in_with_mail(email: 'testperson@htw-berlin.de') }.to change { Student.count }.by(0)
+        expect { sign_in_with_mail(email: 'testperson@htw-berlin.de') }
+          .to change { Student.count }.by(0)
       end.to change { User.count }.by(0)
     end
   end

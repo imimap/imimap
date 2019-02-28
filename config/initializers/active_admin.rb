@@ -120,7 +120,8 @@ ActiveAdmin.setup do |config|
 
   # == Admin Comments
   #
-  # This allows your users to comment on any resource registered with Active Admin.
+  # This allows your users to comment on any resource registered with Active
+  # Admin.
   #
   # You can completely disable comments:
   # config.comments = false
@@ -155,7 +156,8 @@ ActiveAdmin.setup do |config|
   #
   # Set the localize format to display dates and times.
   # To understand how to localize your app with I18n, read more at
-  # https://github.com/svenfuchs/i18n/blob/master/lib%2Fi18n%2Fbackend%2Fbase.rb#L52
+  # https://github.com/svenfuchs/i18n/blob/master/
+  # lib%2Fi18n%2Fbackend%2Fbase.rb#L52
   #
   config.localize_format = :long
 
@@ -185,8 +187,8 @@ ActiveAdmin.setup do |config|
 
   # == Create Another Checkbox
   #
-  # Create another checkbox is disabled by default. You can customize it for individual
-  # resources or you can enable them globally from here.
+  # Create another checkbox is disabled by default. You can customize it for
+  # individual resources or you can enable them globally from here.
   #
   # config.create_another = true
 
@@ -202,7 +204,8 @@ ActiveAdmin.setup do |config|
   # update to 1.1.0
   # https://github.com/activeadmin/activeadmin/blob/master/CHANGELOG.md
   # Deprecated config.register_stylesheet and config.register_javascript. Import
-  # your CSS and JS files in active_admin.scss or active_admin.js. #5060 by @javierjulio
+  # your CSS and JS files in active_admin.scss or active_admin.js. #5060 by
+  # @javierjulio
   # == CSV options
   #
   # Set the CSV builder separator
@@ -213,13 +216,17 @@ ActiveAdmin.setup do |config|
 
   # == Menu System
   #
-  # You can add a navigation menu to be used in your application, or configure a provided menu
+  # You can add a navigation menu to be used in your application, or configure
+  # a provided menu
   #
-  # To change the default utility navigation to show a link to your website & a logout btn
+  # To change the default utility navigation to show a link to your website &
+  # a logout btn
   #
   #   config.namespace :admin do |admin|
   #     admin.build_menu :utility_navigation do |menu|
-  #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
+  #       menu.add label: "My Great Website",
+  #        url: "http://www.mygreatwebsite.com",
+  #        html_options: { target: :blank }
   #       admin.add_logout_button_to_menu menu
   #     end
   #   end
@@ -228,7 +235,8 @@ ActiveAdmin.setup do |config|
   #
   #   config.namespace :admin do |admin|
   #     admin.build_menu :default do |menu|
-  #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
+  #       menu.add label: "My Great Website", url:
+  #       "http://www.mygreatwebsite.com", html_options: { target: :blank }
   #     end
   #   end
 
@@ -236,11 +244,14 @@ ActiveAdmin.setup do |config|
     admin.build_menu :utility_navigation do |menu|
       menu.add label: 'User view', url: :authenticated_root_path
       menu.add label: 'Locale' do |lang|
-        lang.add label: 'English', url: proc { url_for(locale: 'en') }, priority: 1
-        lang.add label: 'Deutsch', url: proc { url_for(locale: 'de') }, priority: 2
+        lang.add label: 'English',
+                 url: proc { url_for(locale: 'en') },
+                 priority: 1
+        lang.add label: 'Deutsch',
+                 url: proc { url_for(locale: 'de') },
+                 priority: 2
       end
 
-      #   menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
       admin.add_current_user_to_menu  menu
       admin.add_logout_button_to_menu menu
     end

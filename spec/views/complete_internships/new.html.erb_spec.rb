@@ -15,7 +15,8 @@ RSpec.describe 'complete_internships/new', type: :view do
   it 'renders new complete_internship form' do
     render
 
-    assert_select 'form[action=?][method=?]', complete_internships_path, 'post' do
+    assert_select 'form[action=?][method=?]',
+                  complete_internships_path, 'post' do
       assert_select 'input[name=?]', 'complete_internship[semester]'
 
       assert_select 'input[name=?]', 'complete_internship[semester_of_study]'

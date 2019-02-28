@@ -10,7 +10,8 @@ RSpec.describe Internship, type: :mailer do
   end
   describe '#internship_ready' do
     it 'renders the subject' do
-      expect(@mail.subject).to eq('IMI-Map: Please tell us about your internship')
+      expect(@mail.subject)
+        .to eq('IMI-Map: Please tell us about your internship')
     end
 
     it 'renders the recipient email' do

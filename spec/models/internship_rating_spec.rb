@@ -26,20 +26,28 @@ RSpec.describe InternshipRating, type: :model do
       expect do
         create :internship_rating, tasks: -1
       end      .to raise_error(ActiveRecord::RecordInvalid)
-      expect { create :internship_rating, training_success: -1 }.to raise_error(ActiveRecord::RecordInvalid)
-      expect { create :internship_rating, atmosphere: -1 }.to raise_error(ActiveRecord::RecordInvalid)
-      expect { create :internship_rating, supervision: -1 }.to raise_error(ActiveRecord::RecordInvalid)
-      expect { create :internship_rating, appreciation: -1 }.to raise_error(ActiveRecord::RecordInvalid)
+      expect { create :internship_rating, training_success: -1 }
+        .to raise_error(ActiveRecord::RecordInvalid)
+      expect { create :internship_rating, atmosphere: -1 }
+        .to raise_error(ActiveRecord::RecordInvalid)
+      expect { create :internship_rating, supervision: -1 }
+        .to raise_error(ActiveRecord::RecordInvalid)
+      expect { create :internship_rating, appreciation: -1 }
+        .to raise_error(ActiveRecord::RecordInvalid)
     end
 
     it 'does not accept ratings greater than 5 ' do
       expect do
         create :internship_rating, tasks: 6
       end      .to raise_error(ActiveRecord::RecordInvalid)
-      expect { create :internship_rating, training_success: 6 }.to raise_error(ActiveRecord::RecordInvalid)
-      expect { create :internship_rating, atmosphere: 6 }.to raise_error(ActiveRecord::RecordInvalid)
-      expect { create :internship_rating, supervision: 6 }.to raise_error(ActiveRecord::RecordInvalid)
-      expect { create :internship_rating, appreciation: 6 }.to raise_error(ActiveRecord::RecordInvalid)
+      expect { create :internship_rating, training_success: 6 }
+        .to raise_error(ActiveRecord::RecordInvalid)
+      expect { create :internship_rating, atmosphere: 6 }
+        .to raise_error(ActiveRecord::RecordInvalid)
+      expect { create :internship_rating, supervision: 6 }
+        .to raise_error(ActiveRecord::RecordInvalid)
+      expect { create :internship_rating, appreciation: 6 }
+        .to raise_error(ActiveRecord::RecordInvalid)
     end
   end
 

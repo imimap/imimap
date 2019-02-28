@@ -26,13 +26,15 @@ module Devise
       end
 
       def authenticate!
-        Rails.logger.info("-- ldap -- Attempting ldap authorization for #{ldap_email}")
-        auth_successful = ldap_adapter.create(ldap_password: ldap_password).authenticate
+        Rails.logger.info("-- ldap -- attempting auth. for #{ldap_email}")
+        auth_successful = ldap_adapter
+                          .create(ldap_password: ldap_password)
+                          .authenticate
         if auth_successful
           user = User.find_or_create(email: ldap_email, password: ldap_password)
           return success!(user)
         else
-          Rails.logger.info("-- ldap -- ldap authorization failed for #{ldap_email}")
+          Rails.logger.info("-- ldap -- authorization failed for #{ldap_email}")
         end
       end
     end

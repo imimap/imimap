@@ -4,12 +4,13 @@ require 'rails_helper'
 
 RSpec.describe 'complete_internships/show', type: :view do
   before(:each) do
-    @complete_internship = assign(:complete_internship, CompleteInternship.create!(
-                                                          semester: 'Semester',
-                                                          semester_of_study: 2,
-                                                          aep: false,
-                                                          passed: false
-                                                        ))
+    @complete_internship = assign(:complete_internship,
+                                  CompleteInternship.create!(
+                                    semester: 'Semester',
+                                    semester_of_study: 2,
+                                    aep: false,
+                                    passed: false
+                                  ))
   end
 
   it 'renders attributes in <p>' do
