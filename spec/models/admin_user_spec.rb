@@ -24,7 +24,8 @@ RSpec.describe AdminUser, type: :model do
       expect(@admin_user.save).to be_falsy
     end
 
-    # we don't have password confirmation anymore, since we don't create passwords
+    # we don't have password confirmation anymore, since we don't create
+    # passwords
     # it 'rejects an empty password_confirmation' do
     #   @admin_user.password_confirmation = nil
     #   expect(@admin_user.save).to be_falsy

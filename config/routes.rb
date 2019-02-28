@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get 'password_resets/new'
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
     devise_scope :user do
-      devise_for :users, controllers: { registrations: 'users/registrations', passwords: 'users/passwords' }
+      devise_for :users,
+                 controllers: { registrations: 'users/registrations',
+                                passwords: 'users/passwords' }
       # This is needed for ActiveAdmin
       authenticated :user do
         root 'maps#map_view', as: :authenticated_root
@@ -13,7 +15,8 @@ Rails.application.routes.draw do
       root 'maps#peek_preview'
 
       resources :internships
-      # TBD ST resources :internships, only: %i[new edit show update create rating]
+      # TBD ST resources :internships, only: %i[new edit show update create
+      # rating]
       resources :companies
       resources :users, only: %i[edit show update create new]
       resources :user_verifications, only: %i[new create]
@@ -39,8 +42,12 @@ Rails.application.routes.draw do
       delete 'destroy', to: 'devise/notifications#destroy'
       get 'student_show', to: 'users#student_show', as: 'student_show'
       get 'rating', to: 'internships#rating', as: 'rating'
-      get 'newAddress/:company_id', to: 'company_addresses#new_address', as: 'new_address'
-      get 'select_company/', to: 'companies#select_company', as: 'select_company'
+      get 'newAddress/:company_id',
+          to: 'company_addresses#new_address',
+          as: 'new_address'
+      get 'select_company/',
+          to: 'companies#select_company',
+          as: 'select_company'
       get 'help', to: 'welcome#help'
     end
     ActiveAdmin.routes(self)

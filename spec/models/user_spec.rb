@@ -30,7 +30,8 @@ RSpec.describe User, type: :model do
 
   describe '#name' do
     it 'should return the correct name' do
-      expect(user.name).to eq "#{user.student.first_name} #{user.student.last_name}"
+      expect(user.name)
+        .to eq "#{user.student.first_name} #{user.student.last_name}"
     end
   end
 
@@ -52,8 +53,12 @@ RSpec.describe User, type: :model do
 
   describe 'UserObserver' do
     it 'should trigger the observer method' do
-      user.student.internships << create(:internship, user: user, completed: false)
-      user.student.internships << create(:internship, user: user, completed: false)
+      user.student.internships << create(:internship,
+                                         user: user,
+                                         completed: false)
+      user.student.internships << create(:internship,
+                                         user: user,
+                                         completed: false)
       expect(user.save).to be_truthy
     end
   end

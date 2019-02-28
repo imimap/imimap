@@ -7,22 +7,6 @@
 
 namespace :imimap do
   desc 'migrate county data to ISO3166-2'
-  task mcc_preview_2: :environment do
-    CC = ISO3166::Country
-         .codes
-         .map { |c| [ISO3166::Country.new(c).name, c] }
-         .to_h
-         .merge('United States' => 'US',
-                'United Kingdom' => 'GB',
-                'Czech Republic' => 'CZ')
-    puts CC.inspect
-    countries = CompanyAddress.pluck(:country).uniq.reject { |c| c.size < 3 }
-    countries.each do |c|
-      code = CC[c]
-      puts "not found: #{c} => #{code}" unless code
-    end
-  end
-
   task mcc: :environment do
     cas = CompanyAddress.all
     CC = ISO3166::Country
@@ -49,5 +33,3 @@ namespace :imimap do
     end
   end
 end
-
-# "United States of America"=>"US",
