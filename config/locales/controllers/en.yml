@@ -113,6 +113,7 @@ en:
       mailnotif1: "Receive Email-Notification? *"
 
   students:
+    personal_details: "Personal Details"
     attributes:
       first_name: "Given name"
       first_name1: "Given name *"

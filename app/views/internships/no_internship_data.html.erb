@@ -1,16 +1,18 @@
-<h2 class="intern-head"> <%= t"internships.details" %></h2>
+<div id="form-block4" class="text-left">
+	<h2 class="intern-head"> <%= t"internships.details" %></h2>
 
-<p>	Hier werden Sie demnächst Ihr Praktikum anlegen und den Status der Bearbeitung
+	<p>	Hier werden Sie demnächst Ihr Praktikum anlegen und den Status der Bearbeitung
 	sehen können. Wenn Sie Interesse haben, das mit uns zu testen, schicken Sie
 	uns eine email: imi-praktikum@htw-berlin.de</p>
 
-<% unless Rails.env == "production" %> Nicht in Production sichtbar:
-<% if current_user.student? %>
-<div id="askForCreation">
-	<%= t "internships.createInternship" %>
-	<br />
-	<%= link_to t("internships.createYourInternship"),  new_internship_path %>
-	<br />
+	<% unless Rails.env == "production" %> Nicht in Production sichtbar:
+	<% if current_user.student? %>
+	<div id="askForCreation">
+		<%= t "internships.createInternship" %>
+		<br />
+		<%= link_to t("internships.createYourInternship"),  new_internship_path %>
+		<br />
+	</div>
+	<% end %>
+	<% end %>
 </div>
-<% end %>
-<% end %>
