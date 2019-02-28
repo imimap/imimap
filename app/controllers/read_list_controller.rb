@@ -21,7 +21,10 @@ class ReadListController < ApplicationResourceController
 
     respond_to do |format|
       format.html { redirect_to(read_list_index_path) }
-      format.js { render layout: false, locals: { current_user: @current_user, internship: @internship, read_list: @read_list } }
+      format.js { render layout: false,
+        locals: { current_user: @current_user,
+          internship: @internship,
+          read_list: @read_list } }
     end
   end
 
@@ -31,23 +34,11 @@ class ReadListController < ApplicationResourceController
 
     respond_to do |format|
       format.html { redirect_to read_list_index_path }
-      format.js { render layout: false, locals: { current_user: @current_user, internship: @internship, read_list: @read_list } }
+      format.js { render layout: false,
+        locals: { current_user: @current_user,
+          internship: @internship, read_list: @read_list } }
     end
   end
-
-  # destroy unwanted assigned reports
-  # def destroy
-  # @read_list = ReadList.find(params[:id])
-  # @read_list.destroy
-
-  # @current_user = @read_list.user
-  # @internship = @read_list.internship
-
-  # respond_to do |format|
-  #    format.html { redirect_to read_list_index_path, notice: 'List successfully deleted'}
-  #   format.js { render :layout=>false,:locals => { :current_user  => @current_user, :internship => @internship, :read_list => @read_list} }
-  # end
-  # end
 
   def index
     @read_lists = current_user.read_lists
@@ -58,7 +49,10 @@ class ReadListController < ApplicationResourceController
 
     respond_to do |format|
       format.html { redirect_to read_list_index_path }
-      format.js { render layout: false, locals: { current_user: @current_user, internship: @internship, read_list: @read_list } }
+      format.js { render layout: false,
+         locals: { current_user: @current_user,
+           internship: @internship,
+           read_list: @read_list } }
     end
   end
 end

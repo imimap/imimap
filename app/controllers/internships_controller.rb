@@ -121,7 +121,6 @@ class InternshipsController < ApplicationResourceController
   def update
     @internship = Internship.find(params[:id])
     attributes = internship_params
-    attributes.delete(:company_id) # make internship company readonly by schlubbi
     if @internship.update_attributes(attributes)
       @internship.update_attributes(completed: true)
       flash[:notice] = 'Internship was successfully updated.'
@@ -177,16 +176,22 @@ class InternshipsController < ApplicationResourceController
 
   MODEL_ATTRIBUTES = %i[student_id company_address_id].freeze
   BASIC_ATTRIBUTES = %i[semester_id start_date end_date].freeze
-  STATE_ATTRIBUTES = %i[internship_state_id contract_state_id registration_state_id
+  STATE_ATTRIBUTES = %i[internship_state_id
+                        contract_state_id
+                        registration_state_id
                         report_state_id payment_state_id
-                        reading_prof_id certificate_signed_by_internship_officer
+                        reading_prof_id
+                        certificate_signed_by_internship_officer
                         certificate_signed_by_prof
                         certificate_state_id
                         certificate_to_prof].freeze
   REPORT_ATTRIBUTES = [:internship_report].freeze
   NOT_USED_ATTRIBUTES = %i[completed user_id].freeze
   WORK_DESCRIPTION_ATTRIBUTES = %i[operational_area
-                                   orientation_id description title tasks].freeze
+                                   orientation_id
+                                   description
+                                   title
+                                   tasks].freeze
   SUPERVISOR_ATTRIBUTES = %i[supervisor_email
                              supervisor_name].freeze
 

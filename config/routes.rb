@@ -40,7 +40,6 @@ Rails.application.routes.draw do
       get 'logout', to: 'devise/sessions#destroy', as: 'logout'
       get 'statistic', to: 'statistic#overview'
       delete 'destroy', to: 'devise/notifications#destroy'
-      get 'student_show', to: 'users#student_show', as: 'student_show'
       get 'rating', to: 'internships#rating', as: 'rating'
       get 'newAddress/:company_id',
           to: 'company_addresses#new_address',

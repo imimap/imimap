@@ -20,7 +20,6 @@ class Ability
     # TBD these reveal somewhat arbitrary
     # controllers and controller actions added over the time.
     can :internship_data, Internship
-    can :student_show, User
     can :new_address, CompanyAddress
 
     return unless user.prof? || user.examination_office? || user.admin?
