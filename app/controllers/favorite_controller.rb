@@ -12,7 +12,11 @@ class FavoriteController < ApplicationResourceController
     @internship = @favorite.internship
 
     respond_to do |format|
-      format.js { render layout: false, locals: { current_user: @current_user, internship: @internship, favorite: @favorite } }
+      format.js do
+        render layout: false,
+               locals: { current_user: @current_user,
+                         internship: @internship, favorite: @favorite }
+      end
     end
   end
 
@@ -24,7 +28,11 @@ class FavoriteController < ApplicationResourceController
 
     respond_to do |format|
       format.html { redirect_to(favorite_index_path) }
-      format.js { render layout: false, locals: { current_user: @current_user, internship: @internship, favorite: @favorite } }
+      format.js do
+        render layout: false,
+               locals: { current_user: @current_user,
+                         internship: @internship, favorite: @favorite }
+      end
     end
   end
 

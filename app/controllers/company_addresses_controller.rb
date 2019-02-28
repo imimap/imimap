@@ -31,11 +31,21 @@ class CompanyAddressesController < ApplicationResourceController
 
     respond_to do |format|
       if @company_address.save
-        format.html { redirect_to new_internship_path, notice: 'Company & its Address were successfully created.' }
-        format.json { render json: @company_address, status: :created, location: @company_address }
+        format.html do
+          redirect_to new_internship_path,
+                      notice: 'Company & its Address were successfully created.'
+        end
+        format.json do
+          render json: @company_address,
+                 status: :created,
+                 location: @company_address
+        end
       else
         render :new
-        format.json { render json: @company.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @company.errors,
+                 status: :unprocessable_entity
+        end
       end
     end
   end
@@ -43,7 +53,8 @@ class CompanyAddressesController < ApplicationResourceController
   # PATCH/PUT /company_addresses/1
   def update
     if @company_address.update(company_address_params)
-      redirect_to @company_address, notice: 'Company address was successfully updated.'
+      redirect_to @company_address,
+                  notice: 'Company address was successfully updated.'
     else
       render :edit
     end
@@ -52,11 +63,13 @@ class CompanyAddressesController < ApplicationResourceController
   # DELETE /company_addresses/1
   def destroy
     @company_address.destroy
-    redirect_to company_addresses_url, notice: 'Company address was successfully destroyed.'
+    redirect_to company_addresses_url,
+                notice: 'Company address was successfully destroyed.'
   end
 
   def company_address_params
-    params.require(:company_address).permit(CompanyAddressesController.permitted_params)
+    params.require(:company_address)
+          .permit(CompanyAddressesController.permitted_params)
   end
 
   def self.permitted_params

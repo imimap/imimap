@@ -7,7 +7,8 @@ class CompaniesController < ApplicationResourceController
   def index
     @companies = Company.all
     # TBD ST
-    # @companies = Company.order(:name).where("name like ?", "%#{params[:term]}%")
+    # @companies =
+    #  Company.order(:name).where("name like ?", "%#{params[:term]}%")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -55,11 +56,21 @@ class CompaniesController < ApplicationResourceController
         # case, but if Company#create isn't called from anywhere else,
         # why not. but if the company was specifically created for the
         # internship, it should be passed to the new internship.
-        format.html { redirect_to new_address_path(@company.id), notice: 'Company was successfully created.' }
-        format.json { render json: @company, status: :created, location: @company }
+        format.html do
+          redirect_to new_address_path(@company.id),
+                      notice: 'Company was successfully created.'
+        end
+        format.json do
+          render json: @company,
+                 status: :created,
+                 location: @company
+        end
       else
         format.html { render action: 'new' }
-        format.json { render json: @company.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @company.errors,
+                 status: :unprocessable_entity
+        end
       end
     end
   end
@@ -71,11 +82,17 @@ class CompaniesController < ApplicationResourceController
 
     respond_to do |format|
       if @company.update_attributes(company_params)
-        format.html { redirect_to @company, notice: 'Company was successfully updated.' }
+        format.html do
+          redirect_to @company,
+                      notice: 'Company was successfully updated.'
+        end
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @company.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @company.errors,
+                 status: :unprocessable_entity
+        end
       end
     end
   end

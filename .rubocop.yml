@@ -14,16 +14,22 @@ Metrics/AbcSize:
   Exclude:
     - 'db/seed/lib/08_lib.rb' #Internship
     - 'app/admin'
+    - 'app/controllers/internships_controller.rb'
 
 Metrics/BlockLength:
   Exclude:
-    - app/admin/internships/internships_form.rb #Internship
+    - 'app/admin/internships/internships_form.rb' #Internship
     - 'spec/**/*'
     - 'config/routes.rb'
     - 'spec/factories/*'
-    - 'app/admin/*'
+    - 'app/admin/**/*.rb'
+    - 'app/admin/internships/internships_show.rb'
+    - 'app/controllers/internships_controller.rb'
 
 
 Metrics/MethodLength:
   Exclude:
     - 'db/seed/lib/08_lib.rb' #Internship
+    - 'app/controllers/favorite_controller.rb' # delete?
+    - 'app/controllers/finish_list_controller.rb' # delete?
+    - 'app/controllers/internships_controller.rb'

@@ -78,8 +78,8 @@ class User < ApplicationRecord
       user.update_attributes(password: password) unless password == old_pw
     end
     user ||= User.create(email: email,
-      password: password, 
-      password_confirmation: password)
+                         password: password,
+                         password_confirmation: password)
     Student.find_or_create_for(user: user) if user.student_email?(email)
     user
   end

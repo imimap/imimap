@@ -6,7 +6,8 @@ class CompleteReportController < ApplicationResourceController
   before_action :authorize_role_prof
 
   def index
-    @internships = Internship.where(report_state_id: ReportState.second, semester_id: Semester.first)
+    @internships = Internship.where(report_state_id: ReportState.second,
+                                    semester_id: Semester.first)
 
     respond_to do |format|
       format.html

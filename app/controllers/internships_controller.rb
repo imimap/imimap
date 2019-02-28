@@ -16,7 +16,7 @@ class InternshipsController < ApplicationResourceController
                   Semester.find(params[:semester_id])
                 else
                   Semester.current
-               end
+                end
     @semester_options = Semester.all.map { |s| [s.name, s.id] }
 
     internships = Internship.where(semester: @semester)
@@ -65,11 +65,13 @@ class InternshipsController < ApplicationResourceController
 
     respond_to do |format|
       if @internship.save
-        format.html { redirect_to @internship, notice: 'Your internship was successfully created!' }
-        format.json { render json: @internship, status: :created, location: @internship }
+        format.html do
+          redirect_to @internship,
+                      notice: 'Your internship was successfully created!'
+        end
       else
         format.html { render action: 'new' }
-        format.json { render json: @internship.errors, status: :unprocessable_entity }
+
       end
     end
   end
@@ -80,19 +82,25 @@ class InternshipsController < ApplicationResourceController
     @internship = Internship.find(params[:id])
     @comment = UserComment.new
     @answer = Answer.new
-    @favorite = Favorite.where(internship_id: @internship.id, user_id: current_user.id)[0]
+    @favorite = Favorite.where(internship_id: @internship.id,
+                               user_id: current_user.id)[0]
     @company = @internship.company_v2
     # TBD ST  @company = @internship.company_address.company
-    @other_internships = @company.internships.reject { |x| x.id == @internship.id }.reject { |i| i.completed == false }
+    @other_internships = []
+    # @company.internships.reject do |x|
+    #  x.id == @internship.id
+    # end.reject { |i| i.completed == false }
 
     @user_comments = @internship.user_comments.order('created_at DESC')
 
     respond_to do |format|
       format.html
+      name = @current_user.student.last_name
       format.pdf do
         pdf = InternshipPdf.new(@internship)
-        send_data pdf.render, filename: "Internship Registration Form #{@current_user.student.last_name}.pdf",
-                              type: 'application/pdf'
+        send_data pdf.render,
+                  filename: "internship_registration_#{name}.pdf",
+                  type: 'application/pdf'
       end
     end
   end
@@ -139,7 +147,11 @@ class InternshipsController < ApplicationResourceController
   # If the user has no internship, the system asks him/her to create a new one
   # else the internship details are shown
   def internship_data
-    @internships = current_user.student.nil? ? [] : current_user.student.internships
+    @internships = if current_user.student.nil?
+                     []
+                   else
+                     current_user.student.internships
+      end
 
     if @internships.any?
       redirect_to @internships.first
