@@ -1,41 +1,42 @@
 # frozen_string_literal: true
 
 # inspired by https://robots.thoughtbot.com/data-migrations-in-rails
-
+# roll back:
+# Internship.all.each{|i| i.complete_internship = nil; i.save!}
+# CompleteInternship.destroy_all
+def complete_internship_for(student:, internship:)
+  passed_and_aep = internship.internship_state_id == 1 # passed
+  CompleteInternship.new(
+    student: student,
+    aep: passed_and_aep,
+    passed: passed_and_aep,
+    semester: internship.semester
+  )
+end
 namespace :imimap do
-  desc 'create an address object for each company'
+  desc 'create complete_internship between student and internship'
   task create_cis: :environment do
     students = Student.all
-    puts "Going to update internships for #{students.count} students"
-
+    puts "Going to create complete_internships for #{students.count} students"
     ActiveRecord::Base.transaction do
       students.each do |s|
-        i = s.internships.last
-        ci = CompleteInternship.new(
-          student: s,
-          aep: i.state == passed, # wenn der status des praktikums 'passed' ist, ist aep true, sonst nicht
-          passed: i.state == passed, # das selbe gilt für passed
-          # überlegungen, da mir im moment nicht klar ist, wie ich an den state der internship komme:
-          # alternativ könnte man überlegen hier über certificate_signed_by_internship_officer ran zu gehen: wenn unterschrieben ist, dann war auf jeden fall ein AEP da
-          # aep: i.certificate_signed_by_internship_officer ? true : false,
-          # für passed gilt im moment das selbe: wenn es unterschrieben ist, dann müsste es auch passed sein
-          # passed: i.certificate_signed_by_internship_officer ? true : false,
-          # BEIDES FUNKTIONIERT ABER NUR WENN NICHT UNTERSCHRIEBEN AUCH WIRKLICH nil IST UND NICHT NUR blank
-          # sonst:
-          # aep: not i.certificate_signed_by_internship_officer.blank?,
-          # passed: not i.certificate_signed_by_internship_officer.blank?,
-          semester: i.semester # semester im format SS 19, nicht fachsemester
-          # das fachsemester wird also erstmal frei gelassen?
-        )
-        ci.save!
+        internships = s.internships
+        next if internships.empty?
 
-        # für jedes teilpraktikum:
-        s.internships.each do |tp|
-          # irgendwie beziehung der tps zu ci herstellen
+        unless s.complete_internship.nil?
+          puts "complete internship exists for student #{s.id}, skipping"
+          next
         end
-
+        max_id = internships.pluck(:id).max
+        last_internship = Internship.find(max_id)
+        ci = complete_internship_for(student: s, internship: last_internship)
+        ci.save!
+        internships.each do |tp|
+          # irgendwie beziehung der tps zu ci herstellen
+          tp.complete_internship = ci
+          tp.save!
+        end
       end
-      puts '.'
     end
     puts ' All done now!'
   end

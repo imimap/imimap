@@ -12,7 +12,7 @@ class Student < ApplicationRecord
 
   has_one :complete_internship
   has_many :internships
-  has_many :new_internships, through: :complete_internship
+  has_many :internships_new, through: :complete_internship
   has_one :user
 
   def user?

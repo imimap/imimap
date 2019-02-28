@@ -38,3 +38,7 @@ import_dump:dock $(file)
 	docker-compose exec -T imimap rails db:create
 	cat $(file) | docker-compose exec -T postgresql psql --set ON_ERROR_STOP=on -h localhost -U imi_map imimap -f -
 	docker-compose exec imimap rails db:migrate
+bash:
+	docker-compose exec imimap bash
+c:
+	docker-compose exec imimap rails c
