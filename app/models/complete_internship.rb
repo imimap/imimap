@@ -7,6 +7,7 @@
 class CompleteInternship < ApplicationRecord
   belongs_to :student
   belongs_to :student_new, class_name: 'Student', foreign_key: :student_id
+  belongs_to :semester
   has_many :internships
   has_many :internships_new,
            class_name: 'Internship',
