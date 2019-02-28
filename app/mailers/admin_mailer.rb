@@ -16,6 +16,7 @@ class AdminMailer < ActionMailer::Base
     )
 
     return unless email.has_attachments?
+
     email.attachments.each do |attachment|
       page.attachments.create(file: attachment, description: email.subject)
     end

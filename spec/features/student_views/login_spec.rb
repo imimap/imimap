@@ -7,6 +7,7 @@ describe 'Student Login' do
     context "in locale #{locale}" do
       before :each do
         I18n.locale = locale
+        allow_ldap_login(success: false)
       end
       context 'with valid user credentials' do
         before :each do
@@ -15,7 +16,6 @@ describe 'Student Login' do
 
         it 'should proceed to log in and back to original page' do
           visit internships_path
-
           fill_in 'user_email', with: @user.email
           fill_in 'user_password', with: @user.password
           click_on('Log in')

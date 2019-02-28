@@ -1,0 +1,37 @@
+<%= form_with(model: complete_internship, local: true) do |form| %>
+  <% if complete_internship.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(complete_internship.errors.count, "error") %> prohibited this complete_internship from being saved:</h2>
+
+      <ul>
+      <% complete_internship.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :semester %>
+    <%= form.text_field :semester %>
+  </div>
+
+  <div class="field">
+    <%= form.label :semester_of_study %>
+    <%= form.number_field :semester_of_study %>
+  </div>
+
+  <div class="field">
+    <%= form.label :aep %>
+    <%= form.check_box :aep %>
+  </div>
+
+  <div class="field">
+    <%= form.label :passed %>
+    <%= form.check_box :passed %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

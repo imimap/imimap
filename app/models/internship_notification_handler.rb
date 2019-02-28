@@ -26,6 +26,7 @@ class InternshipNotificationHandler
 
   def send_email
     return unless user&.mailnotif
+
     InternshipMailer.internship_ready(internship, user).deliver_now
   end
 end

@@ -24,7 +24,7 @@ class UsersController < ApplicationResourceController
     end
   end
 
-  def student_show
+  def student_show # old
     current_user
   end
 
@@ -36,6 +36,7 @@ class UsersController < ApplicationResourceController
 
   def check_existing_user
     return unless session[:enrolment_number]
+
     student = Student.where(enrolment_number: session[:enrolment_number]).first
     redirect_to root_url, error: 'Users exists. Please sign in with your email and password' if student && User.find_by_student_id(student.id)
   end

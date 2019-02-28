@@ -9,7 +9,7 @@ class InternshipsController < ApplicationResourceController
   # GET /internships.json
 
   include InternshipsHelper
-  include CompleteInternshipHelper
+  include CompleteInternshipDataHelper
 
   def index
     @semester = if params[:semester_id]
@@ -22,9 +22,9 @@ class InternshipsController < ApplicationResourceController
     internships = Internship.where(semester: @semester)
     @internship_count = internships.count
     # make rails load the file
-    CompleteInternship if @internship_count.zero?
+    CompleteInternshipData if @internship_count.zero?
     @complete_internships = internships.map do |i|
-      CompleteInternship.from(i)
+      CompleteInternshipData.from(i)
     end
     @field_names = COMPLETE_INTERNSHIP_MEMBERS
     @header_names = COMPLETE_INTERNSHIP_MEMBERS.map do |m|
@@ -33,7 +33,7 @@ class InternshipsController < ApplicationResourceController
     respond_to do |format|
       format.html
       format.csv do
-        send_data CompleteInternship.to_csv(@complete_internships)
+        send_data CompleteInternshipData.to_csv(@complete_internships)
       end
       # see https://github.com/straydogstudio/axlsx_rails
       # @header_names and @complete_internships are used in

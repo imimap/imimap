@@ -65,6 +65,7 @@ def create_student(enrolment_number:, with_internship:, with_user:)
   create_user_for_student(student: student) if with_user
 
   return unless with_internship
+
   company = Company.create!(
     name: Faker::Company.name,
     number_employees: Faker::Number.number(3),
