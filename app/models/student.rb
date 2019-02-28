@@ -11,7 +11,8 @@ class Student < ApplicationRecord
   # validates_uniqueness_of :enrolment_number
 
   has_one :complete_internship
-  has_many :internships, through: :complete_internship
+  has_many :internships
+  has_many :new_internships, through: :complete_internship
   has_one :user
 
   def user?

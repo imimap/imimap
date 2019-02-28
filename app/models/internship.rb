@@ -2,7 +2,8 @@
 
 require 'date'
 require 'time'
-# THE Internship
+# Internship respresents one actual internship within one company, as opposed
+# to CompleteInternship that respresents the whole course B20.
 class Internship < ApplicationRecord
   validates :semester_id, :student, presence: true
 
