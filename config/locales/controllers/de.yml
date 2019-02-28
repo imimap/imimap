@@ -136,6 +136,10 @@ de:
       phone: "Telefon"
       phone1: "Telefon *"
 
+  internship_offers:
+    header: "Praktikumsangebote"
+    number_of: "Es gibt im Moment"
+
   welcome:
     help:
       header: "Hilfe"

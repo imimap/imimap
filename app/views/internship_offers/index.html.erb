@@ -1,33 +1,30 @@
 <div id="form-block4">
-<h3><%= t("header.exchange") %></h3>
-<% counter = 0 %>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= t("header.title") %></th>
-      <th><%= t("header.city") %></th>
-      <th><%= t("header.country") %></th>
-    </tr>
-  </thead>
-
-<tbody>
-    <% @offers.each do |internship_offer| %>
-    <% counter +=1 %>
+  <h3><%= t("header.exchange") %></h3>
+  <% counter = 0 %>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= link_to internship_offer.title, internship_offer %></td>
-        <td><%= internship_offer.city %></td>
-        <td><%= internship_offer.country %></td>
+        <th><%= t("header.title") %></th>
+        <th><%= t("header.city") %></th>
+        <th><%= t("header.country") %></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<p>There are currently <%= counter %> Internship Offers.</p>
-<% if can? :create, InternshipOffer %>
-<div id="askForCreation">
-  <%= "If you want to share any info regarding available internship position, please share here" %>
-  <%= link_to t('activerecord.attributes.internship_offer.share'),  new_internship_offer_path %>
-</div>
-<% end %>
-
+    </thead>
+    <tbody>
+      <% @offers.each do |internship_offer| %>
+        <% counter +=1 %>
+        <tr>
+          <td><%= link_to internship_offer.title, internship_offer %></td>
+          <td><%= internship_offer.city %></td>
+          <td><%= internship_offer.country %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <p><%= t("internship_offers.number_of") %> <%= counter %> <%= t("internship_offers.header") %>.</p>
+  <% if can? :create, InternshipOffer %>
+    <div id="askForCreation">
+        <%= "If you want to share any info regarding available internship position, please share here" %>
+        <%= link_to t('activerecord.attributes.internship_offer.share'),  new_internship_offer_path %>
+    </div>
+  <% end %>
 </div>
