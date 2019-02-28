@@ -35,17 +35,30 @@ RSpec.describe UserCommentsController, type: :controller do
 
     it 'assigns @answer' do
       post :create,
-           xhr: true, format: :js, params: { user_comment: attributes_for(:user_comment, internship_id: @internship.id) }
+           xhr: true, format: :js, params: {
+             user_comment: attributes_for(:user_comment,
+                                          internship_id: @internship.id)
+           }
       expect(assigns(:answer)).to be_a_new(Answer)
     end
 
     it 'assigns @user_comments' do
-      post :create, xhr: true, format: :js, params: { user_comment: attributes_for(:user_comment, internship_id: @internship.id) }
+      post :create,
+           xhr: true,
+           format: :js,
+           params: { user_comment:
+             attributes_for(:user_comment,
+                            internship_id: @internship.id) }
       expect(assigns(:user_comments)).to eq([@internship.user_comments.first])
     end
 
     it 'assigns @new_comment' do
-      post :create, xhr: true, format: :js, params: { user_comment: attributes_for(:user_comment, internship_id: @internship.id) }
+      post :create,
+           xhr: true,
+           format: :js,
+           params: { user_comment:
+             attributes_for(:user_comment,
+                            internship_id: @internship.id) }
       expect(assigns(:new_comment)).to be_a_new(UserComment)
     end
   end
@@ -56,13 +69,16 @@ RSpec.describe UserCommentsController, type: :controller do
     end
 
     it 'assigns @comment' do
-      put :update, params: { id: @user_comment, user_comment: attributes_for(:user_comment) }
+      put :update, params: { id: @user_comment,
+                             user_comment: attributes_for(:user_comment) }
       expect(assigns(:comment)).to eq(@user_comment)
     end
 
     context 'given correct parameters' do
       it 'updates the user_comment' do
-        put :update, params: { id: @user_comment, user_comment: attributes_for(:user_comment, body: 'Bar') }
+        put :update, params: { id: @user_comment,
+                               user_comment: attributes_for(:user_comment,
+                                                            body: 'Bar') }
         @user_comment.reload
         expect(@user_comment.body).to eq('Bar')
       end
@@ -73,7 +89,8 @@ RSpec.describe UserCommentsController, type: :controller do
         put :update,
             # xhr: true,
             format: :json,
-            params: { id: @user_comment, user_comment: attributes_for(:user_comment, body: nil) }
+            params: { id: @user_comment,
+                      user_comment: attributes_for(:user_comment, body: nil) }
         @user_comment.reload
         expect(@user_comment.body).to eq('Foo')
       end

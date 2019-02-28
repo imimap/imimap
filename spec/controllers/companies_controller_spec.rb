@@ -126,26 +126,34 @@ RSpec.describe CompaniesController, type: :controller do
 
     context 'given correct parameters' do
       it 'updates the specified Company' do
-        put :update, params: { id: @company, company: attributes_for(:company, name: 'Bar') }
+        put :update,
+            params: { id: @company,
+                      company: attributes_for(:company, name: 'Bar') }
         @company.reload
         expect(@company.name).to eq('Bar')
       end
 
       it 'redirects to the show view' do
-        put :update, params: { id: @company, company: attributes_for(:company, name: 'Bar') }
+        put :update,
+            params: { id: @company,
+                      company: attributes_for(:company, name: 'Bar') }
         expect(response).to redirect_to Company.last
       end
     end
 
     context 'given incorrect parameters' do
       it 'refuses to update the specified Company' do
-        put :update, params: { id: @company, company: attributes_for(:company, name: nil) }
+        put :update,
+            params: { id: @company,
+                      company: attributes_for(:company, name: nil) }
         @company.reload
         expect(@company.name).to eq('Foo')
       end
 
       it 'redirects to the edit view' do
-        put :update, params: { id: @company, company: attributes_for(:company, name: nil) }
+        put :update,
+            params: { id: @company,
+                      company: attributes_for(:company, name: nil) }
         expect(response).to render_template :edit
       end
     end

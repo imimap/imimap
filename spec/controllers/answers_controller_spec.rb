@@ -29,12 +29,15 @@ RSpec.describe AnswersController, type: :controller do
   describe 'PUT #update' do
     context 'with valid parameters' do
       it 'locates the requested answer' do
-        put :update, params: { id: @answer, answer: attributes_for(:answer) }
+        put :update,
+            params: { id: @answer, answer: attributes_for(:answer) }
         expect(assigns(:answer)).to eq(@answer)
       end
 
       it 'updates the answer' do
-        put :update, params: { id: @answer, answer: attributes_for(:answer, body: 'Bar') }
+        put :update,
+            params: { id: @answer,
+                      answer: attributes_for(:answer, body: 'Bar') }
         @answer.reload
         expect(@answer.body).to eq('Bar')
       end
@@ -42,7 +45,10 @@ RSpec.describe AnswersController, type: :controller do
 
     context 'with an invalid parameters' do
       it 'refuses to update the answer' do
-        put :update, params: { id: @answer, answer: attributes_for(:answer, body: '') }, format: :json, xhr: true
+        put :update,
+            params: { id: @answer,
+                      answer: attributes_for(:answer, body: '') },
+            format: :json, xhr: true
         @answer.reload
         expect(@answer.body).to eq('foo')
       end

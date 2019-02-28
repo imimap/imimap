@@ -1,9 +1,3 @@
-# use this to see a clean rubocop.
-# should be commented out as it also hides new violations -
-# to check remove the #
-# inherit_from: .rubocop_todo.yml
-
-# db/seed/lib/08_lib.rb: depends on Internship too heavy.
 
 AllCops:
   Exclude:
@@ -11,25 +5,27 @@ AllCops:
     - 'db/migrate/*'
     - 'bin/setup'
     - 'bin/update'
+
+# Internship refactoring dependent marked with #Internship
+# those should eventually be deleted or fixed: marked with #TBD
 Metrics/AbcSize:
   Exclude:
+    - 'db/seed/lib/08_lib.rb' #Internship
     - 'app/admin'
-    - 'db/seed/lib/08_lib.rb'
 
-Metrics/MethodLength:
-  Exclude:
-    - 'db/seed/lib/08_lib.rb'
-
-# those should eventually be deleted or fixed.
-
-Style/MethodMissingSuper:
-  Exclude:
-    - 'app/helpers/rating_renderer.rb'
 Metrics/BlockLength:
   Exclude:
+    - app/admin/internships/internships_form.rb #Internship
+    - 'spec/**/*'
     - 'config/routes.rb'
     - 'spec/factories/*'
     - 'app/admin/*'
+
 Metrics/ClassLength:
   Exclude:
-    - 'app/pdfs/internship_pdf.rb'
+    - 'app/pdfs/internship_pdf.rb' #Internship
+
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/seed/lib/08_lib.rb' #Internship
