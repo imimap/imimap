@@ -4,6 +4,7 @@
 class StatisticController < ApplicationController
   def overview
     return if Semester.count.zero? || Internship.count.zero?
+
     @semester_id = if params[:semester_id].nil?
                      Semester.last.id
                    else

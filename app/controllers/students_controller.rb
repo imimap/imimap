@@ -25,7 +25,7 @@ class StudentsController < ApplicationResourceController
     @user = User.find(params[:id])
     @student = @user.student
     if @student.update_attributes(student_params)
-      flash[:success] = "Profil geupdated"
+      flash[:success] = 'Profil geupdated'
       redirect_to @student
     else
       render 'show'
@@ -37,5 +37,4 @@ class StudentsController < ApplicationResourceController
   def student_params
     params.require(:student).permit(:first_name, :last_name, :birthday, :birthplace, :email)
   end
-
 end

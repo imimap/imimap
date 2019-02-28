@@ -24,11 +24,13 @@ class Ability
     can :new_address, CompanyAddress
 
     return unless user.prof? || user.examination_office? || user.admin?
+
     can :index, Internship
     can :list, Internship
     can :read, :all
 
     return unless user.admin?
+
     can :manage, :all
   end
 end

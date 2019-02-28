@@ -2,7 +2,7 @@
 
 # Represents a Student.
 class Student < ApplicationRecord
-  #attr_accessible :birthday, :birthplace, :email, :first_name,
+  # attr_accessible :birthday, :birthplace, :email, :first_name,
   #                 :enrolment_number, :last_name
 
   attr_accessor
@@ -23,12 +23,13 @@ class Student < ApplicationRecord
     if user.nil?
       email
     else
-    "#{first_name} #{last_name}"
+      "#{first_name} #{last_name}"
     end
   end
 
   def self.find_or_create_for(user:)
     return user.student if user.student
+
     email = user.email
     enrolment_number = User.enrolment_number_from(email: email)
     student = Student.where(enrolment_number: enrolment_number)

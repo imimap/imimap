@@ -14,6 +14,7 @@ class InternshipRating < ApplicationRecord
   def total_rating
     atts = [tasks, training_success, atmosphere, supervision, appreciation]
     return nil if atts.any?(&:!)
+
     atts.inject(&:+).to_f / 5
   end
 end

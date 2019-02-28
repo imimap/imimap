@@ -86,7 +86,7 @@ describe 'Non-Student login:' do
   context 'first time - no user present' do
     it 'user is created but no student object' do
       expect do
-      expect{sign_in_with_mail(email: 'testperson@htw-berlin.de')}.to change{User.count}.by(1)
+        expect { sign_in_with_mail(email: 'testperson@htw-berlin.de') }.to change { User.count }.by(1)
       end.to change { Student.count }.by(0)
     end
   end
@@ -97,7 +97,7 @@ describe 'Non-Student login:' do
     end
     it 'logs in and no student and user is created' do
       expect do
-        expect{sign_in_with_mail(email: 'testperson@htw-berlin.de')}.to change{Student.count}.by(0)
+        expect { sign_in_with_mail(email: 'testperson@htw-berlin.de') }.to change { Student.count }.by(0)
       end.to change { User.count }.by(0)
     end
   end
