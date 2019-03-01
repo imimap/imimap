@@ -5,5 +5,7 @@ class DropQuicksearch < ActiveRecord::Migration[5.2]
     drop_table :quicksearches
   end
 
-  def down; end
+  def down
+    create_table :quicksearches
+  end
 end
