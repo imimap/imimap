@@ -147,7 +147,7 @@ class InternshipsController < ApplicationResourceController
                      []
                    else
                      current_user.student.internships
-      end
+                   end
 
     if @internships.any?
       redirect_to @internships.first

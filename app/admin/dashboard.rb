@@ -17,10 +17,10 @@ ActiveAdmin.register_page 'Dashboard' do
           ul do
             Internship.last(10).reverse.map do |internship|
               li link_to(
-                format('%s %s at %s',
-                       internship.student.first_name,
-                       internship.student.last_name,
-                       internship.company_name),
+                format('%<first>s %<last>s at %<company>s',
+                       first: internship.student.first_name,
+                       last: internship.student.last_name,
+                       company: internship.company_name),
                 admin_internship_path(internship)
               )
             end

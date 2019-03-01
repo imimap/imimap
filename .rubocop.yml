@@ -1,12 +1,18 @@
 
 AllCops:
   Exclude:
+    - 'bin/**/*'
     - 'db/schema.rb'
     - 'db/migrate/*'
     - 'bin/setup'
     - 'bin/update'
     - 'app/pdfs/internship_pdf.rb' #Internship
     - 'app/controllers/report_overview_controller.rb' # delete
+    - 'app/models/database_parser.rb' # delete
+    - 'app/controllers/answers_controller.rb' #todo
+    - 'app/controllers/finish_list_controller.rb' # todo
+    - 'app/controllers/user_comments_controller.rb' # todo
+    - 'app/controllers/read_list_controller.rb' # todo
 
 
 # Internship refactoring dependent marked with #Internship
@@ -23,7 +29,7 @@ Metrics/BlockLength:
   Exclude:
     - 'app/admin/internships/internships_form.rb' #Internship
     - 'config/**/*'
-    - 'spec/**/*'
+    - 'spec/**/*' # DSL
     - 'config/routes.rb'
     - 'spec/factories/*'
     - 'app/admin/**/*.rb'
@@ -39,3 +45,7 @@ Metrics/MethodLength:
     - 'app/controllers/finish_list_controller.rb' # delete?
     - 'app/controllers/internships_controller.rb'
     - 'app/controllers/search_controller.rb'
+
+Metrics/ClassLength:
+  Exclude:
+    - 'app/controllers/internships_controller.rb'

@@ -32,11 +32,11 @@ class RatingRenderer
                 data: { rating_id: id.to_s }
   end
 
-  def method_missing(*args, &block)
-    @template.public_send(*args, &block)
-  end
-
-  def respond_to_missing?(method, *)
-    method =~ /.*/ || super
-  end
+  # def method_missing(*args, &block)
+  #   @template.public_send(*args, &block)
+  # end
+  #
+  # def respond_to_missing?(method, *)
+  #   method =~ /.*/ || super
+  # end
 end

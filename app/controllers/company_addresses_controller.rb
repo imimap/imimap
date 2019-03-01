@@ -4,15 +4,12 @@
 class CompanyAddressesController < ApplicationResourceController
   before_action :set_company_address, only: %i[show edit update destroy]
 
-  # GET /company_addresses
   def index
     @company_addresses = CompanyAddress.all
   end
 
-  # GET /company_addresses/1
   def show; end
 
-  # GET /company_addresses/new
   def new
     @company_address = CompanyAddress.new
   end
@@ -22,35 +19,23 @@ class CompanyAddressesController < ApplicationResourceController
     @company = Company.find(params[:company_id])
   end
 
-  # GET /company_addresses/1/edit
   def edit; end
 
-  # POST /company_addresses
   def create
     @company_address = CompanyAddress.new(company_address_params)
-
     respond_to do |format|
       if @company_address.save
-        format.html do
-          redirect_to new_internship_path,
-                      notice: 'Company & its Address were successfully created.'
-        end
-        format.json do
-          render json: @company_address,
-                 status: :created,
-                 location: @company_address
-        end
+        format.html
+        # format.html do
+        #  redirect_to new_internship_path,
+        #             notice: 'Company & its Address were successfully created.'
+        # end
       else
         render :new
-        format.json do
-          render json: @company.errors,
-                 status: :unprocessable_entity
-        end
       end
     end
   end
 
-  # PATCH/PUT /company_addresses/1
   def update
     if @company_address.update(company_address_params)
       redirect_to @company_address,
@@ -60,7 +45,6 @@ class CompanyAddressesController < ApplicationResourceController
     end
   end
 
-  # DELETE /company_addresses/1
   def destroy
     @company_address.destroy
     redirect_to company_addresses_url,

@@ -11,7 +11,26 @@ module CompleteInternshipDataHelper
                                    start_date
                                    end_date
                                    internship_state].freeze
-  CompleteInternshipData = Struct.new(*COMPLETE_INTERNSHIP_MEMBERS) do
+  # Data Class for the view.
+  class CompleteInternshipData
+    attr_accessor(*COMPLETE_INTERNSHIP_MEMBERS)
+
+    def to_a
+      attribute_array
+    end
+
+    def attribute_array
+      COMPLETE_INTERNSHIP_MEMBERS.map do |attribute_name|
+        value = send(attribute_name)
+        value.nil? ? 0 : value
+      end
+    end
+
+    def <=>(other)
+      attribute_array <=> other.attribute_array
+    end
+
+    # CompleteInternshipData = Struct.new(*COMPLETE_INTERNSHIP_MEMBERS) do
     def add_student_info(int)
       ci = self
       if int.student.nil?

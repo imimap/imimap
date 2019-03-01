@@ -2,8 +2,7 @@
 
 require 'rails_helper'
 
-include CompleteInternshipDataHelper
-RSpec.describe InternshipsController, type: :controller do
+RSpec.describe InternshipsController, type: :controller, topic: :internship do
   include Devise::Test::ControllerHelpers
   include InternshipsHelper
   render_views
@@ -33,8 +32,9 @@ RSpec.describe InternshipsController, type: :controller do
       end
 
       it 'assigns @complete_internships' do
-        expect(assigns(:complete_internships))
-          .to eq([CompleteInternshipData.from(@internship)])
+        expect(assigns(:complete_internships).first.attribute_array)
+          .to eq([CompleteInternshipDataHelper::CompleteInternshipData
+            .from(@internship)].first.attribute_array)
       end
       it 'assigns @internships' do
         expect(assigns(:internship_count)).to eq(1)
