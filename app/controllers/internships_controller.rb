@@ -2,6 +2,7 @@
 
 # The Internships controller
 class InternshipsController < ApplicationResourceController
+  include ApplicationHelper
   respond_to :html, :json
   before_action :programming_languages, :orientations, only: %i[new edit update]
 
@@ -12,11 +13,7 @@ class InternshipsController < ApplicationResourceController
   include CompleteInternshipDataHelper
 
   def index
-    @semester = if params[:semester_id]
-                  Semester.find(params[:semester_id])
-                else
-                  Semester.current
-               end
+    @semester = semester_from_params(params)
     @semester_options = Semester.all.map { |s| [s.name, s.id] }
 
     internships = Internship.where(semester: @semester)
@@ -65,11 +62,13 @@ class InternshipsController < ApplicationResourceController
 
     respond_to do |format|
       if @internship.save
-        format.html { redirect_to @internship, notice: 'Your internship was successfully created!' }
-        format.json { render json: @internship, status: :created, location: @internship }
+        format.html do
+          redirect_to @internship,
+                      notice: 'Your internship was successfully created!'
+        end
       else
         format.html { render action: 'new' }
-        format.json { render json: @internship.errors, status: :unprocessable_entity }
+
       end
     end
   end
@@ -80,19 +79,25 @@ class InternshipsController < ApplicationResourceController
     @internship = Internship.find(params[:id])
     @comment = UserComment.new
     @answer = Answer.new
-    @favorite = Favorite.where(internship_id: @internship.id, user_id: current_user.id)[0]
+    @favorite = Favorite.where(internship_id: @internship.id,
+                               user_id: current_user.id)[0]
     @company = @internship.company_v2
     # TBD ST  @company = @internship.company_address.company
-    @other_internships = @company.internships.reject { |x| x.id == @internship.id }.reject { |i| i.completed == false }
+    @other_internships = []
+    # @company.internships.reject do |x|
+    #  x.id == @internship.id
+    # end.reject { |i| i.completed == false }
 
     @user_comments = @internship.user_comments.order('created_at DESC')
 
     respond_to do |format|
       format.html
+      name = @current_user.student.last_name
       format.pdf do
         pdf = InternshipPdf.new(@internship)
-        send_data pdf.render, filename: "Internship Registration Form #{@current_user.student.last_name}.pdf",
-                              type: 'application/pdf'
+        send_data pdf.render,
+                  filename: "internship_registration_#{name}.pdf",
+                  type: 'application/pdf'
       end
     end
   end
@@ -113,7 +118,6 @@ class InternshipsController < ApplicationResourceController
   def update
     @internship = Internship.find(params[:id])
     attributes = internship_params
-    attributes.delete(:company_id) # make internship company readonly by schlubbi
     if @internship.update_attributes(attributes)
       @internship.update_attributes(completed: true)
       flash[:notice] = 'Internship was successfully updated.'
@@ -139,7 +143,11 @@ class InternshipsController < ApplicationResourceController
   # If the user has no internship, the system asks him/her to create a new one
   # else the internship details are shown
   def internship_data
-    @internships = current_user.student.nil? ? [] : current_user.student.internships
+    @internships = if current_user.student.nil?
+                     []
+                   else
+                     current_user.student.internships
+                   end
 
     if @internships.any?
       redirect_to @internships.first
@@ -165,16 +173,22 @@ class InternshipsController < ApplicationResourceController
 
   MODEL_ATTRIBUTES = %i[student_id company_address_id].freeze
   BASIC_ATTRIBUTES = %i[semester_id start_date end_date].freeze
-  STATE_ATTRIBUTES = %i[internship_state_id contract_state_id registration_state_id
+  STATE_ATTRIBUTES = %i[internship_state_id
+                        contract_state_id
+                        registration_state_id
                         report_state_id payment_state_id
-                        reading_prof_id certificate_signed_by_internship_officer
+                        reading_prof_id
+                        certificate_signed_by_internship_officer
                         certificate_signed_by_prof
                         certificate_state_id
                         certificate_to_prof].freeze
   REPORT_ATTRIBUTES = [:internship_report].freeze
   NOT_USED_ATTRIBUTES = %i[completed user_id].freeze
   WORK_DESCRIPTION_ATTRIBUTES = %i[operational_area
-                                   orientation_id description title tasks].freeze
+                                   orientation_id
+                                   description
+                                   title
+                                   tasks].freeze
   SUPERVISOR_ATTRIBUTES = %i[supervisor_email
                              supervisor_name].freeze
 

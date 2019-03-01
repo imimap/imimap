@@ -2,16 +2,11 @@
 
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the MapsHelper. For example:
-#
-# describe MapsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe MapsHelper, type: :helper do
-  # pending "add some examples to (or delete) #{__FILE__}"
+  it 'generates data for leaflet' do
+    cas = [ca1 = create(:company_address_1), ca2 = create(:company_address_2)]
+    json = helper.company_locations_json(company_addresses: cas)
+    expect(json).to include(ca1.city)
+    expect(json).to include(ca2.city)
+  end
 end

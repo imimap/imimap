@@ -13,12 +13,12 @@ RSpec.describe 'complete_internships/new', type: :view do
     # assert_select 'form[action=?][method=?]',
     #    #          complete_internships_path, 'post' do
     #  assert_select 'input[name=?]', 'complete_internship[semester]'
-#
+    #
     #  assert_select 'input[name=?]', 'complete_internship[semester_of_study]'
-#
+    #
     #  assert_select 'input[name=?]', 'complete_internship[aep]'
-#
+    #
     #  assert_select 'input[name=?]', 'complete_internship[passed]'
-    #end
+    # end
   end
 end

@@ -20,7 +20,11 @@ class FinishListController < ApplicationResourceController
 
     respond_to do |format|
       format.html { redirect_to(finish_list_index_path) }
-      format.js { render layout: false, locals: { current_user: @current_user, internship: @internship, finish_list: @finish_list } }
+      format.js do
+        render layout: false,
+               locals: { current_user: @current_user,
+                         internship: @internship, finish_list: @finish_list }
+      end
     end
   end
 
@@ -30,7 +34,11 @@ class FinishListController < ApplicationResourceController
 
     respond_to do |format|
       format.html { redirect_to finish_list_index_path }
-      format.js { render layout: false, locals: { current_user: @current_user, internship: @internship, finish_list: @finish_list } }
+      format.js do
+        render layout:
+        false, locals: { current_user: @current_user,
+                         internship: @internship, finish_list: @finish_list }
+      end
     end
   end
 

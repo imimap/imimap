@@ -24,25 +24,6 @@ class Company < ApplicationRecord
     r.to_f / size
   end
 
-  # TBD ST: needs refactoring - what does it do?
-  # it produces a list for a company selection box in the view.
-  # this and the map that follows in the view should be moved to a helper
-  # method.
-  def self.company_name_address
-    i = 0
-    a = []
-    Company.all.each do |c|
-      # j = 0
-      c.company_addresses.each do |c_a|
-        a[i] = []
-        a[i] << c_a.id
-        a[i] << "#{c.name}, #{c_a.street}"
-        i += 1
-      end
-    end
-    a
-  end
-
   def company_name
     try(:name)
   end

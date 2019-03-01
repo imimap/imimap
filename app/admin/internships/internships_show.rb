@@ -4,14 +4,19 @@ ActiveAdmin.register Internship do
   show do |ad|
     attributes_table do
       row :student do |n|
-        link_to n.student.first_name << ' ' << n.student.last_name, "/admin/students/#{n.student_id}"
+        link_to(
+          n.student.first_name << ' ' << n.student.last_name,
+          "/admin/students/#{n.student_id}"
+        )
       end
       row :company_v2
       row :start_date
       row :end_date
       # TBD clean this up
       row('weekCount') { ad.duration.weeks }
-      row('weekValidation') { t("internship_duration_validation.#{ad.duration.validation}") }
+      row('weekValidation') do
+        t("internship_duration_validation.#{ad.duration.validation}")
+      end
       row :operational_area
       row :tasks
       row :supervisor_name

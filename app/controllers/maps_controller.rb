@@ -10,7 +10,8 @@ class MapsController < ApplicationController
     @map_view = true
     @company_addresses = []
     @zoom = 11
-    @company_location_json = company_locations_json(company_addresses: @company_addresses)
+    @company_location_json =
+      company_locations_json(company_addresses: @company_addresses)
     render :map_view
   end
 
@@ -23,6 +24,7 @@ class MapsController < ApplicationController
                 .where(semester: Semester.last)
                 .where.not(company_addresses: { latitude: nil })
     # CompanyAddress.where.not(latitude: nil)
-    @company_location_json = company_locations_json(company_addresses: @company_addresses)
+    @company_location_json =
+      company_locations_json(company_addresses: @company_addresses)
   end
 end

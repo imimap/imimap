@@ -41,7 +41,9 @@ class Student < ApplicationRecord
   end
 
   def last_internship
-    max_id = internships.pluck(:id).max
-    Internship.find(max_id)
+    return nil if internships.empty?
+
+    internship_ids = internships.pluck(:id)
+    Internship.find(internship_ids.max)
   end
 end

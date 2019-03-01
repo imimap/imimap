@@ -26,10 +26,4 @@ RSpec.describe ApplicationHelper, type: :helper do
       expect(helper.notifications).to eq []
     end
   end
-
-  # we don't think this is even used somewhere
-  # describe '#render_stars' do
-  #   it 'should render the correct number of stars' do
-  #   end
-  # end
 end

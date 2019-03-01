@@ -17,7 +17,7 @@ jobs:
     script: "./ci-cd/travis-test.sh"
   - stage: build
     script: ci-cd/docker-build-and-push.sh
-    if: "((tag IS present) OR (branch = master))"
+    if: "((tag IS present) OR (branch = master)) AND (type != pull_request)"
   - stage: deploy-staging
     script: "./ci-cd/travis-deploy.sh staging"
     if: "( NOT (tag IS present)) AND (branch = master) AND (type != pull_request)"

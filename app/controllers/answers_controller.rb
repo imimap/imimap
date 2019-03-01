@@ -21,11 +21,17 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if @answer.update_attributes(answer_params)
-        format.html { redirect_to @answer, notice: 'Answer was successfully updated.' }
+        format.html do
+          redirect_to @answer,
+                      notice: 'Answer was successfully updated.'
+        end
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @answer.errors,
+                 status: :unprocessable_entity
+        end
       end
     end
   end

@@ -2,12 +2,12 @@
 
 # Companies Controller
 class CompaniesController < ApplicationResourceController
-  # GET /companies
-  # GET /companies.json
+  before_action :set_company, only: %i[show edit update destroy]
+  before_action :new_company, only: %i[new]
+  before_action :new_company_params, only: %i[create]
+
   def index
     @companies = Company.all
-    # TBD ST
-    # @companies = Company.order(:name).where("name like ?", "%#{params[:term]}%")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,75 +15,56 @@ class CompaniesController < ApplicationResourceController
     end
   end
 
-  # GET /companies/1
-  # GET /companies/1.json
   def show
-    @company = Company.find(params[:id])
-
     @internships = @company.internships
-
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @company }
+      format.html
     end
   end
 
-  # GET /companies/new
-  # GET /companies/new.json
   def new
     @company = Company.new
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @company }
+      format.html
     end
   end
 
-  # GET /companies/1/edit
   def edit
     @company = Company.find(params[:id])
   end
 
-  # POST /companies
-  # POST /companies.json
   def create
-    @company = Company.new(company_params)
-
     respond_to do |format|
       if @company.save
         # CodeReviewSS17 seems a bit too specific for the general create
         # case, but if Company#create isn't called from anywhere else,
         # why not. but if the company was specifically created for the
         # internship, it should be passed to the new internship.
-        format.html { redirect_to new_address_path(@company.id), notice: 'Company was successfully created.' }
-        format.json { render json: @company, status: :created, location: @company }
+        format.html do
+          redirect_to new_address_path(@company.id),
+                      notice: 'Company was successfully created.'
+        end
       else
         format.html { render action: 'new' }
-        format.json { render json: @company.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PUT /companies/1
-  # PUT /companies/1.json
   def update
-    @company = Company.find(params[:id])
-
     respond_to do |format|
       if @company.update_attributes(company_params)
-        format.html { redirect_to @company, notice: 'Company was successfully updated.' }
-        format.json { head :no_content }
+        format.html do
+          redirect_to @company,
+                      notice: 'Company was successfully updated.'
+        end
       else
         format.html { render action: 'edit' }
-        format.json { render json: @company.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /companies/1
-  # DELETE /companies/1.json
   def destroy
-    @company = Company.find(params[:id])
     @company.destroy
 
     respond_to do |format|
@@ -102,6 +83,18 @@ class CompaniesController < ApplicationResourceController
   end
 
   private
+
+  def set_company
+    @company = Company.find(params[:id])
+  end
+
+  def new_company
+    @company = Company.new
+  end
+
+  def new_company_params
+    @company = Company.new(company_params)
+  end
 
   def select_company
     current_user
