@@ -113,6 +113,7 @@ en:
       mailnotif1: "Receive Email-Notification? *"
 
   students:
+    personal_details: "Personal Details"
     attributes:
       first_name: "Given name"
       first_name1: "Given name *"
@@ -136,10 +137,14 @@ en:
       phone1: "Telephone *"
       email: E-Mail
 
+  internship_offers:
+    header: "Internship Offers"
+    number_of: "There are currently"
+
   welcome:
     help:
       header: "Help"
-      question1: "I don't know what to enter in a field of the internship application form"
+      question1: "I don't know what to enter in a field of the internship application form."
       answer1: "Leave those fields blank where you are unsure about what to enter. Print the application form anyway and discuss the missing fields with the internship officer when handing in the form."
       question2: "I have another question. What should I do?"
       answer2_checklist: "Look at the Checklist again."

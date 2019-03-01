@@ -113,6 +113,7 @@ de:
       mailnotif1: "Emailmitteilungen erhalten? *"
 
   students:
+    personal_details: "Persönliche Details"
     attributes:
       first_name: "Vorname"
       first_name1: "Vorname *"
@@ -134,6 +135,10 @@ de:
       city1: "Stadt *"
       phone: "Telefon"
       phone1: "Telefon *"
+
+  internship_offers:
+    header: "Praktikumsangebote"
+    number_of: "Es gibt im Moment"
 
   welcome:
     help:
