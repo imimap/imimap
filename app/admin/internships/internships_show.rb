@@ -36,6 +36,7 @@ ActiveAdmin.register Internship do
       row :certificate_signed_by_prof
       row :certificate_signed_by_internship_officer
       row :internship_state
+      row :passed?
       row :comment
     end
     active_admin_comments

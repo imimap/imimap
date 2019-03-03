@@ -68,6 +68,13 @@ class Internship < ApplicationRecord
     @duration = nil
   end
 
+  def passed?
+    return true if internship_state && internship_state.name == 'passed'
+
+    !certificate_signed_by_internship_officer.nil? &&
+      !certificate_signed_by_prof.nil?
+  end
+
   # CodeReview: form and logic of missing end date needs to be adapted
   # expected hand in 4 weeks after end of internship time
   def expected_hand_in

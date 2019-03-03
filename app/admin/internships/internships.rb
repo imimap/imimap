@@ -10,6 +10,7 @@ ActiveAdmin.register Internship do
   filter :reading_prof
   filter :semester
   filter :internship_state
+  filter :passed
 
   index do
     column(:id) { |i| link_to i.id, admin_internship_path(i.id) }
@@ -19,6 +20,7 @@ ActiveAdmin.register Internship do
     end
     column :company_v2
     column :semester
+    column :passed?
     column :internship_state
     column :report_state
     column :certificate_state

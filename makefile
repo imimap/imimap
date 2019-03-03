@@ -1,5 +1,7 @@
 start:
 	docker-compose up -d
+down:
+	docker-compose down
 stop:
 	docker-compose down --rmi all -v --remove-orphans
 restart:
