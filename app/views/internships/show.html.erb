@@ -11,7 +11,9 @@
       </tr>
       <tr>
         <td><%= t "internships.attributes.company_address" %></td>
-        <td><%= @internship.company_address.street %></td>
+        <td><%= @internship.company_address.street %>,
+        <%= @internship.company_address.zip %> <%= @internship.company_address.city %>, 
+        <%= @internship.company_address.country %></td>
       </tr>
       <tr>
         <td><%= t "internships.attributes.company_website" %></td>
@@ -67,13 +69,13 @@
       </tr>
       <tr>
         <td><%= t "internships.attributes.weekValidation" %></td>
-        <td><% #tbd ... wtf.the mapping of the mapping of the mapping in all the wrong places.
-         if @internship.duration.weeks < 4 %>
+        <!-- #tbd ... wtf.the mapping of the mapping of the mapping in all the wrong places.-->
+        <td><% if @internship.duration.weeks < 4 %>
         <%= t "internships.attributes.weekVal.notLongEnough"%>
         <% elsif @internship.duration.weeks < 19  %>
         <%= t "internships.attributes.weekVal.partInternship"%>
-        <% else # tbd ... wtf ... and here comes core business logic in the view...%>
-        <%= t "internships.attributes.weekVal.longEnough"%>
+        <!-- # tbd ... wtf ... and here comes core business logic in the view...-->
+        <% else t "internships.attributes.weekVal.longEnough"%>
         <% end %></td>
       </tr>
       <tr>
@@ -93,6 +95,8 @@
       <% end %>
     </tbody>
   </table>
+
+<!--  ############################################################################## -->
 
  <p><%= link_to "Print Registration Form (PDF)", internship_path(@internship, format: "pdf"), class: "btn btn-success" %></p>
 
