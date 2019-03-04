@@ -1,3 +1,4 @@
+#!/bin/bash
 # this should be the only file in the deployment process handling environment variables.
 echo "----------------- TRAVIS ENVIRONMENT ------------------"
 

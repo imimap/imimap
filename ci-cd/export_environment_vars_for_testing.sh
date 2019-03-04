@@ -1,3 +1,4 @@
+#!/bin/bash
 # set by travis - repository settings
 export DEPLOY_FROM_BRANCH=master
 export DEPLOYMENT_PIPELINE=HTW

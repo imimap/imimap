@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "+++ start $0"
 
 echo "DEPLOYMENT_ENVIRONMENT: $DEPLOYMENT_ENVIRONMENT"

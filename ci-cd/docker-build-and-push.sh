@@ -1,4 +1,4 @@
-
+#!/bin/bash
 echo "$0: building docker image"
 
 export DEPLOYMENT_ENVIRONMENT=staging
