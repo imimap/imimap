@@ -8,11 +8,11 @@ RSpec.describe 'complete_internships/show', type: :view do
                                   create(:complete_internship))
   end
 
-  it 'renders attributes in <p>' do
+  it 'renders attributes in table' do
     render
     expect(rendered).to match(/Semester/)
-    expect(rendered).to match(/2/)
-    expect(rendered).to match(/false/)
+    expect(rendered).to match(/4/)
+    expect(rendered).to match(/true/)
     expect(rendered).to match(/false/)
   end
 end
