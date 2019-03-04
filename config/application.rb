@@ -15,9 +15,7 @@ module ImiMaps
     config.autoload_paths += %W[#{config.root}/lib]
     config.autoload_paths += %W[#{config.root}/lib/model]
     # config.autoload_paths += Dir["#{config.root}/lib/**/"]
-    config.active_record.observers = :user_comment_observer,
-                                     :answer_observer,
-                                     :internship_observer,
+    config.active_record.observers = :internship_observer,
                                      :user_observer
     custom_locales = Rails.root.join('config', 'locales', '**/*.{rb,yml}').to_s
     config.i18n.load_path += Dir[custom_locales]
