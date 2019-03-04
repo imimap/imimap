@@ -12,7 +12,7 @@ COPY Gemfile* $APP_HOME/
 # general dependencies
 RUN apk update
 RUN set -ex \
-  && apk add --no-cache libpq imagemagick nodejs bash
+  && apk add --no-cache git libpq imagemagick nodejs bash
 
 # poltergeist, see https://github.com/Overbryd/docker-phantomjs-alpine/releases
 RUN apk add --no-cache fontconfig curl && \
@@ -24,19 +24,15 @@ RUN apk add --no-cache fontconfig curl && \
 
 # build dependencies
 RUN set -ex \
-  && apk add --no-cache --virtual builddeps \
-       git \
+   && apk add --no-cache --virtual builddependencies \
+#  && apk add --no-cache  \
        linux-headers \
        libpq \
        tzdata \
        build-base \
        postgresql-dev \
-       imagemagick-dev
+       imagemagick-dev \
+   && bundle install
 
-RUN bundle install
-
-  # && apk del builddeps
-
-ENV QMAKE /usr/lib/qt5/bin/qmake
-ENV PATH /usr/lib/qt5/bin/qmake:$PATH
+#  && apk del builddependencies
 CMD ["bundle", "exec", "unicorn", "--port", "80"]
