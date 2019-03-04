@@ -23,8 +23,6 @@ Rails.application.routes.draw do
       resources :internship_offers, only: %i[index show new create]
       resources :notifications, only: %i[destroy show]
       resources :favorite, only: %i[create destroy index]
-      resources :user_comments, only: %i[destroy update create new]
-      resources :answers, only: %i[create update destroy]
       resources :general
       resources :internship_searches
       resources :quicksearches, only: %i[index]

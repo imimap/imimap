@@ -70,26 +70,7 @@
     <%= "#{internship.title} #{t'helpers.at2'} #{internship.company_v2.name}" %>
     <%= link_to " "+(t "buttons.edit"), edit_internship_path(internship), class: "pull-right btn btn-success icon-white icon-edit icon-large" %>
     <%= link_to " "+(t "buttons.show"), internship, class: "pull-right btn btn-success icon-white icon-circle-arrow-right icon-large" %>
-  </div> 
+  </div>
 <% end %>
 </div>
 <% end %>
-
-
-<% if false && @comments.any? #TBD Comments %>
-
-<div id="form-block4">
-
-<h2> <%= t"internships.attributes.comments" %> </h2>
-<% @comments.each do |comment| %>
-<p> "
-<%= comment.body %>
-" <%= t"helpers.at2" %>
-<%= link_to "#{comment.internship.title} at #{comment.internship.company.name}", comment.internship, class: "btn btn-success" %>
-</p>
-
-<% end %>
-</div>
-<% end %>
-
-

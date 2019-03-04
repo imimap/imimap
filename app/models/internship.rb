@@ -28,11 +28,10 @@ class Internship < ApplicationRecord
   belongs_to :reading_prof
 
   has_and_belongs_to_many :programming_languages, -> { distinct }
-  has_many :user_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :read_list, dependent: :destroy
   has_many :attachments, as: :attachable, dependent: :destroy
-  has_many :answers
+
 
   mount_uploader :internship_report, InternshipReportUploader
 

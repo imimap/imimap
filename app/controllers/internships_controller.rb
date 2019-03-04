@@ -77,8 +77,6 @@ class InternshipsController < ApplicationResourceController
   # GET /internships/1.json
   def show
     @internship = Internship.find(params[:id])
-    @comment = UserComment.new
-    @answer = Answer.new
     @favorite = Favorite.where(internship_id: @internship.id,
                                user_id: current_user.id)[0]
     @company = @internship.company_v2
@@ -88,7 +86,6 @@ class InternshipsController < ApplicationResourceController
     #  x.id == @internship.id
     # end.reject { |i| i.completed == false }
 
-    @user_comments = @internship.user_comments.order('created_at DESC')
 
     respond_to do |format|
       format.html
