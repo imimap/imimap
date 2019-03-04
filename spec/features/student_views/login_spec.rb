@@ -28,10 +28,7 @@ describe 'Student Login' do
           fill_in 'user_email', with: @user.email
           fill_in 'user_password', with: @user.password
           click_on('Log in')
-
-
           visit student_path(id: @user.student_id)
-
           expect(page).to have_content(@user.enrolment_number)
         end
       end
