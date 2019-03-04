@@ -38,7 +38,7 @@ class StudentsController < ApplicationResourceController
           .permit(:first_name, :last_name, :birthday, :birthplace, :email)
   end
 
-  def assign_show_attributes(student:)
+  def assign_show_attributes(student)
     if student.nil?
       @internships = []
       @user_first_name = 'not a student'
