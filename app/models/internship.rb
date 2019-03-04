@@ -31,7 +31,7 @@ class Internship < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :read_list, dependent: :destroy
   has_many :attachments, as: :attachable, dependent: :destroy
-  has_many :answers
+
 
   mount_uploader :internship_report, InternshipReportUploader
 

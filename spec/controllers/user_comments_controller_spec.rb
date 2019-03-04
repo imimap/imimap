@@ -33,14 +33,6 @@ RSpec.describe UserCommentsController, type: :controller do
       end.to change(UserComment, :count).by(1)
     end
 
-    it 'assigns @answer' do
-      post :create,
-           xhr: true, format: :js, params: {
-             user_comment: attributes_for(:user_comment,
-                                          internship_id: @internship.id)
-           }
-      expect(assigns(:answer)).to be_a_new(Answer)
-    end
 
     it 'assigns @user_comments' do
       post :create,

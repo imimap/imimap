@@ -9,7 +9,6 @@ AllCops:
     - 'app/pdfs/internship_pdf.rb' #Internship
     - 'app/controllers/report_overview_controller.rb' # delete
     - 'app/models/database_parser.rb' # delete
-    - 'app/controllers/answers_controller.rb' #todo
     - 'app/controllers/finish_list_controller.rb' # todo
     - 'app/controllers/read_list_controller.rb' # todo
 

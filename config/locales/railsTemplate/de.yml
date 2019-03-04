@@ -8,7 +8,6 @@ de:
   noti:
     report: "Du kannst nun deinen Praktikumsbericht anlegen"
     comment: "Jemand hat deinen Praktikumsbericht kommentiert"
-    answer: "Jemand hat deinen Kommentar beantwortet"
     void: "Du hast derzeit keine Benachrichtigungen"
   results:
     found: "Suchergebnis(se) gefunden"
@@ -286,11 +285,6 @@ de:
     plural: "Kommentare"
     attributes:
       body: "Dein Kommentar:"
-
-  answers:
-    from: "Antwort von"
-    attributes:
-      body: "Antwort"
 
   download:
     form: "Formulare"
