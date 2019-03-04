@@ -35,3 +35,4 @@ RUN set -ex \
    && bundle install
 
 #  && apk del builddependencies
+CMD ["bundle", "exec", "unicorn", "--port", "80"]
