@@ -1,24 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div id="form-block4" class="text-left">
 
-<p>
-  <strong>Semester:</strong>
-  <%= @complete_internship.semester.name %>
-</p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Semester of study:</strong>
-  <%= @complete_internship.semester_of_study %>
-</p>
+  <p>
+    <strong>Semester:</strong>
+    <%= @complete_internship.semester %>
+  </p>
 
-<p>
-  <strong>Aep:</strong>
-  <%= @complete_internship.aep %>
-</p>
+  <p>
+    <strong>Semester of study:</strong>
+    <%= @complete_internship.semester_of_study %>
+  </p>
 
-<p>
-  <strong>Passed:</strong>
-  <%= @complete_internship.passed %>
-</p>
+  <p>
+    <strong>Aep:</strong>
+    <%= @complete_internship.aep %>
+  </p>
 
-<%= link_to 'Edit', edit_complete_internship_path(@complete_internship) %> |
-<%= link_to 'Back', complete_internships_path %>
+  <p>
+    <strong>Passed:</strong>
+    <%= @complete_internship.passed %>
+  </p>
+
+  <%= link_to 'Edit', edit_complete_internship_path(@complete_internship) %> |
+  <%= link_to 'Back', complete_internships_path %>
+
+</div>

@@ -148,3 +148,11 @@ de:
       question2: "Ich habe eine andere Frage. Was soll ich tun?"
       answer2_checklist: "Schau dir noch ein mal die Checkliste an."
       answer2_contact: "Wenn deine Frage sich dadurch nicht geklärt hat schicke eine E-Mail an das Team der Praktikumsverwaltung."
+
+  complete_internships:
+    header: Komplette Praktika
+    student: Student_In
+    semester: Semester
+    semester_of_study: Hochschulsemester
+    aep: AEP
+    passed: bestanden

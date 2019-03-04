@@ -1,33 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div id="form-block4">
 
-<h1>Complete Internships</h1>
+  <p id="notice"><%= notice %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Semester</th>
-      <th>Semester of study</th>
-      <th>Aep</th>
-      <th>Passed</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <h3><%= t("complete_internships.header") %></h3>
 
-  <tbody>
-    <% @complete_internships.each do |complete_internship| %>
+  <table class="table table-striped text-left">
+    <thead>
       <tr>
-        <td><%= complete_internship.semester.name %></td>
-        <td><%= complete_internship.semester_of_study %></td>
-        <td><%= complete_internship.aep %></td>
-        <td><%= complete_internship.passed %></td>
-        <td><%= link_to 'Show', complete_internship %></td>
-        <td><%= link_to 'Edit', edit_complete_internship_path(complete_internship) %></td>
-        <td><%= link_to 'Destroy', complete_internship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th><%= t("complete_internships.student") %></th>
+        <th><%= t("complete_internships.semester") %></th>
+        <th><%= t("complete_internships.semester_of_study") %></th>
+        <th><%= t("complete_internships.aep") %></th>
+        <th><%= t("complete_internships.passed") %></th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @complete_internships.each do |complete_internship| %>
+        <tr>
+          <td><%= complete_internship.student %></td>
+          <td><%= complete_internship.semester %></td>
+          <td><%= complete_internship.semester_of_study %></td>
+          <td><%= complete_internship.aep %></td>
+          <td><%= complete_internship.passed %></td>
+          <td><%= link_to 'Show', complete_internship %></td>
+          <td><%= link_to 'Edit', edit_complete_internship_path(complete_internship) %></td>
+          <td><%= link_to 'Destroy', complete_internship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<br>
+  <br>
 
-<%= link_to 'New Complete Internship', new_complete_internship_path %>
+  <%= link_to 'New Complete Internship', new_complete_internship_path %>
+</div>
