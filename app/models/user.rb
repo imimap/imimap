@@ -11,7 +11,6 @@ class User < ApplicationRecord
   # validates :student, presence: true
 
   belongs_to :student
-  has_many :user_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_many :read_lists, dependent: :destroy

@@ -87,7 +87,6 @@ class InternshipsController < ApplicationResourceController
     #  x.id == @internship.id
     # end.reject { |i| i.completed == false }
 
-    @user_comments = @internship.user_comments.order('created_at DESC')
 
     respond_to do |format|
       format.html

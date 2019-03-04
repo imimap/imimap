@@ -277,12 +277,6 @@ en:
     change_details: "Change Details"
     compare: "Compare"
 
-  comments:
-    singular: "Comment"
-    plural: "Comments"
-    attributes:
-      body: "Your comment:"
-
   download:
     form: "Forms"
     text1: "The required forms are listed below for download:"

@@ -303,9 +303,6 @@
 <%= link_to File.basename(@internship.internship_report.path), @internship.internship_report.url %>
 <br/>
 <% end %>
-
-<b><%= t "internships.attributes.comments" %> :</b>
-<br/>
 <br/>
 <!-- ################################################# start comments #################################################-->
 
@@ -353,7 +350,7 @@
 
      <% if current_user.id == @internship.student.user.id %>
      <br />
-     
+
 
 
    <% end %>
