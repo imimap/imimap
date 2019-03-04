@@ -3,12 +3,14 @@
 require 'rails_helper'
 
 RSpec.describe Internship, type: :model do
-  let(:internship) { build :internship }
-
+  let(:internship) { create :internship }
+  let(:internship_saved) { create :internship }
   context 'given a valid Internship' do
     it 'can be saved with all required attributes present' do
-      # simulates a mouse click on the link internship.save
-      expect(internship.save).to be_truthy
+      # FactoryBot 5 factories now inherit their parent's create strategy
+      # https://www.rubydoc.info/gems/factory_bot/file/GETTING_STARTED.md
+      # had to simplify this test:
+      expect(internship.errors.messages).to be_empty
     end
   end
 
