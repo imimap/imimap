@@ -15,11 +15,12 @@ RUN set -ex \
   && apk add --no-cache git libpq imagemagick nodejs bash
 
 # poltergeist, see https://github.com/Overbryd/docker-phantomjs-alpine/releases
+ENV PHANHOME /usr/share
 RUN apk add --no-cache fontconfig curl && \
-  mkdir -p /usr/share && \
-  cd /usr/share \
-  && curl -L https://github.com/Overbryd/docker-phantomjs-alpine/releases/download/2.11/phantomjs-alpine-x86_64.tar.bz2 | tar xj \
-  && ln -s /usr/share/phantomjs/phantomjs /usr/bin/phantomjs \
+  mkdir -p $PHANHOME \
+  # cd /usr/share \
+  && curl -L https://github.com/Overbryd/docker-phantomjs-alpine/releases/download/2.11/phantomjs-alpine-x86_64.tar.bz2 | tar xj -C $PHANHOME \
+  && ln -s $PHANHOME/phantomjs/phantomjs /usr/bin/phantomjs \
   && phantomjs --version
 
 # build dependencies
