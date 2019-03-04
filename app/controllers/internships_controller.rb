@@ -77,7 +77,6 @@ class InternshipsController < ApplicationResourceController
   # GET /internships/1.json
   def show
     @internship = Internship.find(params[:id])
-    @comment = UserComment.new
     @favorite = Favorite.where(internship_id: @internship.id,
                                user_id: current_user.id)[0]
     @company = @internship.company_v2
