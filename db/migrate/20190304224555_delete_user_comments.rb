@@ -3,7 +3,7 @@ class DeleteUserComments < ActiveRecord::Migration[5.2]
     drop_table :answers
     drop_table :user_comments
   end
-  def
+  def down
     create_table :answers
     create_table :user_comments
   end
