@@ -11,7 +11,6 @@ AllCops:
     - 'app/models/database_parser.rb' # delete
     - 'app/controllers/answers_controller.rb' #todo
     - 'app/controllers/finish_list_controller.rb' # todo
-    - 'app/controllers/user_comments_controller.rb' # todo
     - 'app/controllers/read_list_controller.rb' # todo
 
 
