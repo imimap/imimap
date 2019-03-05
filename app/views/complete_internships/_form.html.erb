@@ -1,6 +1,6 @@
 <%= bootstrap_form_for(@complete_internship) do |f| %>
 
-<% if complete_internship.errors.any? %>
+<% if @complete_internship.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(complete_internship.errors.count, "error") %> prohibited this complete_internship from being saved:</h2>
 

@@ -151,9 +151,11 @@ en:
       answer2_contact: "If you couln't find an answer to your question, send an E-Mail to the team of the internship administration."
 
   complete_internships:
-    header: Complete Internships
-    student: Student
-    semester: Semester
-    semester_of_study: Semester of Study
-    aep: AEP
-    passed: passed
+    header: "Complete Internships"
+    student: "Student"
+    semester: "Semester"
+    semester_of_study: "Semester of Study"
+    aep: "AEP"
+    passed: "Passed"
+    internship: "Internship"
+    company: "Company"

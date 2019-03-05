@@ -1,27 +1,77 @@
+
+# TBD
+# localisation
+# add logic to checkboxes in Checklist
+#
+
 <div id="form-block4" class="text-left">
 
   <p id="notice"><%= notice %></p>
 
-  <p>
-    <strong>Semester:</strong>
+  <div>
+    <strong><%= t "complete_internships.semester" %>:</strong>
     <%= @complete_internship.semester %>
-  </p>
-
-  <p>
-    <strong>Semester of study:</strong>
+  </div>
+  <div>
+    <strong><%= t "complete_internships.semester_of_study" %>:</strong>
     <%= @complete_internship.semester_of_study %>
-  </p>
-
-  <p>
-    <strong>Aep:</strong>
+  </div>
+  <div>
+    <strong><%= t "complete_internships.aep" %>:</strong>
     <%= @complete_internship.aep %>
-  </p>
+    <!-- tried this but doesnt work for some reason
+      <%= t "complete_internships.aep.#{@complete_internship.aep}"%>
+      aep: "AEP"
+        false: "No AEP"
+        true: "AEP passed"
 
-  <p>
-    <strong>Passed:</strong>
+        false: "Noch kein AEP vorhanden"
+        true: "AEP bestanden"
+      -->
+  </div>
+  <div>
+    <strong><%= t "complete_internships.passed" %>:</strong>
     <%= @complete_internship.passed %>
-  </p>
+    <!-- tried this but doesnt work for some reason
+      <%= t "complete_internships.passed.#{@complete_internship.passed}"%>
+      passed: "Passed"
+        false: "Not yet passed"
+        true: "passed"
 
+        false: "Noch nicht bestanden"
+        true: "Bestanden"
+      -->
+  </div>
+  <br>
+
+  <% if @complete_internship.student %>
+    <% number_of_internships = @complete_internship.student.internships.size %>
+    <% @complete_internship.student.internships.each do |internship|%>
+      <% accepted = internship.registration_state == nil %>
+      <div class="card border-<% if accepted %><%='secondary'%><% else %><%='success'%><% end%> w-<%=number_of_internships/100%>">
+        <div class="card-header"><%= internship.internship_state %></div>
+        <div class="card-body">
+          <h5 class="card-title"><%= t "complete_internships.internship" %> @
+            <% if internship.company %>
+              <%= internship.company.name %>
+            <% else %>
+              <%= t "complete_internships.company" %>
+            <% end %></h5>
+          <p class="card-text">
+            <% if !accepted %>
+              <%= render 'partial_internship', internship: internship %>
+            <% else %>
+              <%= render 'checklist' %>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <%= render 'form' %>
+  <% end %>
+
+  <br>
   <%= link_to 'Edit', edit_complete_internship_path(@complete_internship) %> |
   <%= link_to 'Back', complete_internships_path %>
 
