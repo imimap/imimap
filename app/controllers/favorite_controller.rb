@@ -21,19 +21,19 @@ class FavoriteController < ApplicationResourceController
   end
 
   def destroy
-    @favorite = Favorite.find(params[:id])
-    @current_user = @favorite.user
-    @internship = @favorite.internship
-    @favorite.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(favorite_index_path) }
-      format.js do
-        render layout: false,
-               locals: { current_user: @current_user,
-                         internship: @internship, favorite: @favorite }
-      end
-    end
+    #  @favorite = Favorite.find(params[:id])
+    #  @current_user = @favorite.user
+    #  @internship = @favorite.internship
+    #  @favorite.destroy
+    #
+    #  respond_to do |format|
+    #    format.html { redirect_to(favorite_index_path) }
+    #    format.js do
+    #      render layout: false,
+    #             locals: { current_user: @current_user,
+    #                       internship: @internship, favorite: @favorite }
+    #    end
+    #  end
   end
 
   def index

@@ -11,11 +11,8 @@ class User < ApplicationRecord
   # validates :student, presence: true
 
   belongs_to :student
-  has_many :user_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :notifications, dependent: :destroy
-  has_many :read_lists, dependent: :destroy
-  has_many :finish_lists, dependent: :destroy
 
   def name
     if student.nil?
@@ -82,5 +79,18 @@ class User < ApplicationRecord
                          password_confirmation: password)
     Student.find_or_create_for(user: user) if user.student_email?(email)
     user
+  end
+
+  def accessible_company_addresses
+    CompanyAddress.joins(
+      internships: { complete_internship: { student: :user } }
+    )
+                  .where('users.id' => id)
+  end
+
+  def accessible_internships
+    Internship.joins(complete_internship: { student: :user })
+              .where('users.id' => student.user.id)
+              .where('users.id' => id)
   end
 end

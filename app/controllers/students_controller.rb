@@ -14,14 +14,14 @@ class StudentsController < ApplicationResourceController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
     @student = @user.student
     # TBD centralize logic for users that are not students
     assign_show_attributes(@student)
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     @student = @user.student
     if @student.update_attributes(student_params)
       flash[:success] = 'Profil geupdated'

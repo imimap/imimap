@@ -51,7 +51,6 @@ de:
       description: "Beschreibung"
       semester: "Semester"
       email_public: "Emailadresse öffentlich anzeigen?"
-      comments: "Kommentare"
       pictures: "Bilder"
       orientation: "Orientierung"
       programming_language: "Programmiersprachen"

@@ -1,4 +1,4 @@
-
+#!/bin/bash
 if [ -z $TRAVIS ]; then
   echo "$0: TRAVIS not set, skipping"
   exit 0

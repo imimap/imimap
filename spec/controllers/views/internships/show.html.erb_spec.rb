@@ -22,11 +22,7 @@ require 'spec_helper'
 #      assign(:company, company)
 #      assign(:other_internships, generic )
 #
-#      assign(:comment, UserComment.new)
-#      assign(:user_comments, internship.user_comments)
-#      assign(:internship, internship)
-#      render
-#
+
 #      rendered.should have_content('1')
 #      # TBD should use translation
 #      rendered.should have_content('Intership is less than 4 weeks')
