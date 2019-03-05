@@ -64,6 +64,9 @@ class CompanyAddressesController < ApplicationResourceController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_company_address
-    @company_address = CompanyAddress.find(params[:id])
+    @company_address = current_user
+                       .accessible_company_addresses
+                       .find(params[:id])
+    # @company_address = CompanyAddress.find(params[:id])
   end
 end

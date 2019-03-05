@@ -80,4 +80,17 @@ class User < ApplicationRecord
     Student.find_or_create_for(user: user) if user.student_email?(email)
     user
   end
+
+  def accessible_company_addresses
+    CompanyAddress.joins(
+      internships: { complete_internship: { student: :user } }
+    )
+                  .where('users.id' => id)
+  end
+
+  def accessible_internships
+    Internship.joins(complete_internship: { student: :user })
+              .where('users.id' => student.user.id)
+              .where('users.id' => id)
+  end
 end

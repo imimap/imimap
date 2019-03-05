@@ -15,7 +15,7 @@ AllCops:
 # those should eventually be deleted or fixed: marked with #TBD
 Metrics/AbcSize:
   Exclude:
-    - 'db/seed/lib/08_lib.rb' #Internship
+    - 'db/seed/08_lib/08_internships.rb' #Internship
     - 'app/admin'
     - 'app/controllers/internships_controller.rb'
     - 'app/models/ability.rb'
@@ -36,7 +36,7 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Exclude:
     - 'app/models/ability.rb'
-    - 'db/seed/lib/08_lib.rb' #Internship
+    - 'db/seed/08_lib/08_internships.rb' #Internship
     - 'app/controllers/favorite_controller.rb' # delete?
     - 'app/controllers/finish_list_controller.rb' # delete?
     - 'app/controllers/internships_controller.rb'

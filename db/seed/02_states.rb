@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+PaymentState.destroy_all
+RegistrationState.destroy_all
+ContractState.destroy_all
+CertificateState.destroy_all
+InternshipState.destroy_all
 PaymentState.where(name: 'uncharted',
                    name_de: 'unbekannt')
             .first_or_create

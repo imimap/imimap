@@ -11,7 +11,7 @@ class UsersController < ApplicationResourceController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
     # TBD centralize logic for users that are not students
     if (s = @user.student)
       @internships = s.internships
