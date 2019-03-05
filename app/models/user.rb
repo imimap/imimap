@@ -13,8 +13,6 @@ class User < ApplicationRecord
   belongs_to :student
   has_many :favorites, dependent: :destroy
   has_many :notifications, dependent: :destroy
-  has_many :read_lists, dependent: :destroy
-  has_many :finish_lists, dependent: :destroy
 
   def name
     if student.nil?
