@@ -89,4 +89,10 @@ class User < ApplicationRecord
     )
                   .where('users.id' => id)
   end
+
+  def accessible_internships
+    Internship.joins(complete_internship: { student: :user })
+              .where('users.id' => student.user.id)
+              .where('users.id' => id)
+  end
 end
