@@ -7,6 +7,7 @@ class CompleteInternshipsController < ApplicationResourceController
   # InheritedResources::Base
   # authorize_resource
   before_action :set_complete_internship, only: %i[show edit update destroy]
+  before_action :new_complete_internship, only: %i[create new]
 
   def index
     @complete_internships = CompleteInternship.all
@@ -21,25 +22,14 @@ class CompleteInternshipsController < ApplicationResourceController
   def edit; end
 
   def create
-    @complete_internship = CompleteInternship.new(complete_internship_params)
-
     respond_to do |format|
       if @complete_internship.save
         format.html do
           redirect_to @complete_internship,
                       notice: 'CompleteInternship was successfully created.'
         end
-        format.json do
-          render :show,
-                 status: :created,
-                 location: @complete_internship
-        end
       else
         format.html { render :new }
-        format.json do
-          render json: @complete_internship.errors,
-                 status: :unprocessable_entity
-        end
       end
     end
   end
@@ -51,17 +41,9 @@ class CompleteInternshipsController < ApplicationResourceController
           redirect_to @complete_internship,
                       notice: 'CompleteInternship was successfully updated.'
         end
-        format.json do
-          render :show,
-                 status: :ok,
-                 location: @complete_internship
-        end
       else
         format.html { render :edit }
-        format.json do
-          render json: @complete_internship.errors,
-                 status: :unprocessable_entity
-        end
+
       end
     end
   end
@@ -82,6 +64,10 @@ class CompleteInternshipsController < ApplicationResourceController
   # Use callbacks to share common setup or constraints between actions.
   def set_complete_internship
     @complete_internship = CompleteInternship.find(params[:id])
+  end
+
+  def new_complete_internship
+    @complete_internship = CompleteInternship.new(complete_internship_params)
   end
 
   def complete_internship_params

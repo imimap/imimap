@@ -4,7 +4,6 @@ require 'rails_helper'
 require_relative './mock_path_helper.rb'
 
 RSpec.describe 'complete_internships/index', type: :view do
-
   before(:each) do
     mockpath
     assign(:complete_internships, [
