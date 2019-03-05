@@ -1,5 +1,5 @@
 class DropReportListsTables < ActiveRecord::Migration[5.2]
-  def change
+  def up
     drop_table :read_lists
     drop_table :finish_lists
   end
