@@ -86,7 +86,6 @@ class InternshipsController < ApplicationResourceController
     #  x.id == @internship.id
     # end.reject { |i| i.completed == false }
 
-
     respond_to do |format|
       format.html
       name = @current_user.student.last_name

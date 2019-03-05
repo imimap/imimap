@@ -32,7 +32,6 @@ class Internship < ApplicationRecord
   has_many :read_list, dependent: :destroy
   has_many :attachments, as: :attachable, dependent: :destroy
 
-
   mount_uploader :internship_report, InternshipReportUploader
 
   accepts_nested_attributes_for :attachments, allow_destroy: true
