@@ -1,4 +1,4 @@
-
+<% if false #TBD ST %>
 <%= form_tag(quicksearches_path, :method => 'get', :remote => true) do %>
 
 <p>Search Query<br /> </p>
@@ -8,7 +8,7 @@
 <%= submit_tag "Search", :name => nil %>
 
 <% end %>
-
+<% end %>
 <table class="table">
   <tr>
     <th><%= t "companies.attributes.name" %></th>
