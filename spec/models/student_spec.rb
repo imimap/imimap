@@ -3,15 +3,13 @@
 require 'rails_helper'
 
 RSpec.describe Student, type: :model do
-
-    it 'name returns the correct name' do
-      student = build :student
-      expect(student.name).to eq "#{student.first_name} #{student.last_name}"
-    end
-
+  it 'name returns the correct name' do
+    student = build :student
+    expect(student.name).to eq "#{student.first_name} #{student.last_name}"
+  end
 
   it 'returns the last created internship' do
-    pending "complete_internship migration"
+    pending 'complete_internship migration'
     student2 = create(:student2)
     internship1 = create(:internship_1, student: student2)
     internship2 = create(:internship_2, student: student2)
