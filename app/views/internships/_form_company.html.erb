@@ -4,6 +4,7 @@
   <div class="row">
     <div class="col">
       <div class="field" id="field-titles">
+        <% # TBD this model call needs to be removed. %>
       <%= f.select :company_address_id, Company.order(:name).company_name_address.map { |c| [c.last, c.first]}, class: 'chzn-select', disabled: false, hide_label: true %>
       <br/>
       <%= t "Company not found?" %><%= link_to t("companies.createNewCompany"), new_company_path(returnToForm: true) %>

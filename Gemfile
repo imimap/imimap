@@ -60,6 +60,7 @@ gem 'groupdate', '~> 3.2'
 gem 'factory_bot_rails'
 
 group :development do
+  gem 'brakeman'
   gem 'rubocop'
   gem 'rubocop-rspec'
   gem 'spring'

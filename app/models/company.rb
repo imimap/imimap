@@ -23,12 +23,4 @@ class Company < ApplicationRecord
     size ||= 1
     r.to_f / size
   end
-
-  def company_name
-    try(:name)
-  end
-
-  def company_name=(name)
-    self.company = Company.find_or_create_by_name(name) if name.present?
-  end
 end
