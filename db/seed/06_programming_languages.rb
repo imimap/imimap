@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+ProgrammingLanguage.destroy_all
 ProgrammingLanguage.where(name: 'Java').first_or_create
 ProgrammingLanguage.where(name: 'C++').first_or_create
 ProgrammingLanguage.where(name: 'C').first_or_create

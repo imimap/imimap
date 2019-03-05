@@ -18,6 +18,6 @@ User.create(email: 'prof@htw-berlin.de',
 
 Dir[File.join(Rails.root, 'db', 'seed', '*.rb')].sort.each { |seed| load seed }
 
-[Student.first, Student.last].each do |student|
-  create_user_for_student(student: student)
-end
+# [Student.first, Student.last].each do |student|
+#   create_user_for_student(student: student)
+# end

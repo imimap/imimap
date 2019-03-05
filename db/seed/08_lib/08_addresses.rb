@@ -11,7 +11,7 @@ def faker_address(company:)
   )
 end
 
-def create_company_address(result:, country_code:, company:)
+def create_company_address_with(result:, country_code:, company:)
   CompanyAddress.create!(
     company: company,
     street: result.street || result.village,
@@ -30,7 +30,7 @@ def country_code(geocoder_result:)
   end
 end
 
-def geocoded_address(company:)
+def find_random_address
   result = nil
   while result.nil?
     result = Geocoder
@@ -38,8 +38,14 @@ def geocoded_address(company:)
              .first
     result = nil unless result.data['error'].nil?
   end
+  result
+end
 
-  create_company_address(result: result,
-                         country_code: country_code(geocoder_result: result),
-                         company: company)
+def geocoded_address(company:)
+  random_address = find_random_address
+  create_company_address_with(result: random_address,
+                              country_code: country_code(
+                                geocoder_result: random_address
+                              ),
+                              company: company)
 end
