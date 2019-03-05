@@ -2,7 +2,6 @@
 # TBD
 # localisation
 # add logic to checkboxes in Checklist
-#
 
 <div id="form-block4" class="text-left">
 
@@ -46,27 +45,29 @@
 
   <% if @complete_internship.student %>
     <% number_of_internships = @complete_internship.student.internships.size %>
-    <% @complete_internship.student.internships.each do |internship|%>
-      <% accepted = internship.registration_state == nil %>
-      <div class="card border-<% if accepted %><%='secondary'%><% else %><%='success'%><% end%> w-<%=number_of_internships/100%>">
-        <div class="card-header"><%= internship.internship_state %></div>
-        <div class="card-body">
-          <h5 class="card-title"><%= t "complete_internships.internship" %> @
-            <% if internship.company %>
-              <%= internship.company.name %>
-            <% else %>
-              <%= t "complete_internships.company" %>
-            <% end %></h5>
-          <p class="card-text">
+    <div class="card-deck">
+      <% @complete_internship.student.internships.each do |internship|%>
+        <% accepted = internship.registration_state == nil %>
+        <div class="card border-<% if accepted %><%='secondary'%><% else %><%='success'%><% end%>">
+          <div class="card-header"><%= internship.internship_state %></div>
+          <div class="card-body">
+            <h5 class="card-title"><%= t "complete_internships.internship" %> @
+              <% if internship.company_v2 %>
+                <%= internship.company_v2.name %>
+              <% else %>
+                <%= t "complete_internships.company" %>
+              <% end %></h5>
+            <p class="card-text">
             <% if !accepted %>
               <%= render 'partial_internship', internship: internship %>
             <% else %>
               <%= render 'checklist' %>
             <% end %>
-          </p>
+            </p>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   <% else %>
     <%= render 'form' %>
   <% end %>
