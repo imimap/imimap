@@ -95,6 +95,7 @@ GEM
       sassc-rails (>= 2.0.0)
     bootstrap_form (4.1.0)
       rails (>= 5.0)
+    brakeman (4.4.0)
     builder (3.2.3)
     byebug (11.0.0)
     cancancan (2.3.0)
@@ -423,6 +424,7 @@ DEPENDENCIES
   bootsnap
   bootstrap (>= 4.3.1)
   bootstrap_form (>= 4.0.0)
+  brakeman
   byebug
   cancancan (~> 2.2)
   capistrano
