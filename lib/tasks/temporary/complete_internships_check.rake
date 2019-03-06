@@ -9,10 +9,10 @@ def check_internships(student)
 end
 
 def check_passed_aep(student)
-  passed = student.internships.last.internship_state_id == 1
+  passed = student.last_internship.passed?
   ci = student.complete_internship
   puts "aep state wrong #{ci.id}" unless passed == ci.aep
-  puts "aep state wrong #{ci.id}" unless passed == ci.passed
+  puts "passed state wrong #{ci.id}" unless passed == ci.passed
 end
 
 def check_semester(student)
@@ -27,6 +27,7 @@ namespace :imimap do
     internships = Internship.all
     puts "Going to check #{internships.count} internships"
     internships.each do |i|
+      print '.'
       unless i.student_new == i.student
         puts "student association broke in internship #{i.id}"
       end

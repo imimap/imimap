@@ -20,6 +20,7 @@ namespace :imimap do
     puts "Going to create complete_internships for #{students.count} students"
     ActiveRecord::Base.transaction do
       students.each do |student|
+        print '.'
         internships = student.internships
         next if internships.empty?
 
