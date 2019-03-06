@@ -3,7 +3,9 @@
 # Wasn't here for some reason; recreated to have a place for the
 # permitted attributes
 class StudentsController < ApplicationResourceController
-
+  before_action :set_student, only: [:show]
+  authorize_resource
+  # load_and_authorize_resource
   def self.permitted_params
     %i[first_name
        last_name
@@ -15,8 +17,6 @@ class StudentsController < ApplicationResourceController
   end
 
   def show
-    @student = Student.find(params[:id])
-    @user = @student.user
     # TBD centralize logic for users that are not students
     assign_show_attributes(@student)
   end
@@ -33,6 +33,11 @@ class StudentsController < ApplicationResourceController
   end
 
   private
+
+  def set_student
+    @student = Student.find(params[:id])
+    @user = @student.user
+  end
 
   def student_params
     params.require(:student)
