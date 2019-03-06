@@ -60,6 +60,10 @@ class CompleteInternshipsController < ApplicationResourceController
     end
   end
 
+  def self.permitted_params
+    %i[semester_id semester_of_study aep passed]
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -80,7 +84,8 @@ class CompleteInternshipsController < ApplicationResourceController
   end
 
   def complete_internship_params
-    params.require(:complete_internship)
-          .permit(:semester_id, :semester_of_study, :aep, :passed)
+    params.require(:complete_internship).permit(
+      CompleteInternshipsController.permitted_params
+    )
   end
 end
