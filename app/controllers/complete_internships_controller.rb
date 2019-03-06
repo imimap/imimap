@@ -64,6 +64,22 @@ class CompleteInternshipsController < ApplicationResourceController
     %i[semester_id semester_of_study aep passed]
   end
 
+  # If the user has no complete internship, the system asks him/her to create a
+  # new one else the internship details are shown
+  def internship_data
+    @ci = if current_user.student.nil?
+                     []
+                   else
+                     current_user.student.internships
+                   end
+
+    if @ci.any?
+      redirect_to @ci.first
+    else
+      render :new
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
