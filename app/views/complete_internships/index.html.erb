@@ -16,9 +16,9 @@
       </tr>
     </thead>
     <tbody>
-      <% @complete_internships.each do |complete_internship| %>
+      <% @complete_internships.order(semester_id: :desc).each do |complete_internship| %>
         <tr>
-          <td><% if complete_internship.student %><%= complete_internship.student.name %><%end%></td>
+          <td><%= complete_internship.student.try(:first_name) %> <%= complete_internship.student.try(:last_name) %></td>
           <td><%= complete_internship.semester.try(:name) %></td>
           <td><%= complete_internship.semester_of_study %></td>
           <td><%= complete_internship.aep %></td>

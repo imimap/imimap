@@ -156,6 +156,12 @@ en:
     semester: "Semester"
     semester_of_study: "Semester of Study"
     aep: "AEP"
+    aep_value:
+      false: "No AEP"
+      true: "AEP passed"
     passed: "Passed"
+    passed_value:
+      false: "Not yet passed"
+      true: "passed"
     internship: "Internship"
     company: "Company"

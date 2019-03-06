@@ -10,35 +10,17 @@
     </div>
     <div>
       <strong><%= t "complete_internships.aep" %>:</strong>
-      <%= @complete_internship.aep %>
-      <!-- tried this but doesnt work for some reason
-        <%= t "complete_internships.aep.#{@complete_internship.aep}"%>
-        aep: "AEP"
-          false: "No AEP"
-          true: "AEP passed"
-
-          false: "Noch kein AEP vorhanden"
-          true: "AEP bestanden"
-        -->
+      <%= t "complete_internships.aep_value.#{@complete_internship.aep}" %>
     </div>
     <div>
       <strong><%= t "complete_internships.passed" %>:</strong>
-      <%= @complete_internship.passed %>
-      <!-- tried this but doesnt work for some reason
-        <%= t "complete_internships.passed.#{@complete_internship.passed}"%>
-        passed: "Passed"
-          false: "Not yet passed"
-          true: "passed"
-
-          false: "Noch nicht bestanden"
-          true: "Bestanden"
-        -->
+      <%= t "complete_internships.passed_value.#{@complete_internship.passed}" %>
     </div>
     <br>
 
     <% if @complete_internship.student %>
       <div class="card-deck">
-        <% @complete_internship.student.internships.each do |internship|%>
+        <% @complete_internship.internships.each do |internship|%>
           <% accepted = internship.registration_state.nil? %>
           <div class="card border-<%= accepted ? 'secondary' : 'success' %>">
             <div class="card-header"><%= internship.internship_state.try(:name) %></div>

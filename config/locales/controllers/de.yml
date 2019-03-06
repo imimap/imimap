@@ -154,6 +154,12 @@ de:
     semester: "Semester"
     semester_of_study: "Hochschulsemester"
     aep: "AEP"
-    passed: "Bestanden"
+    aep_value:
+      false: "Noch kein AEP vorhanden"
+      true: "AEP bestanden"
+    passed: "Passed"
+    passed_value:
+      false: "Noch nicht bestanden"
+      true: "Bestanden"
     internship: "Praktikum"
     company: "Firma"
