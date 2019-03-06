@@ -24,6 +24,19 @@
       <tr>
         <td>
           <label class="checkbox">
+            <input type="checkbox"> <%= link_to t "internship.contract" %>
+          </label><br>
+          <span class="ml-3">
+            <input type="radio" name="original" value="original"> <%= t "internship.original" %>
+          </span>
+          <span class="ml-3">
+            <input type="radio" name="copy" value="copy"> <%= t "internship.copy" %>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label class="checkbox">
             <input type="checkbox"> <%= t "internship.lsf_ausdruck" %>
           </label>
         </td>
@@ -31,7 +44,7 @@
       <tr>
         <td>
           <label class="checkbox">
-            <input type="checkbox"> <%= t "internship.bla" %>...
+            <input type="checkbox"> <%= link_to t "internship.print_form" %>
           </label>
         </td>
       </tr>
