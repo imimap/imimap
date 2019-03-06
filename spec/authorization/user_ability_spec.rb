@@ -29,6 +29,7 @@ describe 'User Role' do
       before :each do
         student = create(:student2)
         @own_internship = create(:internship, student: student)
+        @other_internship = create(:internship, student: create(:student))
         @user = create(:user, student: student)
       end
       let(:user) { @user }
@@ -37,6 +38,7 @@ describe 'User Role' do
         expect(@own_internship.student.user).to eq @user
       end
       it { is_expected.to be_able_to(:show, @own_internship) }
+      it { is_expected.not_to be_able_to(:show, @other_internship) }
     end
   end
 end
