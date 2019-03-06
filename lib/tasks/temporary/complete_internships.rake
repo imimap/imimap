@@ -24,7 +24,7 @@ namespace :imimap do
         next if internships.empty?
 
         unless student.complete_internship.nil?
-          puts "complete internship exists for student #{s.id}, skipping"
+          puts "complete internship exists for student #{student.id}, skipping"
           next
         end
         last_internship = student.last_internship
