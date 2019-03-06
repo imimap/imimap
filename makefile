@@ -44,3 +44,5 @@ bash:
 	docker-compose exec imimap bash
 c:
 	docker-compose exec imimap rails c
+docker_radical_cleanup:
+	docker rmi $(docker images -qa)

@@ -33,7 +33,6 @@ RUN set -ex \
        build-base \
        postgresql-dev \
        imagemagick-dev \
-   && bundle install
-
-#  && apk del builddependencies
+   && bundle install \
+   && apk del builddependencies
 CMD ["bundle", "exec", "unicorn", "--port", "80"]

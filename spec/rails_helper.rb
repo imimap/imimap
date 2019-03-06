@@ -28,7 +28,6 @@ require 'rspec/rails'
 # require only the support files necessary.
 #
 # Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
-
 RSpec.configure do |config|
   # see https://github.com/plataformatec/devise/wiki/How-To:-Test-with-Capybara
   config.include Warden::Test::Helpers

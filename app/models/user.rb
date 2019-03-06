@@ -90,7 +90,14 @@ class User < ApplicationRecord
 
   def accessible_internships
     Internship.joins(complete_internship: { student: :user })
-              .where('users.id' => student.user.id)
               .where('users.id' => id)
+  end
+
+  def accessible_complete_internships
+    if admin?
+      CompleteInternship.all
+    else
+      CompleteInternship.joins(student: :user).where('users.id' => id)
+    end
   end
 end
