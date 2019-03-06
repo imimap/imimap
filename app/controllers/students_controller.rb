@@ -3,6 +3,7 @@
 # Wasn't here for some reason; recreated to have a place for the
 # permitted attributes
 class StudentsController < ApplicationResourceController
+
   def self.permitted_params
     %i[first_name
        last_name
@@ -35,7 +36,7 @@ class StudentsController < ApplicationResourceController
 
   def student_params
     params.require(:student)
-          .permit(:first_name, :last_name, :birthday, :birthplace, :email)
+          .permit(:first_name, :last_name, :birthday, :birthplace, :email, :privateemail)
   end
 
   def assign_show_attributes(student)
