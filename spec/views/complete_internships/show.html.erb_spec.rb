@@ -15,7 +15,7 @@ RSpec.describe 'complete_internships/show', type: :view do
     render
     expect(rendered).to match(/Semester/)
     expect(rendered).to match(/4/)
-    expect(rendered).to match(/true/)
-    expect(rendered).to match(/false/)
+    expect(rendered).to match(/AEP/)
+    # expect(rendered).to match(/passed/)
   end
 end

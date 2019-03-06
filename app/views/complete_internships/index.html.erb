@@ -16,7 +16,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @complete_internships.order(semester_id: :desc).each do |complete_internship| %>
+      <% @complete_internships.sort_by{|i| -i[:semester_id]}.each do |complete_internship| %>
         <tr>
           <td><%= complete_internship.student.try(:first_name) %> <%= complete_internship.student.try(:last_name) %></td>
           <td><%= complete_internship.semester.try(:name) %></td>
