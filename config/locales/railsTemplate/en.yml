@@ -8,7 +8,6 @@ en:
   noti:
     report: "You can create your internship report now!"
     comment: "Someone commented on your internship"
-    answer: "Someone answered on your comment"
     void: "Sorry, no notifications available"
   results:
     found: "result(s) found"
@@ -277,17 +276,6 @@ en:
     done_intership_here: "Have you done your internship here, too?"
     change_details: "Change Details"
     compare: "Compare"
-
-  comments:
-    singular: "Comment"
-    plural: "Comments"
-    attributes:
-      body: "Your comment:"
-
-  answers:
-    from: "Reply from"
-    attributes:
-      body: "Reply"
 
   download:
     form: "Forms"

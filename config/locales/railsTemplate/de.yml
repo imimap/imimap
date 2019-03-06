@@ -8,7 +8,6 @@ de:
   noti:
     report: "Du kannst nun deinen Praktikumsbericht anlegen"
     comment: "Jemand hat deinen Praktikumsbericht kommentiert"
-    answer: "Jemand hat deinen Kommentar beantwortet"
     void: "Du hast derzeit keine Benachrichtigungen"
   results:
     found: "Suchergebnis(se) gefunden"
@@ -280,18 +279,6 @@ de:
     save: "Speichern"
     done_intership_here: "Hast du auch dein Praktikum hier gemacht?"
     compare: "Vergleichen"
-
-  comments:
-    singular: "Kommentar"
-    plural: "Kommentare"
-    attributes:
-      body: "Dein Kommentar:"
-
-  answers:
-    from: "Antwort von"
-    attributes:
-      body: "Antwort"
-
   download:
     form: "Formulare"
     text1: "Hier könnt Ihr alle wichtigen Dokumente, die ihr im Rahmen des Praktikums benötigt, herunterladen:"

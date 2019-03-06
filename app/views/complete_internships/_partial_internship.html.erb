@@ -1,0 +1,52 @@
+<table class="table table-striped text-left">
+  <tbody>
+      <tr>
+        <td><%= t "internship.semester" %></td>
+        <td><%= internship.semester.try(:name) %></td>
+      </tr>
+      <tr>
+        <td><%= t "internship.start_date" %></td>
+        <td><%= internship.start_date %></td>
+      </tr>
+      <tr>
+        <td><%= t "internship.end_date" %></td>
+        <td><%= internship.end_date %></td>
+      </tr>
+      <tr>
+        <td><%= t "internship.operational_area" %></td>
+        <td><%= internship.operational_area %></td>
+      </tr>
+      <tr>
+        <td><%= t "internship.tasks" %></td>
+        <td><%= internship.tasks %></td>
+      </tr>
+      <tr>
+        <td><%= t "internship.internship_report" %></td>
+        <td><%= internship.internship_report %></td>
+      </tr>
+      <tr>
+        <td><%= t "internship.registration_state" %></td>
+        <td><%= internship.registration_state.try(:name) %></td>
+      </tr>
+      <tr>
+        <td><%= t "internship.contract_state" %></td>
+        <td><%= internship.contract_state.try(:name) %></td>
+      </tr>
+      <tr>
+        <td><%= t "internship.report_state" %></td>
+        <td><%= internship.report_state.try(:name) %></td>
+      </tr>
+      <tr>
+        <td><%= t "internship.certificate_state" %></td>
+        <td><%= internship.certificate_state.try(:name) %></td>
+      </tr>
+      <tr>
+        <td><%= t "internship.internship_state" %></td>
+        <td><%= internship.internship_state.try(:name) %></td>
+      </tr>
+      <tr>
+        <td><%= t "internship.comment" %></td>
+        <td><%= internship.comment %></td>
+      </tr>
+  </tbody>
+</table>

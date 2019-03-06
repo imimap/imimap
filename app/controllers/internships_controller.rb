@@ -5,7 +5,8 @@ class InternshipsController < ApplicationResourceController
   include ApplicationHelper
   respond_to :html, :json
   before_action :programming_languages, :orientations, only: %i[new edit update]
-
+  before_action :set_internship,
+                only: %i[edit create show update rating destroy]
   # GET /internships
   # GET /internships.json
 
@@ -76,9 +77,6 @@ class InternshipsController < ApplicationResourceController
   # GET /internships/1
   # GET /internships/1.json
   def show
-    @internship = Internship.find(params[:id])
-    @comment = UserComment.new
-    @answer = Answer.new
     @favorite = Favorite.where(internship_id: @internship.id,
                                user_id: current_user.id)[0]
     @company = @internship.company_v2
@@ -87,8 +85,6 @@ class InternshipsController < ApplicationResourceController
     # @company.internships.reject do |x|
     #  x.id == @internship.id
     # end.reject { |i| i.completed == false }
-
-    @user_comments = @internship.user_comments.order('created_at DESC')
 
     respond_to do |format|
       format.html
@@ -102,13 +98,10 @@ class InternshipsController < ApplicationResourceController
     end
   end
 
-  def rating
-    @internship = Internship.find(params[:id])
-  end
+  def rating; end
 
   # GET /internships/1/edit
   def edit
-    @internship = Internship.find(params[:id])
     @company = @internship.company_v2
     @rating = @internship.internship_rating
   end
@@ -116,7 +109,6 @@ class InternshipsController < ApplicationResourceController
   # PUT /internships/1
   # PUT /internships/1.json
   def update
-    @internship = Internship.find(params[:id])
     attributes = internship_params
     if @internship.update_attributes(attributes)
       @internship.update_attributes(completed: true)
@@ -131,7 +123,6 @@ class InternshipsController < ApplicationResourceController
   # DELETE /internships/1
   # DELETE /internships/1.json
   def destroy
-    @internship = Internship.find(params[:id])
     @internship.destroy
 
     respond_to do |format|
@@ -207,6 +198,10 @@ class InternshipsController < ApplicationResourceController
   # orientation_id (not used)
 
   private
+
+  def set_internship
+    current_user.accessible_internships.find(params[:id])
+  end
 
   def internship_params
     params.require(:internship).permit(

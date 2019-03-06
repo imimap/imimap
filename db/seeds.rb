@@ -3,8 +3,6 @@
 puts 'seeding database'
 User.destroy_all
 
-Dir[File.join(Rails.root, 'db', 'seed', '*.rb')].sort.each { |seed| load seed }
-
 u = User.new(email: 'test@htw-berlin.de',
              password: 'geheim12',
              password_confirmation: 'geheim12')
@@ -18,6 +16,8 @@ User.create(email: 'prof@htw-berlin.de',
             password: 'geheim12',
             password_confirmation: 'geheim12', role: :prof)
 
-[Student.first, Student.last].each do |student|
-  create_user_for_student(student: student)
-end
+Dir[File.join(Rails.root, 'db', 'seed', '*.rb')].sort.each { |seed| load seed }
+
+# [Student.first, Student.last].each do |student|
+#   create_user_for_student(student: student)
+# end

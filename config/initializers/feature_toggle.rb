@@ -23,6 +23,6 @@ end
 FT = FeatureToggle.new.tap do |ft|
   ft.for(:student_can_edit_internship) do |current_user|
     # \d in third place to allow for FactoryBot sequence
-    /s0[1-3]\d{3}[0-8]@htw-berlin.de/.match?(current_user.email)
+    /s0[1-4]\d{3}[0-8]@htw-berlin.de/.match?(current_user.email)
   end
 end

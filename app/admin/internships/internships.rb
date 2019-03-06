@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Internship do
-  menu priority: 6
+  menu priority: 5
   permit_params(*InternshipsController.permitted_params)
   filter :student_enrolment_number,
          as: :select,
@@ -10,6 +10,10 @@ ActiveAdmin.register Internship do
   filter :reading_prof
   filter :semester
   filter :internship_state
+  # see https://activeadmin.info/3-index-pages.html
+  filter :certificate_signed_by_internship_officer_blank,
+         as: :boolean,
+         label: 'not signed'
 
   index do
     column(:id) { |i| link_to i.id, admin_internship_path(i.id) }
@@ -19,6 +23,7 @@ ActiveAdmin.register Internship do
     end
     column :company_v2
     column :semester
+    column :passed?
     column :internship_state
     column :report_state
     column :certificate_state

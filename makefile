@@ -1,5 +1,7 @@
 start:
 	docker-compose up -d
+down:
+	docker-compose down
 stop:
 	docker-compose down --rmi all -v --remove-orphans
 restart:
@@ -42,3 +44,5 @@ bash:
 	docker-compose exec imimap bash
 c:
 	docker-compose exec imimap rails c
+docker_radical_cleanup:
+	docker rmi $(docker images -qa)

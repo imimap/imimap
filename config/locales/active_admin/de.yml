@@ -56,18 +56,6 @@ de:
       action_label: "%{title} ausgewählte"
       labels:
         destroy: "Lösche"
-    comments:
-      body: "Inhalt"
-      author: "Autor"
-      title: "Kommentar"
-      resource: "Resource"
-      add: "Kommentar hinzufügen"
-      no_comments_yet: "Es gibt noch keine Kommentare."
-      title_content: "Kommentare (%{count})"
-      created_at: Erstellt am
-      errors:
-        empty_text: "Der Kommentar wurde nicht gespeichert, da der Text fehlt."
-
     devise:
       login:
         title: "Login"
