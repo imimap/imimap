@@ -12,7 +12,6 @@ describe 'Student Login' do
       context 'with valid user credentials' do
         before :each do
           @user = create(:user)
-
         end
 
         it 'should proceed to log in and back to original page' do

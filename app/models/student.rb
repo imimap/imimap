@@ -10,14 +10,13 @@ class Student < ApplicationRecord
   # validates :last_name, :first_name, :email, :enrolment_number, presence: true
   # validates_uniqueness_of :enrolment_number
 
-
   has_one :complete_internship
   has_many :internships
   has_many :internships_new, through: :complete_internship
   has_one :user
 
   validates :privateemail, format: { with: Devise.email_regexp },
-  allow_blank: true
+                           allow_blank: true
 
   def user?
     user.present?
