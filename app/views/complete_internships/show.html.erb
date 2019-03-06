@@ -41,7 +41,7 @@
         <% @complete_internship.student.internships.each do |internship|%>
           <% accepted = internship.registration_state.nil? %>
           <div class="card border-<%= accepted ? 'secondary' : 'success' %>">
-            <div class="card-header"><%= internship.internship_state %></div>
+            <div class="card-header"><%= internship.internship_state.try(:name) %></div>
             <div class="card-body">
               <h5 class="card-title"><%= t "complete_internships.internship" %> @
                 <% if internship.company_v2 %>

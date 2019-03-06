@@ -2,7 +2,7 @@
   <tbody>
       <tr>
         <td><%= t "internship.semester" %></td>
-        <td><%= internship.semester.name %></td>
+        <td><%= internship.semester.try(:name) %></td>
       </tr>
       <tr>
         <td><%= t "internship.start_date" %></td>
@@ -26,23 +26,23 @@
       </tr>
       <tr>
         <td><%= t "internship.registration_state" %></td>
-        <td><%= internship.registration_state.name if internship.registration_state %></td>
+        <td><%= internship.registration_state.try(:name) %></td>
       </tr>
       <tr>
         <td><%= t "internship.contract_state" %></td>
-        <td><%= internship.contract_state.name if internship.contract_state %></td>
+        <td><%= internship.contract_state.try(:name) %></td>
       </tr>
       <tr>
         <td><%= t "internship.report_state" %></td>
-        <td><%= internship.report_state.name if internship.report_state %></td>
+        <td><%= internship.report_state.try(:name) %></td>
       </tr>
       <tr>
         <td><%= t "internship.certificate_state" %></td>
-        <td><%= internship.certificate_state.name if internship.certificate_state %></td>
+        <td><%= internship.certificate_state.try(:name) %></td>
       </tr>
       <tr>
         <td><%= t "internship.internship_state" %></td>
-        <td><%= internship.internship_state.name if internship.internship_state %></td>
+        <td><%= internship.internship_state.try(:name) %></td>
       </tr>
       <tr>
         <td><%= t "internship.comment" %></td>
