@@ -4,6 +4,7 @@ ActiveAdmin.register CompleteInternship do
   menu priority: 4
   permit_params CompleteInternshipsController.permitted_params
   filter :passed
+  filter :student
 
   index do
     column :student do |ci|
@@ -12,6 +13,12 @@ ActiveAdmin.register CompleteInternship do
     end
     column :internships do |ci|
       link_to_list ci.internships
+    end
+    bulk_params = CompleteInternshipsController.permitted_params.clone
+    bulk_params.delete(:semester)
+    column :semester do |ci|
+      s = ci.semester
+      link_to s.name, admin_semester_path(s.id) unless s.nil?
     end
     CompleteInternshipsController.permitted_params.each do |p|
       column p
