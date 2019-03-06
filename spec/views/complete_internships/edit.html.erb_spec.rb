@@ -8,6 +8,7 @@ RSpec.describe 'complete_internships/edit', type: :view do
     mockpath
     @complete_internship = assign(:complete_internship,
                                   create(:complete_internship))
+    @semesters = [['Winter', 1], ['Sommer', 2]]
   end
 
   it 'renders the edit complete_internship form' do

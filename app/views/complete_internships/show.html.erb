@@ -1,11 +1,8 @@
 
 <div id="form-block4" class="text-left">
-
-  <p id="notice"><%= notice %></p>
-  <% if @complete_internship %>
     <div>
       <strong><%= t "complete_internships.semester" %>:</strong>
-      <%= @complete_internship.semester %>
+      <%= @semester_name %>
     </div>
     <div>
       <strong><%= t "complete_internships.semester_of_study" %>:</strong>
@@ -71,6 +68,5 @@
     <br><br><br>
     <%= link_to 'Edit', edit_complete_internship_path(@complete_internship) %> |
     <%= link_to 'Back', complete_internships_path %>
-  <%end%>
 
 </div>

@@ -19,6 +19,7 @@ RSpec.describe 'complete_internships/index', type: :view do
 
   it 'renders a list of complete_internships' do
     render
+    # expect(rendered).to eq "XXX"
     assert_select 'tr>td', text: 'WS 19/20'.to_s, count: 1
     assert_select 'tr>td', text: 'SS 19'.to_s, count: 1
     assert_select 'tr>td', text: 4.to_s, count: 1

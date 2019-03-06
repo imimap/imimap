@@ -8,6 +8,7 @@ class CompleteInternshipsController < ApplicationResourceController
   # authorize_resource
   before_action :set_complete_internship, only: %i[show edit update destroy]
   before_action :new_complete_internship, only: %i[create new]
+  before_action :set_semesters, only: %i[new edit]
 
   def index
     @complete_internships = CompleteInternship.all
@@ -64,14 +65,19 @@ class CompleteInternshipsController < ApplicationResourceController
   # Use callbacks to share common setup or constraints between actions.
   def set_complete_internship
     @complete_internship = CompleteInternship.find(params[:id])
+    @semester_name = @complete_internship.semester.try(:name)
   end
 
   def new_complete_internship
     @complete_internship = CompleteInternship.new(complete_internship_params)
   end
 
+  def set_semesters
+    @semesters = Semester.all.pluck(:name, :id)
+  end
+
   def complete_internship_params
     params.require(:complete_internship)
-          .permit(:semester, :semester_of_study, :aep, :passed)
+          .permit(:semester_id, :semester_of_study, :aep, :passed)
   end
 end
