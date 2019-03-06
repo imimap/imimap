@@ -5,7 +5,7 @@
 # Internship.all.each{|i| i.complete_internship = nil; i.save!}
 # CompleteInternship.destroy_all
 def complete_internship_for(student:, internship:)
-  passed_and_aep = internship.internship_state_id == 1 # passed
+  passed_and_aep = internship.passed?
   CompleteInternship.new(
     student: student,
     aep: passed_and_aep,
