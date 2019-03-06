@@ -65,9 +65,9 @@ class CompleteInternshipsController < ApplicationResourceController
   # Use callbacks to share common setup or constraints between actions.
   def set_complete_internship
     accessible = current_user.accessible_complete_internships
-                  
+
     @complete_internship =
-                           accessible.find(params[:id])
+      accessible.find(params[:id])
     @semester_name = @complete_internship.semester.try(:name)
   end
 
