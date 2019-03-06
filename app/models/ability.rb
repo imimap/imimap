@@ -16,7 +16,9 @@ class Ability
     can :create, [Company, CompanyAddress]
     can :read, InternshipOffer
     can :map_cities, Internship
-    can :internship_data, CompleteInternship
+    can %i[internship_data new edit show update],
+        CompleteInternship,
+        user: { id: user.id }
 
     # TBD these reveal somewhat arbitrary
     # controllers and controller actions added over the time.

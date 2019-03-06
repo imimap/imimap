@@ -35,9 +35,10 @@ Rails.application.routes.draw do
           to: 'companies#select_company',
           as: 'select_company'
       get 'help', to: 'welcome#help'
+      get 'my_internship',
+          to: 'complete_internships#internship_data',
+          as: 'my_internship'
     end
     ActiveAdmin.routes(self)
   end
-  # TBD Review: what is this special route for outside of the other scopes?
-  get 'my_internship', to: 'complete_internships#internship_data', as: 'my_internship'
 end

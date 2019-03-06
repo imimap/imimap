@@ -7,8 +7,8 @@ class CompleteInternshipsController < ApplicationResourceController
   # InheritedResources::Base
   # authorize_resource
   before_action :set_complete_internship, only: %i[show edit update destroy]
-  before_action :new_complete_internship, only: %i[create new]
-  before_action :set_semesters, only: %i[new edit]
+  before_action :new_complete_internship, only: %i[create new internship_data]
+  before_action :set_semesters, only: %i[new edit internship_data]
 
   def index
     @complete_internships = CompleteInternship.all
@@ -68,15 +68,16 @@ class CompleteInternshipsController < ApplicationResourceController
   # new one else the internship details are shown
   def internship_data
     @ci = if current_user.student.nil?
-                     []
-                   else
-                     current_user.student.internships
-                   end
+            []
+          else
+            current_user.student.internships
+          end
 
     if @ci.any?
       redirect_to @ci.first
     else
-      render :new
+      render :no_complete_internship_data
+      # render :new
     end
   end
 
@@ -92,7 +93,11 @@ class CompleteInternshipsController < ApplicationResourceController
   end
 
   def new_complete_internship
-    @complete_internship = CompleteInternship.new(complete_internship_params)
+    @complete_internship = if params[:complete_internship].nil?
+                             CompleteInternship.new
+                           else
+                             CompleteInternship.new(complete_internship_params)
+                           end
   end
 
   def set_semesters
