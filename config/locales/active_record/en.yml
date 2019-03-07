@@ -1,6 +1,11 @@
 en:
   activerecord:
     attributes:
+      complete_internship:
+        aep: "AEP"
+        passed: "Passed"
+        semester: "Semester"
+        semester_of_study: "Semester of study"
       company_address:
         street: Street
         zip: ZIP
@@ -37,6 +42,12 @@ en:
       admin_user:
         one: Administrator
         other: Administrators
+      complete_internship:
+        one: Internship Overview
+        other: Internship Overviews
+      internship:
+        one: Internship
+        other: Internships
     errors:
       messages:
         record_invalid: "Validation failed: %{errors}"
