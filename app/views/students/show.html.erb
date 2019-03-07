@@ -1,32 +1,30 @@
+
 <%= bootstrap_form_for(@student) do |f| %>
 <div id="form-block4" class="text-left">
   <h3> <%= t "students.personal_details" %></h3>
 
   <div class="row">
     <div class="col-md-4">
-      <div id="field-titles">
       <%=t "students.attributes.enrolment_number" %><br />
-    <span class="form-control-static"><%=@student.enrolment_number%></span>
-      </div>
+      <span class="form-control-static"><%=@student.enrolment_number%></span>
     </div>
+
     <div class="col-md-4">
-      <div id="field-titles">
         <%=t "students.attributes.email" %><br />
       <span class="form-control-static"><%=@student.email %></span>
-      </div>
     </div>
   </div>
   <br />
 
   <div class="row">
     <div class="col-md-4">
-      <div class="field" id="field-titles2">
+      <div class="field" >
       <%= f.text_field :first_name, :maxlength => 50 %>
       </div>
     </div>
 
   <div class="col-md-4">
-    <div class="field" id="field-titles2">
+    <div class="field">
       <%= f.text_field :last_name, :maxlength => 50%>
       </div>
     </div>
@@ -34,13 +32,14 @@
 
   <div class="row">
       <div class="col-md-4">
-        <div class="field" id="field-titles2">
-            <%= f.text_field :birthday %>
+        <div class="field">
+            <%= f.text_field :birthday, data:{ provide:'datepicker' } %>
+
         </div>
       </div>
 
       <div class="col-md-4">
-        <div class="field" id="field-titles2">
+        <div class="field">
           <%= f.text_field :birthplace, :maxlength => 50 %>
         </div>
       </div>
@@ -48,7 +47,7 @@
 
     <div class="row">
       <div class="col-md-4">
-        <div class="field" id="field-titles2">
+        <div class="field">
         <%= f.text_field :privateemail %>
         </div>
       </div>
@@ -56,7 +55,7 @@
 
     <div class="row">
       <div class="col-md-4">
-        <div class="field" id="field-titles2">
+        <div class="field">
         <%= f.submit %>
         </div>
       </div>

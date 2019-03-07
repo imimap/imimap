@@ -4,6 +4,7 @@
 class StudentsController < ApplicationResourceController
   before_action :set_student, only: %i[show update]
   authorize_resource
+  include StudentsHelper
   def self.permitted_params
     %i[first_name
        last_name

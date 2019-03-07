@@ -13,6 +13,7 @@ gem 'nested_form'
 gem 'rubyzip', '>= 1.2.1'
 
 gem 'bootstrap', '>= 4.3.1'
+gem 'bootstrap-datepicker-rails'
 gem 'bootstrap_form', '>= 4.0.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
