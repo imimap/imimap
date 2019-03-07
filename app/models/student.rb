@@ -20,11 +20,8 @@ class Student < ApplicationRecord
   end
 
   def name
-    if user.nil?
-      email
-    else
-      "#{first_name} #{last_name}"
-    end
+    name = "#{first_name} #{last_name}"
+    name.empty? ? email : name
   end
 
   def self.find_or_create_for(user:)
