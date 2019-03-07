@@ -30,6 +30,9 @@ en:
         last_sign_in_ip: Last IP adress
         created_at: Created at
         updated_at: Updated at
+      student:
+        email: HTW Mail Address
+        privateemail: Private Mail Address
     models:
       admin_user:
         one: Administrator

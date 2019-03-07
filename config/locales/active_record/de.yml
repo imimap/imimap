@@ -85,7 +85,8 @@ de:
         first_name: Vorname
         birthday: Geburtsdatum
         birthplace: Geburtsort
-        email: E-Mail
+        email: HTW E-Mail
+        privateemail: Private E-Mail
       comment:
         created_at: Erstellt am
     models:

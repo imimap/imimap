@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
-# Wasn't here for some reason; recreated to have a place for the
-# permitted attributes
+# Student editing for Students
 class StudentsController < ApplicationResourceController
+  before_action :set_student, only: %i[show update]
+  authorize_resource
   def self.permitted_params
     %i[first_name
        last_name
@@ -10,19 +11,13 @@ class StudentsController < ApplicationResourceController
        enrolment_number
        birthplace
        birthday
-       email]
+       email
+       privateemail]
   end
 
-  def show
-    @user = current_user
-    @student = @user.student
-    # TBD centralize logic for users that are not students
-    assign_show_attributes(@student)
-  end
+  def show; end
 
   def update
-    @user = current_user
-    @student = @user.student
     if @student.update_attributes(student_params)
       flash[:success] = 'Profil geupdated'
       redirect_to @student
@@ -33,20 +28,13 @@ class StudentsController < ApplicationResourceController
 
   private
 
-  def student_params
-    params.require(:student)
-          .permit(:first_name, :last_name, :birthday, :birthplace, :email)
+  def set_student
+    # @student = current_user.student
+    @student = Student.find(params[:id])
   end
 
-  def assign_show_attributes(student:)
-    if student.nil?
-      @internships = []
-      @user_first_name = 'not a student'
-      @user_last_name = @user.email
-    else
-      @internships = student.internships
-      @user_first_name = student.first_name
-      @user_last_name = student.last_name
-    end
+  def student_params
+    params.require(:student)
+          .permit(StudentsController.permitted_params)
   end
 end
