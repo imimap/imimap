@@ -18,7 +18,7 @@ class CompleteInternshipsController < ApplicationResourceController
     @complete_internships_count = @complete_internships.size
   end
 
-  def show;  end
+  def show; end
 
   def new
     @complete_internship = CompleteInternship.new
