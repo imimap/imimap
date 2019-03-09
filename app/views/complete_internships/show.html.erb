@@ -1,7 +1,7 @@
 
 <div id="form-block4" class="text-left">
-    <h4><%= @complete_internship.student.first_name %>
-      <%= @complete_internship.student.last_name %>
+    <h4><%= @complete_internship.student.try(:first_name) %>
+      <%= @complete_internship.student.try(:last_name) %>
       <%= t "complete_internships.semester" %>
       <%= @semester_name %>
       <% if @complete_internship.semester_of_study %>
