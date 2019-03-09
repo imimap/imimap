@@ -1,13 +1,16 @@
 
 <div id="form-block4" class="text-left">
-    <div>
-      <strong><%= t "complete_internships.semester" %>:</strong>
+    <h4><%= @complete_internship.student.first_name %>
+      <%= @complete_internship.student.last_name %>
+      <%= t "complete_internships.semester" %>
       <%= @semester_name %>
-    </div>
-    <div>
-      <strong><%= t "complete_internships.semester_of_study" %>:</strong>
-      <%= @complete_internship.semester_of_study %>
-    </div>
+      <% if @complete_internship.semester_of_study %>
+        <%= t "complete_internships.semester_of_study1" %>
+        <%= @complete_internship.semester_of_study %>
+        <%= t "complete_internships.semester_of_study2" %>
+      <% end %>
+    </h4>
+    <br>
     <div>
       <strong><%= t "complete_internships.aep" %>:</strong>
       <%= t "complete_internships.aep_value.#{@complete_internship.aep}" %>

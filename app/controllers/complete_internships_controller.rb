@@ -4,6 +4,7 @@
 # https://github.com/activeadmin/inherited_resources
 # TBD: needs to be consolidated with our ApplicationResourceController
 class CompleteInternshipsController < ApplicationResourceController
+  include ApplicationHelper
   # InheritedResources::Base
   # authorize_resource
   before_action :set_complete_internship, only: %i[show edit update destroy]
@@ -11,10 +12,13 @@ class CompleteInternshipsController < ApplicationResourceController
   before_action :set_semesters, only: %i[new edit internship_data]
 
   def index
-    @complete_internships = CompleteInternship.all
+    @semester = semester_from_params(params)
+    @semester_options = Semester.all.map { |s| [s.name, s.id] }
+    @complete_internships = CompleteInternship.where(semester: @semester)
+    @complete_internships_count = @complete_internships.size
   end
 
-  def show; end
+  def show;  end
 
   def new
     @complete_internship = CompleteInternship.new

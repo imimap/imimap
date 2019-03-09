@@ -151,15 +151,17 @@ de:
   complete_internships:
     header: "Komplette Praktika"
     student: "Student_In"
-    semester: "Semester"
-    semester_of_study: "Hochschulsemester"
+    semester: "'s Praktikum im "
+    semester_of_study1: "("
+    semester_of_study2: ". Fachsemester)"
     aep: "AEP"
     aep_value:
-      false: "Noch kein AEP vorhanden"
-      true: "AEP bestanden"
+      false: "Veranstaltung 'Auswertung der Erfahrungen am Arbeitsplatz' noch nicht bestanden"
+      true: "Veranstaltung 'Auswertung der Erfahrungen am Arbeitsplatz' bestanden"
     passed: "Passed"
     passed_value:
-      false: "Noch nicht bestanden"
-      true: "Bestanden"
+      false: "Praktikum (Modul B20) noch nicht bestanden"
+      true: "Praktikum (Modul B20) bestanden"
     internship: "Praktikum"
     company: "Firma"
+    number_of_internships: "Anzahl der Teilpraktika"
