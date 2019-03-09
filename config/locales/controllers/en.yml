@@ -153,6 +153,7 @@ en:
   complete_internships:
     header: "Complete Internships"
     student: "Student"
+    header_semester: "Internship"
     semester: "'s Internship in "
     semester_of_study1: "("
     semester_of_study2: ". Semester of Study)"

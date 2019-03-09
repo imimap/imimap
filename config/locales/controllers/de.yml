@@ -151,6 +151,7 @@ de:
   complete_internships:
     header: "Komplette Praktika"
     student: "Student_In"
+    header_semester: "Praktikum"
     semester: "'s Praktikum im "
     semester_of_study1: "("
     semester_of_study2: ". Fachsemester)"
