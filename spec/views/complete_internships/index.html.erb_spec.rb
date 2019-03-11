@@ -20,8 +20,7 @@ RSpec.describe 'complete_internships/index', type: :view do
                     semester_of_study: 5, aep: false)
 
            ])
-    assign(:semester_options,
-           Semester.all.map { |s| [s.name, s.id] })
+    assign(:semester_options, semester_select_options)
   end
 
   it 'renders a list of complete_internships' do

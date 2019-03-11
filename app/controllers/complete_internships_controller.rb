@@ -5,6 +5,7 @@
 # TBD: needs to be consolidated with our ApplicationResourceController
 class CompleteInternshipsController < ApplicationResourceController
   include ApplicationHelper
+  include CompleteInternshipsHelper
   # InheritedResources::Base
   # authorize_resource
   before_action :set_complete_internship, only: %i[show edit update destroy]
@@ -13,7 +14,7 @@ class CompleteInternshipsController < ApplicationResourceController
 
   def index
     @semester = semester_from_params(params)
-    @semester_options = Semester.all.map { |s| [s.name, s.id] }
+    @semester_options = semester_select_options
     @complete_internships = CompleteInternship.where(semester: @semester)
     @complete_internships_count = @complete_internships.size
   end
