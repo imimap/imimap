@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_05_110517) do
+ActiveRecord::Schema.define(version: 2019_03_08_214538) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "resource_id", null: false
@@ -200,7 +200,6 @@ ActiveRecord::Schema.define(version: 2019_03_05_110517) do
     t.date "end_date"
     t.text "tasks"
     t.string "operational_area"
-    t.integer "student_id"
     t.integer "internship_state_id"
     t.integer "reading_prof_id"
     t.integer "payment_state_id"

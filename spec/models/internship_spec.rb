@@ -12,6 +12,9 @@ RSpec.describe Internship, type: :model do
       # had to simplify this test:
       expect(internship.errors.messages).to be_empty
     end
+    it 'has a complete model' do
+      expect(internship.student).not_to be_nil
+    end
   end
 
   context 'given an invalid Internship' do
@@ -20,8 +23,8 @@ RSpec.describe Internship, type: :model do
       expect(internship.save).to be_falsy
     end
 
-    it 'rejects empty student_ids' do
-      internship.student_id = nil
+    it 'rejects empty complete_internship_id' do
+      internship.complete_internship_id = nil
       expect(internship.save).to be_falsy
     end
   end

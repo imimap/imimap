@@ -36,6 +36,11 @@ def find_random_address
     result = Geocoder
              .search("#{rand(-80..80) + rand}, #{rand(-180..180) + rand}")
              .first
+    if result.data.nil?
+      # probably no network connection
+      puts "could not geocode address"
+      return nil
+    end
     result = nil unless result.data['error'].nil?
   end
   result

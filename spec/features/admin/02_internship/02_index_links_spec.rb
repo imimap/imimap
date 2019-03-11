@@ -11,6 +11,8 @@ describe 'ActiveAdmin index internship' do
 
   it 'has link to Student' do
     visit admin_internships_path
+    expect(@internship.student).not_to be_nil
+    save_and_open_page
     click_on @internship.student.name
     expect(current_path).to eq admin_student_path(
       id: @internship.student,

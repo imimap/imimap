@@ -3,5 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe CompleteInternship, type: :model do
-  # computation of complete internship duration
+  it 'has a working factory example' do
+    complete_internship = create(:complete_internship)
+    
+  end
 end
