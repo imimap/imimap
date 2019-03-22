@@ -10,10 +10,10 @@
 * [Branch and Stages Overview on Travis CI](https://travis-ci.org/imimap/imimap/branches)
 
 ## Servers
-* [Production](http://imi-map-production.f4.htw-berlin.de)
+* [Production](http://imi-map.f4.htw-berlin.de)
 * [Staging](http://imi-map-staging.f4.htw-berlin.de)
 ## General Project Info
-The [IMI Map](http://imi-map-production.f4.htw-berlin.de) supports students at the University of Applied Sciences Berlin in finding an internship abroad.
+The [IMI Map](http://imi-map.f4.htw-berlin.de) supports students at the University of Applied Sciences Berlin in finding an internship abroad.
 
 It is an ongoing project developed in different projects and individual thesis work
 by students of the Bachelor's Programme International Media Informatics at HTW Berlin.
