@@ -7,12 +7,6 @@ class Ability
   def initialize(user)
     return unless user.present?
 
-    can :create, Internship
-    can :update, Internship, approved: false,  student: { user: user }
-    can :show,   Internship, student: { user: user }
-    can %i[show], Student, user: { id: user.id }
-    can :update, Student, user: { id: user.id }
-    can %i[read update], User, id: user.id
     can :create, [Company, CompanyAddress]
     can :read, InternshipOffer
     can :map_cities, Internship
@@ -24,6 +18,15 @@ class Ability
     # controllers and controller actions added over the time.
     can :internship_data, Internship
     can :new_address, CompanyAddress
+
+    can %i[show update], Student, user: { id: user.id }
+
+    can :create, Internship
+    can :update, Internship, approved: false,  student: { user: user }
+    can :show,   Internship, student: { user: user }
+    # can %i[show update], Student, user: user
+    # can :update, Student, user: { id: user.id }
+    can %i[read update], User, id: user.id
 
     return unless user.prof? || user.examination_office? || user.admin?
 

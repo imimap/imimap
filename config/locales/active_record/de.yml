@@ -67,6 +67,11 @@ de:
         report_state: Berichtstatus
         certificate_state: Nachweisstatus
         reading_prof: Prof
+      complete_internship:
+        aep: "AEP"
+        passed: "Passed"
+        semester: "Semester"
+        semester_of_study: "Fachsemester"
       programming_language:
         internships: Praktika
       internship_offer:
@@ -85,7 +90,8 @@ de:
         first_name: Vorname
         birthday: Geburtsdatum
         birthplace: Geburtsort
-        email: E-Mail
+        email: HTW E-Mail
+        privateemail: Private E-Mail
       complete_internship:
         semester_of_study: Fachsemester
       comment:
@@ -97,6 +103,9 @@ de:
       comment:
         one: Kommentar
         other: Kommentare
+      complete_internship:
+        one: Praktikumsübersicht
+        other: Praktikumsübersichten
       internship:
         one: Praktikum
         other: Praktika

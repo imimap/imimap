@@ -3,7 +3,7 @@
 # Represents a Student.
 class Student < ApplicationRecord
   # attr_accessible :birthday, :birthplace, :email, :first_name,
-  #                 :enrolment_number, :last_name
+  #                 :enrolment_number, :last_name, :privateemail
 
   attr_accessor
 
@@ -15,16 +15,16 @@ class Student < ApplicationRecord
   has_many :internships_new, through: :complete_internship
   has_one :user
 
+  validates :privateemail, format: { with: Devise.email_regexp },
+                           allow_blank: true
+
   def user?
     user.present?
   end
 
   def name
-    if user.nil?
-      email
-    else
-      "#{first_name} #{last_name}"
-    end
+    name = "#{first_name} #{last_name}"
+    name.empty? ? email : name
   end
 
   def self.find_or_create_for(user:)

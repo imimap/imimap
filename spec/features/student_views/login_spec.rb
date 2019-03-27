@@ -15,11 +15,20 @@ describe 'Student Login' do
         end
 
         it 'should proceed to log in and back to original page' do
-          visit internships_path
+          visit root_path
           fill_in 'user_email', with: @user.email
           fill_in 'user_password', with: @user.password
           click_on('Log in')
           expect(page).to have_content I18n.t('devise.sessions.signed_in')
+        end
+
+        it 'should proceed to the profile of the current student' do
+          visit root_path
+          fill_in 'user_email', with: @user.email
+          fill_in 'user_password', with: @user.password
+          click_on('Log in')
+          visit student_path(id: @user.student_id)
+          expect(page).to have_content(@user.enrolment_number)
         end
       end
     end
