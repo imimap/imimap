@@ -49,9 +49,13 @@
     <% end %>
 
   <br>
-    <%= link_to 'Create New Internship', new_internship_path %>
+    <%= link_to t('complete_internships.new_tp'), new_internship_path %>
     <br><br><br>
-    <%= link_to 'Edit', edit_complete_internship_path(@complete_internship) %> |
-    <%= link_to 'Back', complete_internships_path %>
+    <%= link_to t('buttons.edit'), edit_complete_internship_path(@complete_internship) %>
+    <% if @current_user %>
+      <% if !@current_user.student? %>
+        | <%= link_to t('buttons.back'), complete_internships_path %>
+       <% end %>
+    <% end %>
 
 </div>

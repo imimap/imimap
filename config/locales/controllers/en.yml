@@ -168,3 +168,29 @@ en:
     internship: "Internship"
     company: "Company"
     number_of_internships: "Number of Internships"
+    new: "New Internship"
+    new_tp: "New parcial Internship"
+    edit: "Edit Internship"
+    create: "Create"
+    checklist:
+      personal_details: Personal Details
+      company_details: Company Details
+      internship_details: Internship Details
+      contract: Contract
+      contract_original: Original
+      contract_copy: Copy
+      lsf_ausdruck: Grade Printout from the LSF
+      print_form: Print Form
+    details:
+      semester: Semester
+      start_date: Start Date
+      end_date: End Date
+      operational_area: Operational Area
+      tasks: Tasks
+      internship_report: Internship Report
+      registration_state: Registration State
+      contract_state: Contract State
+      report_state: Report State
+      certificate_state: Certificate State
+      internship_state: Internship State
+      comment: Comment

@@ -16,7 +16,7 @@ class Ability
     can :create, [Company, CompanyAddress]
     can :read, InternshipOffer
     can :map_cities, Internship
-    can %i[internship_data new edit show update],
+    can %i[internship_data new edit show update create],
         CompleteInternship,
         user: { id: user.id }
 

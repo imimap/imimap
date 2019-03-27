@@ -86,6 +86,8 @@ de:
         birthday: Geburtsdatum
         birthplace: Geburtsort
         email: E-Mail
+      complete_internship:
+        semester_of_study: Fachsemester
       comment:
         created_at: Erstellt am
     models:

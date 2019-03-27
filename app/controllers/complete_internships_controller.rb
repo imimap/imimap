@@ -92,8 +92,7 @@ class CompleteInternshipsController < ApplicationResourceController
   def set_complete_internship
     accessible = current_user.accessible_complete_internships
 
-    @complete_internship =
-      accessible.find(params[:id])
+    @complete_internship = accessible.find(params[:id])
     @semester_name = @complete_internship.semester.try(:name)
   end
 
