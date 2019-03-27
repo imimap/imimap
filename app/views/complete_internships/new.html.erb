@@ -3,5 +3,9 @@
 
   <%= render 'form', complete_internship: @complete_internship %>
 
-  <%= link_to 'Back', complete_internships_path %>
+  <% if current_user.student? %>
+    <%= link_to 'Back', my_internship_path %>
+  <% else %>
+    <%= link_to 'Back', complete_internships_path %>
+  <% end %>
 </div>
