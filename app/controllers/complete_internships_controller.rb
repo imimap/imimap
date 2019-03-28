@@ -32,7 +32,7 @@ class CompleteInternshipsController < ApplicationResourceController
     respond_to do |format|
       if @complete_internship.save
         format.html do
-          redirect_to @complete_internship, notice: 'CI was created.'
+          redirect_to @complete_internship, notice: 'Successfully created.'
           # Denken ist wichtig
         end
       else
