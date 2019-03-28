@@ -23,8 +23,8 @@ describe 'ActiveAdmin index internship', topic: :active_admin do
     expect(@internship.student).not_to be_nil
     click_on link_id(@internship.complete_internship)
 
-    #click_on "CS_#{@internship.complete_internship.id}"
-    #click_on @internship.complete_internship.id
+    # click_on "CS_#{@internship.complete_internship.id}"
+    # click_on @internship.complete_internship.id
     expect(current_path).to eq admin_complete_internship_path(
       id: @internship.complete_internship,
       locale: I18n.locale

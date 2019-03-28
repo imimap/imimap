@@ -7,7 +7,6 @@ ActiveAdmin.register Internship do
         link_to(
           n.student.first_name << ' ' << n.student.last_name,
           admin_students_path(n.student)
-        #  "/admin/students/#{n.student.id}"
         )
       end
       row :company_v2
