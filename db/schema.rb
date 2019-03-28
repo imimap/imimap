@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_05_110517) do
+ActiveRecord::Schema.define(version: 2019_03_28_072831) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "resource_id", null: false
@@ -313,6 +313,7 @@ ActiveRecord::Schema.define(version: 2019_03_05_110517) do
     t.string "street"
     t.string "zip"
     t.string "phone"
+    t.string "private_email"
   end
 
   create_table "users", force: :cascade do |t|
