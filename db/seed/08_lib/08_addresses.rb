@@ -38,7 +38,7 @@ def find_random_address
              .first
     if result.data.nil?
       # probably no network connection
-      puts "could not geocode address"
+      puts 'could not geocode address'
       return nil
     end
     result = nil unless result.data['error'].nil?

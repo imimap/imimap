@@ -45,5 +45,4 @@ RSpec.describe Internship, type: :model do
       expect(internship.editable?).to eq(false)
     end
   end
-
 end

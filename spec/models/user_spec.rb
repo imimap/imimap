@@ -50,5 +50,4 @@ RSpec.describe User, type: :model do
       expect(user.enrolment_number).to eq user.student.enrolment_number
     end
   end
-
 end
