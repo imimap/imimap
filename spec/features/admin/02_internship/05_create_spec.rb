@@ -32,19 +32,18 @@ describe 'ActiveAdmin create internship' do
            from: 'Complete internship'
     select semester.name, from: 'Semester'
     click_on 'Praktikum anlegen'
-    [complete_internship, semester]
+    [ca, complete_internship, semester]
   end
 
   it 'creates and shows internship' do
-    complete_internship, semester = create_internship
+    ca, complete_internship, semester = create_internship
     expect(page).to have_content complete_internship.student.name
     expect(page).to have_content complete_internship.id
     expect(page).to have_content semester.name
     expect(page).to have_content ca.company.name
   end
   it 'creates internship in database' do
-    complete_internship, semester = create_internship
-    save_and_open_page
+    ca, complete_internship, semester = create_internship
     @i = Internship.last
     expect(@i.student.name).to eq complete_internship.student.name
     expect(@i.semester.name).to eq semester.name
