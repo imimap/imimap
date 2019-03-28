@@ -28,11 +28,12 @@ class CompleteInternshipsController < ApplicationResourceController
   def edit; end
 
   def create
+    complete_internship_values
     respond_to do |format|
       if @complete_internship.save
         format.html do
-          redirect_to @complete_internship,
-                      notice: 'CompleteInternship was successfully created.'
+          redirect_to @complete_internship, notice: 'CI was created.'
+          # Denken ist wichtig
         end
       else
         format.html { render :new }
@@ -75,14 +76,13 @@ class CompleteInternshipsController < ApplicationResourceController
     @ci = if current_user.student.nil?
             []
           else
-            current_user.student.internships
+            current_user.student.complete_internship
           end
 
-    if @ci.any?
-      redirect_to @ci.first
-    else
+    if @ci.nil?
       render :no_complete_internship_data
-      # render :new
+    else
+      redirect_to @ci
     end
   end
 
@@ -112,5 +112,14 @@ class CompleteInternshipsController < ApplicationResourceController
     params.require(:complete_internship).permit(
       CompleteInternshipsController.permitted_params
     )
+  end
+
+  def complete_internship_values
+    @complete_internship = CompleteInternship.new(complete_internship_params)
+    @complete_internship.aep = false
+    @complete_internship.passed = false
+    student = @current_user.student
+    @complete_internship.student_id = student.id unless student.nil?
+    @complete_internship.save!
   end
 end
