@@ -3,7 +3,7 @@
 # Represents a Student.
 class Student < ApplicationRecord
   # attr_accessible :birthday, :birthplace, :email, :first_name,
-  #                 :enrolment_number, :last_name, :privateemail
+  #                 :enrolment_number, :last_name, :private_email
 
   attr_accessor
 
@@ -14,7 +14,7 @@ class Student < ApplicationRecord
   has_many :internships, through: :complete_internship
   has_one :user
 
-  validates :privateemail, format: { with: Devise.email_regexp },
+  validates :private_email, format: { with: Devise.email_regexp },
                            allow_blank: true
 
   def user?

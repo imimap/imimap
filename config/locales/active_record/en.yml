@@ -37,7 +37,7 @@ en:
         updated_at: Updated at
       student:
         email: HTW Mail Address
-        privateemail: Private Mail Address
+        private_email: Private Mail Address
     models:
       admin_user:
         one: Administrator
