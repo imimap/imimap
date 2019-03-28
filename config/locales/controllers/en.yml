@@ -155,6 +155,7 @@ en:
     student: "Student"
     header_semester: "Internship"
     semester: "'s Internship in "
+    semester_of_study: "Semester Of Study"
     semester_of_study1: "("
     semester_of_study2: ". Semester of Study)"
     aep: "AEP"
