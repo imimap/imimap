@@ -71,4 +71,5 @@ RSpec.configure do |config|
 
   config.include CompleteInternshipDataHelper, topic: :internship
   config.include CompleteInternshipDataHelper, type: :helper
+  config.include ActiveAdminHelper, topic: :active_admin
 end

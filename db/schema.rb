@@ -312,6 +312,7 @@ ActiveRecord::Schema.define(version: 2019_03_08_214538) do
     t.string "street"
     t.string "zip"
     t.string "phone"
+    t.string "privateemail"
   end
 
   create_table "users", force: :cascade do |t|

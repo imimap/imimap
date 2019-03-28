@@ -23,7 +23,9 @@ ActiveAdmin.register Internship do
     end
     column :complete_internship do |i|
       link_to(i.complete_internship.id,
-              admin_complete_internship_path(i.complete_internship_id))
+              admin_complete_internship_path(i.complete_internship_id),
+              id: link_id(i.complete_internship))
+              #id: "CS_#{i.complete_internship_id}")
     end
     column :company_v2
     column :semester

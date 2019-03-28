@@ -11,8 +11,7 @@ class Student < ApplicationRecord
   # validates_uniqueness_of :enrolment_number
 
   has_one :complete_internship
-  has_many :internships
-  has_many :internships_new, through: :complete_internship
+  has_many :internships, through: :complete_internship
   has_one :user
 
   validates :privateemail, format: { with: Devise.email_regexp },
