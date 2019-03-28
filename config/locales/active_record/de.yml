@@ -3,7 +3,6 @@ de:
     attributes:
       user:
         password: "Passwort"
-
       admin_user:
         id: ID
         email: E-Mail
@@ -92,8 +91,6 @@ de:
         birthplace: Geburtsort
         email: HTW E-Mail
         privateemail: Private E-Mail
-      complete_internship:
-        semester_of_study: Fachsemester
       comment:
         created_at: Erstellt am
     models:
