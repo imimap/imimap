@@ -30,18 +30,23 @@ def country_code(geocoder_result:)
   end
 end
 
+class NoConnectionError < StandardError
+end
+
+def random_spot
+  Geocoder.search("#{rand(-80..80) + rand}, #{rand(-180..180) + rand}")
+          .first
+end
+
+def geocoded?(result)
+  !result.nil? && result.data['error'].nil?
+end
+
 def find_random_address
   result = nil
-  while result.nil?
-    result = Geocoder
-             .search("#{rand(-80..80) + rand}, #{rand(-180..180) + rand}")
-             .first
-    if result.data.nil?
-      # probably no network connection
-      puts 'could not geocode address'
-      return nil
-    end
-    result = nil unless result.data['error'].nil?
+  until geocoded?(result)
+    result = random_spot
+    return nil if result.data.nil?
   end
   result
 end
