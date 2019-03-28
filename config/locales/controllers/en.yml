@@ -169,6 +169,7 @@ en:
     internship: "Internship"
     company: "Company"
     number_of_internships: "Number of Internships"
+    no_internships: "You haven't started an internship application yet"
     new: "New Internship"
     new_tp: "New parcial Internship"
     edit: "Edit Internship"

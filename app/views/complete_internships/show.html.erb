@@ -45,7 +45,7 @@
           </div>
         <% end %>
       </div>
-      <strong><%= @complete_internship.student.internships.size == 0 ? "You haven't started an internship application yet" : '' %></strong>
+      <strong><%= @complete_internship.student.internships.size == 0 ? t('complete_internships.no_internships') : '' %></strong>
     <% end %>
 
   <br>

@@ -167,6 +167,7 @@ de:
     internship: "Praktikum"
     company: "Firma"
     number_of_internships: "Anzahl der Teilpraktika"
+    no_internships: "Du hast noch kein Praktikum angemeldet."
     new: "Neues Praktikum"
     new_tp: "Neues Teilpraktikum"
     edit: "Praktikum Bearbeiten"
