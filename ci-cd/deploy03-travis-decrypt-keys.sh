@@ -21,7 +21,7 @@ if [ $1 == "staging" ]; then
 else
   if [ $1 == "production" ]; then
     echo "trying to ssh to production"
-    ssh  -i id_rsa_production -o StrictHostKeyChecking=no deployer@imi-map-production.f4.htw-berlin.de "pwd ; exit"
+    ssh  -i id_rsa_production -o StrictHostKeyChecking=no deployer@imi-map.f4.htw-berlin.de "pwd ; exit"
    else
      echo "usage: $0 [staging|production]"
    fi
@@ -43,4 +43,4 @@ fi
 # echo "trying to ssh to staging"
 #  ssh  -i id_rsa_staging -o StrictHostKeyChecking=no deployer@imi-map-staging.f4.htw-berlin.de "pwd  ; exit"
 # echo "trying to ssh to production"
-#  ssh  -i id_rsa_production -o StrictHostKeyChecking=no deployer@imi-map-production.f4.htw-berlin.de "pwd ; exit"
+#  ssh  -i id_rsa_production -o StrictHostKeyChecking=no deployer@imi-map.f4.htw-berlin.de "pwd ; exit"

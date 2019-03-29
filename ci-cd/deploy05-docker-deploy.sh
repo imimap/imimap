@@ -21,7 +21,7 @@ if [ $DEPLOYMENT_ENVIRONMENT == "staging" ]; then
   export DEPLOYMENT_HOST="imi-map-staging.f4.htw-berlin.de"
 fi
 if [ $DEPLOYMENT_ENVIRONMENT == "production" ]; then
-  export DEPLOYMENT_HOST="imi-map-production.f4.htw-berlin.de"
+  export DEPLOYMENT_HOST="imi-map.f4.htw-berlin.de"
 fi
 
 echo "+++ copying docker-compose file to $DEPLOYMENT_HOST"
