@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 class DeleteStudentIdFromInternship < ActiveRecord::Migration[5.2]
   def change
-    remove_reference :internships, :student,foreign_key: true
-end
+    # the remove_reference was only recognized by sqlite,
+    # didn't work on postgres
+    # remove_reference :internships, :student,foreign_key: true
 
-#  end
-#  def down
-#    add_reference :internships, :student, :
+    remove_column :internships, :student_id
+  end
 end
-#add_reference :internships, :complete_internship, foreign_key: true
