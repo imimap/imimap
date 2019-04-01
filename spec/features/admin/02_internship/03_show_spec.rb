@@ -21,6 +21,12 @@ describe 'ActiveAdmin show internship' do
         expect(page).to have_content internship.supervisor_email
         expect(page).to have_content internship.supervisor_name
       end
+      it 'renders with an unassociated internship' do
+        internship2 = create(:unassociated_internship)
+        visit admin_internship_path(id: internship2)
+        expect(page).to have_content I18n.t('active_admin.no_student')
+        expect(page).to have_content internship2.supervisor_email
+      end
     end
   end
 end
