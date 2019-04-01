@@ -9,6 +9,7 @@ ActiveAdmin.register Internship do
           admin_students_path(n.student)
         )
       end
+      row :complete_internship
       row :company_v2
       row :start_date
       row :end_date
