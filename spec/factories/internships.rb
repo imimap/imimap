@@ -26,13 +26,13 @@ FactoryBot.define do
     orientation
     email_public { true }
     description { TEXT4 }
-    semester
+    complete_internship
     salary { 8 }
     start_date { Date.today.to_date }
     end_date { Date.today.to_date + 7.days }
     tasks { 'do this and that and the other thing' }
     operational_area { 'operational area' }
-    student
+    semester
     internship_state
     reading_prof
     payment_state
@@ -83,8 +83,8 @@ FactoryBot.define do
     end_date { Date.today.to_date + 7.days }
     tasks { TEXT4 }
     operational_area { 'operational area' }
-    student
     internship_state { create :internship_state_aep }
+    complete_internship
     reading_prof
     payment_state
     registration_state
@@ -137,7 +137,7 @@ FactoryBot.define do
     end_date { Date.today.to_date + 7.days }
     tasks { TEXT4 }
     operational_area { 'operational area' }
-    student
+    complete_internship
     internship_state
     reading_prof
     payment_state
@@ -192,7 +192,7 @@ FactoryBot.define do
     end_date { Date.today.to_date + 7.days }
     tasks { TEXT4 }
     operational_area { 'operational area' }
-    student
+    complete_internship
     reading_prof
     payment_state
     certificate_signed_by_internship_officer { Date.today.to_date }

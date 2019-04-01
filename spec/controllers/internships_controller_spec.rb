@@ -20,7 +20,7 @@ RSpec.describe InternshipsController, type: :controller, topic: :internship do
 
     context 'assignments' do
       before :each do
-        @semester = create(:ws2018)
+        @semester = Semester.current
         @internship = create(:internship, completed: true, living_costs: 42,
                                           salary: 84, semester: @semester)
 

@@ -9,7 +9,6 @@ RSpec.describe Student, type: :model do
   end
 
   it 'returns the last created internship' do
-    pending 'complete_internship migration'
     student2 = create(:student2)
     internship1 = create(:internship_1, student: student2)
     internship2 = create(:internship_2, student: student2)

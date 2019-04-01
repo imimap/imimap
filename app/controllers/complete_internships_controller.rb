@@ -61,7 +61,7 @@ class CompleteInternshipsController < ApplicationResourceController
   end
 
   def self.permitted_params
-    %i[semester_id semester_of_study aep passed]
+    %i[student_id semester_id semester_of_study aep passed]
   end
 
   private

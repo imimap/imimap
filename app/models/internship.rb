@@ -5,7 +5,7 @@ require 'time'
 # Internship respresents one actual internship within one company, as opposed
 # to CompleteInternship that respresents the whole course B20.
 class Internship < ApplicationRecord
-  validates :semester_id, :student, presence: true
+  validates :semester, :complete_internship, presence: true
 
   validates_presence_of :company_address
 
@@ -15,9 +15,9 @@ class Internship < ApplicationRecord
   belongs_to :orientation
   belongs_to :semester
   belongs_to :internship_rating
-  belongs_to :student
+  # belongs_to :student
   belongs_to :complete_internship
-  has_one :student_new, through: :complete_internship
+  has_one :student, through: :complete_internship
   belongs_to :internship_state
   belongs_to :payment_state
   belongs_to :registration_state
