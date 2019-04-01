@@ -320,7 +320,8 @@ ActiveAdmin.setup do |config|
 end
 
 module ActiveAdmin
+  # rubocop insists on explicitely openining this module
   module ViewHelpers
-  include InternshipsHelper
-end
+    include InternshipsHelper
+  end
 end
