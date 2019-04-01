@@ -1,5 +1,6 @@
 en:
   active_admin:
+    no_student: 'no associated student'  
     dashboard: Dashboard
     dashboard_welcome:
       welcome: "Welcome to the admin area of IMI-Map!"
