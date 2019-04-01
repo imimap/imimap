@@ -4,6 +4,8 @@
 module GeocodedAddresses
   class NoConnectionError < StandardError
   end
+  class NoConnectionError2 < StandardError
+  end
 
   # generates random locations using random coordinates
   class Generator
@@ -11,7 +13,8 @@ module GeocodedAddresses
       result = nil
       until geocoded?(result)
         result = random_spot
-        return nil if result.nil? || (!result.data.nil? && result.data.nil?)
+        raise NoConnectionError if result.nil?
+        raise NoConnectionError2 if !result.data.nil? && result.data.nil?
       end
       result
     end
@@ -26,6 +29,7 @@ module GeocodedAddresses
     end
   end
 
+  # creates a CompanyAddress
   class CompanyAddressFactory
     def create_company_address_with(result:, country_code:, company:)
       CompanyAddress.create!(
@@ -41,15 +45,11 @@ module GeocodedAddresses
     def geocoded_company_address(company:)
       g = Generator.new
       random_address = g.find_random_address
-      if random_address.nil?
-        nil
-      else
-        create_company_address_with(result: random_address,
-                                    country_code: country_code(
-                                      geocoder_result: random_address
-                                    ),
-                                    company: company)
-      end
+      create_company_address_with(result: random_address,
+                                  country_code: country_code(
+                                    geocoder_result: random_address
+                                  ),
+                                  company: company)
     end
 
     def country_code(geocoder_result:)
@@ -74,5 +74,8 @@ module GeocodedAddresses
   def self.geocoded_company_address(company:)
     caf = CompanyAddressFactory.new
     caf.geocoded_company_address(company: company)
+  rescue NoConnectionError
+    puts 'no internet connection, seeding address without geocoding'
+    faker_address(company: company)
   end
 end
