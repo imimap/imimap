@@ -12,7 +12,7 @@ class StudentsController < ApplicationResourceController
        birthplace
        birthday
        email
-       privateemail]
+       private_email]
   end
 
   def show

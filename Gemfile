@@ -26,11 +26,6 @@ gem 'cancancan', '~> 2.2'
 gem 'devise', ' ~> 4.3'
 gem 'formtastic', '~> 3'
 
-# TBD Update: Observers have been removed in 4.0
-# replace with ActiveRecord callbacks, maybe refactor as aspect
-# as described in http://stackoverflow.com/questions/15165260/rails-observer-alternatives-for-4-0
-gem 'rails-observers'
-
 gem 'mini_magick'
 # gem "rmagick", "~> 2.16"
 gem 'paperclip', '~> 5.2'

@@ -12,7 +12,7 @@ namespace :imimap do
         else
           puts "id: #{ca.id} couldn't geocode"
           puts "address: #{ca.address}"
-          s = 'https://imi-map-production.f4.htw-berlin.de/'
+          s = 'https://imi-map.f4.htw-berlin.de/'
           p = 'de/admin/company_addresses/'
           puts "#{s}#{p}#{ca.id}"
           puts

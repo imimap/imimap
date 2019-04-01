@@ -16,33 +16,36 @@ describe 'ActiveAdmin create internship' do
     click_on t('active_admin.create_model', model: Internship.model_name.human)
     expect(current_path).to eq new_admin_internship_path(locale: I18n.locale)
   end
-  it 'creates and shows internship' do
-    ca = create(:company_address_for_edit)
-    student = create(:student2)
-    semester = create(:ws2018)
-    visit new_admin_internship_path
 
+  def create_test_data
+    [create(:company_address_for_edit),
+     create(:complete_internship),
+     create(:ws2018)]
+  end
+
+  def create_internship
+    ca, complete_internship, semester = create_test_data
+    visit new_admin_internship_path
     select company_address_selector(company_address: ca),
            from: 'Company address'
-    select student_selector(student: student), from: 'Student'
+    select student_selector(student: complete_internship.student),
+           from: 'Complete internship'
     select semester.name, from: 'Semester'
     click_on 'Praktikum anlegen'
-    expect(page).to have_content student.name
+    [ca, complete_internship, semester]
+  end
+
+  it 'creates and shows internship' do
+    ca, complete_internship, semester = create_internship
+    expect(page).to have_content complete_internship.student.name
+    expect(page).to have_content complete_internship.id
     expect(page).to have_content semester.name
     expect(page).to have_content ca.company.name
   end
   it 'creates internship in database' do
-    ca = create(:company_address_for_edit)
-    student = create(:student2)
-    semester = create(:ws2018)
-    visit new_admin_internship_path
-    select company_address_selector(company_address: ca),
-           from: 'Company address'
-    select student_selector(student: student), from: 'Student'
-    select semester.name, from: 'Semester'
-    click_on 'Praktikum anlegen'
+    ca, complete_internship, semester = create_internship
     @i = Internship.last
-    expect(@i.student.name).to eq student.name
+    expect(@i.student.name).to eq complete_internship.student.name
     expect(@i.semester.name).to eq semester.name
     expect(@i.company_v2.name).to eq ca.company.name
   end

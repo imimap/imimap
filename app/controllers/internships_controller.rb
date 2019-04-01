@@ -163,7 +163,7 @@ class InternshipsController < ApplicationResourceController
     a
   end
 
-  MODEL_ATTRIBUTES = %i[student_id company_address_id].freeze
+  MODEL_ATTRIBUTES = %i[company_address_id complete_internship_id].freeze
   BASIC_ATTRIBUTES = %i[semester_id start_date end_date].freeze
   STATE_ATTRIBUTES = %i[internship_state_id
                         contract_state_id

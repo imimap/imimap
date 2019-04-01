@@ -50,16 +50,4 @@ RSpec.describe User, type: :model do
       expect(user.enrolment_number).to eq user.student.enrolment_number
     end
   end
-
-  describe 'UserObserver' do
-    it 'should trigger the observer method' do
-      user.student.internships << create(:internship,
-                                         user: user,
-                                         completed: false)
-      user.student.internships << create(:internship,
-                                         user: user,
-                                         completed: false)
-      expect(user.save).to be_truthy
-    end
-  end
 end
