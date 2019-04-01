@@ -13,6 +13,11 @@ echo "+++++ starting deployment on machine for TAG:[${TAG}]"
 if [ -z ${RAILS_MASTER_KEY} ]; then echo RAILS_MASTER_KEY missing ; else echo RAILS_MASTER_KEY exists; fi
 if [ -z ${LDAP} ]; then echo LDAP missing ; else echo LDAP exists; fi
 
+dump_file=dumps/imi-map-$(date +%Y-%m-%d)-${TAG}.pgdump
+echo "+++++ creating database dump in ${dump_file}"
+mkdir -p dumps
+docker exec postgresql pg_dump -h localhost -U imi_map  imi_map_production > $dump_file
+exit_on_error $?
 echo "+++++ stopping docker containers"
 docker-compose -f docker-compose-production.yml down
 echo "+++++ pulling and starting docker containers"
