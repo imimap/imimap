@@ -34,7 +34,7 @@ describe 'ActiveAdmin create CompleteInternship' do
     expect(page).to have_content semester.name
   end
 
-  it 'creates internship in database' do
+  it 'creates complete internship in database' do
     student, semester = create_complete_internship
     @ci = CompleteInternship.last
     expect(@ci.student.name).to eq student.name
