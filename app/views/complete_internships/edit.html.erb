@@ -1,8 +1,10 @@
 <div id="form-block4" class="text-left">
-  <h2>Editing Complete Internship</h2>
+  <h2><%= t 'complete_internships.edit' %></h2>
 
-  <%= render 'form', complete_internship: @complete_internship %>
+  <div class="ml-5 mb-5">
+    <%= render 'form', complete_internship: @complete_internship %>
+  </div>
 
-  <%= link_to 'Show', @complete_internship %> |
-  <%= link_to 'Back', complete_internships_path %>
+  <%= link_to t('buttons.edit'), @complete_internship %> |
+  <%= link_to t('buttons.back'), complete_internships_path %>
 </div>

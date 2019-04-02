@@ -13,7 +13,7 @@ RSpec.describe 'complete_internships/show', type: :view do
 
   it 'renders attributes in table' do
     render
-    expect(rendered).to match(/Semester/)
+    # expect(rendered).to match(/Semester/)
     expect(rendered).to match(/4/)
     expect(rendered).to match(/AEP/)
     # expect(rendered).to match(/passed/)

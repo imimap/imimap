@@ -3,7 +3,6 @@ de:
     attributes:
       user:
         password: "Passwort"
-
       admin_user:
         id: ID
         email: E-Mail
