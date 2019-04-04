@@ -135,6 +135,7 @@ de:
       phone: "Telefon"
       phone1: "Telefon *"
 
+
   internship_offers:
     header: "Praktikumsangebote"
     number_of: "Es gibt im Moment"
@@ -151,15 +152,46 @@ de:
   complete_internships:
     header: "Komplette Praktika"
     student: "Student_In"
-    semester: "Semester"
-    semester_of_study: "Hochschulsemester"
+    header_semester: "Praktikum"
+    semester: "'s Praktikum im "
+    semester_of_study: "Fachsemester"
+    semester_of_study1: "("
+    semester_of_study2: ". Fachsemester)"
     aep: "AEP"
     aep_value:
-      false: "Noch kein AEP vorhanden"
-      true: "AEP bestanden"
+      false: "Veranstaltung 'Auswertung der Erfahrungen am Arbeitsplatz' noch nicht bestanden"
+      true: "Veranstaltung 'Auswertung der Erfahrungen am Arbeitsplatz' bestanden"
     passed: "Passed"
     passed_value:
-      false: "Noch nicht bestanden"
-      true: "Bestanden"
+      false: "Praktikum (Modul B20) noch nicht bestanden"
+      true: "Praktikum (Modul B20) bestanden"
     internship: "Praktikum"
     company: "Firma"
+    number_of_internships: "Anzahl der Teilpraktika"
+    no_internships: "Du hast noch kein Praktikum angemeldet."
+    new: "Neues Praktikum"
+    new_tp: "Neues Praktikum"
+    edit: "Praktikum Bearbeiten"
+    create: "Erstellen"
+    checklist:
+      personal_details: Persönliche Details
+      company_details: Firmendetails
+      internship_details: Praktikumsdetails
+      contract: Praktikumsvertrag
+      contract_original: Original
+      contract_copy: Kopie
+      lsf_ausdruck: Noten ausgedruckt aus dem LSF
+      print_form: Formular ausdrucken
+    details:
+      semester: Semester
+      start_date: Anfangsdatum
+      end_date: Enddatum
+      operational_area: Einsatzgebiet
+      tasks: Aufgaben
+      internship_report: Praktikumsbericht
+      registration_state: Status der Anmeldung
+      contract_state: Status des Vertrags
+      report_state: Status des Berichts
+      certificate_state: Status des Zertifikats
+      internship_state: Status des Praktikums
+      comment: Kommentar

@@ -3,7 +3,6 @@ de:
     attributes:
       user:
         password: "Passwort"
-
       admin_user:
         id: ID
         email: E-Mail
@@ -91,7 +90,7 @@ de:
         birthday: Geburtsdatum
         birthplace: Geburtsort
         email: HTW E-Mail
-        privateemail: Private E-Mail
+        private_email: Private E-Mail
       comment:
         created_at: Erstellt am
     models:

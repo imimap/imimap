@@ -33,11 +33,11 @@
   <div class="row">
       <div class="col-md-4">
         <div class="field">
-            <%= f.text_field :birthday, data:{ provide:'datepicker'}%>
+            <%= f.text_field :birthday, {"data-provide" => 'datepicker', format: l('.datepicker')}%>
             <script type="text/javascript">
-              $('.datepicker').datepicker({
-    format: 'YYYY-MM-DD'
-  })
+              $(document).ready(function(){
+                $('.datepicker').datepicker();
+              });
             </script>
         </div>
       </div>
@@ -49,13 +49,14 @@
       </div>
     </div>
 
-    <div class="row">
+    <!--<div class="row">
+
       <div class="col-md-4">
         <div class="field">
-        <%= f.text_field :privateemail %>
+        <#%=# f.text_field :privateemail %>
         </div>
       </div>
-    </div>
+    </div>-->
 
     <div class="row">
       <div class="col-md-4">

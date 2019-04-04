@@ -113,7 +113,7 @@ Rails.application.configure do
   # already added.
   # config.assets.precompile += %w( search.js )
   config.action_mailer.delivery_method = :smtp
-  production_host = 'imi-map-production.f4.htw-berlin.de'
+  production_host = 'imi-map.f4.htw-berlin.de'
   config.action_mailer.default_url_options = { host: production_host }
   config.action_mailer.smtp_settings = {
     host: 'smtp.gmail.com',

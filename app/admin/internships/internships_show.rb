@@ -5,10 +5,11 @@ ActiveAdmin.register Internship do
     attributes_table do
       row :student do |n|
         link_to(
-          n.student.first_name << ' ' << n.student.last_name,
-          "/admin/students/#{n.student_id}"
+          student_name(internship: n),
+          admin_students_path(n.student)
         )
       end
+      row :complete_internship
       row :company_v2
       row :start_date
       row :end_date

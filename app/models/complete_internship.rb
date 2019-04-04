@@ -5,8 +5,7 @@
 # of all the concrete Internships in concrete companies as the whole
 # internship course B20 may be divided into up to 3 partial internships.
 class CompleteInternship < ApplicationRecord
-  belongs_to :student
-  belongs_to :student_new, class_name: 'Student', foreign_key: :student_id
+  belongs_to :student # , class_name: 'Student', foreign_key: :student_id
   belongs_to :semester
   has_many :internships
   has_many :internships_new,

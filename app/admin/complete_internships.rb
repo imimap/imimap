@@ -25,4 +25,28 @@ ActiveAdmin.register CompleteInternship do
     end
     actions
   end
+
+  form do |f|
+    bulk_params = CompleteInternshipsController.permitted_params.clone
+
+    inputs 'CompleteInternship' do
+      f.input :student_id,
+              as: :select,
+              collection: Student
+                .order(:last_name)
+                .collect { |s| [student_selector(student: s), s.id] }
+      bulk_params.delete(:student_id)
+
+      f.input :semester_id,
+              label: 'Semester',
+              as: :select,
+              collection: Semester.order(:name)
+                                  .collect { |s| [s.name, s.id] }
+      bulk_params.delete(:semester_id)
+      bulk_params.each do |field|
+        f.input field
+      end
+      f.actions
+    end
+  end
 end

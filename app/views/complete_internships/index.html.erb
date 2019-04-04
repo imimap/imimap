@@ -1,26 +1,35 @@
 <div id="form-block4">
 
-  <p id="notice"><%= notice %></p>
-
-  <h3><%= t("complete_internships.header") %></h3>
-
+  <h3><%= t("complete_internships.header") %> <%= @semester.try(:name) %></h3>
+  <%= form_tag(complete_internships_path, method: "get") do %>
+    <%= select_tag(:semester_id,
+                   options_for_select(@semester_options,@semester.try(:id)),
+                   class: 'chzn-select',
+                   id: 'semester_select') %>
+    <%= submit_tag(t('internships.index.select')) %>
+  <% end %>
+  <br>
   <table class="table table-striped text-left">
     <thead>
       <tr>
-        <th><%= t("complete_internships.student") %></th>
-        <th><%= t("complete_internships.semester") %></th>
-        <th><%= t("complete_internships.semester_of_study") %></th>
-        <th><%= t("complete_internships.aep") %></th>
-        <th><%= t("complete_internships.passed") %></th>
+        <th><%= t 'complete_internships.student' %></th>
+        <th><%= t 'complete_internship.enrolment_number' %></th>
+        <th><%= t 'complete_internships.header_semester' %></th>
+        <th><%= t 'complete_internships.semester_of_study' %></th>
+        <th><%= t 'complete_internships.number_of_internships' %></th>
+        <th><%= t 'complete_internships.aep' %></th>
+        <th><%= t 'complete_internships.passed' %></th>
         <th colspan="3"></th>
       </tr>
     </thead>
     <tbody>
-      <% @complete_internships.sort_by{|i| -i[:semester_id]}.each do |complete_internship| %>
+      <% @complete_internships.each do |complete_internship| %>
         <tr>
           <td><%= complete_internship.student.try(:first_name) %> <%= complete_internship.student.try(:last_name) %></td>
+          <td><%= complete_internship.student.try(:enrolment_number) %></td>
           <td><%= complete_internship.semester.try(:name) %></td>
           <td><%= complete_internship.semester_of_study %></td>
+          <td><%= complete_internship.internships.size %> </td>
           <td><%= complete_internship.aep %></td>
           <td><%= complete_internship.passed %></td>
           <td><%= link_to 'Show', complete_internship %></td>
@@ -30,8 +39,7 @@
       <% end %>
     </tbody>
   </table>
-
   <br>
-
+  <p>Found <%= @complete_internships_count %> internships.</p>
   <%= link_to 'New Complete Internship', new_complete_internship_path %>
 </div>

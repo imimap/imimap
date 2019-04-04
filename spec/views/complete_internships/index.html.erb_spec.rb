@@ -6,15 +6,21 @@ require_relative './mock_path_helper.rb'
 RSpec.describe 'complete_internships/index', type: :view do
   before(:each) do
     mockpath
+    # all instance variables used in the view need to be assigned
+    # manually....
+    s1 = create(:ss2019)
+    s2 = create(:ws2019)
+    assign(:semester, s1)
     assign(:complete_internships, [
              create(:complete_internship,
-                    semester: build(:ws2019),
+                    semester: s2,
                     semester_of_study: 4),
              create(:complete_internship,
-                    semester: build(:ss2019),
+                    semester: s1,
                     semester_of_study: 5, aep: false)
 
            ])
+    assign(:semester_options, semester_select_options)
   end
 
   it 'renders a list of complete_internships' do

@@ -2,15 +2,16 @@
 
 ActiveAdmin.register Internship do
   form do |f|
-    inputs 'Student' do
-      f.input :student_id,
+    inputs 'CompleteInternship' do
+      f.input :complete_internship_id,
               as: :select,
-              collection: Student
-                .order(:last_name)
-                .collect { |s| [student_selector(student: s), s.id] }
+              collection: CompleteInternship
+                .all
+                .collect { |cs| [student_selector(student: cs.student), cs.id] }
+      # .order(:last_name)
+      # .collect { |s| [student_selector(student: s), s.id] }
       f.semantic_errors :student
     end
-
     inputs 'CompanyAddress' do
       f.input :company_address_id,
               as: :select,

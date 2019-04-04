@@ -31,7 +31,7 @@ end
 
 def create_company_address
   company = create_company
-  geocoded_address(company: company)
+  GeocodedAddresses.geocoded_company_address(company: company)
 end
 
 def create_company

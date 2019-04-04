@@ -3,6 +3,7 @@
 # The Internships controller
 class InternshipsController < ApplicationResourceController
   include ApplicationHelper
+  include CompleteInternshipsHelper
   respond_to :html, :json
   before_action :programming_languages, :orientations, only: %i[new edit update]
   before_action :set_internship,
@@ -15,7 +16,7 @@ class InternshipsController < ApplicationResourceController
 
   def index
     @semester = semester_from_params(params)
-    @semester_options = Semester.all.map { |s| [s.name, s.id] }
+    @semester_options = semester_select_options
 
     internships = Internship.where(semester: @semester)
     @internship_count = internships.count
@@ -162,7 +163,7 @@ class InternshipsController < ApplicationResourceController
     a
   end
 
-  MODEL_ATTRIBUTES = %i[student_id company_address_id].freeze
+  MODEL_ATTRIBUTES = %i[company_address_id complete_internship_id].freeze
   BASIC_ATTRIBUTES = %i[semester_id start_date end_date].freeze
   STATE_ATTRIBUTES = %i[internship_state_id
                         contract_state_id

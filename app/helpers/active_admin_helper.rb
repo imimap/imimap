@@ -11,6 +11,10 @@ module ActiveAdminHelper
     end
     links.join(', ').html_safe
   end
+
+  def link_id(model)
+    "#{model.class}_#{model.id}"
+  end
 end
 
 module ActiveAdmin

@@ -12,6 +12,9 @@ RSpec.describe Internship, type: :model do
       # had to simplify this test:
       expect(internship.errors.messages).to be_empty
     end
+    it 'has a complete model' do
+      expect(internship.student).not_to be_nil
+    end
   end
 
   context 'given an invalid Internship' do
@@ -20,8 +23,8 @@ RSpec.describe Internship, type: :model do
       expect(internship.save).to be_falsy
     end
 
-    it 'rejects empty student_ids' do
-      internship.student_id = nil
+    it 'rejects empty complete_internship_id' do
+      internship.complete_internship_id = nil
       expect(internship.save).to be_falsy
     end
   end
@@ -40,16 +43,6 @@ RSpec.describe Internship, type: :model do
     it 'should return false' do
       internship.completed = true
       expect(internship.editable?).to eq(false)
-    end
-  end
-
-  describe 'trigger InternshipObserver#after_update' do
-    it 'should trigger after_upate in the observer' do
-      internship = create :internship
-      report_state = create :report_state
-
-      internship.report_state = report_state
-      expect(internship.save).to be_truthy
     end
   end
 end

@@ -318,3 +318,10 @@ ActiveAdmin.setup do |config|
   #
   # config.order_clause = MyOrderClause
 end
+
+module ActiveAdmin
+  # rubocop insists on explicitely openining this module
+  module ViewHelpers
+    include InternshipsHelper
+  end
+end
