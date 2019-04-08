@@ -5,6 +5,7 @@
 class CompanyAddress < ApplicationRecord
   belongs_to :company
   has_many :internships
+  validates :street, :country, :city, presence: true
   validates_presence_of :company
 
   def one_line
@@ -40,5 +41,9 @@ class CompanyAddress < ApplicationRecord
     return country unless iso_country
 
     iso_country.translations[locale.to_s] || iso_country.name
+  end
+
+  def all_company_address_details_filled?
+    !(street.blank? || zip.blank? || city.blank? || country.blank?)
   end
 end

@@ -3,50 +3,164 @@
       <tr>
         <td>
           <label class="checkbox">
-            <input type="checkbox" <%= 'checked' %>> <%= link_to t "complete_internships.checklist.personal_details" %>
+            <input type="checkbox" <%= 'checked' if @current_user.student.all_personal_details_filled? %> id="student_<%=internship.id%>">
+              <%= link_to t("complete_internships.checklist.personal_details"), @current_user.student %>
           </label>
         </td>
       </tr>
       <tr>
         <td>
           <label class="checkbox">
-            <input type="checkbox"> <%= link_to t "complete_internships.checklist.company_details" %>
+            <input type="checkbox" <%= 'checked' if company_address?(internship) %> id="company_<%=internship.id%>">
+              <% if internship.company_address %>
+                <%= link_to t("complete_internships.checklist.company_details"), edit_company_path(internship.company_address.company, :internship_id => internship.id)%>
+              <% else %>
+                <%= link_to t("complete_internships.checklist.company_details"), select_company_path(:internship_id => internship.id)%>
+              <% end %>
           </label>
         </td>
       </tr>
       <tr>
         <td>
           <label class="checkbox">
-            <input type="checkbox"> <%= link_to t "complete_internships.checklist.internship_details" %>
+            <input type="checkbox" <%= 'checked' if internship.all_internship_details_filled? %> id="internship_<%=internship.id%>">
+              <%= link_to t("complete_internships.checklist.internship_details"),  edit_internship_path(internship.id)%>
           </label>
         </td>
       </tr>
       <tr>
         <td>
           <label class="checkbox">
-            <input type="checkbox"> <%= link_to t "complete_internships.checklist.contract" %>
-          </label><br>
+            <input type="checkbox" id="radio_contract_<%=internship.id%>"> <%= t("complete_internships.checklist.contract") %>
+          </label>
+          <br>
           <span class="ml-3">
-            <input type="radio" name="original" value="original"> <%= t "complete_internships.checklist.contract_original" %>
+            <input type="radio" name="contract<%=internship.id%>" id="original_<%=internship.id%>" value="original" onclick="radios_activated(<%=internship.id%>)"> <%= t("complete_internships.checklist.contract_original") %>
           </span>
           <span class="ml-3">
-            <input type="radio" name="copy" value="copy"> <%= t "complete_internships.checklist.contract_copy" %>
+            <input type="radio" name="contract<%=internship.id%>" id="copy_<%=internship.id%>" value="copy" onclick="radios_activated(<%=internship.id%>)"> <%= t("complete_internships.checklist.contract_copy") %>
           </span>
         </td>
       </tr>
       <tr>
         <td>
-          <label class="checkbox">
-            <input type="checkbox"> <%= t "complete_internships.checklist.lsf_ausdruck" %>
+          <label class="checkbox" id="grades_<%=internship.id%>">
+            <input type="checkbox" id="lsf_<%=internship.id%>"> <%= t("complete_internships.checklist.lsf_ausdruck") %>
           </label>
         </td>
       </tr>
       <tr>
         <td>
-          <label class="checkbox">
-            <input type="checkbox"> <%= link_to t "complete_internships.checklist.print_form" %>
-          </label>
+            <button type="button"
+                    class="btn btn-outline-success"
+                    data-toggle="modal"
+                    data-target="#missing_information"
+                    onclick="fill_popup(<%=internship.id%>,
+                                        '<%= t "complete_internships.internship" %> @ ',
+                                        '<%= company_name_for_checklist(internship) %>')">
+              <%= t("complete_internships.checklist.print_form") %>
+            </button>
         </td>
       </tr>
   </tbody>
-</table>
+</table
+
+<!--Popup-->
+<div class="modal fade" id="missing_information" tabindex="-1" role="dialog" aria-labelledby="missing_information_title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="missing_information_title"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-left">
+        <p id="missing1"><%= t "internships.popup.missing1"%></p>
+        <ul id="popup_list">
+          <li id="pers_det"><%= t "internships.popup.personal_details"%></li>
+          <li id="company_det"><%= t "internships.popup.company_details" %></li>
+          <li id="internship_det"><%= t "internships.popup.internship_details" %></li>
+        </ul>
+        <p id="missing2"><%= t "internships.popup.missing2"%></p>
+        <p id="lsf_ausdruck"><%= t "internships.popup.lsf_ausdruck"%></p>
+        <p id="no_original"><%= t "internships.popup.no_original"%></p>
+        <p id="clear"><%= t "internships.popup.clear"%></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success"><%= t("complete_internships.checklist.print_form") %></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--JavaScript-->
+<script type="text/javascript">
+  var count = 0;
+
+  function radios_activated(internship_id) {
+    var checkboxId = "radio_contract_" + internship_id;
+    var radioOriginalId = "original_" + internship_id;
+    var radioCopyId = "copy_" + internship_id;
+    var cb = document.getElementById(checkboxId);
+    var rd_original = document.getElementById(radioOriginalId);
+    var rd_copy = document.getElementById(radioCopyId);
+    if (rd_original.checked == true || rd_copy.checked == true) cb.checked = true;
+  }
+
+  function fill_popup(internship_id, title, companyname) {
+    count = 0;
+    popup_title(title, companyname);
+    insert_info("lsf_", internship_id, "lsf_ausdruck");
+    insert_info("student_", internship_id, "pers_det");
+    insert_info("company_", internship_id, "company_det");
+    insert_info("internship_", internship_id, "internship_det");
+    set_message();
+    contract_info(internship_id);
+  }
+
+  function popup_title(title_parcial, companyname) {
+    var title = document.getElementById("missing_information_title");
+    title.textContent = title_parcial + companyname;
+  }
+
+  function insert_info(id_parcial, internship_id, element_id) {
+    var checkboxId = id_parcial + internship_id;
+    var cb = document.getElementById(checkboxId);
+    var list_item = document.getElementById(element_id);
+    if (cb.checked == true) {
+      list_item.style.display = "none";
+      count += 1;
+    } else list_item.style.display = "block";
+  }
+
+  function set_message() {
+    var missing1 = document.getElementById("missing1");
+    var missing2 = document.getElementById("missing2");
+    var clear = document.getElementById("clear");
+    if (count >= 3) {
+      missing1.style.display = "none";
+      missing2.style.display = "none";
+      clear.style.display = "block";
+    } else {
+      missing1.style.display = "block";
+      missing2.style.display = "block";
+      clear.style.display = "none";
+    }
+  }
+
+  function contract_info(internship_id) {
+    var radioId = "original_" + internship_id;
+    var rb = document.getElementById(radioId);
+    var item = document.getElementById("no_original");
+    var clear = document.getElementById("clear");
+    if (rb.checked == true) {
+      item.style.display = "none";
+      clear.style.display = "block";
+    } else {
+      item.style.display = "block";
+      clear.style.display = "none";
+    }
+  }
+</script>

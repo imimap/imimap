@@ -30,22 +30,35 @@ de:
         website: Webseite
         address: Adresse
         main_language: Hauptsprache
+        country: Land
         phone: Telefon
         excluded_from_search: ausgenommen von der Suche
       company_address:
+        new_address_heading: "Schritt 2: Erstelle eine neue Firmenaddresse"
         street: Straße
+        street1: Straße **
         zip: Postleitzahl
+        zip1: Postleitzahl *
         city: Stadt
+        city1: Stadt **
         country: Land
+        country1: Land **
         phone: Telefon
         fax: Fax
         latitude: Breite
         longitude: Länge
         company: Firma
+        create: Firmenaddresse Erstellen
+        choose_company_address: "Wähle aus eine der bestehenden Adressen:"
+        new_company_address: "Oder lege eine neue Adresse an: "
+        details: "Details zur Firmenadresse"
+        submit: "Speichern"
+
       internship:
         student: Student_in
         company: Firma
         company_v2: Firma
+        programming_language_ids: Programmiersprachen
         start_date: Anfangsdatum
         end_date: Enddatum
         weekCount: Anzahl der Wochen
@@ -84,7 +97,7 @@ de:
         internships: Praktika
       student:
         internships: Praktika
-        enrolment_number: Matrikel
+        enrolment_number: Matrikelnummer
         last_name: Nachname
         first_name: Vorname
         birthday: Geburtsdatum

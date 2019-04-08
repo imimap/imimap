@@ -18,10 +18,10 @@ class MapsController < ApplicationController
   def map_view
     authorize! :map_cities, Internship
     @map_view = true
-    @zoom = 2
+    @zoom = 3
     @company_addresses =
       Internship.joins(:company_address)
-                .where(semester: Semester.last)
+                .where(semester: Semester.current.previous)
                 .where.not(company_addresses: { latitude: nil })
     # CompanyAddress.where.not(latitude: nil)
     @company_location_json =

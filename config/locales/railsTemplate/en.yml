@@ -1,4 +1,5 @@
 en:
+  save: "Save"
   ldap:
     authorization_failed: "Authorization via LDAP failed."
   sign_up:
