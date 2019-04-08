@@ -36,7 +36,7 @@
                 <% end %></h5>
               <p class="card-text">
                 <% if accepted %>
-                  <%= render 'checklist' %>
+                  <%= render 'checklist',internship: internship %>
                 <% else %>
                   <%= render 'partial_internship', internship: internship %>
                 <% end %>

@@ -12,7 +12,7 @@
         <td>
           <label class="checkbox">
             <input type="checkbox">
-            <% if @current_user.student.complete_internship.company? %>
+            <% if internship.company_address %>
             <%= link_to t("complete_internships.checklist.company_details"), show_company_path%>
             <% else %>
              <%= link_to t("complete_internships.checklist.company_details"), new_company_path%>
