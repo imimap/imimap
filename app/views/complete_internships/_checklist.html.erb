@@ -3,48 +3,54 @@
       <tr>
         <td>
           <label class="checkbox">
-            <input type="checkbox" <%= 'checked' %>> <%= link_to t "complete_internships.checklist.personal_details" %>
+            <input type="checkbox" <%= 'checked' %>>
+            <%= link_to t("complete_internships.checklist.personal_details"), @current_user.student %>
           </label>
         </td>
       </tr>
       <tr>
         <td>
           <label class="checkbox">
-            <input type="checkbox"> <%= link_to t "complete_internships.checklist.company_details" %>
+            <input type="checkbox">
+            <% if @current_user.student.complete_internship.company? %>
+            <%= link_to t("complete_internships.checklist.company_details"), show_company_path%>
+            <% else %>
+             <%= link_to t("complete_internships.checklist.company_details"), new_company_path%>
+            <% end %>
           </label>
         </td>
       </tr>
       <tr>
         <td>
           <label class="checkbox">
-            <input type="checkbox"> <%= link_to t "complete_internships.checklist.internship_details" %>
+            <input type="checkbox"> <%= link_to t("complete_internships.checklist.internship_details") %>
           </label>
         </td>
       </tr>
       <tr>
         <td>
           <label class="checkbox">
-            <input type="checkbox"> <%= link_to t "complete_internships.checklist.contract" %>
+            <input type="checkbox"> <%= t("complete_internships.checklist.contract") %>
           </label><br>
           <span class="ml-3">
-            <input type="radio" name="original" value="original"> <%= t "complete_internships.checklist.contract_original" %>
+            <input type="radio" name="original" value="original"> <%= t("complete_internships.checklist.contract_original") %>
           </span>
           <span class="ml-3">
-            <input type="radio" name="copy" value="copy"> <%= t "complete_internships.checklist.contract_copy" %>
+            <input type="radio" name="copy" value="copy"> <%= t("complete_internships.checklist.contract_copy") %>
           </span>
         </td>
       </tr>
       <tr>
         <td>
           <label class="checkbox">
-            <input type="checkbox"> <%= t "complete_internships.checklist.lsf_ausdruck" %>
+            <input type="checkbox"> <%= t("complete_internships.checklist.lsf_ausdruck") %>
           </label>
         </td>
       </tr>
       <tr>
         <td>
           <label class="checkbox">
-            <input type="checkbox"> <%= link_to t "complete_internships.checklist.print_form" %>
+            <input type="checkbox"> <%= link_to t("complete_internships.checklist.print_form") %>
           </label>
         </td>
       </tr>

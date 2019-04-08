@@ -48,6 +48,10 @@ class Internship < ApplicationRecord
       student.try(:user?) && !completed
   end
 
+  def company?
+    company.present?
+  end
+
   def company_v2
     nil unless company_address
     company_address.company
