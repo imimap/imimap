@@ -45,11 +45,13 @@
           </div>
         <% end %>
       </div>
-      <strong><%= @complete_internship.student.internships.size == 0 ? t('complete_internships.no_internships') : '' %></strong>
+      <strong><%= @complete_internship.student.internships.size == 0 ? t('complete_interns ⁄hips.no_internships') : '' %></strong>
     <% end %>
 
   <br>
-    <%= link_to t('complete_internships.new_tp'), new_internship_path %>
+  <form>
+    <%=button_tag t('complete_internships.new_tp'), action: "createEmpty"%>
+    </form>
     <br><br><br>
     <%= link_to t('buttons.edit'), edit_complete_internship_path(@complete_internship) %>
     <% if @current_user %>

@@ -5,6 +5,7 @@ class InternshipsController < ApplicationResourceController
   include ApplicationHelper
   include CompleteInternshipsHelper
   respond_to :html, :json
+  helper_method :createEmpty
   before_action :programming_languages, :orientations, only: %i[new edit update]
   before_action :set_internship,
                 only: %i[edit create show update rating destroy]
@@ -73,6 +74,12 @@ class InternshipsController < ApplicationResourceController
 
       end
     end
+  end
+
+  def createEmpty
+      @internship = Internship.new(internship_params)
+      @internship.save
+      redirect_to @complete_internship
   end
 
   # GET /internships/1

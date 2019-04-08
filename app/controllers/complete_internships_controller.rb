@@ -25,6 +25,9 @@ class CompleteInternshipsController < ApplicationResourceController
     @complete_internship = CompleteInternship.new
   end
 
+  
+
+
   def edit; end
 
   def create

@@ -5,9 +5,9 @@ require 'time'
 # Internship respresents one actual internship within one company, as opposed
 # to CompleteInternship that respresents the whole course B20.
 class Internship < ApplicationRecord
-  validates :semester, :complete_internship, presence: true
+  #validates :semester, :complete_internship, presence: true
 
-  validates_presence_of :company_address
+  #validates_presence_of :company_address
 
   belongs_to :user
   belongs_to :company
