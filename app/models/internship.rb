@@ -53,8 +53,6 @@ class Internship < ApplicationRecord
   end
 
   def company_v2
-    # nil unless company_address
-    # company_address.company
     if company_address.nil?
       'no_company'
     else
@@ -63,8 +61,6 @@ class Internship < ApplicationRecord
   end
 
   def company_name
-    # nil unless company_address
-    # company_address.company.name
     if company_address.nil?
       'no_company'
     else
