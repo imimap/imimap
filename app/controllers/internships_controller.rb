@@ -61,7 +61,7 @@ class InternshipsController < ApplicationResourceController
     @internship = Internship.new(internship_params)
 
     @internship.user_id = current_user.id
-    #@internship.student_id = current_user.student_id
+    # @internship.student_id = current_user.student_id
     @complete_internship = current_user.student.complete_internship
     @internship.complete_internship = @complete_internship
 
