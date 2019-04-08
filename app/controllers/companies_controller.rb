@@ -34,8 +34,6 @@ class CompaniesController < ApplicationResourceController
     @company = Company.find(params[:id])
   end
 
-
-
   def create
     respond_to do |format|
       if @company.save
