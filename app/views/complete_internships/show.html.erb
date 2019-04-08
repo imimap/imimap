@@ -29,7 +29,7 @@
             <div class="card-header"><%= internship.internship_state.try(:name) %></div>
             <div class="card-body">
               <h5 class="card-title"><%= t "complete_internships.internship" %> @
-                <% if internship.company_v2 %>
+                <% if internship.company %>
                   <%= internship.company_v2.name %>
                 <% else %>
                   <%= t "complete_internships.company" %>
@@ -52,10 +52,7 @@
     <%= link_to t('complete_internships.new_tp'), new_internship_path %>
     <br><br><br>
     <%= link_to t('buttons.edit'), edit_complete_internship_path(@complete_internship) %>
-    <% if @current_user %>
-      <% if !@current_user.student? %>
-        | <%= link_to t('buttons.back'), complete_internships_path %>
-       <% end %>
-    <% end %>
+     | <%= link_to t('buttons.back'), :back %>
+
 
 </div>

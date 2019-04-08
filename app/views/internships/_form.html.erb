@@ -1,32 +1,33 @@
-<div style= "height: 1200px" >
-  <div class="tab" >
-    <button class="tablinks round-tab" onclick="openCity(event, 'student')" id="defaultOpen">Personal Details</button>
-    <button class="tablinks round-tab" onclick="openCity(event, 'company')">Company Details</button>
-    <button class="tablinks round-tab" onclick="openCity(event, 'internship')">Internship Details</button>
-  </div>
-  <%= bootstrap_form_for(@internship) do |f| %>
+<%= bootstrap_form_for(@internship) do |f| %>
 
-  <%= render 'form_company', f: f %>
-  <%= render 'form_internship', f: f %>
+<% if @internship.errors.any? %>
+  <div id="error_explanation">
+    <h4><%= pluralize(@internship.errors.count, "error") %> prohibited this internship from being saved:</h4>
+
+    <ul>
+    <% @internship.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <h3><%= t "internships.details" %></h3>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field" id="field-titles2">
+      <%= f.select 'semester_id', @semesters, class: 'chzn-select' %>
+      </div>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="field" id="field-titles2">
+        <%= f.submit t('complete_internships.create')%>
+        </div>
+      </div>
+    </div>
 
   <% end %>
-
-<script>
-function openCity(evt, cityName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script>
-</div>

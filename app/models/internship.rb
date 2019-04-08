@@ -7,7 +7,7 @@ require 'time'
 class Internship < ApplicationRecord
   validates :semester, :complete_internship, presence: true
 
-  validates_presence_of :company_address
+  #validates_presence_of :company_address
 
   belongs_to :user
   belongs_to :company
