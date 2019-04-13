@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.2.1'
+gem 'rails', '~> 5.2.3'
 # see https://github.com/straydogstudio/axlsx_rails
 gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
 gem 'axlsx_rails'
