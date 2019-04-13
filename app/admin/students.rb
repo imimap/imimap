@@ -13,7 +13,7 @@ ActiveAdmin.register Student do
 
   index do
     column :enrolment_number do |n|
-      link_to n.enrolment_number, "/admin/students/#{n.id}"
+      link_to n.enrolment_number, admin_student_path(n.id)
     end
     column :internships do |n|
       link_to_list n.internships

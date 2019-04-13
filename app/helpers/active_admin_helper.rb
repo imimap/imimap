@@ -7,7 +7,9 @@ module ActiveAdminHelper
   def link_to_list(internships)
     links = internships.map do |internship|
       internship_id = internship.id
-      link_to internship_id, admin_internship_path(internship_id)
+      link_to internship_id,
+              admin_internship_path(internship_id),
+              id: "internship-#{internship_id}"
     end
     links.join(', ').html_safe
   end
