@@ -19,18 +19,14 @@ ActiveAdmin.register Internship do
     column(:id) { |i| link_to i.id, admin_internship_path(i.id) }
 
     column :student do |i|
-      if i.student.nil?
-        t('active_admin.no_student')
-      else
-        link_to student_name(internship: i), admin_student_path(i.student)
-      end
+      link_to_student(internship: i)
     end
     column :complete_internship do |i|
       unless i.complete_internship.nil?
         link_to(i.complete_internship.id,
                 admin_complete_internship_path(i.complete_internship_id),
                 id: link_id(i.complete_internship))
-      # id: "CS_#{i.complete_internship_id}")
+        # id: "CS_#{i.complete_internship_id}")
       end
     end
     column :company_v2

@@ -3,11 +3,8 @@
 ActiveAdmin.register Internship do
   show do |ad|
     attributes_table do
-      row :student do |n|
-        link_to(
-          student_name(internship: n),
-          admin_students_path(n.student)
-        )
+      row :student do |i|
+        link_to_student(internship: i)
       end
       row :complete_internship
       row :company_v2
