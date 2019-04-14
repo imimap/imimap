@@ -31,7 +31,8 @@ describe 'ActiveAdmin Student / Index' do
   it 'has link to Student' do
     visit admin_students_path
     click_on @student.enrolment_number
-    expect(current_path).to eq admin_student_path(id: @student)
+    expect(current_path).to eq admin_student_path(id: @student,
+                                                  locale: I18n.locale)
   end
   it 'has link to Student' do
     visit admin_students_path
@@ -44,7 +45,7 @@ describe 'ActiveAdmin Student / Index' do
     create(:internship_2, student: @student)
     visit admin_students_path
     @student.internships.map(&:id).each do |internship_id|
-      click_on internship_id
+      click_on "internship-#{internship_id}"
       expect(current_path).to(
         eq admin_internship_path(id: internship_id,
                                  locale: I18n.locale)

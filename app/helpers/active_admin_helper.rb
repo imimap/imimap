@@ -7,7 +7,9 @@ module ActiveAdminHelper
   def link_to_list(internships)
     links = internships.map do |internship|
       internship_id = internship.id
-      link_to internship_id, admin_internship_path(internship_id)
+      link_to internship_id,
+              admin_internship_path(internship_id),
+              id: "internship-#{internship_id}"
     end
     links.join(', ').html_safe
   end
@@ -17,12 +19,11 @@ module ActiveAdminHelper
   end
 
   def link_to_student(internship:)
-    if internship.student.nil?
-      t('active_admin.no_student')
-    else
-      link_to student_name(internship: internship),
-              admin_student_path(internship.student)
-    end
+    link_to_unless internship.student.nil?,
+                   student_name(internship: internship),
+                   controller: 'admin/students',
+                   action: 'show',
+                   id: internship.student
   end
 end
 
