@@ -21,7 +21,9 @@ module ActiveAdminHelper
   def link_to_student(internship:)
     link_to_unless internship.student.nil?,
                    student_name(internship: internship),
-                   admin_student_path(internship.student)
+                   controller: 'admin/students',
+                   action: 'show',
+                   id: internship.student
   end
 end
 
