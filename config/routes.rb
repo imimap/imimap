@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       get 'my_internship',
           to: 'complete_internships#internship_data',
           as: 'my_internship'
+      post 'my_internship', to: 'company_addresses#create_and_save'
     end
     ActiveAdmin.routes(self)
   end

@@ -60,6 +60,27 @@ class CompanyAddressesController < ApplicationResourceController
     %i[street zip city country phone company_id fax latitude longitude]
   end
 
+  def create_and_save(internship_id)
+    respond_to do |format|
+      if @company_address.save
+        # CodeReviewSS17 seems a bit too specific for the general create
+        # case, but if Company#create isn't called from anywhere else,
+        # why not. but if the company was specifically created for the
+        # internship, it should be passed to the new internship.
+        @internship = Internship.find(internship_id)
+        @internship.update_attribute(company_address_id, @company_address.id)
+
+        format.html do
+          redirect_to new_address_path(@company.id),
+                      notice: 'Company was successfully created.'
+        end
+      else
+        format.html { render action: 'new' }
+      end
+    end
+  end
+
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

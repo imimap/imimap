@@ -4,7 +4,7 @@
 class CompaniesController < ApplicationResourceController
   before_action :set_company, only: %i[show edit update destroy]
   before_action :new_company, only: %i[new]
-  before_action :new_company_params, only: %i[create]
+  before_action :new_company_params, only: %i[create create_and_save]
 
   def index
     @companies = Company.all
@@ -50,6 +50,8 @@ class CompaniesController < ApplicationResourceController
       end
     end
   end
+
+  
 
   def update
     respond_to do |format|
