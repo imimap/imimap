@@ -7,6 +7,7 @@ en:
         semester: "Semester"
         semester_of_study: "Semester of study"
       company_address:
+        new_address_heading: "Step 2: Create a new Address for the Company"
         street: Street
         zip: ZIP
         city: City
@@ -16,6 +17,7 @@ en:
         latitude: Latitude
         longitude: Longitude
         company: Company
+        create: Create Company Address
       internship_offer:
         body: Description
         created_at: Created at
