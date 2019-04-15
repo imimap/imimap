@@ -82,7 +82,6 @@ class CompanyAddressesController < ApplicationResourceController
     end
   end
 
-
   private
 
   # Use callbacks to share common setup or constraints between actions.

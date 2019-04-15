@@ -8,7 +8,7 @@ de:
     edit:
       editcompany: "Firma Bearbeiten"
     new:
-      newcompany: "Neue Firma"
+      newcompany: "Schritt 1: Neue Firma Erstellen"
     attributes:
       department: "Abteilung"
       rating: "Durchschnittswertung"

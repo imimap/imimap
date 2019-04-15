@@ -8,7 +8,7 @@ en:
     edit:
       editcompany: "Editing Company"
     new:
-      newcompany: "New Company"
+      newcompany: "Step 1: Create New Company"
     attributes:
       department: "department"
       rating: "Average Rating"

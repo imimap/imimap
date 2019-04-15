@@ -51,8 +51,6 @@ class CompaniesController < ApplicationResourceController
     end
   end
 
-  
-
   def update
     respond_to do |format|
       if @company.update_attributes(company_params)
