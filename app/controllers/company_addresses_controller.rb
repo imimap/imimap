@@ -30,7 +30,8 @@ class CompanyAddressesController < ApplicationResourceController
         #  redirect_to new_internship_path,
         #             notice: 'Company & its Address were successfully created.'
         # end
-        redirect_to complete_internship_path(current_user.student.complete_internship)
+        redirect_to complete_internship_path(current_user
+                                              .student.complete_internship)
       else
         render :new, notice: "Company address couldn't be created."
       end
