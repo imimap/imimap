@@ -30,9 +30,11 @@ de:
         website: Webseite
         address: Adresse
         main_language: Hauptsprache
+        country: Land
         phone: Telefon
         excluded_from_search: ausgenommen von der Suche
       company_address:
+        new_address_heading: "Schritt 2: Erstelle eine neue Firmenaddresse"
         street: Straße
         zip: Postleitzahl
         city: Stadt
@@ -42,6 +44,7 @@ de:
         latitude: Breite
         longitude: Länge
         company: Firma
+        create: Firmenaddresse Erstellen
       internship:
         student: Student_in
         company: Firma
