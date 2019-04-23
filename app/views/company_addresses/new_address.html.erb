@@ -1,6 +1,7 @@
 
   <div class="container">
-<%= bootstrap_form_for(@company_address) do |f| %>
+<%= bootstrap_form_for @company_address, :url => {:controller => 'company_address', :action => "create_and_save",
+                                                params: {internship_id: @current_user.student.internships.ids}} do |f| %>
     <% if @company_address.errors.any? %>
       <div id="error_explanation">
         <h4><%= pluralize(@company_address.errors.count, "error") %> prohibited this company_address from being saved:</h4>

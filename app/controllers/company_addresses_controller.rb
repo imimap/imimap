@@ -63,6 +63,7 @@ class CompanyAddressesController < ApplicationResourceController
   end
 
   def create_and_save(internship_id)
+    @company_address = CompanyAddress.new(company_address_params)
     respond_to do |format|
       if @company_address.save
         # CodeReviewSS17 seems a bit too specific for the general create

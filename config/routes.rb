@@ -27,10 +27,14 @@ Rails.application.routes.draw do
       get 'logout', to: 'devise/sessions#destroy', as: 'logout'
       get 'statistic', to: 'statistic#overview'
       delete 'destroy', to: 'devise/notifications#destroy'
+
       get 'rating', to: 'internships#rating', as: 'rating'
       get 'newAddress/:company_id',
           to: 'company_addresses#new_address',
           as: 'new_address'
+      get 'company_address/create_and_save',
+          to: 'company_address#create_and_save'
+
       get 'select_company/',
           to: 'companies#select_company',
           as: 'select_company'
