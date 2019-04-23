@@ -32,8 +32,9 @@ Rails.application.routes.draw do
       get 'newAddress/:company_id',
           to: 'company_addresses#new_address',
           as: 'new_address'
-      get 'company_address/create_and_save',
-          to: 'company_address#create_and_save'
+      get 'newAddress/:company_id',
+          to: 'company_address#create_and_save',
+          as: 'create_and_save'
 
       get 'select_company/',
           to: 'companies#select_company',
