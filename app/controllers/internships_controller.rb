@@ -114,8 +114,7 @@ class InternshipsController < ApplicationResourceController
 
   # GET /internships/1/edit
   def edit
-    @company = @internship.company_v2
-    @rating = @internship.internship_rating
+    @internship = Internship.find(params[:id])
   end
 
   # PUT /internships/1

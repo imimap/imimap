@@ -34,6 +34,9 @@ class CompaniesController < ApplicationResourceController
 
   def edit
     @company = Company.find(params[:id])
+    return unless @current_user.student
+
+    @internship = Internship.find(params[:internship_id])
   end
 
   def create
@@ -59,8 +62,15 @@ class CompaniesController < ApplicationResourceController
     respond_to do |format|
       if @company.update_attributes(company_params)
         format.html do
-          redirect_to @company,
-                      notice: 'Company was successfully updated.'
+          if @current_user.student
+            redirect_to edit_company_address_path(
+              Internship.find(params[:company][:internship_id]).company_address
+            ),
+                        notice: 'Company was successfully updated.'
+          else
+            redirect_to @company,
+                        notice: 'Company was successfully updated.'
+          end
         end
       else
         format.html { render action: 'edit' }

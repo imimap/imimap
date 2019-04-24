@@ -41,8 +41,13 @@ class CompanyAddressesController < ApplicationResourceController
 
   def update
     if @company_address.update(company_address_params)
-      redirect_to @company_address,
-                  notice: 'Company address was successfully updated.'
+      if @current_user.student
+        redirect_to @current_user.student.complete_internship,
+                    notice: 'Company address was successfully updated.'
+      else
+        redirect_to @company_address,
+                    notice: 'Company address was successfully updated.'
+      end
     else
       render :edit
     end

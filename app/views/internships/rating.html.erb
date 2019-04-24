@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-md-4">
         <div class="field" id="field-titles">
-          <%= f.check_box :recommend %>        
+          <%= f.check_box :recommend %>
         </div>
       </div>
     </div>
@@ -28,11 +28,9 @@
     </div>
 
     <div class="row">
-      <div class="pull-right">
-        <div class="actions">
-          <%= button_tag(type: 'submit', class: "btn btn-success") do %>
-          <i class="icon-ok icon-white"></i> <%= t("internships.edit_rating")%>
-          <% end %>
+      <div class="col-md-4">
+        <div class="field" id="field-titles2">
+        <%= f.submit t('save')%>
         </div>
       </div>
     </div>
