@@ -17,6 +17,7 @@ class CompanyAddressesController < ApplicationResourceController
   def new_address
     @company_address = CompanyAddress.new
     @company = Company.find(params[:company_id])
+    @internship = Internship.find(params[:internship_id])
   end
 
   def edit; end
@@ -62,7 +63,7 @@ class CompanyAddressesController < ApplicationResourceController
     %i[street zip city country phone company_id fax latitude longitude]
   end
 
-  def create_and_save(internship_id)
+  def create_and_save
     @company_address = CompanyAddress.new(company_address_params)
     respond_to do |format|
       if @company_address.save
@@ -70,12 +71,14 @@ class CompanyAddressesController < ApplicationResourceController
         # case, but if Company#create isn't called from anywhere else,
         # why not. but if the company was specifically created for the
         # internship, it should be passed to the new internship.
-        @internship = Internship.find(internship_id)
-        @internship.update_attribute(company_address_id, @company_address.id)
+        @internship = Internship.find(params[:company_address][:internship_id])
+        @internship.update_attribute(:company_address_id, @company_address.id)
 
         format.html do
-          redirect_to new_address_path(@company.id),
-                      notice: 'Company was successfully created.'
+          redirect_to complete_internship_path(
+            @current_user.student.complete_internship
+          ),
+                      notice: 'Company Address was successfully created.'
         end
       else
         format.html { render action: 'new' }

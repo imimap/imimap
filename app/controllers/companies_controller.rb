@@ -24,7 +24,7 @@ class CompaniesController < ApplicationResourceController
 
   def new
     @company = Company.new
-
+    @internship = Internship.find(params[:internship_id])
     respond_to do |format|
       format.html
     end
@@ -42,7 +42,9 @@ class CompaniesController < ApplicationResourceController
         # why not. but if the company was specifically created for the
         # internship, it should be passed to the new internship.
         format.html do
-          redirect_to new_address_path(@company.id),
+          redirect_to new_address_path(@company.id,
+                                       internship_id:
+                                         params[:company][:internship_id]),
                       notice: 'Company was successfully created.'
         end
       else
