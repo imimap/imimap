@@ -24,7 +24,9 @@ class CompaniesController < ApplicationResourceController
 
   def new
     @company = Company.new
-    @internship = Internship.find(params[:internship_id])
+    if @current_user.student
+      @internship = Internship.find(params[:internship_id])
+    end
     respond_to do |format|
       format.html
     end
