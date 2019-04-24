@@ -13,9 +13,9 @@
           <label class="checkbox">
             <input type="checkbox">
               <% if internship.company_address %>
-                <%= link_to t("complete_internships.checklist.company_details"), show_company_path%>
+                <%= link_to t("complete_internships.checklist.company_details"), show_company_path(internship.company_address.company)%>
               <% else %>
-                <%= link_to t("complete_internships.checklist.company_details"), new_company_path%>
+                <%= link_to t("complete_internships.checklist.company_details"), new_company_path(:internship_id => internship.id)%>
               <% end %>
           </label>
         </td>
