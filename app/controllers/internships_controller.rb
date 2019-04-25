@@ -114,7 +114,12 @@ class InternshipsController < ApplicationResourceController
 
   # GET /internships/1/edit
   def edit
-    @internship = Internship.find(params[:id])
+    return unless @current_user.student
+
+    @internship = @current_user.student
+                               .complete_internship
+                               .internships
+                               .find(params[:id])
   end
 
   # PUT /internships/1

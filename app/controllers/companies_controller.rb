@@ -25,7 +25,10 @@ class CompaniesController < ApplicationResourceController
   def new
     @company = Company.new
     if @current_user.student
-      @internship = Internship.find(params[:internship_id])
+      @internship = @current_user.student
+                                 .complete_internship
+                                 .internships
+                                 .find(params[:internship_id])
     end
     respond_to do |format|
       format.html
@@ -36,7 +39,10 @@ class CompaniesController < ApplicationResourceController
     @company = Company.find(params[:id])
     return unless @current_user.student
 
-    @internship = Internship.find(params[:internship_id])
+    @internship = @current_user.student
+                               .complete_internship
+                               .internships
+                               .find(params[:internship_id])
   end
 
   def create

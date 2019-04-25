@@ -17,7 +17,10 @@ class CompanyAddressesController < ApplicationResourceController
   def new_address
     @company_address = CompanyAddress.new
     @company = Company.find(params[:company_id])
-    @internship = Internship.find(params[:internship_id])
+    @internship = @current_user.student
+                               .complete_internship
+                               .internships
+                               .find(params[:internship_id])
   end
 
   def edit; end
@@ -76,7 +79,10 @@ class CompanyAddressesController < ApplicationResourceController
         # case, but if Company#create isn't called from anywhere else,
         # why not. but if the company was specifically created for the
         # internship, it should be passed to the new internship.
-        @internship = Internship.find(params[:company_address][:internship_id])
+        @internship = @current_user.student
+                                   .complete_internship
+                                   .internships
+                                   .find(params[:company_address][:internship_id])
         @internship.update_attribute(:company_address_id, @company_address.id)
 
         format.html do
