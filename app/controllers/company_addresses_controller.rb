@@ -82,7 +82,9 @@ class CompanyAddressesController < ApplicationResourceController
         @internship = @current_user.student
                                    .complete_internship
                                    .internships
-                                   .find(params[:company_address][:internship_id])
+                                   .find(
+                                     params[:company_address][:internship_id]
+                                   )
         @internship.update_attribute(:company_address_id, @company_address.id)
 
         format.html do
