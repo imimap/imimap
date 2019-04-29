@@ -49,6 +49,7 @@ de:
         student: Student_in
         company: Firma
         company_v2: Firma
+        programming_language_ids: Programmiersprachen
         start_date: Anfangsdatum
         end_date: Enddatum
         weekCount: Anzahl der Wochen
