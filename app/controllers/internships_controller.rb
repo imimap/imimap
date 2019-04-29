@@ -126,10 +126,15 @@ class InternshipsController < ApplicationResourceController
   # PUT /internships/1.json
   def update
     attributes = internship_params
+    @internship = @current_user.student
+                               .complete_internship
+                               .internships
+                               .find(params[:id])
     if @internship.update_attributes(attributes)
       @internship.update_attributes(completed: true)
       flash[:notice] = 'Internship was successfully updated.'
-      respond_with(@internship)
+      respond_with(@current_user.student
+                                 .complete_internship)
     else
       @rating = @internship.build_internship_rating
       render :edit, notice: 'Please fill in all fields'
