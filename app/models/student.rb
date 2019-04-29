@@ -45,4 +45,9 @@ class Student < ApplicationRecord
     internship_ids = internships.pluck(:id)
     Internship.find(internship_ids.max)
   end
+
+  def all_personal_details_filled?
+    !(first_name.empty? || last_name.empty? || birthday.nil? ||
+      birthplace.empty?)
+  end
 end

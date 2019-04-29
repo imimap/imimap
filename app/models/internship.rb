@@ -91,4 +91,10 @@ class Internship < ApplicationRecord
       d.strftime('%Y-%m-%d')
     end
   end
+
+  def all_internship_details_filled?
+    !(title.blank? || start_date.blank? || end_date.blank? ||
+      operational_area.blank? || orientation_id.blank? || tasks.blank? ||
+      working_hours.blank? || salary.blank?)
+  end
 end

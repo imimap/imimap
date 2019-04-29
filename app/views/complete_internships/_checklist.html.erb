@@ -3,7 +3,7 @@
       <tr>
         <td>
           <label class="checkbox">
-            <input type="checkbox" <%= 'checked' %>>
+            <input type="checkbox" <%= 'checked' if @current_user.student.all_personal_details_filled? %>>
               <%= link_to t("complete_internships.checklist.personal_details"), @current_user.student %>
           </label>
         </td>
@@ -11,7 +11,7 @@
       <tr>
         <td>
           <label class="checkbox">
-            <input type="checkbox">
+            <input type="checkbox" <%= 'checked' if company_address?(internship) %>>
               <% if internship.company_address %>
                 <%= link_to t("complete_internships.checklist.company_details"), edit_company_path(internship.company_address.company, :internship_id => internship.id)%>
               <% else %>
@@ -23,7 +23,8 @@
       <tr>
         <td>
           <label class="checkbox">
-            <input type="checkbox"> <%= link_to t("complete_internships.checklist.internship_details"),  edit_internship_path(internship.id)%>
+            <input type="checkbox" <%= 'checked' if internship.all_internship_details_filled? %>>
+              <%= link_to t("complete_internships.checklist.internship_details"),  edit_internship_path(internship.id)%>
           </label>
         </td>
       </tr>

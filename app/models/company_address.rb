@@ -41,4 +41,8 @@ class CompanyAddress < ApplicationRecord
 
     iso_country.translations[locale.to_s] || iso_country.name
   end
+
+  def all_company_address_details_filled?
+    !(street.blank? || zip.blank? || city.blank? || country.blank?)
+  end
 end
