@@ -62,14 +62,14 @@
 <div class="row">
   <div class="col-md-4">
     <div class="field" id="field-titles">
-      <%= f.label t("internships.attributes.working_hours") + " / " + t("unit.week") %><br />
+      <%= f.label t("internships.attributes.working_hours") + " " + t("unit.week") %><br />
       <%= f.text_field :working_hours, hide_label: true %>
     </div>
   </div>
 
   <div class="col-md-4">
     <div class="field" id="field-titles">
-      <%= f.label t("internships.attributes.salary") + " € / " + t("unit.month") %><br />
+      <%= f.label t("internships.attributes.salary") + " € " +  t("unit.month") %><br />
       <%= f.text_field :salary, hide_label: true %>
     </div>
   </div>
@@ -78,7 +78,7 @@
 <div class="row">
   <div class="col-md-4">
     <div class="field" id="field-titles">
-    <%= f.select :reading_prof_id, ReadingProf.order(:id).map { |p| [p.name, p.id]}, class: 'chzn-select', disabled: false %>
+    <%= f.select :reading_prof, ReadingProf.order(:id).map { |p| [p.name, p.id]}, class: 'chzn-select', disabled: false %>
     </div>
   </div>
 </div>

@@ -18,6 +18,8 @@ en:
         longitude: Longitude
         company: Company
         create: Create Company Address
+      internship:
+        programming_language_ids: Programming languages
       internship_offer:
         body: Description
         created_at: Created at
