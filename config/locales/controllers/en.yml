@@ -64,7 +64,7 @@ en:
       programming_language: "Programming Language(s)"
       programming_language1: "Programming Language(s) *"
       salary: "Salary"
-      salary1: "Salary per Month *"
+      salary1: "Salary in € per Month *"
       salary2: "Salary/month"
       working_hours: "Working Hours"
       working_hours1: "Working Hours per Week *"

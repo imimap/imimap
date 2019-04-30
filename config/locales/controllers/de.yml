@@ -61,7 +61,7 @@ de:
       programming_language: "Programmiersprache(n)"
       programming_language1: "Programmiersprache(n) *"
       salary: "Gehalt"
-      salary1: "Gehalt pro Monat *"
+      salary1: "Gehalt in € pro Monat *"
       working_hours: "Arbeitsstunden pro Woche"
       working_hours1: "Arbeitsstunden pro Woche *"
       living_costs: "Lebenshaltungskosten"
