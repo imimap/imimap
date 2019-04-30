@@ -76,13 +76,17 @@
         </button>
       </div>
       <div class="modal-body text-left">
+        <p id="missing1"><%= t "internships.popup.missing1"%></p>
+        <p id="clear"><%= t "internships.popup.clear"%></p>
         <ul id="popup_list">
-          <li id="pers_det"><%= '- pers det'%></li>
-          <li id="company_det"><%= '- company det' %></li>
-          <li id="internship_det"><%= '- internship det' %></li>
-          <li id="contr"><%= '- vertrag'%></li>
-          <li id="lsf_ausdruck"><%= '- ausdruck'%></li>
+          <li id="pers_det"><%= t "internships.popup.personal_details"%></li>
+          <li id="company_det"><%= t "internships.popup.company_details" %></li>
+          <li id="internship_det"><%= t "internships.popup.internship_details" %></li>
+          <li id="contr"><%= t "internships.popup.contract_details"%></li>
+          <li id="lsf_ausdruck"><%= t "internships.popup.lsf_ausdruck"%></li>
         </ul>
+        <p id="missing2"><%= t "internships.popup.missing2"%></p>
+        <p id="no_original"><%= t "internships.popup.no_original"%></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -94,6 +98,8 @@
 
 <!--JavaScript-->
 <script type="text/javascript">
+  var count = 0;
+
   function radios_activated(internship_id) {
     var checkboxId = "radio_contract_" + internship_id;
     var radioOriginalId = "original_" + internship_id;
@@ -105,12 +111,15 @@
   }
 
   function fill_popup(internship_id, title, companyname) {
+    count = 0;
     popup_title(title, companyname);
     insert_info("radio_contract_", internship_id, "contr");
     insert_info("lsf_", internship_id, "lsf_ausdruck");
     insert_info("student_", internship_id, "pers_det");
     insert_info("company_", internship_id, "company_det");
     insert_info("internship_", internship_id, "internship_det");
+    set_message();
+    contract_info(internship_id);
   }
 
   function popup_title(title_parcial, companyname) {
@@ -122,7 +131,38 @@
     var checkboxId = id_parcial + internship_id;
     var cb = document.getElementById(checkboxId);
     var list_item = document.getElementById(element_id);
-    if (cb.checked == true) list_item.style.display = "none";
-    else list_item.style.display = "block";
+    if (cb.checked == true) {
+      list_item.style.display = "none";
+      count += 1;
+    } else list_item.style.display = "block";
+  }
+
+  function set_message() {
+    var missing1 = document.getElementById("missing1");
+    var missing2 = document.getElementById("missing2");
+    var clear = document.getElementById("clear");
+    if (count >= 5) {
+      missing1.style.display = "none";
+      missing2.style.display = "none";
+      clear.style.display = "block";
+    } else {
+      missing1.style.display = "block";
+      missing2.style.display = "block";
+      clear.style.display = "none";
+    }
+  }
+
+  function contract_info(internship_id) {
+    var radioId = "original_" + internship_id;
+    var rb = document.getElementById(radioId);
+    var item = document.getElementById("no_original");
+    var clear = document.getElementById("clear");
+    if (rb.checked == true) {
+      item.style.display = "none";
+      clear.style.display = "block";
+    } else {
+      item.style.display = "block";
+      clear.style.display = "none";
+    }
   }
 </script>

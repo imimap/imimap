@@ -99,6 +99,16 @@ en:
         longEnough: "Internship is long enough"
       reading_prof: "Reading professor"
       which_professor_should_read: "Which Professor would you prefer to read your Report?"
+    popup:
+      missing1: "Some of the information that is needed for a complete registration for your internship seems to be missing. Check the following forms again:"
+      missing2: "You can of course still print out your registration form and go to the consultation hour of the Professor in charge of the internships."
+      no_original: "Please note, that if you can not provide an original version of your contract at this time you can still register your internship during the consultation hour of the Professor in charge of the internships. But in order for us to be able to forward your registration to the administration you need to hand in a compy of the contract that is originally signed by both parties as soon as you can."
+      personal_details: "- Personal Details"
+      company_details: "- Company Details"
+      internship_details: "- Internship Details"
+      contract_details: "- Contract"
+      lsf_ausdruck: "- Grade Printout from the LSF"
+      clear: "Do you want to print out your registration now?"
   users:
     name: "Users"
     create: "Create User"
