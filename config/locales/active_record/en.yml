@@ -9,9 +9,13 @@ en:
       company_address:
         new_address_heading: "Step 2: Create a new Address for the Company"
         street: Street
+        street1: "Street *"
         zip: ZIP
+        zip1: ZIP *
         city: City
+        city1: City *
         country: Country
+        country1: Country *
         phone: Phone
         fax: Fax
         latitude: Latitude

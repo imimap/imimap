@@ -36,9 +36,13 @@ de:
       company_address:
         new_address_heading: "Schritt 2: Erstelle eine neue Firmenaddresse"
         street: Straße
+        street1: Straße *
         zip: Postleitzahl
+        zip1: Postleitzahl *
         city: Stadt
+        city1: Stadt *
         country: Land
+        country1: Land *
         phone: Telefon
         fax: Fax
         latitude: Breite
@@ -88,7 +92,7 @@ de:
         internships: Praktika
       student:
         internships: Praktika
-        enrolment_number: Matrikel
+        enrolment_number: Matrikelnummer
         last_name: Nachname
         first_name: Vorname
         birthday: Geburtsdatum

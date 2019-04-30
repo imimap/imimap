@@ -23,14 +23,14 @@
 
     <% if @complete_internship.student %>
       <div class="card-deck">
-        <% @complete_internship.internships.each do |internship|%>
+        <% @complete_internship.internships.order(:id).each do |internship|%>
           <% accepted = internship.registration_state.nil? %>
           <div class="card border-<%= accepted ? 'secondary' : 'success' %>">
             <div class="card-header"><%= internship.internship_state.try(:name) %></div>
             <div class="card-body">
               <h5 class="card-title"><%= t "complete_internships.internship" %> @
-                <% if internship.company %>
-                  <%= internship.company_v2.name %>
+                <% if internship.company_address.company %>
+                  <%= internship.company_address.company.name %>
                 <% else %>
                   <%= t "complete_internships.company" %>
                 <% end %></h5>

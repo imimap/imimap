@@ -1,32 +1,18 @@
 <div class="container">
   <%= bootstrap_form_for @internship do |f| %>
 
-<h4>Internship Details</h4>
-
 <div class="row">
   <div class="col-md-4">
     <div class="field" id="field-titles">
-      <%= f.text_field :title, placeholder: "Game design website in Italy" %>
+      <%= f.label t "internships.attributes.title1" %>
+      <%= f.text_field :title, placeholder: "Game design website in Italy", skip_label: true  %>
     </div>
   </div>
 
   <div class="col-md-4">
     <div class="field" id="field-titles">
-      <%= f.select :semester_id, semesters, {}, class: 'chzn-select' %>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-3">
-    <div class="field" id="field-titles">
-    <%= f.date_field :start_date %>
-    </div>
-  </div>
-
-  <div class="col-md-3">
-    <div class="field" id="field-titles">
-      <%= f.date_field :end_date %>
+      <%= f.label t "internships.attributes.semester1" %>
+      <%= f.select :semester_id, semesters, class: 'chzn-select', skip_label: true  %>
     </div>
   </div>
 </div>
@@ -34,13 +20,15 @@
 <div class="row">
   <div class="col-md-4">
     <div class="field" id="field-titles">
-      <%= f.text_field :operational_area, placeholder: "Visual Reality, Website, 3D"%>
+      <%= f.label t "internships.attributes.start_date1" %>
+      <%= f.date_field :start_date, skip_label: true  %>
     </div>
   </div>
 
   <div class="col-md-4">
     <div class="field" id="field-titles">
-    <%= f.select :orientation_id, orientations, class: 'chzn-select' %>
+      <%= f.label t "internships.attributes.end_date1" %>
+      <%= f.date_field :end_date, skip_label: true  %>
     </div>
   </div>
 </div>
@@ -48,13 +36,31 @@
 <div class="row">
   <div class="col-md-4">
     <div class="field" id="field-titles">
-    <%= f.text_area :tasks, size: "4x5", placeholder: "Make and manage the company website, Make CSS for client websites" %>
+      <%= f.label t "internships.attributes.operational_area1" %>
+      <%= f.text_field :operational_area, placeholder: "Visual Reality, Website, 3D", skip_label: true %>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="field" id="field-titles">
+      <%= f.label t "internships.attributes.orientation1" %>
+    <%= f.select :orientation_id, orientations, class: 'chzn-select', skip_label: true  %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="field" id="field-titles">
+      <%= f.label t "internships.attributes.tasks1" %>
+      <%= f.text_area :tasks, size: "4x5", placeholder: "Make and manage the company website, Make CSS for client websites", skip_label: true  %>
     </div>
   </div>
 
   <div class="col-md-4">
   <div class="field" id="field-titles">
-  <%= f.select :programming_language_ids, @programming_languages, {}, { :multiple => true, class: 'chzn-select', hide_label: true} %>
+    <%= f.label t "internships.attributes.programming_language1" %>
+    <%= f.select :programming_language_ids, @programming_languages, {}, { :multiple => true, class: 'chzn-select', hide_label: true } %>
 </div>
   </div>
 </div>
@@ -62,23 +68,24 @@
 <div class="row">
   <div class="col-md-4">
     <div class="field" id="field-titles">
-      <%= f.label t("internships.attributes.working_hours") + " " + t("unit.week") %><br />
-      <%= f.text_field :working_hours, hide_label: true %>
+      <%= f.label t "internships.attributes.working_hours1" %>
+      <%= f.text_field :working_hours, hide_label: true, skip_label: true  %>
     </div>
   </div>
 
   <div class="col-md-4">
     <div class="field" id="field-titles">
-      <%= f.label t("internships.attributes.salary") + " € " +  t("unit.month") %><br />
-      <%= f.text_field :salary, hide_label: true %>
+    <%= f.label t("internships.attributes.salary1")%>
+      <%= f.text_field :salary, hide_label: true, skip_label: true  %>
     </div>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="pl-3">
     <div class="field" id="field-titles">
-    <%= f.select :reading_prof, ReadingProf.order(:id).map { |p| [p.name, p.id]}, class: 'chzn-select', disabled: false %>
+    <%= f.label t("internships.attributes.which_professor_should_read")%>
+    <%= f.select :reading_prof, ReadingProf.order(:id).map { |p| [p.name, p.id]}, class: 'chzn-select', disabled: false, skip_label: true  %>
     </div>
   </div>
 </div>

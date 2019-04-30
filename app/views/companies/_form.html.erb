@@ -1,9 +1,9 @@
 <div class="container">
-  <%= bootstrap_form_for @company do |a| %>
-  <%= a.hidden_field :internship_id, :value => @internship.try(:id) %>
+  <%= bootstrap_form_for @company do |f| %>
+  <%= f.hidden_field :internship_id, :value => @internship.try(:id) %>
   <% if @company.errors.any? %>
   <div id="error_explanation">
-    <h4><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h4>
+    <div><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</div>
 
     <ul>
       <% @company.errors.full_messages.each do |msg| %>
@@ -17,13 +17,14 @@
   <div class="row">
     <div class="col-md-4">
       <div class="field" id="field-titles">
-        <%= a.text_field :name%>
+        <%= f.label t "companies.attributes.name2" %>
+        <%= f.text_field :name, skip_label: true %>
       </div>
     </div>
 
     <div class="col-md-4">
       <div class="field" id="field-titles">
-        <%= a.number_field :number_employees %>
+        <%= f.number_field :number_employees %>
       </div>
     </div>
   </div>
@@ -31,12 +32,12 @@
   <div class="row" style="margin-top:20px">
     <div class="col-md-4">
       <div class="field" id="field-titles">
-        <%= a.text_field :industry %>
+        <%= f.text_field :industry %>
       </div>
     </div>
     <div class="col-md-4">
       <div class="field" id="field-titles">
-        <%= a.text_field :main_language %>
+        <%= f.text_field :main_language %>
       </div>
     </div>
   </div>
@@ -44,7 +45,7 @@
   <div class="row" style="margin-top:20px">
     <div class="col-md-4">
       <div class="field" id="field-titles">
-        <%= a.text_field :website %>
+        <%= f.text_field :website %>
       </div>
     </div>
 
@@ -53,7 +54,7 @@
   <div class="row">
     <div class="col-md-4">
       <div class="field" id="field-titles2">
-      <%= a.submit t('save')%>
+      <%= f.submit t('companies.continue_to_address')%>
       </div>
     </div>
   </div>

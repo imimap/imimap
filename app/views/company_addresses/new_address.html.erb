@@ -16,39 +16,45 @@
       </div>
     <% end %>
     <div id="form-block4" class="text-left">
-      <h4> <%=t "activerecord.attributes.company_address.new_address_heading"%></h4>
+    <small><%= t "forms.what_do_stars_mean1" %></small><br>
+<small><%= t "forms.what_do_stars_mean2" %></small>
+      <h3> <%=t "activerecord.attributes.company_address.new_address_heading"%></h3>
       <br>
     <div class="row">
       <div class="col-md-4">
         <div id="field-titles">
           <span class="form-static"><%=@company.name%></span>
           <%= f.hidden_field :company_id, :value => @company.id, hide_label: true %>
-          </div>
+          <br>
+          <div>
         </div>
       </div>
     <div class="row">
     <div class="col-md-4">
         <div class="field" id="field-titles">
-          <%= f.text_field :street %>
+          <%= f.label t "activerecord.attributes.company_address.street1" %>
+          <%= f.text_field :street, skip_label: true   %>
         </div>
       </div>
       </div>
       <div class="row">
       <div class="col-md-2">
         <div class="field" id="field-titles">
-          <%= f.number_field :zip %>
+          <%= f.label t "activerecord.attributes.company_address.zip1" %>
+          <%= f.number_field :zip, skip_label: true   %>
         </div>
       </div>
         <div class="col-md-4">
         <div class="field" id="field-titles">
-          <%= f.text_field :city %>
+          <%= f.label t "activerecord.attributes.company_address.city1" %>
+          <%= f.text_field :city, skip_label: true   %>
         </div>
       </div>
       </div>
       <div class="row">
-      <div class="col-md-4">
+      <div class="pl-3">
         <div class="field" id="field-titles">
-          <%= t("company.country")%><br>
+          <%= f.label t "activerecord.attributes.company_address.country1" %> <br>
           <%= f.country_select :country, ["United States"], class: 'chzn-select' %>
         </div>
       </div>
