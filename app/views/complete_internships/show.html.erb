@@ -29,11 +29,7 @@
             <div class="card-header"><%= internship.internship_state.try(:name) %></div>
             <div class="card-body">
               <h5 class="card-title"><%= t "complete_internships.internship" %> @
-                <% if internship.company_address.company %>
-                  <%= internship.company_address.company.name %>
-                <% else %>
-                  <%= t "complete_internships.company" %>
-                <% end %></h5>
+                <%= company_name_for_checklist(internship) %></h5>
               <p class="card-text">
                 <% if accepted %>
                   <%= render 'checklist',internship: internship %>

@@ -57,7 +57,7 @@
                     data-target="#missing_information"
                     onclick="fill_popup(<%=internship.id%>,
                                         '<%= t "complete_internships.internship" %> @ ',
-                                        '<%=internship.company_address.company.name%>')">
+                                        '<%= company_name_for_checklist(internship) %>')">
               <%= t("complete_internships.checklist.print_form") %>
             </button>
         </td>
