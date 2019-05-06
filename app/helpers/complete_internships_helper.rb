@@ -18,7 +18,7 @@ module CompleteInternshipsHelper
     if internship.company_address
       internship.company_address.company.name
     else
-      t "complete_internships.company"
-    end 
+      t 'complete_internships.company'
+    end
   end
 end
