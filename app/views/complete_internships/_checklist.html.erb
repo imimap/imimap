@@ -77,16 +77,15 @@
       </div>
       <div class="modal-body text-left">
         <p id="missing1"><%= t "internships.popup.missing1"%></p>
-        <p id="clear"><%= t "internships.popup.clear"%></p>
         <ul id="popup_list">
           <li id="pers_det"><%= t "internships.popup.personal_details"%></li>
           <li id="company_det"><%= t "internships.popup.company_details" %></li>
           <li id="internship_det"><%= t "internships.popup.internship_details" %></li>
-          <li id="contr"><%= t "internships.popup.contract_details"%></li>
-          <li id="lsf_ausdruck"><%= t "internships.popup.lsf_ausdruck"%></li>
         </ul>
         <p id="missing2"><%= t "internships.popup.missing2"%></p>
+        <p id="lsf_ausdruck"><%= t "internships.popup.lsf_ausdruck"%></p>
         <p id="no_original"><%= t "internships.popup.no_original"%></p>
+        <p id="clear"><%= t "internships.popup.clear"%></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -113,7 +112,6 @@
   function fill_popup(internship_id, title, companyname) {
     count = 0;
     popup_title(title, companyname);
-    insert_info("radio_contract_", internship_id, "contr");
     insert_info("lsf_", internship_id, "lsf_ausdruck");
     insert_info("student_", internship_id, "pers_det");
     insert_info("company_", internship_id, "company_det");
@@ -141,7 +139,7 @@
     var missing1 = document.getElementById("missing1");
     var missing2 = document.getElementById("missing2");
     var clear = document.getElementById("clear");
-    if (count >= 5) {
+    if (count >= 3) {
       missing1.style.display = "none";
       missing2.style.display = "none";
       clear.style.display = "block";

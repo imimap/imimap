@@ -102,8 +102,7 @@ de:
       personal_details: "- Persönliche Details"
       company_details: "- Firmendetails"
       internship_details: "- Praktikumsdetails"
-      contract_details: "- Praktikumsvertrag"
-      lsf_ausdruck: "- Ausdruck deiner Noten aus dem LSF"
+      lsf_ausdruck: "Bitte vergewissere dich, ob du deine Notenübersicht aus dem LSF ausgedruckt hast."
       clear: "Möchtest du deinen Antrag jetzt wirklich ausdrucken?"
 
   users:

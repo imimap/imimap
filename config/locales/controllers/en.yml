@@ -106,8 +106,7 @@ en:
       personal_details: "- Personal Details"
       company_details: "- Company Details"
       internship_details: "- Internship Details"
-      contract_details: "- Contract"
-      lsf_ausdruck: "- Grade Printout from the LSF"
+      lsf_ausdruck: "Please make sure, that you have your grades printed out from the LSF."
       clear: "Do you want to print out your registration now?"
   users:
     name: "Users"
