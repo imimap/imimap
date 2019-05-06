@@ -36,7 +36,6 @@ class CompaniesController < ApplicationResourceController
   end
 
   def edit
-    @variable_test = params[:variable_test]
     @company = Company.find(params[:id])
     return unless @current_user.student
 
