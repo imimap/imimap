@@ -1,0 +1,40 @@
+<div id="form-block4" class="text-left">
+
+<div class="container">
+
+  <h3>Meintest du eine der Firmen?</h3>
+
+  <div class="row">
+    <div class="col-md-4">
+    <% if @company_suggestion.name %>
+      <% @company_suggestion.each do |c|%>
+        <ul class="list-group">
+          <li class="list-group-item"><%= c.name %></li>
+        </ul>
+        <% end %>
+    <% end %>
+    </div>
+  </div>
+
+ <div class="row">
+    <div class="col-md-4">
+      <h3>Keine aus der oberen Liste</h3>
+        <%= params[:name]%>
+    </div>
+  </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field" id="field-titles2">
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</div>

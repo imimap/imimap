@@ -7,7 +7,7 @@ class Ability
   def initialize(user)
     return unless user.present?
 
-    can %i[create_and_save new create], [Company, CompanyAddress]
+    can %i[create_and_save new create select_company suggest], [Company, CompanyAddress]
     can %i[edit show update], [Company, CompanyAddress], student: { user: user }
     can :read, InternshipOffer
     can :map_cities, Internship

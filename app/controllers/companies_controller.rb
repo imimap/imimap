@@ -102,6 +102,10 @@ class CompaniesController < ApplicationResourceController
     params.require(:company).permit(CompaniesController.permitted_params)
   end
 
+  def suggest
+    @company_suggestion = Company.where('name = ?', params[:name])
+  end
+
   private
 
   def set_company
@@ -116,8 +120,5 @@ class CompaniesController < ApplicationResourceController
     @company = Company.new(company_params)
   end
 
-  def select_company
-    current_user
-    @company = Company.new
-  end
+  def select_company; end
 end

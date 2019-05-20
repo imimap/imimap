@@ -29,6 +29,7 @@ en:
       recommended: "Recommended"
       not_recommended: "Not Recommended"
     continue_to_address: "Continue to Address"
+    continue: "Continue"
   internships:
     student: 'Student'
     company_v2: 'Company'

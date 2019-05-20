@@ -28,6 +28,7 @@ de:
       recommended: "Empfohlen"
       not_recommended: "nicht Empfohlen"
     continue_to_address: "Weiter zur Adresse"
+    continue: "Weiter"
 
   internships:
     statistic: "Übersicht über die Länder pro Semester"

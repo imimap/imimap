@@ -35,7 +35,6 @@ Rails.application.routes.draw do
       post 'newAddress/:company_id',
            to: 'company_addresses#create_and_save',
            as: 'create_and_save'
-
       get 'select_company/',
           to: 'companies#select_company',
           as: 'select_company'
@@ -44,6 +43,7 @@ Rails.application.routes.draw do
           to: 'complete_internships#internship_data',
           as: 'my_internship'
       post 'my_internship', to: 'company_addresses#create_and_save'
+      post 'select_company/', to: 'companies#suggest'
     end
     ActiveAdmin.routes(self)
   end
