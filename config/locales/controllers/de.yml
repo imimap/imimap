@@ -9,6 +9,8 @@ de:
       editcompany: "Firma Bearbeiten"
     new:
       newcompany: "Schritt 1: Neue Firma Erstellen"
+    select:
+      companyname: "Schritt 1: Firmenname"
     attributes:
       department: "Abteilung"
       rating: "Durchschnittswertung"
@@ -29,6 +31,9 @@ de:
       not_recommended: "nicht Empfohlen"
     continue_to_address: "Weiter zur Adresse"
     continue: "Weiter"
+    give_name: "Gib den Namen deiner Praktikums-Firma an:"
+    suggestion: "Meintest du eine dieser Firmen?"
+    no_match: "Nein, erstelle eine neue Firma mit diesem Namen:"
 
   internships:
     statistic: "Übersicht über die Länder pro Semester"

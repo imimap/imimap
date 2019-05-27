@@ -49,6 +49,11 @@ de:
         longitude: Länge
         company: Firma
         create: Firmenaddresse Erstellen
+        choose_company_address: "Wähle aus eine der bestehenden Adressen:"
+        new_company_address: "Oder lege eine neue Adresse an: "
+        details: "Details zur Firmenadresse"
+        submit: "Speichern"
+
       internship:
         student: Student_in
         company: Firma

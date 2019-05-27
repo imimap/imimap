@@ -29,7 +29,6 @@ class CompanyAddressesController < ApplicationResourceController
 
   def suggest_address
     @company_address_suggestion = CompanyAddress.where('company_id = ?', params[:company_id])
-    puts @company_address_suggestion.nil?
   end
 
   def create

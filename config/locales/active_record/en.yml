@@ -22,6 +22,10 @@ en:
         longitude: Longitude
         company: Company
         create: Create Company Address
+        choose_company_address: "Choose one of the existing addresses:"
+        new_company_address: "Or create a new one:"
+        details: "Company Address Details"
+        submit: "Save"
       internship:
         programming_language_ids: Programming languages
       internship_offer:

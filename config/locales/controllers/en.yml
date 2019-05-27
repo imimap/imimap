@@ -9,6 +9,8 @@ en:
       editcompany: "Editing Company"
     new:
       newcompany: "Step 1: Create New Company"
+    select:
+      companyname: "Step 1: Company Name"
     attributes:
       department: "department"
       rating: "Average Rating"
@@ -30,6 +32,9 @@ en:
       not_recommended: "Not Recommended"
     continue_to_address: "Continue to Address"
     continue: "Continue"
+    give_name: "Give the name of your internship company:"
+    suggestion: "Did you mean one of those companies?"
+    no_match: "No, create a new company with the following name:"
   internships:
     student: 'Student'
     company_v2: 'Company'
