@@ -1,4 +1,56 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_company_address_path(@company_address) %> |
-<%= link_to 'Back', :back %>
+<%= bootstrap_form_for @company_address, :url => {:action => "save_address", :internship_id => params[:internship_id], :id => params[:id] } do |f| %>
+<div id="form-block4" class="text-left">
+  <h3> Company Address Details </h3>
+  <div class="row">
+    <div class="col-md-4">
+      <div id="field-titles">
+      <%=t "students.attributes.enrolment_number" %><br>
+    <span class="form-control-static"><%=@company_address.street%></span><br><br>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div id="field-titles">
+        <%=t "students.attributes.email" %><br>
+      <span class="form-control-static"><%=@company_address.zip %></span><br><br>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div id="field-titles">
+      <%=t "students.attributes.enrolment_number" %><br>
+    <span class="form-control-static"><%=@company_address.city%></span><br><br>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div id="field-titles">
+        <%=t "students.attributes.email" %><br>
+      <span class="form-control-static"><%=@company_address.country %></span><br><br>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div id="field-titles">
+      <%=t "students.attributes.enrolment_number" %><br>
+    <span class="form-control-static"><%=@company_address.phone%></span><br><br>
+      </div>
+    </div>
+  </div>
+
+    <div class="row">
+      <div>
+        <div class="field" id="field-titles2">
+        <%= f.button :submit%>
+        </div>
+      </div>
+    </div>
+
+    <%= link_to t('buttons.back'), :back %>
+  </div>
+
+  <% end %>

@@ -44,6 +44,8 @@ Rails.application.routes.draw do
           as: 'my_internship'
       post 'my_internship', to: 'company_addresses#create_and_save'
       post 'select_company/', to: 'companies#suggest'
+      get 'suggest_address/', to: 'company_addresses#suggest_address'
+      patch 'show/', to: 'company_addresses#save_address'
     end
     ActiveAdmin.routes(self)
   end

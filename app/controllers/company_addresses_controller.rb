@@ -2,13 +2,15 @@
 
 # Controller for CompanyAddresses
 class CompanyAddressesController < ApplicationResourceController
-  before_action :set_company_address, only: %i[show edit update destroy]
+  before_action :set_company_address, only: %i[edit update destroy]
 
   def index
     @company_addresses = CompanyAddress.all
   end
 
-  def show; end
+  def show
+    @company_address = CompanyAddress.find(params[:id])
+   end
 
   def new
     @company_address = CompanyAddress.new
@@ -25,6 +27,11 @@ class CompanyAddressesController < ApplicationResourceController
 
   def edit; end
 
+  def suggest_address
+    @company_address_suggestion = CompanyAddress.where('company_id = ?', params[:company_id])
+    puts @company_address_suggestion.nil?
+  end
+
   def create
     @company_address = CompanyAddress.new(company_address_params)
     respond_to do |format|
@@ -40,6 +47,21 @@ class CompanyAddressesController < ApplicationResourceController
         render :new, notice: "Company address couldn't be created."
       end
     end
+  end
+
+  def save_address
+    # @company_address = CompanyAddress.find(params[:id])
+    @internship = @current_user.student
+                               .complete_internship
+                               .internships
+                               .find(
+                                 params[:internship_id]
+                               )
+    @internship.update_attribute(:company_address_id, params[:id])
+
+    redirect_to complete_internship_path(
+      @current_user.student.complete_internship
+    ), notice: 'Company Address was successfully saved.'
   end
 
   def update

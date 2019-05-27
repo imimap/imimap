@@ -5,6 +5,7 @@
 class CompanyAddress < ApplicationRecord
   belongs_to :company
   has_many :internships
+  validates :street, :country, :city, presence: true
   validates_presence_of :company
 
   def one_line

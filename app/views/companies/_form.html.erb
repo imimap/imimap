@@ -18,7 +18,11 @@
     <div class="col-md-4">
       <div class="field" id="field-titles">
         <%= f.label t "companies.attributes.name2" %>
+        <% if params[:name] %>
+        <%= f.text_field :name, value: params[:name], skip_label: true  %>
+        <% else %>
         <%= f.text_field :name, skip_label: true %>
+        <%end%>
       </div>
     </div>
 
@@ -48,9 +52,7 @@
         <%= f.text_field :website %>
       </div>
     </div>
-
   </div>
-
   <div class="row">
     <div class="col-md-4">
       <div class="field" id="field-titles2">
@@ -58,6 +60,5 @@
       </div>
     </div>
   </div>
-
   <% end %>
 </div>

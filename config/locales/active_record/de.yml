@@ -36,13 +36,13 @@ de:
       company_address:
         new_address_heading: "Schritt 2: Erstelle eine neue Firmenaddresse"
         street: Straße
-        street1: Straße *
+        street1: Straße **
         zip: Postleitzahl
         zip1: Postleitzahl *
         city: Stadt
-        city1: Stadt *
+        city1: Stadt **
         country: Land
-        country1: Land *
+        country1: Land **
         phone: Telefon
         fax: Fax
         latitude: Breite
