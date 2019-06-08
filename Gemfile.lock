@@ -117,7 +117,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
-    chartkick (2.3.5)
+    chartkick (3.2.0)
     chosen-rails (1.8.7)
       coffee-rails (>= 3.2)
       railties (>= 3.0)
@@ -427,7 +427,7 @@ DEPENDENCIES
   capistrano
   capybara
   carrierwave
-  chartkick (~> 2.2)
+  chartkick (~> 3.2.0)
   chosen-rails
   coffee-rails
   country_select
@@ -471,4 +471,4 @@ DEPENDENCIES
   unicorn
 
 BUNDLED WITH
-   1.16.6
+   1.17.3
