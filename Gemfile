@@ -49,7 +49,7 @@ gem 'uglifier', '>= 1.0.3'
 
 # gems used for charts
 gem 'active_median', '~> 0.1'
-gem 'chartkick', '~> 2.2'
+gem 'chartkick', '~> 3.2.0'
 gem 'groupdate', '~> 3.2'
 
 gem 'factory_bot_rails'
