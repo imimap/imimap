@@ -117,7 +117,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
-    chartkick (3.2.0)
+    chartkick (2.3.5)
     chosen-rails (1.8.7)
       coffee-rails (>= 3.2)
       railties (>= 3.0)
@@ -427,7 +427,7 @@ DEPENDENCIES
   capistrano
   capybara
   carrierwave
-  chartkick (~> 3.2.0)
+  chartkick (~> 2.2)
   chosen-rails
   coffee-rails
   country_select
@@ -455,7 +455,7 @@ DEPENDENCIES
   prawn-table
   rack-mini-profiler
   railroady
-  rails (~> 5.2.3)
+  rails (~> 5.2.1)
   rails-controller-testing
   rspec-mocks
   rspec-rails (~> 3)
