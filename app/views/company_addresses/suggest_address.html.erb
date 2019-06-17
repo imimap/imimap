@@ -8,7 +8,7 @@
         <% @company_address_suggestion.each do |cs|%>
         <ul class="list-group">
           <li class="list-group-item">
-            <%= link_to cs.street, company_address_path(:id => cs.id, :internship_id => params[:internship_id])%>
+            <%= link_to cs.street, company_address_path(:id => cs.id, :internship_id => params[:internship_id], :company_id => params[:company_id])%>
           </li>
         </ul>
         <%end%>

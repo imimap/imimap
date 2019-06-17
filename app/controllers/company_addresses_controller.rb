@@ -10,7 +10,8 @@ class CompanyAddressesController < ApplicationResourceController
   end
 
   def show
-    @company_address = CompanyAddress.find(params[:id])
+    company = Company.find(params[:company_id])
+    @company_address = company.company_addresses.find(params[:id])
   end
 
   def new
