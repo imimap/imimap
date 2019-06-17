@@ -93,8 +93,11 @@ class Internship < ApplicationRecord
   end
 
   def all_internship_details_filled?
-    !(title.blank? || start_date.blank? || end_date.blank? ||
-      operational_area.blank? || orientation_id.blank? || tasks.blank? ||
-      working_hours.blank? || salary.blank?)
+    helper_array = [title, start_date, end_date, operational_area,
+                    orientation_id, tasks, working_hours, salary]
+    helper_array.each do |e|
+      return false if e.blank?
+    end
+    true
   end
 end

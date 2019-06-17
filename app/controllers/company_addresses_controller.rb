@@ -2,6 +2,7 @@
 
 # Controller for CompanyAddresses
 class CompanyAddressesController < ApplicationResourceController
+  include CompanyAddressesHelper
   before_action :set_company_address, only: %i[edit update destroy]
 
   def index
@@ -10,7 +11,7 @@ class CompanyAddressesController < ApplicationResourceController
 
   def show
     @company_address = CompanyAddress.find(params[:id])
-   end
+  end
 
   def new
     @company_address = CompanyAddress.new
@@ -19,43 +20,30 @@ class CompanyAddressesController < ApplicationResourceController
   def new_address
     @company_address = CompanyAddress.new
     @company = Company.find(params[:company_id])
-    @internship = @current_user.student
-                               .complete_internship
-                               .internships
-                               .find(params[:internship_id])
+    @internship = find_internship
   end
 
   def edit; end
 
   def suggest_address
-    @company_address_suggestion = CompanyAddress.where('company_id = ?', params[:company_id])
+    @company_address_suggestion = CompanyAddress.where('company_id = ?',
+                                                       params[:company_id])
   end
 
   def create
     @company_address = CompanyAddress.new(company_address_params)
     respond_to do |format|
       if @company_address.save
-        format.html
-        # format.html do
-        #  redirect_to new_internship_path,
-        #             notice: 'Company & its Address were successfully created.'
-        # end
-        redirect_to complete_internship_path(current_user
-                                              .student.complete_internship)
+        redirect_to_ci(format)
       else
-        render :new, notice: "Company address couldn't be created."
+        format.html { render action: 'new', notice: 'Address creation failed.' }
       end
     end
   end
 
   def save_address
     # @company_address = CompanyAddress.find(params[:id])
-    @internship = @current_user.student
-                               .complete_internship
-                               .internships
-                               .find(
-                                 params[:internship_id]
-                               )
+    @internship = find_internship
     @internship.update_attribute(:company_address_id, params[:id])
 
     redirect_to complete_internship_path(
@@ -100,20 +88,9 @@ class CompanyAddressesController < ApplicationResourceController
         # case, but if Company#create isn't called from anywhere else,
         # why not. but if the company was specifically created for the
         # internship, it should be passed to the new internship.
-        @internship = @current_user.student
-                                   .complete_internship
-                                   .internships
-                                   .find(
-                                     params[:company_address][:internship_id]
-                                   )
+        @internship = find_internship_with_company_address
         @internship.update_attribute(:company_address_id, @company_address.id)
-
-        format.html do
-          redirect_to complete_internship_path(
-            @current_user.student.complete_internship
-          ),
-                      notice: 'Company Address was successfully created.'
-        end
+        redirect_to_ci(format)
       else
         format.html { render action: 'new' }
       end
