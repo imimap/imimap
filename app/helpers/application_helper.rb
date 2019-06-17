@@ -35,7 +35,8 @@ module ApplicationHelper
       locale_param = if request.path == root_path
                        root_path(locale: loc)
                      else
-                       params.permit(:locale).merge(locale: loc)
+                       params.permit(%i[locale internship_id company_id])
+                             .merge(locale: loc)
                      end
       concat content_tag(:li, (link_to_unless_current loc, locale_param),
                          class: "locale-#{loc}")

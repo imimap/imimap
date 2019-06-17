@@ -24,6 +24,10 @@ class Semester < ApplicationRecord
     Semester.create(sid: sid)
   end
 
+  def previous
+    Semester.for_date(start_day - 6.months)
+  end
+
   def next
     Semester.for_date(start_day + 6.months)
   end

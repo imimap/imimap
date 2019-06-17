@@ -1,4 +1,7 @@
 en:
+  forms:
+    what_do_stars_mean1: "The with '*' marked Fields are necessary for a complete Registration. But you can save your changes without filling these in."
+    what_do_stars_mean2: "The with '**' marked Fields need to be filled in to save your changes."
   complete_internship:
     first_name: First Name
     last_name: Last Name

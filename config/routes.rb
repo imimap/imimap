@@ -27,10 +27,14 @@ Rails.application.routes.draw do
       get 'logout', to: 'devise/sessions#destroy', as: 'logout'
       get 'statistic', to: 'statistic#overview'
       delete 'destroy', to: 'devise/notifications#destroy'
+
       get 'rating', to: 'internships#rating', as: 'rating'
       get 'newAddress/:company_id',
           to: 'company_addresses#new_address',
           as: 'new_address'
+      post 'newAddress/:company_id',
+           to: 'company_addresses#create_and_save',
+           as: 'create_and_save'
       get 'select_company/',
           to: 'companies#select_company',
           as: 'select_company'
@@ -38,6 +42,10 @@ Rails.application.routes.draw do
       get 'my_internship',
           to: 'complete_internships#internship_data',
           as: 'my_internship'
+      post 'my_internship', to: 'company_addresses#create_and_save'
+      post 'select_company/', to: 'companies#suggest'
+      get 'suggest_address/', to: 'company_addresses#suggest_address'
+      patch 'show/', to: 'company_addresses#save_address'
     end
     ActiveAdmin.routes(self)
   end

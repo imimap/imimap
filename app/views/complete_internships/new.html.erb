@@ -5,11 +5,5 @@
     <%= render 'form', complete_internship: @complete_internship %>
   </div>
 
-  <% if current_user %>
-    <% if current_user.student? %>
-      <%= link_to t('buttons.back'), my_internship_path %>
-    <% end %>
-  <% else %>
-    <%= link_to t('buttons.back'), complete_internship_path %>
-  <% end %>
+    <%= link_to t('buttons.back'), :back %>
 </div>

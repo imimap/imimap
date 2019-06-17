@@ -1,5 +1,6 @@
 
-<%= form_for(@company_address) do |f| %>
+<div class="container">
+  <%= bootstrap_form_for @company_address do |f| %>
   <% if @company_address.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@company_address.errors.count, "error") %> prohibited this company_address from being saved:</h2>
@@ -12,44 +13,53 @@
     </div>
   <% end %>
 
+<div class="row">
   <div class="col-md-4">
       <div class="field" id="field-titles">
-        <%= f.label t "companies.attributes.street" %><br/>
-        <%= f.text_field :street %>
+        <%= f.label t "activerecord.attributes.company_address.street1" %>
+        <%= f.text_field :street, skip_label: true  %>
       </div>
     </div>
+  </div>
+
+  <div class="row">
     <div class="col-md-2">
       <div class="field" id="field-titles">
-        <%= f.label t "companies.attributes.zip" %><br/>
-        <%= f.number_field :zip %>
+        <%= f.label t "activerecord.attributes.company_address.zip1" %>
+        <%= f.number_field :zip, skip_label: true  %>
       </div>
     </div>
       <div class="col-md-4">
       <div class="field" id="field-titles">
-        <%= f.label t "companies.attributes.city" %><br/>
-        <%= f.text_field :city %>
+        <%= f.label t "activerecord.attributes.company_address.city1" %>
+        <%= f.text_field :city , skip_label: true %>
       </div>
     </div>
+  </div>
+
+  <div class="row">
     <div class="col-md-4">
       <div class="field" id="field-titles">
-        <%= f.label t "companies.attributes.country" %><br/>
+        <%= f.label t "activerecord.attributes.company_address.country1" %> <br>
         <%= f.country_select :country, ["United States"], class: 'chzn-select' %>
       </div>
     </div>
+  </div>
+
+  <div class="row">
 <div class="col-md-4">
       <div class="field" id="field-titles">
-        <%= f.label t "companies.attributes.phone" %><br />
         <%= f.number_field :phone %>
       </div>
     </div>
+  </div>
 
     <div class="row">
-  <div class="pull-right">
-   <div class="actions">
-    <%= button_tag(type: 'submit', class: "btn btn-success") do %>
-    <i class="icon-ok icon-white"></i> <%= t("company_addresses.create")%>
-    <% end %>
-  </div>
-  </div>
-  </div>
+      <div class="col-md-4">
+        <div class="field" id="field-titles2">
+        <%= f.submit t('save')%>
+        </div>
+      </div>
+    </div>
 <% end %>
+</div>

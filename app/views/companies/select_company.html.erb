@@ -1,37 +1,28 @@
+<div id="form-block4" class="text-left">
+
 <div class="container">
-  <%= bootstrap_form_for(@company) do |f| %>
-  <% if @company.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
+  <%= bootstrap_form_tag do |f| %>
+  <%= f.hidden_field :i, :value => params[:internship_id] %>
 
-    <ul>
-      <% @company.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
 
-  <h3>Company Details</h3>
-  <p>Select your internship company :</p>
+  <h3><%= t "companies.select.companyname"%></h3>
+  <p><%= t"companies.give_name"%></p>
   <div class="row">
     <div class="col-md-4">
       <div class="field" id="field-titles">
-      <%= f.select :id, Company.order(:name).map { |c| [c.name, c.id]}, class: 'chzn-select', disabled: false, hide_label: true %>
-      </div>
-      <div class="actions btn btn-success">
-        <span onclick="createAddress()" > GO </span>
+      <%=f.text_field :name %>
+    </div>
+  </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field" id="field-titles2">
+        <%= f.submit  t"companies.continue" %>
       </div>
     </div>
-</div>
+  </div>
 
 <% end %>
 </div>
-
-<script>
-    function createAddress(){
-        var selectedCompanyId = $("#company_id").val();
-        window.location.href=<%= new_address_path %> + selectedCompanyId;
-    }
-
-</script>
+</div>
