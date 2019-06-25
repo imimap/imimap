@@ -83,6 +83,8 @@ class CompanyAddressesController < ApplicationResourceController
 
   def create_and_save
     @company_address = CompanyAddress.new(company_address_params)
+    @company = Company.find(params[:company_id])
+    @internship = find_internship_with_company_address
     respond_to do |format|
       if @company_address.save
         # CodeReviewSS17 seems a bit too specific for the general create
@@ -93,7 +95,7 @@ class CompanyAddressesController < ApplicationResourceController
         @internship.update_attribute(:company_address_id, @company_address.id)
         redirect_to_ci(format)
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'new_address' }
       end
     end
   end
