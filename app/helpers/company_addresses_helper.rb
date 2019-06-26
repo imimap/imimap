@@ -14,9 +14,10 @@ module CompanyAddressesHelper
     @current_user.student
                  .complete_internship
                  .internships
-                 .find(
-                   params[:company_address][:internship_id]
+                 .find(42
+                #   params[:company_address][:internship_id]
                  )
+                 nil
   end
 
   def find_internship

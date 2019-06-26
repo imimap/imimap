@@ -85,10 +85,6 @@ class CompanyAddressesController < ApplicationResourceController
     @company_address = CompanyAddress.new(company_address_params)
     respond_to do |format|
       if @company_address.save
-        # CodeReviewSS17 seems a bit too specific for the general create
-        # case, but if Company#create isn't called from anywhere else,
-        # why not. but if the company was specifically created for the
-        # internship, it should be passed to the new internship.
         @internship = find_internship_with_company_address
         @internship.update_attribute(:company_address_id, @company_address.id)
         redirect_to_ci(format)
