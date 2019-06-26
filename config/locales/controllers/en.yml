@@ -173,7 +173,9 @@ en:
 
   welcome:
     help:
-      header: "Help"
+      header: "Welcome to the IMI-Map!"
+      description: "The IMI-Map's purpose is to make the application for your mandatory internship in international media and computing with the internship officer a little easier. Under the tab 'My Internship' you can register when you want to enroll for the entire module B20. The module B20 consists of the modules B20.1, 'Auswertung von Erfahrungen am Praxisplatz', and B20.2, the internship itself. Once you have told us that you can register one internship or multiple partial internships. This information is mostly the same that will be required for the application form itself. You giving us this information will allow the internship officer to go into more detail with you when you visit his/her office hours to hand in your application."
+      questions: "Here are some frequently asked questions:"
       question1: "I don't know what to enter in a field of the internship application form."
       answer1: "Leave those fields blank where you are unsure about what to enter. Print the application form anyway and discuss the missing fields with the internship officer when handing in the form."
       question2: "I have another question. What should I do?"
