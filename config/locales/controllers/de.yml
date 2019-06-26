@@ -188,14 +188,24 @@ de:
     semester_of_study: "Fachsemester"
     semester_of_study1: "("
     semester_of_study2: ". Fachsemester)"
-    aep: "AEP"
-    aep_value:
-      false: "Veranstaltung 'Auswertung der Erfahrungen am Arbeitsplatz' noch nicht bestanden"
-      true: "Veranstaltung 'Auswertung der Erfahrungen am Arbeitsplatz' bestanden"
-    passed: "Passed"
-    passed_value:
-      false: "Praktikum (Modul B20) noch nicht bestanden"
-      true: "Praktikum (Modul B20) bestanden"
+    aep:
+      number: "B20.1"
+      name: "Auswertung von Erfahrungen am Praxisplatz"
+      values:
+        false: "noch nicht bestanden"
+        true: "bestanden"
+    parcial_internships:
+      number: "B20.2"
+      name: "Fachpraktikum"
+      values:
+        false: "noch nicht bestanden"
+        true: "bestanden"
+    ci:
+      number: "B20"
+      name: "Praxisphase 1: Fachpraktikum im Ausland"
+      values:
+        false: "noch nicht bestanden"
+        true: "bestanden"
     internship: "Praktikum"
     company: "Firma"
     number_of_internships: "Anzahl der Teilpraktika"

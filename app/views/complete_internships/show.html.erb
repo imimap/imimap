@@ -11,15 +11,47 @@
       <% end %>
     </h4>
     <br>
-    <div>
-      <strong><%= t "complete_internships.aep" %>:</strong>
-      <%= t "complete_internships.aep_value.#{@complete_internship.aep}" %>
+
+
+    <div class="card mb-3">
+      <div class="card-body">
+        <p class="card-text">
+
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col" colspan="2">Modulnummer</th>
+                <th scope="col">Modulname</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" colspan="2"><%= t "complete_internships.ci.number" %></th>
+                <td><%= t "complete_internships.ci.name" %></td>
+                <td><%= t "complete_internships.ci.values.#{@complete_internship.aep}" %></td>
+              </tr>
+              <tr>
+                <th></th>
+                <th scope="row"><%= t "complete_internships.aep.number" %></th>
+                <td><%= t "complete_internships.aep.name" %></td>
+                <td><%= t "complete_internships.aep.values.#{@complete_internship.aep}" %></td>
+              </tr>
+              <tr>
+                <th></th>
+                <th scope="row"><%= t "complete_internships.parcial_internships.number" %></th>
+                <td><%= t "complete_internships.parcial_internships.name" %></td>
+                <td><%= t "complete_internships.parcial_internships.values.#{@complete_internship.aep}" %></td>
+              </tr>
+            </tbody>
+          </table>
+
+        </p>
+      </div>
     </div>
-    <div>
-      <strong><%= t "complete_internships.passed" %>:</strong>
-      <%= t "complete_internships.passed_value.#{@complete_internship.passed}" %>
-    </div>
-    <br>
+
+
+
 
     <% if @complete_internship.student %>
       <div class="card-deck">
