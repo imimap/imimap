@@ -40,6 +40,7 @@ de:
     statistic: "Übersicht über die Länder pro Semester"
     my: "Meine Praktika"
     others: "Andere Praktika bei dieser Firma"
+    internship_details: "Praktikumsdetails"
     details: "Wann möchtest du dein Praktikum absolvieren?"
     details2: "Für uns zählt, wann du dein AEP (Modul B20.1: Auswertung von Erfahrungen am Praxisplatz) belegen möchtest."
     name: "Praktika"
@@ -200,7 +201,8 @@ de:
     number_of_internships: "Anzahl der Teilpraktika"
     no_internships: "Du hast noch kein Praktikum angemeldet."
     new: "Neues Praktikum"
-    new_tp: "Neues Praktikum"
+    new_tp0: "Neue Praktikumsinformationen eintragen!"
+    new_tp: "Weiteres Teilpraktikum eintragen!"
     edit: "Praktikum Bearbeiten"
     create: "Erstellen"
     checklist:

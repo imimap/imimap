@@ -42,6 +42,7 @@ en:
     statistic: "Overview per Semester"
     my: "Meine Praktika"
     others: "Other internships done here"
+    internship_details: "Internship Details"
     details: "When do you want to do your internship?"
     details2: "For us is important when you are planning to enroll in the AEP (Module B20.1: 'Auswertung von Erfahrungen am Praxisplatz')."
     name: "Internships"
@@ -202,7 +203,8 @@ en:
     number_of_internships: "Number of Internships"
     no_internships: "You haven't started an internship application yet"
     new: "New Internship"
-    new_tp: "New Internship"
+    new_tp0: "Add new Internship Information!"
+    new_tp: "Add another partial Internship!"
     edit: "Edit Internship"
     create: "Create"
     checklist:
