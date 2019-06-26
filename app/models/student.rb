@@ -21,6 +21,11 @@ class Student < ApplicationRecord
     user.present?
   end
 
+  def birthday?
+    birthday.try(:month) == Date.today.month &&
+      birthday.try(:day) == Date.today.day
+  end
+
   def name
     name = "#{first_name} #{last_name}"
     name.empty? ? email : name
