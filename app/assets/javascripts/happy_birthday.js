@@ -2,6 +2,8 @@ $(window).on("load",function(){
    $("#modal").modal("show");
  });
 
+
+// by Markus Tran (@Pillowfication) - https://codepen.io/Pillowfication/pen/PNEJbY
 function startConfetti() {
 var onlyOnKonami = false;
 
