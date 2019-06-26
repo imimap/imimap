@@ -22,7 +22,8 @@ class Student < ApplicationRecord
   end
 
   def birthday?
-    birthday.try(:month) == Date.today.month && birthday.try(:day) == Date.today.day
+    birthday.try(:month) == Date.today.month &&
+      birthday.try(:day) == Date.today.day
   end
 
   def name

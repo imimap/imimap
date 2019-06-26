@@ -95,12 +95,20 @@ while (measure) {
    //         c--d          Split interval
    //       a------b
    if (a >= c && a < d) {
-    if (b > d) domain[l] = d; // Move interior (Left case)
-    else domain.splice(l, 2); // Delete interval
+    if (b > d) {
+      domain[l] = d; // Move interior (Left case)
+    }
+    else {
+      domain.splice(l, 2); // Delete interval
+    }
   }
    else if (a < c && b > c) {
-    if (b <= d) domain[i] = c; // Move interior (Right case)
-    else domain.splice(i, 0, c, d); // Split interval
+    if (b <= d) {
+      domain[i] = c; // Move interior (Right case)
+    }
+    else {
+      domain.splice(i, 0, c, d); // Split interval
+    }
   }
  }
 
@@ -196,8 +204,9 @@ if (!frame) {
  var theme = colorThemes[onlyOnKonami ? colorThemes.length * random()|0 : 0]
    , count = 0;
  (function addConfetto() {
-   if (onlyOnKonami && ++count > particles)
-   return timer = undefined;
+   if (onlyOnKonami && ++count > particles) {
+     return timer = undefined;
+   }
 
    var confetto = new Confetto(theme);
    confetti.push(confetto);
@@ -239,6 +248,8 @@ if (pointer === konami.length) {
 }
 });
 
-if (!onlyOnKonami) poof();
+if (!onlyOnKonami) {
+  poof();
+}
 });
 }
