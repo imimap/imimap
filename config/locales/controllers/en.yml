@@ -46,7 +46,7 @@ en:
     details: "When do you want to do your internship?"
     name: "Internships"
     create: "Create Internship"
-    createYourInternship: "Start now!"
+    createYourInternship: "Start now."
     update: "Update Internship"
     company_fact: "Company Short Facts"
     createInternship: "You have not given us any information yet."
@@ -196,27 +196,27 @@ en:
       number: "B20.1"
       name: "Auswertung von Erfahrungen am Praxisplatz"
       values:
-        false: "not yet passed"
+        false: "still open"
         true: "passed"
     parcial_internships:
       number: "B20.2"
       name: "Fachpraktikum"
       values:
-        false: "not yet passed"
+        false: "still open"
         true: "passed"
     ci:
       number: "B20"
       name: "Praxisphase 1: Fachpraktikum im Ausland"
       values:
-        false: "not yet passed"
+        false: "still open"
         true: "passed"
     internship: "Internship"
     company: "Company"
     number_of_internships: "Number of Internships"
     no_internships: "You haven't started an internship application yet"
     new: "New Internship"
-    new_tp0: "Add new Internship Information!"
-    new_tp: "Add another partial Internship!"
+    new_tp0: "Add Internship Information."
+    new_tp: "Add another partial Internship."
     edit: "Edit Internship"
     create: "Create"
     checklist:
