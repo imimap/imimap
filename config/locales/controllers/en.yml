@@ -42,13 +42,14 @@ en:
     statistic: "Overview per Semester"
     my: "Meine Praktika"
     others: "Other internships done here"
-    details: "Internship Details"
+    internship_details: "Internship Details"
+    details: "When do you want to do your internship?"
     name: "Internships"
     create: "Create Internship"
-    createYourInternship: "Create your internship now"
+    createYourInternship: "Start now."
     update: "Update Internship"
     company_fact: "Company Short Facts"
-    createInternship: "You do not have an internship yet"
+    createInternship: "You have not given us any information yet."
     index:
       title: "Internships in"
       select: 'Select'
@@ -190,20 +191,34 @@ en:
     semester_of_study: "Semester Of Study"
     semester_of_study1: "("
     semester_of_study2: ". Semester of Study)"
-    aep: "AEP"
-    aep_value:
-      false: "Course 'Auswertung der Erfahrungen am Arbeitsplatz' not yet passed"
-      true: "Course 'Auswertung der Erfahrungen am Arbeitsplatz' passed"
-    passed: "Passed"
-    passed_value:
-      false: "Internship (Module B20) not yet passed"
-      true: "Internship (Module B20) passed"
+    modulnumber: "Modulname"
+    modulname: "Modulnumber"
+    status: "Status"
+    aep:
+      number: "B20.1"
+      name: "Auswertung von Erfahrungen am Praxisplatz"
+      values:
+        false: "still open"
+        true: "passed"
+    parcial_internships:
+      number: "B20.2"
+      name: "Fachpraktikum"
+      values:
+        false: "still open"
+        true: "passed"
+    ci:
+      number: "B20"
+      name: "Praxisphase 1: Fachpraktikum im Ausland"
+      values:
+        false: "still open"
+        true: "passed"
     internship: "Internship"
     company: "Company"
     number_of_internships: "Number of Internships"
     no_internships: "You haven't started an internship application yet"
     new: "New Internship"
-    new_tp: "New Internship"
+    new_tp0: "Add Internship Information."
+    new_tp: "Add another partial Internship."
     edit: "Edit Internship"
     create: "Create"
     checklist:

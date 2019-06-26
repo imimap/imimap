@@ -28,7 +28,7 @@ describe 'Complete Internship' do
           visit my_internship_path
           click_link(t('internships.createYourInternship'))
           click_on t('save')
-          click_on t('complete_internships.new_tp')
+          click_on t('complete_internships.new_tp0')
           expect(page).to have_field('Semester')
           click_on t('save')
           # not finished yet
