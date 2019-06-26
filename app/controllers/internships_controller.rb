@@ -120,6 +120,7 @@ class InternshipsController < ApplicationResourceController
                                .complete_internship
                                .internships
                                .find(params[:id])
+    @profs = ReadingProf.order(:id).map { |p| [p.name, p.id] }
   end
 
   # PUT /internships/1
