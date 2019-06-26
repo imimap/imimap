@@ -228,8 +228,9 @@ if (!frame) {
      }
    }
 
-   if (timer || confetti.length)
+   if (timer || confetti.length) {
      return frame = requestAnimationFrame(loop);
+   }
 
      // Cleanup
    document.body.removeChild(container);
