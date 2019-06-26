@@ -11,7 +11,7 @@ No Companies to show on Map.
 
 <script>
   <% if @current_user.try(:student).try(:birthday?)%>
-    <%= 'start_confetti();' %>
+    <%= 'startConfetti();' %>
   <%end%>
 
   // 2 shows whole world,
