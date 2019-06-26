@@ -40,13 +40,14 @@ de:
     statistic: "Übersicht über die Länder pro Semester"
     my: "Meine Praktika"
     others: "Andere Praktika bei dieser Firma"
-    details: "Praktikumsdetails"
+    details: "Wann möchtest du dein Praktikum absolvieren?"
+    details2: "Für uns zählt, wann du dein AEP (Modul B20.1: Auswertung von Erfahrungen am Praxisplatz) belegen möchtest."
     name: "Praktika"
     create: "Erstelle Praktikum"
-    createYourInternship: "Erstelle jetzt dein Praktikum"
+    createYourInternship: "Jetzt eintragen!"
     update: "Praktikum aktualisieren"
     company_fact: "Arbeitsplatz Kurzinfo"
-    createInternship: "Du hast noch kein Praktikum eingetragen"
+    createInternship: "Du hast noch keine Informationen eingetragen."
     index:
       title: "Praktika im"
       select: 'anzeigen'

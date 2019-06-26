@@ -42,13 +42,14 @@ en:
     statistic: "Overview per Semester"
     my: "Meine Praktika"
     others: "Other internships done here"
-    details: "Internship Details"
+    details: "When do you want to do your internship?"
+    details2: "For us is important when you are planning to enroll in the AEP (Module B20.1: 'Auswertung von Erfahrungen am Praxisplatz')."
     name: "Internships"
     create: "Create Internship"
-    createYourInternship: "Create your internship now"
+    createYourInternship: "Start now!"
     update: "Update Internship"
     company_fact: "Company Short Facts"
-    createInternship: "You do not have an internship yet"
+    createInternship: "You have not given us any information yet."
     index:
       title: "Internships in"
       select: 'Select'
