@@ -188,6 +188,9 @@ de:
     semester_of_study: "Fachsemester"
     semester_of_study1: "("
     semester_of_study2: ". Fachsemester)"
+    modulnumber: "Modulname"
+    modulname: "Modulnummer"
+    status: "Status"
     aep:
       number: "B20.1"
       name: "Auswertung von Erfahrungen am Praxisplatz"
