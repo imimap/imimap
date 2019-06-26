@@ -85,7 +85,7 @@
   <div class="pl-3">
     <div class="field" id="field-titles">
     <%= f.label t("internships.attributes.which_professor_should_read")%>
-    <%= f.select :reading_prof, ReadingProf.order(:id).map { |p| [p.name, p.id]}, class: 'chzn-select', disabled: false, skip_label: true  %>
+    <%= f.select :reading_prof_id, @profs, class: 'chzn-select', disabled: false, skip_label: true  %>
     </div>
   </div>
 </div>
