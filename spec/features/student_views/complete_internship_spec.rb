@@ -45,9 +45,6 @@ describe 'Complete Internship' do
           expect(page).to have_content(Semester.last.name)
         end
 
-        # t("complete_internships.checklist.personal_details")
-        # t("complete_internships.checklist.internship_details")
-
         it 'should save changes made in internship datails form
             (example reading_prof selection)' do
           create(:semester)
