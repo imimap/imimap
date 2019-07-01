@@ -25,7 +25,7 @@ describe 'complete_internships.checklist.print_form
   # end
   context 'user with s05... addresses' do
     before :each do
-      @user = create(:user_for_s05, email: 's051234@htw-berlin.de')
+      @user = create(:user_for_s05)
       sign_in(@user)
     end
     it 'dont see the feature' do
