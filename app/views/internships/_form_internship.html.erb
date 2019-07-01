@@ -5,7 +5,7 @@
   <div class="col-md-4">
     <div class="field" id="field-titles">
       <%= f.label :title, t("internships.attributes.title1") %>
-      <%= f.text_field :title, placeholder: "Game design website in Italy", skip_label: true  %>
+      <%= f.text_field :title, placeholder: t("internships.attributes.placeholder_title"), skip_label: true  %>
     </div>
   </div>
 
@@ -21,14 +21,14 @@
   <div class="col-md-4">
     <div class="field" id="field-titles">
       <%= f.label :start_date, t("internships.attributes.start_date1") %>
-      <%= f.date_field :start_date, skip_label: true  %>
+      <%= f.date_field :start_date, placeholder: t('date.formats.placeholder'), skip_label: true  %>
     </div>
   </div>
 
   <div class="col-md-4">
     <div class="field" id="field-titles">
       <%= f.label :end_date, t("internships.attributes.end_date1") %>
-      <%= f.date_field :end_date, skip_label: true  %>
+      <%= f.date_field :end_date, placeholder: t('date.formats.placeholder'), skip_label: true  %>
     </div>
   </div>
 </div>
@@ -36,14 +36,14 @@
 <div class="row">
   <div class="col-md-4">
     <div class="field" id="field-titles">
-      <%= f.label :operational_area, t("internships.attributes.operational_area1") %>
-      <%= f.text_field :operational_area, placeholder: "Visual Reality, Website, 3D", skip_label: true %>
+      <%= f.label :operational_area, t("internships.attributes.operational_area") %>
+      <%= f.text_field :operational_area, placeholder: t('internships.attributes.placeholder_oa'), skip_label: true %>
     </div>
   </div>
 
   <div class="col-md-4">
     <div class="field" id="field-titles">
-      <%= f.label :orientation_id, t("internships.attributes.orientation1") %>
+      <%= f.label :orientation_id, t("internships.attributes.orientation") %>
     <%= f.select :orientation_id, orientations, class: 'chzn-select', skip_label: true  %>
     </div>
   </div>
@@ -53,14 +53,13 @@
   <div class="col-md-4">
     <div class="field" id="field-titles">
       <%= f.label :tasks, t("internships.attributes.tasks1") %>
-      <%= f.text_area :tasks, size: "4x5", placeholder: "Make and manage the company website, Make CSS for client websites", skip_label: true  %>
+      <%= f.text_area :tasks, size: "4x5", placeholder: t("internships.attributes.placeholder_tasks"), skip_label: true  %>
     </div>
   </div>
 
   <div class="col-md-4">
   <div class="field" id="field-titles">
-    <%= f.label :programming_language_ids, t("internships.attributes.programming_language1") %>
-    <%= f.select :programming_language_ids, @programming_languages, {}, { :multiple => true, class: 'chzn-select', skip_label: true } %>
+    <%= f.select :programming_language_ids, @programming_languages, {}, { :multiple => true, class: 'chzn-select'} %>
 </div>
   </div>
 </div>
@@ -68,14 +67,14 @@
 <div class="row">
   <div class="col-md-4">
     <div class="field" id="field-titles">
-      <%= f.label :working_hours, t("internships.attributes.working_hours1") %>
+      <%= f.label :working_hours, t("internships.attributes.working_hours") %>
       <%= f.text_field :working_hours, hide_label: true, skip_label: true  %>
     </div>
   </div>
 
   <div class="col-md-4">
     <div class="field" id="field-titles">
-    <%= f.label :salary, t("internships.attributes.salary1")%>
+    <%= f.label :salary, t("internships.attributes.salary")%>
       <%= f.text_field :salary, hide_label: true, skip_label: true  %>
     </div>
   </div>
