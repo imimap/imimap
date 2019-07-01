@@ -19,13 +19,13 @@ describe 'complete_internships.checklist.print_form
       click_on t('save')
       expect(page).to have_content t(
         'complete_internships.checklist.print_form'
-      )
+      ), count: 2
     end
   end
   # end
   context 'user with s05... addresses' do
     before :each do
-      @user = create(:user_for_s05)
+      @user = create(:user_for_s05, email: 's051234@htw-berlin.de')
       sign_in(@user)
     end
     it 'dont see the feature' do
@@ -35,9 +35,10 @@ describe 'complete_internships.checklist.print_form
       click_on t('save')
       click_on t('complete_internships.new_tp0')
       click_on t('save')
+      # save_and_open_page
       expect(page).not_to have_content t(
         'complete_internships.checklist.print_form'
-      )
+      ), count: 2
     end
   end
 end
