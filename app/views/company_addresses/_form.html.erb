@@ -16,7 +16,7 @@
 <div class="row">
   <div class="col-md-4">
       <div class="field" id="field-titles">
-        <%= f.label t "activerecord.attributes.company_address.street1" %>
+        <%= f.label t "activerecord.attributes.company_address.street2" %>
         <%= f.text_field :street, skip_label: true  %>
       </div>
     </div>
@@ -26,12 +26,12 @@
     <div class="col-md-2">
       <div class="field" id="field-titles">
         <%= f.label t "activerecord.attributes.company_address.zip1" %>
-        <%= f.number_field :zip, skip_label: true  %>
+        <%= f.text_field :zip, skip_label: true  %>
       </div>
     </div>
       <div class="col-md-4">
       <div class="field" id="field-titles">
-        <%= f.label t "activerecord.attributes.company_address.city1" %>
+        <%= f.label t "activerecord.attributes.company_address.city2" %>
         <%= f.text_field :city , skip_label: true %>
       </div>
     </div>
@@ -40,7 +40,7 @@
   <div class="row">
     <div class="col-md-4">
       <div class="field" id="field-titles">
-        <%= f.label t "activerecord.attributes.company_address.country1" %> <br>
+        <%= f.label t "activerecord.attributes.company_address.country2" %> <br>
         <%= f.country_select :country, ["United States"], class: 'chzn-select' %>
       </div>
     </div>
@@ -49,7 +49,7 @@
   <div class="row">
 <div class="col-md-4">
       <div class="field" id="field-titles">
-        <%= f.number_field :phone %>
+        <%= f.text_field :phone %>
       </div>
     </div>
   </div>
