@@ -228,11 +228,12 @@ en:
       personal_details: Personal Details
       company_details: Company Details
       internship_details: Internship Details
-      contract: Contract
-      contract_original: Original
-      contract_copy: Copy
+      contract: I have my contract as
+      contract_original: an original
+      contract_copy: a copy
       lsf_ausdruck: Grade Printout from the LSF
       print_form: Print Form
+    icon-ok: " - If this sign appears the corresponding form is filled in completely"
     details:
       semester: Semester
       start_date: Start Date
