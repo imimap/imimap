@@ -72,6 +72,28 @@ describe 'Company Suggestion' do
             'Immobilienscout'
           )
         end
+
+        it 'should not progress when no name was given' do
+          visit my_internship_path
+          click_link(t('internships.createYourInternship'))
+          click_on t('save')
+          click_on t('complete_internships.new_tp0')
+          expect(page).to have_field('Semester')
+          click_on t('save')
+          expect(page).to have_content(
+            t('complete_internships.aep.number')
+          )
+          click_on t('complete_internships.checklist.company_details')
+          expect(page).to have_content(
+            t('companies.select.companyname')
+          )
+          fill_in('Name', with: '')
+          click_on t('companies.continue')
+          expect(page).to have_content(
+            t('companies.select.companyname')
+          )
+        end
+        end
       end
     end
   end
