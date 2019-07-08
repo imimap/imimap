@@ -41,8 +41,8 @@ describe 'Company Suggestion' do
 
         it 'should show me only similar matches' do
           create(:semester)
-          create(:company1)
-          create(:company2)
+          create(:company_1)
+          create(:company_2)
           create(:company_is24)
           visit my_internship_path
           click_link(t('internships.createYourInternship'))
