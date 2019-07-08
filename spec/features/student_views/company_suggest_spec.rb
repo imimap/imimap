@@ -29,7 +29,7 @@ describe 'Company Suggestion' do
           expect(page).to have_content(
             t('companies.select.companyname')
           )
-          fill_in('Name', :with => 'Testfirma')
+          fill_in('Name', with: 'Testfirma')
           click_on t('companies.continue')
           expect(page).not_to have_content(
             t('companies.suggestion')
@@ -37,9 +37,41 @@ describe 'Company Suggestion' do
           expect(page).to have_content(
             t('companies.no_match1')
           )
-
         end
 
+        it 'should show me only similar matches' do
+          create(:semester)
+          create(:company1)
+          create(:company2)
+          create(:company_is24)
+          visit my_internship_path
+          click_link(t('internships.createYourInternship'))
+          click_on t('save')
+          click_on t('complete_internships.new_tp0')
+          expect(page).to have_field('Semester')
+          click_on t('save')
+          expect(page).to have_content(
+            t('complete_internships.aep.number')
+          )
+          click_on t('complete_internships.checklist.company_details')
+          expect(page).to have_content(
+            t('companies.select.companyname')
+          )
+          fill_in('Name', with: 'CoMp')
+          click_on t('companies.continue')
+          expect(page).to have_content(
+            t('companies.suggestion')
+          )
+          expect(page).to have_content(
+            'Company 1'
+          )
+          expect(page).not_to have_content(
+            t('companies.no_match1')
+          )
+          expect(page).not_to have_content(
+            'Immobilienscout'
+          )
+        end
       end
     end
   end

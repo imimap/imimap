@@ -35,6 +35,7 @@ en:
     give_name: "Give the name of your internship company:"
     suggestion: "Did you mean one of those companies?"
     no_match: "No, create a new company with the following name:"
+    no_match1: "No company was found. With the link below you can create a new entry for a company with that name."
     company_address: "Editing Company Address"
   internships:
     student: 'Student'

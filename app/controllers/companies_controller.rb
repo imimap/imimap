@@ -103,7 +103,8 @@ class CompaniesController < ApplicationResourceController
   end
 
   def suggest
-    @company_suggestion = Company.where('name = ?', params[:name])
+    suggestion = '%' + params[:name].downcase + '%'
+    @company_suggestion = Company.where('lower(name) LIKE ?', suggestion)
   end
 
   private
