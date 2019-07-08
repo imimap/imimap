@@ -25,7 +25,11 @@
           <% end %>
       </h3>
         <li class="list-group-item">
-          <%= link_to params[:name], new_company_path(:name => params[:name], :internship_id => params[:i])%>
+          <% if @company_suggestion.pluck(:name).include?(params[:name]) %>
+            <%= link_to params[:name], suggest_address_path(:company_id => Company.find_by(name: params[:name]), :internship_id => params[:i])%>
+          <% else %>
+            <%= link_to params[:name], new_company_path(:name => params[:name], :internship_id => params[:i])%>
+          <% end %>
         </li>
       </ul>
     </div>

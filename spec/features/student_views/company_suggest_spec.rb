@@ -74,6 +74,7 @@ describe 'Company Suggestion' do
         end
 
         it 'should not progress when no name was given' do
+          create(:semester)
           visit my_internship_path
           click_link(t('internships.createYourInternship'))
           click_on t('save')
@@ -93,6 +94,29 @@ describe 'Company Suggestion' do
             t('companies.select.companyname')
           )
         end
+
+        it 'should not show me the link for creating a new company when there is one with the exact same name' do
+          create(:semester)
+          create(:company_1)
+          create(:company_2)
+          visit my_internship_path
+          click_link(t('internships.createYourInternship'))
+          click_on t('save')
+          click_on t('complete_internships.new_tp0')
+          expect(page).to have_field('Semester')
+          click_on t('save')
+          expect(page).to have_content(
+            t('complete_internships.aep.number')
+          )
+          click_on t('complete_internships.checklist.company_details')
+          expect(page).to have_content(
+            t('companies.select.companyname')
+          )
+          fill_in('Name', with: 'Company 1')
+          click_on t('companies.continue')
+          # expect(page).to have_link(
+          #  "Company 1", href:
+          # )
         end
       end
     end
