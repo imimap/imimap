@@ -2,8 +2,8 @@
 
 require 'rails_helper'
 
-describe 'complete_internships.checklist.print_form
-                                    is shown for factory users' do
+describe 'toggle student_can_print_internship_application:
+        complete_internships.checklist.print_form is shown for factory users' do
   # (1..1000).each do
   context 'student users' do
     before :each do
