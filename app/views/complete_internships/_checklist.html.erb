@@ -80,6 +80,8 @@
   </tbody>
 </table>
 
+  <!-- remove this feature toggle if the implementation of printing the form is done-->
+  <% if current_user.student? && FT.on?(:student_can_print_internship_application, current_user) %>
     <button type="button"
             class="btn btn-outline-success"
             data-toggle="modal"
@@ -89,6 +91,7 @@
                                 '<%= company_name_for_checklist(internship) %>')">
       <%= t("complete_internships.checklist.print_form") %>
     </button>
+  <% end %>
 
 <!--Popup-->
 <div class="modal fade" id="missing_information" tabindex="-1" role="dialog" aria-labelledby="missing_information_title" aria-hidden="true">
