@@ -49,19 +49,22 @@
           </label>
         </td>
       </tr>
-      <tr>
-        <td>
-            <button type="button"
-                    class="btn btn-outline-success"
-                    data-toggle="modal"
-                    data-target="#missing_information"
-                    onclick="fill_popup(<%=internship.id%>,
-                                        '<%= t "complete_internships.internship" %> @ ',
-                                        '<%= company_name_for_checklist(internship) %>')">
-              <%= t("complete_internships.checklist.print_form") %>
-            </button>
-        </td>
-      </tr>
+      <!-- remove this feature toggle if the implementation of printing the form is done-->
+      <% if current_user.student? && FT.on?(:student_can_print_internship_application, current_user) %>
+        <tr>
+          <td>
+              <button type="button"
+                      class="btn btn-outline-success"
+                      data-toggle="modal"
+                      data-target="#missing_information"
+                      onclick="fill_popup(<%=internship.id%>,
+                                          '<%= t "complete_internships.internship" %> @ ',
+                                          '<%= company_name_for_checklist(internship) %>')">
+                  <%= t("complete_internships.checklist.print_form") %>
+              </button>
+            </td>
+          </tr>
+      <% end %>
   </tbody>
 </table
 
