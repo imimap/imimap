@@ -1,23 +1,6 @@
 var count = 0;
 
-function radios_activated(internshipId) {
-  var checkboxId = "radio_contract_" + internshipId;
-  var contract = "contract_" + internshipId;
-  var radioOriginalId = "original_" + internshipId;
-  var radioCopyId = "copy_" + internshipId;
-  var cb = document.getElementById(checkboxId);
-  var iconOk = document.getElementById(contract);
-  var rdOriginal = document.getElementById(radioOriginalId);
-  var rdCopy = document.getElementById(radioCopyId);
-  if (rdOriginal.checked === true || rdCopy.checked === true) {
-    cb.checked = true;
-    iconOk.classList.remove("d-none");
-    iconOk.classList.add("d-block");
-    iconOk.style.display = "block";
-  }
-}
-
-function fill_popup(internshipId, title, companyName) {
+function fillPopup(internshipId, title, companyName) {
   count = 0;
   popupTitle(title, companyName);
   insertInfo("lsf_", internshipId, "lsf_ausdruck");
@@ -71,5 +54,22 @@ function contractInfo(internshipId) {
   } else {
     item.style.display = "block";
     clear.style.display = "none";
+  }
+}
+
+function radiosActivated(internshipId) {
+  var checkboxId = "radio_contract_" + internshipId;
+  var contract = "contract_" + internshipId;
+  var radioOriginalId = "original_" + internshipId;
+  var radioCopyId = "copy_" + internshipId;
+  var cb = document.getElementById(checkboxId);
+  var iconOk = document.getElementById(contract);
+  var rdOriginal = document.getElementById(radioOriginalId);
+  var rdCopy = document.getElementById(radioCopyId);
+  if (rdOriginal.checked === true || rdCopy.checked === true) {
+    cb.checked = true;
+    iconOk.classList.remove("d-none");
+    iconOk.classList.add("d-block");
+    iconOk.style.display = "block";
   }
 }

@@ -50,10 +50,10 @@
           </label>
           <br>
           <span class="ml-3">
-            <input type="radio" name="contract<%=internship.id%>" id="original_<%=internship.id%>" value="original" onclick="radios_activated(<%=internship.id%>)"> <%= t("complete_internships.checklist.contract_original") %>
+            <input type="radio" name="contract<%=internship.id%>" id="original_<%=internship.id%>" value="original" onclick="radiosActivated(<%=internship.id%>)"> <%= t("complete_internships.checklist.contract_original") %>
           </span>
           <span class="ml-3">
-            <input type="radio" name="contract<%=internship.id%>" id="copy_<%=internship.id%>" value="copy" onclick="radios_activated(<%=internship.id%>)"> <%= t("complete_internships.checklist.contract_copy") %>
+            <input type="radio" name="contract<%=internship.id%>" id="copy_<%=internship.id%>" value="copy" onclick="radiosActivated(<%=internship.id%>)"> <%= t("complete_internships.checklist.contract_copy") %>
           </span>
         </td>
         <td>
@@ -67,9 +67,6 @@
           </label>
         </td>
         <td>
-          <% if internship.all_internship_details_filled? %>
-          <i class="icon-ok icon-large text-success"></i>
-          <% end %>
         </td>
       </tr>
       <tr>
@@ -86,7 +83,7 @@
             class="btn btn-outline-success"
             data-toggle="modal"
             data-target="#missing_information"
-            onclick="fill_popup(<%=internship.id%>,
+            onclick="fillPopup(<%=internship.id%>,
                                 '<%= t "complete_internships.internship" %> @ ',
                                 '<%= company_name_for_checklist(internship) %>')">
       <%= t("complete_internships.checklist.print_form") %>
