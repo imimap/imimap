@@ -47,6 +47,7 @@ en:
     - Friday
     - Saturday
     formats:
+      placeholder: "YYYY-mm-dd"
       default: "%Y-%m-%d"
       long: "%B %d, %Y"
       short: "%b %d"
