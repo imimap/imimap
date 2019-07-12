@@ -71,7 +71,7 @@ en:
       orientation1: "Orientation *"
       programming_language: "Programming Language(s)"
       programming_language1: "Programming Language(s) *"
-      salary: "Salary"
+      salary: "Salary in € per Month"
       salary1: "Salary in € per Month *"
       salary2: "Salary/month"
       working_hours: "Working Hours"
@@ -84,8 +84,11 @@ en:
       end_date1: "End Date *"
       operational_area: "Operational Area"
       operational_area1: "Operational Area *"
+      placeholder_oa: "Virtual Reality, Website, 3D"
       tasks: "Tasks"
       tasks1: "Tasks *"
+      placeholder_tasks: "Make and manage the company website, Make CSS for client websites"
+      placeholder_title: "Game design website in Italy"
       living_costs2: "Cost of living/month"
       tasks_rating: "Tasks"
       training_rating: "Training success"
@@ -225,11 +228,12 @@ en:
       personal_details: Personal Details
       company_details: Company Details
       internship_details: Internship Details
-      contract: Contract
-      contract_original: Original
-      contract_copy: Copy
+      contract: I have my contract as
+      contract_original: an original
+      contract_copy: a copy
       lsf_ausdruck: Grade Printout from the LSF
       print_form: Print Form
+    icon-ok: " - If this sign appears the corresponding form is filled in completely"
     details:
       semester: Semester
       start_date: Start Date

@@ -3,15 +3,20 @@
       <tr>
         <td>
           <label class="checkbox">
-            <input type="checkbox" <%= 'checked' if @current_user.student.all_personal_details_filled? %> id="student_<%=internship.id%>">
+            <input class="invisible" type="checkbox" <%= 'checked' if @current_user.student.all_personal_details_filled? %> id="student_<%=internship.id%>">
               <%= link_to t("complete_internships.checklist.personal_details"), @current_user.student %>
           </label>
+        </td>
+        <td>
+          <% if @current_user.student.all_personal_details_filled? %>
+          <i class="icon-ok icon-large text-success"></i>
+          <% end %>
         </td>
       </tr>
       <tr>
         <td>
           <label class="checkbox">
-            <input type="checkbox" <%= 'checked' if company_address?(internship) %> id="company_<%=internship.id%>">
+            <input class="invisible" type="checkbox" <%= 'checked' if company_address?(internship) %> id="company_<%=internship.id%>">
               <% if internship.company_address %>
                 <%= link_to t("complete_internships.checklist.company_details"), edit_company_path(internship.company_address.company, :internship_id => internship.id)%>
               <% else %>
@@ -19,54 +24,71 @@
               <% end %>
           </label>
         </td>
-      </tr>
-      <tr>
         <td>
-          <label class="checkbox">
-            <input type="checkbox" <%= 'checked' if internship.all_internship_details_filled? %> id="internship_<%=internship.id%>">
-              <%= link_to t("complete_internships.checklist.internship_details"),  edit_internship_path(internship.id)%>
-          </label>
+          <% if company_address?(internship) %>
+          <i class="icon-ok icon-large text-success"></i>
+          <% end %>
         </td>
       </tr>
       <tr>
         <td>
           <label class="checkbox">
-            <input type="checkbox" id="radio_contract_<%=internship.id%>"> <%= t("complete_internships.checklist.contract") %>
+            <input class="invisible" type="checkbox" <%= 'checked' if internship.all_internship_details_filled? %> id="internship_<%=internship.id%>">
+              <%= link_to t("complete_internships.checklist.internship_details"),  edit_internship_path(internship.id)%>
+          </label>
+        </td>
+        <td>
+          <% if internship.all_internship_details_filled? %>
+          <i class="icon-ok icon-large text-success"></i>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label class="checkbox">
+            <input class="invisible" type="checkbox" id="radio_contract_<%=internship.id%>"> <%= t("complete_internships.checklist.contract") %>
           </label>
           <br>
           <span class="ml-3">
-            <input type="radio" name="contract<%=internship.id%>" id="original_<%=internship.id%>" value="original" onclick="radios_activated(<%=internship.id%>)"> <%= t("complete_internships.checklist.contract_original") %>
+            <input type="radio" name="contract<%=internship.id%>" id="original_<%=internship.id%>" value="original" onclick="radiosActivated(<%=internship.id%>)"> <%= t("complete_internships.checklist.contract_original") %>
           </span>
           <span class="ml-3">
-            <input type="radio" name="contract<%=internship.id%>" id="copy_<%=internship.id%>" value="copy" onclick="radios_activated(<%=internship.id%>)"> <%= t("complete_internships.checklist.contract_copy") %>
+            <input type="radio" name="contract<%=internship.id%>" id="copy_<%=internship.id%>" value="copy" onclick="radiosActivated(<%=internship.id%>)"> <%= t("complete_internships.checklist.contract_copy") %>
           </span>
+        </td>
+        <td>
+          <i class="icon-ok icon-large text-success d-none" id="contract_<%=internship.id%>"></i>
         </td>
       </tr>
       <tr>
         <td>
           <label class="checkbox" id="grades_<%=internship.id%>">
-            <input type="checkbox" id="lsf_<%=internship.id%>"> <%= t("complete_internships.checklist.lsf_ausdruck") %>
+            <input class="invisible" type="checkbox" id="lsf_<%=internship.id%>"> <%= t("complete_internships.checklist.lsf_ausdruck") %>
           </label>
         </td>
+        <td>
+        </td>
       </tr>
-      <!-- remove this feature toggle if the implementation of printing the form is done-->
-      <% if current_user.student? && FT.on?(:student_can_print_internship_application, current_user) %>
-        <tr>
-          <td>
-              <button type="button"
-                      class="btn btn-outline-success"
-                      data-toggle="modal"
-                      data-target="#missing_information"
-                      onclick="fill_popup(<%=internship.id%>,
-                                          '<%= t "complete_internships.internship" %> @ ',
-                                          '<%= company_name_for_checklist(internship) %>')">
-                  <%= t("complete_internships.checklist.print_form") %>
-              </button>
-            </td>
-          </tr>
-      <% end %>
+      <tr>
+        <td>
+        <small><i class="icon-ok text-success"></i> <%= t 'complete_internships.icon-ok' %></small>
+        </td>
+      </tr>
   </tbody>
-</table
+</table>
+
+  <!-- remove this feature toggle if the implementation of printing the form is done-->
+  <% if current_user.student? && FT.on?(:student_can_print_internship_application, current_user) %>
+    <button type="button"
+            class="btn btn-outline-success"
+            data-toggle="modal"
+            data-target="#missing_information"
+            onclick="fillPopup(<%=internship.id%>,
+                                '<%= t "complete_internships.internship" %> @ ',
+                                '<%= company_name_for_checklist(internship) %>')">
+      <%= t("complete_internships.checklist.print_form") %>
+    </button>
+  <% end %>
 
 <!--Popup-->
 <div class="modal fade" id="missing_information" tabindex="-1" role="dialog" aria-labelledby="missing_information_title" aria-hidden="true">
