@@ -1,16 +1,5 @@
 var count = 0;
 
-function fillPopup(internshipId, title, companyName) {
-  count = 0;
-  popupTitle(title, companyName);
-  insertInfo("lsf_", internshipId, "lsf_ausdruck");
-  insertInfo("student_", internshipId, "pers_det");
-  insertInfo("company_", internshipId, "company_det");
-  insertInfo("internship_", internshipId, "internship_det");
-  setMessage();
-  contractInfo(internshipId);
-}
-
 function popupTitle(titleParcial, companyName) {
   var title = document.getElementById("missing_information_title");
   title.textContent = titleParcial + companyName;
@@ -72,4 +61,15 @@ function radiosActivated(internshipId) {
     iconOk.classList.add("d-block");
     iconOk.style.display = "block";
   }
+}
+
+function fillPopup(internshipId, title, companyName) {
+  count = 0;
+  popupTitle(title, companyName);
+  insertInfo("lsf_", internshipId, "lsf_ausdruck");
+  insertInfo("student_", internshipId, "pers_det");
+  insertInfo("company_", internshipId, "company_det");
+  insertInfo("internship_", internshipId, "internship_det");
+  setMessage();
+  contractInfo(internshipId);
 }
