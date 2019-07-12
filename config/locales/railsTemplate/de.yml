@@ -47,6 +47,7 @@ de:
     - Freitag
     - Samstag
     formats:
+      placeholder: "dd.mm.YYYY"
       default: "%d.%m.%Y"
       long: "%e. %B %Y"
       short: "%e. %b"

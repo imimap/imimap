@@ -2,7 +2,8 @@
 
 require 'rails_helper'
 
-describe 'header.internship is shown for factory users' do
+describe 'toggle student_can_edit_internship:
+                 header.internship is shown for factory users' do
   # (1..1000).each do
   context 'student users' do
     before :each do
