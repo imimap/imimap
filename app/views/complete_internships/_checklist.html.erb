@@ -1,7 +1,7 @@
 <table class="table table-striped text-left">
   <tbody>
       <tr>
-        <td>
+        <td style="width:1%">
           <% if @current_user.student.all_personal_details_filled? %>
           <i class="icon-ok icon-large text-success"></i>
           <% end %>
@@ -14,7 +14,7 @@
         </td>
       </tr>
       <tr>
-        <td>
+        <td style="width:1%">
           <% if company_address?(internship) %>
           <i class="icon-ok icon-large text-success"></i>
           <% end %>
@@ -31,7 +31,7 @@
         </td>
       </tr>
       <tr>
-        <td>
+        <td style="width:1%">
           <% if internship.all_internship_details_filled? %>
           <i class="icon-ok icon-large text-success"></i>
           <% end %>
@@ -44,7 +44,7 @@
         </td>
       </tr>
       <tr>
-        <td>
+        <td style="width:1%">
           <i class="icon-ok icon-large text-success d-none" id="contract_<%=internship.id%>"></i>
         </td>
         <td>
