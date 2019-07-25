@@ -19,6 +19,7 @@ class InternshipDuration
   end
 
   def do_validation(weeks)
+    # also in js in app/views/internships/_form_internship.html.erb
     if weeks.negative?
       :negative
     elsif weeks < 4

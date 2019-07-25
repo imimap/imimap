@@ -4,13 +4,13 @@
 <small><%= t "forms.what_do_stars_mean2" %></small>
   <h3> <%= t "students.personal_details" %></h3>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
       <div id="field-titles">
       <%=t "students.attributes.enrolment_number" %><br>
     <span class="form-control-static"><%=@student.enrolment_number%></span><br><br>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
       <div id="field-titles">
         <%=t "students.attributes.email" %><br>
       <span class="form-control-static"><%=@student.email %></span><br><br>
@@ -19,14 +19,14 @@
   </div>
 
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
       <div class="field" id="field-titles2">
         <%= f.label t "students.attributes.first_name1" %>
         <%= f.text_field :first_name, :maxlength => 50, skip_label: true %>
       </div>
     </div>
 
-  <div class="col-md-4">
+  <div class="col-md-6">
     <div class="field" id="field-titles2">
       <%= f.label t "students.attributes.last_name1" %>
       <%= f.text_field :last_name, :maxlength => 50, skip_label: true %>
@@ -35,14 +35,14 @@
   </div>
 
   <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-6">
         <div class="field" id="field-titles2">
             <%= f.label t "students.attributes.birthday1" %>
             <%= f.text_field :birthday , skip_label: true %>
         </div>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-6">
         <div class="field" id="field-titles2">
           <%= f.label t "students.attributes.birthplace1" %>
           <%= f.text_field :birthplace, :maxlength => 50 , skip_label: true %>
@@ -51,7 +51,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-6">
         <div class="field" id="field-titles2">
         <%= f.text_field :private_email %>
         </div>
@@ -66,7 +66,7 @@
       </div>
     </div>
 
-    <%= link_to t('buttons.back'), :back %>
+    <%= link_to t('buttons.back'), 'javascript:history.back()' %>
   </div>
 
   <% end %>
