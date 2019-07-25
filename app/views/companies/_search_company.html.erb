@@ -2,7 +2,7 @@
 
 <div class="container">
   <%= bootstrap_form_tag do |f| %>
-  <%= f.hidden_field :i, :value => params[:internship_id] %>
+  <%= f.hidden_field :internship_id, :value => params[:internship_id] %>
 
 
   <h3><%= t "companies.select.companyname"%></h3>
@@ -15,7 +15,7 @@
   </div>
     <div class="col-md-2">
       <div class="field" id="field-titles2">
-        <%= f.submit  t"companies.continue" %>
+        <%= f.submit  t"companies.continue2" %>
       </div>
     </div>
   </div>
