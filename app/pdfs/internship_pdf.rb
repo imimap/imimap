@@ -75,11 +75,11 @@ class InternshipPdf < Prawn::Document
     text 'Company data:', style: :bold
     text_box 'Name',
              at: [0, 490]
-    text_box ":   #{@company.name}",
+    text_box ":   #{@company.try(:name)}",
              at: [100, 490]
     text_box 'Department',
              at: [250, 490]
-    text_box ":   #{@company.industry}",
+    text_box ":   #{@company.try(:industry)}",
              at: [350, 490]
 
     move_down 30
@@ -87,19 +87,19 @@ class InternshipPdf < Prawn::Document
          style: :bold
     text_box 'Street',
              at: [0, 450]
-    text_box ":     #{@company_address.street}",
+    text_box ":     #{@company_address.try(:street)}",
              at: [100, 450]
     text_box 'Zip Code',
              at: [250, 450]
-    text_box ":     #{@company_address.zip}",
+    text_box ":     #{@company_address.try(:zip)}",
              at: [350, 450]
     text_box 'City ',
              at: [0, 430]
-    text_box ":     #{@company_address.city}",
+    text_box ":     #{@company_address.try(:city)}",
              at: [100, 430]
     text_box 'Country',
              at: [250, 430]
-    text_box ":     #{@company_address.country}",
+    text_box ":     #{@company_address.try(:country)}",
              at: [350, 430]
 
     move_down 45
@@ -133,7 +133,7 @@ class InternshipPdf < Prawn::Document
              at: [100, 320]
     text_box 'Reading professor',
              at: [0, 300]
-    text_box ":     #{@internship.reading_prof.name}",
+    text_box ":     #{@internship.reading_prof.try(:name)}",
              at: [100, 300]
     text_box 'Work area',
              at: [0, 280]

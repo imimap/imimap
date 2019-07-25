@@ -91,6 +91,10 @@ class InternshipsController < ApplicationResourceController
   # GET /internships/1
   # GET /internships/1.json
   def show
+    @internship = @current_user.student
+                               .complete_internship
+                               .internships
+                               .find(params[:id])
     @company = @internship.company_v2
     # TBD ST  @company = @internship.company_address.company
     @other_internships = []
