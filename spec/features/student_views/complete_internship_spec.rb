@@ -46,11 +46,8 @@ describe 'Complete Internship' do
         end
 
         it 'should save changes made in internship datails form
-            (example reading_prof selection)' do
+            (example supervisor details)' do
           create(:semester)
-          create(:reading_prof1)
-          create(:reading_prof2)
-          create(:reading_prof3)
           visit my_internship_path
           click_link(t('internships.createYourInternship'))
           click_on t('save')
@@ -58,13 +55,29 @@ describe 'Complete Internship' do
           click_on t('save')
           click_link(t('complete_internships.checklist.internship_details'))
           expect(page).to have_content(
-            t('internships.attributes.which_professor_should_read')
+            t('internships.attributes.supervisor_name')
           )
-          select 'Prof. 3', from: 'internship_reading_prof_id'
+          expect(page).to have_content(
+            t('internships.attributes.supervisor_email')
+          )
+          expect(page).to have_content(
+            t('internships.attributes.supervisor_phone')
+          )
+
+          fill_in t('internships.attributes.supervisor_phone'),
+                  with: '030283020'
+          fill_in t('internships.attributes.supervisor_name'),
+                  with: 'Testname'
+          fill_in t('internships.attributes.supervisor_email'),
+                  with: 'meineMail@whatsoever.com'
           click_on t('save')
           click_link(t('complete_internships.checklist.internship_details'))
-          expect(page).to have_select('internship_reading_prof_id',
-                                      selected: 'Prof. 3')
+          expect(find_field(t('internships.attributes.supervisor_phone'))
+                  .value).to eq '030283020'
+          expect(find_field(t('internships.attributes.supervisor_email'))
+                  .value).to eq 'meineMail@whatsoever.com'
+          expect(find_field(t('internships.attributes.supervisor_name'))
+                  .value).to eq 'Testname'
         end
       end
     end

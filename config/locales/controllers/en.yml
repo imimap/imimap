@@ -96,6 +96,7 @@ en:
       supervision_rating: "Supervision"
       supervisor_name: "Supervisor"
       supervisor_email: "Supervisor E-Mail"
+      supervisor_phone: "Supervisor Phone-Number"
       appreciation_rating: "Appreciation"
       title: "Title"
       title1: "Title *"

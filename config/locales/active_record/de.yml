@@ -67,6 +67,7 @@ de:
         tasks: Aufgaben
         supervisor_name: Betreuername
         supervisor_email: E-Mail des Betreuers
+        supervisor_phone: Telefonnummer des Betreuers
         registration_state: Regisstrierungsstatus
         payment_state: Bezahlungsstatus
         contract_state: Vertragsstatus

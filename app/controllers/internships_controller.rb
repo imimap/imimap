@@ -203,7 +203,8 @@ class InternshipsController < ApplicationResourceController
                                    title
                                    tasks].freeze
   SUPERVISOR_ATTRIBUTES = %i[supervisor_email
-                             supervisor_name].freeze
+                             supervisor_name
+                             supervisor_phone].freeze
 
   REVIEW_ATTRIBUTES = %i[comment
                          recommend
