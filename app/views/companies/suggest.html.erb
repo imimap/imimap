@@ -1,4 +1,9 @@
 <div id="form-block4" class="text-left">
+
+
+<%= render 'select_company' %>
+
+  <% if @company_suggestion %>
 <div class="container">
     <%= hidden_field :i, :value => params[:internship_id] %>
   <h3><%= t "companies.suggestion" %></h3>
@@ -26,6 +31,7 @@
     </div>
   </div>
   </div>
-  
+
 </div>
 </div>
+<% end %>
