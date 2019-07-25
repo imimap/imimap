@@ -78,7 +78,7 @@
 </table>
 
   <!-- remove this feature toggle if the implementation of printing the form is done-->
-  <% if current_user.student? FT.on?(:student_can_print_internship_application, current_user) %>
+  <% if current_user.student? && FT.on?(:student_can_print_internship_application, current_user) %>
     <button type="button"
             class="btn btn-outline-success"
             data-toggle="modal"

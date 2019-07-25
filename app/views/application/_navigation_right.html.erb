@@ -29,7 +29,7 @@
     </ul>
 <% end # TDB Notifications %>
 
-    <% if current_user.student? FT.on?(:student_can_edit_internship, current_user) %>
+    <% if current_user.student? && FT.on?(:student_can_edit_internship, current_user) %>
     <li class = "imimap-nav-right-li">
       <%= link_to help_path do %>
         <i class="icon-question-sign icon-large"></i>
