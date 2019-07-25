@@ -88,14 +88,14 @@ describe 'Company Suggestion' do
           expect(page).to have_content(
             t('companies.select.companyname')
           )
-          fill_in('Name', with: '')
           click_on t('companies.continue')
           expect(page).to have_content(
             t('companies.select.companyname')
           )
         end
 
-        it 'should not show me the link for creating a new company when there is one with the exact same name' do
+        it 'shouldnt show the link for creating a new company when theres one
+            with the exact same name' do
           create(:semester)
           create(:company_1)
           create(:company_2)
@@ -114,9 +114,9 @@ describe 'Company Suggestion' do
           )
           fill_in('Name', with: 'Company 1')
           click_on t('companies.continue')
-          # expect(page).to have_link(
-          #  "Company 1", href:
-          # )
+          expect(page).to have_link(
+            'Company 1'
+          )
         end
       end
     end
