@@ -89,9 +89,8 @@ describe 'Company Suggestion' do
             t('companies.select.companyname')
           )
           click_on t('companies.continue')
-          expect(page).to have_content(
-            t('companies.select.companyname')
-          )
+          message = page.find("#name").native.attribute("validationMessage")
+          expect(message).to eq "Please fill out this field."
         end
 
         it 'shouldnt show the link for creating a new company when theres one
