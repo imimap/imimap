@@ -114,7 +114,7 @@ class InternshipPdf < Prawn::Document
              at: [15, 584]
     bounding_box([110, 587], :width => 410, :height => 15) do
       move_down 3
-      draw_text "#{@company.try(:street)}", at: [bounds.left+2, bounds.top-11]
+      draw_text "#{@company_address.try(:street)}", at: [bounds.left+2, bounds.top-11]
       stroke_bounds
     end
 
@@ -122,21 +122,21 @@ class InternshipPdf < Prawn::Document
              at: [15, 566]
     bounding_box([110, 569], :width => 80, :height => 15) do
       move_down 3
-      draw_text "#{@company.try(:zip)}", at: [bounds.left+2, bounds.top-11]
+      draw_text "#{@company_address.try(:zip)}", at: [bounds.left+2, bounds.top-11]
       stroke_bounds
     end
     text_box 'Stadt',
              at: [200, 566]
     bounding_box([235, 569], :width => 120, :height => 15) do
       move_down 3
-      draw_text "#{@company.try(:city)}", at: [bounds.left+2, bounds.top-11]
+      draw_text "#{@company_address.try(:city)}", at: [bounds.left+2, bounds.top-11]
       stroke_bounds
     end
     text_box 'Land',
              at: [365, 566]
     bounding_box([400, 569], :width => 120, :height => 15) do
       move_down 3
-      draw_text "#{@company.try(:country)}", at: [bounds.left+2, bounds.top-11]
+      draw_text "#{@company_address.try(:country)}", at: [bounds.left+2, bounds.top-11]
       stroke_bounds
     end
 
@@ -180,7 +180,7 @@ class InternshipPdf < Prawn::Document
       stroke_bounds
     end
     text_box 'Praktikumsende',
-             at: [215, 471]
+             at: [220, 471]
     bounding_box([310, 474], :width => 100, :height => 15) do
       move_down 3
       draw_text "#{@internship.end_date}", at: [bounds.left+2, bounds.top-11]
