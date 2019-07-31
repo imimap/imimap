@@ -108,7 +108,7 @@ class InternshipsController < ApplicationResourceController
       format.pdf do
         pdf = InternshipPdf.new(@internship)
         send_data pdf.render,
-                  filename: "internship_registration_#{name}.pdf",
+                  filename: "Praktikumsanmeldung_#{name}.pdf",
                   type: 'application/pdf'
       end
     end
