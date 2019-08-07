@@ -44,6 +44,7 @@ ActiveAdmin.register Internship do
       f.input :tasks
       f.input :supervisor_name
       f.input :supervisor_email
+      f.input :supervisor_phone
       f.input :programming_languages
       f.input :orientation
     end
