@@ -140,7 +140,7 @@ class InternshipPdf < Prawn::Document
       stroke_bounds
     end
 
-    text_box 'Betriebliche*r Betreuer*in',
+    text_box 'Betriebliche_r Betreuer_in',
              at: [15, 548]
     bounding_box([145, 551], :width => 375, :height => 15) do
       move_down 3
@@ -371,7 +371,7 @@ def notes_on_filling_in
       move_down 3
       indent(5) do
         text '- Bitte ankreuzen, falls alle Leistungsnachweise vom 1. und 2. Semester erbracht worden sind.'
-        text '- Der Praktikumsvertrag muss für eine vollständige Anmeldung im Original vorliegen. Ein Original ist eine von beiden Vertragspartner*innen im Original unterschriebene Version. Ist mindestens eine der beiden Unterschriften nicht im original vorhanden bestätigen Sie mit Ihrer Unterschrift, dass Sie den Vertrag so bald wie möglich in der Originalversion nachreichen.'
+        text '- Der Praktikumsvertrag muss für eine vollständige Anmeldung im Original vorliegen. Ein Original ist eine von beiden Vertragspartner_innen im Original unterschriebene Version. Ist mindestens eine der beiden Unterschriften nicht im original vorhanden bestätigen Sie mit Ihrer Unterschrift, dass Sie den Vertrag so bald wie möglich in der Originalversion nachreichen.'
       end
 
       move_down 10
