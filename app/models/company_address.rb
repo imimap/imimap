@@ -8,6 +8,15 @@ class CompanyAddress < ApplicationRecord
   validates :street, :country, :city, presence: true
   validates_presence_of :company
 
+
+  def self.fields_required_for_application
+    [:start_date, :end_date, :semester, :title]
+  end
+  # move to ApplicationRecord
+  def self.required_for_application?(field_name)
+    fields_required_for_application.includes?
+  end
+
   def one_line
     [street, zip, city, country_name].compact.join(', ')
   end
