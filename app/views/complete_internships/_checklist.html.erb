@@ -1,19 +1,24 @@
 <table class="table table-striped text-left">
   <tbody>
       <tr>
+        <td style="width:1%">
+          <% if @current_user.student.all_personal_details_filled? %>
+          <i class="icon-ok icon-large text-success"></i>
+          <% end %>
+        </td>
         <td>
           <label class="checkbox">
             <input class="invisible" type="checkbox" <%= 'checked' if @current_user.student.all_personal_details_filled? %> id="student_<%=internship.id%>">
               <%= link_to t("complete_internships.checklist.personal_details"), @current_user.student %>
           </label>
         </td>
-        <td>
-          <% if @current_user.student.all_personal_details_filled? %>
+      </tr>
+      <tr>
+        <td style="width:1%">
+          <% if company_address?(internship) %>
           <i class="icon-ok icon-large text-success"></i>
           <% end %>
         </td>
-      </tr>
-      <tr>
         <td>
           <label class="checkbox">
             <input class="invisible" type="checkbox" <%= 'checked' if company_address?(internship) %> id="company_<%=internship.id%>">
@@ -24,26 +29,24 @@
               <% end %>
           </label>
         </td>
-        <td>
-          <% if company_address?(internship) %>
+      </tr>
+      <tr>
+        <td style="width:1%">
+          <% if internship.all_internship_details_filled? %>
           <i class="icon-ok icon-large text-success"></i>
           <% end %>
         </td>
-      </tr>
-      <tr>
         <td>
           <label class="checkbox">
             <input class="invisible" type="checkbox" <%= 'checked' if internship.all_internship_details_filled? %> id="internship_<%=internship.id%>">
               <%= link_to t("complete_internships.checklist.internship_details"),  edit_internship_path(internship.id)%>
           </label>
         </td>
-        <td>
-          <% if internship.all_internship_details_filled? %>
-          <i class="icon-ok icon-large text-success"></i>
-          <% end %>
-        </td>
       </tr>
       <tr>
+        <td style="width:1%">
+          <i class="icon-ok icon-large text-success d-none" id="contract_<%=internship.id%>"></i>
+        </td>
         <td>
           <label class="checkbox">
             <input class="invisible" type="checkbox" id="radio_contract_<%=internship.id%>"> <%= t("complete_internships.checklist.contract") %>
@@ -56,21 +59,18 @@
             <input type="radio" name="contract<%=internship.id%>" id="copy_<%=internship.id%>" value="copy" onclick="radiosActivated(<%=internship.id%>)"> <%= t("complete_internships.checklist.contract_copy") %>
           </span>
         </td>
-        <td>
-          <i class="icon-ok icon-large text-success d-none" id="contract_<%=internship.id%>"></i>
-        </td>
       </tr>
       <tr>
+        <td>
+        </td>
         <td>
           <label class="checkbox" id="grades_<%=internship.id%>">
             <input class="invisible" type="checkbox" id="lsf_<%=internship.id%>"> <%= t("complete_internships.checklist.lsf_ausdruck") %>
           </label>
         </td>
-        <td>
-        </td>
       </tr>
       <tr>
-        <td>
+        <td colspan="2">
         <small><i class="icon-ok text-success"></i> <%= t 'complete_internships.icon-ok' %></small>
         </td>
       </tr>
