@@ -1,28 +1,6 @@
 <div id="form-block4" class="text-left">
 
-<div class="container">
-  <%= bootstrap_form_tag do |f| %>
-  <%= f.hidden_field :i, :value => params[:internship_id] %>
+<%= render 'search_company' %>
+<%= link_to t('buttons.back'), 'javascript:history.back()' %>
 
-
-  <h3><%= t "companies.select.companyname"%></h3>
-  <p><%= t"companies.give_name"%></p>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="field" id="field-titles">
-      <%=f.text_field :name, required: true %>
-    </div>
-  </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-4">
-      <div class="field" id="field-titles2">
-        <%= f.submit  t"companies.continue" %>
-      </div>
-    </div>
-  </div>
-
-<% end %>
-</div>
 </div>

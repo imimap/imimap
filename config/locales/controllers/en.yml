@@ -32,6 +32,7 @@ en:
       not_recommended: "Not Recommended"
     continue_to_address: "Continue to Address"
     continue: "Continue"
+    continue2: "Search"
     give_name: "Give the name of your internship company:"
     suggestion: "Did you mean one of those companies?"
     no_match: "No, create a new company with the following name:"
