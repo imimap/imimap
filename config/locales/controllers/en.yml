@@ -36,6 +36,7 @@ en:
     give_name: "Give the name of your internship company:"
     suggestion: "Did you mean one of those companies?"
     no_match: "No, create a new company with the following name:"
+    no_match1: "No company was found. With the link below you can create a new entry for a company with that name."
     company_address: "Editing Company Address"
   internships:
     student: 'Student'
@@ -95,8 +96,12 @@ en:
       training_rating: "Training success"
       atmosphere_rating: "Atmosphere"
       supervision_rating: "Supervision"
-      supervisor_name: "Supervisor"
+      supervisor_name: "Company Supervisor"
+      upervisor_name1: "Company Supervisor *"
       supervisor_email: "Supervisor E-Mail"
+      supervisor_email1: "Supervisor E-Mail *"
+      supervisor_phone: "Supervisor Phone-Number"
+      supervisor_phone1: "Supervisor Phone-Number*"
       appreciation_rating: "Appreciation"
       title: "Title"
       title1: "Title *"

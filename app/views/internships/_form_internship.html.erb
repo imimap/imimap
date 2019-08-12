@@ -86,13 +86,27 @@
 <div class="row">
   <div class="col-md-6">
     <div class="field" id="field-titles">
-    <%= f.label :reading_prof_id, t("internships.attributes.which_professor_should_read")%>
-    <%= f.select :reading_prof_id, @profs, class: 'chzn-select', disabled: false, skip_label: true  %>
+      <%= f.label :supervisor_name, t("internships.attributes.supervisor_name1") %>
+      <%= f.text_field :supervisor_name, hide_label: true, skip_label: true  %>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="field" id="field-titles">
+    <%= f.label :supervisor_phone, t("internships.attributes.supervisor_phone1")%>
+      <%= f.text_field :supervisor_phone, hide_label: true, skip_label: true  %>
     </div>
   </div>
 </div>
 
-
+<div class="row">
+  <div class="col-md-6">
+    <div class="field" id="field-titles">
+    <%= f.label :supervisor_email, t("internships.attributes.supervisor_email1")%>
+      <%= f.text_field :supervisor_email, hide_label: true, skip_label: true  %>
+    </div>
+  </div>
+</div>
 
 <div class="row">
   <div class="col-md-6">

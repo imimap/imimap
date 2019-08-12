@@ -35,6 +35,7 @@ de:
     give_name: "Gib den Namen deiner Praktikums-Firma an:"
     suggestion: "Meintest du eine dieser Firmen?"
     no_match: "Nein, erstelle eine neue Firma mit diesem Namen:"
+    no_match1: "Es wurde leider keine Firma gefunden, die deiner Suchanfrage entspricht. Mit dem Link kannst du aber eine neue Firma mit dem Namen anlegen."
     company_address: "Bearbeite die Firmenadresse"
 
   internships:
@@ -90,8 +91,12 @@ de:
       training_rating: "Lernerfolg"
       atmosphere_rating: "Atmosphäre"
       supervision_rating: "Betreuung"
-      supervisor_name: "Betreuer"
-      supervisor_email: "Betreuer E-Mail"
+      supervisor_name: "Betriebliche_r Betreuer_in"
+      supervisor_name1: "Betriebliche_r Betreuer_in *"
+      supervisor_email: "Betreuer_in E-Mail"
+      supervisor_email1: "Betreuer_in E-Mail *"
+      supervisor_phone: "Betreuer_in Telefonnummer"
+      supervisor_phone1: "Betreuer_in Telefonnummer *"
       appreciation_rating: "Wertschätzung"
       title: "Titel"
       title1: "Titel *"
