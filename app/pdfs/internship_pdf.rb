@@ -75,7 +75,7 @@ class InternshipPdf < Prawn::Document
              at: [15, 661]
     bounding_box([110, 664], :width => 170, :height => 15) do
       move_down 3
-      draw_text "#{@student.birthday}", at: [bounds.left+2, bounds.top-11]
+      draw_text I18n.l(@student.birthday, format: :default).to_s, at: [bounds.left+2, bounds.top-11]
       stroke_bounds
     end
     text_box 'Geburtsort',
@@ -176,14 +176,14 @@ class InternshipPdf < Prawn::Document
              at: [15, 471]
     bounding_box([110, 474], :width => 100, :height => 15) do
       move_down 3
-      draw_text "#{@internship.start_date}", at: [bounds.left+2, bounds.top-11]
+      draw_text I18n.l(@internship.start_date, format: :default).to_s, at: [bounds.left+2, bounds.top-11]
       stroke_bounds
     end
     text_box 'Praktikumsende',
              at: [220, 471]
     bounding_box([310, 474], :width => 100, :height => 15) do
       move_down 3
-      draw_text "#{@internship.end_date}", at: [bounds.left+2, bounds.top-11]
+      draw_text I18n.l(@internship.end_date, format: :default).to_s, at: [bounds.left+2, bounds.top-11]
       stroke_bounds
     end
     text_box 'Fachsemester',
