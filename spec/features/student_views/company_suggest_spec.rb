@@ -29,8 +29,8 @@ describe 'Company Suggestion' do
           expect(page).to have_content(
             t('companies.select.companyname')
           )
-          fill_in('Name', with: 'Testfirma')
-          click_on t('companies.continue')
+          fill_in(:name, with: 'Testfirma')
+          click_on t('companies.continue2')
           expect(page).not_to have_content(
             t('companies.suggestion')
           )
@@ -57,8 +57,8 @@ describe 'Company Suggestion' do
           expect(page).to have_content(
             t('companies.select.companyname')
           )
-          fill_in('Name', with: 'CoMp')
-          click_on t('companies.continue')
+          fill_in(:name, with: 'CoMp')
+          click_on t('companies.continue2')
           expect(page).to have_content(
             t('companies.suggestion')
           )
@@ -111,8 +111,8 @@ describe 'Company Suggestion' do
           expect(page).to have_content(
             t('companies.select.companyname')
           )
-          fill_in('Name', with: 'Company 1')
-          click_on t('companies.continue')
+          fill_in(:name, with: 'Company 1')
+          click_on t('companies.continue2')
           expect(page).to have_link(
             'Company 1'
           )
