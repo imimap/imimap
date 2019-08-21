@@ -70,7 +70,7 @@ gem 'faker'
 
 group :development, :test do
   install_if -> { ENV['IMIMAPS_ENVIRONMENT'] != 'docker' } do
-    gem 'sqlite3', '~> 1.3.7'
+    gem 'sqlite3', '~> 1.4'
   end
 
   gem 'better_errors'
