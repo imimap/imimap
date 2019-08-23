@@ -75,11 +75,7 @@ GEM
       activesupport (>= 3.0.0)
     arel (9.0.0)
     ast (2.4.0)
-<<<<<<< HEAD
     autoprefixer-rails (9.5.1)
-=======
-    autoprefixer-rails (9.4.10.1)
->>>>>>> Datepicker is working, but does not save the date yet when clicking on update.
       execjs
     axlsx_rails (0.5.2)
       actionpack (>= 3.1)
@@ -97,18 +93,12 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
-<<<<<<< HEAD
+    bootstrap-datepicker-rails (1.8.0.1)
+      railties (>= 3.0)
     bootstrap_form (4.2.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
     brakeman (4.5.0)
-=======
-    bootstrap-datepicker-rails (1.8.0.1)
-      railties (>= 3.0)
-    bootstrap_form (4.1.0)
-      rails (>= 5.0)
-    brakeman (4.4.0)
->>>>>>> Datepicker is working, but does not save the date yet when clicking on update.
     builder (3.2.3)
     byebug (11.0.1)
     cancancan (2.3.0)
