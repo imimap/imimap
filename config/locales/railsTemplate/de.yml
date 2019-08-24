@@ -163,6 +163,7 @@ de:
       create: "%{model} erstellen"
       submit: "%{model} speichern"
       update: "%{model} aktualisieren"
+      generic_update: "Informationen speichern"
   number:
     currency:
       format:
