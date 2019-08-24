@@ -20,14 +20,15 @@ class FeatureToggle
   end
 end
 
+# \d in third place to allow for FactoryBot sequence
+TEST_EMAIL_REGEXP = /s01[1-4]\d{2}[0-8]@htw-berlin.de/.freeze
+
 FT = FeatureToggle.new.tap do |ft|
   ft.for(:student_can_edit_internship) do |current_user|
-    # \d in third place to allow for FactoryBot sequence
-    /s0[1-3]\d{3}[0-8]@htw-berlin.de/.match?(current_user.email)
+    TEST_EMAIL_REGEXP.match?(current_user.email)
   end
 
   ft.for(:student_can_print_internship_application) do |current_user|
-    # \d in third place to allow for FactoryBot sequence
-    /s0[1-3]\d{3}[0-8]@htw-berlin.de/.match?(current_user.email)
+    TEST_EMAIL_REGEXP.match?(current_user.email)
   end
 end
