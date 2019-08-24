@@ -7,7 +7,8 @@ class InternshipsController < ApplicationResourceController
   respond_to :html, :json
   before_action :programming_languages, :orientations, only: %i[new edit update]
   before_action :set_internship,
-                only: %i[edit create show update rating destroy]
+                only: %i[edit show update rating destroy]
+  before_action :set_semesters, only: %i[new edit create]
   # GET /internships
   # GET /internships.json
 
@@ -60,12 +61,14 @@ class InternshipsController < ApplicationResourceController
     @internship = Internship.new(internship_params)
 
     @internship.user_id = current_user.id
-    @internship.student_id = current_user.student_id
+    # @internship.student_id = current_user.student_id
+    @complete_internship = current_user.student.complete_internship
+    @internship.complete_internship = @complete_internship
 
     respond_to do |format|
       if @internship.save
         format.html do
-          redirect_to @internship,
+          redirect_to @complete_internship,
                       notice: 'Your internship was successfully created!'
         end
       else
@@ -75,11 +78,19 @@ class InternshipsController < ApplicationResourceController
     end
   end
 
+  def create_empty
+    @internship = Internship.new(internship_params)
+
+    @internship.user_id = current_user.id
+    @internship.student_id = current_user.student_id
+    @internship.semester_id = semester.current
+    @internship.save!
+    redirect_to show_complete_internship
+  end
+
   # GET /internships/1
   # GET /internships/1.json
   def show
-    @favorite = Favorite.where(internship_id: @internship.id,
-                               user_id: current_user.id)[0]
     @company = @internship.company_v2
     # TBD ST  @company = @internship.company_address.company
     @other_internships = []
@@ -103,18 +114,28 @@ class InternshipsController < ApplicationResourceController
 
   # GET /internships/1/edit
   def edit
-    @company = @internship.company_v2
-    @rating = @internship.internship_rating
+    return unless @current_user.student
+
+    @internship = @current_user.student
+                               .complete_internship
+                               .internships
+                               .find(params[:id])
+    @profs = ReadingProf.order(:id).map { |p| [p.name, p.id] }
   end
 
   # PUT /internships/1
   # PUT /internships/1.json
   def update
     attributes = internship_params
+    @internship = @current_user.student
+                               .complete_internship
+                               .internships
+                               .find(params[:id])
     if @internship.update_attributes(attributes)
       @internship.update_attributes(completed: true)
       flash[:notice] = 'Internship was successfully updated.'
-      respond_with(@internship)
+      respond_with(@current_user.student
+                                 .complete_internship)
     else
       @rating = @internship.build_internship_rating
       render :edit, notice: 'Please fill in all fields'
@@ -182,7 +203,8 @@ class InternshipsController < ApplicationResourceController
                                    title
                                    tasks].freeze
   SUPERVISOR_ATTRIBUTES = %i[supervisor_email
-                             supervisor_name].freeze
+                             supervisor_name
+                             supervisor_phone].freeze
 
   REVIEW_ATTRIBUTES = %i[comment
                          recommend
@@ -208,5 +230,9 @@ class InternshipsController < ApplicationResourceController
     params.require(:internship).permit(
       InternshipsController.permitted_params
     )
+  end
+
+  def set_semesters
+    @semesters = Semester.all.pluck(:name, :id)
   end
 end

@@ -1,9 +1,13 @@
-<div class="container">
-<%= bootstrap_form_for(@company_address) do |f| %>
+
+  <div class="container">
+<%= bootstrap_form_for @company_address, :url => {:controller => 'company_addresses', :action => "create_and_save",
+                                                params: {internship_id: :internship_id}} do |f| %>
+
+    <%= f.hidden_field :internship_id, :value => @internship.id %>
     <% if @company_address.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(@company_address.errors.count, "error") %> prohibited this company_address from being saved:</h2>
-  
+        <h4><%= pluralize(@company_address.errors.count, "error") %> prohibited this company_address from being saved:</h4>
+
         <ul>
         <% @company_address.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -11,57 +15,67 @@
         </ul>
       </div>
     <% end %>
+    <div id="form-block4" class="text-left">
+    <small><%= t "forms.what_do_stars_mean1" %></small><br>
+<small><%= t "forms.what_do_stars_mean2" %></small>
+      <h3> <%=t "activerecord.attributes.company_address.new_address_heading"%></h3>
+      <br>
 
     <div class="row">
-        <div class="col-md-4">
-          <div id="field-titles">
-          <h4>Make a new address for :</h4>
+      <div class="col-md-6">
+        <div id="field-titles">
           <span class="form-static"><%=@company.name%></span>
           <%= f.hidden_field :company_id, :value => @company.id, hide_label: true %>
-          </div>
+          <br>
         </div>
       </div>
+    </div>
     <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="field" id="field-titles">
-          <%= f.text_field :street %>
-        </div>
-      </div>
-      <div class="col-md-2">
-        <div class="field" id="field-titles">
-          <%= f.number_field :zip %>
+          <%= f.label t "activerecord.attributes.company_address.street2" %>
+          <%= f.text_field :street, skip_label: true   %>
         </div>
       </div>
       </div>
       <div class="row">
-        <div class="col-md-4">
+      <div class="col-md-2">
         <div class="field" id="field-titles">
-          <%= f.text_field :city %>
+          <%= f.label t "activerecord.attributes.company_address.zip1" %>
+          <%= f.text_field :zip, skip_label: true   %>
         </div>
       </div>
-      <div class="col-md-4">
+        <div class="col-md-4">
         <div class="field" id="field-titles">
-          <%= t("company_addresses.country")%>
+          <%= f.label t "activerecord.attributes.company_address.city2" %>
+          <%= f.text_field :city, skip_label: true   %>
+        </div>
+      </div>
+      </div>
+      <div class="row">
+      <div class="col-md-6">
+        <div class="field" id="field-titles">
+          <%= f.label t "activerecord.attributes.company_address.country2" %> <br>
           <%= f.country_select :country, ["United States"], class: 'chzn-select' %>
         </div>
       </div>
       </div>
       <div class="row">
-  <div class="col-md-4">
+      <div class="col-md-6">
         <div class="field" id="field-titles">
-          <%= f.number_field :phone %>
+          <%= f.text_field :phone %>
         </div>
       </div>
       </div>
 
       <div class="row">
-    <div class="pull-right">
-     <div class="actions">
-      <%= button_tag(type: 'submit', class: "btn btn-success") do %>
-      <i class="icon-ok icon-white"></i> <%= t("company_addresses.create")%>
-      <% end %>
-    </div>
-    </div>
-    </div>
+        <div class="col-md-6">
+          <div class="field" id="field-titles2">
+          <%= f.submit t('save')%>
+          </div>
+        </div>
+      </div>
   <% end %>
+  <%= link_to (t "buttons.back"), 'javascript:history.back()' %>
+  </div>
   </div>

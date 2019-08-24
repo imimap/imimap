@@ -1,15 +1,8 @@
 <div id="form-block4" class="text-left">
-  <h2><%= t 'complete_internships.new' %></h2>
 
-  <div class="ml-5 mb-5">
+  <div class="mb-5">
     <%= render 'form', complete_internship: @complete_internship %>
   </div>
 
-  <% if current_user %>
-    <% if current_user.student? %>
-      <%= link_to t('buttons.back'), my_internship_path %>
-    <% end %>
-  <% else %>
-    <%= link_to t('buttons.back'), complete_internship_path %>
-  <% end %>
+    <%= link_to t('buttons.back'), 'javascript:history.back()' %>
 </div>

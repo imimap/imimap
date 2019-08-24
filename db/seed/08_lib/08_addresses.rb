@@ -32,11 +32,13 @@ module GeocodedAddresses
   # creates a CompanyAddress
   class CompanyAddressFactory
     def create_company_address_with(result:, country_code:, company:)
+      street = result.street || result.village || 'Unter den Linden (no street)'
+      city = result.city || result.state || 'Arloff (no city)'
       CompanyAddress.create!(
         company: company,
-        street: result.street || result.village,
+        street: street,
         zip: result.postal_code,
-        city: result.city || result.state,
+        city: city,
         country: country_code,
         phone: Faker::PhoneNumber.phone_number
       )

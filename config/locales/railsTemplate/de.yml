@@ -1,4 +1,5 @@
 de:
+  save: "Speichern"
   ldap:
     authorization_failed: "Benutzername oder Passwort nicht korrekt!"
   sign_up:
@@ -49,6 +50,7 @@ de:
     - Freitag
     - Samstag
     formats:
+      placeholder: "dd.mm.YYYY"
       default: "%d.%m.%Y"
       long: "%e. %B %Y"
       short: "%e. %b"

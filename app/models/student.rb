@@ -21,6 +21,11 @@ class Student < ApplicationRecord
     user.present?
   end
 
+  def birthday?
+    birthday.try(:month) == Date.today.month &&
+      birthday.try(:day) == Date.today.day
+  end
+
   def name
     name = "#{first_name} #{last_name}"
     name.empty? ? email : name
@@ -44,5 +49,10 @@ class Student < ApplicationRecord
 
     internship_ids = internships.pluck(:id)
     Internship.find(internship_ids.max)
+  end
+
+  def all_personal_details_filled?
+    !(first_name.empty? || last_name.empty? || birthday.nil? ||
+      birthplace.empty?)
   end
 end

@@ -1,5 +1,9 @@
 // @import "bootstrap-custom";
 
+.text-success {
+  color: #80b900 !important;
+}
+
 #company-title-text ul {
   margin-left: 0;
 }
@@ -25,9 +29,29 @@ header .pull-left {
   margin: 5px;
 }
 
+.form-control:focus {
+  border-color: #80b900;
+}
+
+a {
+  color: #80b900 !important;
+}
+
 a:hover {
   color: #bddb78;
   text-decoration: none;
+}
+
+.modal-content {
+  width: 900px;
+  margin: auto !important;
+}
+
+@media only screen and (max-width: 900px) {
+  .modal-content {
+    width: 95%;
+    margin: auto !important;
+  }
 }
 
 .btn-success:active, .btn-success.active {
@@ -43,6 +67,18 @@ a:hover {
   background-image: -o-linear-gradient(top, #90b800, #90b800);
   background-image: linear-gradient(to bottom, #90b800, #90b800);
   background-repeat: repeat-x;
+  border-color: #80b900;
+}
+
+.btn-outline-success {
+  color: #80b900;
+  border-color: #80b900;
+}
+
+.btn-outline-success:hover {
+  color: white;
+  background-color: #80b900 !important;
+  border-color: #80b900;
 }
 
 .btn .btn-default {

@@ -7,7 +7,7 @@ require 'time'
 class Internship < ApplicationRecord
   validates :semester, :complete_internship, presence: true
 
-  validates_presence_of :company_address
+  # validates_presence_of :company_address
 
   belongs_to :user
   belongs_to :company
@@ -48,14 +48,24 @@ class Internship < ApplicationRecord
       student.try(:user?) && !completed
   end
 
+  def company?
+    company.present?
+  end
+
   def company_v2
-    nil unless company_address
-    company_address.company
+    if company_address.nil?
+      'no_company'
+    else
+      company_address.company
+    end
   end
 
   def company_name
-    nil unless company_address
-    company_address.company.name
+    if company_address.nil?
+      'no_company'
+    else
+      company_address.company.name
+    end
   end
 
   def duration
@@ -80,5 +90,15 @@ class Internship < ApplicationRecord
       d = self[:end_date].to_time + 4.weeks
       d.strftime('%Y-%m-%d')
     end
+  end
+
+  def all_internship_details_filled?
+    helper_array = [title, start_date, end_date, operational_area,
+                    orientation_id, tasks, working_hours, salary,
+                    supervisor_name, supervisor_email, supervisor_phone]
+    helper_array.each do |e|
+      return false if e.blank?
+    end
+    true
   end
 end

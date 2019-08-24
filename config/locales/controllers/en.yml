@@ -8,11 +8,15 @@ en:
     edit:
       editcompany: "Editing Company"
     new:
-      newcompany: "New Company"
+      newcompany: "Step 1: Create New Company"
+    select:
+      companyname: "Step 1: Company Name"
     attributes:
       department: "department"
       rating: "Average Rating"
       name: "Company name"
+      name1: "Company name *"
+      name2: "Company name **"
       street: "Street"
       zip: "ZIP"
       city: "City"
@@ -26,19 +30,28 @@ en:
       email: "E-Mail"
       recommended: "Recommended"
       not_recommended: "Not Recommended"
+    continue_to_address: "Continue to Address"
+    continue: "Continue"
+    continue2: "Search"
+    give_name: "Give the name of your internship company:"
+    suggestion: "Did you mean one of those companies?"
+    no_match: "No, create a new company with the following name:"
+    no_match1: "No company was found. With the link below you can create a new entry for a company with that name."
+    company_address: "Editing Company Address"
   internships:
     student: 'Student'
     company_v2: 'Company'
     statistic: "Overview per Semester"
     my: "Meine Praktika"
     others: "Other internships done here"
-    details: "Internship Details"
+    internship_details: "Internship Details"
+    details: "When do you want to do your internship?"
     name: "Internships"
     create: "Create Internship"
-    createYourInternship: "Create your internship now"
+    createYourInternship: "Start now."
     update: "Update Internship"
     company_fact: "Company Short Facts"
-    createInternship: "You do not have an internship yet"
+    createInternship: "You have not given us any information yet."
     index:
       title: "Internships in"
       select: 'Select'
@@ -51,30 +64,47 @@ en:
       newinternship: "New Internship"
     attributes:
       description: "Description"
-      semester: "Semester/Year"
+      semester: "Semester"
+      semester1: "Semester *"
       email_public: "Make email adress public?"
       comments: "Comments"
       pictures: "Pics"
       orientation: "Orientation"
-      programming_language: "Programming Language"
-      salary: "Salary"
+      orientation1: "Orientation *"
+      programming_language: "Programming Language(s)"
+      programming_language1: "Programming Language(s) *"
+      salary: "Salary in € per Month"
+      salary1: "Salary in € per Month *"
       salary2: "Salary/month"
-      working_hours: "Working hours"
+      working_hours: "Working Hours"
+      working_hours1: "Working Hours per Week *"
       living_costs: "Cost of living"
       company: "Company"
       start_date: "Start Date"
+      start_date1: "Start Date *"
       end_date: "End Date"
+      end_date1: "End Date *"
       operational_area: "Operational Area"
+      operational_area1: "Operational Area *"
+      placeholder_oa: "Virtual Reality, Website, 3D"
       tasks: "Tasks"
+      tasks1: "Tasks *"
+      placeholder_tasks: "Make and manage the company website, Make CSS for client websites"
+      placeholder_title: "Game design website in Italy"
       living_costs2: "Cost of living/month"
       tasks_rating: "Tasks"
       training_rating: "Training success"
       atmosphere_rating: "Atmosphere"
       supervision_rating: "Supervision"
-      supervisor_name: "Supervisor"
+      supervisor_name: "Company Supervisor"
+      upervisor_name1: "Company Supervisor *"
       supervisor_email: "Supervisor E-Mail"
+      supervisor_email1: "Supervisor E-Mail *"
+      supervisor_phone: "Supervisor Phone-Number"
+      supervisor_phone1: "Supervisor Phone-Number*"
       appreciation_rating: "Appreciation"
-      title: "Job Title"
+      title: "Title"
+      title1: "Title *"
       recommend: "Recommendation"
       internship_report: "Internship Report"
       amountOfWeeks: "Total amount of weeks"
@@ -85,6 +115,16 @@ en:
         partInternship: "If internship is a part internship it's valid"
         longEnough: "Internship is long enough"
       reading_prof: "Reading professor"
+      which_professor_should_read: "Which Professor would you prefer to read your Report?"
+    popup:
+      missing1: "Some of the information that is needed for a complete registration for your internship seems to be missing. Check the following forms again:"
+      missing2: "You can of course still print out your registration form and go to the consultation hour of the Professor in charge of the internships."
+      no_original: "Please note, that if you can not provide an original version of your contract at this time you can still register your internship during the consultation hour of the Professor in charge of the internships. But in order for us to be able to forward your registration to the administration you need to hand in a compy of the contract that is originally signed by both parties as soon as you can."
+      personal_details: "- Personal Details"
+      company_details: "- Company Details"
+      internship_details: "- Internship Details"
+      lsf_ausdruck: "Please make sure, that you have your grades printed out from the LSF."
+      clear: "Do you want to print out your registration now?"
   users:
     name: "Users"
     create: "Create User"
@@ -144,9 +184,11 @@ en:
 
   welcome:
     help:
-      header: "Help"
+      header: "Welcome to the IMI-Map!"
+      description: "The IMI-Map's purpose is to make the application for your mandatory internship in international media and computing with the internship officer a little easier. You can register when you want to enroll for the entire module B20 under the tab 'My Internship'. The module B20 consists of the modules B20.1, 'Auswertung von Erfahrungen am Praxisplatz', and B20.2, the internship itself. Once you have specified the semester you can register one internship or multiple partial internships. This information is mostly the same that will be required for the application form itself. You giving us this information will allow the internship officer to go into more detail with you when you visit his/her office hours to hand in your application."
+      questions: "Here are some frequently asked questions:"
       question1: "I don't know what to enter in a field of the internship application form."
-      answer1: "Leave those fields blank where you are unsure about what to enter. Print the application form anyway and discuss the missing fields with the internship officer when handing in the form."
+      answer1: "Leave those fields blank where you are unsure about what to enter. Print the application form anyway and discuss the missing fields with the internship officer when handing in the form. If there are any fields that you can not leave blank because they are required, you can put dummy values in for now and talk about them when you visit the internship officers office hours."
       question2: "I have another question. What should I do?"
       answer2_checklist: "Look at the Checklist again."
       answer2_contact: "If you couln't find an answer to your question, send an E-Mail to the team of the internship administration."
@@ -159,31 +201,46 @@ en:
     semester_of_study: "Semester Of Study"
     semester_of_study1: "("
     semester_of_study2: ". Semester of Study)"
-    aep: "AEP"
-    aep_value:
-      false: "Course 'Auswertung der Erfahrungen am Arbeitsplatz' not yet passed"
-      true: "Course 'Auswertung der Erfahrungen am Arbeitsplatz' passed"
-    passed: "Passed"
-    passed_value:
-      false: "Internship (Module B20) not yet passed"
-      true: "Internship (Module B20) passed"
+    modulnumber: "Modulname"
+    modulname: "Modulnumber"
+    status: "Status"
+    aep:
+      number: "B20.1"
+      name: "Auswertung von Erfahrungen am Praxisplatz"
+      values:
+        false: "still open"
+        true: "passed"
+    parcial_internships:
+      number: "B20.2"
+      name: "Fachpraktikum"
+      values:
+        false: "still open"
+        true: "passed"
+    ci:
+      number: "B20"
+      name: "Praxisphase 1: Fachpraktikum im Ausland"
+      values:
+        false: "still open"
+        true: "passed"
     internship: "Internship"
     company: "Company"
     number_of_internships: "Number of Internships"
     no_internships: "You haven't started an internship application yet"
     new: "New Internship"
-    new_tp: "New Internship"
+    new_tp0: "Add Internship Information."
+    new_tp: "Add another partial Internship."
     edit: "Edit Internship"
     create: "Create"
     checklist:
       personal_details: Personal Details
       company_details: Company Details
       internship_details: Internship Details
-      contract: Contract
-      contract_original: Original
-      contract_copy: Copy
+      contract: I have my contract as
+      contract_original: an original
+      contract_copy: a copy
       lsf_ausdruck: Grade Printout from the LSF
       print_form: Print Form
+    icon-ok: " - If this sign appears the corresponding form is filled in completely"
     details:
       semester: Semester
       start_date: Start Date

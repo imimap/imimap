@@ -8,11 +8,15 @@ de:
     edit:
       editcompany: "Firma Bearbeiten"
     new:
-      newcompany: "Neue Firma"
+      newcompany: "Schritt 1: Neue Firma Erstellen"
+    select:
+      companyname: "Schritt 1: Firmenname"
     attributes:
       department: "Abteilung"
       rating: "Durchschnittswertung"
       name: "Firmenname"
+      name1: "Firmenname *"
+      name2: "Firmenname **"
       street: "Straße"
       zip: "Postleitzahl"
       city: "Stadt"
@@ -25,18 +29,27 @@ de:
       phone: "Telefon"
       recommended: "Empfohlen"
       not_recommended: "nicht Empfohlen"
+    continue_to_address: "Weiter zur Adresse"
+    continue: "Weiter"
+    continue2: "Suchen"
+    give_name: "Gib den Namen deiner Praktikums-Firma an:"
+    suggestion: "Meintest du eine dieser Firmen?"
+    no_match: "Nein, erstelle eine neue Firma mit diesem Namen:"
+    no_match1: "Es wurde leider keine Firma gefunden, die deiner Suchanfrage entspricht. Mit dem Link kannst du aber eine neue Firma mit dem Namen anlegen."
+    company_address: "Bearbeite die Firmenadresse"
 
   internships:
     statistic: "Übersicht über die Länder pro Semester"
     my: "Meine Praktika"
     others: "Andere Praktika bei dieser Firma"
-    details: "Praktikumsdetails"
+    internship_details: "Praktikumsdetails"
+    details: "Wann möchtest du dein Praktikum absolvieren?"
     name: "Praktika"
     create: "Erstelle Praktikum"
-    createYourInternship: "Erstelle jetzt dein Praktikum"
+    createYourInternship: "Jetzt eintragen."
     update: "Praktikum aktualisieren"
     company_fact: "Arbeitsplatz Kurzinfo"
-    createInternship: "Du hast noch kein Praktikum eingetragen"
+    createInternship: "Du hast noch keine Informationen eingetragen."
     index:
       title: "Praktika im"
       select: 'anzeigen'
@@ -50,27 +63,44 @@ de:
     attributes:
       description: "Beschreibung"
       semester: "Semester"
+      semester1: "Semester *"
       email_public: "Emailadresse öffentlich anzeigen?"
       pictures: "Bilder"
       orientation: "Orientierung"
-      programming_language: "Programmiersprachen"
-      salary: "Gehalt"
-      working_hours: "Arbeitsstunden"
+      orientation1: "Orientierung *"
+      programming_language: "Programmiersprache(n)"
+      programming_language1: "Programmiersprache(n) *"
+      salary: "Gehalt in € pro Monat"
+      salary1: "Gehalt in € pro Monat *"
+      working_hours: "Arbeitsstunden pro Woche"
+      working_hours1: "Arbeitsstunden pro Woche *"
       living_costs: "Lebenshaltungskosten"
       living_costs2: "Lebenshaltungskosten pro Monat"
       company: "Firma"
-      start_date: "Anfang"
-      end_date: "Ende"
+      start_date: "Anfangsdatum"
+      start_date1: "Anfangsdatum *"
+      end_date: "Enddatum"
+      end_date1: "Enddatum *"
       operational_area: "Einsatzbereich"
+      operational_area1: "Einsatzbereich *"
+      placeholder_oa: "Virtual Reality, Webseite, 3D"
       tasks: "Aufgaben"
+      tasks1: "Aufgaben *"
+      placeholder_tasks: "Erstellen und managen einer Firmenwebseite, Erstellen von CSS für Clientwebsites"
       tasks_rating: "Aufgaben"
       training_rating: "Lernerfolg"
       atmosphere_rating: "Atmosphäre"
       supervision_rating: "Betreuung"
-      supervisor_name: "Betreuer"
-      supervisor_email: "Betreuer E-Mail"
+      supervisor_name: "Betriebliche_r Betreuer_in"
+      supervisor_name1: "Betriebliche_r Betreuer_in *"
+      supervisor_email: "Betreuer_in E-Mail"
+      supervisor_email1: "Betreuer_in E-Mail *"
+      supervisor_phone: "Betreuer_in Telefonnummer"
+      supervisor_phone1: "Betreuer_in Telefonnummer *"
       appreciation_rating: "Wertschätzung"
-      title: "Job Titel"
+      title: "Titel"
+      title1: "Titel *"
+      placeholder_title: "Game design Webseite in Italien"
       recommend: "Empfehlung"
       internship_report: "Praktikumsbericht"
       amountOfWeeks: "Anzahl der Wochen"
@@ -81,6 +111,16 @@ de:
         partInternship: "Wenn das Praktikum ein Teilpraktikum ist, ist es valide"
         longEnough: "Die Praktikumsdauer ist ausreichend"
       reading_prof: "Hochschulbetreuer"
+      which_professor_should_read: "Von welcher_m Professor_in soll dein Bericht gelesen werden?"
+    popup:
+      missing1: "Einige Informationen, die für eine vollständige Anmeldung zum Praktikum benötigt werden, scheinen noch zu fehlen. Schau bei den folgenden Formularen vielleicht noch ein mal rein:"
+      missing2: "Du kannst den Antrag aber trotzdem schon einmal ausdrucken und auch damit in die Sprechstunde der/des Praktikumsbeauftragten gehen."
+      no_original: "Bitte beachte, dass du ohne Originalvertrag dein Praktikum in der Sprechstunde der/des Praktikumsbeauftragten zwar schon einmal beantragen kannst, aber damit deine Anmeldung an die Prüfungsverwaltung weitergeleitet werden kann reiche bitte schnellstmöglich einen im Original von beiden Parteien unterschriebenen Arbeitsvertrag nach."
+      personal_details: "- Persönliche Details"
+      company_details: "- Firmendetails"
+      internship_details: "- Praktikumsdetails"
+      lsf_ausdruck: "Bitte vergewissere dich, ob du deine Notenübersicht aus dem LSF ausgedruckt hast."
+      clear: "Möchtest du deinen Antrag jetzt wirklich ausdrucken?"
 
   users:
     name: "Benutzer"
@@ -97,7 +137,7 @@ de:
        newuser: "Neuer Benutzer"
     show:
        favorites_title: "Meine Favoriten"
-    sign_up: "Danke fuer deine Anmeldung"
+    sign_up: "Danke fuer deine Anmeldung!"
     attributes:
       name: "Name"
       name1: "Name *"
@@ -142,9 +182,11 @@ de:
 
   welcome:
     help:
-      header: "Hilfe"
+      header: "Willkommen bei der IMI-Map!"
+      description: "Die IMI-Map ist dafür da, dir das Beantragen deines Pflichtpraktikums im Studiengang Internationale Medieninformatik zu erleichtern. Unter dem Tab 'Mein Praktikum' kannst du eintragen, wann du das komplette Modul B20 belegen möchtest. Das Modul 20 bestehend aus den Modulen B20.1, Auswertung von Erfahrungen am Praxisplatz, und B20.2, dem Fachpraktikum selbst. Wenn du uns das mitgeteilt hast, kannst du ein Praktikum oder ggf. auch mehrere Teilpraktika anlegen und dort alle Informationen eintragen, die auch für den Antrag benötigt werden. Dies ermöglicht es in der Sprechstunde der/des Praktikumsbeauftragten, in der du dein Praktikum beantragst, schon genauer auf dein Praktikum eingehen zu können und schon z.B. Kommentare zu deinem Praktikum in der Datenbank zu hinterlegen."
+      questions: "Hier einige häufig gestellte Fragen:"
       question1: "Ich bin mir nicht sicher, was ich in einige Felder des Formulars eintragen soll."
-      answer1: "Du kannst die Felder des Formulars einfach frei lassen, und diese bei der Praktikumsbeantragung mit dem/der Praktikumsbeauftragten besprechen."
+      answer1: "Du kannst Felder des Formulars einfach frei lassen, und diese bei der Praktikumsbeantragung mit dem/der Praktikumsbeauftragten besprechen. Sollte es Felder geben, die du nicht freilassen kannst, weil es die Datenbank nicht zulässt, kannst du auch erst mal irgendwas eintragen und auch das dann in der Sprechstunde der/des Praktikumsbeauftragten besprechen."
       question2: "Ich habe eine andere Frage. Was soll ich tun?"
       answer2_checklist: "Schau dir noch ein mal die Checkliste an."
       answer2_contact: "Wenn deine Frage sich dadurch nicht geklärt hat schicke eine E-Mail an das Team der Praktikumsverwaltung."
@@ -157,31 +199,46 @@ de:
     semester_of_study: "Fachsemester"
     semester_of_study1: "("
     semester_of_study2: ". Fachsemester)"
-    aep: "AEP"
-    aep_value:
-      false: "Veranstaltung 'Auswertung der Erfahrungen am Arbeitsplatz' noch nicht bestanden"
-      true: "Veranstaltung 'Auswertung der Erfahrungen am Arbeitsplatz' bestanden"
-    passed: "Passed"
-    passed_value:
-      false: "Praktikum (Modul B20) noch nicht bestanden"
-      true: "Praktikum (Modul B20) bestanden"
+    modulnumber: "Modulname"
+    modulname: "Modulnummer"
+    status: "Status"
+    aep:
+      number: "B20.1"
+      name: "Auswertung von Erfahrungen am Praxisplatz"
+      values:
+        false: "noch offen"
+        true: "bestanden"
+    parcial_internships:
+      number: "B20.2"
+      name: "Fachpraktikum"
+      values:
+        false: "noch offen"
+        true: "bestanden"
+    ci:
+      number: "B20"
+      name: "Praxisphase 1: Fachpraktikum im Ausland"
+      values:
+        false: "noch offen"
+        true: "bestanden"
     internship: "Praktikum"
     company: "Firma"
     number_of_internships: "Anzahl der Teilpraktika"
     no_internships: "Du hast noch kein Praktikum angemeldet."
     new: "Neues Praktikum"
-    new_tp: "Neues Praktikum"
+    new_tp0: "Praktikumsinformationen eintragen."
+    new_tp: "Weiteres Teilpraktikum eintragen."
     edit: "Praktikum Bearbeiten"
     create: "Erstellen"
     checklist:
       personal_details: Persönliche Details
       company_details: Firmendetails
       internship_details: Praktikumsdetails
-      contract: Praktikumsvertrag
-      contract_original: Original
-      contract_copy: Kopie
+      contract: Ich habe meinen Praktikumsvertrag
+      contract_original: im Original
+      contract_copy: als Kopie
       lsf_ausdruck: Noten ausgedruckt aus dem LSF
       print_form: Formular ausdrucken
+    icon-ok: " - Wenn dieses Symbol erscheint ist der betreffende Teil des Formulars komplett ausgefüllt"
     details:
       semester: Semester
       start_date: Anfangsdatum

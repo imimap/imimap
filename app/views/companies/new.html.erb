@@ -1,5 +1,9 @@
-<h1><%= t ".newcompany" %></h1>
+<div id="form-block4" class="text-left">
 
-<%= link_to (t "buttons.back"), companies_path %>
+  <small><%= t "forms.what_do_stars_mean1" %></small><br>
+<small><%= t "forms.what_do_stars_mean2" %></small>
+  <h3><%= t ".newcompany" %></h3>
 
-<%= render 'form' %>
+    <%= render 'form' %>
+    <%= link_to (t "buttons.back"), 'javascript:history.back()' %>
+</div>

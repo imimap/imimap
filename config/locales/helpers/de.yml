@@ -1,4 +1,7 @@
 de:
+  forms:
+    what_do_stars_mean1: "Die mit '*' markierten Felder werden für einen vollständigen Antrag benötigt. Speichern kannst du aber auch, ohne diese auszufüllen."
+    what_do_stars_mean2: "Die mit '**' markierten Felder müssen ausgefüllt werden, um die Änderungen speichern zu können."
   complete_internship:
     first_name: Vorname
     last_name: Nachname

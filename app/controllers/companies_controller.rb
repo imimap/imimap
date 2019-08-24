@@ -4,7 +4,7 @@
 class CompaniesController < ApplicationResourceController
   before_action :set_company, only: %i[show edit update destroy]
   before_action :new_company, only: %i[new]
-  before_action :new_company_params, only: %i[create]
+  before_action :new_company_params, only: %i[create create_and_save]
 
   def index
     @companies = Company.all
@@ -24,7 +24,12 @@ class CompaniesController < ApplicationResourceController
 
   def new
     @company = Company.new
-
+    if @current_user.student
+      @internship = @current_user.student
+                                 .complete_internship
+                                 .internships
+                                 .find(params[:internship_id])
+    end
     respond_to do |format|
       format.html
     end
@@ -32,6 +37,12 @@ class CompaniesController < ApplicationResourceController
 
   def edit
     @company = Company.find(params[:id])
+    return unless @current_user.student
+
+    @internship = @current_user.student
+                               .complete_internship
+                               .internships
+                               .find(params[:internship_id])
   end
 
   def create
@@ -42,7 +53,9 @@ class CompaniesController < ApplicationResourceController
         # why not. but if the company was specifically created for the
         # internship, it should be passed to the new internship.
         format.html do
-          redirect_to new_address_path(@company.id),
+          redirect_to new_address_path(@company.id,
+                                       internship_id:
+                                         params[:company][:internship_id]),
                       notice: 'Company was successfully created.'
         end
       else
@@ -55,8 +68,15 @@ class CompaniesController < ApplicationResourceController
     respond_to do |format|
       if @company.update_attributes(company_params)
         format.html do
-          redirect_to @company,
-                      notice: 'Company was successfully updated.'
+          if @current_user.student
+            redirect_to edit_company_address_path(
+              Internship.find(params[:company][:internship_id]).company_address
+            ),
+                        notice: 'Company was successfully updated.'
+          else
+            redirect_to @company,
+                        notice: 'Company was successfully updated.'
+          end
         end
       else
         format.html { render action: 'edit' }
@@ -82,6 +102,11 @@ class CompaniesController < ApplicationResourceController
     params.require(:company).permit(CompaniesController.permitted_params)
   end
 
+  def suggest
+    suggestion = '%' + params[:name].downcase + '%'
+    @company_suggestion = Company.where('lower(name) LIKE ?', suggestion)
+  end
+
   private
 
   def set_company
@@ -96,8 +121,5 @@ class CompaniesController < ApplicationResourceController
     @company = Company.new(company_params)
   end
 
-  def select_company
-    current_user
-    @company = Company.new
-  end
+  def select_company; end
 end

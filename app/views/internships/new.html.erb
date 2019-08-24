@@ -1,3 +1,9 @@
-<h1><%= t ".newinternship" %></h1>
-
-<%= render 'form' %>
+<div id="form-block4" class="text-left">
+<small><%= t "forms.what_do_stars_mean1" %></small><br>
+<small><%= t "forms.what_do_stars_mean2" %></small>
+  <h3><%= t ".newinternship" %></h3> 
+    <div class="ml-5 mb-5">
+  <%= render 'form' %>
+</div>
+  <%= link_to t('buttons.back'), 'javascript:history.back()' %>
+</div>

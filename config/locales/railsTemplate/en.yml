@@ -1,4 +1,5 @@
 en:
+  save: "Save"
   ldap:
     authorization_failed: "Authorization via LDAP failed."
   sign_up:
@@ -49,6 +50,7 @@ en:
     - Friday
     - Saturday
     formats:
+      placeholder: "YYYY-mm-dd"
       default: "%Y-%m-%d"
       long: "%B %d, %Y"
       short: "%b %d"

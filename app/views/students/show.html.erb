@@ -1,8 +1,9 @@
 
 <%= bootstrap_form_for(@student) do |f| %>
 <div id="form-block4" class="text-left">
+<small><%= t "forms.what_do_stars_mean1" %></small><br>
+<small><%= t "forms.what_do_stars_mean2" %></small>
   <h3> <%= t "students.personal_details" %></h3>
-
   <div class="row">
     <div class="col-md-4">
       <%=t "students.attributes.enrolment_number" %><br />
@@ -14,7 +15,6 @@
       <span class="form-control-static"><%=@student.email %></span>
     </div>
   </div>
-  <br />
 
   <div class="row">
     <div class="col-md-4">
@@ -57,7 +57,7 @@
 
       <div class="col-md-4">
         <div class="field">
-        <#%=# f.text_field :privateemail %>
+        <#%=# f.text_field :private_email %>
         </div>
       </div>
     </div>-->
@@ -69,6 +69,8 @@
         </div>
       </div>
     </div>
+
+    <%= link_to t('buttons.back'), 'javascript:history.back()' %>
   </div>
 
   <% end %>

@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.2.1'
+gem 'rails', '~> 5.2.3'
 # see https://github.com/straydogstudio/axlsx_rails
 gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
 gem 'axlsx_rails'
@@ -50,7 +50,7 @@ gem 'uglifier', '>= 1.0.3'
 
 # gems used for charts
 gem 'active_median', '~> 0.1'
-gem 'chartkick', '~> 2.2'
+gem 'chartkick', '~> 3.2.0'
 gem 'groupdate', '~> 3.2'
 
 gem 'factory_bot_rails'
@@ -71,7 +71,7 @@ gem 'faker'
 
 group :development, :test do
   install_if -> { ENV['IMIMAPS_ENVIRONMENT'] != 'docker' } do
-    gem 'sqlite3', '~> 1.3.7'
+    gem 'sqlite3', '~> 1.4'
   end
 
   gem 'better_errors'
