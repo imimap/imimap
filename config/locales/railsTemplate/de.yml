@@ -16,6 +16,9 @@ de:
     message: "Die Seite die Sie aufrufen wollten existiert nicht.<br/>Vielleicht haben Sie sich verschrieben oder die Seite ist umgezogen."
 
   date:
+    datepicker:
+      format: "dd/mm/yyyy"
+
     abbr_day_names:
     - So
     - Mo
