@@ -29,6 +29,7 @@ class StudentsController < ApplicationResourceController
     if @student.update_attributes(student_params)
       flash[:success] = 'Profil geupdated'
       redirect_to @student.complete_internship
+      # TBD  #409 redirect_to @student
     else
       render 'show'
     end
