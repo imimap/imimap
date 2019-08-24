@@ -34,7 +34,6 @@ describe 'Student Profile' do
           fill_in("student_#{field}", with: value)
         end
         click_on t('helpers.submit.generic_update')
-        save_and_open_page
         fields_and_values.each do |_field, value|
           expect(page).to have_selector("input[value='#{value}']")
         end
