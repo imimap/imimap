@@ -108,6 +108,7 @@ de:
         birthplace: Geburtsort
         email: HTW E-Mail
         private_email: Private E-Mail
+        update: Speichern
       comment:
         created_at: Erstellt am
     models:

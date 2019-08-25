@@ -3,7 +3,7 @@
 # regular user with student role and associated student
 FactoryBot.define do
   sequence :email do |n|
-    format('s02%03d8@htw-berlin.de', n)
+    format('s012%03d@htw-berlin.de', n)
   end
 
   factory :user do

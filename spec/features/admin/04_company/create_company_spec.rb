@@ -14,7 +14,6 @@ describe 'ActiveAdmin create Company' do
       #  visit "admin/companies"
       visit admin_companies_path
       expect(I18n.locale).to eq :de
-      # save_and_open_page
       expect(page).to have_content I18n.t('activerecord.models.company.other')
       #  click_button "New Company"
       #  expect(page).to have_content "New Company"

@@ -163,6 +163,7 @@ en:
       create: Create %{model}
       submit: Save %{model}
       update: Update %{model}
+      generic_update: "Save"
   number:
     currency:
       format:
