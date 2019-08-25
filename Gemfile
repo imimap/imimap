@@ -22,7 +22,7 @@ gem 'prawn-table'
 # see https://github.com/tzinfo/tzinfo/wiki/Resolving-TZInfo::DataSourceNotFound-Errors
 gem 'tzinfo-data'
 
-gem 'activeadmin', '~> 1.1'
+gem 'activeadmin', '~> 2.2'
 gem 'cancancan', '~> 2.2'
 gem 'devise', ' ~> 4.3'
 gem 'formtastic', '~> 3'
@@ -33,6 +33,9 @@ gem 'paperclip', '~> 5.2'
 
 gem 'chosen-rails'
 
+# is this needed directly or just used by activeadmin?
+# see https://github.com/kaminari/kaminari
+# calls like User.page would occur
 gem 'kaminari'
 
 gem 'd3-rails'
