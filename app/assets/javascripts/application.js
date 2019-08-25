@@ -13,7 +13,6 @@
 
 //= require jquery3
 //= require jquery-ui
-//= require chosen-jquery
 //= require popper
 //= require bootstrap-sprockets
 //= require leaflet

@@ -31,8 +31,6 @@ gem 'mini_magick'
 # gem "rmagick", "~> 2.16"
 gem 'paperclip', '~> 5.2'
 
-gem 'chosen-rails'
-
 # is this needed directly or just used by activeadmin?
 # see https://github.com/kaminari/kaminari
 # calls like User.page would occur
