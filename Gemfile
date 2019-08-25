@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.2.3'
+gem 'rails', '~> 6.0.0'
 # see https://github.com/straydogstudio/axlsx_rails
 gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
 gem 'axlsx_rails'
@@ -50,11 +50,6 @@ gem 'coffee-rails'
 gem 'font-awesome-sass-rails'
 gem 'sass-rails'
 gem 'uglifier', '>= 1.0.3'
-
-# gems used for charts
-gem 'active_median', '~> 0.1'
-gem 'chartkick', '~> 3.2.0'
-gem 'groupdate', '~> 3.2'
 
 gem 'factory_bot_rails'
 
