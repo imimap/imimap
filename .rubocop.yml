@@ -10,6 +10,9 @@ AllCops:
     - 'app/controllers/report_overview_controller.rb' # delete
     - 'app/models/database_parser.rb' # delete
 
+Metrics/LineLength:
+  Exclude:
+    - 'config/initializers/new_framework_defaults_6_0.rb'
 
 # Internship refactoring dependent marked with #Internship
 # those should eventually be deleted or fixed: marked with #TBD
