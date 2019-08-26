@@ -14,7 +14,7 @@ gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
 # doesn't work on travis:
 
 gem 'axlsx_rails',
-    git: 'git@github.com:imimap/axlsx_rails.git',
+    git: 'https://github.com/imimap/axlsx_rails.git',
     tag: '0.5.2_rails6_patch'
 gem 'carrierwave'
 gem 'country_select'
