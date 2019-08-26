@@ -33,6 +33,7 @@ RUN set -ex \
        build-base \
        postgresql-dev \
        imagemagick-dev \
+       openssh-client \
    && bundle install \
    && apk del builddependencies
 CMD ["bundle", "exec", "unicorn", "--port", "80"]
