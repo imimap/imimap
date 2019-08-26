@@ -8,7 +8,7 @@ namespace :imimap do
         result = ca.geocode
         if result.present?
           puts "id: #{ca.id} RESULT: #{result}"
-          ca.update_attributes(latitude: result[0], longitude: result[1])
+          ca.update(latitude: result[0], longitude: result[1])
         else
           puts "id: #{ca.id} couldn't geocode"
           puts "address: #{ca.address}"

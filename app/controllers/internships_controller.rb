@@ -131,8 +131,8 @@ class InternshipsController < ApplicationResourceController
                                .complete_internship
                                .internships
                                .find(params[:id])
-    if @internship.update_attributes(attributes)
-      @internship.update_attributes(completed: true)
+    if @internship.update(attributes)
+      @internship.update(completed: true)
       flash[:notice] = 'Internship was successfully updated.'
       respond_with(@current_user.student
                                  .complete_internship)

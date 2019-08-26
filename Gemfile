@@ -47,7 +47,7 @@ gem 'net-ldap'
 gem 'coffee-rails'
 gem 'font-awesome-sass-rails'
 # Use SCSS for stylesheets
-gem 'sass-rails' #, '~> 5'
+gem 'sass-rails'
 gem 'uglifier', '>= 1.0.3'
 
 gem 'factory_bot_rails'
