@@ -480,7 +480,7 @@ DEPENDENCIES
   rubocop
   rubocop-rspec
   rubyzip (>= 1.2.1)
-  sass-rails (~> 5)
+  sass-rails
   simplecov
   spring
   sqlite3 (~> 1.4)
