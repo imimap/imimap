@@ -2,20 +2,17 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `rails
+# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2019_07_25_132853) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "active_admin_comments", id: :serial, force: :cascade do |t|
+  create_table "active_admin_comments", force: :cascade do |t|
     t.string "resource_id", null: false
     t.string "resource_type", null: false
     t.string "author_type"
@@ -29,7 +26,7 @@ ActiveRecord::Schema.define(version: 2019_07_25_132853) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
-  create_table "admin_users", id: :serial, force: :cascade do |t|
+  create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -46,7 +43,7 @@ ActiveRecord::Schema.define(version: 2019_07_25_132853) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "attachments", id: :serial, force: :cascade do |t|
+  create_table "attachments", force: :cascade do |t|
     t.text "description"
     t.string "file"
     t.string "attachable_type"
@@ -56,14 +53,14 @@ ActiveRecord::Schema.define(version: 2019_07_25_132853) do
     t.index ["attachable_id"], name: "index_attachments_on_attachable_id"
   end
 
-  create_table "certificate_states", id: :serial, force: :cascade do |t|
+  create_table "certificate_states", force: :cascade do |t|
     t.string "name"
     t.string "name_de"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "companies", id: :serial, force: :cascade do |t|
+  create_table "companies", force: :cascade do |t|
     t.string "name"
     t.integer "number_employees"
     t.string "industry"
@@ -77,7 +74,7 @@ ActiveRecord::Schema.define(version: 2019_07_25_132853) do
   end
 
   create_table "company_addresses", force: :cascade do |t|
-    t.bigint "company_id"
+    t.integer "company_id"
     t.string "street"
     t.string "zip"
     t.string "city"
@@ -92,45 +89,45 @@ ActiveRecord::Schema.define(version: 2019_07_25_132853) do
   end
 
   create_table "complete_internships", force: :cascade do |t|
-    t.bigint "semester_id"
+    t.integer "semester_id"
     t.integer "semester_of_study"
     t.boolean "aep"
     t.boolean "passed"
-    t.bigint "student_id"
+    t.integer "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["semester_id"], name: "index_complete_internships_on_semester_id"
     t.index ["student_id"], name: "index_complete_internships_on_student_id"
   end
 
-  create_table "contract_states", id: :serial, force: :cascade do |t|
+  create_table "contract_states", force: :cascade do |t|
     t.string "name"
     t.string "name_de"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "downloads", id: :serial, force: :cascade do |t|
+  create_table "downloads", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "email_processors", id: :serial, force: :cascade do |t|
+  create_table "email_processors", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "faqs", id: :serial, force: :cascade do |t|
+  create_table "faqs", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "favorite_compares", id: :serial, force: :cascade do |t|
+  create_table "favorite_compares", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "favorites", id: :serial, force: :cascade do |t|
+  create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "internship_id"
     t.datetime "created_at"
@@ -138,12 +135,12 @@ ActiveRecord::Schema.define(version: 2019_07_25_132853) do
     t.boolean "comparebox"
   end
 
-  create_table "financings", id: :serial, force: :cascade do |t|
+  create_table "financings", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "internship_offers", id: :serial, force: :cascade do |t|
+  create_table "internship_offers", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.string "pdf"
@@ -154,7 +151,7 @@ ActiveRecord::Schema.define(version: 2019_07_25_132853) do
     t.boolean "active"
   end
 
-  create_table "internship_ratings", id: :serial, force: :cascade do |t|
+  create_table "internship_ratings", force: :cascade do |t|
     t.integer "tasks", limit: 2
     t.integer "training_success", limit: 2
     t.integer "atmosphere", limit: 2
@@ -164,7 +161,7 @@ ActiveRecord::Schema.define(version: 2019_07_25_132853) do
     t.datetime "updated_at"
   end
 
-  create_table "internship_searches", id: :serial, force: :cascade do |t|
+  create_table "internship_searches", force: :cascade do |t|
     t.string "country"
     t.string "city"
     t.string "industry"
@@ -176,14 +173,14 @@ ActiveRecord::Schema.define(version: 2019_07_25_132853) do
     t.datetime "updated_at"
   end
 
-  create_table "internship_states", id: :serial, force: :cascade do |t|
+  create_table "internship_states", force: :cascade do |t|
     t.string "name"
     t.string "name_de"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "internships", id: :serial, force: :cascade do |t|
+  create_table "internships", force: :cascade do |t|
     t.float "working_hours"
     t.float "living_costs"
     t.datetime "created_at"
@@ -217,8 +214,8 @@ ActiveRecord::Schema.define(version: 2019_07_25_132853) do
     t.string "supervisor_email"
     t.string "supervisor_name"
     t.boolean "completed", default: false
-    t.bigint "company_address_id"
-    t.bigint "complete_internship_id"
+    t.integer "company_address_id"
+    t.integer "complete_internship_id"
     t.string "supervisor_phone"
     t.index ["company_address_id"], name: "index_internships_on_company_address_id"
     t.index ["complete_internship_id"], name: "index_internships_on_complete_internship_id"
@@ -230,7 +227,7 @@ ActiveRecord::Schema.define(version: 2019_07_25_132853) do
     t.index ["programming_language_id", "internship_id"], name: "unique_index", unique: true
   end
 
-  create_table "locations", id: :serial, force: :cascade do |t|
+  create_table "locations", force: :cascade do |t|
     t.string "street"
     t.string "zip"
     t.string "country"
@@ -240,7 +237,7 @@ ActiveRecord::Schema.define(version: 2019_07_25_132853) do
     t.integer "company_id"
   end
 
-  create_table "notifications", id: :serial, force: :cascade do |t|
+  create_table "notifications", force: :cascade do |t|
     t.integer "user_id"
     t.text "text"
     t.boolean "read"
@@ -249,60 +246,60 @@ ActiveRecord::Schema.define(version: 2019_07_25_132853) do
     t.string "link"
   end
 
-  create_table "orientations", id: :serial, force: :cascade do |t|
+  create_table "orientations", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "payment_states", id: :serial, force: :cascade do |t|
+  create_table "payment_states", force: :cascade do |t|
     t.string "name"
     t.string "name_de"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "posts", id: :serial, force: :cascade do |t|
+  create_table "posts", force: :cascade do |t|
     t.text "body"
     t.string "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "programming_languages", id: :serial, force: :cascade do |t|
+  create_table "programming_languages", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "reading_profs", id: :serial, force: :cascade do |t|
+  create_table "reading_profs", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "registration_states", id: :serial, force: :cascade do |t|
-    t.string "name"
-    t.string "name_de"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "report_states", id: :serial, force: :cascade do |t|
+  create_table "registration_states", force: :cascade do |t|
     t.string "name"
     t.string "name_de"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "semesters", id: :serial, force: :cascade do |t|
+  create_table "report_states", force: :cascade do |t|
+    t.string "name"
+    t.string "name_de"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "semesters", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal "sid"
   end
 
-  create_table "students", id: :serial, force: :cascade do |t|
+  create_table "students", force: :cascade do |t|
     t.string "enrolment_number"
     t.string "last_name"
     t.string "first_name"
@@ -319,7 +316,7 @@ ActiveRecord::Schema.define(version: 2019_07_25_132853) do
     t.string "private_email"
   end
 
-  create_table "users", id: :serial, force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.datetime "created_at"
     t.datetime "updated_at"

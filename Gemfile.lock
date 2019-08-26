@@ -1,4 +1,13 @@
 GIT
+  remote: git@github.com:imimap/axlsx_rails.git
+  revision: f391bef4d9cdcb07459bb79311e322dddcfb963f
+  tag: 0.5.2_rails6_patch
+  specs:
+    axlsx_rails (0.5.2)
+      actionpack (>= 3.1)
+      axlsx (>= 2.0.1)
+
+GIT
   remote: https://github.com/randym/axlsx.git
   revision: c8ac844572b25fda358cc01d2104720c4c42f450
   ref: c8ac844
@@ -88,9 +97,6 @@ GEM
     ast (2.4.0)
     autoprefixer-rails (9.6.1.1)
       execjs
-    axlsx_rails (0.5.2)
-      actionpack (>= 3.1)
-      axlsx (>= 2.0.1)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
@@ -435,7 +441,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin (~> 2.2)
   axlsx!
-  axlsx_rails
+  axlsx_rails!
   bcrypt (~> 3)
   better_errors
   binding_of_caller

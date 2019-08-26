@@ -5,15 +5,17 @@ source 'https://rubygems.org'
 gem 'rails', '~> 6.0.0'
 # see https://github.com/straydogstudio/axlsx_rails
 gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
-gem 'axlsx_rails'
+# gem 'axlsx_rails'
 # axlsx_rails yields a deprecation warning with rails6.
 # for local testing:
+
 # gem 'axlsx_rails',
 # path: '/Users/kleinen/mine/current/htw/imimap/code/axlsx_rails'
 # doesn't work on travis:
-# gem 'axlsx_rails',
-#    git: 'git@github.com:imimap/axlsx_rails.git',
-#    tag: '0.5.2_rails6_patch'
+
+gem 'axlsx_rails',
+    git: 'git@github.com:imimap/axlsx_rails.git',
+    tag: '0.5.2_rails6_patch'
 gem 'carrierwave'
 gem 'country_select'
 gem 'geocoder'

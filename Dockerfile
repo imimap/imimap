@@ -8,6 +8,7 @@ EXPOSE 80
 WORKDIR $APP_HOME
 
 COPY Gemfile* $APP_HOME/
+COPY ci-cd/ssh_config /etc/ssh/ssh_config
 
 # general dependencies
 RUN apk update
