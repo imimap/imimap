@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-TEXT4 = <<DELIM
+text4 = <<DELIM
   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
   incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
   nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -25,7 +25,7 @@ FactoryBot.define do
     recommend { true }
     orientation
     email_public { true }
-    description { TEXT4 }
+    description { text4 }
     complete_internship
     salary { 8 }
     start_date { Date.today.to_date }
@@ -76,12 +76,12 @@ FactoryBot.define do
     recommend { true }
     orientation
     email_public { true }
-    description { TEXT4 }
+    description { text4 }
     semester
     salary { 8 }
     start_date { Date.today.to_date }
     end_date { Date.today.to_date + 7.days }
-    tasks { TEXT4 }
+    tasks { text4 }
     operational_area { 'operational area' }
     internship_state { create :internship_state_aep }
     complete_internship
@@ -130,12 +130,12 @@ FactoryBot.define do
     recommend { true }
     orientation
     email_public { true }
-    description { TEXT4 }
+    description { text4 }
     semester
     salary { 8 }
     start_date { Date.today.to_date }
     end_date { Date.today.to_date + 7.days }
-    tasks { TEXT4 }
+    tasks { text4 }
     operational_area { 'operational area' }
     complete_internship
     internship_state
@@ -185,12 +185,12 @@ FactoryBot.define do
     recommend { true }
     orientation
     email_public { true }
-    description { TEXT4 }
+    description { text4 }
     semester
     salary { 8 }
     start_date { Date.today.to_date }
     end_date { Date.today.to_date + 7.days }
-    tasks { TEXT4 }
+    tasks { text4 }
     operational_area { 'operational area' }
     internship_state { create :internship_state_aep }
     complete_internship { create :complete_internship_wo_student }
@@ -239,12 +239,12 @@ FactoryBot.define do
     recommend { true }
     orientation
     email_public { true }
-    description { TEXT4 }
+    description { text4 }
     semester
     salary { 8 }
     start_date { Date.today.to_date }
     end_date { Date.today.to_date + 7.days }
-    tasks { TEXT4 }
+    tasks { text4 }
     operational_area { 'operational area' }
     complete_internship
     reading_prof

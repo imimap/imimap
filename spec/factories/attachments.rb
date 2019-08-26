@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-TEXT2 = <<~DELIM
+text2 = <<~DELIM
   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -11,7 +11,7 @@ DELIM
 
 FactoryBot.define do
   factory :attachment do
-    description { TEXT2 }
+    description { text2 }
     file do
       Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec',
                                              'support', 'test.jpg'))
