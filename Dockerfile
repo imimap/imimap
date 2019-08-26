@@ -12,7 +12,7 @@ COPY Gemfile* $APP_HOME/
 # general dependencies
 RUN apk update
 RUN set -ex \
-  && apk add --no-cache git libpq imagemagick nodejs bash
+  && apk add --no-cache libpq imagemagick nodejs bash gcompat git
 
 # poltergeist, see https://github.com/Overbryd/docker-phantomjs-alpine/releases
 ENV PHANHOME /usr/share
@@ -36,3 +36,4 @@ RUN set -ex \
    && bundle install \
    && apk del builddependencies
 CMD ["bundle", "exec", "unicorn", "--port", "80"]
+# bundle exec unicorn --port 80

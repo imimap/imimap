@@ -46,7 +46,8 @@ gem 'net-ldap'
 # gem 'jquery-ui-rails'
 gem 'coffee-rails'
 gem 'font-awesome-sass-rails'
-gem 'sass-rails'
+# Use SCSS for stylesheets
+gem 'sass-rails' #, '~> 5'
 gem 'uglifier', '>= 1.0.3'
 
 gem 'factory_bot_rails'
@@ -78,7 +79,7 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'poltergeist'
-  gem 'rack-mini-profiler'
+  # gem 'rack-mini-profiler', require: false
 
   gem 'byebug'
   gem 'database_cleaner'
