@@ -1,4 +1,0 @@
-Host *
-   StrictHostKeyChecking no
-   UserKnownHostsFile=/dev/null
-# see https://www.shellhacks.com/disable-ssh-host-key-checking/

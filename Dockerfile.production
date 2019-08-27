@@ -28,7 +28,6 @@ RUN set -ex \
   build-base \
   postgresql-dev \
   imagemagick-dev \
-#  openssh-client \
   && bundle install --without development test \
   && mkdir nginx-assets \
   && bundle exec rails assets:precompile \

@@ -8,7 +8,6 @@ EXPOSE 80
 WORKDIR $APP_HOME
 
 COPY Gemfile* $APP_HOME/
-COPY ci-cd/ssh_config /etc/ssh/ssh_config
 
 # general dependencies
 RUN apk update
@@ -32,7 +31,6 @@ RUN set -ex \
        build-base \
        postgresql-dev \
        imagemagick-dev \
-#       openssh-client \
    && bundle install \
    && apk del builddependencies
 CMD ["bundle", "exec", "unicorn", "--port", "80"]
