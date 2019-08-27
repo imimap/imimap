@@ -72,7 +72,7 @@ class User < ApplicationRecord
     user = User.where(email: email).first
     if user
       old_pw = user.encrypted_password
-      user.update_attributes(password: password) unless password == old_pw
+      user.update(password: password) unless password == old_pw
     end
     user ||= User.create(email: email,
                          password: password,

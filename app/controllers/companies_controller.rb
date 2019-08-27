@@ -66,7 +66,7 @@ class CompaniesController < ApplicationResourceController
 
   def update
     respond_to do |format|
-      if @company.update_attributes(company_params)
+      if @company.update(company_params)
         format.html do
           if @current_user.student
             redirect_to edit_company_address_path(

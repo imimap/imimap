@@ -40,7 +40,8 @@ Rails.application
      .config
      .active_record
      .sqlite3
-     .represent_boolean_as_integer = true
+# deprecated; always true and will be removed in rails 6.1
+#     .represent_boolean_as_integer = true
 
 # Use SHA-1 instead of MD5 to generate non-sensitive digests, such as the ETag
 # header.

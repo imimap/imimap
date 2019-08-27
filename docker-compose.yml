@@ -29,3 +29,5 @@ services:
       - postgresql
     ports:
       - 8080:80
+    #entrypoint:
+    #  - ci-cd/stall.sh

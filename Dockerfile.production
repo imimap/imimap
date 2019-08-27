@@ -15,7 +15,7 @@ COPY Gemfile* $APP_HOME/
 # general dependencies
 RUN apk update
 RUN set -ex \
-  && apk add --no-cache libpq imagemagick nodejs bash
+  && apk add --no-cache libpq imagemagick nodejs bash gcompat
 
 ADD . $APP_HOME
 
