@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:imimap/axlsx_rails.git
+  remote: https://github.com/imimap/axlsx_rails.git
   revision: f391bef4d9cdcb07459bb79311e322dddcfb963f
   tag: 0.5.2_rails6_patch
   specs:
