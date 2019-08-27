@@ -29,8 +29,8 @@ def create_internship(complete_internship:, company_address:)
     reading_prof: ReadingProf.all.sample(1).first,
 
     comment: Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote,
-    certificate_to_prof: Faker::Date.forward(30),
-    certificate_signed_by_prof: Faker::Date.forward(50),
-    certificate_signed_by_internship_officer: Faker::Date.backward(5)
+    certificate_to_prof: Faker::Date.forward(days: 30),
+    certificate_signed_by_prof: Faker::Date.forward(days: 50),
+    certificate_signed_by_internship_officer: Faker::Date.backward(days: 5)
   )
 end
