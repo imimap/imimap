@@ -26,9 +26,7 @@ class StudentsController < ApplicationResourceController
   def update
     @student = Student.find(params[:id])
     @user = @student.user
-    if @student.update(student_params)
-      flash[:success] = 'Profil geupdated'
-    end
+    flash[:success] = 'Profil geupdated' if @student.update(student_params)
     render 'show'
   end
 
