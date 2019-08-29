@@ -37,7 +37,6 @@ de:
     no_match: "Nein, erstelle eine neue Firma mit diesem Namen:"
     no_match1: "Es wurde leider keine Firma gefunden, die deiner Suchanfrage entspricht. Mit dem Link kannst du aber eine neue Firma mit dem Namen anlegen."
     company_address: "Bearbeite die Firmenadresse"
-
   internships:
     statistic: "Übersicht über die Länder pro Semester"
     my: "Meine Praktika"
@@ -46,10 +45,10 @@ de:
     details: "Wann möchtest du dein Praktikum absolvieren?"
     name: "Praktika"
     create: "Erstelle Praktikum"
-    createYourInternship: "Jetzt eintragen."
+    provide_now: "Jetzt eintragen"
     update: "Praktikum aktualisieren"
     company_fact: "Arbeitsplatz Kurzinfo"
-    createInternship: "Du hast noch keine Informationen eingetragen."
+    create_internship: "Du hast noch keine Informationen eingetragen."
     index:
       title: "Praktika im"
       select: 'anzeigen'
