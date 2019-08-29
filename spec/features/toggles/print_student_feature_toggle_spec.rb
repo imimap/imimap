@@ -13,7 +13,7 @@ describe 'toggle student_can_print_internship_application:
     it 'feature is on for test users' do
       create(:semester)
       visit my_internship_path
-      click_link(t('internships.createYourInternship'))
+      click_link(t('internships.provide_now'))
       click_on t('save')
       click_on t('complete_internships.new_tp0')
       click_on t('save')
@@ -31,7 +31,7 @@ describe 'toggle student_can_print_internship_application:
     it 'dont see the feature' do
       create(:semester)
       visit my_internship_path
-      click_link(t('internships.createYourInternship'))
+      click_link(t('internships.provide_now'))
       click_on t('save')
       click_on t('complete_internships.new_tp0')
       click_on t('save')

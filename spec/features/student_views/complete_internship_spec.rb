@@ -17,7 +17,7 @@ describe 'Complete Internship' do
         it 'should create a new CI' do
           visit my_internship_path
           expect(page).to have_content('Praktikumsdetails')
-          click_link(t('internships.createYourInternship'))
+          click_link(t('internships.provide_now'))
           expect(page).to have_field('Semester')
           expect(page).to have_field('Fachsemester')
           click_on t('save')
@@ -27,7 +27,7 @@ describe 'Complete Internship' do
         it 'should create a new partial internship' do
           create(:semester)
           visit my_internship_path
-          click_link(t('internships.createYourInternship'))
+          click_link(t('internships.provide_now'))
           click_on t('save')
           click_on t('complete_internships.new_tp0')
           expect(page).to have_field('Semester')
@@ -49,11 +49,11 @@ describe 'Complete Internship' do
             (example supervisor details)' do
           create(:semester)
           visit my_internship_path
-          click_link(t('internships.createYourInternship'))
+          click_link(t('internships.provide_now'))
           click_on t('save')
           click_on t('complete_internships.new_tp0')
           click_on t('save')
-          click_link(t('complete_internships.checklist.internship_details'))
+          click_link(t('internships.internship_details'))
           expect(page).to have_content(
             t('activerecord.attributes.internship.supervisor_name')
           )
