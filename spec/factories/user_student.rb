@@ -21,10 +21,10 @@ FactoryBot.define do
     publicmail { false }
     mailnotif { true }
     role { :user }
-    after(:build) do |user|
-      student = user.student ||= FactoryBot.build(:student, user: user)
-      student.complete_internship ||= FactoryBot.build(
-        :complete_internship_wo_student,
+    after(:create) do |user|
+      student = user.student ||= FactoryBot.create(:student, user: user)
+      student.complete_internship ||= FactoryBot.create(
+        :complete_internship_w_fresh_internship,
         student: student
       )
     end

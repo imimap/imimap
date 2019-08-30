@@ -42,6 +42,15 @@ FactoryBot.define do
     import_id { 2 }
   end
 
+  factory :plain_company_address, class: CompanyAddress do
+    city { 'San Francisco' }
+    country { 'US' }
+    street { '88 Colin P Kelly Junior St' }
+    zip { '94107' }
+    phone { '+187345847' }
+    fax { '+187345888' }
+  end
+  
   # github
   factory :company_address_1, class: CompanyAddress do
     city { 'San Francisco' }
