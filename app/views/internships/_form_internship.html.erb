@@ -20,6 +20,7 @@
 <div class="row">
   <div class="col-md-6">
     <div class="field" id="field-titles" onfocusout="validateDuration()">
+      <%= label_with_req f, :start_date, t("internships.attributes.start_date") %>
       <%= f.label :start_date, t("internships.attributes.start_date1") %>
       <%= f.date_field :start_date, placeholder: t('date.formats.placeholder'), skip_label: true  %>
     </div>

@@ -42,4 +42,19 @@ module ApplicationHelper
                          class: "locale-#{loc}")
     end
   end
+
+  def label_with_req(form, field, text)
+    model = form.object.class
+    form.label(field, "#{text} #{requirement_marker(model, field)}")
+  end
+
+  def requirement_marker(model, field)
+    if model.attributes_required_for_internship_application.include?(field)
+      '*'
+    elsif model.attributes_required_for_save.include?(field)
+      '**'
+    else
+      ''
+    end
+  end
 end
