@@ -43,18 +43,23 @@ module ApplicationHelper
     end
   end
 
-  def label_with_req(form, field, text)
+  # form helper that adds a label_class to the bootstrap_form field. see #402
+  def required_application(form, field, options = {})
     model = form.object.class
-    form.label(field, "#{text} #{requirement_marker(model, field)}")
-  end
-
-  def requirement_marker(model, field)
-    if model.attributes_required_for_internship_application.include?(field)
-      '*'
-    elsif model.attributes_required_for_save.include?(field)
-      '**'
-    else
-      ''
+    if model.attributes_required_for_internship_application.include? field
+      options.merge!(label_class: 'required_application')
     end
+    options
+  end
+  #TBA löschen #402
+  def label_with_req(form, field, text)
+    marker = 'NEEDS TO BE REMOVED'
+    model = form.object.class
+
+    if model.attributes_required_for_internship_application.include? field
+      marker = marker + " (required_application)"
+    end
+    model = form.object.class
+    form.label(field, "#{text} #{marker}")
   end
 end

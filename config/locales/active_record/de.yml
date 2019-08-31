@@ -58,6 +58,7 @@ de:
         submit: "Speichern"
 
       internship:
+        title: Titel
         student: Student_in
         company: Firma
         company_v2: Firma
@@ -66,8 +67,9 @@ de:
         end_date: Enddatum
         weekCount: Anzahl der Wochen
         weekValidation: Validierung
-        operational_area: Orientierung
+        operational_area: Einsatzgebiet
         tasks: Aufgaben
+        salary: "Gehalt in € pro Monat"
         supervisor_name: Betreuername
         supervisor_email: E-Mail des Betreuers
         supervisor_phone: Telefonnummer des Betreuers
@@ -103,7 +105,7 @@ de:
         internships: Praktika
         enrolment_number: Matrikelnummer
         last_name: Nachname
-        first_name: Vorname
+        first_name: Vornameasdfasdfasdf
         birthday: Geburtsdatum
         birthplace: Geburtsort
         email: HTW E-Mail

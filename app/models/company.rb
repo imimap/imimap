@@ -6,6 +6,10 @@ class Company < ApplicationRecord
   has_many :company_addresses
   has_many :internships, through: :company_addresses
 
+  def self.attributes_required_for_internship_application
+    [:website]
+  end
+
   # TBD: rename
   def enrolment_number
     internships.map { |x| x.student.enrolment_number }.join(', ')

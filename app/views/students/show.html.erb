@@ -19,13 +19,14 @@
   <div class="row">
     <div class="col-md-4">
       <div class="field" >
+        <%= f.label :first_name %>
       <%= f.text_field :first_name, :maxlength => 50 %>
       </div>
     </div>
 
   <div class="col-md-4">
     <div class="field">
-      <%= f.text_field :last_name, :maxlength => 50%>
+      <%= f.text_field :last_name, maxlength: 50, class: 'required_application' %>
       </div>
     </div>
   </div>

@@ -7,6 +7,10 @@ class Student < ApplicationRecord
 
   attr_accessor
 
+  def self.attributes_required_for_internship_application
+    %i[first_name last_name birthday birthplace enrolment_number]
+  end
+
   # validates :last_name, :first_name, :email, :enrolment_number, presence: true
   # validates_uniqueness_of :enrolment_number
 
