@@ -47,6 +47,7 @@ module ApplicationHelper
   def required_application(form, field, options = {})
     required_application_impl(form, field, :label_class, options)
   end
+
   def required_application_impl(form, field, css_class, options = {})
     model = form.object.class
     if model.attributes_required_for_internship_application.include? field

@@ -113,6 +113,7 @@ class CompleteInternshipsController < ApplicationResourceController
       CompleteInternshipsController.permitted_params
     )
   end
+
   # CodeReviewSommer19
   # BK: dieses sind default values, die gehoeren ins Modell!
   def complete_internship_values

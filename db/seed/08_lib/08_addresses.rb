@@ -37,7 +37,7 @@ module GeocodedAddresses
       CompanyAddress.create!(
         company: company,
         street: street,
-        zip: result.postal_code || 12345,
+        zip: result.postal_code || 12_345,
         city: city,
         country: country_code,
         phone: Faker::PhoneNumber.phone_number
