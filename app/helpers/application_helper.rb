@@ -44,7 +44,10 @@ module ApplicationHelper
   end
 
   # form helper that adds a label_class to the bootstrap_form field. see #402
-  def required_application(form, field, css_class = :label_class, options = {})
+  def required_application(form, field, options = {})
+    required_application_impl(form, field, :label_class, options)
+  end
+  def required_application_impl(form, field, css_class, options = {})
     model = form.object.class
     if model.attributes_required_for_internship_application.include? field
       options.merge!(css_class => 'required_application')
@@ -57,6 +60,7 @@ module ApplicationHelper
     if model.attributes_required_for_save.include? field
       options.merge!(class: 'required')
     end
-    required_application(form, field, :class, options)
+    byebug
+    required_application_impl(form, field, :class, options)
   end
 end

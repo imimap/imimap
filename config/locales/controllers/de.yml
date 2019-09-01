@@ -37,7 +37,6 @@ de:
     no_match: "Nein, erstelle eine neue Firma mit diesem Namen:"
     no_match1: "Es wurde leider keine Firma gefunden, die deiner Suchanfrage entspricht. Mit dem Link kannst du aber eine neue Firma mit dem Namen anlegen."
     company_address: "Bearbeite die Firmenadresse"
-
   internships:
     statistic: "Übersicht über die Länder pro Semester"
     my: "Meine Praktika"
@@ -61,16 +60,6 @@ de:
     new:
       newinternship: "Neues Praktikum"
     attributes:
-    #
-    #  programming_language: "Programmiersprache(n)"
-    #  salary: "Gehalt in € pro Monat"
-    #
-    #  living_costs: "Lebenshaltungskosten"
-    #  living_costs2: "Lebenshaltungskosten pro Monat"
-    #  company: "Firma"
-    #  start_date: "Anfangsdatum"
-    #  end_date: "Enddatum"
-    #  operational_area: "Einsatzbereich"
       placeholder_oa: "Virtual Reality, Webseite, 3D"
       placeholder_tasks: "Erstellen und managen einer Firmenwebseite, Erstellen von CSS für Clientwebsites"
       tasks_rating: "Aufgaben"
