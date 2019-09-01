@@ -2,6 +2,7 @@ de:
   activerecord:
     attributes:
       internship:
+        description: "Beschreibung"
         title: Titel
         student: Student_in
         company: Firma
@@ -17,7 +18,6 @@ de:
         supervisor_name: "Betriebliche_r Betreuer_in"
         supervisor_email: "Betreuer_in E-Mail"
         supervisor_phone: "Betreuer_in Telefonnummer"
-
         registration_state: Regisstrierungsstatus
         payment_state: Bezahlungsstatus
         contract_state: Vertragsstatus

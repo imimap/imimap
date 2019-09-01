@@ -55,28 +55,28 @@ describe 'Complete Internship' do
           click_on t('save')
           click_link(t('complete_internships.checklist.internship_details'))
           expect(page).to have_content(
-            t('internships.attributes.supervisor_name')
+            t('activerecord.attributes.internship.supervisor_name')
           )
           expect(page).to have_content(
-            t('internships.attributes.supervisor_email')
+            t('activerecord.attributes.internship.supervisor_email')
           )
           expect(page).to have_content(
-            t('internships.attributes.supervisor_phone')
+            t('activerecord.attributes.internship.supervisor_phone')
           )
 
-          fill_in t('internships.attributes.supervisor_phone'),
+          fill_in t('activerecord.attributes.internship.supervisor_phone'),
                   with: '030283020'
-          fill_in t('internships.attributes.supervisor_name'),
+          fill_in t('activerecord.attributes.internship.supervisor_name'),
                   with: 'Testname'
-          fill_in t('internships.attributes.supervisor_email'),
+          fill_in t('activerecord.attributes.internship.supervisor_email'),
                   with: 'meineMail@whatsoever.com'
           click_on t('save')
           click_link(t('complete_internships.checklist.internship_details'))
-          expect(find_field(t('internships.attributes.supervisor_phone'))
+          expect(find_field(t('activerecord.attributes.internship.supervisor_phone'))
                   .value).to eq '030283020'
-          expect(find_field(t('internships.attributes.supervisor_email'))
+          expect(find_field(t('activerecord.attributes.internship.supervisor_email'))
                   .value).to eq 'meineMail@whatsoever.com'
-          expect(find_field(t('internships.attributes.supervisor_name'))
+          expect(find_field(t('activerecord.attributes.internship.supervisor_name'))
                   .value).to eq 'Testname'
         end
       end

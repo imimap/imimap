@@ -61,7 +61,6 @@ de:
     new:
       newinternship: "Neues Praktikum"
     attributes:
-    #  description: "Beschreibung"
     #  semester: "Semester"
     #  semester1: "Semester *"
     #  email_public: "Emailadresse öffentlich anzeigen?"
