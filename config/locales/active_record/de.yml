@@ -36,16 +36,9 @@ de:
       company_address:
         new_address_heading: "Schritt 2: Erstelle eine neue Firmenaddresse"
         street: Straße
-        street1: Straße *
-        street2: Straße **
         zip: Postleitzahl
-        zip1: Postleitzahl *
         city: Stadt
-        city1: Stadt *
-        city2: Stadt **
         country: Land
-        country1: Land *
-        country2: Land **
         phone: Telefon
         fax: Fax
         latitude: Breite
@@ -56,33 +49,6 @@ de:
         new_company_address: "Oder lege eine neue Adresse an: "
         details: "Details zur Firmenadresse"
         submit: "Speichern"
-
-      internship:
-        student: Student_in
-        company: Firma
-        company_v2: Firma
-        programming_language_ids: Programmiersprachen
-        start_date: Anfangsdatum
-        end_date: Enddatum
-        weekCount: Anzahl der Wochen
-        weekValidation: Validierung
-        operational_area: Orientierung
-        tasks: Aufgaben
-        supervisor_name: Betreuername
-        supervisor_email: E-Mail des Betreuers
-        supervisor_phone: Telefonnummer des Betreuers
-        registration_state: Regisstrierungsstatus
-        payment_state: Bezahlungsstatus
-        contract_state: Vertragsstatus
-        internship_state: Praktikumsstatus
-        comment: Kommentar
-        semester: Semester
-        certificate_to_prof: Praktikumsnachweis an Prof
-        certificate_signed_by_prof: Praktikumsnachweis unterschrieben von Prof
-        certificate_signed_by_internship_officer: Praktikumsnachweis unterschrieben von Betreuer/in
-        report_state: Berichtstatus
-        certificate_state: Nachweisstatus
-        reading_prof: Prof
       complete_internship:
         aep: "AEP"
         passed: "Passed"

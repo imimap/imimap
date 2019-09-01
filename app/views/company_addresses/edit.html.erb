@@ -1,10 +1,5 @@
 <div id="form-block4" class="text-left">
-
-  <small><%= t "forms.what_do_stars_mean1" %></small><br>
-<small><%= t "forms.what_do_stars_mean2" %></small>
   <h3><%= t "companies.company_address" %></h3>
-
-<%= render 'form', company_address: @company_address %>
-
-<%= link_to t('buttons.back'), 'javascript:history.back()' %>
+  <%= render 'form', company_address: @company_address %>
+  <%= link_to t('buttons.back'), 'javascript:history.back()' %>
 </div>

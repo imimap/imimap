@@ -46,6 +46,7 @@ class CompaniesController < ApplicationResourceController
   end
 
   def create
+    # byebug
     respond_to do |format|
       if @company.save
         # CodeReviewSS17 seems a bit too specific for the general create
@@ -65,6 +66,7 @@ class CompaniesController < ApplicationResourceController
   end
 
   def update
+    # byebug
     respond_to do |format|
       if @company.update(company_params)
         format.html do

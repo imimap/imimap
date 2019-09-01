@@ -2,84 +2,84 @@
   <table class="table table-striped">
     <tbody>
       <tr>
-        <td><%= t "internships.attributes.title" %></td>
+        <td><%= t "activerecord.attributes.internship.title" %></td>
         <td><%= @internship.title %></td>
       </tr>
       <tr>
-        <td><%= t "internships.attributes.company_name" %></td>
+        <td><%= t "activerecord.attributes.internshipcompany_name" %></td>
         <td><%= @internship.company_v2.name %></td>
       </tr>
       <tr>
-        <td><%= t "internships.attributes.company_address" %></td>
+        <td><%= t "activerecord.attributes.internshipcompany_address" %></td>
         <td><%= @internship.company_address.street %>,
         <%= @internship.company_address.zip %> <%= @internship.company_address.city %>,
         <%= @internship.company_address.country %></td>
       </tr>
       <tr>
-        <td><%= t "internships.attributes.company_website" %></td>
+        <td><%= t "activerecord.attributes.internshipcompany_website" %></td>
         <td><%= @internship.company_address.company.website %></td>
       </tr>
       <tr>
-        <td><%= t "internships.attributes.orientation" %></td>
+        <td><%= t "activerecord.attributes.internship.orientation" %></td>
         <td><%= @internship.orientation.try(:name) %></td>
       </tr>
       <tr>
-        <td><%= t "internships.attributes.programming_language" %></td>
+        <td><%= t "activerecord.attributes.internship.programming_language" %></td>
         <td><%= @internship.programming_languages.map(&:name).join(", ") %></td>
       </tr>
       <tr>
-        <td><%= t "internships.attributes.salary" %></td>
+        <td><%= t "activerecord.attributes.internshipsalary" %></td>
         <td><%= @internship.salary %> €/<%= t("unit.month")%></td>
       </tr>
       <tr>
-        <td><%= t "internships.attributes.working_hours" %></td>
+        <td><%= t "activerecord.attributes.internship.working_hours" %></td>
         <td><%= @internship.working_hours %>/<%= t("unit.week")%></td>
       </tr>
       <tr>
-        <td><%= t "internships.attributes.living_costs" %></td>
+        <td><%= t "activerecord.attributes.internshipliving_costs" %></td>
         <td><%= @internship.living_costs %> €/<%= t("unit.month")%></td>
       </tr>
       <tr>
-        <td><%= t "internships.attributes.student" %></td>
+        <td><%= t "activerecord.attributes.internshipstudent" %></td>
         <td><%= @internship.try(:student).try(:name) %></td>
       </tr>
       <tr>
-        <td><%= t "internships.attributes.email" %></td>
+        <td><%= t "activerecord.attributes.internshipemail" %></td>
         <td><%= @internship.student.email %></td>
       </tr>
       <tr>
-        <td><%= t "internships.attributes.semester" %></td>
+        <td><%= t "activerecord.attributes.internship.semester" %></td>
         <td><%= @internship.semester.name %></td>
       </tr>
       <tr>
-        <td><%= t "internships.attributes.description" %></td>
+        <td><%= t "activerecord.attributes.internshipdescription" %></td>
         <td><%= @internship.description %></td>
       </tr>
       <tr>
-        <td><%= t "internships.attributes.tasks" %></td>
+        <td><%= t "activerecord.attributes.internshiptasks" %></td>
         <td><%= @internship.tasks %></td>
       </tr>
       <tr>
-        <td><%= t "internships.attributes.amoutOfDays" %></td>
+        <td><%= t "activerecord.attributes.internshipamoutOfDays" %></td>
         <td><%= @internship.duration.days %></td>
       </tr>
       <tr>
-        <td><%= t "internships.attributes.amountOfWeeks" %></td>
+        <td><%= t "activerecord.attributes.internshipamountOfWeeks" %></td>
         <td><%= @internship.duration.weeks %></td>
       </tr>
       <tr>
-        <td><%= t "internships.attributes.weekValidation" %></td>
+        <td><%= t "activerecord.attributes.internshipweekValidation" %></td>
         <!-- #tbd ... wtf.the mapping of the mapping of the mapping in all the wrong places.-->
         <td><% if @internship.duration.weeks < 4 %>
-        <%= t "internships.attributes.weekVal.notLongEnough"%>
+        <%= t "activerecord.attributes.internshipweekVal.notLongEnough"%>
         <% elsif @internship.duration.weeks < 19  %>
-        <%= t "internships.attributes.weekVal.partInternship"%>
+        <%= t "activerecord.attributes.internshipweekVal.partInternship"%>
         <!-- # tbd ... wtf ... and here comes core business logic in the view...-->
-        <% else t "internships.attributes.weekVal.longEnough"%>
+        <% else t "activerecord.attributes.internshipweekVal.longEnough"%>
         <% end %></td>
       </tr>
       <tr>
-        <td><%= t "internships.attributes.recommend" %></td>
+        <td><%= t "activerecord.attributes.internshiprecommend" %></td>
         <td><% if @internship.recommend %>
           <i class="icon-thumbs-up icon-2x green-thumb"></i>
           <% else %>
@@ -89,7 +89,7 @@
       </tr>
       <% if @internship.comment.present?%>
       <tr>
-        <td><%= t "internships.attributes.comment" %></td>
+        <td><%= t "activerecord.attributes.internshipcomment" %></td>
         <td><%= @internship.comment %></td>
       </tr>
       <% end %>
@@ -124,7 +124,7 @@
 <br/>
 
 <% if @internship.attachments.present? %>
-<b><%= t "internships.attributes.pictures" %> :</b></b>
+<b><%= t "activerecord.attributes.internshippictures" %> :</b></b>
 <% @internship.attachments.each do |attachment| %>
 <a href="#myModal" role="button" class="btn btn-default" data-toggle="modal"><%= image_tag attachment.file_url(:thumb) %></a>
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -143,7 +143,7 @@
 <% end %>
 
 <% if @internship.internship_report.present? %>
-<b><%= t "internships.attributes.internship_report" %> :</b>
+<b><%= t "activerecord.attributes.internshipinternship_report" %> :</b>
 <br/>
 <%= link_to File.basename(@internship.internship_report.path), @internship.internship_report.url %>
 <br/>

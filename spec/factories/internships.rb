@@ -273,4 +273,33 @@ FactoryBot.define do
       i.company_address = c.company_addresses.first
     end
   end
+
+  factory :internship_without_company_address, class: Internship do
+    working_hours { 2.0 }
+    living_costs  { 4.0 }
+    internship_rating
+    # company
+    user
+    title { 'The Fresh Intership' }
+    recommend { true }
+    orientation
+    email_public { true }
+    description { text4 }
+    semester
+    salary { 8 }
+    start_date { Date.today.to_date }
+    end_date { Date.today.to_date + 7.days }
+    tasks { text4 }
+    operational_area { 'operational area' }
+    complete_internship
+    reading_prof
+    payment_state
+    certificate_signed_by_internship_officer { Date.today.to_date }
+    certificate_signed_by_prof { Date.today.to_date }
+    certificate_to_prof { Date.today.to_date }
+    comment { 'internship comment' }
+    supervisor_email { 'supervisor@bar.com' }
+    supervisor_name { 'internship supervisor name' }
+    completed { false }
+  end
 end

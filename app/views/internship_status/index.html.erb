@@ -15,11 +15,11 @@
 
   <% if @internship.registration_state.nil? %>
 
-      <p> <%= t "internships.attributes.registration_state" %> : Waiting ... </p>
+      <p> <%= t "activerecord.attributes.internshipregistration_state" %> : Waiting ... </p>
 
   <% else %>
 
-      <p class = ""> <%= t "internships.attributes.registration_state" %> : <%= @internship.registration_state.name %></p>
+      <p class = ""> <%= t "activerecord.attributes.internshipregistration_state" %> : <%= @internship.registration_state.name %></p>
 
   <% end %>
 
@@ -28,11 +28,11 @@
 
 
   <% if @internship.report_state.nil? %>
-      <p> <%= t "internships.attributes.report_state" %> : Waiting ... </p>
+      <p> <%= t "activerecord.attributes.internshipreport_state" %> : Waiting ... </p>
 
   <% else %>
 
-      <p> <%= t "internships.attributes.report_state" %> : <%= @internship.report_state.name %></p>
+      <p> <%= t "activerecord.attributes.internshipreport_state" %> : <%= @internship.report_state.name %></p>
 
   <% end %>
 
@@ -40,10 +40,10 @@
 
   <% if @internship.internship_state.nil? %>
 
-      <p> <%= t "internships.attributes.internship_state" %> : Waiting ... </p>
+      <p> <%= t "activerecord.attributes.internshipinternship_state" %> : Waiting ... </p>
 
   <% else %>
-      <p> <%= t "internships.attributes.internship_state" %> : <%= @internship.internship_state.name %></p>
+      <p> <%= t "activerecord.attributes.internshipinternship_state" %> : <%= @internship.internship_state.name %></p>
 
   <% end %>
   <br/>
@@ -51,10 +51,10 @@
 
   <% if @internship.certificate_state.nil? %>
 
-      <p> <%= t "internships.attributes.certificate_state" %> : Waiting ... </p>
+      <p> <%= t "activerecord.attributes.internshipcertificate_state" %> : Waiting ... </p>
 
   <% else %>
-      <p> <%= t "internships.attributes.certificate_state" %> : <%= @internship.certificate_state.name %></p>
+      <p> <%= t "activerecord.attributes.internshipcertificate_state" %> : <%= @internship.certificate_state.name %></p>
 
       <br/>
   <% end %>
@@ -62,10 +62,10 @@
 
   <% if @internship.contract_state.nil? %>
 
-      <p> <%= t "internships.attributes.contract_state" %> : Waiting ... </p>
+      <p> <%= t "activerecord.attributes.internshipcontract_state" %> : Waiting ... </p>
 
   <% else %>
-      <p> <%= t "internships.attributes.contract_state" %> : <%= @internship.contract_state.name %></p>
+      <p> <%= t "activerecord.attributes.internshipcontract_state" %> : <%= @internship.contract_state.name %></p>
 
   <% end %>
 

@@ -3,8 +3,8 @@
 require_relative './08_lib/08_lib.rb'
 
 Student.destroy_all
-CompleteInternship.destroy_all
 Internship.destroy_all
+CompleteInternship.destroy_all
 Company.destroy_all
 CompanyAddress.destroy_all
 

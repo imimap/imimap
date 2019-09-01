@@ -46,3 +46,16 @@
 .red-thumb {
 	color: #b90000 !important;
 }
+
+/* css for marking required attributes with bootstrap_form, see Issue #402
+ * https://github.com/imimap/imimap/issues/402 */
+
+label.required_application::after {
+  content:" **";
+ 	color: #0000b9;
+ }
+
+label.required::after {
+  content:" *";
+	color: #b90000;
+}
