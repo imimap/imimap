@@ -1,9 +1,9 @@
 
 <%= bootstrap_form_for(@student) do |f| %>
 <div id="form-block4" class="text-left">
-<small><%= t "forms.what_do_stars_mean1" %></small><br>
-<small><%= t "forms.what_do_stars_mean2" %></small>
   <h3> <%= t "students.personal_details" %></h3>
+  <%= render 'required_attributes_legend' %>
+
   <div class="row">
     <div class="col-md-4">
       <%=t "students.attributes.enrolment_number" %><br />
@@ -15,18 +15,19 @@
       <span class="form-control-static"><%=@student.email %></span>
     </div>
   </div>
-
+  <div class="row">
+  &nbsp;  <br/>
+    </div>
   <div class="row">
     <div class="col-md-4">
       <div class="field" >
-        <%= f.label :first_name %>
-      <%= f.text_field :first_name, :maxlength => 50 %>
+      <%= f.text_field :first_name, required_application(f, :first_name, maxlength: 50) %>
       </div>
     </div>
 
   <div class="col-md-4">
     <div class="field">
-      <%= f.text_field :last_name, maxlength: 50, class: 'required_application' %>
+      <%= f.text_field :last_name, required_application(f, :last_name, maxlength: 50) %>
       </div>
     </div>
   </div>
@@ -34,11 +35,12 @@
   <div class="row">
       <div class="col-md-4">
         <div class="field">
-            <%= f.text_field :birthday, {"data-provide" => 'datepicker',
+            <%= f.text_field :birthday , required_application(f, :birthday,
+            {"data-provide" => 'datepicker',
             'data-date-format' => "yyyy-mm-dd",
             'data-date-start-view' => 'years',
             format: :datepicker
-          }%>
+          } )%>
             <script type="text/javascript">
               $(document).ready(function(){
                 $('.datepicker').datepicker();
@@ -49,7 +51,7 @@
 
       <div class="col-md-4">
         <div class="field">
-          <%= f.text_field :birthplace, :maxlength => 50 %>
+          <%= f.text_field :birthplace, required_application(f, :birthplace, maxlength: 50) %>
         </div>
       </div>
     </div>
