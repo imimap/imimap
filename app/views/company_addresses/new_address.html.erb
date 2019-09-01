@@ -2,35 +2,36 @@
 <% # CodeReviewSommer19
    # why is this a special form and not form.html.erb used? is the latter still used somewhere else?
    %>
-  <%= render 'required_attributes_legend' %>
-  <div class="container">
 
+  <div class="container">
 <%= bootstrap_form_for @company_address, :url => {:controller => 'company_addresses', :action => "create_and_save",
                                                 params: {internship_id: :internship_id}} do |f| %>
 
     <%= f.hidden_field :internship_id, :value => @internship.id %>
 
-    <% if @company_address.errors.any? %>
-      <div id="error_explanation">
-        <h4><%= pluralize(@company_address.errors.count, "error") %> prohibited this company_address from being saved:</h4>
 
-        <ul>
-        <% @company_address.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
 
     <div id="form-block4" class="text-left">
       <h3> <%=t "activerecord.attributes.company_address.new_address_heading"%></h3>
       <br>
+      <% if @company_address.errors.any? %>
+        <div id="error_explanation">
+          <h4><%= pluralize(@company_address.errors.count, "error") %> prohibited this company_address from being saved:</h4>
 
+          <ul>
+          <% @company_address.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= render 'required_attributes_legend' %>
     <div class="row">
       <div class="col-md-6">
         <div id="field-titles">
           <span class="form-static"><%=@company.name%></span>
-          <%= f.hidden_field :company_id, :value => @company.id, hide_label: true %>
+          <%= f.hidden_field :company_id, :value => @company.id %>
           <br>
         </div>
       </div>
@@ -38,7 +39,6 @@
     <div class="row">
     <div class="col-md-6">
         <div class="field" id="field-titles">
-          <%= f.label t "activerecord.attributes.company_address.street2" %>
           <%= f.text_field :street, required_application(f, :street)   %>
         </div>
       </div>
@@ -46,13 +46,11 @@
       <div class="row">
       <div class="col-md-2">
         <div class="field" id="field-titles">
-          <%= f.label t "activerecord.attributes.company_address.zip1" %>
           <%= f.text_field :zip, required_application(f, :zip)   %>
         </div>
       </div>
         <div class="col-md-4">
         <div class="field" id="field-titles">
-          <%= f.label t "activerecord.attributes.company_address.city2" %>
           <%= f.text_field :city, required_application(f, :city)   %>
         </div>
       </div>
@@ -60,8 +58,8 @@
       <div class="row">
       <div class="col-md-6">
         <div class="field" id="field-titles">
-          <%= f.label t "activerecord.attributes.company_address.country2" %> <br>
-          <%= f.country_select :country, ["United States"], required_application(f,:country, class: 'chzn-select') %>
+          <%= f.label :country, required_save_and_application(f,:country, class: 'required') %> <br>
+          <%= f.country_select :country, ["United States"], class: 'chzn-select' %>
         </div>
       </div>
       </div>
