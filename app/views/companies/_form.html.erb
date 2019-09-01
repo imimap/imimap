@@ -1,3 +1,4 @@
+<%= render 'required_attributes_legend' %>
 <div class="container">
   <%= bootstrap_form_for @company do |f| %>
   <%= f.hidden_field :internship_id, :value => @internship.try(:id) %>
@@ -48,7 +49,7 @@
   <div class="row" style="margin-top:20px">
     <div class="col-md-6">
       <div class="field" id="field-titles">
-        <%= f.text_field :website, label_class: 'application_required' %>
+        <%= f.text_field :website, required_application(f, :website) %>
       </div>
     </div>
   </div>

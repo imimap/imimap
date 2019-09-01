@@ -33,7 +33,7 @@ en:
     continue_to_address: "Continue to Address"
     continue: "Continue"
     continue2: "Search"
-    give_name: "Give the name of your internship company:"
+    give_name: "The Company Name you plan your internship with:"
     suggestion: "Did you mean one of those companies?"
     no_match: "No, create a new company with the following name:"
     no_match1: "No company was found. With the link below you can create a new entry for a company with that name."

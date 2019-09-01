@@ -1,5 +1,4 @@
-<label class = "required"><%= t 'forms.required.label' %></label> <%= t 'forms.required.required' %></br>
-<label class = "required_application"><%= t 'forms.required.label' %></label> <%= t 'forms.required.required_application' %>
+<%= render 'required_attributes_legend' %>
 
 <div class="container">
   <%= bootstrap_form_for @internship do |f| %>

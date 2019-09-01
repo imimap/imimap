@@ -3,7 +3,7 @@ en:
     required:
       label: 'Fields marked with'
       required: 'need to be filled in to save your changes.'
-      required_application: are necessary for a complete Registration. But you can save your changes without filling these in.'
+      required_application: are necessary for a complete Registration. But you can save your changes without filling these in.
   complete_internship:
     first_name: First Name
     last_name: Last Name

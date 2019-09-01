@@ -1,9 +1,15 @@
 
+<% # CodeReviewSommer19
+   # why is this a special form and not form.html.erb used? is the latter still used somewhere else?
+   %>
+  <%= render 'required_attributes_legend' %>
   <div class="container">
+
 <%= bootstrap_form_for @company_address, :url => {:controller => 'company_addresses', :action => "create_and_save",
                                                 params: {internship_id: :internship_id}} do |f| %>
 
     <%= f.hidden_field :internship_id, :value => @internship.id %>
+
     <% if @company_address.errors.any? %>
       <div id="error_explanation">
         <h4><%= pluralize(@company_address.errors.count, "error") %> prohibited this company_address from being saved:</h4>
@@ -15,9 +21,8 @@
         </ul>
       </div>
     <% end %>
+
     <div id="form-block4" class="text-left">
-    <small><%= t "forms.what_do_stars_mean1" %></small><br>
-<small><%= t "forms.what_do_stars_mean2" %></small>
       <h3> <%=t "activerecord.attributes.company_address.new_address_heading"%></h3>
       <br>
 
@@ -34,7 +39,7 @@
     <div class="col-md-6">
         <div class="field" id="field-titles">
           <%= f.label t "activerecord.attributes.company_address.street2" %>
-          <%= f.text_field :street, skip_label: true   %>
+          <%= f.text_field :street, required_application(f, :street)   %>
         </div>
       </div>
       </div>
@@ -42,13 +47,13 @@
       <div class="col-md-2">
         <div class="field" id="field-titles">
           <%= f.label t "activerecord.attributes.company_address.zip1" %>
-          <%= f.text_field :zip, skip_label: true   %>
+          <%= f.text_field :zip, required_application(f, :zip)   %>
         </div>
       </div>
         <div class="col-md-4">
         <div class="field" id="field-titles">
           <%= f.label t "activerecord.attributes.company_address.city2" %>
-          <%= f.text_field :city, skip_label: true   %>
+          <%= f.text_field :city, required_application(f, :city)   %>
         </div>
       </div>
       </div>
@@ -56,14 +61,14 @@
       <div class="col-md-6">
         <div class="field" id="field-titles">
           <%= f.label t "activerecord.attributes.company_address.country2" %> <br>
-          <%= f.country_select :country, ["United States"], class: 'chzn-select' %>
+          <%= f.country_select :country, ["United States"], required_application(f,:country, class: 'chzn-select') %>
         </div>
       </div>
       </div>
       <div class="row">
       <div class="col-md-6">
         <div class="field" id="field-titles">
-          <%= f.text_field :phone %>
+          <%= f.text_field :phone, required_application(f, :phone) %>
         </div>
       </div>
       </div>
