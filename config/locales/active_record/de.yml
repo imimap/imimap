@@ -49,35 +49,6 @@ de:
         new_company_address: "Oder lege eine neue Adresse an: "
         details: "Details zur Firmenadresse"
         submit: "Speichern"
-
-      internship:
-        title: Titel
-        student: Student_in
-        company: Firma
-        company_v2: Firma
-        programming_language_ids: Programmiersprachen
-        start_date: Anfangsdatum
-        end_date: Enddatum
-        weekCount: Anzahl der Wochen
-        weekValidation: Validierung
-        operational_area: Einsatzgebiet
-        tasks: Aufgaben
-        salary: "Gehalt in € pro Monat"
-        supervisor_name: Betreuername
-        supervisor_email: E-Mail des Betreuers
-        supervisor_phone: Telefonnummer des Betreuers
-        registration_state: Regisstrierungsstatus
-        payment_state: Bezahlungsstatus
-        contract_state: Vertragsstatus
-        internship_state: Praktikumsstatus
-        comment: Kommentar
-        semester: Semester
-        certificate_to_prof: Praktikumsnachweis an Prof
-        certificate_signed_by_prof: Praktikumsnachweis unterschrieben von Prof
-        certificate_signed_by_internship_officer: Praktikumsnachweis unterschrieben von Betreuer/in
-        report_state: Berichtstatus
-        certificate_state: Nachweisstatus
-        reading_prof: Prof
       complete_internship:
         aep: "AEP"
         passed: "Passed"

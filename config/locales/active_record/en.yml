@@ -22,8 +22,6 @@ en:
         new_company_address: "Or create a new one:"
         details: "Company Address Details"
         submit: "Save"
-      internship:
-        programming_language_ids: Programming languages
       internship_offer:
         body: Description
         created_at: Created at

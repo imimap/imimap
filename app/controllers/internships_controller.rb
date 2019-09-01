@@ -43,7 +43,6 @@ class InternshipsController < ApplicationResourceController
   end
 
   def new
-    byebug
     # TBD ST: what is this?
     # creation of company Address redirects here.
     # there is no handover of the company_address_id
@@ -92,7 +91,6 @@ class InternshipsController < ApplicationResourceController
   # GET /internships/1
   # GET /internships/1.json
   def show
-    byebug
     @company = @internship.company_v2
     # TBD ST  @company = @internship.company_address.company
     @other_internships = []

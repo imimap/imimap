@@ -78,7 +78,6 @@ de:
     #  end_date: "Enddatum"
     #  operational_area: "Einsatzbereich"
       placeholder_oa: "Virtual Reality, Webseite, 3D"
-      tasks: "Aufgaben"
       placeholder_tasks: "Erstellen und managen einer Firmenwebseite, Erstellen von CSS für Clientwebsites"
       tasks_rating: "Aufgaben"
       training_rating: "Lernerfolg"

@@ -1,0 +1,5 @@
+de:
+  activerecord:
+    attributes:
+      internship:
+        programming_language_ids: Programming languages
