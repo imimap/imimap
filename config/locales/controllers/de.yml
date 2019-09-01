@@ -61,15 +61,10 @@ de:
     new:
       newinternship: "Neues Praktikum"
     attributes:
-    #  semester: "Semester"
-    #  semester1: "Semester *"
-    #  email_public: "Emailadresse öffentlich anzeigen?"
-    #  pictures: "Bilder"
-    #  orientation: "Orientierung"
-    #  orientation1: "Orientierung *"
+    #
     #  programming_language: "Programmiersprache(n)"
     #  salary: "Gehalt in € pro Monat"
-    #  working_hours: "Arbeitsstunden pro Woche"
+    #
     #  living_costs: "Lebenshaltungskosten"
     #  living_costs2: "Lebenshaltungskosten pro Monat"
     #  company: "Firma"

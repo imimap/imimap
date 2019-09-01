@@ -3,10 +3,12 @@ de:
     attributes:
       internship:
         description: "Beschreibung"
+        email_public: "Emailadresse öffentlich anzeigen?"
         title: Titel
         student: Student_in
         company: Firma
         company_v2: Firma
+        programming_language: "Programmiersprache(n)"
         programming_language_ids: Programmiersprachen
         start_date: Anfangsdatum
         end_date: Enddatum
@@ -19,6 +21,7 @@ de:
         supervisor_email: "Betreuer_in E-Mail"
         supervisor_phone: "Betreuer_in Telefonnummer"
         registration_state: Regisstrierungsstatus
+        orientation: "Orientierung"
         payment_state: Bezahlungsstatus
         contract_state: Vertragsstatus
         internship_state: Praktikumsstatus
@@ -30,6 +33,8 @@ de:
         report_state: Berichtstatus
         certificate_state: Nachweisstatus
         reading_prof: Prof
+        working_hours: "Arbeitsstunden pro Woche"
+        living_costs: "Lebenshaltungskosten"
   #   t.float "working_hours"
   #   t.float "living_costs"
   #   t.datetime "created_at"
