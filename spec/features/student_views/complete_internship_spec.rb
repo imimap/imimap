@@ -72,11 +72,17 @@ describe 'Complete Internship' do
                   with: 'meineMail@whatsoever.com'
           click_on t('save')
           click_link(t('complete_internships.checklist.internship_details'))
-          expect(find_field(t('activerecord.attributes.internship.supervisor_phone'))
+          expect(find_field(
+            t('activerecord.attributes.internship.supervisor_phone')
+          )
                   .value).to eq '030283020'
-          expect(find_field(t('activerecord.attributes.internship.supervisor_email'))
+          expect(find_field(
+            t('activerecord.attributes.internship.supervisor_email')
+          )
                   .value).to eq 'meineMail@whatsoever.com'
-          expect(find_field(t('activerecord.attributes.internship.supervisor_name'))
+          expect(find_field(
+            t('activerecord.attributes.internship.supervisor_name')
+          )
                   .value).to eq 'Testname'
         end
       end

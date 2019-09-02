@@ -61,7 +61,6 @@ module ApplicationHelper
     if model.attributes_required_for_save.include? field
       options.merge!(class: 'required')
     end
-    byebug
     required_application_impl(form, field, :class, options)
   end
 end
