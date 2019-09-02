@@ -21,6 +21,8 @@ db_migrate:
 	docker-compose exec imimap rails db:migrate
 db_seed:
 	docker-compose exec imimap rails db:seed
+factory_lint:
+	docker-compose exec imimap rails factory_bot:lint
 ssh_prod:
 	ssh deployer@imi-map.f4.htw-berlin.de
 ssh_staging:
