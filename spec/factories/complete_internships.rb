@@ -9,6 +9,11 @@ FactoryBot.define do
     passed { false }
   end
 
+  factory :complete_internship_incomplete do
+    semester
+    student
+  end
+
   factory :complete_internship_wo_student, class: CompleteInternship do
     semester
     # student

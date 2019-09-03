@@ -37,6 +37,7 @@ RSpec.describe CompleteInternshipsController, type: :controller do
   # CompleteInternshipsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
   let(:valid_attributes) { build(:complete_internship).attributes }
+  #let(:invalid_attributes) { build(:complete_internship_incomplete).attributes  }
 
   describe 'GET #index' do
     it 'returns a success response' do
@@ -93,7 +94,18 @@ RSpec.describe CompleteInternshipsController, type: :controller do
         expect(response).to redirect_to(CompleteInternship.last)
       end
     end
+
+    context 'with invalid params' do
+      it 'does not create a new CompleteInternship' do
+        expect do
+          post :create,
+               params: {complete_internship:
+                 {student_id: nil, semester_id: nil, semester_of_study: 3, aep: nil, passed: nil }},
+               session: valid_session
+          end.to change(CompleteInternship, :count).by(0)
+      end
   end
+end
 
   describe 'PUT #update' do
     context 'with valid params' do

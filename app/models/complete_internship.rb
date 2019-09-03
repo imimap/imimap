@@ -11,4 +11,6 @@ class CompleteInternship < ApplicationRecord
   has_many :internships_new,
            class_name: 'Internship',
            foreign_key: :complete_internship_id
+  validates :student_id, :semester_id, :aep, :passed, presence: true
+
 end
