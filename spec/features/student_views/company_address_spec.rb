@@ -8,7 +8,7 @@ describe 'Supply Company Details' do
   #      before :each do
   #        I18n.locale = locale
   #      end
-  context 'with student user and now Comany Information' do
+  context 'with student user and now Company Information' do
     before :each do
       @user = create(:student_user_with_internship_company_wo_address)
       login_as(@user)
@@ -28,18 +28,26 @@ describe 'Supply Company Details' do
       )
       click_on @company_name
       expect(page).to have_content('Neue Firma Erstellen')
-      click_on 'Weiter zur Adresse'
+      click_on t('companies.continue_to_address')
       expect(page).to have_content('Erstelle eine neue Firmenaddresse')
       fields = CompanyAddress.attributes_required_for_save.dup
       fields.delete(:company)
       fields.delete(:country)
-      save_and_open_page
       select @ca.country_name, from: :company_address_country
       fields.each do |field|
         fill_in "company_address_#{field}", with: @ca.send(field)
       end
       click_button t('save')
+      click_on ('Firmendetails')
+      expect(page).to have_field('company_name', with: @company_name)
+      click_on t('companies.continue_to_address')
       save_and_open_page
+      fields.each do |field|
+        expect(page).to(
+          have_field("company_address_#{field}"),
+         with: @ca.send(field)
+       )
+      end
     end
   end
   #    end
