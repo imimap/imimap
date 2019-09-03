@@ -49,6 +49,7 @@ FactoryBot.define do
     zip { '94107' }
     phone { '+187345847' }
     fax { '+187345888' }
+    company
   end
 
   # github
