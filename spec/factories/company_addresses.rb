@@ -50,7 +50,7 @@ FactoryBot.define do
     phone { '+187345847' }
     fax { '+187345888' }
   end
-  
+
   # github
   factory :company_address_1, class: CompanyAddress do
     city { 'San Francisco' }
