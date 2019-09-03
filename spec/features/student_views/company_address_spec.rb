@@ -47,8 +47,8 @@ describe 'Supply Company Details' do
           click_on t('companies.continue_to_address')
           fields.each do |field|
             expect(page).to(
-              have_field("company_address_#{field}"),
-              with: @ca.send(field)
+              have_field("company_address_#{field}",
+              with: @ca.send(field))
             )
           end
         end
