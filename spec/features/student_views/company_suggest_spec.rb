@@ -17,7 +17,7 @@ describe 'Company Suggestion' do
         it 'should tell me there was no match' do
           create(:semester)
           visit my_internship_path
-          click_link(t('internships.createYourInternship'))
+          click_link(t('internships.provide_now'))
           click_on t('save')
           click_on t('complete_internships.new_tp0')
           expect(page).to have_field('Semester')
@@ -45,7 +45,7 @@ describe 'Company Suggestion' do
           create(:company_2)
           create(:company_is24)
           visit my_internship_path
-          click_link(t('internships.createYourInternship'))
+          click_link(t('internships.provide_now'))
           click_on t('save')
           click_on t('complete_internships.new_tp0')
           expect(page).to have_field('Semester')
@@ -76,7 +76,7 @@ describe 'Company Suggestion' do
         it 'should not progress when no name was given' do
           create(:semester)
           visit my_internship_path
-          click_link(t('internships.createYourInternship'))
+          click_link(t('internships.provide_now'))
           click_on t('save')
           click_on t('complete_internships.new_tp0')
           expect(page).to have_field('Semester')
@@ -99,7 +99,7 @@ describe 'Company Suggestion' do
           create(:company_1)
           create(:company_2)
           visit my_internship_path
-          click_link(t('internships.createYourInternship'))
+          click_link(t('internships.provide_now'))
           click_on t('save')
           click_on t('complete_internships.new_tp0')
           expect(page).to have_field('Semester')

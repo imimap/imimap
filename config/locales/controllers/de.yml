@@ -45,10 +45,10 @@ de:
     details: "Wann möchtest du dein Praktikum absolvieren?"
     name: "Praktika"
     create: "Erstelle Praktikum"
-    createYourInternship: "Jetzt eintragen."
+    provide_now: "Jetzt eintragen"
     update: "Praktikum aktualisieren"
     company_fact: "Arbeitsplatz Kurzinfo"
-    createInternship: "Du hast noch keine Informationen eingetragen."
+    create_internship: "Du hast noch keine Informationen eingetragen."
     index:
       title: "Praktika im"
       select: 'anzeigen'
