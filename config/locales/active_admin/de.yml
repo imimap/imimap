@@ -3,8 +3,10 @@ de:
     no_student: 'kein Student verknüpft'
     menu:
       internship_admin: Praktikumsverwaltung
+      company: Firmen
       data_admin: Basisdaten
-      active_admin: ActiveAdmin
+      imimap: IMI-Map
+      user_view: Webansicht
       locale:
         title: Sprache
         en: Englisch

@@ -246,31 +246,37 @@ ActiveAdmin.setup do |config|
       #  admin.build_menu :utility_navigation do |menu|
       menu.add id: 'internship_admin',
                label: proc { t('my_active_admin.menu.internship_admin') },
-               priority: 0
+               priority: 1
+      menu.add id: 'company',
+               label: proc { t('my_active_admin.menu.company') },
+               priority: 2
       menu.add id: 'data_admin',
                label: proc { t('my_active_admin.menu.data_admin') },
-               priority: 1
+               priority: 3
 
-      menu.add id: 'active_admin',
-               label: proc { t('my_active_admin.menu.active_admin') },
-               priority: 2
+      menu.add id: 'imimap',
+               label: proc { t('my_active_admin.menu.imimap') },
+               priority: 4
 
-      menu.add parent: 'active_admin', label: 'User view', url: :authenticated_root_path
+      menu.add id: 'user_view',
+               parent: 'imimap', priority: 10,
+               label: proc { t('my_active_admin.menu.user_view') },
+               url: :authenticated_root_path
 
-      menu.add id: 'locale',
+      menu.add id: 'locale', priority: 9,
                label: proc { t('my_active_admin.menu.locale.title') } do |lang|
         lang.add id: 'en',
-         label: proc { t('my_active_admin.menu.locale.english') },
+                 label: proc { t('my_active_admin.menu.locale.english') },
                  url: proc { url_for(locale: 'en') },
                  priority: 1
         lang.add id: 'de',
-         label:  proc { t('my_active_admin.menu.locale.german') },
+                 label: proc { t('my_active_admin.menu.locale.german') },
                  url: proc { url_for(locale: 'de') },
                  priority: 2
       end
     end
   end
-  config.comments_menu = { parent: 'internship_admin', priority: 1 }
+  config.comments_menu = { parent: 'internship_admin', priority: 6 }
 
   # == Download Links
   #

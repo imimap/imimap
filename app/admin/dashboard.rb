@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register_page 'Dashboard' do
-  menu parent: 'active_admin', priority: 1,
+  menu parent: 'imimap', priority: 1,
        label: proc { I18n.t('active_admin.dashboard') }
 
   content title: proc { I18n.t('active_admin.dashboard') } do

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Company do
-  menu priority: 6
+  menu parent: 'company', priority: 1
   permit_params CompaniesController.permitted_params
   filter :internships_student_enrolment_number,
          as: :select,

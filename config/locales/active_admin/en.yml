@@ -3,8 +3,10 @@ en:
     no_student: 'no associated student'
     menu:
       internship_admin: Internship Administration
+      company: Companies
       data_admin: Base Data
-      active_admin: ActiveAdmin
+      imimap: IMI-Map
+      user_view: User View
       locale:
         title: Language
         en: English
