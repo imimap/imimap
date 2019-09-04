@@ -5,15 +5,6 @@ class CompanyAddressesController < ApplicationResourceController
   include CompanyAddressesHelper
   before_action :set_company_address, only: %i[edit update destroy]
 
-  def index
-    @company_addresses = CompanyAddress.all
-  end
-
-  def show
-    company = Company.find(params[:company_id])
-    @company_address = company.company_addresses.find(params[:id])
-  end
-
   def new
     @company_address = CompanyAddress.new
   end
