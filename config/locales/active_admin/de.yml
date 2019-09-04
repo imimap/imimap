@@ -1,10 +1,14 @@
 de:
   active_admin:
-    no_student: 'kein Student verknüpft'
+    menu:
+      internship_admin: Praktikumsverwaltung
+      data_admin: Basisdaten
+      active_admin: ActiveAdmin
     dashboard: Übersicht
     dashboard_welcome:
       welcome: "Willkommen bei der Administration der IMI-Map."
       call_to_action: "Siehe 'app/admin/dashboard.rb', um Übersichts-Bereiche hinzuzufügen."
+    no_student: 'kein Student verknüpft'
     view: "Anzeigen"
     edit: "Bearbeiten"
     delete: "Löschen"

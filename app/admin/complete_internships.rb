@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register CompleteInternship do
-  menu priority: 4
+  menu parent: 'internship_admin', priority: 4
   permit_params CompleteInternshipsController.permitted_params
   filter :passed
   filter :student

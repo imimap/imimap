@@ -137,7 +137,8 @@ ActiveAdmin.setup do |config|
   # config.comments_menu = false
   #
   # You can customize the comment menu:
-  config.comments_menu = { parent: 'Admin', priority: -1 }
+  # IMI-Map: see below.
+  # config.comments_menu = { parent: 'Admin', priority: 1 }
 
   # == Batch Actions
   #
@@ -240,8 +241,21 @@ ActiveAdmin.setup do |config|
   #     end
   #   end
 
+  config.comments_menu = { parent: 'Admin', priority: 1 }
+
   config.namespace :admin do |admin|
-    admin.build_menu :utility_navigation do |menu|
+    admin.build_menu do |menu|
+      #  admin.build_menu :utility_navigation do |menu|
+      menu.add id: 'internship_admin',
+               label: proc { t('active_admin.menu.internship_admin') },
+               priority: 0
+      menu.add id: 'data_admin',
+               label: proc { t('active_admin.menu.data_admin') },
+               priority: 1
+      menu.add id: 'active_admin',
+               label: proc { t('active_admin.menu.active_admin') },
+               priority: 2
+
       menu.add label: 'User view', url: :authenticated_root_path
       menu.add label: 'Locale' do |lang|
         lang.add label: 'English',
