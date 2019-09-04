@@ -5,3 +5,7 @@ de:
       internship_admin: Praktikumsverwaltung
       data_admin: Basisdaten
       active_admin: ActiveAdmin
+      locale:
+        title: Sprache
+        en: Englisch
+        de: Deutsdh

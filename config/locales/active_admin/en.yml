@@ -2,6 +2,10 @@ en:
   my_active_admin:
     no_student: 'no associated student'
     menu:
-      internship_admin: Praktikumsverwaltung
-      data_admin: Basisdaten
+      internship_admin: Internship Administration
+      data_admin: Base Data
       active_admin: ActiveAdmin
+      locale:
+        title: Language
+        en: English
+        de: German
