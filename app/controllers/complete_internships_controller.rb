@@ -38,8 +38,8 @@ class CompleteInternshipsController < ApplicationResourceController
           redirect_to @complete_internship, notice: 'Successfully created.'
           # Denken ist wichtig
         end
-      else
-        format.html { render :new } #needs testing
+      #else
+      #  format.html { render :new } #needs testing
       end
     end
   end
@@ -51,8 +51,8 @@ class CompleteInternshipsController < ApplicationResourceController
           redirect_to @complete_internship,
                       notice: 'CompleteInternship was successfully updated.'
         end
-      else
-        format.html { render :edit } #needs testing
+      #else
+      #  format.html { render :edit } #needs testing
 
       end
     end
@@ -77,15 +77,15 @@ class CompleteInternshipsController < ApplicationResourceController
   # new one else the internship details are shown
   def internship_data
     @ci = if current_user.student.nil?
-            [] #needs testing
+            []
           else
             current_user.student.complete_internship
           end
-
+    #byebug
     if @ci.nil?
       render :no_complete_internship_data
-    else
-      redirect_to @ci #needs testing
+    #else
+    #  redirect_to @ci #needs testing
     end
   end
 

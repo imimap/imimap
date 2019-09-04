@@ -11,8 +11,8 @@ class CompleteInternship < ApplicationRecord
   has_many :internships_new,
            class_name: 'Internship',
            foreign_key: :complete_internship_id
-  validates :student, presence: true
-  def self.attributes_required_for_internship_application
-    [:semester]
-  end
+  #validates :student, presence: true
+  #def self.attributes_required_for_internship_application
+  #  [:semester]
+  #end
 end
