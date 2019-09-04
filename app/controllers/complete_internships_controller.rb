@@ -10,7 +10,7 @@ class CompleteInternshipsController < ApplicationResourceController
   # authorize_resource
   before_action :set_complete_internship, only: %i[show edit update destroy]
   before_action :new_complete_internship, only: %i[create new internship_data]
-  before_action :set_semesters, only: %i[new edit internship_data]
+  before_action :set_semesters, only: %i[new create edit internship_data]
 
   def index
     @semester = semester_from_params(params)
@@ -28,9 +28,9 @@ class CompleteInternshipsController < ApplicationResourceController
   def edit; end
 
   def create
-    #complete_internship_values
-     @complete_internship = CompleteInternship.new(complete_internship_params)
-     student = @current_user.student
+    # complete_internship_values
+    @complete_internship = CompleteInternship.new(complete_internship_params)
+    student = @current_user.student
     @complete_internship.student_id = student.id unless student.nil?
     respond_to do |format|
       if @complete_internship.save
@@ -39,7 +39,7 @@ class CompleteInternshipsController < ApplicationResourceController
           # Denken ist wichtig
         end
       else
-        format.html { render :new } #needs testing
+        format.html { render :new } # needs testing
       end
     end
   end
@@ -52,7 +52,7 @@ class CompleteInternshipsController < ApplicationResourceController
                       notice: 'CompleteInternship was successfully updated.'
         end
       else
-        format.html { render :edit } #needs testing
+        format.html { render :edit } # needs testing
 
       end
     end
@@ -77,7 +77,7 @@ class CompleteInternshipsController < ApplicationResourceController
   # new one else the internship details are shown
   def internship_data
     @ci = if current_user.student.nil?
-            [] #needs testing
+            [] # needs testing
           else
             current_user.student.complete_internship
           end
@@ -85,7 +85,7 @@ class CompleteInternshipsController < ApplicationResourceController
     if @ci.nil?
       render :no_complete_internship_data
     else
-      redirect_to @ci #needs testing
+      redirect_to @ci # needs testing
     end
   end
 
@@ -93,7 +93,7 @@ class CompleteInternshipsController < ApplicationResourceController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_complete_internship
-    accessible = current_user.accessible_complete_internships
+    accessible = @current_user.accessible_complete_internships
 
     @complete_internship = accessible.find(params[:id])
     @semester_name = @complete_internship.semester.try(:name)

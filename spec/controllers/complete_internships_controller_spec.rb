@@ -29,7 +29,7 @@ RSpec.describe CompleteInternshipsController, type: :controller do
   render_views
 
   before :each do
-    @current_user = login_as_admin
+    # @current_user = login_as_admin
   end
 
   # This should return the minimal set of values that should be in the session
@@ -37,10 +37,11 @@ RSpec.describe CompleteInternshipsController, type: :controller do
   # CompleteInternshipsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
   let(:valid_attributes) { build(:complete_internship).attributes }
-  #let(:invalid_attributes) { build(:complete_internship_incomplete).attributes  }
+  # let(:invalid_attributes) {build(:complete_internship_incomplete).attributes}
 
   describe 'GET #index' do
     it 'returns a success response' do
+      @current_user = login_as_admin
       create(:complete_internship)
       get :index, params: {}, session: valid_session
       expect(response).to be_successful
@@ -50,6 +51,8 @@ RSpec.describe CompleteInternshipsController, type: :controller do
   describe 'GET #show' do
     it 'returns a success response' do
       complete_internship = create(:complete_internship)
+      user = complete_internship.student.user
+      sign_in user
       get :show, params: { id: complete_internship.to_param },
                  session: valid_session
       expect(response).to be_successful
@@ -58,6 +61,7 @@ RSpec.describe CompleteInternshipsController, type: :controller do
 
   describe 'GET #new' do
     it 'returns a success response' do
+      login_as_student
       get :new,
           params: { complete_internship: valid_attributes },
           session: valid_session
@@ -68,6 +72,8 @@ RSpec.describe CompleteInternshipsController, type: :controller do
   describe 'GET #edit' do
     it 'returns a success response' do
       complete_internship = create(:complete_internship)
+      user = complete_internship.student.user
+      sign_in user
       get :edit,
           params: { id: complete_internship.to_param },
           session: valid_session
@@ -79,6 +85,7 @@ RSpec.describe CompleteInternshipsController, type: :controller do
     context 'with valid params' do
       it 'creates a new CompleteInternship' do
         expect do
+          login_as_student
           post :create,
                params: { complete_internship:
                  valid_attributes },
@@ -87,6 +94,7 @@ RSpec.describe CompleteInternshipsController, type: :controller do
       end
 
       it 'redirects to the created complete_internship' do
+        login_as_student
         post :create,
              params: { complete_internship:
                valid_attributes },
@@ -99,24 +107,28 @@ RSpec.describe CompleteInternshipsController, type: :controller do
       it 'does not create a new CompleteInternship' do
         expect do
           post :create,
-               params: {complete_internship:
-                 {student_id: nil, semester_id: nil, semester_of_study: 3, aep: nil, passed: nil }},
+               params: { complete_internship:
+                 { student_id: nil, semester_id: nil, semester_of_study: 3,
+                   aep: nil, passed: nil } },
                session: valid_session
-          end.to change(CompleteInternship, :count).by(0)
+        end.to change(CompleteInternship, :count).by(0)
       end
+    end
   end
-end
 
   describe 'PUT #update' do
     context 'with valid params' do
       let(:new_attributes) do
-        h = valid_attributes
+        h = { student_id: 1, semester_id: 1, semester_of_study: 4, aep: false,
+              passed: false }
         h['semester_of_study'] = 9
         h
       end
 
       it 'updates the requested complete_internship' do
-        complete_internship = CompleteInternship.create! valid_attributes
+        complete_internship = create(:complete_internship)
+        user = complete_internship.student.user
+        sign_in user
         put :update,
             params: { id: complete_internship.to_param,
                       complete_internship: new_attributes },
@@ -126,10 +138,12 @@ end
       end
 
       it 'redirects to the complete_internship' do
-        complete_internship = CompleteInternship.create! valid_attributes
+        complete_internship = create(:complete_internship)
+        user = complete_internship.student.user
+        sign_in user
         put :update,
             params: { id: complete_internship.to_param,
-                      complete_internship: valid_attributes },
+                      complete_internship: new_attributes },
             session: valid_session
         expect(response).to redirect_to(complete_internship)
       end
@@ -150,7 +164,8 @@ end
 
   describe 'DELETE #destroy' do
     it 'destroys the requested complete_internship' do
-      complete_internship = CompleteInternship.create! valid_attributes
+      complete_internship = create(:complete_internship)
+      login_as_admin
       expect do
         delete :destroy,
                params: { id: complete_internship.to_param },
@@ -159,7 +174,8 @@ end
     end
 
     it 'redirects to the complete_internships list' do
-      complete_internship = CompleteInternship.create! valid_attributes
+      complete_internship = create(:complete_internship)
+      login_as_admin
       delete :destroy,
              params: { id: complete_internship.to_param },
              session: valid_session
