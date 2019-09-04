@@ -247,13 +247,13 @@ ActiveAdmin.setup do |config|
     admin.build_menu do |menu|
       #  admin.build_menu :utility_navigation do |menu|
       menu.add id: 'internship_admin',
-               label: proc { t('active_admin.menu.internship_admin') },
+               label: proc { t('my_active_admin.menu.internship_admin') },
                priority: 0
       menu.add id: 'data_admin',
-               label: proc { t('active_admin.menu.data_admin') },
+               label: proc { t('my_active_admin.menu.data_admin') },
                priority: 1
       menu.add id: 'active_admin',
-               label: proc { t('active_admin.menu.active_admin') },
+               label: proc { t('my_active_admin.menu.active_admin') },
                priority: 2
 
       menu.add label: 'User view', url: :authenticated_root_path
