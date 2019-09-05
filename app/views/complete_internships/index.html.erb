@@ -31,9 +31,9 @@
           <td><%= complete_internship.semester_of_study %></td>
           <td><%= complete_internship.internships.size %> </td>
           <% if complete_internship.aep %>
-          <td><%= t 'complete_internships.aep.name.values.true' %>
+          <td><%= t 'complete_internships.aep.values.true' %>
             <% else %>
-            <td><%= t 'complete_internships.aep.name.values.false' %>
+            <td><%= t 'complete_internships.aep.values.false' %>
           <% end %>
           <td><%= complete_internship.passed %></td>
           <td><%= link_to 'Show', complete_internship %></td>
