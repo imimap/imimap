@@ -30,7 +30,7 @@ RSpec.describe 'complete_internships/index', type: :view do
     assert_select 'tr>td', text: 'SS 19'.to_s, count: 1
     assert_select 'tr>td', text: 4.to_s, count: 1
     assert_select 'tr>td', text: 5.to_s, count: 1
-    assert_select 'tr>td', text: true.to_s, count: 1
-    assert_select 'tr>td', text: false.to_s, count: 3
+    assert_select 'tr>td', text: 'bestanden', count: 1
+    assert_select 'tr>td', text: false.to_s, count: 2
   end
 end
