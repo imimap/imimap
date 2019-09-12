@@ -113,12 +113,11 @@ class CompleteInternshipsController < ApplicationResourceController
   end
 
   def set_student
-    if @current_user.student?
-    @student = @current_user.student
-  else
-    @student = Student.find(params[:student_id])
-  end
-end
+    @student = if @current_user.student?
+                 @current_user.student
+               else
+                 Student.find(params[:student_id])
+               end
   end
 
   def complete_internship_params
