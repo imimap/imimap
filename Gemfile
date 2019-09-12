@@ -34,7 +34,7 @@ gem 'tzinfo-data'
 
 gem 'activeadmin', '~> 2.2'
 gem 'cancancan', '~> 2.2'
-gem 'devise', ' ~> 4.3'
+gem 'devise', '>= 4.7.1'
 gem 'formtastic', '~> 3'
 
 gem 'mini_magick'
