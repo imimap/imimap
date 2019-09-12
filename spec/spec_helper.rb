@@ -41,6 +41,12 @@ module CapybaraLoginTestHelper
   end
 end
 
+def login_with_factory(factory_name)
+  user = FactoryBot.create factory_name
+  sign_in user
+  user
+end
+
 def login_as_student
   user = FactoryBot.create :user
   sign_in user

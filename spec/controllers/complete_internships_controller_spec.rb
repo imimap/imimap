@@ -28,8 +28,10 @@ require 'rails_helper'
 RSpec.describe CompleteInternshipsController, type: :controller do
   render_views
 
+[:user, :admin].each do  | role |
+  describe "for #{role}" do
   before :each do
-    # @current_user = login_as_admin
+     @current_user = login_with_factory(role)
   end
 
   # This should return the minimal set of values that should be in the session
@@ -182,4 +184,6 @@ RSpec.describe CompleteInternshipsController, type: :controller do
       expect(response).to redirect_to(complete_internships_url)
     end
   end
+end
+end
 end

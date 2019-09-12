@@ -8,6 +8,7 @@ class CompleteInternshipsController < ApplicationResourceController
   include CompleteInternshipsHelper
   # InheritedResources::Base
   # authorize_resource
+  before_action :set_student
   before_action :set_complete_internship, only: %i[show edit update destroy]
   before_action :new_complete_internship, only: %i[create new internship_data]
   before_action :set_semesters, only: %i[new create edit internship_data]
@@ -109,6 +110,15 @@ class CompleteInternshipsController < ApplicationResourceController
 
   def set_semesters
     @semesters = Semester.all.pluck(:name, :id)
+  end
+
+  def set_student
+    if @current_user.student?
+    @student = @current_user.student
+  else
+    @student = Student.find(params[:student_id])
+  end
+end
   end
 
   def complete_internship_params
