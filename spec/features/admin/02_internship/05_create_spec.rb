@@ -13,7 +13,7 @@ describe 'ActiveAdmin create internship' do
 
   it 'index has edit link' do
     visit admin_internships_path
-    click_on t('active_admin.create_model', model: Internship.model_name.human)
+    click_on t('active_admin.new_model', model: Internship.model_name.human)
     expect(current_path).to eq new_admin_internship_path(locale: I18n.locale)
   end
 
