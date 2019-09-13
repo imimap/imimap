@@ -10,12 +10,12 @@ describe 'ActiveAdmin Create Student from index path' do
   end
   it 'create button is available' do
     expect(page).to have_content I18n.t('activerecord.models.student.other')
-    click_on t('active_admin.create_model', model: Student.model_name.human)
-    expect(page).to have_content t('active_admin.create_model',
+    click_on t('active_admin.new_model', model: Student.model_name.human)
+    expect(page).to have_content t('active_admin.new_model',
                                    model: Student.model_name.human)
   end
   it 'create works' do
-    click_on t('active_admin.create_model', model: Student.model_name.human)
+    click_on t('active_admin.new_model', model: Student.model_name.human)
     field_names = %w[enrolment_number first_name last_name
                      birthplace birthday email]
     field_names.each do |field_name|

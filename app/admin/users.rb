@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register User do
-  menu priority: 2
+  menu parent: 'data_admin', priority: 2
   permit_params User::EDITABLE_ATTRIBUTES_ALL + [:student_id]
 
   controller do

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register ReadingProf do
-  menu priority: 10
+  menu parent: 'internship_admin', priority: 4
   permit_params %i[name]
   filter :name
 

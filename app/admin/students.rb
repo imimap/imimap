@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Student do
-  menu priority: 3
+  menu parent: 'internship_admin', priority: 3
   permit_params StudentsController.permitted_params
   filter :enrolment_number,
          as: :select,

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register ProgrammingLanguage do
-  menu priority: 12
+  menu parent: 'data_admin', priority: 12
   permit_params %i[name]
   filter :name
   config.sort_order = 'id_asc'
