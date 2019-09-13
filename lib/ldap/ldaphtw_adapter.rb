@@ -80,7 +80,7 @@ class LDAPHTWAdapter
     #  byebug
     rescue StandardError => e
       log_error(host: host, exception: e)
-    #  byebug
+      #  byebug
       return false
     end
     log_auth_failed(ldap_username: ldap_username) unless success
