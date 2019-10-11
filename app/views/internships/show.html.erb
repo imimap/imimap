@@ -102,7 +102,7 @@
 
 <!--  ############################################################################## -->
 
- <p><%= link_to "Print Registration Form (PDF)", internship_path(@internship, format: "pdf"), class: "btn btn-success" %></p>
+ <p><%= link_to "Print Registration Form (PDF)", internship_path(@internship, format: "pdf"), target: "_blank", class: "btn btn-success" %></p>
 
  <%= link_to({:controller => :internships, :action => :rating, :id => @internship.id},class: "btn btn-success") do %>
   <i class = "icon-2x icon-large icon-white"> <%= t("buttons.rating") %> </i>

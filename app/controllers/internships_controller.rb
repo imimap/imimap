@@ -109,7 +109,8 @@ class InternshipsController < ApplicationResourceController
         pdf = InternshipPdf.new(@internship)
         send_data pdf.render,
                   filename: "Praktikumsanmeldung_#{name}.pdf",
-                  type: 'application/pdf'
+                  type: 'application/pdf',
+                  disposition: 'inline'
       end
     end
   end
