@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Semester do
-  menu priority: 9
+  menu parent: 'data_admin', priority: 9
   permit_params %i[name]
   filter :name
 

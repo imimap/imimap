@@ -39,6 +39,12 @@ class Internship < ApplicationRecord
   accepts_nested_attributes_for :company,
                                 reject_if: proc { |attr| attr['name'].blank? }
   accepts_nested_attributes_for :programming_languages
+  def self.attributes_required_for_internship_application
+    %i[semester start_date end_date
+       working_hours tasks operational_area
+       supervisor_name supervisor_email supervisor_phone]
+  end
+
   def rating
     internship_rating.total_rating
   end
@@ -94,7 +100,8 @@ class Internship < ApplicationRecord
 
   def all_internship_details_filled?
     helper_array = [title, start_date, end_date, operational_area,
-                    orientation_id, tasks, working_hours, salary]
+                    orientation_id, tasks, working_hours, salary,
+                    supervisor_name, supervisor_email, supervisor_phone]
     helper_array.each do |e|
       return false if e.blank?
     end

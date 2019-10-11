@@ -17,7 +17,7 @@ describe 'Complete Internship' do
         it 'should create a new CI' do
           visit my_internship_path
           expect(page).to have_content('Praktikumsdetails')
-          click_link(t('internships.createYourInternship'))
+          click_link(t('internships.provide_now'))
           expect(page).to have_field('Semester')
           expect(page).to have_field('Fachsemester')
           click_on t('save')
@@ -27,7 +27,7 @@ describe 'Complete Internship' do
         it 'should create a new partial internship' do
           create(:semester)
           visit my_internship_path
-          click_link(t('internships.createYourInternship'))
+          click_link(t('internships.provide_now'))
           click_on t('save')
           click_on t('complete_internships.new_tp0')
           expect(page).to have_field('Semester')
@@ -46,25 +46,44 @@ describe 'Complete Internship' do
         end
 
         it 'should save changes made in internship datails form
-            (example reading_prof selection)' do
+            (example supervisor details)' do
           create(:semester)
-          create(:reading_prof1)
-          create(:reading_prof2)
-          create(:reading_prof3)
           visit my_internship_path
-          click_link(t('internships.createYourInternship'))
+          click_link(t('internships.provide_now'))
           click_on t('save')
           click_on t('complete_internships.new_tp0')
           click_on t('save')
-          click_link(t('complete_internships.checklist.internship_details'))
+          click_link(t('internships.internship_details'))
           expect(page).to have_content(
-            t('internships.attributes.which_professor_should_read')
+            t('activerecord.attributes.internship.supervisor_name')
           )
-          select 'Prof. 3', from: 'internship_reading_prof_id'
+          expect(page).to have_content(
+            t('activerecord.attributes.internship.supervisor_email')
+          )
+          expect(page).to have_content(
+            t('activerecord.attributes.internship.supervisor_phone')
+          )
+
+          fill_in t('activerecord.attributes.internship.supervisor_phone'),
+                  with: '030283020'
+          fill_in t('activerecord.attributes.internship.supervisor_name'),
+                  with: 'Testname'
+          fill_in t('activerecord.attributes.internship.supervisor_email'),
+                  with: 'meineMail@whatsoever.com'
           click_on t('save')
           click_link(t('complete_internships.checklist.internship_details'))
-          expect(page).to have_select('internship_reading_prof_id',
-                                      selected: 'Prof. 3')
+          expect(find_field(
+            t('activerecord.attributes.internship.supervisor_phone')
+          )
+                  .value).to eq '030283020'
+          expect(find_field(
+            t('activerecord.attributes.internship.supervisor_email')
+          )
+                  .value).to eq 'meineMail@whatsoever.com'
+          expect(find_field(
+            t('activerecord.attributes.internship.supervisor_name')
+          )
+                  .value).to eq 'Testname'
         end
       end
     end

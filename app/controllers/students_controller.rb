@@ -4,6 +4,7 @@
 class StudentsController < ApplicationResourceController
   before_action :set_student, only: %i[show update]
   authorize_resource
+  include StudentsHelper
   def self.permitted_params
     %i[first_name
        last_name
@@ -25,12 +26,8 @@ class StudentsController < ApplicationResourceController
   def update
     @student = Student.find(params[:id])
     @user = @student.user
-    if @student.update_attributes(student_params)
-      flash[:success] = 'Profil geupdated'
-      redirect_to @student.complete_internship
-    else
-      render 'show'
-    end
+    flash[:success] = 'Profil geupdated' if @student.update(student_params)
+    render 'show'
   end
 
   private

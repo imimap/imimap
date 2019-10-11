@@ -135,8 +135,8 @@ class InternshipsController < ApplicationResourceController
                                .complete_internship
                                .internships
                                .find(params[:id])
-    if @internship.update_attributes(attributes)
-      @internship.update_attributes(completed: true)
+    if @internship.update(attributes)
+      @internship.update(completed: true)
       flash[:notice] = 'Internship was successfully updated.'
       respond_with(@current_user.student
                                  .complete_internship)
@@ -207,7 +207,8 @@ class InternshipsController < ApplicationResourceController
                                    title
                                    tasks].freeze
   SUPERVISOR_ATTRIBUTES = %i[supervisor_email
-                             supervisor_name].freeze
+                             supervisor_name
+                             supervisor_phone].freeze
 
   REVIEW_ATTRIBUTES = %i[comment
                          recommend

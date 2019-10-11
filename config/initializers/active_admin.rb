@@ -8,7 +8,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = 'Imi Map'
+  config.site_title = 'IMI Map'
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -137,7 +137,8 @@ ActiveAdmin.setup do |config|
   # config.comments_menu = false
   #
   # You can customize the comment menu:
-  config.comments_menu = { parent: 'Admin', priority: -1 }
+  # IMI-Map: see below.
+  # config.comments_menu = { parent: 'Admin', priority: 1 }
 
   # == Batch Actions
   #
@@ -241,21 +242,41 @@ ActiveAdmin.setup do |config|
   #   end
 
   config.namespace :admin do |admin|
-    admin.build_menu :utility_navigation do |menu|
-      menu.add label: 'User view', url: :authenticated_root_path
-      menu.add label: 'Locale' do |lang|
-        lang.add label: 'English',
+    admin.build_menu do |menu|
+      #  admin.build_menu :utility_navigation do |menu|
+      menu.add id: 'internship_admin',
+               label: proc { t('my_active_admin.menu.internship_admin') },
+               priority: 1
+      menu.add id: 'company',
+               label: proc { t('my_active_admin.menu.company') },
+               priority: 2
+      menu.add id: 'data_admin',
+               label: proc { t('my_active_admin.menu.data_admin') },
+               priority: 3
+
+      menu.add id: 'imimap',
+               label: proc { t('my_active_admin.menu.imimap') },
+               priority: 4
+
+      menu.add id: 'user_view',
+               parent: 'imimap', priority: 10,
+               label: proc { t('my_active_admin.menu.user_view') },
+               url: :authenticated_root_path
+
+      menu.add id: 'locale', priority: 9,
+               label: proc { t('my_active_admin.menu.locale.title') } do |lang|
+        lang.add id: 'en',
+                 label: proc { t('my_active_admin.menu.locale.english') },
                  url: proc { url_for(locale: 'en') },
                  priority: 1
-        lang.add label: 'Deutsch',
+        lang.add id: 'de',
+                 label: proc { t('my_active_admin.menu.locale.german') },
                  url: proc { url_for(locale: 'de') },
                  priority: 2
       end
-
-      admin.add_current_user_to_menu  menu
-      admin.add_logout_button_to_menu menu
     end
   end
+  config.comments_menu = { parent: 'internship_admin', priority: 6 }
 
   # == Download Links
   #

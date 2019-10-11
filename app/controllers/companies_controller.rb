@@ -46,6 +46,7 @@ class CompaniesController < ApplicationResourceController
   end
 
   def create
+    # byebug
     respond_to do |format|
       if @company.save
         # CodeReviewSS17 seems a bit too specific for the general create
@@ -65,8 +66,9 @@ class CompaniesController < ApplicationResourceController
   end
 
   def update
+    # byebug
     respond_to do |format|
-      if @company.update_attributes(company_params)
+      if @company.update(company_params)
         format.html do
           if @current_user.student
             redirect_to edit_company_address_path(
@@ -103,7 +105,8 @@ class CompaniesController < ApplicationResourceController
   end
 
   def suggest
-    @company_suggestion = Company.where('name = ?', params[:name])
+    suggestion = '%' + params[:name].downcase + '%'
+    @company_suggestion = Company.where('lower(name) LIKE ?', suggestion)
   end
 
   private

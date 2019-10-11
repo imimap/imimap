@@ -40,7 +40,6 @@ Rails.application.config.assets.precompile += %w[users.css]
 Rails.application.config.assets.precompile += %w[viz.css]
 Rails.application.config.assets.precompile += %w[report_overview.js]
 Rails.application.config.assets.precompile += %w[report_overview.css]
-Rails.application.config.assets.precompile += %w[chartkick.js]
 
 # puts '+++Rails.application.config.assets.precompile'
 # puts Rails.application.config.assets.precompile.inspect

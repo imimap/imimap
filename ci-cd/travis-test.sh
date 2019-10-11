@@ -30,4 +30,6 @@ echo "$0: starting build for IMIMAPS_ENVIRONMENT ${IMIMAPS_ENVIRONMENT}"
     docker exec -e RAILS_ENV=test -ti imimap-dev rake assets:precompile
     if [ $? != 0 ]; then exit 1; fi
     docker exec -e RAILS_ENV=test -ti imimap-dev rails db:seed
+    if [ $? != 0 ]; then exit 1; fi
+    docker exec -e RAILS_ENV=test -ti imimap-dev rails factory_bot:lint
   fi

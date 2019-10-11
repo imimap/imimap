@@ -2,10 +2,20 @@
 
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.2.3'
+gem 'rails', '~> 6.0.0'
 # see https://github.com/straydogstudio/axlsx_rails
 gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
-gem 'axlsx_rails'
+# gem 'axlsx_rails'
+# axlsx_rails yields a deprecation warning with rails6.
+# for local testing:
+
+# gem 'axlsx_rails',
+# path: '/Users/kleinen/mine/current/htw/imimap/code/axlsx_rails'
+# doesn't work on travis:
+
+gem 'axlsx_rails',
+    git: 'https://github.com/imimap/axlsx_rails.git',
+    tag: '0.5.2_rails6_patch'
 gem 'carrierwave'
 gem 'country_select'
 gem 'geocoder'
@@ -13,6 +23,7 @@ gem 'nested_form'
 gem 'rubyzip', '>= 1.2.1'
 
 gem 'bootstrap', '>= 4.3.1'
+gem 'bootstrap-datepicker-rails'
 gem 'bootstrap_form', '>= 4.0.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -21,17 +32,18 @@ gem 'prawn-table'
 # see https://github.com/tzinfo/tzinfo/wiki/Resolving-TZInfo::DataSourceNotFound-Errors
 gem 'tzinfo-data'
 
-gem 'activeadmin', '~> 1.1'
+gem 'activeadmin', '~> 2.2'
 gem 'cancancan', '~> 2.2'
-gem 'devise', ' ~> 4.3'
+gem 'devise', '>= 4.7.1'
 gem 'formtastic', '~> 3'
 
 gem 'mini_magick'
 # gem "rmagick", "~> 2.16"
 gem 'paperclip', '~> 5.2'
 
-gem 'chosen-rails'
-
+# is this needed directly or just used by activeadmin?
+# see https://github.com/kaminari/kaminari
+# calls like User.page would occur
 gem 'kaminari'
 
 gem 'd3-rails'
@@ -44,13 +56,9 @@ gem 'net-ldap'
 # gem 'jquery-ui-rails'
 gem 'coffee-rails'
 gem 'font-awesome-sass-rails'
+# Use SCSS for stylesheets
 gem 'sass-rails'
 gem 'uglifier', '>= 1.0.3'
-
-# gems used for charts
-gem 'active_median', '~> 0.1'
-gem 'chartkick', '~> 3.2.0'
-gem 'groupdate', '~> 3.2'
 
 gem 'factory_bot_rails'
 
@@ -70,7 +78,7 @@ gem 'faker'
 
 group :development, :test do
   install_if -> { ENV['IMIMAPS_ENVIRONMENT'] != 'docker' } do
-    gem 'sqlite3', '~> 1.3.7'
+    gem 'sqlite3', '~> 1.4'
   end
 
   gem 'better_errors'
@@ -81,7 +89,7 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'poltergeist'
-  gem 'rack-mini-profiler'
+  # gem 'rack-mini-profiler', require: false
 
   gem 'byebug'
   gem 'database_cleaner'

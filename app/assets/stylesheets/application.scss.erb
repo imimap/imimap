@@ -7,16 +7,15 @@
  *
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
- *
+ *= require bootstrap-datepicker
  */
 
  // Custom bootstrap variables must be set or imported *before* bootstrap.
+
 @import 'leaflet';
 @import "bootstrap_variables";
 @import "bootstrap";
 
-
-@import 'chosen';
 @import 'bootstrap_variables';
 @import 'custom';
 @import 'favorite';
@@ -38,10 +37,25 @@
 @import 'tab';
 
 
+
+
 .green-thumb {
 	color: #8bb900 !important;
 }
 
 .red-thumb {
 	color: #b90000 !important;
+}
+
+/* css for marking required attributes with bootstrap_form, see Issue #402
+ * https://github.com/imimap/imimap/issues/402 */
+
+label.required_application::after {
+  content:" **";
+ 	color: #0000b9;
+ }
+
+label.required::after {
+  content:" *";
+	color: #b90000;
 }

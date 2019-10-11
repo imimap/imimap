@@ -19,6 +19,10 @@ describe 'ActiveAdmin Admin User' do
       before :each do
         @company = create(:company)
       end
+      it 'shows company on index' do
+        visit admin_companies_path
+        expect(page).to have_content @company.name
+      end
       it 'shows comment' do
         visit admin_company_path(locale: :en, id: @company.id)
         expect(page).to have_content(@company.comment)

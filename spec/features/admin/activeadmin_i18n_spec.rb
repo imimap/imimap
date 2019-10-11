@@ -17,7 +17,6 @@ describe 'I18n in ActiveAdmin specs' do
     visit admin_internships_path
     expect(I18n.locale).to eq :de
     expect(admin_internships_path).to eq('/admin/internships')
-    # save_and_open_page
     expect(page)
       .to have_content I18n.t('activerecord.models.internship.other')
   end

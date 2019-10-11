@@ -5,9 +5,8 @@
       <%= t "complete_internships.semester" %>
       <%= @semester_name %>
       <% if @complete_internship.semester_of_study %>
-        <%= t "complete_internships.semester_of_study1" %>
-        <%= @complete_internship.semester_of_study %>
-        <%= t "complete_internships.semester_of_study2" %>
+        (<%= @complete_internship.semester_of_study %>.
+        <%= t 'activerecord.attributes.complete_internship.semester_of_study' %>)
       <% end %>
     </h4>
     <br>

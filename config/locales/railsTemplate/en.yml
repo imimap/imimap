@@ -16,6 +16,9 @@ en:
     message: "The page you were looking for doesn't exist.<br/>You may have mistyped the address or the page may have moved."
 
   date:
+    datepicker:
+      format: "dd/mm/yyyy"
+
     abbr_day_names:
     - Sun
     - Mon
@@ -160,6 +163,7 @@ en:
       create: Create %{model}
       submit: Save %{model}
       update: Update %{model}
+      generic_update: "Save"
   number:
     currency:
       format:

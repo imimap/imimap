@@ -14,6 +14,32 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
+  serialize :feature_toggles
+  def feature_on?(feature)
+    return false unless feature_toggles
+
+    feature_toggles.include? feature
+  end
+
+  def string_to_array(some_list)
+    some_list.split(',')
+             .map { |s| s.gsub(/:/, '') }
+             .map(&:strip)
+             .map(&:to_sym)
+  end
+
+  def feature_toggles=(new_ft)
+    new_feature_toggles = case new_ft
+                          when String
+                            string_to_array(new_ft)
+                          when Array
+                            new_ft
+                          else
+                            []
+                          end
+    super(new_feature_toggles & FT.list)
+  end
+
   def name
     if student.nil?
       email
@@ -23,8 +49,11 @@ class User < ApplicationRecord
   end
 
   EDITABLE_ATTRIBUTES = %i[email mailnotif publicmail student role].freeze
+  EDITABLE_ATTRIBUTES_FT = %i[feature_toggles].freeze
   EDITABLE_ATTRIBUTES_PW = %i[password password_confirmation].freeze
-  EDITABLE_ATTRIBUTES_ALL = EDITABLE_ATTRIBUTES + EDITABLE_ATTRIBUTES_PW
+  EDITABLE_ATTRIBUTES_ALL = EDITABLE_ATTRIBUTES +
+                            EDITABLE_ATTRIBUTES_PW +
+                            EDITABLE_ATTRIBUTES_FT
   ROLES = %i[admin prof examination_office user].freeze
   enum role: ROLES
 
@@ -72,7 +101,7 @@ class User < ApplicationRecord
     user = User.where(email: email).first
     if user
       old_pw = user.encrypted_password
-      user.update_attributes(password: password) unless password == old_pw
+      user.update(password: password) unless password == old_pw
     end
     user ||= User.create(email: email,
                          password: password,

@@ -1,12 +1,9 @@
 <div id="form-block4" class="text-left">
 
-  <small><%= t "forms.what_do_stars_mean1" %></small><br>
-  <small><%= t "forms.what_do_stars_mean2" %></small>
   <h3><%= t ".editcompany" %></h3>
+  <%= render 'form' %>
+  <% if @current_user.student %>
+  <%= link_to (t "buttons.back"), complete_internship_path(@current_user.student.complete_internship)%>
+  <% end %>
 
-<%= render 'form' %>
-
-<% if @current_user.student %>
-<%= link_to (t "buttons.back"), complete_internship_path(@current_user.student.complete_internship)%>
-<% end %>
 </div>

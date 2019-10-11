@@ -19,12 +19,12 @@ end
 
 def create_student(enrolment_number:)
   Student.create!(
-    import_id: Faker::Number.number(1),
+    import_id: Faker::Number.number(digits: 2),
     enrolment_number: enrolment_number,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: email_for_enrolment_number(enrolment_number: enrolment_number),
-    birthday: Faker::Date.birthday(18, 65),
+    birthday: Faker::Date.birthday(min_age: 18, max_age: 65),
     birthplace: Faker::Address.country
   )
 end
@@ -37,10 +37,10 @@ end
 def create_company
   Company.create!(
     name: Faker::Company.name,
-    number_employees: Faker::Number.number(3),
+    number_employees: Faker::Number.number(digits: 3),
     excluded_from_search: Faker::Boolean.boolean,
-    import_id: Faker::Number.number(1),
-    website: Faker::Internet.url('example.com')
+    import_id: Faker::Number.number(digits: 1),
+    website: Faker::Internet.url(host: 'htw-berlin.de')
   )
 end
 

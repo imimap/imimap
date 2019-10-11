@@ -23,7 +23,7 @@ describe 'ActiveAdmin User' do
     end
     it 'creates user' do
       visit new_admin_user_path
-      expect(page).to have_content t('active_admin.create_model',
+      expect(page).to have_content t('active_admin.new_model',
                                      model: User.model_name.human)
       # TBD write actual test
     end

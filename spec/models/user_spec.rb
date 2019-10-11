@@ -50,4 +50,28 @@ RSpec.describe User, type: :model do
       expect(user.enrolment_number).to eq user.student.enrolment_number
     end
   end
+
+  describe 'feature toggles can be set' do
+    before :each do
+      @features = %i[a b c]
+      @features.each do |feature|
+        FT.for(feature) do |_current_user|
+          true
+        end
+      end
+    end
+    it 'with array' do
+      user.feature_toggles = @features
+      expect(user.feature_toggles).to eq @features
+      user.save
+      user.reload
+      expect(user.feature_toggles).to eq @features
+    end
+    it 'with string' do
+      user.feature_toggles = 'a, b, c'
+      user.save
+      user.reload
+      expect(user.feature_toggles).to eq @features
+    end
+  end
 end

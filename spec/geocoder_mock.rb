@@ -92,4 +92,20 @@ Geocoder::Lookup::Test.add_stub(
     }
   ]
 )
+
+Geocoder::Lookup::Test.add_stub(
+  '88 Colin P Kelly Junior St, 94107 San Francisco, Syrian Arab Republic', [
+    {
+      'coordinates' => [37.7822269, -122.3912958],
+      'address' =>
+      'GitHub, 88, Colin P. Kelly Junior Street, California, 94107, USA',
+      'post_code' => '10243',
+      'state' => 'California',
+      'state_code' => 'CA',
+      'country' => 'Syrian Arab Republic',
+      'city' => 'San Francisco',
+      'country_code' => 'sy'
+    }
+  ]
+)
 # Geocoder.search("Wilhelminenhofstr. 75 A, 12459 Berlin, Germany")

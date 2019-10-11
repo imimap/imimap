@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-TEXT4 = <<DELIM
+text4 = <<DELIM
   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
   incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
   nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -25,7 +25,7 @@ FactoryBot.define do
     recommend { true }
     orientation
     email_public { true }
-    description { TEXT4 }
+    description { text4 }
     complete_internship
     salary { 8 }
     start_date { Date.today.to_date }
@@ -76,12 +76,12 @@ FactoryBot.define do
     recommend { true }
     orientation
     email_public { true }
-    description { TEXT4 }
+    description { text4 }
     semester
     salary { 8 }
     start_date { Date.today.to_date }
     end_date { Date.today.to_date + 7.days }
-    tasks { TEXT4 }
+    tasks { text4 }
     operational_area { 'operational area' }
     internship_state { create :internship_state_aep }
     complete_internship
@@ -130,12 +130,12 @@ FactoryBot.define do
     recommend { true }
     orientation
     email_public { true }
-    description { TEXT4 }
+    description { text4 }
     semester
     salary { 8 }
     start_date { Date.today.to_date }
     end_date { Date.today.to_date + 7.days }
-    tasks { TEXT4 }
+    tasks { text4 }
     operational_area { 'operational area' }
     complete_internship
     internship_state
@@ -185,12 +185,12 @@ FactoryBot.define do
     recommend { true }
     orientation
     email_public { true }
-    description { TEXT4 }
+    description { text4 }
     semester
     salary { 8 }
     start_date { Date.today.to_date }
     end_date { Date.today.to_date + 7.days }
-    tasks { TEXT4 }
+    tasks { text4 }
     operational_area { 'operational area' }
     internship_state { create :internship_state_aep }
     complete_internship { create :complete_internship_wo_student }
@@ -239,12 +239,12 @@ FactoryBot.define do
     recommend { true }
     orientation
     email_public { true }
-    description { TEXT4 }
+    description { text4 }
     semester
     salary { 8 }
     start_date { Date.today.to_date }
     end_date { Date.today.to_date + 7.days }
-    tasks { TEXT4 }
+    tasks { text4 }
     operational_area { 'operational area' }
     complete_internship
     reading_prof
@@ -272,5 +272,34 @@ FactoryBot.define do
       c = FactoryBot.create(:company_2)
       i.company_address = c.company_addresses.first
     end
+  end
+
+  factory :internship_without_company_address, class: Internship do
+    working_hours { 2.0 }
+    living_costs  { 4.0 }
+    internship_rating
+    # company
+    user
+    title { 'The Fresh Intership' }
+    recommend { true }
+    orientation
+    email_public { true }
+    description { text4 }
+    semester
+    salary { 8 }
+    start_date { Date.today.to_date }
+    end_date { Date.today.to_date + 7.days }
+    tasks { text4 }
+    operational_area { 'operational area' }
+    complete_internship
+    reading_prof
+    payment_state
+    certificate_signed_by_internship_officer { Date.today.to_date }
+    certificate_signed_by_prof { Date.today.to_date }
+    certificate_to_prof { Date.today.to_date }
+    comment { 'internship comment' }
+    supervisor_email { 'supervisor@bar.com' }
+    supervisor_name { 'internship supervisor name' }
+    completed { false }
   end
 end

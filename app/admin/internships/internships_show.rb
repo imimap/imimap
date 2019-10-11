@@ -19,6 +19,7 @@ ActiveAdmin.register Internship do
       row :tasks
       row :supervisor_name
       row :supervisor_email
+      row :supervisor_phone
       row :programming_languages do |i|
         i.programming_languages.map(&:name).join(', ')
       end

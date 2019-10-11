@@ -13,6 +13,12 @@ test:
 	docker-compose exec imimap rails db:create RAILS_ENV=test
 	docker-compose exec imimap rails db:migrate RAILS_ENV=test
 	docker-compose exec imimap rspec
+travis:
+	docker-compose exec imimap rails db:create RAILS_ENV=test
+	docker-compose exec imimap rails db:migrate RAILS_ENV=test
+	docker-compose exec imimap rspec
+	docker-compose exec imimap rails factory_bot:lint
+	docker-compose exec imimap rails db:seed
 import: $(file)
 	docker-compose exec imimap sh -c "rails db:drop ; rails db:create"
 	cat $(file) | docker-compose exec -T postgresql psql --set ON_ERROR_STOP=on -h localhost -U imi_map imimap -f -
@@ -21,6 +27,8 @@ db_migrate:
 	docker-compose exec imimap rails db:migrate
 db_seed:
 	docker-compose exec imimap rails db:seed
+factory_lint:
+	docker-compose exec imimap rails factory_bot:lint
 ssh_prod:
 	ssh deployer@imi-map.f4.htw-berlin.de
 ssh_staging:

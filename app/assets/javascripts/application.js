@@ -13,10 +13,9 @@
 
 //= require jquery3
 //= require jquery-ui
-//= require chosen-jquery
 //= require popper
 //= require bootstrap-sprockets
 //= require leaflet
 //= require_tree .
 //= require_self
-//=
+//= require bootstrap-datepicker

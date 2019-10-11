@@ -3,9 +3,9 @@
 
 	<% if current_user.student? %>
 	<div id="askForCreation">
-		<%= t "internships.createInternship" %>
+		<%= t "internships.create_internship" %>
 		<br />
-		<%= link_to t("internships.createYourInternship"),  new_complete_internship_path(@complete_internship) %>
+		<%= link_to t("internships.provide_now"),  new_complete_internship_path(@complete_internship) %>
 		<br />
 	</div>
 	<% end %>
