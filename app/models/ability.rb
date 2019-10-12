@@ -4,30 +4,40 @@
 class Ability
   include CanCan::Ability
 
+  def complete_internship(user)
+    can %i[new create internship_data], CompleteInternship
+    can %i[edit show update],
+        CompleteInternship,
+        student: { user: { id: user.id } }
+  end
+
+  def internship(user)
+    can :internship_data, Internship
+    can %i[create new], Internship
+    can :update, Internship, approved: false,  student: { user: user }
+    can :show,   Internship, student: { user: user }
+    can :map_cities, Internship
+  end
+
+  def company(user)
+    can %i[create_and_save new create select_company suggest
+           suggest_address save_address], [Company, CompanyAddress]
+    can %i[edit show update],
+        [Company, CompanyAddress],
+        internships: { complete_internship: { student: { user: user } } }
+    can :new_address, CompanyAddress
+  end
+
   def initialize(user)
     return unless user.present?
 
-    can %i[create_and_save new create select_company suggest
-           suggest_address save_address], [Company, CompanyAddress]
-    can %i[edit show update], [Company, CompanyAddress], student: { user: user }
+    complete_internship(user)
+    internship(user)
+    company(user)
     can :read, InternshipOffer
-    can :map_cities, Internship
-    can %i[internship_data new edit show update create],
-        CompleteInternship,
-        user: { id: user.id }
-
-    # TBD these reveal somewhat arbitrary
-    # controllers and controller actions added over the time.
-    can :internship_data, Internship
-    can :new_address, CompanyAddress
 
     can %i[show update], Student, user: { id: user.id }
 
-    can :create, Internship
-    can :update, Internship, approved: false,  student: { user: user }
-    can :show,   Internship, student: { user: user }
-    # can %i[show update], Student, user: user
-    # can :update, Student, user: { id: user.id }
     can %i[read update], User, id: user.id
 
     return unless user.prof? || user.examination_office? || user.admin?
@@ -39,5 +49,11 @@ class Ability
     return unless user.admin?
 
     can :manage, :all
+  end
+
+  def internship_abilities(user)
+    can :create, Internship
+    can :update, Internship, approved: false, student: { user: user }
+    can :show,   Internship, complete_internship: { student: { user: user } }
   end
 end

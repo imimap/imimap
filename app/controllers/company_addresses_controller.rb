@@ -3,7 +3,8 @@
 # Controller for CompanyAddresses
 class CompanyAddressesController < ApplicationResourceController
   include CompanyAddressesHelper
-  before_action :set_company_address, only: %i[edit update destroy]
+  load_and_authorize_resource
+  #before_action :set_company_address, only: %i[edit update destroy]
 
   def index
     @company_addresses = CompanyAddress.all
