@@ -176,14 +176,18 @@ class InternshipPdf < Prawn::Document
              at: [15, 471]
     bounding_box([110, 474], :width => 100, :height => 15) do
       move_down 3
-      draw_text I18n.l(@internship.start_date, format: :default).to_s, at: [bounds.left+2, bounds.top-11]
+      if @internship.start_date.present?
+        draw_text I18n.l(@internship.start_date, format: :default).to_s, at: [bounds.left+2, bounds.top-11]
+      end
       stroke_bounds
     end
     text_box 'Praktikumsende',
              at: [220, 471]
     bounding_box([310, 474], :width => 100, :height => 15) do
       move_down 3
-      draw_text I18n.l(@internship.end_date, format: :default).to_s, at: [bounds.left+2, bounds.top-11]
+      if @internship.end_date.present?
+        draw_text I18n.l(@internship.end_date, format: :default).to_s, at: [bounds.left+2, bounds.top-11]
+      end
       stroke_bounds
     end
     text_box 'Fachsemester',
