@@ -232,7 +232,9 @@ en:
       contract_original: an original
       contract_copy: a copy
       lsf_ausdruck: Grade Printout from the LSF
-      print_form: Print Form
+      print_form: Print Form (pdf)
+      check_form: Check Form
+      thank_you: Thank you
     icon-ok: " - If this sign appears the corresponding form is filled in completely"
     details:
       semester: Semester
