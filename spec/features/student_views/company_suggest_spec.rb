@@ -2,6 +2,15 @@
 
 require 'rails_helper'
 
+def page_contains_search
+  expect(page).to have_content(
+    t('companies.select.companyname')
+  )
+  expect(page).to have_content(
+    t('companies.give_name')
+  )
+end
+
 describe 'Company Suggestion' do
   I18n.available_locales.each do |locale|
     context "in locale #{locale}" do
@@ -26,6 +35,7 @@ describe 'Company Suggestion' do
             t('complete_internships.aep.number')
           )
           click_on t('complete_internships.checklist.company_details')
+          page_contains_search
           expect(page).to have_content(
             t('companies.select.companyname')
           )
@@ -37,6 +47,7 @@ describe 'Company Suggestion' do
           expect(page).to have_content(
             t('companies.no_match1')
           )
+          page_contains_search
         end
 
         it 'should show me only similar matches' do
@@ -54,11 +65,13 @@ describe 'Company Suggestion' do
             t('complete_internships.aep.number')
           )
           click_on t('complete_internships.checklist.company_details')
+          page_contains_search
           expect(page).to have_content(
             t('companies.select.companyname')
           )
           fill_in(:name, with: 'CoMp')
           click_on t('companies.continue2')
+          page_contains_search
           expect(page).to have_content(
             t('companies.suggestion')
           )
@@ -71,6 +84,7 @@ describe 'Company Suggestion' do
           expect(page).not_to have_content(
             'Immobilienscout'
           )
+          page_contains_search
         end
 
         it 'should not progress when no name was given' do
@@ -108,6 +122,7 @@ describe 'Company Suggestion' do
             t('complete_internships.aep.number')
           )
           click_on t('complete_internships.checklist.company_details')
+          page_contains_search
           expect(page).to have_content(
             t('companies.select.companyname')
           )
@@ -116,6 +131,7 @@ describe 'Company Suggestion' do
           expect(page).to have_link(
             'Company 1'
           )
+          page_contains_search
         end
       end
     end
