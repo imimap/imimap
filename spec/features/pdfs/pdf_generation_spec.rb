@@ -13,6 +13,17 @@ describe 'the generation of the application pdf does not produce errors' do
     click_on t('save')
   end
 
+  # copied from this page:
+  # https://content.pivotal.io/blog/how-to-test-pdfs-with-capybara
+  # pdf-reader gem is used here
+  def convert_pdf_to_page
+    temp_pdf = Tempfile.new('pdf')
+    temp_pdf << page.source.force_encoding('UTF-8')
+    reader = PDF::Reader.new(temp_pdf)
+    pdf_text = reader.pages.map(&:text)
+    page.driver.response.instance_variable_set('@body', pdf_text)
+  end
+
   context 'factory user' do
     before :each do
       @user = create(:user)
@@ -22,6 +33,12 @@ describe 'the generation of the application pdf does not produce errors' do
     it 'entered no additional information' do
       expect { click_link(t('complete_internships.checklist.print_form')) }
         .not_to raise_error
+    end
+    it 'and generate a valid pdf containing student name' do
+      click_link(t('complete_internships.checklist.print_form'))
+      # save_and_open_page
+      convert_pdf_to_page
+      expect(page).to have_content(@user.student.first_name)
     end
   end
 end

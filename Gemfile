@@ -96,6 +96,7 @@ group :development, :test do
   gem 'railroady'
   gem 'rails-controller-testing'
   gem 'simplecov', require: false
+  gem 'pdf-reader' # for checking generated pdf in tests
 end
 
 # To use ActiveModel has_secure_password
