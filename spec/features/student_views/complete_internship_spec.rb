@@ -42,7 +42,6 @@ describe 'Complete Internship' do
           expect(page).to have_content(
             t('complete_internships.ci.number')
           )
-          save_and_open_page
           expect(page).to have_content(Semester.last.name)
         end
 

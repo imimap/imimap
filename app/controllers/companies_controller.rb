@@ -49,10 +49,6 @@ class CompaniesController < ApplicationResourceController
     # byebug
     respond_to do |format|
       if @company.save
-        # CodeReviewSS17 seems a bit too specific for the general create
-        # case, but if Company#create isn't called from anywhere else,
-        # why not. but if the company was specifically created for the
-        # internship, it should be passed to the new internship.
         format.html do
           redirect_to new_address_path(@company.id,
                                        internship_id:

@@ -14,7 +14,8 @@ class Ability
   def internship(user)
     can :internship_data, Internship
     can %i[create new], Internship
-    can :update, Internship, approved: false,  student: { user: user }
+    # can :update, Internship, approved: false,  student: { user: user }
+    can :update, Internship, student: { user: user }
     can :show,   Internship, student: { user: user }
     can :map_cities, Internship
   end

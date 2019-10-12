@@ -11,12 +11,10 @@ module CompanyAddressesHelper
   end
 
   def find_internship_with_company_address
-    @current_user.student
-                 .complete_internship
-                 .internships
-                 .find(
-                   params[:company_address][:internship_id]
-                 )
+    internships = Internship.accessible_by(current_ability)
+    internships.find(
+      params[:company_address][:internship_id]
+    )
   end
 
   def find_internship
