@@ -146,7 +146,6 @@ de:
       phone: "Telefon"
       phone1: "Telefon *"
 
-
   internship_offers:
     header: "Praktikumsangebote"
     number_of: "Es gibt im Moment"
@@ -163,7 +162,7 @@ de:
       answer2_contact: "Wenn deine Frage sich dadurch nicht geklärt hat schicke eine E-Mail an das Team der Praktikumsverwaltung."
 
   complete_internships:
-    header: "Komplette Praktika"
+    header: "Praktikumsübersichten"
     student: "Student_In"
     header_semester: "Praktikum"
     semester: "'s Praktikum im "

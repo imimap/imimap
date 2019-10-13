@@ -17,6 +17,9 @@ describe 'ActiveAdmin Student CRUD' do
       expect(page).to have_content student.enrolment_number
       expect(page).to have_content student.birthplace
       expect(page).to have_content student.email
+      expect(page).to have_link('User',
+                                href: admin_user_path(locale: I18n.locale,
+                                                      id: student.user.id))
     end
   end
   describe 'edit student' do

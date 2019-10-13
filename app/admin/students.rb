@@ -50,9 +50,14 @@ ActiveAdmin.register Student do
       row :birthday
       row :birthplace
       row :email
-
       row :internships do |_n|
         link_to_list student.internships
+      end
+      row :user do
+        unless student.user.nil?
+          link_to 'User',
+                  admin_user_path(student.user.id)
+        end
       end
     end
     active_admin_comments

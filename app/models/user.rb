@@ -48,7 +48,7 @@ class User < ApplicationRecord
     end
   end
 
-  EDITABLE_ATTRIBUTES = %i[email mailnotif publicmail student role].freeze
+  EDITABLE_ATTRIBUTES = %i[email mailnotif publicmail student].freeze
   EDITABLE_ATTRIBUTES_FT = %i[feature_toggles].freeze
   EDITABLE_ATTRIBUTES_PW = %i[password password_confirmation].freeze
   EDITABLE_ATTRIBUTES_ALL = EDITABLE_ATTRIBUTES +

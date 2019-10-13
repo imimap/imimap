@@ -187,7 +187,7 @@ en:
       answer2_contact: "If you couln't find an answer to your question, send an E-Mail to the team of the internship administration."
 
   complete_internships:
-    header: "Complete Internships"
+    header: "Internships Overviews"
     student: "Student"
     header_semester: "Internship"
     semester: "'s Internship in "
