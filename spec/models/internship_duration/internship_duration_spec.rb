@@ -1,86 +1,94 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require_relative './dummy_internship'
 
 RSpec.describe InternshipDuration, type: :model do
-  InternshipDummy = Struct.new(:start_date, :end_date)
+  @semester_old_stupo = Semester.for_date(Date.new(2019, 4, 1))
+  @semester_new_stupo = Semester.for_date(Date.new(2020, 4, 1))
 
-  describe 'sets end_date' do
-    it 'to the next monday if it was a friday' do
-      id =
-        InternshipDummy.new(
-          Date.new(2017, 10, 9),
-          Date.new(2017, 10, 13)
-        )
-      duration = InternshipDuration.new(id)
-      expect(duration.end_date).to eq(
-        Date.new(2017, 10, 16)
-      )
-    end
-    it 'to actual date for other weekdays than friday' do
-      id =
-        InternshipDummy.new(
-          Date.new(2017, 10, 9),
-          Date.new(2017, 10, 12)
-        )
-      duration = InternshipDuration.new(id)
-      expect(duration.end_date).to eq(
-        Date.new(2017, 10, 12)
-      )
-    end
-  end
   TC = Struct.new(:message, :internship, :weeks, :validation)
 
   testcases = [
     TC.new('for an internship with 2 weeks',
            InternshipDummy.new(
              Date.new(2017, 10, 9),
-             Date.new(2017, 10, 20)
+             Date.new(2017, 10, 20),
+             @semester_new_stupo
            ), 2, :too_short),
     TC.new('for an internship with 4 weeks till saturday',
            InternshipDummy.new(
              Date.new(2017, 10, 2),
-             Date.new(2017, 10, 29)
+             Date.new(2017, 10, 29),
+             @semester_new_stupo
            ), 4, :ok_for_part),
     TC.new('for an internship with 4 weeks - 1 day',
            InternshipDummy.new(
              Date.new(2017, 10, 2),
-             Date.new(2017, 10, 26)
+             Date.new(2017, 10, 26),
+             @semester_old_stupo
            ), 3.4285714285714284, :too_short),
     TC.new('for an internship with 4 weeks',
            InternshipDummy.new(
              Date.new(2017, 10, 2),
-             Date.new(2017, 10, 30)
+             Date.new(2017, 10, 30),
+             @semester_old_stupo
            ), 4, :ok_for_part),
     TC.new('for an internship with 7 weeks',
            InternshipDummy.new(
              Date.new(2017, 10, 2),
-             Date.new(2017, 11, 17)
+             Date.new(2017, 11, 17),
+             @semester_new_stupo
            ), 7, :ok_for_part),
     TC.new('for an internship with one day less than 19 weeks',
            InternshipDummy.new(
              Date.new(2017, 10, 2),
-             Date.new(2018, 2, 8)
+             Date.new(2018, 2, 8),
+             @semester_old_stupo
            ), 18.428571428571427, :ok_for_part),
     TC.new('for an internship with exactly 19 weeks',
            InternshipDummy.new(
              Date.new(2017, 10, 2),
-             Date.new(2018, 2, 9)
+             Date.new(2018, 2, 9),
+             @semester_old_stupo
            ), 19, :ok),
     TC.new('for an internship with more than 19 weeks',
            InternshipDummy.new(
              Date.new(2017, 10, 2),
-             Date.new(2018, 3, 7)
+             Date.new(2018, 3, 7),
+             @semester_old_stupo
            ), 22.285714285714285, :ok),
+
+    TC.new('for an internship with one day less than 16 weeks',
+           InternshipDummy.new(
+             Date.new(2017, 10, 2),
+             Date.new(2018, 1, 18),
+             @semester_new_stupo
+           ), 15.43, :ok_for_part),
+    TC.new('for an internship with exactly 16 weeks',
+           InternshipDummy.new(
+             Date.new(2017, 10, 2),
+             Date.new(2018, 1, 19),
+             @semester_new_stupo
+           ), 16, :ok),
+    TC.new('for an internship with more than 16 weeks',
+           InternshipDummy.new(
+             Date.new(2017, 10, 2),
+             Date.new(2018, 1, 25),
+             @semester_new_stupo
+           ), 16.43, :ok),
     TC.new('for an internship without an end_date',
            InternshipDummy.new(
-             Date.new(2017, 10, 2), nil
+             Date.new(2017, 10, 2), nil,
+             @semester_old_stupo
            ), 0, :date_missing),
     TC.new('for an internship without an start_date',
            InternshipDummy.new(nil,
-                               Date.new(2017, 10, 2)), 0, :date_missing),
+                               Date.new(2017, 10, 2),
+                               @semester_new_stupo), 0, :date_missing),
     TC.new('for an internship without any dates',
-           InternshipDummy.new(nil, nil), 0, :date_missing)
+           InternshipDummy.new(nil, nil,
+                               @semester_old_stupo), 0, :date_missing)
   ]
 
   testcases.each do |tc|
