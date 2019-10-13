@@ -16,7 +16,7 @@ RSpec.describe CompleteInternshipsController, type: :controller do
   let(:valid_attributes) do
     build(:complete_internship)
       .attributes
-      .merge(student_id: create(:student).id )
+      .merge(student_id: create(:student).id)
   end
 
   describe 'GET #index' do
