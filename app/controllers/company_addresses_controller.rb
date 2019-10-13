@@ -43,12 +43,9 @@ class CompanyAddressesController < ApplicationResourceController
     end
   end
 
+  # CodeReview: how do create and create_and_save differ? is create needed?
   def create_and_save
-    @company_address = CompanyAddress.new(company_address_params)
-    @company = Company.find(params[:company_id])
-    @internship = Internship
-                  .accessible_by(current_ability, :edit)
-                  .find(params[:company_address][:internship_id])
+    set_internship_group
     respond_to do |format|
       if @company_address.save
         @internship.update_attribute(:company_address_id, @company_address.id)
@@ -109,5 +106,17 @@ class CompanyAddressesController < ApplicationResourceController
                        .accessible_company_addresses
                        .find(params[:id])
     # @company_address = CompanyAddress.find(params[:id])
+  end
+
+  # CodeReview: this needs to be refactored/rethought.
+  # CompanyAddresses are always created in the context of internships.
+  # the internship should be independend of the logged in user,
+  # to enable admins to use this functionality as well.
+  def set_internship_group
+    @company_address = CompanyAddress.new(company_address_params)
+    @company = Company.find(params[:company_id])
+    @internship = Internship
+                  .accessible_by(current_ability, :edit)
+                  .find(params[:company_address][:internship_id])
   end
 end
