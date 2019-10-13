@@ -496,7 +496,6 @@ DEPENDENCIES
   rspec-rails (~> 3)
   rubocop
   rubocop-rspec
-  rubyzip (>= 1.2.1)
   sass-rails
   simplecov
   spring

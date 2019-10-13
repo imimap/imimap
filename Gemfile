@@ -20,7 +20,6 @@ gem 'carrierwave'
 gem 'country_select'
 gem 'geocoder'
 gem 'nested_form'
-gem 'rubyzip', '>= 1.2.1'
 
 gem 'bootstrap', '>= 4.3.1'
 gem 'bootstrap-datepicker-rails'
