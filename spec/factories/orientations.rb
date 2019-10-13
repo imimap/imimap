@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :orientation do
-    name { 'Web Development name' }
+    name { 'Web Development' }
   end
   factory :orientation1, class: Orientation do
     name { 'Games' }
