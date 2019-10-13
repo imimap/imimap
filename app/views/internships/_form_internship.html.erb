@@ -116,15 +116,6 @@
 
 <script type="text/javascript">
   function validateDuration() {
-    var start_date = document.getElementById("internship_start_date").value;
-    var end_date = document.getElementById("internship_end_date").value;
-
-    start_date = parseEuropeanDate(start_date);
-    end_date = parseEuropeanDate(end_date);
-
-    var duration = weeksBetween(start_date, end_date);
-    var validation = validate(duration);
-    setValidationText(validation);
   }
 
   function parseEuropeanDate(dateString) {
@@ -186,7 +177,7 @@
       validationNotification.textContent = ' - <%= t("internship_duration_validation.negative") %>';
     } else if (duration < 4) {
       validationNotification.textContent = ' - <%= t("internship_duration_validation.too_short") %>';
-    } else if (duration < 19) { //not beautiful because of hardcoded duration
+    } else if (duration < 16) { //not beautiful because of hardcoded duration
       validationNotification.textContent = ' - <%= t("internship_duration_validation.ok_for_part") %>';
     } else {
       validationNotification.textContent = ' - <%= t("internship_duration_validation.ok") %>';

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+START_16_WEEKS = Semester.for_date(Date.new(2019, 10, 1)).sid
+
 # calculates internship duration in weeks and returns a validation constant
 # the symbols returned by validation are resolved via I18n for the views
 class InternshipDuration
@@ -9,6 +11,7 @@ class InternshipDuration
     if internship.start_date && internship.end_date
       @start_date = internship.start_date
       @end_date = adjust(internship.end_date)
+      @semester = internship.semester
       @days = @end_date - @start_date
       @weeks = (@days.to_f / 7).round(2)
       @validation = do_validation(@weeks)
@@ -24,7 +27,7 @@ class InternshipDuration
       :negative
     elsif weeks < 4
       :too_short
-    elsif weeks < 19
+    elsif weeks < required_weeks(@semester)
       :ok_for_part
     else
       :ok
@@ -32,6 +35,14 @@ class InternshipDuration
   end
 
   private
+
+  def required_weeks(semester)
+    if semester.sid >= START_16_WEEKS
+      16
+    else
+      19
+    end
+  end
 
   def adjust(day)
     if day.friday?

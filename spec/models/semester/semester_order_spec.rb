@@ -13,8 +13,9 @@ RSpec.describe Semester, type: :model do
     end
     all = Semester.all
     expect(all.last.name).to eq 'SS 04'
-    expect(all[7].name).to eq 'WS 15/16'
-    expect(all[6].name).to eq 'SS 16'
-    expect(all.first.name).to eq 'SS 19'
+    expect(all.first.name).to eq Semester.current.next.name
+    index_ws15 = all.index { |s| s.name == 'WS 15/16' }
+    index_ss16 = all.index { |s| s.name == 'SS 16' }
+    expect(index_ss16).to be < index_ws15
   end
 end

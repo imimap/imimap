@@ -7,7 +7,7 @@ class Semester < ApplicationRecord
   include SemesterHelper
 
   has_many :internships
-  before_save :sid_or_name
+  before_save :set_sid_or_name
 
   default_scope { order(sid: :desc) }
 
@@ -36,7 +36,7 @@ class Semester < ApplicationRecord
     sid2year(sid)
   end
 
-  def sid_or_name
+  def set_sid_or_name
     self.sid = name2sid(name) if sid.nil? && !name.nil?
     self.name = sid2name(sid) if name.nil? && !sid.nil?
   end

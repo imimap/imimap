@@ -26,6 +26,7 @@ describe 'Complete Internship' do
 
         it 'should create a new partial internship' do
           create(:semester)
+          semester = Semester.first
           visit my_internship_path
           click_link(t('internships.provide_now'))
           click_on t('save')
@@ -42,7 +43,7 @@ describe 'Complete Internship' do
           expect(page).to have_content(
             t('complete_internships.ci.number')
           )
-          expect(page).to have_content(Semester.last.name)
+          expect(page).to have_content(semester.name)
         end
 
         it 'should save changes made in internship datails form
