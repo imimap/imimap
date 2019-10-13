@@ -8,8 +8,8 @@ class CompleteInternshipsController < ApplicationResourceController
   # InheritedResources::Base
   load_and_authorize_resource
   # before_action :set_complete_internship, only: %i[show edit update destroy]
-  # before_action :new_complete_internship, only: %i[create new internship_data]
-  before_action :set_semesters, only: %i[new edit internship_data]
+  before_action :new_complete_internship, only: %i[create new]
+  before_action :set_semesters, only: %i[create new edit internship_data]
 
   def index
     @semester = semester_from_params(params)
@@ -22,19 +22,15 @@ class CompleteInternshipsController < ApplicationResourceController
     @semester_name = @complete_internship.semester.try(:name)
   end
 
-  def new
-    @complete_internship = CompleteInternship.new
-  end
+  def new; end
 
   def edit; end
 
   def create
-    complete_internship_values
     respond_to do |format|
       if @complete_internship.save
         format.html do
           redirect_to @complete_internship, notice: 'Successfully created.'
-          # Denken ist wichtig
         end
       else
         format.html { render :new }
@@ -96,6 +92,12 @@ class CompleteInternshipsController < ApplicationResourceController
                            else
                              CompleteInternship.new(complete_internship_params)
                            end
+    si = if @current_user.student.nil?
+           params[:complete_internship][:student_id]
+         else
+           @current_user.student.id
+         end
+    @complete_internship.student_id = si
   end
 
   def set_semesters
@@ -106,16 +108,5 @@ class CompleteInternshipsController < ApplicationResourceController
     params.require(:complete_internship).permit(
       CompleteInternshipsController.permitted_params
     )
-  end
-
-  # CodeReviewSommer19
-  # BK: dieses sind default values, die gehoeren ins Modell!
-  def complete_internship_values
-    @complete_internship = CompleteInternship.new(complete_internship_params)
-    @complete_internship.aep = false
-    @complete_internship.passed = false
-    student = @current_user.student
-    @complete_internship.student_id = student.id unless student.nil?
-    @complete_internship.save!
   end
 end
