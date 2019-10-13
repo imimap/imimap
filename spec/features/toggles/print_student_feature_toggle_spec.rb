@@ -17,7 +17,7 @@ describe 'toggle student_can_print_internship_application:
     create_internship
     expect(page.has_content?(t(
                                'complete_internships.checklist.print_form'
-                             ), count: 2)).to be(available)
+                             ), count: 1)).to be(available)
   end
 
   context 'factory users:' do

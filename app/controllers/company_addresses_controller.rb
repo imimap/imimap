@@ -3,7 +3,8 @@
 # Controller for CompanyAddresses
 class CompanyAddressesController < ApplicationResourceController
   include CompanyAddressesHelper
-  before_action :set_company_address, only: %i[edit update destroy]
+  load_and_authorize_resource
+  # before_action :set_company_address, only: %i[edit update destroy]
 
   def index
     @company_addresses = CompanyAddress.all
@@ -42,6 +43,19 @@ class CompanyAddressesController < ApplicationResourceController
     end
   end
 
+  # CodeReview: how do create and create_and_save differ? is create needed?
+  def create_and_save
+    set_internship_group
+    respond_to do |format|
+      if @company_address.save
+        @internship.update_attribute(:company_address_id, @company_address.id)
+        redirect_to_ci(format)
+      else
+        format.html { render action: 'new_address' }
+      end
+    end
+  end
+
   def save_address
     # @company_address = CompanyAddress.find(params[:id])
     @internship = find_internship
@@ -54,13 +68,8 @@ class CompanyAddressesController < ApplicationResourceController
 
   def update
     if @company_address.update(company_address_params)
-      if @current_user.student
-        redirect_to @current_user.student.complete_internship,
-                    notice: 'Company address was successfully updated.'
-      else
-        redirect_to @company_address,
-                    notice: 'Company address was successfully updated.'
-      end
+      redirect_to update_target,
+                  notice: 'Company address was successfully updated.'
     else
       render :edit
     end
@@ -81,26 +90,15 @@ class CompanyAddressesController < ApplicationResourceController
     %i[street zip city country phone company_id fax latitude longitude]
   end
 
-  def create_and_save
-    @company_address = CompanyAddress.new(company_address_params)
-    @company = Company.find(params[:company_id])
-    @internship = find_internship_with_company_address
-    respond_to do |format|
-      if @company_address.save
-        # CodeReviewSS17 seems a bit too specific for the general create
-        # case, but if Company#create isn't called from anywhere else,
-        # why not. but if the company was specifically created for the
-        # internship, it should be passed to the new internship.
-        @internship = find_internship_with_company_address
-        @internship.update_attribute(:company_address_id, @company_address.id)
-        redirect_to_ci(format)
-      else
-        format.html { render action: 'new_address' }
-      end
+  private
+
+  def update_target
+    if @current_user.student
+      @current_user.student.complete_internship
+    else
+      @company_address
     end
   end
-
-  private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_company_address
@@ -108,5 +106,17 @@ class CompanyAddressesController < ApplicationResourceController
                        .accessible_company_addresses
                        .find(params[:id])
     # @company_address = CompanyAddress.find(params[:id])
+  end
+
+  # CodeReview: this needs to be refactored/rethought.
+  # CompanyAddresses are always created in the context of internships.
+  # the internship should be independend of the logged in user,
+  # to enable admins to use this functionality as well.
+  def set_internship_group
+    @company_address = CompanyAddress.new(company_address_params)
+    @company = Company.find(params[:company_id])
+    @internship = Internship
+                  .accessible_by(current_ability, :edit)
+                  .find(params[:company_address][:internship_id])
   end
 end

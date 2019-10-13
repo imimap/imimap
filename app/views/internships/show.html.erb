@@ -7,18 +7,21 @@
         <td><%= @internship.title %></td>
       </tr>
       <tr>
-        <td><%= t "activerecord.attributes.internshipcompany_name" %></td>
-        <td><%= @internship.company_v2.name %></td>
+        <td><%= t "internships.attributes.company_name" %></td>
+        <td><%= @internship.company_v2.try(:name) %></td>
       </tr>
       <tr>
-        <td><%= t "activerecord.attributes.internshipcompany_address" %></td>
-        <td><%= @internship.company_address.street %>,
+        <td><%= t "internships.attributes.company_address" %></td>
+        <td> <% if @internship.company_address %>
+        <%= @internship.company_address.street %>,
         <%= @internship.company_address.zip %> <%= @internship.company_address.city %>,
-        <%= @internship.company_address.country %></td>
+        <%= @internship.company_address.country %>
+        <%end%>
+        </td>
       </tr>
       <tr>
-        <td><%= t "activerecord.attributes.internshipcompany_website" %></td>
-        <td><%= @internship.company_address.company.website %></td>
+        <td><%= t "internships.attributes.company_website" %></td>
+        <td><%= @internship.company_address.try(:company).try(:website) %></td>
       </tr>
       <tr>
         <td><%= t "activerecord.attributes.internship.orientation" %></td>
@@ -99,7 +102,7 @@
 
 <!--  ############################################################################## -->
 
- <p><%= link_to "Print Registration Form (PDF)", internship_path(@internship, format: "pdf"), class: "btn btn-success" %></p>
+ <p><%= link_to "Print Registration Form (PDF)", internship_path(@internship, format: "pdf"), target: "_blank", class: "btn btn-success" %></p>
 
  <%= link_to({:controller => :internships, :action => :rating, :id => @internship.id},class: "btn btn-success") do %>
   <i class = "icon-2x icon-large icon-white"> <%= t("buttons.rating") %> </i>
@@ -125,7 +128,7 @@
 <br/>
 
 <% if @internship.attachments.present? %>
-<b><%= t "activerecord.attributes.internshippictures" %> :</b></b>
+<b><%= t "activerecord.attributes.internshippictures" %> :</b>
 <% @internship.attachments.each do |attachment| %>
 <a href="#myModal" role="button" class="btn btn-default" data-toggle="modal"><%= image_tag attachment.file_url(:thumb) %></a>
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -157,10 +160,6 @@
 
      <% if current_user.id == @internship.student.user.id %>
      <br />
-
-
-
-   <% end %>
 
    <% end %>
  </div>

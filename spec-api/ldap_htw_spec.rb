@@ -57,7 +57,9 @@ describe LDAPHTWAdapter do
     it 'LDAP env missing' do
       restore = ENV['LDAP']
       ENV['LDAP'] = nil
-      authenticated = @ldap_adapter.create(ldap_password: @password).authenticate
+      authenticated = @ldap_adapter
+                      .create(ldap_password: @password)
+                      .authenticate
       expect(authenticated).to be false
       # expect(ldap_adapter.errors).not_to be_empty
       # expect(ldap_adapter.errors).to include([:ldap_env_missing, ''])

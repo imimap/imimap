@@ -29,6 +29,7 @@ Metrics/BlockLength:
     - 'app/admin/internships/internships_form.rb' #Internship
     - 'config/**/*'
     - 'spec/**/*' # DSL
+    - 'spec-api/**/*'
     - 'config/routes.rb'
     - 'spec/factories/*'
     - 'app/admin/**/*.rb'

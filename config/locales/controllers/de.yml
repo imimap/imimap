@@ -208,7 +208,9 @@ de:
       contract_original: im Original
       contract_copy: als Kopie
       lsf_ausdruck: Noten ausgedruckt aus dem LSF
-      print_form: Formular ausdrucken
+      print_form: Formular ausdrucken (pdf)
+      check_form: Formular überprüfen
+      thank_you: Danke
     icon-ok: " - Wenn dieses Symbol erscheint ist der betreffende Teil des Formulars komplett ausgefüllt"
     details:
       semester: Semester

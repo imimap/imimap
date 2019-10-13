@@ -77,17 +77,18 @@
   </tbody>
 </table>
 
+<button type="button"
+        class="btn btn-outline-success"
+        data-toggle="modal"
+        data-target="#missing_information"
+        onclick="fillPopup(<%=internship.id%>,
+                            '<%= t "complete_internships.internship" %> @ ',
+                            '<%= company_name_for_checklist(internship) %>')">
+  <%= t("complete_internships.checklist.check_form") %>
+</button>
   <!-- remove this feature toggle if the implementation of printing the form is done-->
   <% if current_user.student? && FT.on?(:student_can_print_internship_application, current_user) %>
-    <button type="button"
-            class="btn btn-outline-success"
-            data-toggle="modal"
-            data-target="#missing_information"
-            onclick="fillPopup(<%=internship.id%>,
-                                '<%= t "complete_internships.internship" %> @ ',
-                                '<%= company_name_for_checklist(internship) %>')">
-      <%= t("complete_internships.checklist.print_form") %>
-    </button>
+  <%= link_to t("complete_internships.checklist.print_form"), internship_path(internship.id, format: "pdf"), target: "_blank", class: "btn btn-outline-success" %>
   <% end %>
 
 <!--Popup-->
@@ -113,8 +114,7 @@
         <p id="clear"><%= t "internships.popup.clear"%></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success"><%= t("complete_internships.checklist.print_form") %></button>
+        <button type="button" class="btn btn-success" data-dismiss="modal"><%=t("complete_internships.checklist.thank_you")%></button>
       </div>
     </div>
   </div>

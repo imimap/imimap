@@ -88,15 +88,9 @@ class InternshipsController < ApplicationResourceController
     redirect_to show_complete_internship
   end
 
-  # GET /internships/1
-  # GET /internships/1.json
   def show
     @company = @internship.company_v2
-    # TBD ST  @company = @internship.company_address.company
     @other_internships = []
-    # @company.internships.reject do |x|
-    #  x.id == @internship.id
-    # end.reject { |i| i.completed == false }
 
     respond_to do |format|
       format.html
@@ -104,15 +98,15 @@ class InternshipsController < ApplicationResourceController
       format.pdf do
         pdf = InternshipPdf.new(@internship)
         send_data pdf.render,
-                  filename: "internship_registration_#{name}.pdf",
-                  type: 'application/pdf'
+                  filename: "Praktikumsanmeldung_#{name}.pdf",
+                  type: 'application/pdf',
+                  disposition: 'inline'
       end
     end
   end
 
   def rating; end
 
-  # GET /internships/1/edit
   def edit
     return unless @current_user.student
 
@@ -150,22 +144,6 @@ class InternshipsController < ApplicationResourceController
     respond_to do |format|
       format.html { redirect_to internships_url }
       format.json { head :no_content }
-    end
-  end
-
-  # If the user has no internship, the system asks him/her to create a new one
-  # else the internship details are shown
-  def internship_data
-    @internships = if current_user.student.nil?
-                     []
-                   else
-                     current_user.student.internships
-                   end
-
-    if @internships.any?
-      redirect_to @internships.first
-    else
-      render :no_internship_data
     end
   end
 
@@ -223,7 +201,9 @@ class InternshipsController < ApplicationResourceController
   private
 
   def set_internship
-    current_user.accessible_internships.find(params[:id])
+    @internship = Internship
+                  .accessible_by(current_ability, :show)
+                  .find(params[:id])
   end
 
   def internship_params

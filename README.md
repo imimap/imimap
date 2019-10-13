@@ -29,8 +29,46 @@ by students of the Bachelor's Programme International Media Informatics at HTW B
 
     cd imimap
 
+## Local dev and test environment using Docker
+
+The IMI-Map runs in Docker Containers on production. To reproduce the production
+environment for test and dev, both should be in docker, to.
+
+### Requirements
+
+- Docker
+
+### Using Docker
+
+there's a makefile containing the most frequently used docker commands for the
+imimap. E.g.
+
+    make start
+    make test
+
+starts (and downloads/builds the containers, if necessary) and runs a test (rspec)
+in docker.
+
+Note that an image rebuild is needed when the dependencies (Gemfile, Gemfile.lock)
+was changed.
+
+
+## Test Data for Development
+
+    make bash
+    rails db:seed
+
+creates test data in the docker container.
+
+s011_001 to s011_020 will be students with already one internship,
+s012_001 to s012_020 will be students with no internship,
+see db/seeds for details.
+
+
 ## Running Rails locally
-    IMI-Map Development should be done within a docker container, local Development is discouraged. If you do it nonetheless, be careful not to
+
+    IMI-Map Development should be done within a docker container,
+    local Development is discouraged. If you do it nonetheless, be careful not to
     commit db/schema.rb files generated with a migration against a SQLITE database.
 
     IMI-Map needs a couple of packages to be installed, refer to the Dockerfile.
@@ -48,29 +86,6 @@ by students of the Bachelor's Programme International Media Informatics at HTW B
         rspec spec
 
     You need the same commands using docker, however:
-
-## Local dev and test environment using Docker
-
-Start the Postgres and IMI-Map Containers:
-
-    docker-compose up
-    docker exec -ti imimap-dev bash
-
-You then get a bash prompt from within the docker container and can execute all
-of the rails commands that you would execute locally.
-
-Stop the containers with
-
-    docker-compose down
-
-For testing, you can also just call the tests that travis calls:
-
-    ./ci-cd/travis-test.sh
-
-Note that they too run in the imimap-dev container.
-
-There are many different ways of working with the docker containers. Refer to the
-Docker and docker-compose documentations.
 
 ## Pushing to the Repository / Development Workflow
 

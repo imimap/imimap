@@ -13,12 +13,16 @@ ActiveAdmin.register User do
                                           .map(&:to_sym)
                                           .join(',')
       end
+      fix_password
+      super
+    end
+
+    def fix_password
       if params[:user][:password].blank? &&
          params[:user][:password_confirmation].blank?
         params[:user].delete('password')
         params[:user].delete('password_confirmation')
       end
-      super
     end
   end
 

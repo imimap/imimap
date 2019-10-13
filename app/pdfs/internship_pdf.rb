@@ -3,229 +3,400 @@
 # Generates PDF for Internship Application
 class InternshipPdf < Prawn::Document
   def initialize(internship)
-    super()
-    @student = internship.student
-    @company = internship.company_v2
-    @internship = internship
-    @company_address = internship.company_address
-    @semester = internship.semester
-    header
-    student_data
-    company_data
-    internship_data
-    additional_information
-  end
+      super(page_size: 'A4')
+      @student = internship.student
+      @company = internship.company_v2
+      @internship = internship
+      @programming_languages = @internship.programming_languages.map { |x| x.name }.join(', ')
+      @company_address = internship.company_address
+      @semester = internship.semester
+      @htw_logo = 'app/assets/images/S04_HTW_Berlin_Logo_pos_FARBIG_RGB.jpg'
+      font_size 11
+      header
+      student_data
+      company_data
+      internship_data
+      additional_information
+      internship_officer_section
+      notes_on_filling_in
+    end
 
-  def header
-    text 'Hochschule für Technik und Wirtschaft Berlin',
-         style: :bold, size: 15
-    stroke_horizontal_rule
-    text "Registration for internship during #{@semester.name}",
-         style: :bold,
-         align: :center
-  end
+    # horizontal spacing:
+    #  1st label - 15 , usually 1st field - 110
+    # vertical spacing:
+    #  start 645, immer -18 zur nächsten zeile, label koordinate immer 3 kleiner als textbox, immer -40 zwischen teilen mit überschrift
+
+    def header
+      indent(10) do
+        text 'Hochschule für Technik und Wirtschaft Berlin'
+        text 'Internationaler Studiengang Medieninformatik', style: :bold, size: 12
+      end
+      float do
+        image @htw_logo, at: [440, 780], width: 80
+      end
+      stroke_horizontal_rule
+    end
 
   def student_data
-    move_down 20
-    text 'Student data:', style: :bold
-    text_box 'First name',
-             at: [0, 650]
-    text_box ":   #{@student.first_name}",
-             at: [100, 650]
-    text_box 'Last name',
-             at: [250, 650]
-    text_box ":   #{@student.last_name}",
-             at: [350, 650]
-    text_box 'Birthday',
-             at: [0, 630]
-    text_box ":   #{@student.birthday}",
-             at: [100, 630]
-    text_box 'Birthplace',
-             at: [250, 630]
-    text_box ":   #{@student.birthplace}",
-             at: [350, 630]
+    move_down 10
+    indent(10) do
+      text "Anmeldung zum Praktikum für das #{@semester.name}"
+    end
+    move_down 5
 
-    text_box 'Phone',
-             at: [0, 600]
-    text_box ":   #{@student.phone}",
-             at: [100, 600]
-    text_box 'Email',
-             at: [250, 600]
-    text_box ":   #{@student.email}",
-             at: [350, 600]
+    indent(10) do
+      text 'Persönliche Daten', style: :bold, size: 12
+    end
 
-    move_down 80
-    text 'Address', style: :bold
-    text_box 'Street',
-             at: [0, 560]
-    text_box ":   #{@student.street}",
-             at: [100, 560]
-    text_box 'Zip Code',
-             at: [250, 560]
-    text_box ":   #{@student.zip}",
-             at: [350, 560]
-    text_box 'City',
-             at: [0, 540]
-    text_box ":     #{@student.city}",
-             at: [100, 540]
+    text_box 'Matrikelnummer',
+             at: [15, 697]
+    bounding_box([110, 700], :width => 170, :height => 15) do
+      move_down 3
+      draw_text "#{@student.enrolment_number}", at: [bounds.left+2, bounds.top-11]
+      stroke_bounds
+    end
+
+    text_box 'Vorname',
+             at: [15, 679]
+    bounding_box([110, 682], :width => 170, :height => 15) do
+      move_down 3
+      draw_text "#{@student.first_name}", at: [bounds.left+2, bounds.top-11]
+      stroke_bounds
+    end
+    text_box 'Nachname',
+             at: [290, 679]
+    bounding_box([350, 682], :width => 170, :height => 15) do
+      move_down 3
+      draw_text "#{@student.last_name}", at: [bounds.left+2, bounds.top-11]
+      stroke_bounds
+    end
+
+    text_box 'Geburtsdatum',
+             at: [15, 661]
+    bounding_box([110, 664], :width => 170, :height => 15) do
+      move_down 3
+      draw_text I18n.l(@student.birthday, format: :default).to_s, at: [bounds.left+2, bounds.top-11]
+      stroke_bounds
+    end
+    text_box 'Geburtsort',
+             at: [290, 661]
+    bounding_box([350, 664], :width => 170, :height => 15) do
+      move_down 3
+      draw_text "#{@student.birthplace}", at: [bounds.left+2, bounds.top-11]
+      stroke_bounds
+    end
+
+    text_box 'E-Mail',
+             at: [15, 643]
+    bounding_box([110, 646], :width => 410, :height => 15) do
+      move_down 3
+      draw_text "#{@student.email}", at: [bounds.left+2, bounds.top-11]
+      stroke_bounds
+    end
   end
 
   def company_data
-    move_down 50
-    text 'Company data:', style: :bold
-    text_box 'Name',
-             at: [0, 490]
-    text_box ":   #{@company.name}",
-             at: [100, 490]
-    text_box 'Department',
-             at: [250, 490]
-    text_box ":   #{@company.industry}",
-             at: [350, 490]
+    move_down 10
+    indent(10) do
+      text 'Angaben zum Praktikumsbetrieb',
+        style: :bold, size: 12
+    end
 
-    move_down 30
-    text 'Address',
-         style: :bold
-    text_box 'Street',
-             at: [0, 450]
-    text_box ":     #{@company_address.street}",
-             at: [100, 450]
-    text_box 'Zip Code',
-             at: [250, 450]
-    text_box ":     #{@company_address.zip}",
-             at: [350, 450]
-    text_box 'City ',
-             at: [0, 430]
-    text_box ":     #{@company_address.city}",
-             at: [100, 430]
-    text_box 'Country',
-             at: [250, 430]
-    text_box ":     #{@company_address.country}",
-             at: [350, 430]
+    text_box 'Firma',
+             at: [15, 602]
+    bounding_box([110, 605], :width => 410, :height => 15) do
+      move_down 3
+      draw_text "#{@company.try(:name)}", at: [bounds.left+2, bounds.top-11]
+      stroke_bounds
+    end
 
-    move_down 45
-    text 'Supervisor',
-         style: :bold
-    text_box 'Name ',
-             at: [0, 390]
-    text_box ":     #{@internship.supervisor_name}",
-             at: [100, 390]
-    text_box 'Email ',
-             at: [250, 390]
-    text_box ":     #{@internship.supervisor_email}",
-             at: [350, 390]
+    text_box 'Straße',
+             at: [15, 584]
+    bounding_box([110, 587], :width => 410, :height => 15) do
+      move_down 3
+      draw_text "#{@company_address.try(:street)}", at: [bounds.left+2, bounds.top-11]
+      stroke_bounds
+    end
+
+    text_box 'Postleitzahl',
+             at: [15, 566]
+    bounding_box([110, 569], :width => 80, :height => 15) do
+      move_down 3
+      draw_text "#{@company_address.try(:zip)}", at: [bounds.left+2, bounds.top-11]
+      stroke_bounds
+    end
+    text_box 'Stadt',
+             at: [200, 566]
+    bounding_box([235, 569], :width => 120, :height => 15) do
+      move_down 3
+      draw_text "#{@company_address.try(:city)}", at: [bounds.left+2, bounds.top-11]
+      stroke_bounds
+    end
+    text_box 'Land',
+             at: [365, 566]
+    bounding_box([400, 569], :width => 120, :height => 15) do
+      move_down 3
+      draw_text "#{@company_address.try(:country)}", at: [bounds.left+2, bounds.top-11]
+      stroke_bounds
+    end
+
+    text_box 'Betriebliche_r Betreuer_in',
+             at: [15, 548]
+    bounding_box([145, 551], :width => 375, :height => 15) do
+      move_down 3
+      draw_text "#{@internship.try(:supervisor_name)}", at: [bounds.left+2, bounds.top-11]
+      stroke_bounds
+    end
+
+    text_box 'E-Mail',
+             at: [15, 530]
+    bounding_box([145, 533], :width => 375, :height => 15) do
+      move_down 3
+      draw_text "#{@internship.try(:supervisor_email)}", at: [bounds.left+2, bounds.top-11]
+      stroke_bounds
+    end
+
+    text_box 'Telefon',
+             at: [15, 512]
+    bounding_box([145, 515], :width => 375, :height => 15) do
+      move_down 3
+      draw_text "#{@internship.try(:supervisor_phone)}", at: [bounds.left+2, bounds.top-11]
+      stroke_bounds
+    end
   end
 
   def internship_data
-    move_down 30
-    text 'Internship Data :',
-         style: :bold
-    text_box 'Start date',
-             at: [0, 340]
-    text_box ":     #{@internship.start_date}",
-             at: [100, 340]
-    text_box 'End date ',
-             at: [250, 340]
-    text_box ":     #{@internship.end_date}",
-             at: [350, 340]
-    text_box 'Semester of Study',
-             at: [0, 320]
-    text_box ":     #{@semester.name}",
-             at: [100, 320]
-    text_box 'Reading professor',
-             at: [0, 300]
-    text_box ":     #{@internship.reading_prof.name}",
-             at: [100, 300]
-    text_box 'Work area',
-             at: [0, 280]
-    text_box ":     #{@internship.operational_area}",
-             at: [100, 280]
-    text_box 'Project/Tasks',
-             at: [0, 260]
-    text_box ":     #{@internship.tasks}",
-             at: [100, 260]
+    move_down 10
+    indent(10) do
+      text 'Angaben zum Praktikum',
+            style: :bold, size: 12
+    end
+
+    text_box 'Praktikumsbeginn',
+             at: [15, 471]
+    bounding_box([110, 474], :width => 100, :height => 15) do
+      move_down 3
+      if @internship.start_date.present?
+        draw_text I18n.l(@internship.start_date, format: :default).to_s, at: [bounds.left+2, bounds.top-11]
+      end
+      stroke_bounds
+    end
+    text_box 'Praktikumsende',
+             at: [220, 471]
+    bounding_box([310, 474], :width => 100, :height => 15) do
+      move_down 3
+      if @internship.end_date.present?
+        draw_text I18n.l(@internship.end_date, format: :default).to_s, at: [bounds.left+2, bounds.top-11]
+      end
+      stroke_bounds
+    end
+    text_box 'Fachsemester',
+             at: [420, 471]
+    bounding_box([500, 474], :width => 20, :height => 15) do
+      move_down 3
+      draw_text "#{@internship.complete_internship.semester_of_study}", at: [bounds.left+2, bounds.top-11]
+      stroke_bounds
+    end
+
+    text_box 'Einsatzgebiet',
+             at: [15, 453]
+    bounding_box([110, 456], :width => 410, :height => 15) do
+      move_down 3
+      draw_text "#{@internship.operational_area}", at: [bounds.left+2, bounds.top-11]
+      stroke_bounds
+    end
+
+    text_box 'Thema/Aufgabe',
+             at: [15, 435]
+    bounding_box([110, 438], :width => 410, :height => 60) do
+      move_down 3
+      text "#{@internship.tasks}"
+      stroke_bounds
+    end
+
+    text_box 'Pragrammiersprache(n)',
+             at: [15, 372]
+    bounding_box([140, 375], :width => 380, :height => 15) do
+      move_down 3
+      draw_text "#{@programming_languages}", at: [bounds.left+2, bounds.top-11]
+      stroke_bounds
+    end
   end
 
   def additional_information
-    move_down 120
-    text 'Admittance to internship semester:',
-         style: :bold
-    text '(Check the appropriate box courses and give the other data as needed)'
-    bounding_box([0, 190], width: 20, height: 20) do
+    move_down 10
+    indent(10) do
+      text 'Zulassung zum Praktikum',
+            style: :bold, size: 12
+    end
+
+    bounding_box([15, 334], width: 10, height: 10) do
       stroke_bounds
     end
-    text_box 'I have passed all of the courses that are prerequisites for admittance to the internship semester according to the internship rules for my program',
-             at: [30, 190]
-    bounding_box([0, 160], width: 20, height: 20) do
+    text_box 'Alle Leistungsnachweise, die laut Studienordnung Vorraussetzung für die Zulassung zum praktischen Studiensemester sind, wurden erbracht.',
+             at: [30, 334]
+
+    bounding_box([15, 308], width: 10, height: 10) do
       stroke_bounds
     end
-    text_box 'I am missing the following courses that are prerequisites for admittance to the internship semester according to the internship rules for my program',
-             at: [30, 160]
-    text_box 'Missing courses: ',
-             at: [0, 130]
-    text_box 'Registered?  YES/NO ',
-             at: [200, 130]
-    text_box 'Date and signature of the student:',
-             at: [200, 100]
+    text_box 'Fehlende Leistungsnachweise: ',
+             at: [30, 306]
+    text_box '1. ',
+             at: [190, 306]
+    bounding_box([205, 308], :width => 210, :height => 15) do
+      stroke_bounds
+    end
+    text_box '2. ',
+            at: [190, 288]
+    bounding_box([205, 290], :width => 210, :height => 15) do
+      stroke_bounds
+    end
+    text_box '3. ',
+            at: [190, 270]
+    bounding_box([205, 272], :width => 210, :height => 15) do
+      stroke_bounds
+    end
+    text_box 'Belegung:',
+            at: [420, 306]
+    bounding_box([480, 308], :width => 40, :height => 15) do
+      stroke_bounds
+    end
+    bounding_box([480, 290], :width => 40, :height => 15) do
+      stroke_bounds
+    end
+    bounding_box([480, 272], :width => 40, :height => 15) do
+      stroke_bounds
+    end
 
-    move_down 60
-    text 'To be filled out by the program internship officer',
-         style: :bold
-    text_box 'Prerequisites for admittance:     YES  NO',
-             at: [0, 60]
-    text_box 'Internship position suitable:     YES  NO',
-             at: [0, 40]
-    text_box 'Date and signature of program internship officer:',
-             at: [200, 20]
+    text_box 'Zum Zeitpunkt der Anmeldung des Praktikums liegt der Praktikumsvertrag vor',
+             at: [15, 250]
+    bounding_box([15, 235], width: 10, height: 10) do
+      stroke_bounds
+    end
+    text_box 'als Original',
+             at: [30, 235]
+    bounding_box([15, 220], width: 10, height: 10) do
+      stroke_bounds
+    end
+    text_box 'als Kopie (Mir ist bewußt, dass die Anmeldung bis zur Vorlage/Übersendung des handschriftlich unterschriebenen Originalvertrages unvollständig ist und auch keine Anerkennung des Praktikums ohne diesen erfolgen kann)',
+             at: [30, 220]
 
+    move_down 75
+    indent(300) do
+      stroke_horizontal_rule
+      move_down 5
+      text 'Datum, Unterschrift der/des Studierenden', size: 9
+    end
+  end
+
+  def internship_officer_section
+    dash(3, space: 3, phase: 3)
+    stroke_horizontal_line 0, 525, at: 115
+    dash(1, space: 0, phase: 1)
+    move_down 15
+    indent(10) do
+      text 'Von der/dem Praktikumsbeauftragten auszufüllen',
+            style: :bold, size: 12
+    end
+    text_box 'ja',
+         at: [230, 85]
+    text_box 'nein',
+         at: [255, 85]
+    text_box 'Zulassungsvorraussetzungen erfüllt:',
+         at: [15, 70]
+    bounding_box([230, 70], width: 10, height: 10) do
+      stroke_bounds
+    end
+    bounding_box([260, 70], width: 10, height: 10) do
+      stroke_bounds
+    end
+    text_box 'Eignung des Praktikumsplatzes:',
+         at: [15, 55]
+    bounding_box([230, 55], width: 10, height: 10) do
+      stroke_bounds
+    end
+    bounding_box([260, 55], width: 10, height: 10) do
+      stroke_bounds
+    end
+
+    move_down 15
+    indent(300) do
+      stroke_horizontal_rule
+      move_down 5
+      text 'Datum, Unterschrift der/des Praktikumsbeauftragten', size: 9
+    end
+end
+
+def notes_on_filling_in
     start_new_page
-    text 'Ausfüllhinweise',
-         style: :bold,
-         align: :center
-    text 'Für alles gilt: Bitte leserlich schreiben!',
-         style: :bold
+    header
+    indent(10) do
+      move_down 25
+      text 'Ausfüllhinweise',
+            style: :bold,
+            size: 18
+      move_down 25
+      text 'Für alles gilt: Bitte leserlich schreiben!',
+            style: :bold
 
-    move_down 20
-    text 'Antrag',
-         style: :bold
+      move_down 25
+      text 'Antrag',
+            style: :bold,
+            size: 15
 
-    move_down(10)
-    text 'Studentendaten:',
-         style: :bold
-    text '- Matrikelnummer ist ohne s0 anzugeben.'
-    text '- Geburtstag bitte in folgender Form TT.MM.JJ'
+      move_down 15
+      text 'Persönliche Daten',
+            style: :bold
+      move_down 3
+      indent(5) do
+        text '- Matrikelnummer ist ohne s0 anzugeben.'
+        text '- Geburtstag bitte in folgender Form TT.MM.JJ oder JJJJ-MM-TT'
+      end
 
-    move_down 10
-    text 'Angaben zum Praktikumsbetrieb:',
-         style: :bold
-    text '- Im Feld für die Telefonnummer kann auch die Faxnummer, falls vorhanden, angegeben werden'
-    text '- Sollte der Praktikumsbetrieb in Deutschland sein, muss ein besonderer Grund voeliegen.'
-    text '  Es ist zum Beispiel erlaubt das Praktikum im Deutschland zu absolvieren, wenn der Student eine ausländische Hochschulzugangsberechtigung hat, diese ist dann in Kopie beizulegen'
+      move_down 15
+      text 'Angaben zum Praktikumsbetrieb',
+            style: :bold
+      move_down 3
+      indent(5) do
+        text '- Sollte der Praktikumsbetrieb in Deutschland sein, muss ein besonderer Grund vorliegen. Es ist zum Beispiel erlaubt das Praktikum im Deutschland zu absolvieren, wenn die/der Studierende eine ausländische Hochschulzugangsberechtigung hat. Diese ist dann in Kopie beizulegen.'
+      end
 
-    move_down 10
-    text 'Angaben zum Praktikum:',
-         style: :bold
-    text '- Das Einsatzgebiet sollte nach Möglichkeit etwas genauer sein, als die Abteilung.'
-    text '- Bitte die Aufgaben im Betrieb eintragen'
-    text '- Gewünschten Hochschulbetreuer bitte unterstreichen. Es wird versucht den Wunsch zu berüchsichtigen.'
+      move_down 15
+      text 'Angaben zum Praktikum',
+            style: :bold
+      move_down 3
+      indent(5) do
+        text '- Bitte die Aufgaben im Betrieb eintragen'
+      end
 
-    move_down 10
-    text 'Zulassung zum Praktikum:',
-         style: :bold
-    text '- Bitte ankreuzen, falls alle Leistungsnachweise vom 1. und 2. Semester erbracht worden sind.'
-    text 'Unterschrift des Studenten hier nicht vergessen'
+      move_down 15
+      text 'Zulassung zum Praktikum',
+            style: :bold
+      move_down 3
+      indent(5) do
+        text '- Bitte ankreuzen, falls alle Leistungsnachweise vom 1. und 2. Semester erbracht worden sind.'
+        text '- Der Praktikumsvertrag muss für eine vollständige Anmeldung im Original vorliegen. Ein Original ist eine von beiden Vertragspartner_innen im Original unterschriebene Version. Ist mindestens eine der beiden Unterschriften nicht im original vorhanden bestätigen Sie mit Ihrer Unterschrift, dass Sie den Vertrag so bald wie möglich in der Originalversion nachreichen.'
+      end
 
-    move_down 20
-    text 'Nachweis',
-         style: :bold
+      move_down 10
+      text 'Mit Ihrer Unterschrift bestätigen Sie die Richtigkeit aller von Ihnen gemachten Angaben und gegebenenfalls die zur Kenntnisnahme der Notwendigkeit Originaldokumente nachzureichen.'
 
-    move_down 10
-    text 'Praktikumszeugnis:',
-         style: :bold
-    text '- Hier muss die Firma unterschreiben!'
+      move_down 25
+      text 'Nachweis',
+            style: :bold,
+            size: 15
 
-    move_down 10
-    text 'Praxisbegleitende Lehrveranstaltungen:',
-         style: :bold
-    text '- Bitte eintragen, wann die Lehrveranstaltungen belegt worden sind, dafür Belege aus LSF ausdrucken.'
+      move_down 15
+      text 'Praktikumszeugnis',
+            style: :bold
+      move_down 3
+      text '- Hier muss die Firma unterschreiben!'
+
+      move_down 15
+      text 'Praxisbegleitende Lehrveranstaltungen',
+            style: :bold
+      move_down 3
+      text '- Bitte eintragen, wann die Lehrveranstaltungen belegt worden sind und dafür Belege aus dem LSF ausdrucken.'
+    end
   end
 end

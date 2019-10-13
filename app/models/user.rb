@@ -110,18 +110,6 @@ class User < ApplicationRecord
     user
   end
 
-  def accessible_company_addresses
-    CompanyAddress.joins(
-      internships: { complete_internship: { student: :user } }
-    )
-                  .where('users.id' => id)
-  end
-
-  def accessible_internships
-    Internship.joins(complete_internship: { student: :user })
-              .where('users.id' => id)
-  end
-
   def accessible_complete_internships
     if admin?
       CompleteInternship.all

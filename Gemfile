@@ -33,7 +33,7 @@ gem 'prawn-table'
 gem 'tzinfo-data'
 
 gem 'activeadmin', '~> 2.2'
-gem 'cancancan', '~> 2.2'
+gem 'cancancan', '~> 3.0'
 gem 'devise', '>= 4.7.1'
 gem 'formtastic', '~> 3'
 
@@ -93,6 +93,7 @@ group :development, :test do
 
   gem 'byebug'
   gem 'database_cleaner'
+  gem 'pdf-reader' # for checking generated pdf in tests
   gem 'railroady'
   gem 'rails-controller-testing'
   gem 'simplecov', require: false
