@@ -50,6 +50,7 @@ class Ability
     return unless user.admin?
 
     can :manage, :all
+    can :map_internships, Internship
   end
 
   def internship_abilities(user)

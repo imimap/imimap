@@ -11,7 +11,7 @@ class MapsController < ApplicationController
     @company_addresses = []
     @zoom = 11
     @company_location_json =
-      company_locations_json(company_addresses: @company_addresses)
+      company_locations_json(company_locations: @company_addresses)
     render :map_view
   end
 
@@ -19,12 +19,31 @@ class MapsController < ApplicationController
     authorize! :map_cities, Internship
     @map_view = true
     @zoom = 3
-    @company_addresses =
-      Internship.joins(:company_address)
-                .where(semester: Semester.current.previous)
-                .where.not(company_addresses: { latitude: nil })
-    # CompanyAddress.where.not(latitude: nil)
-    @company_location_json =
-      company_locations_json(company_addresses: @company_addresses)
+    if can? :map_internships, Internship
+      map_view_full_internships
+    else
+      map_view_only_locations
+    end
   end
+
+  def map_view_only_locations
+    internships =
+      Internship.joins(:company_address)
+                .where(semester: Semester.current)
+                .where.not(company_addresses: { latitude: nil })
+                .pluck(:city, :country, :latitude, :longitude)
+
+    @company_location_json = company_locations_json(company_locations: internships)
+  end
+
+  def map_view_full_internships
+    internships =
+      Internship.joins(company_address: [:company],
+                       complete_internship: [:student])
+                .pluck(:first_name, :last_name,
+                       :name, 'company_addresses.city', :country,
+                       :latitude, :longitude)
+
+    @company_location_json = internships_json(internships: internships)
+   end
 end
