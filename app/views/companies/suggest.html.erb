@@ -1,55 +1,13 @@
 <div id="form-block4" class="text-left">
 
 
-  <div class="container">
-<%= render 'search_company' %>
+<div class="container">
+  <%= render 'search_company' %>
 
-    <%= hidden_field :internship_id, :value => params[:internship_id] %>
-  <div class="row">
-    <div class="col-md-4">
-      <%if !@company_suggestion.nil? %>
-        <% if @company_suggestion.count != 0 %>
-        <h3><%= t "companies.suggestion" %></h3>
-        <% @company_suggestion.each do |c|%>
-          <ul class="list-group">
-            <li class="list-group-item">
-              <%= link_to c.name, suggest_address_path(:company_id => c.id, :internship_id => params[:internship_id])%>
-              </li>
-            </ul>
-          <% end %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
- <div class="row">
-    <div class="col-md-8">
-      <ul class="list-group">
-      <%if !@company_suggestion.nil? %>
-        <h3><% if @company_suggestion.count != 0 %>
-              <%= t("companies.no_match") %>
-            <% else %>
-            <%= t("companies.no_match1") %>
-            <% end %>
-        </h3>
-          <li class="list-group-item">
-            <% if @company_suggestion.pluck(:name).include?(params[:name]) %>
-              <%= link_to params[:name], suggest_address_path(:company_id => Company.find_by(name: params[:name]), :internship_id => params[:internship_id])%>
-            <% else %>
-              <%= link_to params[:name], new_company_path(:name => params[:name], :internship_id => params[:internship_id])%>
-            <% end %>
-          </li>
-      <% else %>
-        <h3><%= t("companies.too_short") %></h3>
-        <li class="list-group-item">
-            <%= link_to params[:name], new_company_path(:name => params[:name], :internship_id => params[:internship_id])%>
-      <% end %>
-       </li>
-      </ul>
-    </div>
-  </div>
-  </div>
+  <%= hidden_field :internship_id, :value => params[:internship_id] %>
+  <%= render 'suggest_case' + @case.to_s + '.html.erb' %>
+</div>
 <div class="mt-5 ml-3">
   <%= link_to t('buttons.back'), 'javascript:history.back()' %>
-</div>
 </div>
 </div>

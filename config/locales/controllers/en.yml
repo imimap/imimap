@@ -35,9 +35,10 @@ en:
     continue2: "Search"
     give_name: "The Company Name you plan your internship with:"
     suggestion: "Did you mean one of those companies?"
-    no_match: "No, create a new company with the following name:"
-    no_match1: "No company was found. With the link below you can create a new entry for a company with that name."
+    create_new_company: "No, create a new company with the following name:"
+    no_match: "No company was found. With the link below you can create a new entry for a company with that name."
     too_short: "The given name is too short for search results. Please try again or create a company with that name."
+    too_many: "There are too many results. Please try searching more precisely."
     company_address: "Editing Company Address"
   internships:
     student: 'Student'

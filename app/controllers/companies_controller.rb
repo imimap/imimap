@@ -97,6 +97,7 @@ class CompaniesController < ApplicationResourceController
 
   def suggest
     suggestion = params[:name].downcase
+    @case = nil
     @company_suggestion = company_suggestion(suggestion)
   end
 

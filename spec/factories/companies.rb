@@ -79,4 +79,21 @@ FactoryBot.define do
     import_id { 6 }
     comment { 'ein kleiner optiker' }
   end
+
+  factory :company_m, class: Company do
+    name { 'M' }
+    number_employees { 2 }
+    industry { 'IT' }
+    website { 'http://htw-berlin.de' }
+    main_language { 'German' }
+    excluded_from_search { false }
+    import_id { 1 }
+    after(:build) do |company, _evaluator|
+      create(:company_address_htw, company: company)
+    end
+    # after(:create) do |company, _evaluator|
+    #  create(:company_address_htw, company: company)
+    # end
+    comment { 'this says something about the company' }
+  end
 end

@@ -45,7 +45,7 @@ describe 'Company Suggestion' do
             t('companies.suggestion')
           )
           expect(page).to have_content(
-            t('companies.no_match1')
+            t('companies.no_match')
           )
           page_contains_search
         end
@@ -77,7 +77,7 @@ describe 'Company Suggestion' do
           )
 
           expect(page).not_to have_content(
-            t('companies.no_match1')
+            t('companies.no_match')
           )
           expect(page).to have_content(
             'Immobilienscout'
@@ -132,9 +132,13 @@ describe 'Company Suggestion' do
           page_contains_search
         end
 
-        it 'no match when name too short' do
+        it 'no match when too many results and no exact match' do
           create(:semester)
           create(:company_1)
+          create(:company_2)
+          create(:company_is24)
+          create(:company_is24)
+          create(:company_is24)
           visit my_internship_path
           click_link(t('internships.provide_now'))
           click_on t('save')
@@ -145,16 +149,45 @@ describe 'Company Suggestion' do
           expect(page).to have_content(
             t('companies.select.companyname')
           )
-          fill_in(:name, with: 'CoMp')
+          fill_in(:name, with: 'o')
           click_on t('companies.continue2')
-          expect(page).not_to have_content(
-            'Company 1'
-          )
           expect(page).not_to have_content(
             t('companies.suggestion')
           )
           expect(page).to have_content(
-            t('companies.too_short')
+            t('companies.too_many')
+          )
+          page_contains_search
+        end
+
+        it 'match when too many results and one exact match' do
+          create(:semester)
+          create(:company_1)
+          create(:company_2)
+          create(:company_m)
+          create(:company_is24)
+          create(:company_is24)
+          create(:company_is24)
+          visit my_internship_path
+          click_link(t('internships.provide_now'))
+          click_on t('save')
+          click_on t('complete_internships.new_tp0')
+          click_on t('save')
+          click_on t('complete_internships.checklist.company_details')
+          page_contains_search
+          expect(page).to have_content(
+            t('companies.select.companyname')
+          )
+          fill_in(:name, with: 'M')
+          click_on t('companies.continue2')
+          expect(page).to have_content(
+            t('companies.suggestion')
+          )
+          expect(page).to have_content(
+            t('companies.create_new_company')
+          )
+          expect(page).to have_link(
+            'M'
           )
           page_contains_search
         end
