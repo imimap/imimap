@@ -70,7 +70,8 @@ describe LDAPHTWAdapter do
       restore = ENV['LDAP']
       ENV['LDAP'] = "xx#{ENV['LDAP']}"
       _host, _port, _connectstring = @ldap_adapter.config
-      authenticated = @ldap_adapter.create(ldap_password: @password).authenticate
+      authenticated = @ldap_adapter.create(ldap_password: @password)
+                                   .authenticate
       expect(authenticated).to be false
       # expect(ldap_adapter.errors).not_to be_empty
       # expect(ldap_adapter.errors).to include([:ldap_could_not_connect, host])

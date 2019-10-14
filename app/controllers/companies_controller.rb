@@ -46,12 +46,10 @@ class CompaniesController < ApplicationResourceController
   end
 
   def create
-    # byebug
     respond_to do |format|
       if @company.save
         format.html do
-          redirect_to new_address_path(@company.id,
-                                       internship_id:
+          redirect_to new_address_path(@company.id, internship_id:
                                          params[:company][:internship_id]),
                       notice: 'Company was successfully created.'
         end
@@ -62,18 +60,15 @@ class CompaniesController < ApplicationResourceController
   end
 
   def update
-    # byebug
     respond_to do |format|
       if @company.update(company_params)
         format.html do
           if @current_user.student
             redirect_to edit_company_address_path(
               Internship.find(params[:company][:internship_id]).company_address
-            ),
-                        notice: 'Company was successfully updated.'
+            ), notice: 'Company was successfully updated.'
           else
-            redirect_to @company,
-                        notice: 'Company was successfully updated.'
+            redirect_to @company, notice: 'Company was successfully updated.'
           end
         end
       else

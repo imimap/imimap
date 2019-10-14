@@ -2,7 +2,7 @@
 
   <h3><%= t("complete_internships.header") %> <%= @semester.try(:name) %></h3>
   <%= form_tag(complete_internships_path, method: "get") do %>
-  <%= render 'semester_select' %>
+  <%= render 'application/semester_select' %>
   <% end %>
   <br>
   <table class="table table-striped text-left">

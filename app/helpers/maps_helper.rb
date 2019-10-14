@@ -5,11 +5,11 @@ module MapsHelper
   include ActionView::Helpers::UrlHelper
   def company_locations_json(company_locations:)
     companies = company_locations.reject { |c| c.include?(nil) }
-    companies = companies.map { |c| ["#{c[0]}, #{c[1]}", c[2], c[3]] }
-    company_location_json_raw = companies.uniq { |c| c[0] }
-    company_location_json_raw.each do |x|
-      x[0] = x[0].tr('\'', ' ')
+    companies = companies.map do |c|
+      text = "#{c[0]}, #{c[1]}".tr('\'', ' ')
+      [text, c[2], c[3]]
     end
+    company_location_json_raw = companies.uniq { |c| c[0] }
     company_location_json_raw << ['HTW Berlin', 52.4569311, 13.5242551]
     company_location_json_raw.to_json.html_safe
   end

@@ -87,11 +87,7 @@ class CompleteInternshipsController < ApplicationResourceController
   private
 
   def new_complete_internship
-    @complete_internship = if params[:complete_internship].nil?
-                             CompleteInternship.new
-                           else
-                             CompleteInternship.new(complete_internship_params)
-                           end
+    @complete_internship = CompleteInternship.new(complete_internship_params)
     si = if @current_user.student.nil?
            params[:complete_internship][:student_id]
          else

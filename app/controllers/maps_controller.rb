@@ -36,10 +36,8 @@ class MapsController < ApplicationController
     if params['semester_id'] != '-1'
       internships = internships.where(semester: @semester)
     end
-    internships =
-      internships.where.not(company_addresses: { latitude: nil })
-                 .pluck(:city, :country, :latitude, :longitude)
-
+    internships = internships.where.not(company_addresses: { latitude: nil })
+                             .pluck(:city, :country, :latitude, :longitude)
     @company_location_json = company_locations_json(
       company_locations: internships
     )

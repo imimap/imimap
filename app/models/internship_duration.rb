@@ -8,10 +8,14 @@ class InternshipDuration
   attr_accessor :start_date, :end_date, :days, :weeks, :validation
 
   def initialize(internship)
+    @semester = internship.semester
+    initialize_validation(internship)
+  end
+
+  def initialize_validation(internship)
     if internship.start_date && internship.end_date
       @start_date = internship.start_date
       @end_date = adjust(internship.end_date)
-      @semester = internship.semester
       @days = @end_date - @start_date
       @weeks = (@days.to_f / 7).round(2)
       @validation = do_validation(@weeks)
