@@ -7,10 +7,9 @@ module MapsHelper
     companies = company_locations.reject { |c| c.include?(nil) }
     companies = companies.map do |c|
       text = "#{c[0]}, #{c[1]}".tr('\'', ' ')
-      [text, c[2], c[3]]
+      [text, c[2] + rand(-1.0..1.0), c[3] + rand(-1.0..1.0)]
     end
     company_location_json_raw = companies.uniq { |c| c[0] }
-    company_location_json_raw << ['HTW Berlin', 52.4569311, 13.5242551]
     company_location_json_raw.to_json.html_safe
   end
 
