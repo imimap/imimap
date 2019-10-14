@@ -1,0 +1,5 @@
+<%= select_tag(:semester_id,
+               options_for_select(@semester_options,@semester.id),
+               class: 'chzn-select',
+               id: 'semester_select') %>
+<%= submit_tag(t('internships.index.select')) %>

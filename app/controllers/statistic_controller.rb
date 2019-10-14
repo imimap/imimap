@@ -2,7 +2,7 @@
 
 # Prepares Statistic View TBD - delete or create working one
 class StatisticController < ApplicationController
-  include ApplicationHelper
+  include CompleteInternshipsHelper
   def overview
     return if Semester.count.zero? || Internship.count.zero?
 

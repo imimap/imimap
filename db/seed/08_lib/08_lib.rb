@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative './08_addresses.rb'
 require_relative './08_internships.rb'
 
 def email_for_enrolment_number(enrolment_number:)
@@ -31,7 +30,7 @@ end
 
 def create_company_address
   company = create_company
-  GeocodedAddresses.geocoded_company_address(company: company)
+  geocoded_company_address(company: company)
 end
 
 def create_company
@@ -44,9 +43,23 @@ def create_company
   )
 end
 
+def geocoded_company_address(company:)
+  CompanyAddress.create!(
+    company: company,
+    street: Faker::Address.street_address,
+    zip: Faker::Address.zip,
+    city: Faker::Address.city,
+    country: Faker::Address.country,
+    phone: Faker::PhoneNumber.phone_number,
+    latitude: rand(-80..80),
+    longitude: rand(-180..180)
+  )
+end
+
 def create_complete_internship(student:)
-  student.create_complete_internship(
-    semester_id: Semester.all.sample(1).first
+  student.create_complete_internship!(
+    semester: Semester.all.sample(1).first,
+    semester_of_study: rand(4..6)
   )
 end
 

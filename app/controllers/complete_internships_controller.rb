@@ -87,11 +87,7 @@ class CompleteInternshipsController < ApplicationResourceController
   private
 
   def new_complete_internship
-    @complete_internship = if params[:complete_internship].nil?
-                             CompleteInternship.new
-                           else
-                             CompleteInternship.new(complete_internship_params)
-                           end
+    @complete_internship = complete_internship_from_params
     si = if @current_user.student.nil?
            params[:complete_internship][:student_id]
          else
@@ -100,13 +96,21 @@ class CompleteInternshipsController < ApplicationResourceController
     @complete_internship.student_id = si
   end
 
-  def set_semesters
-    @semesters = Semester.all.pluck(:name, :id)
+  def complete_internship_from_params
+    if params[:complete_internship].nil?
+      CompleteInternship.new
+    else
+      CompleteInternship.new(complete_internship_params)
+    end
   end
 
   def complete_internship_params
     params.require(:complete_internship).permit(
       CompleteInternshipsController.permitted_params
     )
+  end
+
+  def set_semesters
+    @semesters = Semester.all.pluck(:name, :id)
   end
 end

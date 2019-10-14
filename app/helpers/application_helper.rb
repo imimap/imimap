@@ -2,14 +2,6 @@
 
 # View Helper Methods for all Controllers.
 module ApplicationHelper
-  def semester_from_params(params)
-    if params && params['semester_id']
-      Semester.find(params['semester_id'])
-    else
-      Semester.current
-    end
-  end
-
   def render_stars(rating, template)
     RatingRenderer.new(rating, template).render_star_fields
   end

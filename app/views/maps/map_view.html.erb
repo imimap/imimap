@@ -2,6 +2,10 @@
 No Companies to show on Map.
 <% end %>
 
+<%= form_tag({}, method: "get") do %>
+<%= render 'semester_select' %>
+<% end %>
+
 <div id="mapid" style="width: 100%; height: 800px;;"></div>
 
 <% if @current_user.try(:student).try(:birthday?)%>
@@ -55,3 +59,6 @@ var companiesInternship = JSON.parse('<%= @company_location_json %>')
   }
 
 </script>
+<% if Rails.env.development? %>
+<p><%= @company_location_json %></p>
+<% end %>

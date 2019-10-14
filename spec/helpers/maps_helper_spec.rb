@@ -4,9 +4,13 @@ require 'rails_helper'
 
 RSpec.describe MapsHelper, type: :helper do
   it 'generates data for leaflet' do
-    cas = [ca1 = create(:company_address_1), ca2 = create(:company_address_2)]
-    json = helper.company_locations_json(company_addresses: cas)
-    expect(json).to include(ca1.city)
-    expect(json).to include(ca2.city)
+    @internship = create(:internship)
+    # cas = [ca1 = create(:company_address_1), ca2 = create(:company_address_2)]
+    cas =
+      Internship.joins(:company_address)
+                .where.not(company_addresses: { latitude: nil })
+                .pluck(:city, :country, :latitude, :longitude)
+    json = helper.company_locations_json(company_locations: cas)
+    expect(json).to include(@internship.company_address.city)
   end
 end
