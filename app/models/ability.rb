@@ -15,8 +15,7 @@ class Ability
     can :internship_data, Internship
     can %i[create new], Internship
     # can :update, Internship, approved: false,  student: { user: user }
-    can :update, Internship, student: { user: user }
-    can :show,   Internship, student: { user: user }
+    can %i[update show], Internship, student: { user: user }
     can :map_cities, Internship
   end
 
@@ -46,16 +45,10 @@ class Ability
     can :index, Internship
     can :list, Internship
     can :read, :all
+    can :map_internships, Internship
 
     return unless user.admin?
 
     can :manage, :all
-    can :map_internships, Internship
-  end
-
-  def internship_abilities(user)
-    can :create, Internship
-    can :update, Internship, approved: false, student: { user: user }
-    can :show,   Internship, complete_internship: { student: { user: user } }
   end
 end
