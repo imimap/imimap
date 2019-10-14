@@ -46,7 +46,7 @@ module CompleteInternshipDataHelper
 
     def add_company_info(int)
       ci = self
-      ci.company = int.company_v2.nil? ? '(no company)' : int.company_v2.name
+      ci.company = int.company_name
       if int.company_address.nil?
         ci.city = '(no city)'
         ci.country = '(no country)'
