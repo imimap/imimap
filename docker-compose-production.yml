@@ -26,6 +26,8 @@ services:
       - RAILS_SERVE_STATIC_FILES=true
     depends_on:
       - postgresql
+    volumes:
+      - ./logc:/usr/src/app/log
     links:
       - postgresql
     ports:
