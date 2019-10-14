@@ -28,3 +28,13 @@ class Company < ApplicationRecord
     r.to_f / size
   end
 end
+
+def company_suggestion(suggestion)
+  if Company.count.positive? &&
+     suggestion.length < Company.pluck('length(name)').min
+    nil
+  else
+    suggestion = '%' + suggestion + '%'
+    Company.where('lower(name) LIKE ?', suggestion)
+  end
+end

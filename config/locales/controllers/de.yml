@@ -36,6 +36,7 @@ de:
     suggestion: "Meintest du eine dieser Firmen?"
     no_match: "Nein, erstelle eine neue Firma mit diesem Namen:"
     no_match1: "Es wurde leider keine Firma gefunden, die deiner Suchanfrage entspricht. Mit dem Link kannst du aber eine neue Firma mit dem Namen anlegen."
+    too_short: "Der Name der Firma ist zu kurz. Suche erneut oder erstelle eine Firma mit diesem Namen."
     company_address: "Bearbeite die Firmenadresse"
   internships:
     statistic: "Übersicht über die Länder pro Semester"
