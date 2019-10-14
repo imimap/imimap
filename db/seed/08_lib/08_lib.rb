@@ -60,7 +60,6 @@ def create_complete_internship(student:)
   student.create_complete_internship!(
     semester: Semester.all.sample(1).first,
     semester_of_study: rand(4..6)
-
   )
 end
 
