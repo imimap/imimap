@@ -2,11 +2,7 @@
 
   <h3><%= t("complete_internships.header") %> <%= @semester.try(:name) %></h3>
   <%= form_tag(complete_internships_path, method: "get") do %>
-    <%= select_tag(:semester_id,
-                   options_for_select(@semester_options,@semester.try(:id)),
-                   class: 'chzn-select',
-                   id: 'semester_select') %>
-    <%= submit_tag(t('internships.index.select')) %>
+  <%= render 'semester_select' %>
   <% end %>
   <br>
   <table class="table table-striped text-left">

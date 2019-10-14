@@ -2,6 +2,7 @@
 
 # Helper Methods for Maps Views
 module MapsHelper
+  include ActionView::Helpers::UrlHelper
   def company_locations_json(company_locations:)
     companies = company_locations.reject { |c| c.include?(nil) }
     companies = companies.map { |c| ["#{c[0]}, #{c[1]}", c[2], c[3]] }
@@ -16,16 +17,14 @@ module MapsHelper
   def internships_json(internships:)
     internships = internships.reject { |c| c.include?(nil) }
 
-
-
     internships = internships.map do |c|
-      ["#{c[0]} #{c[1]} @ #{c[2]}<br />in #{c[3]} #{c[4]}",
+      first_line = "#{c[0]} #{c[1]} @ #{c[2]}"
+      second_line = "in #{c[3]} #{c[4]}"
+      text = "#{first_line}<br />#{second_line}".tr('\'', ' ')
+      [text,
        c[5], c[6]]
     end
-    internships.each do |x|
-      x[0] = x[0].tr('\'', ' ')
-    end
-    internships << ['HTW Berlin', 52.4569311, 13.5242551]
+    # internships << ['HTW Berlin', 52.4569311, 13.5242551]
     internships.to_json.html_safe
-   end
+  end
 end
