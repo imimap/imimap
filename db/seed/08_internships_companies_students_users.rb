@@ -10,41 +10,47 @@ CompanyAddress.destroy_all
 
 # if users are created, the password is geheim12
 
-range = 11_001..11_020
+range = 110_001..110_020
 puts "creating ##{range}"
 range.each do |er|
   create_student_with(enrolment_number: er,
                       with_internships: 1,
                       with_user: false)
 end
-range = 12_001..12_020
+range = 120_001..120_020
 puts "creating ##{range}"
 range.each do |er|
   create_student_with(enrolment_number: er,
                       with_internships: 0,
                       with_user: true)
 end
-range = 13_001..13_020
+range = 130_001..130_020
 puts "creating ##{range}"
 range.each do |er|
   create_student_with(enrolment_number: er,
                       with_internships: 0,
                       with_user: false)
 end
-range = 14_001..14_020
+range = 140_001..140_020
 puts "creating ##{range}"
 range.each do |er|
   create_student_with(enrolment_number: er,
                       with_internships: 2,
                       with_user: true)
 end
-range = 15_001..15_020
+range = 150_001..150_020
 puts "creating ##{range} without test status for toggles"
 # see TEST_EMAIL_REGEXP
 range.each do |er|
   create_student_with(enrolment_number: er,
                       with_internships: (er % 3),
                       with_user: true)
+end
+range = 150_101..150_120
+puts "creating ##{range} - only user objects"
+# see TEST_EMAIL_REGEXP
+range.each do |er|
+  create_only_user(enrolment_number: er)
 end
 
 puts 's011 - internships: 1, user: false'
