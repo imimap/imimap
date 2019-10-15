@@ -80,7 +80,6 @@ describe 'Student login:' do
   end
 end
 
-
 describe 'Non-Student login:' do
   before(:each) do
     allow_ldap_login
