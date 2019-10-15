@@ -10,12 +10,12 @@ describe 'Student login:' do
   context 'first time - no user present' do
     it 'user is created' do
       expect do
-        sign_in_with(enrolment_number: '54321')
+        sign_in_with(enrolment_number: '543210')
       end.to change { User.count }.by(1)
     end
 
     it 'created user is associated with existing student object' do
-      enrolment_number = '12121'
+      enrolment_number = '121210'
       student = create(:student, enrolment_number: enrolment_number)
       sign_in_with(enrolment_number: enrolment_number)
       user = User.last
@@ -24,7 +24,7 @@ describe 'Student login:' do
       expect(user.student).to eq student
     end
     it 'student object is created if not present' do
-      enrolment_number = '47112'
+      enrolment_number = '471120'
       expect do
         sign_in_with(enrolment_number: enrolment_number)
       end.to change { Student.count }.by(1)
@@ -38,7 +38,7 @@ describe 'Student login:' do
 
   context 'second time - user & student already present' do
     before :each do
-      @enrolment_number = '14123'
+      @enrolment_number = '141230'
       @email = User.email_for(enrolment_number: @enrolment_number)
       @student = create(:student, enrolment_number: @enrolment_number)
       @user = create(:user, email: @email)
@@ -57,7 +57,7 @@ describe 'Student login:' do
 
   context 'existing user with missing student object' do
     before :each do
-      @enrolment_number = '14123'
+      @enrolment_number = '141230'
       @email = User.email_for(enrolment_number: @enrolment_number)
       @user = create(:user_without_student, email: @email)
     end
@@ -79,6 +79,7 @@ describe 'Student login:' do
     end
   end
 end
+
 
 describe 'Non-Student login:' do
   before(:each) do

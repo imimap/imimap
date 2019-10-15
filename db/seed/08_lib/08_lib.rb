@@ -75,3 +75,14 @@ def create_student_with(enrolment_number:, with_internships:, with_user:)
                       company_address: company_address)
   end
 end
+
+def create_only_user(enrolment_number:)
+  user = User.create(
+    email: email_for_enrolment_number(enrolment_number: enrolment_number),
+    password: 'geheim12',
+    password_confirmation: 'geheim12',
+    role: :user
+  )
+  puts "created user without student #{user.email}"
+  user
+end

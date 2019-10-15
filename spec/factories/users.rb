@@ -30,6 +30,13 @@ FactoryBot.define do
     end
   end
 
+  factory :student_user_without_student, class: User do
+    email { 's0556677@htw-berlin.de' }
+    password { 'foofoofoo123123' }
+    password_confirmation { 'foofoofoo123123' }
+    publicmail { true }
+    mailnotif { true }
+  end
   factory :user_without_student, class: User do
     email { 'notastudent@htw-berlin.de' }
     password { 'foofoofoo123123' }

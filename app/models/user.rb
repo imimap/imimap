@@ -79,13 +79,16 @@ class User < ApplicationRecord
       User.enrolment_number_from(email: email)
     end
   end
-  STUDENT_MAIL_REGEX = /s(\d{6})@htw-berlin.de/.freeze
+  ER_IN_EMAIL = 7
+  STUDENT_MAIL_REGEX = Regexp.new("s(\\d{#{ER_IN_EMAIL}})@htw-berlin.de").freeze
   def student_email?(email1)
-    !STUDENT_MAIL_REGEX.match(email1).nil?
+    result = !STUDENT_MAIL_REGEX.match(email1).nil?
+    logger.warn "#{email1} is student email: #{result}" if email1[0..1] == 's0'
+    result
   end
 
   def self.email_for(enrolment_number:)
-    er = enrolment_number.rjust(6, '0')
+    er = enrolment_number.rjust(ER_IN_EMAIL, '0')
     "s#{er}@htw-berlin.de"
   end
 
