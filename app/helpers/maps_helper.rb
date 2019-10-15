@@ -13,12 +13,13 @@ module MapsHelper
     company_location_json_raw.to_json.html_safe
   end
 
-  def internships_json(internships:)
+  def internships_json(internships:, all_semester: false)
     internships = internships.reject { |c| c.include?(nil) }
 
     internships = internships.map do |c|
       first_line = "#{c[0]} #{c[1]} @ #{c[2]}"
       second_line = "in #{c[3]} #{c[4]}"
+      second_line += ", #{c[7]}" if all_semester
       text = "#{first_line}<br />#{second_line}".tr('\'', ' ')
       [text,
        c[5], c[6]]

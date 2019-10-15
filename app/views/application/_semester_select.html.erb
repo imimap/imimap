@@ -1,5 +1,8 @@
-<%= select_tag(:semester_id,
-               options_for_select(@semester_options,@semester.id),
+<%=
+option_is_all = !(@semester_options_all.nil? || !@semester_options_all)
+semester_id = option_is_all ? -1 :  @semester.id 
+select_tag(:semester_id,
+               options_for_select(@semester_options,semester_id),
                class: 'chzn-select',
                id: 'semester_select') %>
 <%= submit_tag(t('internships.index.select')) %>
