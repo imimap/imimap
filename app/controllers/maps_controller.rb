@@ -33,7 +33,7 @@ class MapsController < ApplicationController
   def map_view_only_locations
     internships =
       Internship.joins(:company_address)
-    if params['semester_id'] != '-1'
+    unless @semester_options_all
       internships = internships.where(semester: @semester)
     end
     internships = internships.where.not(company_addresses: { latitude: nil })
@@ -45,16 +45,22 @@ class MapsController < ApplicationController
 
   def map_view_full_internships
     internships =
-      Internship.joins(company_address: [:company],
-                       complete_internship: [:student])
-    if params['semester_id'] != '-1'
-      internships = internships.where(semester: @semester)
-    end
+      Internship.joins(:semester, company_address: [:company],
+                                  complete_internship: [:student])
+    show_single_term = params['semester_id'] != '-1'
+    unless @semester_options_all
+    internships = internships.where(semester: @semester)
+  end
     internships = internships.pluck(:first_name, :last_name,
-                                    :name, 'company_addresses.city', :country,
-                                    :latitude, :longitude, 'internships.id')
+                                    'companies.name',
+                                    'company_addresses.city',
+                                    :country,
+                                    :latitude, :longitude,
+                                    'semesters.name',
+                                    'internships.id')
 
-    @company_location_json = internships_json(internships: internships)
+    @company_location_json = internships_json(internships: internships,
+                                              all_semester:@semester_options_all)
   end
 
   private
@@ -62,5 +68,6 @@ class MapsController < ApplicationController
   def set_semesters
     @semester_options = semester_select_options(show_all: true)
     @semester = semester_from_params(params)
+    @semester_options_all = params['semester_id'] == '-1'
   end
 end
