@@ -1,7 +1,7 @@
 de:
   save: "Speichern"
   ldap:
-    authorization_failed: "Benutzername oder Passwort nicht korrekt!"
+    authorization_failed: "Authentifizierung über LDAP fehlgeschlagen."
   sign_up:
     here: "Neu anmelden"
     username: "Username (e.g. s05xxxxx)"
