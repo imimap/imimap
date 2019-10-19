@@ -5,10 +5,11 @@ class UsersController < ApplicationResourceController
   before_action :check_permission, only: %i[new create]
   before_action :check_existing_user, only: %i[new create]
 
-  def create
-    @user = User.new(user_params)
-    @user.save!
-  end
+  # BK201910: Not used?
+  # def create
+  #   @user = User.new(user_params)
+  #   @user.save!
+  # end
 
   def show
     @user = current_user

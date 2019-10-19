@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 if !ENV['GOOGLE_API_KEY'].nil?
+  # :nocov:
   puts 'Geocoder: using google'
   Geocoder.configure(
     timeout: 10,
@@ -9,6 +10,7 @@ if !ENV['GOOGLE_API_KEY'].nil?
     language: :en,
     units: :km
   )
+  # :nocov:
 else
   puts 'Geocoder: using nominatim'
   Geocoder.configure(
