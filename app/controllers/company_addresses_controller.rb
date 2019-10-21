@@ -120,10 +120,9 @@ class CompanyAddressesController < ApplicationResourceController
     @internship = Internship
                   .accessible_by(current_ability, :edit)
                   .find(params[:company_address][:internship_id])
-  #  @internship.company_address.build(company_address_params)
+    #  @internship.company_address.build(company_address_params)
     @company_address = CompanyAddress.new(company_address_params)
     @company = Company.find(params[:company_id])
-
   end
 
   def set_company_id

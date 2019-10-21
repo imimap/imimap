@@ -34,5 +34,4 @@ RSpec.describe Internship, type: :model do
       expect(internship.rating).to eq(3)
     end
   end
-
 end
