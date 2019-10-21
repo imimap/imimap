@@ -8,7 +8,6 @@ describe 'the generation of the application pdf does not produce errors' do
     create(:semester)
     visit my_internship_path
     click_link(t('internships.provide_now'))
-    save_and_open_page
     click_on t('save')
     click_on t('complete_internships.new_tp0')
     click_on t('save')
