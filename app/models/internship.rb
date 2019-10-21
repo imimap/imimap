@@ -5,8 +5,11 @@ require 'time'
 # Internship respresents one actual internship within one company, as opposed
 # to CompleteInternship that respresents the whole course B20.
 class Internship < ApplicationRecord
+  after_initialize do
+    self.approved = false if approved.nil?
+  end
   validates :semester, :complete_internship, presence: true
-
+  validates :approved, inclusion: { in: [true, false] }
   # validates_presence_of :company_address
 
   belongs_to :user
@@ -47,11 +50,6 @@ class Internship < ApplicationRecord
 
   def rating
     internship_rating.total_rating
-  end
-
-  def editable?
-    report_state.try(:name) != 'missing' &&
-      student.try(:user?) && !completed
   end
 
   def company?

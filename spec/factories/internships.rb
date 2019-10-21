@@ -11,6 +11,7 @@ DELIM
 
 FactoryBot.define do
   factory :internship do
+    approved { false }
     before(:create) do |i|
       c = FactoryBot.create(:company)
       i.company_address = c.company_addresses.first
@@ -62,6 +63,7 @@ FactoryBot.define do
   end
 
   factory :internship_1, class: Internship do
+    approved { false }
     before(:create) do |i|
       c = FactoryBot.create(:company_1)
       i.company_address = c.company_addresses.first
@@ -116,6 +118,7 @@ FactoryBot.define do
   end
 
   factory :internship_2, class: Internship do
+    approved { false }
     before(:create) do |i|
       c = FactoryBot.create(:company_2)
       i.company_address = c.company_addresses.first
@@ -221,6 +224,7 @@ FactoryBot.define do
   end
 
   factory :internship_without_company_address, class: Internship do
+    approved { false }
     working_hours { 2.0 }
     living_costs  { 4.0 }
     internship_rating
