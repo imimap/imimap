@@ -22,6 +22,7 @@ describe 'Complete Internship' do
           expect(page).to have_field('Fachsemester')
           click_on t('save')
           expect(page).to have_content(@user.name)
+          expect(page).not_to have_content('{false=>"still open", true=>"passed"}')
         end
 
         it 'should create a new partial internship' do
