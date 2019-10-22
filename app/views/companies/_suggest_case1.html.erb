@@ -1,0 +1,30 @@
+
+
+  <div class="row">
+    <div class="col-md-4">
+        <h3><%= t "companies.suggestion" %></h3>
+        <% @company_suggestion.each do |c|%>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <%= link_to c.name, suggest_address_path(:company_id => c.id, :internship_id => params[:internship_id])%>
+              </li>
+            </ul>
+          <% end %>
+    </div>
+  </div>
+ <div class="row">
+    <div class="col-md-8">
+      <ul class="list-group">
+        <h3>
+              <%= t("companies.create_new_company") %>
+        </h3>
+          <li class="list-group-item">
+            <% if @company_suggestion.pluck(:name).include?(params[:name]) %>
+              <%= link_to params[:name], suggest_address_path(:company_id => Company.find_by(name: params[:name]), :internship_id => params[:internship_id])%>
+            <% else %>
+              <%= link_to params[:name], new_company_path(:name => params[:name], :internship_id => params[:internship_id])%>
+            <% end %>
+          </li>
+      </ul>
+    </div>
+  </div>
