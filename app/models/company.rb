@@ -45,7 +45,7 @@ def company_suggestion(suggestion)
     if results.count > 4
       @case = 2
       nil
-    elsif results.count == 0
+    elsif results.count.zero?
       @case = 2
       nil
     end
