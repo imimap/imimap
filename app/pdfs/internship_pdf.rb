@@ -273,11 +273,14 @@ class InternshipPdf < Prawn::Document
     bounding_box([15, 235], width: 10, height: 10) do
       stroke_bounds
     end
+
+
     text_box 'als Original',
              at: [30, 235]
     bounding_box([15, 220], width: 10, height: 10) do
       stroke_bounds
     end
+
     text_box 'als Kopie (Mir ist bewußt, dass die Anmeldung bis zur Vorlage/Übersendung des handschriftlich unterschriebenen Originalvertrages unvollständig ist und auch keine Anerkennung des Praktikums ohne diesen erfolgen kann)',
              at: [30, 220]
 
@@ -288,6 +291,7 @@ class InternshipPdf < Prawn::Document
       text 'Datum, Unterschrift der/des Studierenden', size: 9
     end
   end
+
 
   def internship_officer_section
     dash(3, space: 3, phase: 3)
