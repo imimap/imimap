@@ -99,8 +99,8 @@ class Internship < ApplicationRecord
   end
 
   def all_internship_details_filled?
-    helper_array = [title, start_date, end_date, operational_area,
-                    orientation_id, tasks, working_hours, salary,
+    helper_array = [start_date, end_date, operational_area,
+                    orientation_id, tasks, working_hours,
                     supervisor_name, supervisor_email, supervisor_phone]
     helper_array.each do |e|
       return false if e.blank?
