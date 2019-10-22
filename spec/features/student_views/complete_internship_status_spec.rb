@@ -35,13 +35,15 @@ describe 'Complete Internship' do
           click_on t('save')
         end
 
-        it '- no start/end_dates provided, should not display hash' do
+        it '- no start/end_dates provided,
+        should not display hash' do
           expect(page).not_to have_content(
             '{false=>"still open", true=>"passed"}'
           )
         end
 
-        it '- not long enough, should display "still open/noch offen"' do
+        it '- not long enough
+        should display "still open/noch offen"' do
           click_link(t('internships.internship_details'))
           fill_in t('activerecord.attributes.internship.start_date'),
                   with: '1.1.2019'
@@ -54,7 +56,8 @@ describe 'Complete Internship' do
           )
         end
 
-        it '- long enough but not over, should display "still open/noch offen"' do
+        it '- long enough but not over
+        should display "still open/noch offen"' do
           click_link(t('internships.internship_details'))
           fill_in t('activerecord.attributes.internship.start_date'),
                   with: '1.1.2019'
@@ -67,7 +70,8 @@ describe 'Complete Internship' do
           )
         end
 
-        it '- long enough and over, should display "passed/bestanden"' do
+        it '- long enough and over
+        should display "passed/bestanden"' do
           click_link(t('internships.internship_details'))
           fill_in t('activerecord.attributes.internship.start_date'),
                   with: '1.1.2019'
@@ -92,7 +96,8 @@ describe 'Complete Internship' do
           click_on t('save')
         end
 
-        it '- not long enough together, should display "still open/noch offen"' do
+        it '- not long enough together
+        should display "still open/noch offen"' do
           all('a', text: t('internships.internship_details'))[0].click
           fill_in t('activerecord.attributes.internship.start_date'),
                   with: '1.1.2019'
@@ -111,7 +116,8 @@ describe 'Complete Internship' do
           )
         end
 
-        it '- long enough together but not over, should display "still open/noch offen"' do
+        it '- long enough together but not over
+        should display "still open/noch offen"' do
           all('a', text: t('internships.internship_details'))[0].click
           fill_in t('activerecord.attributes.internship.start_date'),
                   with: '1.1.2019'
@@ -130,7 +136,8 @@ describe 'Complete Internship' do
           )
         end
 
-        it '- long enough and over, should display "passed/bestanden"' do
+        it '- long enough and over
+        should display "passed/bestanden"' do
           all('a', text: t('internships.internship_details'))[0].click
           fill_in t('activerecord.attributes.internship.start_date'),
                   with: '1.1.2019'
