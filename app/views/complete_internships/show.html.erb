@@ -45,7 +45,7 @@
                 <th></th>
                 <th scope="row"><%= t "complete_internships.parcial_internships.number" %></th>
                 <td><%= t "complete_internships.parcial_internships.name" %></td>
-                <td><%= t "complete_internships.parcial_internships.values.#{@complete_internship.aep}" %></td>
+                <td><%= t "complete_internships.parcial_internships.values.#{@complete_internship.over?}" %></td>
               </tr>
             </tbody>
           </table>
