@@ -60,7 +60,7 @@
     <% if @complete_internship.student %>
       <div class="card-deck">
         <% @complete_internship.internships.order(:id).each do |internship|%>
-          <% accepted = internship.registration_state.nil? %>
+          <% accepted = false # internship.registration_state.nil? %>
           <div class="card border-<%= accepted ? 'secondary' : 'success' %>">
             <div class="card-header"><%= internship.internship_state.try(:name) %></div>
             <div class="card-body">
