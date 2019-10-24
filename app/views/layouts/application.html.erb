@@ -57,6 +57,11 @@
 
 <% else %>
    <%= render 'login' %>
+   <% flash.each do |key, value| %>
+       <div class="<%= flash_class(key) %>">
+         <%= value %>
+       </div>
+   <% end %>
 <% end %>
 <%= debug(params) if Rails.env.development?%>
 
