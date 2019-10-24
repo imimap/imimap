@@ -1,17 +1,26 @@
 
-<div class = "container height = 100%">
-  <div class = "float-right">
-      <%= form_for :user, url: session_path(:user), html: {class: "form-inline imimap-inverse"} do |f| %>
 
-          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-            <%= f.label :email, class: "form-label imimap-inverse mr-2"%>
-            <%= f.email_field :email, autofocus: true, class: "form-control mb-2 mr-sm-2 mb-sm-0", placeholder: "s012345@htw-berlin.de"%>
-          </div>
 
-          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-            <%= f.label :password, class: "form-label imimap-inverse mr-2" %>
-            <%= f.password_field :password, autocomplete: "off", class: "form-control mb-2 mr-sm-2 mb-sm-0" %>
+<div class="w-100 h-100 text-center " style="background-color: #333333;">
+    <div class="w-75 h-25 m-auto"></div>
+    <div class = "w-75 h-50 m-auto mt-0 container">
+      <a class="m-0 navbar-brand imi-map-logo" href="<%= root_path %>">
+        <%= image_tag "plane.gif", width: 130, height: 130, alt: "" %>
+      </a>
+
+      <%= form_for :user, url: session_path(:user), html: {class: "imimap-inverse"} do |f| %>
+
+        <div class="input-group w-auto mt-3 row">
+          <div class="col">
+            <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "s012345@htw-berlin.de"%>
           </div>
+        </div>
+
+        <div class="input-group w-auto mt-1 row">
+          <div class="col">
+              <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "********" %>
+          </div>
+        </div>
 <!--
           <div class="form-check mb-2 mr-sm-2 mb-sm-0">
             <%= f.check_box :remember_me, class: "form-check-input"%>
@@ -19,11 +28,10 @@
           </div>
 -->
 
-          <div id="submit" class="pl-3">
+          <div id="submit" class="mt-3">
             <%= f.submit t('devise.sessions.submit'), class: "btn btn-success" %>
           </div>
-
-
       <% end %>
-  </div>
+    </div>
+    <div class="w-75 h-25 m-auto"></div>
 </div>
