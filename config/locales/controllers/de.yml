@@ -53,6 +53,7 @@ de:
     create_internship: "Du hast noch keine Informationen eingetragen."
     index:
       title: "Praktika im"
+      show: 'Zeige mir Praktika im'
       select: 'anzeigen'
       export:
         csv: 'CSV'

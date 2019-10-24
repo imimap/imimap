@@ -56,6 +56,7 @@ en:
     createInternship: "You have not given us any information yet."
     index:
       title: "Internships in"
+      show: 'Show me the internships of'
       select: 'Select'
       export:
         csv: 'CSV'
