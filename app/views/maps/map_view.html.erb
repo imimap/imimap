@@ -6,7 +6,7 @@ No Companies to show on Map.
 <%= render 'semester_select' %>
 <% end %>
 
-<div id="mapid" style="width: 100%; height: 800px;;"></div>
+<div id="mapid" style="width: 100%; height: 75vh;;"></div>
 
 <% if @current_user.try(:student).try(:birthday?)%>
   <%= render 'happy_birthday_popup'%>

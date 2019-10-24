@@ -10,7 +10,8 @@ describe 'internship index - ' do
     end
     it 'doesnt see the link in the main menu' do
       visit root_path
-      expect(page).not_to have_content(t('header.current_internships'))
+      expect(page).not_to have_content(t('header.current_internships'),
+                                       count: 2)
     end
     it 'cannot see the list of internships' do
       visit internships_path
