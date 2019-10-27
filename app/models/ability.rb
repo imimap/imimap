@@ -7,12 +7,11 @@ class Ability
     return unless user.present?
 
     merge Abilities::User.new(user)
-
     return unless user.prof? || user.examination_office? || user.admin?
 
     merge Abilities::Staff.new(user)
     return unless user.admin?
 
-    can :manage, :all
+    merge Abilities::Admin.new(user)
   end
 end
