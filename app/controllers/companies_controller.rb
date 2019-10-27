@@ -116,4 +116,29 @@ class CompaniesController < ApplicationResourceController
   end
 
   def select_company; end
+
+  def company_suggestion(suggestion)
+    # erste Runde, ungefaehres Matching
+    first_search = '%' + suggestion + '%'
+    results = Company.where('lower(name) LIKE ?', first_search)
+    @case = if results.count.zero?
+              3
+            else
+              1
+            end
+    if results.count > 4
+      # zweite Runde, exaktes Matching
+      results = Company.where('lower(name) LIKE ?', suggestion)
+      @case = 1
+      if results.count > 4
+        @case = 2
+        nil
+      elsif results.count.zero?
+        @case = 2
+        nil
+      end
+    end
+    results
+  end
+
 end

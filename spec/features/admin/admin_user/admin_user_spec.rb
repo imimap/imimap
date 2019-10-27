@@ -13,7 +13,6 @@ describe 'ActiveAdmin Admin User' do
       it 'index' do
         visit admin_users_path
         one, two = @admin_user.email.split('@')
-        save_and_open_page
         expect(page).to have_content one
         expect(page).to have_content two
       end
@@ -28,7 +27,6 @@ describe 'ActiveAdmin Admin User' do
         # click_on t('active_admin.edit_model',model: User.model_name.human)
         visit edit_admin_user_path(id: @user)
         expect(page).not_to have_content 'NoMethodError'
-        # save_and_open_page # um zu sehen was man sieht...
         # das funktioniert nicht weil es ein button ist:
         # expect(page).to
         # have_content t('helpers.submit.update', model: User.model_name.human)

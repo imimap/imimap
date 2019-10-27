@@ -5,6 +5,7 @@ class CompanyAddressesController < ApplicationResourceController
   include CompanyAddressesHelper
   load_and_authorize_resource
   # before_action :set_company_address, only: %i[edit update destroy]
+  before_action :set_company_id, only: %i[suggest_address]
 
   def index
     @company_addresses = CompanyAddress.all
@@ -28,8 +29,14 @@ class CompanyAddressesController < ApplicationResourceController
   def edit; end
 
   def suggest_address
-    @company_address_suggestion = CompanyAddress.where('company_id = ?',
-                                                       params[:company_id])
+    ok = UserCanSeeCompany.suggest(company_id: @company_id,
+                                   user: current_user)
+    if ok
+      @company_address_suggestion = CompanyAddress.where('company_id = ?',
+                                                         @company_id)
+    else
+      render 'companies/limit_exceeded'
+    end
   end
 
   def create
@@ -118,5 +125,9 @@ class CompanyAddressesController < ApplicationResourceController
     @internship = Internship
                   .accessible_by(current_ability, :edit)
                   .find(params[:company_address][:internship_id])
+  end
+
+  def set_company_id
+    @company_id = params[:company_id]
   end
 end
