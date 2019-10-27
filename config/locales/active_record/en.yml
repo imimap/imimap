@@ -22,6 +22,7 @@ en:
         new_company_address: "Or create a new one:"
         details: "Company Address Details"
         submit: "Save"
+        back_to_select: 'Back to Company Selection'
       internship_offer:
         body: Description
         created_at: Created at
