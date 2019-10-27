@@ -44,14 +44,29 @@ module Abilities
       can :map_cities, Internship
     end
 
-    def company(user)
-      can %i[create_and_save new create select_company suggest
-             suggest_address save_address], [Company, CompanyAddress]
-      can :show, CompanyAddress
+    def can_create_company(user)
+      can %i[new create select_company suggest], [Company]
+      can %i[create_and_save new create new_address
+             suggest_address save_address], [CompanyAddress]
       can %i[edit show update],
           [Company, CompanyAddress],
           internships: { complete_internship: { student: { user: user } } }
-      can :new_address, CompanyAddress
+    end
+
+    def can_edit_company_only_associated_with_own_internship(user)
+      can %i[edit show update],
+          [Company, CompanyAddress],
+          internships: { complete_internship: { student: { user: user } } }
+    end
+
+    def can_see_limited_number_of_companies(_user)
+      can :show, CompanyAddress
+    end
+
+    def company(user)
+      can_create_company(user)
+      can_edit_company_only_associated_with_own_internship(user)
+      can_see_limited_number_of_companies(user)
     end
   end
 end
