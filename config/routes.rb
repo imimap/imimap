@@ -41,7 +41,7 @@ Rails.application.routes.draw do
         as: 'select_company'
     get 'help', to: 'welcome#help'
     get 'my_internship',
-        to: 'complete_internships#internship_data',
+        to: 'complete_internships#show_own',
         as: 'my_internship'
     post 'my_internship', to: 'company_addresses#create_and_save'
     post 'select_company/', to: 'companies#suggest'
