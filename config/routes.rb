@@ -3,16 +3,13 @@
 Rails.application.routes.draw do
   get 'password_resets/new'
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
-    devise_for :users, skip: [:sessions],
-                       controllers: {
-                         registrations: 'users/registrations',
-                         # registrations: 'devise/registrations'
-                         passwords: 'users/passwords'
-                       }.merge(ActiveAdmin::Devise.config)
+    devise_for :users,
+               controllers: {
+                 registrations: 'users/registrations',
+                 # registrations: 'devise/registrations'
+                 passwords: 'users/passwords'
+               }.merge(ActiveAdmin::Devise.config)
     devise_scope :user do
-      get 'signin', to: 'welcome#login', as: :new_user_session
-      post 'signin', to: 'devise/sessions#create', as: :user_session
-      delete 'signout', to: 'devise/sessions#destroy', as: :destroy_user_session
       get 'logout', to: 'devise/sessions#destroy', as: 'logout'
     end
     authenticated :user do
