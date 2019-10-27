@@ -4,9 +4,9 @@ require 'rails_helper'
 
 describe 'Map Vies' do
   context 'not logged in' do
-    it 'shows a map only with HTW Icon' do
+    it 'map is not shown' do
       visit root_path
-      expect(page).to have_content('HTW Berlin')
+      expect(page).not_to have_content('HTW Berlin')
     end
   end
   context 'user logged in' do
