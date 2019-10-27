@@ -48,6 +48,8 @@ module ApplicationHelper
     options
   end
 
+  # in bootstrap_forms the "required" css class is set by bootstrap;
+  # this would only be needed in other (non-bootstrap) forms.
   def required_save_and_application(form, field, options = {})
     model = form.object.class
     if model.attributes_required_for_save.include? field

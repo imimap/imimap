@@ -22,6 +22,7 @@ class Ability
   def company(user)
     can %i[create_and_save new create select_company suggest
            suggest_address save_address], [Company, CompanyAddress]
+    can :show, CompanyAddress
     can %i[edit show update],
         [Company, CompanyAddress],
         internships: { complete_internship: { student: { user: user } } }

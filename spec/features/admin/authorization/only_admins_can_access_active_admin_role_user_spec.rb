@@ -9,9 +9,7 @@ describe 'ActiveAdmin Authorization student users' do
   end
   it 'have no access admin area' do
     visit admin_root_path
-    # be on the student page
-    expect(page).to have_content t('devise.failure.already_authenticated')
-    expect(page).to have_content t('header.internship')
+    expect(page).to have_content t('welcome.login_with_hrz')
     # not the admin area
     expect(page).not_to have_content t('active_admin.dashboard')
     expect(page)

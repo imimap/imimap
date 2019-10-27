@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_13_122135) do
+ActiveRecord::Schema.define(version: 2019_10_22_132522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,8 +94,8 @@ ActiveRecord::Schema.define(version: 2019_09_13_122135) do
   create_table "complete_internships", force: :cascade do |t|
     t.bigint "semester_id"
     t.integer "semester_of_study"
-    t.boolean "aep"
-    t.boolean "passed"
+    t.boolean "aep", default: false
+    t.boolean "passed", default: false
     t.bigint "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
