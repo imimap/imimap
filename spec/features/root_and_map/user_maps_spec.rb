@@ -2,11 +2,11 @@
 
 require 'rails_helper'
 
-describe 'Map Vies' do
+describe 'Map Views' do
   context 'not logged in' do
     it 'map is not shown' do
       visit root_path
-      expect(page).not_to have_content('HTW Berlin')
+      expect(page).to have_content(t('welcome.login_with_hrz'))
     end
   end
   context 'user logged in' do
