@@ -178,7 +178,6 @@ describe 'Company Suggestion' do
             expect(page).to have_content(
               t('companies.select.companyname')
             )
-
           end
           it 'match when too many results and one exact match' do
             fill_in(:name, with: 'M')
