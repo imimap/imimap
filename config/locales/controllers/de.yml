@@ -154,6 +154,7 @@ de:
     number_of: "Es gibt im Moment"
 
   welcome:
+    login_with_hrz: Bitte melden Sie sich mit Ihrem HRZ-Account an.
     help:
       header: "Willkommen bei der IMI-Map!"
       description: "Die IMI-Map ist dafür da, dir das Beantragen deines Pflichtpraktikums im Studiengang Internationale Medieninformatik zu erleichtern. Unter dem Tab 'Mein Praktikum' kannst du eintragen, wann du das komplette Modul B20 belegen möchtest. Das Modul 20 bestehend aus den Modulen B20.1, Auswertung von Erfahrungen am Praxisplatz, und B20.2, dem Fachpraktikum selbst. Wenn du uns das mitgeteilt hast, kannst du ein Praktikum oder ggf. auch mehrere Teilpraktika anlegen und dort alle Informationen eintragen, die auch für den Antrag benötigt werden. Dies ermöglicht es in der Sprechstunde der/des Praktikumsbeauftragten, in der du dein Praktikum beantragst, schon genauer auf dein Praktikum eingehen zu können und schon z.B. Kommentare zu deinem Praktikum in der Datenbank zu hinterlegen."

@@ -155,7 +155,7 @@ en:
       first_name1: "Given name *"
       last_name: "Last name"
       last_name1: "Last name *"
-      email: "Email"
+      email: E-Mail
       email1: "Email *"
       enrolment_number: "Enrolment number"
       enrolment_number1: "Enrolment number *"
@@ -171,7 +171,6 @@ en:
       city1: "City *"
       phone: "Telephone"
       phone1: "Telephone *"
-      email: E-Mail
 
 
   internship_offers:
@@ -179,6 +178,7 @@ en:
     number_of: "There are currently"
 
   welcome:
+    login_with_hrz: Please use your HRZ-Account for logging in.
     help:
       header: "Welcome to the IMI-Map!"
       description: "The IMI-Map's purpose is to make the application for your mandatory internship in international media and computing with the internship officer a little easier. You can register when you want to enroll for the entire module B20 under the tab 'My Internship'. The module B20 consists of the modules B20.1, 'Auswertung von Erfahrungen am Praxisplatz', and B20.2, the internship itself. Once you have specified the semester you can register one internship or multiple partial internships. This information is mostly the same that will be required for the application form itself. You giving us this information will allow the internship officer to go into more detail with you when you visit his/her office hours to hand in your application."

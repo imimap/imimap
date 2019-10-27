@@ -1,30 +1,11 @@
 <!DOCTYPE html>
 <html lang = "en">
-  <head>
-    <title><%= t "header.tabtitle" %></title>
-    <!-- Required meta tags bootstrap-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- application wide assets -->
-    <%= stylesheet_link_tag    "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
-
-    <%= csrf_meta_tags %>
-    <%= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :content => 'Imi Map' %>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%= favicon_link_tag 'favicon.ico' %>
-    <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
-    <% if false && @map_view %>
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
-      <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
-    <% end %>
-  </head>
+  <%= render 'html_head' %>
   <body>
 
-<% if user_signed_in? %>
-
+<% unless user_signed_in? %>
+  <%= yield %>
+<% else %>
   <%= render 'header' %>
 
   <% flash.each do |key, value| %>
@@ -42,23 +23,9 @@
     </div>
   </div>
   <% end %>
-
-
-   <footer>
-   <div class="container">
-     <div class="im-items">
-       <div class="imi_logo"></div>
-       <div class="htw_logo"></div>
-        <div class="footer-text"><%= render 'version/version' %> - Projekt im Studiengang Internationale Medieninformatik der HTW Berlin.</div>
-     </div>
-   </div>
-   </footer>
-
-
-<% else %>
-   <%= render 'login' %>
 <% end %>
-<%= debug(params) if Rails.env.development?%>
+
+<%= render 'footer' %>
 
 </body>
 </html>

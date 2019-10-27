@@ -7,12 +7,10 @@ Rails.application.routes.draw do
       devise_for :users,
                  controllers: { registrations: 'users/registrations',
                                 passwords: 'users/passwords' }
-      # This is needed for ActiveAdmin
       authenticated :user do
         root 'maps#map_view', as: :authenticated_root
       end
-      root 'maps#peek_preview'
-
+      root 'welcome#login'
       resources :internships
       resources :companies
       resources :users, only: %i[edit show update create new]
