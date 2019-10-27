@@ -13,6 +13,7 @@ describe 'ActiveAdmin Admin User' do
       it 'index' do
         visit admin_users_path
         one, two = @admin_user.email.split('@')
+        save_and_open_page
         expect(page).to have_content one
         expect(page).to have_content two
       end
