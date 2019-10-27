@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_22_132522) do
+ActiveRecord::Schema.define(version: 2019_10_27_203648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -319,6 +319,16 @@ ActiveRecord::Schema.define(version: 2019_10_22_132522) do
     t.string "private_email"
   end
 
+  create_table "user_can_see_companies", force: :cascade do |t|
+    t.bigint "company_id"
+    t.bigint "user_id"
+    t.integer "created_by", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_user_can_see_companies_on_company_id"
+    t.index ["user_id"], name: "index_user_can_see_companies_on_user_id"
+  end
+
   create_table "users", id: :serial, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.datetime "created_at"
@@ -347,4 +357,6 @@ ActiveRecord::Schema.define(version: 2019_10_22_132522) do
 
   add_foreign_key "internships", "company_addresses"
   add_foreign_key "internships", "complete_internships"
+  add_foreign_key "user_can_see_companies", "companies"
+  add_foreign_key "user_can_see_companies", "users"
 end
