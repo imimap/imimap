@@ -36,7 +36,6 @@ describe 'the generation of the application pdf does not produce errors' do
     end
     it 'and generate a valid pdf containing student name' do
       click_link(t('complete_internships.checklist.print_form'))
-      # save_and_open_page
       convert_pdf_to_page
       expect(page).to have_content(@user.student.first_name)
     end
