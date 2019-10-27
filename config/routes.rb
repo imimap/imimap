@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     resources :company_addresses
     resources :students, only: %i[show update]
     resources :complete_internships
+    resources :user_can_see_companies
 
     get 'statistic', to: 'statistic#overview'
     delete 'destroy', to: 'devise/notifications#destroy'

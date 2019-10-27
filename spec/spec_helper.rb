@@ -206,6 +206,7 @@ RSpec.configure do |config|
   # end
 
   config.include ControllerTestHelper, type: :controller
+  config.include ControllerTestHelper, type: :request
   config.include CapybaraLoginTestHelper, type: :feature
   config.include I18nTestHelper
 end
