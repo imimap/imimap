@@ -18,7 +18,7 @@ describe 'Company Suggestion' do
         I18n.locale = locale
         allow_ldap_login(success: false)
       end
-      context 'with valid user credentials' do
+      context 'with existing student login' do
         before :each do
           @user = login_as_student
         end
@@ -105,8 +105,8 @@ describe 'Company Suggestion' do
           # expect(message).to eq "Please fill out this field."
         end
 
-        it 'shouldnt show the link for creating a new company when theres one
-            with the exact same name' do
+        it "shouldn't show the link for creating a new company when theres one
+            with the exact same name" do
           create(:semester)
           create(:company_1)
           create(:company_2)
@@ -160,36 +160,52 @@ describe 'Company Suggestion' do
           page_contains_search
         end
 
-        it 'match when too many results and one exact match' do
-          create(:semester)
-          create(:company_1)
-          create(:company_2)
-          create(:company_m)
-          create(:company_is24)
-          create(:company_is24)
-          create(:company_is24)
-          visit my_internship_path
-          click_link(t('internships.provide_now'))
-          click_on t('save')
-          click_on t('complete_internships.new_tp0')
-          click_on t('save')
-          click_on t('complete_internships.checklist.company_details')
-          page_contains_search
-          expect(page).to have_content(
-            t('companies.select.companyname')
-          )
-          fill_in(:name, with: 'M')
-          click_on t('companies.continue2')
-          expect(page).to have_content(
-            t('companies.suggestion')
-          )
-          expect(page).to have_content(
-            t('companies.create_new_company')
-          )
-          expect(page).to have_link(
-            'M'
-          )
-          page_contains_search
+        context 'with company match' do
+          before :each do
+            create(:semester)
+            create(:company_1)
+            create(:company_2)
+            create(:company_m)
+            @company = create(:company_is24)
+
+            visit my_internship_path
+            click_link(t('internships.provide_now'))
+            click_on t('save')
+            click_on t('complete_internships.new_tp0')
+            click_on t('save')
+            click_on t('complete_internships.checklist.company_details')
+            page_contains_search
+            expect(page).to have_content(
+              t('companies.select.companyname')
+            )
+
+          end
+          it 'match when too many results and one exact match' do
+            fill_in(:name, with: 'M')
+            click_on t('companies.continue2')
+            expect(page).to have_content(
+              t('companies.suggestion')
+            )
+            expect(page).to have_content(
+              t('companies.create_new_company')
+            )
+            expect(page).to have_link(
+              'M'
+            )
+            page_contains_search
+          end
+          it 'links to the address successfully' do
+            fill_in(:name, with: @company.name)
+            click_on t('companies.continue2')
+
+            click_on @company.name, match: :first
+            click_on @company.company_addresses.first.address
+            expect(page).not_to have_content('AccessDenied')
+            click_on t('activerecord.attributes.company_address.submit')
+            id_via_c = @company.company_addresses.first.internships.first.id
+            id_via_u = @user.student.internships.first.id
+            expect(id_via_u).to eq id_via_c
+          end
         end
       end
     end
