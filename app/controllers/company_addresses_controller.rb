@@ -29,7 +29,7 @@ class CompanyAddressesController < ApplicationResourceController
   def edit; end
 
   def suggest_address
-    ok = UserCanSeeCompany.suggest(company_id: @company_id,
+    ok = UserCanSeeCompany.company_suggest(company_id: @company_id,
                                    user: current_user)
     if ok
       @company_address_suggestion = CompanyAddress.where('company_id = ?',
