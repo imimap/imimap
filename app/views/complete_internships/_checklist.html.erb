@@ -46,6 +46,9 @@
       <tr>
         <td style="width:1%">
           <i class="icon-ok icon-large text-success d-none" id="contract_<%=internship.id%>"></i>
+          <% if !internship.contract_original.nil? && internship.contract_original == true %>
+            <i class="icon-ok icon-large text-success"></i>
+          <%end%>
         </td>
         <td>
           <label class="checkbox">
@@ -53,10 +56,18 @@
           </label>
           <br>
           <span class="ml-3">
-            <input type="radio" name="contract<%=internship.id%>" id="original_<%=internship.id%>" value="original" onclick="radiosActivated(<%=internship.id%>)"> <%= t("complete_internships.checklist.contract_original") %>
+            <% if !internship.contract_original.nil? && internship.contract_original == true %>
+            <input type="radio" name="contract<%=internship.id%>" id="original_<%=internship.id%>" value="original" checked= true disabled = true> <%= t("complete_internships.checklist.contract_original") %>
+            <% else %>
+            <input type="radio" name="contract<%=internship.id%>" id="original_<%=internship.id%>" value="original" disabled = true> <%= t("complete_internships.checklist.contract_original") %>
+            <%end%>
           </span>
           <span class="ml-3">
-            <input type="radio" name="contract<%=internship.id%>" id="copy_<%=internship.id%>" value="copy" onclick="radiosActivated(<%=internship.id%>)"> <%= t("complete_internships.checklist.contract_copy") %>
+            <% if !internship.contract_original.nil? && internship.contract_original == false %>
+            <input type="radio" name="contract<%=internship.id%>" id="copy_<%=internship.id%>" value="copy" checked = true disabled = true> <%= t("complete_internships.checklist.contract_copy") %>
+            <% else %>
+            <input type="radio" name="contract<%=internship.id%>" id="copy_<%=internship.id%>" value="copy" disabled = true > <%= t("complete_internships.checklist.contract_copy") %>
+            <%end%>
           </span>
         </td>
       </tr>
