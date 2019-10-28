@@ -101,7 +101,7 @@
 <div class="row">
   <div class="col-md-6">
     <div class="field" id="field-titles">
-      <p> Ich habe meinen Praktikumsvertrag  </p>
+      <%= t("complete_internships.checklist.contract")%>
     </div>
   </div>
 </div>
@@ -109,19 +109,17 @@
 <div class="row">
   <div class="col-md-2">
     <div class="field" id="field-titles">
-      <%= f.radio_button :contract_original, "true", label: "im Original"  %>
+      <%= f.radio_button :contract_original, "true", label: t("complete_internships.checklist.contract_original")  %>
     </div>
   </div>
-
 
   <div class="col-md-1">
     <div class="field" id="field-titles">
-      <%= f.radio_button :contract_original, "false", label: "als Kopie"  %>
+      <%= f.radio_button :contract_original, "false", label: t("complete_internships.checklist.contract_copy")  %>
     </div>
   </div>
-
 </div>
-
+</br>
 <div class="row">
   <div class="col-md-6">
     <div class="field" id="field-titles2">
@@ -129,7 +127,6 @@
     </div>
   </div>
 </div>
-
 </div>
 
 <%= link_to t('buttons.back'), 'javascript:history.back()' %>
