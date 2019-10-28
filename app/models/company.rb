@@ -6,6 +6,12 @@ class Company < ApplicationRecord
   has_many :company_addresses
   has_many :internships, through: :company_addresses
 
+  has_many :user_can_see_company
+  has_many :seeing_users,
+           through: :user_can_see_company,
+           source: :user,
+           inverse_of: :visible_companies
+
   def self.attributes_required_for_internship_application
     [:website]
   end
@@ -27,28 +33,4 @@ class Company < ApplicationRecord
     size ||= 1
     r.to_f / size
   end
-end
-
-def company_suggestion(suggestion)
-  # erste Runde, ungefaehres Matching
-  first_search = '%' + suggestion + '%'
-  results = Company.where('lower(name) LIKE ?', first_search)
-  @case = if results.count.zero?
-            3
-          else
-            1
-          end
-  if results.count > 4
-    # zweite Runde, exaktes Matching
-    results = Company.where('lower(name) LIKE ?', suggestion)
-    @case = 1
-    if results.count > 4
-      @case = 2
-      nil
-    elsif results.count.zero?
-      @case = 2
-      nil
-    end
-  end
-  results
 end

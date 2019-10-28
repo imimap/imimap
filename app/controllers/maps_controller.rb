@@ -49,7 +49,7 @@ class MapsController < ApplicationController
                                   complete_internship: [:student])
     show_single_term = params['semester_id'] != '-1'
     unless @semester_options_all
-    internships = internships.where(semester: @semester)
+      internships = internships.where(semester: @semester)
   end
     internships = internships.pluck(:first_name, :last_name,
                                     'companies.name',
@@ -60,7 +60,7 @@ class MapsController < ApplicationController
                                     'internships.id')
 
     @company_location_json = internships_json(internships: internships,
-                                              all_semester:@semester_options_all)
+                                              all_semester: @semester_options_all)
   end
 
   private

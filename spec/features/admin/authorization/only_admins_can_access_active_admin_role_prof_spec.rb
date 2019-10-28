@@ -13,20 +13,7 @@ describe 'ActiveAdmin Authorization role prof' do
     expect(page).to have_content t('devise.failure.already_authenticated')
     expect(page).to have_content t('header.current_internships')
     # not the admin area
-    # expect(page).not_to have_content t('active_admin.dashboard')
     expect(page)
       .not_to have_content t('active_admin.dashboard_welcome.welcome')
-  end
-end
-
-context 'admins' do
-  before :each do
-    @admin = create(:admin)
-    sign_in(@admin)
-  end
-  it 'have access admin area' do
-    visit admin_root_path
-    expect(page).to have_content t('active_admin.dashboard')
-    expect(page).to have_content t('active_admin.dashboard_welcome.welcome')
   end
 end

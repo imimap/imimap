@@ -15,8 +15,6 @@ de:
       department: "Abteilung"
       rating: "Durchschnittswertung"
       name: "Firmenname"
-      name1: "Firmenname *"
-      name2: "Firmenname **"
       street: "Straße"
       zip: "Postleitzahl"
       city: "Stadt"
@@ -53,6 +51,7 @@ de:
     create_internship: "Du hast noch keine Informationen eingetragen."
     index:
       title: "Praktika im"
+      show: 'Zeige mir Praktika im'
       select: 'anzeigen'
       export:
         csv: 'CSV'
@@ -113,46 +112,32 @@ de:
     sign_up: "Danke fuer deine Anmeldung!"
     attributes:
       name: "Name"
-      name1: "Name *"
       email: "Email"
-      email1: "Email *"
       publicmail: "Emailadresse öffentlich anzeigen?"
       password: "Passwort"
-      password1: "Passwort *"
       password_confirmation: "Passwort bestätigen"
-      password_confirmation1: "Passwort bestätigen *"
       mailnotif: "Emailmitteilungen erhalten?"
-      mailnotif1: "Emailmitteilungen erhalten? *"
 
   students:
     personal_details: "Persönliche Details"
     attributes:
       first_name: "Vorname"
-      first_name1: "Vorname *"
       last_name: "Nachname"
-      last_name1: "Nachname *"
       email: "Email"
-      email1: "Email *"
       enrolment_number: "Matrikelnummer"
-      enrolment_number1: "Matrikelnummer *"
       birthday: "Geburtsdatum"
-      birthday1: "Geburtsdatum *"
       birthplace: "Geburtsort"
-      birthplace1: "Geburtsort *"
       street: "Straße"
-      street1: "Straße *"
       zip: "PLZ"
-      zip1: "PLZ *"
       city: "Stadt"
-      city1: "Stadt *"
       phone: "Telefon"
-      phone1: "Telefon *"
 
   internship_offers:
     header: "Praktikumsangebote"
     number_of: "Es gibt im Moment"
 
   welcome:
+    login_with_hrz: Bitte melden Sie sich mit Ihrem HRZ-Account an.
     help:
       header: "Willkommen bei der IMI-Map!"
       description: "Die IMI-Map ist dafür da, dir das Beantragen deines Pflichtpraktikums im Studiengang Internationale Medieninformatik zu erleichtern. Unter dem Tab 'Mein Praktikum' kannst du eintragen, wann du das komplette Modul B20 belegen möchtest. Das Modul 20 bestehend aus den Modulen B20.1, Auswertung von Erfahrungen am Praxisplatz, und B20.2, dem Fachpraktikum selbst. Wenn du uns das mitgeteilt hast, kannst du ein Praktikum oder ggf. auch mehrere Teilpraktika anlegen und dort alle Informationen eintragen, die auch für den Antrag benötigt werden. Dies ermöglicht es in der Sprechstunde der/des Praktikumsbeauftragten, in der du dein Praktikum beantragst, schon genauer auf dein Praktikum eingehen zu können und schon z.B. Kommentare zu deinem Praktikum in der Datenbank zu hinterlegen."

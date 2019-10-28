@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @user_can_see_company.company_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @user_can_see_company.user_id %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @user_can_see_company.created_by %>
+</p>
+
+<%= link_to 'Edit', edit_user_can_see_company_path(@user_can_see_company) %> |
+<%= link_to 'Back', user_can_see_companies_path %>

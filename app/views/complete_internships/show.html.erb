@@ -33,7 +33,7 @@
               <tr>
                 <th scope="row" colspan="2"><%= t "complete_internships.ci.number" %></th>
                 <td><%= t "complete_internships.ci.name" %></td>
-                <td><%= t "complete_internships.ci.values.#{@complete_internship.aep}" %></td>
+                <td><%= t "complete_internships.ci.values.#{@complete_internship.passed}" %></td>
               </tr>
               <tr>
                 <th></th>
@@ -45,7 +45,7 @@
                 <th></th>
                 <th scope="row"><%= t "complete_internships.parcial_internships.number" %></th>
                 <td><%= t "complete_internships.parcial_internships.name" %></td>
-                <td><%= t "complete_internships.parcial_internships.values.#{@complete_internship.aep}" %></td>
+                <td><%= t "complete_internships.parcial_internships.values.#{@complete_internship.over?}" %></td>
               </tr>
             </tbody>
           </table>

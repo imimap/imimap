@@ -16,8 +16,7 @@
 <div class="row">
   <div class="col-md-6">
       <div class="field" id="field-titles">
-        <%= f.label t "activerecord.attributes.company_address.street2" %>
-        <%= f.text_field :street, skip_label: true  %>
+        <%= f.text_field :street, required_application(f, :street)  %>
       </div>
     </div>
   </div>
@@ -25,14 +24,12 @@
   <div class="row">
     <div class="col-md-2">
       <div class="field" id="field-titles">
-        <%= f.label t "activerecord.attributes.company_address.zip1" %>
-        <%= f.text_field :zip, skip_label: true  %>
+        <%= f.text_field :zip, required_application(f, :zip)  %>
       </div>
     </div>
       <div class="col-md-4">
       <div class="field" id="field-titles">
-        <%= f.label t "activerecord.attributes.company_address.city2" %>
-        <%= f.text_field :city , skip_label: true %>
+        <%= f.text_field :city, required_application(f, :city)  %>
       </div>
     </div>
   </div>
@@ -40,7 +37,7 @@
   <div class="row">
     <div class="col-md-6">
       <div class="field" id="field-titles">
-        <%= f.label t "activerecord.attributes.company_address.country2" %> <br>
+        <%= f.label :country, required_application(f,:country, class: 'required') %> <br>
         <%= f.country_select :country, ["United States"], class: 'chzn-select' %>
       </div>
     </div>
@@ -49,7 +46,7 @@
   <div class="row">
 <div class="col-md-6">
       <div class="field" id="field-titles">
-        <%= f.text_field :phone %>
+        <%= f.text_field :phone, required_application(f, :phone) %>
       </div>
     </div>
   </div>

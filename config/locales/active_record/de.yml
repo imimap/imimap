@@ -1,8 +1,6 @@
 de:
   activerecord:
     attributes:
-      user:
-        password: "Passwort"
       admin_user:
         id: ID
         email: E-Mail
@@ -18,6 +16,7 @@ de:
         created_at: Erstellt am
         updated_at: Aktualisiert am
       user:
+        password: "Passwort"
         publicmail: E-Mail veröffentlicht
         mailnotif: Benachrichtigungen
       reading_prof:
@@ -49,6 +48,7 @@ de:
         new_company_address: "Oder lege eine neue Adresse an: "
         details: "Details zur Firmenadresse"
         submit: "Speichern"
+        back_to_select: 'Zurück zur Firmenauswahl'
       complete_internship:
         aep: "AEP"
         passed: "Passed"

@@ -1,0 +1,32 @@
+<%= form_with(model: user_can_see_company, local: true) do |form| %>
+  <% if user_can_see_company.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user_can_see_company.errors.count, "error") %> prohibited this user_can_see_company from being saved:</h2>
+
+      <ul>
+        <% user_can_see_company.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :company_id %>
+    <%= form.text_field :company_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :created_by %>
+    <%= form.number_field :created_by %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

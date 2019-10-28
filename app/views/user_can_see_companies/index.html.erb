@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Can See Companies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>User</th>
+      <th>Created by</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_can_see_companies.each do |user_can_see_company| %>
+      <tr>
+        <td><%= user_can_see_company.company_id %></td>
+        <td><%= user_can_see_company.user_id %></td>
+        <td><%= user_can_see_company.created_by %></td>
+        <td><%= link_to 'Show', user_can_see_company %></td>
+        <td><%= link_to 'Edit', edit_user_can_see_company_path(user_can_see_company) %></td>
+        <td><%= link_to 'Destroy', user_can_see_company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User Can See Company', new_user_can_see_company_path %>

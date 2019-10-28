@@ -8,7 +8,7 @@
         <% @company_address_suggestion.each do |cs|%>
         <ul class="list-group">
           <li class="list-group-item">
-            <%= link_to cs.street, company_address_path(:id => cs.id, :internship_id => params[:internship_id], :company_id => params[:company_id])%>
+            <%= link_to cs.address, company_address_path(:id => cs.id, :internship_id => params[:internship_id], :company_id => params[:company_id])%>
           </li>
         </ul>
         <%end%>
@@ -22,8 +22,9 @@
       <ul class="list-group">
       <h3><%=t"activerecord.attributes.company_address.new_company_address" %></h3>
         <li class="list-group-item">
-          <%= link_to t("activerecord.attributes.company_address.create") ,new_address_path(:company_id => params[:company_id],:internship_id => params[:internship_id])%>
-        </li>
+          <%= link_to t("activerecord.attributes.company_address.create") ,new_address_path(:company_id => params[:company_id],:internship_id => params[:internship_id]) %>
+
+          </li>
       </ul>
     </div>
   </div>
@@ -31,7 +32,11 @@
   <div class="row">
     <div class="col-md-4">
       <div class="field" id="field-titles2">
+
       </div>
     </div>
   </div>
 </div>
+
+
+<%= link_to t('activerecord.attributes.company_address.back_to_select'), select_company_path(:internship_id => params[:internship_id]) %>
