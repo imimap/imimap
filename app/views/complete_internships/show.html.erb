@@ -59,14 +59,14 @@
     <% if @complete_internship.student %>
       <div class="card-deck">
         <% @complete_internship.internships.order(:id).each do |internship|%>
-          <% accepted = internship.registration_state.nil? %>
-          <div class="card border-<%= accepted ? 'secondary' : 'success' %>">
+          <% caneditinternship = can? :edit, internship %>
+          <div class="card border-<%= caneditinternship ? 'secondary' : 'success' %>">
             <div class="card-header"><%= internship.internship_state.try(:name) %></div>
             <div class="card-body">
               <h5 class="card-title"><%= t "complete_internships.internship" %> @
                 <%= company_name_for_checklist(internship) %></h5>
               <p class="card-text">
-                <% if accepted %>
+                <% if caneditinternship %>
                   <%= render 'checklist',internship: internship %>
                 <% else %>
                   <%= render 'partial_internship', internship: internship %>
@@ -82,8 +82,11 @@
   <br>
     <%= link_to @complete_internship.student.internships.size == 0 ? t('complete_internships.new_tp0') : t('complete_internships.new_tp'), new_internship_path %>
     <br><br><br>
+    <% if can? :edit, @complete_internship %>
     <%= link_to t('buttons.edit'), edit_complete_internship_path(@complete_internship) %>
-     | <%= link_to t('buttons.back'), 'javascript:history.back()' %>
+     |
+    <% end %>
+     <%= link_to t('buttons.back'), 'javascript:history.back()' %>
 
 
 </div>

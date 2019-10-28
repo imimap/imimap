@@ -157,3 +157,10 @@ Two gems are used to generate documentation: society and railroady.
 
 ## Railroady
 * [Railroady on Github](https://github.com/preston/railroady)
+
+# Useful commands
+
+    docker-compose exec -T imimap rails db:drop DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+    docker-compose exec -T imimap rails db:create DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+    make import_dump file=dumps/imi-map-2019-10-28.pgdump
+    rake imimap:approve_all

@@ -8,6 +8,13 @@ FactoryBot.define do
     aep { true }
     passed { false }
   end
+  factory :complete_internship_no_aep, class: CompleteInternship do
+    semester
+    student
+    semester_of_study { 7 }
+    aep { false }
+    passed { false }
+  end
 
   factory :complete_internship_w_fresh_internship, class: CompleteInternship do
     semester

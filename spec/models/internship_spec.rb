@@ -34,15 +34,4 @@ RSpec.describe Internship, type: :model do
       expect(internship.rating).to eq(3)
     end
   end
-
-  describe '#editable?' do
-    it 'should return true' do
-      expect(internship.editable?).to eq(true)
-    end
-
-    it 'should return false' do
-      internship.completed = true
-      expect(internship.editable?).to eq(false)
-    end
-  end
 end

@@ -164,7 +164,8 @@ class InternshipsController < ApplicationResourceController
 
   MODEL_ATTRIBUTES = %i[company_address_id complete_internship_id].freeze
   BASIC_ATTRIBUTES = %i[semester_id start_date end_date].freeze
-  STATE_ATTRIBUTES = %i[internship_state_id
+  STATE_ATTRIBUTES = %i[approved
+                        internship_state_id
                         contract_state_id
                         registration_state_id
                         report_state_id payment_state_id
@@ -201,9 +202,11 @@ class InternshipsController < ApplicationResourceController
   private
 
   def set_internship
-    @internship = Internship
-                  .accessible_by(current_ability, :show)
-                  .find(params[:id])
+    @internship = Internship.find_for(
+      id: params[:id],
+      action: :edit,
+      ability: current_ability
+    )
   end
 
   def internship_params
