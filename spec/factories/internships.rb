@@ -253,4 +253,47 @@ FactoryBot.define do
     supervisor_name { 'internship supervisor name' }
     completed { false }
   end
+
+  factory :internship_not_approved, class: Internship do
+    working_hours { 35.0 }
+    living_costs  { 234.0 }
+    internship_rating
+    # company
+    user
+    title { 'A new Internship' }
+    recommend { false }
+    orientation
+    email_public { false }
+    description { text4 }
+    salary { 8 }
+    start_date { Date.today.to_date }
+    end_date { Date.today.to_date + 7.days }
+    tasks { "I don't know yet" }
+    operational_area { 'research and testing' }
+    semester
+    internship_state
+    reading_prof
+    payment_state
+    # registration_state - must currently be nil to be editable by student
+    approved { false }
+    contract_state
+    report_state
+    certificate_state
+    certificate_signed_by_internship_officer { Date.today.to_date }
+    certificate_signed_by_prof { Date.today.to_date }
+    certificate_to_prof { Date.today.to_date }
+    comment { 'something interesting' }
+    supervisor_email { 'supervisor@bar.com' }
+    supervisor_name { 'Vorname Nachname' }
+    completed { false }
+    internship_report do
+      Rack::Test::UploadedFile.new(File.join(Rails.root,
+                                             'spec', 'support', 'test.pdf'))
+    end
+    after(:build) do |i|
+      c = FactoryBot.build(:company)
+      i.company_address = c.company_addresses.first
+      i.complete_internship = build(:complete_internship_no_aep)
+    end
+  end
 end
