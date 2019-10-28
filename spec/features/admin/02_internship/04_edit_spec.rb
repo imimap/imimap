@@ -24,4 +24,17 @@ describe 'ActiveAdmin edit internship' do
     expect(page).to have_content @ca.company.name
     expect(page).not_to have_content old_ca.company.name
   end
+  it 'changes approved' do
+    approved_before = @internship.approved
+    visit admin_internship_path(id: @internship)
+    click_on t('internships.edit.editinternship')
+    if approved_before
+      uncheck 'internship_approved'
+    else
+      check 'internship_approved'
+    end
+    click_on t('internships.update')
+    @internship.reload
+    expect(@internship.approved).to be !approved_before
+  end
 end
