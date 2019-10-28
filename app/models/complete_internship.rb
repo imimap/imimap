@@ -25,7 +25,6 @@ class CompleteInternship < ApplicationRecord
   # after_initialize do
   #   self.aep = false if aep.nil?
   # end
-  def passed; end
 
   def internship_passed; end
 end

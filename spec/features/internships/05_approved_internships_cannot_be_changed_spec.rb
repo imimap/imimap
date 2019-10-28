@@ -12,7 +12,6 @@ describe 'Ability: Student edits Internship' do
       visit my_internship_path
     end
     it ' shows edit link' do
-      save_and_open_page
       expect(page).to have_link(t('buttons.edit'), href:
       edit_complete_internship_path(id: @complete_internship.id,
                                     locale: I18n.locale))
