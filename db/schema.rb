@@ -220,6 +220,7 @@ ActiveRecord::Schema.define(version: 2019_10_27_203648) do
     t.bigint "company_address_id"
     t.bigint "complete_internship_id"
     t.string "supervisor_phone"
+    t.boolean "contract_original"
     t.index ["company_address_id"], name: "index_internships_on_company_address_id"
     t.index ["complete_internship_id"], name: "index_internships_on_complete_internship_id"
   end

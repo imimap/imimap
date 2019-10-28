@@ -35,7 +35,7 @@ module Abilities
       can %i[edit update],
           CompleteInternship,
           student: { user: { id: user.id } }
-      can %i[edit update], Internship, student: { user: user }
+      can %i[edit update destroy], Internship, student: { user: user }
 
       # can :update, Internship, approved: false,  student: { user: user }
     end
