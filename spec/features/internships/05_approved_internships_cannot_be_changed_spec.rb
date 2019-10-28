@@ -44,7 +44,6 @@ describe 'Ability: Student edits Internship' do
     end
 
     it 'shows company details edit link' do
-      save_and_open_page
       expect(page).to have_link(
         t('complete_internships.checklist.company_details'), href:
     edit_company_path(id: @internship.company_address.company,
@@ -53,7 +52,6 @@ describe 'Ability: Student edits Internship' do
       )
     end
     it 'shows internship details as link' do
-      save_and_open_page
       expect(page).to have_link(
         t('complete_internships.checklist.internship_details'), href:
       edit_internship_path(id: @internship.id,
