@@ -95,7 +95,7 @@ class Internship < ApplicationRecord
     else
       d = self[:end_date].to_time + 4.weeks
       d.strftime('%Y-%m-%d')
-    end
+        end
   end
 
   def all_internship_details_filled?
