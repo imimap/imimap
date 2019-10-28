@@ -16,9 +16,9 @@ class User < ApplicationRecord
 
   has_many :user_can_see_companies
   has_many :visible_companies,
-  through: :user_can_see_companies,
-   source: :company,
-   inverse_of: :seeing_users
+           through: :user_can_see_companies,
+           source: :company,
+           inverse_of: :seeing_users
 
   serialize :feature_toggles
   def feature_on?(feature)

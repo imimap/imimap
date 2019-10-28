@@ -8,9 +8,9 @@ class Company < ApplicationRecord
 
   has_many :user_can_see_company
   has_many :seeing_users,
-  through: :user_can_see_company,
-   source: :user,
-   inverse_of: :visible_companies
+           through: :user_can_see_company,
+           source: :user,
+           inverse_of: :visible_companies
 
   def self.attributes_required_for_internship_application
     [:website]

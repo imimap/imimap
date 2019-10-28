@@ -114,16 +114,16 @@ RSpec.describe UserCanSeeCompaniesController, type: :controller do
         end
       end
 
-    # context 'with invalid params' do
-    #   it "returns a success response (i.e. to display the 'edit' template)" do
-    #     user_can_see_company = UserCanSeeCompany.create! valid_attributes
-    #     put :update, params: { id: user_can_see_company.to_param,
-    #                            user_can_see_company: invalid_attributes },
-    #                  session: valid_session
-    #     expect(response).to redirect_to(edit_user_can_see_company_path)
-    #     expect(response).to be_successful
-    #   end
-    # end
+      # context 'with invalid params' do
+      #   it "returns a success response (i.e. to display the 'edit' template)" do
+      #     user_can_see_company = UserCanSeeCompany.create! valid_attributes
+      #     put :update, params: { id: user_can_see_company.to_param,
+      #                            user_can_see_company: invalid_attributes },
+      #                  session: valid_session
+      #     expect(response).to redirect_to(edit_user_can_see_company_path)
+      #     expect(response).to be_successful
+      #   end
+      # end
     end
 
     describe 'DELETE #destroy' do

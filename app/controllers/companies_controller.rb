@@ -142,5 +142,4 @@ class CompaniesController < ApplicationResourceController
       UserCanSeeCompany.company_search(company_id: c.id, user: current_user)
     end
   end
-
 end
