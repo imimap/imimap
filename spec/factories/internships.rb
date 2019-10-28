@@ -11,7 +11,6 @@ DELIM
 
 FactoryBot.define do
   factory :internship do
-    approved { false }
     before(:create) do |i|
       c = FactoryBot.create(:company)
       i.company_address = c.company_addresses.first
@@ -38,6 +37,7 @@ FactoryBot.define do
     reading_prof
     payment_state
     registration_state
+    approved { true }
     contract_state
     report_state
     certificate_state
@@ -63,7 +63,6 @@ FactoryBot.define do
   end
 
   factory :internship_1, class: Internship do
-    approved { false }
     before(:create) do |i|
       c = FactoryBot.create(:company_1)
       i.company_address = c.company_addresses.first
@@ -89,6 +88,7 @@ FactoryBot.define do
     complete_internship
     reading_prof
     payment_state
+    approved { true }
     registration_state
     contract_state
     report_state
@@ -118,7 +118,6 @@ FactoryBot.define do
   end
 
   factory :internship_2, class: Internship do
-    approved { false }
     before(:create) do |i|
       c = FactoryBot.create(:company_2)
       i.company_address = c.company_addresses.first
@@ -144,6 +143,7 @@ FactoryBot.define do
     internship_state
     reading_prof
     payment_state
+    approved { true }
     registration_state
     contract_state
     report_state
@@ -195,6 +195,7 @@ FactoryBot.define do
     end_date { Date.today.to_date + 7.days }
     tasks { text4 }
     operational_area { 'operational area' }
+    approved { false }
     complete_internship
     reading_prof
     payment_state
