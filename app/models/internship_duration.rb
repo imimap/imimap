@@ -38,6 +38,10 @@ class InternshipDuration
     end
   end
 
+  def invalid_durations
+    %i[negative too_short]
+  end
+
   private
 
   def required_weeks(semester)
