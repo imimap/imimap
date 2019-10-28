@@ -31,6 +31,7 @@ ActiveAdmin.register Internship do
     end
     column :company_v2
     column :semester
+    column :approved?
     column :passed?
     column :internship_state
     column :report_state
