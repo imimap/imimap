@@ -7,7 +7,6 @@ RSpec.describe CompleteInternship, type: :model do
     create(:complete_internship)
   end
   it 'computes passed correctly' do
-      create(:complete_internship)
+    create(:complete_internship)
   end
-
 end
