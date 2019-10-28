@@ -100,7 +100,7 @@ class LDAPHTWAdapter
         mock_settings
       else
         @host, @port, @connectstring = ldapconfig&.split('/')
-    end
+      end
     else
       mock_settings
     end

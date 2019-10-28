@@ -48,6 +48,15 @@ class Internship < ApplicationRecord
        supervisor_name supervisor_email supervisor_phone]
   end
 
+  def self.find_for(id:, action:, ability:)
+    # The accessible_by call cannot be used with a block 'can' definition.
+    #   .accessible_by(current_ability, :edit)
+    instance = find(id)
+    raise CanCan::AccessDenied unless ability.can? action, instance
+
+    instance
+  end
+
   def rating
     internship_rating.total_rating
   end

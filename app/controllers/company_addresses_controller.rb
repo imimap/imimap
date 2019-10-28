@@ -119,8 +119,11 @@ class CompanyAddressesController < ApplicationResourceController
   def set_internship_group
     # The accessible_by call cannot be used with a block 'can' definition.
     #   .accessible_by(current_ability, :edit)
-    @internship = Internship.find(params[:company_address][:internship_id])
-    raise CanCan::AccessDenied unless can? :edit, @internship
+    @internship = Internship.find_for(
+      id: params[:company_address][:internship_id],
+      action: :edit,
+      ability: current_ability
+    )
 
     #  @internship.company_address.build(company_address_params)
     @company_address = CompanyAddress.new(company_address_params)
