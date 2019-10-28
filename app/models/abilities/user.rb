@@ -53,27 +53,56 @@ module Abilities
           internships: { complete_internship: { student: { user: user } } }
     end
 
+    def can_edit_associated_company(user)
+      # only while approved: false
+      can %i[edit update], Company do |company|
+        users = UserCanSeeCompany.associated_users_for_company(company: company)
+        if users.include? user
+          users.none? { |u| u != user }
+        else
+          false
+        end
+      end
+    end
+
+    def can_edit_associated_company_address(user)
+      can %i[edit update], CompanyAddress do |ca|
+        users = UserCanSeeCompany.associated_users_for_company_address(
+          company_address: ca
+        )
+        if users.include? user
+          users.none? { |u| u != user }
+        else
+          false
+        end
+      end
+    end
+
     def can_show_company(user)
       can :show,
           [Company, CompanyAddress],
           internships: { complete_internship: { student: { user: user } } }
     end
 
-    def can_edit_company_only_associated_with_own_internship(user)
-      can %i[edit update],
-          [Company, CompanyAddress],
-          internships: { complete_internship: { student: { user: user } } }
-    end
-
-    def can_see_limited_number_of_companies(_user)
-      can :show, CompanyAddress
+    def can_show_limited_number_of_companies(user)
+      can :show, CompanyAddress do |company_address|
+        UserCanSeeCompany.where(user: user,
+                                company: company_address.company,
+                                created_by: 'company_suggest').exists?
+      end
+      can :show, Company do |company|
+        UserCanSeeCompany.where(user: user,
+                                company: company,
+                                created_by: 'company_suggest').exists?
+      end
     end
 
     def company(user)
       can_create_company(user)
+      can_edit_associated_company(user)
+      can_edit_associated_company_address(user)
       can_show_company(user)
-      can_edit_company_only_associated_with_own_internship(user)
-      can_see_limited_number_of_companies(user)
+      can_show_limited_number_of_companies(user)
     end
   end
 end

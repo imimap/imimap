@@ -38,4 +38,28 @@ class UserCanSeeCompany < ApplicationRecord
     UserCanSeeCompany.where(user: user, created_by: created_by).count <
       LIMITS[created_by.to_sym]
   end
+
+  def self.user_associated_with_company(user:, company:)
+    associated_companies(user: user).include? company
+  end
+
+  def self.associated_companies(user:)
+    associated_company_addresses(user: user).map(&:company)
+  end
+
+  def self.associated_company_addresses(user:)
+    return [] if (s = user.student).nil?
+
+    s.internships.map(&:company_address).reject(&:nil?)
+  end
+
+  def self.associated_users_for_company(company:)
+    company.company_addresses.map do |ca|
+      associated_users_for_company_address(company_address: ca)
+    end.flatten
+  end
+
+  def self.associated_users_for_company_address(company_address:)
+    company_address.internships.map { |i| i.student.user }
+  end
 end
