@@ -53,8 +53,14 @@ module Abilities
           internships: { complete_internship: { student: { user: user } } }
     end
 
+    def can_show_company(user)
+      can :show,
+          [Company, CompanyAddress],
+          internships: { complete_internship: { student: { user: user } } }
+    end
+
     def can_edit_company_only_associated_with_own_internship(user)
-      can %i[edit show update],
+      can %i[edit update],
           [Company, CompanyAddress],
           internships: { complete_internship: { student: { user: user } } }
     end
@@ -65,6 +71,7 @@ module Abilities
 
     def company(user)
       can_create_company(user)
+      can_show_company(user)
       can_edit_company_only_associated_with_own_internship(user)
       can_see_limited_number_of_companies(user)
     end
