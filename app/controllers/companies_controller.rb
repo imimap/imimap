@@ -138,7 +138,9 @@ class CompaniesController < ApplicationResourceController
         nil
       end
     end
-    results
+    results.select do |c|
+      UserCanSeeCompany.company_search(company_id: c.id, user: current_user)
+    end
   end
 
 end
