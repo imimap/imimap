@@ -201,10 +201,11 @@ class InternshipsController < ApplicationResourceController
   private
 
   def set_internship
-    # The accessible_by call cannot be used with a block 'can' definition.
-    #   .accessible_by(current_ability, :edit)
-    @internship = Internship.find(params[:id])
-    raise CanCan::AccessDenied unless can? :edit, @internship
+    @internship = Internship.find_for(
+      id: params[:id],
+      action: :edit,
+      ability: current_ability
+    )
   end
 
   def internship_params
