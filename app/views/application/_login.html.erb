@@ -3,7 +3,7 @@
 
 <div class="w-100 h-100 text-center " style="background-color: #333333;">
     <div class="w-75 h-25 m-auto"></div>
-    <div class = "w-75 h-50 m-auto mt-0 container">
+    <div id="login_inputs" class = "w-75 h-50 m-auto mt-0 container">
       <a class="m-0 navbar-brand imi-map-logo" href="<%= root_path %>">
         <%= image_tag "plane.gif", width: 130, height: 130, alt: "" %>
       </a>
@@ -17,7 +17,6 @@
         <% end %>
         <%= t('welcome.login_with_hrz') %>
       </div>
-
       <%= form_for :user, url: session_path(:user), html: {class: "imimap-inverse"} do |f| %>
 
         <div class="input-group w-auto mt-3 row">
@@ -46,3 +45,30 @@
     </div>
     <div class="w-75 h-25 m-auto"></div>
 </div>
+
+
+<script type="text/javascript">
+
+$(window).on('resize', function() {setInputSize();});
+
+function setInputSize() {
+  var win = $(this);
+  if (win.width() > 600 && win.width() <= 1700) {
+    $('#login_inputs').addClass('w-50');
+    $('#login_inputs').removeClass('w-75');
+    $('#login_inputs').removeClass('w-25');
+  } else if (win.width() > 1700) {
+    $('#login_inputs').addClass('w-25');
+    $('#login_inputs').removeClass('w-75');
+    $('#login_inputs').removeClass('w-50');
+  } else {
+    $('#login_inputs').addClass('w-75');
+    $('#login_inputs').removeClass('w-50');
+    $('#login_inputs').removeClass('w-25');
+  }
+}
+
+
+  setInputSize();
+
+</script>
