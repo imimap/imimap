@@ -1,4 +1,6 @@
 
+<div class="margin_bottom_10">
+
 <div id="form-block4" class="text-left">
     <h4><%= @complete_internship.student.try(:first_name) %>
       <%= @complete_internship.student.try(:last_name) %>
@@ -54,10 +56,7 @@
       </div>
     </div>
 
-
-
-    <% 
-    if @complete_internship.student %>
+    <% if @complete_internship.student %>
       <div class="card-deck">
         <% @complete_internship.internships.order(:id).each do |internship|%>
           <% caneditinternship = can? :edit, internship %>
@@ -90,4 +89,5 @@
      <%= link_to t('buttons.back'), 'javascript:history.back()' %>
 
 
+</div>
 </div>
