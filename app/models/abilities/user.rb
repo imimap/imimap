@@ -9,6 +9,7 @@ module Abilities
       can_create_internship(user)
       can_show_own_internship(user)
       can_edit_own_internship(user)
+
       map(user)
       company(user)
       can :read, InternshipOffer
@@ -41,10 +42,9 @@ module Abilities
               false
             end
           end
-
       # evtl. vereinfachen zu
       # can :update, Internship, approved: false,  student: { user: user }
-      can %i[edit update], Internship do |internship|
+      can %i[edit update destroy], Internship do |internship|
         if internship.complete_internship.student.user == user
           !internship.approved && internship.registration_state.nil?
         else
