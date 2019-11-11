@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
 namespace :imimap do
+  desc 'set all internships to approved'
+  task approve_all: :environment do
+    Internship.all.each do |i|
+      i.approved = true
+      i.save
+    end
+  end
+end
+namespace :imimap do
   desc 'geocode all company addresses'
   task geocode_companies: :environment do
     CompanyAddress.find_each do |ca|

@@ -5,8 +5,11 @@ require 'time'
 # Internship respresents one actual internship within one company, as opposed
 # to CompleteInternship that respresents the whole course B20.
 class Internship < ApplicationRecord
+  after_initialize do
+    self.approved = false if approved.nil?
+  end
   validates :semester, :complete_internship, presence: true
-
+  validates :approved, inclusion: { in: [true, false] }
   # validates_presence_of :company_address
 
   belongs_to :user
@@ -45,13 +48,17 @@ class Internship < ApplicationRecord
        supervisor_name supervisor_email supervisor_phone]
   end
 
-  def rating
-    internship_rating.total_rating
+  def self.find_for(id:, action:, ability:)
+    # The accessible_by call cannot be used with a block 'can' definition.
+    #   .accessible_by(current_ability, :edit)
+    instance = find(id)
+    raise CanCan::AccessDenied unless ability.can? action, instance
+
+    instance
   end
 
-  def editable?
-    report_state.try(:name) != 'missing' &&
-      student.try(:user?) && !completed
+  def rating
+    internship_rating.total_rating
   end
 
   def company?

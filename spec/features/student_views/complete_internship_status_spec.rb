@@ -22,6 +22,9 @@ describe 'Complete Internship' do
           expect(page).not_to have_content(
             '{false=>"still open", true=>"passed"}'
           )
+          expect(page).not_to have_content(
+            '{false=>"noch offen", true=>"bestanden"}'
+          )
         end
       end
 
@@ -33,6 +36,11 @@ describe 'Complete Internship' do
           click_on t('save')
           click_on t('complete_internships.new_tp0')
           click_on t('save')
+        end
+
+        it 'new internship should not be approved' do
+          internship = @user.student.internships.first
+          expect(internship).not_to be_approved
         end
 
         it '- no start/end_dates provided,
@@ -84,7 +92,7 @@ describe 'Complete Internship' do
         end
       end
 
-      context 'with two parcial internships created' do
+      context 'with two partial internships created' do
         before :each do
           create(:semester)
           visit my_internship_path

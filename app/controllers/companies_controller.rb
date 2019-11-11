@@ -4,7 +4,8 @@
 class CompaniesController < ApplicationResourceController
   before_action :set_company, only: %i[show edit update destroy]
   before_action :new_company, only: %i[new]
-  before_action :new_company_params, only: %i[create]
+  before_action :new_company_params, only: %i[create create_and_save]
+  before_action :set_internship_id, only: %i[create update]
 
   def index
     @companies = Company.all
@@ -49,8 +50,8 @@ class CompaniesController < ApplicationResourceController
     respond_to do |format|
       if @company.save
         format.html do
-          redirect_to new_address_path(@company.id, internship_id:
-                                         params[:company][:internship_id]),
+          redirect_to new_address_path(@company.id,
+                                       internship_id: @internship_id),
                       notice: 'Company was successfully created.'
         end
       else
@@ -65,7 +66,7 @@ class CompaniesController < ApplicationResourceController
         format.html do
           if @current_user.student
             redirect_to edit_company_address_path(
-              Internship.find(params[:company][:internship_id]).company_address
+              Internship.find(@internship_id).company_address
             ), notice: 'Company was successfully updated.'
           else
             redirect_to @company, notice: 'Company was successfully updated.'
@@ -102,6 +103,10 @@ class CompaniesController < ApplicationResourceController
   end
 
   private
+
+  def set_internship_id
+    @internship_id = params[:company][:internship_id]
+  end
 
   def set_company
     @company = Company.find(params[:id])

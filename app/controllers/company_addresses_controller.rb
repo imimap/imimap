@@ -40,14 +40,15 @@ class CompanyAddressesController < ApplicationResourceController
   end
 
   def create
-    @company_address = CompanyAddress.new(company_address_params)
-    respond_to do |format|
-      if @company_address.save
-        redirect_to_ci(format)
-      else
-        format.html { render action: 'new', notice: 'Address creation failed.' }
-      end
-    end
+    raise Exception 'deprecated?'
+    # @company_address = CompanyAddress.new(company_address_params)
+    # respond_to do |format|
+    #   if @company_address.save
+    #     redirect_to_ci(format)
+    #   else
+    #   format.html { render action: 'new', notice: 'Address creation failed.' }
+    #   end
+    # end
   end
 
   # CodeReview: how do create and create_and_save differ? is create needed?
@@ -115,16 +116,18 @@ class CompanyAddressesController < ApplicationResourceController
     # @company_address = CompanyAddress.find(params[:id])
   end
 
-  # CodeReview: this needs to be refactored/rethought.
-  # CompanyAddresses are always created in the context of internships.
-  # the internship should be independend of the logged in user,
-  # to enable admins to use this functionality as well.
   def set_internship_group
+    # The accessible_by call cannot be used with a block 'can' definition.
+    #   .accessible_by(current_ability, :edit)
+    @internship = Internship.find_for(
+      id: params[:company_address][:internship_id],
+      action: :edit,
+      ability: current_ability
+    )
+
+    #  @internship.company_address.build(company_address_params)
     @company_address = CompanyAddress.new(company_address_params)
     @company = Company.find(params[:company_id])
-    @internship = Internship
-                  .accessible_by(current_ability, :edit)
-                  .find(params[:company_address][:internship_id])
   end
 
   def set_company_id

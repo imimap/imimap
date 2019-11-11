@@ -33,11 +33,24 @@ module Abilities
 
     def can_edit_own_internship(user)
       can %i[edit update],
-          CompleteInternship,
-          student: { user: { id: user.id } }
-      can %i[edit update destroy], Internship, student: { user: user }
+          CompleteInternship do |ci|
+            # student: { user: { id: user.id } }
+            if ci.student.user == user
+              !ci.aep
+            else
+              false
+            end
+          end
 
+      # evtl. vereinfachen zu
       # can :update, Internship, approved: false,  student: { user: user }
+      can %i[edit update], Internship do |internship|
+        if internship.complete_internship.student.user == user
+          !internship.approved && internship.registration_state.nil?
+        else
+          false
+        end
+      end
     end
 
     def map(_user)

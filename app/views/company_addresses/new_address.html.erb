@@ -3,6 +3,8 @@
    # why is this a special form and not form.html.erb used? is the latter still used somewhere else?
    %>
 
+  <div class="margin_bottom_10">
+
   <div class="container">
 <%= bootstrap_form_for @company_address, :url => {:controller => 'company_addresses', :action => "create_and_save",
                                                 params: {internship_id: :internship_id}} do |f| %>
@@ -80,5 +82,6 @@
       </div>
   <% end %>
   <%= link_to (t "buttons.back"), 'javascript:history.back()' %>
+  </div>
   </div>
   </div>

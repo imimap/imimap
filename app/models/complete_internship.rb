@@ -14,11 +14,17 @@ class CompleteInternship < ApplicationRecord
   validates :student, presence: true
 
   def over?
-    # sum of the durations of every parcial internship of they are over already
+    # sum of the durations of every partial internship of they are over already
     week_count = Internship.where('complete_internship_id = ? AND end_date < ?',
                                   id, Date.today)
                            .map { |tp| tp.duration.weeks }
                            .sum
     week_count >= 16 # not beautiful because of hardcoded duration
   end
+
+  # after_initialize do
+  #   self.aep = false if aep.nil?
+  # end
+
+  def internship_passed; end
 end

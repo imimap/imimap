@@ -32,7 +32,7 @@ class Student < ApplicationRecord
 
   def name
     name = "#{first_name} #{last_name}"
-    name.empty? ? email : name
+    name == ' ' ? email : name
   end
 
   def self.find_or_create_for(user:)
@@ -56,7 +56,7 @@ class Student < ApplicationRecord
   end
 
   def all_personal_details_filled?
-    !(first_name.empty? || last_name.empty? || birthday.nil? ||
-      birthplace.empty?)
+    !([first_name, last_name, birthday, birthplace].any?(&:nil?) ||
+    [first_name, last_name, birthplace].any?(&:empty?))
   end
 end

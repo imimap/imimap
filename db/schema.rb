@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_27_203648) do
+ActiveRecord::Schema.define(version: 2019_10_28_063759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -221,6 +221,7 @@ ActiveRecord::Schema.define(version: 2019_10_27_203648) do
     t.bigint "complete_internship_id"
     t.string "supervisor_phone"
     t.boolean "contract_original"
+    t.boolean "approved", default: false
     t.index ["company_address_id"], name: "index_internships_on_company_address_id"
     t.index ["complete_internship_id"], name: "index_internships_on_complete_internship_id"
   end

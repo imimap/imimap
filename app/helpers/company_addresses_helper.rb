@@ -10,13 +10,6 @@ module CompanyAddressesHelper
     "#{name}, #{street}, #{city}, #{country}"
   end
 
-  def find_internship_with_company_address
-    internships = Internship.accessible_by(current_ability)
-    internships.find(
-      params[:company_address][:internship_id]
-    )
-  end
-
   def find_internship
     @current_user.student
                  .complete_internship

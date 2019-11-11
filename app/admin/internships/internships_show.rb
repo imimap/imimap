@@ -25,6 +25,7 @@ ActiveAdmin.register Internship do
       end
       row :orientation
       row :semester
+      row :approved
       row :registration_state
       row :payment_state
       row :contract_state
