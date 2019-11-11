@@ -65,8 +65,8 @@
             <div class="card-body">
               <h5 class="card-title " id="h5_inline" ><%= t "complete_internships.internship" %> @
                 <%= company_name_for_checklist(internship) %></h5>
-                <% if !internship.approved %>
-                 <%= button_to 'x', internship_path(internship.id), :method => :delete, data: {confirm: 'Bist du dir sicher, dass du das Praktikum löschen willst?'}, :class => "deleteButton"  %>
+                <% if caneditinternship %>
+                 <%= button_to 'x', internship_path(internship.id), :method => :delete, data: {confirm: t('buttons.confirmation')}, :class => "deleteButton"  %>
                 <% end %>
               <p class="card-text">
                 <% if caneditinternship %>

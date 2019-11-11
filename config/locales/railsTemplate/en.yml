@@ -283,6 +283,7 @@ en:
     done_intership_here: "Have you done your internship here, too?"
     change_details: "Change Details"
     compare: "Compare"
+    confirmation: "Do you really want to delete that internship?"
 
   download:
     form: "Forms"
