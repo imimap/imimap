@@ -11,12 +11,12 @@ def migrate_email(student:, email:, enrolment_number:)
 end
 
 def save_email(student:, enrolment_number:)
-  student.email = 's0' + enrolment_number.to_s + '@htw-berlin.de'
+  student.email = User.email_for(enrolment_number: enrolment_number)
   student.save!
 end
 
 def save_email_and_private_email(student:, email:, enrolment_number:)
-  student.email = 's0' + enrolment_number.to_s + '@htw-berlin.de'
+  student.email = User.email_for(enrolment_number: enrolment_number)
   student.save!
   student.private_email = email
   student.save
