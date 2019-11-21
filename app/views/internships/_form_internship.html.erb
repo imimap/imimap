@@ -100,12 +100,33 @@
 
 <div class="row">
   <div class="col-md-6">
+    <div class="field" id="field-titles">
+      <%= t("complete_internships.checklist.contract")%>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <div class="field" id="field-titles">
+      <%= f.radio_button :contract_original, "true", label: t("complete_internships.checklist.contract_original")  %>
+    </div>
+  </div>
+
+  <div class="col-md-1">
+    <div class="field" id="field-titles">
+      <%= f.radio_button :contract_original, "false", label: t("complete_internships.checklist.contract_copy")  %>
+    </div>
+  </div>
+</div>
+</br>
+<div class="row">
+  <div class="col-md-6">
     <div class="field" id="field-titles2">
     <%= f.submit t('save')%>
     </div>
   </div>
 </div>
-
 </div>
 
 <%= link_to t('buttons.back'), 'javascript:history.back()' %>
@@ -117,7 +138,6 @@
 <script type="text/javascript">
   function validateDuration() {
   }
-
   function parseEuropeanDate(dateString) {
     var date_ok = Date.parse(dateString);
     if (isNaN(date_ok) == false) {
@@ -156,7 +176,6 @@
       }
     }
   }
-
   function weeksBetween(start_date, end_date ) {
     //https://www.htmlgoodies.com/html5/javascript/calculating-the-difference-between-two-dates-in-javascript.html
     //Get 1 day in milliseconds
@@ -169,7 +188,6 @@
     // Convert back to days and return
     return Math.round(difference_ms/one_week);
   }
-
   function validate(duration) {
     var validationNotification = document.getElementById("validation_notification");
     //from app/models/internship_duration.rb

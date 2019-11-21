@@ -170,10 +170,11 @@ class InternshipsController < ApplicationResourceController
                         registration_state_id
                         report_state_id payment_state_id
                         reading_prof_id
-                        certificate_signed_by_internship_officer
+                        certificate_signed_by_internship_officers
                         certificate_signed_by_prof
                         certificate_state_id
-                        certificate_to_prof].freeze
+                        certificate_to_prof
+                        contract_original].freeze
   REPORT_ATTRIBUTES = [:internship_report].freeze
   NOT_USED_ATTRIBUTES = %i[completed user_id].freeze
   WORK_DESCRIPTION_ATTRIBUTES = %i[operational_area

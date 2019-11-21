@@ -52,7 +52,7 @@ function radiosActivated(internshipId) {
   var radioOriginalId = "original_" + internshipId;
   var radioCopyId = "copy_" + internshipId;
   var cb = document.getElementById(checkboxId);
-  var iconOk = document.getElementById(contract);
+  var iconOk = document.getElementById(contract); 
   var rdOriginal = document.getElementById(radioOriginalId);
   var rdCopy = document.getElementById(radioCopyId);
   if (rdOriginal.checked === true || rdCopy.checked === true) {
