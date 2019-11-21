@@ -14,7 +14,7 @@ RSpec.describe 'complete_internships/index', type: :view do
     assign(:complete_internships, [
              create(:complete_internship,
                     semester: s2,
-                    semester_of_study: 4),
+                    semester_of_study: 4, aep: false),
              create(:complete_internship,
                     semester: s1,
                     semester_of_study: 5, aep: false)
@@ -29,7 +29,7 @@ RSpec.describe 'complete_internships/index', type: :view do
     assert_select 'tr>td', text: 'SS 19'.to_s, count: 1
     assert_select 'tr>td', text: 4.to_s, count: 1
     assert_select 'tr>td', text: 5.to_s, count: 1
-    assert_select 'tr>td', text: 'bestanden', count: 1
-    assert_select 'tr>td', text: false.to_s, count: 2
+    false_s = t 'complete_internships.aep.values.false'
+    assert_select 'tr>td', text: false_s, count: 2
   end
 end

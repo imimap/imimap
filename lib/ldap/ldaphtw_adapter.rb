@@ -76,7 +76,12 @@ class LDAPHTWAdapter
 
   def authenticate
     begin
-      success = netldap.bind
+      if @always_return_true
+        success = true
+        Rails.logger.warn('--LDAP-- SET TO ALWAYS AUTHENTICATE!!')
+      else
+        success = netldap.bind
+      end
     rescue StandardError => e
       log_error(host: host, exception: e)
       return false
@@ -90,15 +95,24 @@ class LDAPHTWAdapter
       # ldap_host|ldap_port|ldap_htw
       ldapconfig = ENV['LDAP']
       Rails.logger.error("-- ldap -- ENV['LDAP'] missing ") unless ldapconfig
-      @host, @port, @connectstring = ldapconfig&.split('/')
+      if ldapconfig == 'ALWAYS_RETURN_TRUE'
+        @always_return_true = true
+        mock_settings
+      else
+        @host, @port, @connectstring = ldapconfig&.split('/')
+      end
     else
-      @host = 'some.host.de'
-      @port = 4711
-      @connectstring = 'xxxx'
+      mock_settings
     end
   end
 
   private
+
+  def mock_settings
+    @host = 'some.host.de'
+    @port = 4711
+    @connectstring = 'xxxx'
+  end
 
   def ldap_username
     return nil if email.nil?

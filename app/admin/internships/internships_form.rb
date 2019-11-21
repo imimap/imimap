@@ -30,6 +30,11 @@ ActiveAdmin.register Internship do
     end
 
     f.inputs 'Internship' do
+      f.input :semester_id,
+              label: 'Semester',
+              as: :select,
+              collection: Semester.order(:name)
+                                  .collect { |s| [s.name, s.id] }
       f.input :start_date, as: :datepicker,
                            datepicker_options: {
                              min_date: '2010-01-01',
@@ -49,11 +54,7 @@ ActiveAdmin.register Internship do
       f.input :orientation
     end
     f.inputs 'Administration' do
-      f.input :semester_id,
-              label: 'Semester',
-              as: :select,
-              collection: Semester.order(:name)
-                                  .collect { |s| [s.name, s.id] }
+      f.input :approved
       f.input :registration_state_id,
               label: 'Registration',
               as: :select,
