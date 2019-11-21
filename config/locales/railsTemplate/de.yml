@@ -280,6 +280,7 @@ de:
     edit: "Bearbeiten"
     destroy: "Löschen"
     back: "Zurück"
+    back_to_overview: "Zurück zur Übersicht"
     newcompany: "Neue Firma"
     newinternship: "Neues Praktikum"
     newuser: "Neuer Benutzer"
