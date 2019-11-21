@@ -40,6 +40,6 @@ class InternshipOffersController < ApplicationResourceController
   end
 
   def self.permitted_params
-    %i[title body pdf city country]
+    %i[title body pdf city country active]
   end
 end
