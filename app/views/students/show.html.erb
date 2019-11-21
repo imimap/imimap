@@ -35,17 +35,7 @@
   <div class="row">
       <div class="col-md-4">
         <div class="field">
-            <%= f.text_field :birthday , required_application(f, :birthday,
-            {"data-provide" => 'datepicker',
-            'data-date-format' => "yyyy-mm-dd",
-            'data-date-start-view' => 'years',
-            format: :datepicker
-          } )%>
-            <script type="text/javascript">
-              $(document).ready(function(){
-                $('.datepicker').datepicker();
-              });
-            </script>
+          <%= f.date_field :birthday, required_application(f, :birthday, placeholder: t('date.formats.placeholder'))  %>
         </div>
       </div>
 
@@ -68,11 +58,11 @@
     <div class="row">
       <div class="col-md-4">
         <div class="field">
-        <%= f.submit t('helpers.submit.generic_update')%>
+          <%= f.submit t('helpers.submit.generic_update')%>
         </div>
       </div>
     </div>
-
+    <br>
     <%= link_to t('buttons.back'), 'javascript:history.back()' %>
   </div>
 
