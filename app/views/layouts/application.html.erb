@@ -8,11 +8,18 @@
 <% else %>
   <%= render 'header' %>
 
-  <% flash.each do |key, value| %>
-      <div class="<%= flash_class(key) %>">
-        <%= value %>
-      </div>
-  <% end %>
+<% if flash.count > 0 %>
+  <div class="card border-light mx-3">
+    <div class="card-body text-center">
+      <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %>">
+          <%= value %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
 
   <% if @map_view %>
     <%= yield %>
