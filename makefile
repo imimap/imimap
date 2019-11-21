@@ -19,10 +19,13 @@ travis:
 	docker-compose exec imimap rspec
 	docker-compose exec imimap rails factory_bot:lint
 	docker-compose exec imimap rails db:seed
+# make file=dumps/dump-xs import
 import: $(file)
 	docker-compose exec imimap sh -c "rails db:drop ; rails db:create"
 	cat $(file) | docker-compose exec -T postgresql psql --set ON_ERROR_STOP=on -h localhost -U imi_map imimap -f -
 	docker-compose exec imimap rails db:migrate
+plain_import: $(file)
+	cat $(file) | docker-compose exec -T postgresql psql --set ON_ERROR_STOP=on -h localhost -U imi_map imimap -f -
 db_migrate:
 	docker-compose exec imimap rails db:migrate
 db_seed:
