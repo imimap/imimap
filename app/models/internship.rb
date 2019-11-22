@@ -112,6 +112,6 @@ class Internship < ApplicationRecord
     helper_array.each do |e|
       return false if e.blank?
     end
-    true
+    duration.valid_duration?(self)
   end
 end
