@@ -42,6 +42,11 @@ class InternshipDuration
     %i[negative too_short]
   end
 
+  def valid_duration?(internship)
+    initialize_validation(internship)
+    !invalid_durations.include?(@validation)
+  end
+
   private
 
   def required_weeks(semester)

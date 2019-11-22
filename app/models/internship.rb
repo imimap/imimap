@@ -105,7 +105,6 @@ class Internship < ApplicationRecord
     helper_array.each do |e|
       return false if e.blank?
     end
-    duration_status = duration.initialize_validation(self)
-    return true unless duration.invalid_durations.include?(duration_status)
+    duration.valid_duration?(self)
   end
 end
