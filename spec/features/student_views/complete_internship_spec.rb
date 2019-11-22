@@ -45,7 +45,7 @@ describe 'Complete Internship' do
           )
           expect(page).to have_content(semester.name)
         end
-        # 
+        #
         # it 'should delete a partial internship' do
         #   Capybara.current_driver = :poltergeist
         #   create(:semester)
