@@ -46,7 +46,7 @@
       <tr>
         <td style="width:1%">
           <i class="icon-ok icon-large text-success d-none" id="contract_<%=internship.id%>"></i>
-          <% if !internship.contract_original.nil? && internship.contract_original == true %>
+          <% if internship.contract_original %>
             <i class="icon-ok icon-large text-success"></i>
           <%end%>
         </td>
@@ -56,14 +56,14 @@
           </label>
           <br>
           <span class="ml-3">
-            <% if !internship.contract_original.nil? && internship.contract_original == true %>
+            <% if internship.contract_original %>
             <input type="radio" name="contract<%=internship.id%>" id="original_<%=internship.id%>" value="original" checked= true disabled = true> <%= t("complete_internships.checklist.contract_original") %>
             <% else %>
             <input type="radio" name="contract<%=internship.id%>" id="original_<%=internship.id%>" value="original" disabled = true> <%= t("complete_internships.checklist.contract_original") %>
             <%end%>
           </span>
           <span class="ml-3">
-            <% if !internship.contract_original.nil? && internship.contract_original == false %>
+            <% if !internship.contract_original %>
             <input type="radio" name="contract<%=internship.id%>" id="copy_<%=internship.id%>" value="copy" checked = true disabled = true> <%= t("complete_internships.checklist.contract_copy") %>
             <% else %>
             <input type="radio" name="contract<%=internship.id%>" id="copy_<%=internship.id%>" value="copy" disabled = true > <%= t("complete_internships.checklist.contract_copy") %>
@@ -100,7 +100,7 @@
   <!-- remove this feature toggle if the implementation of printing the form is done-->
   <% if current_user.student? && FT.on?(:student_can_print_internship_application, current_user) %>
   <%= link_to t("complete_internships.checklist.print_form"), internship_path(internship.id, format: "pdf"), target: "_blank", class: "btn btn-outline-success" %>
-  
+
   <% end %>
 
 

@@ -1,5 +1,5 @@
 <div id="form-block4" class="text-left">
   <h3><%= t "companies.company_address" %></h3>
   <%= render 'form', company_address: @company_address %>
-  <%= link_to t('buttons.back'), 'javascript:history.back()' %>
+  <%= link_to t('buttons.back'), 'javascript:history.back()' %> | <%= link_to t('buttons.back_to_overview'), my_internship_path %>
 </div>

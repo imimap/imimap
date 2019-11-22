@@ -45,23 +45,23 @@ describe 'Complete Internship' do
           )
           expect(page).to have_content(semester.name)
         end
-
-        it 'should delete a partial internship' do
-          Capybara.current_driver = :poltergeist
-          create(:semester)
-          semester = Semester.first
-          visit my_internship_path
-          click_link(t('internships.provide_now'))
-          click_on t('save')
-          click_on t('complete_internships.new_tp0')
-          click_on t('save')
-          click_button 'x'
-          accept_confirm do
-            click_link 'Destroy'
-          end
-
-
-        end
+        # 
+        # it 'should delete a partial internship' do
+        #   Capybara.current_driver = :poltergeist
+        #   create(:semester)
+        #   semester = Semester.first
+        #   visit my_internship_path
+        #   click_link(t('internships.provide_now'))
+        #   click_on t('save')
+        #   click_on t('complete_internships.new_tp0')
+        #   click_on t('save')
+        #   click_button 'x'
+        #   accept_confirm do
+        #     click_link 'Destroy'
+        #   end
+        #
+        #
+        # end
 
         it 'should save changes made in internship datails form
             (example supervisor details)' do

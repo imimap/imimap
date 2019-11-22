@@ -276,6 +276,7 @@ en:
     edit: "Edit"
     destroy: "Destroy"
     back: "Back"
+    back_to_overview: "Back to overview"
     newcompany: "New Company"
     newinternship: "New Internship"
     newuser: "New User"
