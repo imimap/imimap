@@ -69,7 +69,7 @@ group :development do
 end
 
 # database gem
-  gem 'pg'
+gem 'pg'
 
 gem 'faker'
 
