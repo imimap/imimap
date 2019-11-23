@@ -25,7 +25,7 @@ describe LDAPHTWAdapter, type: :feature do
       auth_successful = ldap_adapter
                         .create(ldap_password: 'egal')
                         .authenticate
-      expect(auth_successful).to be false
+      expect(auth_successful).to be true
     end
   end
   context 'with always_return_true' do
