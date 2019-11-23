@@ -29,12 +29,14 @@ TEST_EMAIL_REGEXP = /s01[1-4]\d*@htw-berlin.de/.freeze
 
 FT = FeatureToggle.new.tap do |ft|
   ft.for(:student_can_edit_internship) do |current_user|
-    TEST_EMAIL_REGEXP.match?(current_user.email) ||
-      current_user.feature_on?(:student_can_edit_internship)
+    true
+    #TEST_EMAIL_REGEXP.match?(current_user.email) ||
+    #  current_user.feature_on?(:student_can_edit_internship)
   end
 
   ft.for(:student_can_print_internship_application) do |current_user|
-    TEST_EMAIL_REGEXP.match?(current_user.email) ||
-      current_user.feature_on?(:student_can_print_internship_application)
+    true
+    #TEST_EMAIL_REGEXP.match?(current_user.email) ||
+    #  current_user.feature_on?(:student_can_print_internship_application)
   end
 end
