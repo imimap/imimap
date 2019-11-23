@@ -140,9 +140,9 @@ class InternshipsController < ApplicationResourceController
   # DELETE /internships/1.json
   def destroy
     @internship.destroy
-
+    @complete_internship = current_user.student.complete_internship
     respond_to do |format|
-      format.html { redirect_to internships_url }
+      format.html { redirect_to @complete_internship }
       format.json { head :no_content }
     end
   end

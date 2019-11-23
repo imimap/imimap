@@ -63,13 +63,17 @@
           <div class="card border-<%= caneditinternship ? 'secondary' : 'success' %>">
             <div class="card-header"><%= internship.internship_state.try(:name) %></div>
             <div class="card-body">
-              <h5 class="card-title"><%= t "complete_internships.internship" %> @
+              <h5 class="card-title " id="h5_inline" ><%= t "complete_internships.internship" %> @
                 <%= company_name_for_checklist(internship) %></h5>
+                <% if caneditinternship %>
+                 <%= button_to 'x', internship_path(internship.id), :method => :delete, data: {confirm: t('buttons.confirmation')}, :class => "deleteButton"  %>
+                <% end %>
               <p class="card-text">
                 <% if caneditinternship %>
                   <%= render 'checklist',internship: internship %>
                 <% else %>
                   <%= render 'partial_internship', internship: internship %>
+
                 <% end %>
               </p>
             </div>
