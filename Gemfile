@@ -69,9 +69,7 @@ group :development do
 end
 
 # database gem
-install_if -> { ENV['IMIMAPS_ENVIRONMENT'] == 'docker' } do
   gem 'pg'
-end
 
 gem 'faker'
 
