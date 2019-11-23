@@ -5,7 +5,6 @@ require 'rails_helper'
 describe 'toggle student_can_edit_internship:' do
   def expect_feature(available: true)
     visit root_path
-    save_and_open_page
     expect(page.has_content?(t('header.internship'))).to be(available)
   end
   it 'header.internship is shown for factory users' do
