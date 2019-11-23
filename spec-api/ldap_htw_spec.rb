@@ -16,7 +16,7 @@
 # by setting the HISTCONTROL=ignorespace and prefixing the export PASSWORD with
 # a space the password should not show up in your shell history.
 require_relative './../spec/rails_helper.rb'
-require 'ldap/ldaphtw_adapter'
+require 'ldap/ldap_htw_adapter'
 
 describe LDAPHTWAdapter do
   before :each do

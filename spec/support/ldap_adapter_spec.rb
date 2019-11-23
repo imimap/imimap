@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# require 'ldap/ldaphtw_adapter'
+# require 'ldap/ldap_htw_adapter'
 require 'rails_helper'
 
 describe LDAPHTWAdapter, type: :feature do

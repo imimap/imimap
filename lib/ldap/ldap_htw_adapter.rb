@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 require 'net/ldap'
+require 'ldap/ldap_htw_adapter_helper'
 # HTW Specific Adapter to LDAP
 class LDAPHTWAdapter
+  include LDAPHTWAdapterHelper
   attr_accessor :email, :host, :port, :connectstring, :errors
 
   def initialize(email:)
@@ -52,7 +54,6 @@ class LDAPHTWAdapter
         # connect_timeout: 30,
         verbose: true
       },
-
       auth: ldap_auth_options(ldap_htw, ldap_username, ldap_password) }
   end
 
@@ -74,14 +75,20 @@ class LDAPHTWAdapter
          .info("-- ldap -- authentication failed for #{ldap_username} ")
   end
 
+  def always_return_true
+    if @always_return_true
+      Rails.logger.warn('--LDAP-- SET TO ALWAYS AUTHENTICATE!!')
+      true
+    else
+      false
+    end
+  end
+
   def authenticate
+    return true if always_return_true
+
     begin
-      if @always_return_true
-        success = true
-        Rails.logger.warn('--LDAP-- SET TO ALWAYS AUTHENTICATE!!')
-      else
-        success = netldap.bind
-      end
+      success = netldap.bind
     rescue StandardError => e
       log_error(host: host, exception: e)
       return false
@@ -91,36 +98,27 @@ class LDAPHTWAdapter
   end
 
   def config
-    if netldap_mock.nil?
-      # ldap_host|ldap_port|ldap_htw
-      ldapconfig = ENV['LDAP']
-      Rails.logger.error("-- ldap -- ENV['LDAP'] missing ") unless ldapconfig
-      if ldapconfig == 'ALWAYS_RETURN_TRUE'
-        @always_return_true = true
-        mock_settings
-      else
-        @host, @port, @connectstring = ldapconfig&.split('/')
-      end
-    else
-      mock_settings
-    end
+    ldapconfig = ENV['LDAP'] # ldap_host|ldap_port|ldap_htw
+    Rails.logger.error("-- ldap -- ENV['LDAP'] missing ") unless ldapconfig
+    return if config_always_return_true(ldapconfig) || config_mock
+
+    @host, @port, @connectstring = ldapconfig&.split('/')
   end
 
   private
 
-  def mock_settings
-    @host = 'some.host.de'
-    @port = 4711
-    @connectstring = 'xxxx'
+  def config_always_return_true(ldapconfig)
+    @always_return_true = true if ldapconfig == 'ALWAYS_RETURN_TRUE'
   end
 
-  def ldap_username
-    return nil if email.nil?
-
-    m = /\A(.*)@.*htw-berlin.de\z/.match(email.strip)
-    return m[1] if m
-
-    Rails.logger.info("-- ldap -- email not valid #{email} ")
-    nil
+  def config_mock
+    if netldap_mock.nil?
+      false
+    else
+      @host = 'some.host.de'
+      @port = 4711
+      @connectstring = 'xxxx'
+      true
+    end
   end
 end
