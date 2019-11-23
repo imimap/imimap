@@ -33,7 +33,7 @@ class MapsController < ApplicationController
   def map_view_only_locations
     internships =
       Internship.joins(:company_address)
-    internships = internships.where(semester: @semester) unless @semester_options_all
+    internships = select_semester(internships)
     internships = internships.where.not(company_addresses: { latitude: nil })
                              .pluck(:city, :country, :latitude, :longitude)
     @company_location_json = company_locations_json(
@@ -41,13 +41,11 @@ class MapsController < ApplicationController
     )
   end
 
-
-
   def map_view_full_internships
     internships =
       Internship.joins(:semester, company_address: [:company],
                                   complete_internship: [:student])
-    internships = internships.where(semester: @semester) unless @semester_options_all
+    internships = select_semester(internships)
 
     internships = internships.pluck(*full_internship_view_attribute_list)
 
@@ -73,4 +71,8 @@ class MapsController < ApplicationController
     @semester = semester_from_params(params)
     @semester_options_all = params['semester_id'] == '-1'
   end
+  private
+  def select_semester(internships)
+  internships.where(semester: @semester) unless @semester_options_all
+end
 end
