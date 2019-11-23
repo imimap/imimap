@@ -8,7 +8,8 @@ module Abilities
     def initialize(user)
       can_create_internship(user)
       can_show_own_internship(user)
-      can_edit_own_internship(user)
+      can_edit_own_complete_internship(user)
+      can_edit_destroy_own_internship(user)
 
       map(user)
       company(user)
@@ -32,7 +33,7 @@ module Abilities
       can %i[show], Internship, student: { user: user }
     end
 
-    def can_edit_own_internship(user)
+    def can_edit_own_complete_internship(user)
       can %i[edit update],
           CompleteInternship do |ci|
             # student: { user: { id: user.id } }
@@ -42,6 +43,9 @@ module Abilities
               false
             end
           end
+    end
+
+    def can_edit_destroy_own_internship(user)
       # evtl. vereinfachen zu
       # can :update, Internship, approved: false,  student: { user: user }
       can %i[edit update destroy], Internship do |internship|
