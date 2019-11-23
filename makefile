@@ -42,6 +42,7 @@ prod_dump:
 start_db:
 	docker-compose -f docker-compose-db.yml -f docker-compose.yml up -d
 start_db_ldap:
+	# does not work, env variable needs to be set before calling make:
 	export LDAP=ALWAYS_RETURN_TRUE
 	docker-compose -f docker-compose-db.yml -f docker-compose.yml up -d
 start_dump: $(file)
