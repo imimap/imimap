@@ -32,7 +32,7 @@ module MapsHelper
     end
   end
 
-  def internsip_text(companies, all_semester)
+  def internship_text(companies, all_semester)
     c = companies
     first_line = "#{c[0]} #{c[1]} @ #{c[2]}"
     second_line = "in #{c[3]} #{c[4]}"

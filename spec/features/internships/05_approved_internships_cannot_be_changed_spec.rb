@@ -62,11 +62,9 @@ describe 'Ability: Student edits Internship' do
       expect(page).to have_text(
         t('complete_internships.checklist.contract_original')
       )
-      expect(page).to have_css('#original_1')
       expect(page).to have_text(
         t('complete_internships.checklist.contract_copy')
       )
-      expect(page).to have_css('#copy_1')
     end
   end
   context 'approved' do
