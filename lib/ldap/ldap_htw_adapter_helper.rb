@@ -2,7 +2,7 @@
 
 # helper methods for LDAPHTWAdapter
 module LDAPHTWAdapterHelper
-  def ldap_username
+  def ldap_username(email)
     return nil if email.nil?
 
     m = /\A(.*)@.*htw-berlin.de\z/.match(email.strip)
