@@ -19,7 +19,7 @@ gem 'axlsx_rails',
 gem 'carrierwave'
 gem 'country_select'
 gem 'geocoder'
-gem 'nested_form'
+  gem 'nested_form'
 
 gem 'bootstrap', '>= 4.3.1'
 gem 'bootstrap-datepicker-rails'
