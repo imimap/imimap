@@ -17,6 +17,7 @@ end
 require 'factory_bot_rails'
 require 'database_cleaner'
 
+# defines logins via the web interface and devise helpers
 module CapybaraLoginTestHelper
   def user_password
     'geheim123'
@@ -48,6 +49,7 @@ def login_as_student
   user
 end
 
+# logins for controllers
 module ControllerTestHelper
   def login
     user = FactoryBot.create :user
@@ -62,6 +64,7 @@ module ControllerTestHelper
   end
 end
 
+# alias for translations
 module I18nTestHelper
   def t(label, options = {})
     I18n.t(label, options)

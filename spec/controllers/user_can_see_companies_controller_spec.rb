@@ -115,7 +115,8 @@ RSpec.describe UserCanSeeCompaniesController, type: :controller do
       end
 
       # context 'with invalid params' do
-      #   it "returns a success response (i.e. to display the 'edit' template)" do
+      #   it "returns a success response (i.e. to display the 'edit' template)"
+      #  do
       #     user_can_see_company = UserCanSeeCompany.create! valid_attributes
       #     put :update, params: { id: user_can_see_company.to_param,
       #                            user_can_see_company: invalid_attributes },

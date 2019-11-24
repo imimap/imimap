@@ -122,6 +122,7 @@ class CompaniesController < ApplicationResourceController
 
   def select_company; end
 
+  # TBD: there seem to be no test cases for this!
   def company_suggestion(suggestion)
     # erste Runde, ungefaehres Matching
     first_search = '%' + suggestion + '%'
@@ -139,6 +140,8 @@ class CompaniesController < ApplicationResourceController
         @case = 2
         nil
       elsif results.count.zero?
+        # das ist auch der too many case
+        # testfaelle sind verdreht.
         @case = 2
         nil
       end

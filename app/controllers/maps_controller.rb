@@ -33,9 +33,7 @@ class MapsController < ApplicationController
   def map_view_only_locations
     internships =
       Internship.joins(:company_address)
-    unless @semester_options_all
-      internships = internships.where(semester: @semester)
-    end
+    internships = select_semester(internships)
     internships = internships.where.not(company_addresses: { latitude: nil })
                              .pluck(:city, :country, :latitude, :longitude)
     @company_location_json = company_locations_json(
@@ -47,27 +45,34 @@ class MapsController < ApplicationController
     internships =
       Internship.joins(:semester, company_address: [:company],
                                   complete_internship: [:student])
-    show_single_term = params['semester_id'] != '-1'
-    unless @semester_options_all
-      internships = internships.where(semester: @semester)
-  end
-    internships = internships.pluck(:first_name, :last_name,
-                                    'companies.name',
-                                    'company_addresses.city',
-                                    :country,
-                                    :latitude, :longitude,
-                                    'semesters.name',
-                                    'internships.id')
+    internships = select_semester(internships)
 
-    @company_location_json = internships_json(internships: internships,
-                                              all_semester: @semester_options_all)
+    internships = internships.pluck(*full_internship_view_attribute_list)
+
+    @company_location_json =
+      internships_json(internships: internships,
+                       all_semester: @semester_options_all)
   end
 
   private
+
+  def full_internship_view_attribute_list
+    [:first_name, :last_name,
+     'companies.name',
+     'company_addresses.city',
+     :country,
+     :latitude, :longitude,
+     'semesters.name',
+     'internships.id']
+  end
 
   def set_semesters
     @semester_options = semester_select_options(show_all: true)
     @semester = semester_from_params(params)
     @semester_options_all = params['semester_id'] == '-1'
+  end
+
+  def select_semester(internships)
+    internships.where(semester: @semester) unless @semester_options_all
   end
 end

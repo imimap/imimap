@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'devise/strategies/authenticatable'
-require 'ldap/ldaphtw_adapter'
+require 'ldap/ldap_htw_adapter'
 
 module Devise
   module Strategies

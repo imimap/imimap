@@ -4,59 +4,45 @@
 # in Dockerfile for the docker deployments.
 # export set IMIMAPS_ENVIRONMENT=docker
 
-<% if ENV['IMIMAPS_ENVIRONMENT'] == "docker" %>
+<%
+if ENV['IMIMAPS_ENVIRONMENT'] == "docker"
+  @username = ENV['POSTGRES_USER']
+  @password = ENV['POSTGRES_PASSWORD']
+  @database = ENV['POSTGRES_DB']
+  @hostname = 'postgresql'
+ else
+  @username = 'imi_map'
+  @password = 'imimap'
+  @database = 'imimap'
+  @hostname = 'localhost'
+end %>
 
 development:
   adapter: postgresql
   encoding: unicode
   pool: 5
   timeout: 5000
-  host: postgresql
-  username: <%= ENV['POSTGRES_USER'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
-  database: <%= ENV['POSTGRES_DB'] %>
+  host: <%= @hostname %>
+  username: <%= @username %>
+  password: <%= @password %>
+  database: <%= @database %>
 
 test:
   adapter: postgresql
   encoding: unicode
   pool: 5
   timeout: 5000
-  host: postgresql
-  username: <%= ENV['POSTGRES_USER'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
-  database: <%= ENV['POSTGRES_DB'] %>-test
+  host: <%= @hostname %>
+  username: <%= @username %>
+  password: <%= @password %>
+  database: <%= @database %>-test
 
 production:
   adapter: postgresql
   encoding: unicode
   pool: 5
   timeout: 5000
-  host: postgresql
-  username: <%= ENV['POSTGRES_USER'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
-  database: <%= ENV['POSTGRES_DB'] %>
-
-
-<% else
-#  puts "ENV['IMIMAPS_ENVIRONMENT'] not set to \"docker\", using default: SQLITE"
-%>
-
-development:
-  adapter: sqlite3
-  database: db/development.sqlite3
-  pool: 5
-  timeout: 5000
-
-test:
-  adapter: sqlite3
-  database: db/test.sqlite3
-  pool: 5
-  timeout: 5000
-
-production:
-  adapter: sqlite3
-  database: db/production.sqlite3
-  pool: 5
-  timeout: 5000
-
-<% end %>
+  host: <%= @hostname %>
+  username: <%= @username %>
+  password: <%= @password %>
+  database: <%= @database %>
