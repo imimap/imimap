@@ -122,6 +122,7 @@ class CompaniesController < ApplicationResourceController
 
   def select_company; end
 
+  # TBD: there seem to be no test cases for this!
   def company_suggestion(suggestion)
     # erste Runde, ungefaehres Matching
     first_search = '%' + suggestion + '%'
