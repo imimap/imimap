@@ -71,8 +71,10 @@ class MapsController < ApplicationController
     @semester = semester_from_params(params)
     @semester_options_all = params['semester_id'] == '-1'
   end
+
   private
+
   def select_semester(internships)
-  internships.where(semester: @semester) unless @semester_options_all
+    internships.where(semester: @semester) unless @semester_options_all
 end
 end

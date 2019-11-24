@@ -4,9 +4,7 @@ require 'rails_helper'
 
 describe 'Student login:' do
   before(:each) do
-    @ldap_mock = ldap_mock = instance_double('Net::LDAP')
-    LDAPHTWAdapter.substitute_netldap(mock: ldap_mock)
-    allow(ldap_mock).to receive(:bind).and_return(true)
+    allow_ldap_login(success: true)
   end
   it 'pw is stored in database' do
     expect do

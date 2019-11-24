@@ -100,7 +100,7 @@ describe 'Non-Student login:' do
     end
     it 'logs in and no student and user is created' do
       expect do
-        expect { sign_in_with_mail(email: 'testperson@htw-berlin.de') }
+        expect { byebug;  sign_in_with_mail(email: 'testperson@htw-berlin.de') }
           .to change { Student.count }.by(0)
       end.to change { User.count }.by(0)
     end

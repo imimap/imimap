@@ -22,9 +22,9 @@ describe LDAPHTWAdapter, type: :feature do
     end
     it 'authenticates' do
       ldap_adapter = LDAPHTWAdapter.new(email: 'email@htw-berlin.de')
-      auth_successful = ldap_adapter
+      ldap_adapter = ldap_adapter
                         .create(ldap_password: 'egal')
-                        .authenticate
+      auth_successful = ldap_adapter.authenticate
       expect(auth_successful).to be true
     end
   end
