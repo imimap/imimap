@@ -5,7 +5,7 @@
   <%= render 'search_company' %>
 
   <%= hidden_field :internship_id, :value => params[:internship_id] %>
-  <%= render 'suggest_case' + @case.to_s + '.html.erb' %>
+  <%= render "suggest_case_#{@case}.html.erb" %>
 </div>
 <div class="mt-5 ml-3">
   <%= link_to t('buttons.back'), 'javascript:history.back()' %> | <%= link_to t('buttons.back_to_overview'), my_internship_path %>

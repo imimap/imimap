@@ -32,7 +32,7 @@ def create_companies_exact
   create(:company, name: 'Match_6_SomeMoreStuff_3')
   2.times { create(:company, name: 'Match_6') }
 
-  6.times { create(:company, name: 'Match_7_exact') }
+  6.times { create(:company, name: 'Match_7') }
 end
 
 def search_for(company_name:)
@@ -48,10 +48,7 @@ def search_for(company_name:)
 end
 
 describe 'Company Suggestion Cases' do
-  # I18n.available_locales.each do |locale|
-  # context "in locale #{locale}" do
   before :each do
-    #    I18n.locale = locale
     @user = login_as_student
     create_companies
   end
@@ -67,17 +64,18 @@ describe 'Company Suggestion Cases' do
     expect(Company.with_name('Match_5').count).to eq 0
     expect(Company.with_fuzzy_name('Match_6').count).to eq 5
     expect(Company.with_name('Match_6').count).to eq 2
-    expect(Company.with_fuzzy_name('Match_7_exact').count).to eq 6
-    expect(Company.with_name('Match_7_exact').count).to eq 6
+    expect(Company.with_fuzzy_name('Match_7').count).to eq 6
+    expect(Company.with_name('Match_7').count).to eq 6
   end
 
   # there are 5 cases:
   # 1) no matches where found for fuzzy search. Match_0
-  # 2) acceptable amount was found for fuzzy search. Match_1, Match_2, Match_3
-  #    Match4
+  # 2) acceptable amount was found for fuzzy search. Match_1, Match_2,
+  #    Match_3. Match4
   # 3) too many where found for fuzzy search, and none with exact search.
   #    Match_5
-  # 4) too many for fuzzy, acceptable amount was found for exact search. Match_6
+  # 4) too many for fuzzy, acceptable amount was found for exact search.
+  #    Match_6
   # 5) too many where found for exact search. Match_7
 
   it '1) no matches where found for fuzzy search.' do
@@ -87,14 +85,15 @@ describe 'Company Suggestion Cases' do
   %w[Match_1 Match_2 Match_3].each do |company_name|
     it "2) acceptable amount was found for fuzzy search. #{company_name}" do
       search_for(company_name: company_name)
+
       expect(page).to have_content(t('companies.suggestion'))
     end
   end
-  it ' 3) too many where found for fuzzy search, and none with exact search.' do
+  it ' 3) too many found for fuzzy search, and none with exact search.' do
     search_for(company_name: 'Match_5')
-    expect(page).to have_content(t('companies.suggestion'))
+    expect(page).to have_content(t('companies.too_many'))
   end
-  it 'too many for fuzzy, acceptable amount was found for exact search.' do
+  it '4) too many for fuzzy, acceptable amount was found for exact search.' do
     search_for(company_name: 'Match_6')
     expect(page).to have_content(t('companies.suggestion'))
   end
