@@ -140,6 +140,8 @@ class CompaniesController < ApplicationResourceController
         @case = 2
         nil
       elsif results.count.zero?
+        # das ist auch der too many case
+        # testfaelle sind verdreht.
         @case = 2
         nil
       end
