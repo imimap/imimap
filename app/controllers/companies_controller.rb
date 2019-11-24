@@ -2,6 +2,7 @@
 
 # Companies Controller
 class CompaniesController < ApplicationResourceController
+  include CompaniesHelper
   before_action :set_company, only: %i[show edit update destroy]
   before_action :new_company, only: %i[new]
   before_action :new_company_params, only: %i[create create_and_save]
@@ -50,9 +51,7 @@ class CompaniesController < ApplicationResourceController
     respond_to do |format|
       if @company.save
         format.html do
-          redirect_to new_address_path(@company.id,
-                                       internship_id: @internship_id),
-                      notice: 'Company was successfully created.'
+          redirect_successful_create
         end
       else
         format.html { render action: 'new' }
@@ -64,13 +63,7 @@ class CompaniesController < ApplicationResourceController
     respond_to do |format|
       if @company.update(company_params)
         format.html do
-          if @current_user.student
-            redirect_to edit_company_address_path(
-              Internship.find(@internship_id).company_address
-            ), notice: 'Company was successfully updated.'
-          else
-            redirect_to @company, notice: 'Company was successfully updated.'
-          end
+          redirect_successful_update
         end
       else
         format.html { render action: 'edit' }
@@ -98,8 +91,7 @@ class CompaniesController < ApplicationResourceController
 
   def suggest
     suggestion = params[:name].downcase
-    @case = nil
-    @company_suggestion = company_suggestion(suggestion)
+    @case, @company_suggestion = company_suggestion(suggestion)
   end
 
   private
@@ -121,33 +113,4 @@ class CompaniesController < ApplicationResourceController
   end
 
   def select_company; end
-
-  # TBD: there seem to be no test cases for this!
-  def company_suggestion(suggestion)
-    # erste Runde, ungefaehres Matching
-    first_search = '%' + suggestion + '%'
-    results = Company.where('lower(name) LIKE ?', first_search)
-    @case = if results.count.zero?
-              3
-            else
-              1
-            end
-    if results.count > 4
-      # zweite Runde, exaktes Matching
-      results = Company.where('lower(name) LIKE ?', suggestion)
-      @case = 1
-      if results.count > 4
-        @case = 2
-        nil
-      elsif results.count.zero?
-        # das ist auch der too many case
-        # testfaelle sind verdreht.
-        @case = 2
-        nil
-      end
-    end
-    results.select do |c|
-      UserCanSeeCompany.company_search(company_id: c.id, user: current_user)
-    end
-  end
 end

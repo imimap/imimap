@@ -16,7 +16,13 @@ class Company < ApplicationRecord
     [:website]
   end
 
-  # TBD: rename
+  scope :with_fuzzy_name, lambda { |name|
+                            where('lower(name) LIKE ?', "%#{name}%".downcase)
+                          }
+  scope :with_name, lambda { |name|
+                      where('lower(name) LIKE ?', name.downcase)
+                    }
+
   def enrolment_number
     internships.map { |x| x.student.enrolment_number }.join(', ')
   end
