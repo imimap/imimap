@@ -37,4 +37,17 @@ describe 'ActiveAdmin edit internship' do
     @internship.reload
     expect(@internship.approved).to be !approved_before
   end
+  it 'sets certificate_signed_by_internship_officer' do
+    date = Date.new(2011, 11, 25)
+    date_s = date.strftime('%d-%m-%Y')
+    visit admin_internship_path(id: @internship)
+    click_on t('internships.edit.editinternship')
+    field = 'certificate_signed_by_internship_officer'
+    field_label = t("activerecord.attributes.internship.#{field}")
+    fill_in field_label, with: date_s
+    click_on t('internships.update')
+    @internship.reload
+    expect(@internship.certificate_signed_by_internship_officer)
+      .to eq date
+  end
 end
