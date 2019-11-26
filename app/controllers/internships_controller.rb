@@ -170,7 +170,7 @@ class InternshipsController < ApplicationResourceController
                         registration_state_id
                         report_state_id payment_state_id
                         reading_prof_id
-                        certificate_signed_by_internship_officers
+                        certificate_signed_by_internship_officer
                         certificate_signed_by_prof
                         certificate_state_id
                         certificate_to_prof
