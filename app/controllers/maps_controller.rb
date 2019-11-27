@@ -73,6 +73,10 @@ class MapsController < ApplicationController
   end
 
   def select_semester(internships)
-    internships.where(semester: @semester) unless @semester_options_all
+    if @semester_options_all
+      internships
+    else
+      internships.where(semester: @semester)
+    end
   end
 end
