@@ -15,18 +15,12 @@ class InternshipsController < ApplicationResourceController
   include InternshipsDtoHelper
 
   # GET /internships
-  # GET /internships.json
+  # GET /internships.csv
   def index
     @semester = semester_from_params(params)
     @semester_options = semester_select_options
 
-    internships = Internship.where(semester: @semester)
-    @internship_count = internships.count
-    # make rails load the file
-    InternshipsDto if @internship_count.zero?
-    @complete_internships = internships.map do |i|
-      InternshipsDto.from(i)
-    end
+    set_internship_dto
     @field_names = COMPLETE_INTERNSHIP_MEMBERS
     @header_names = COMPLETE_INTERNSHIP_MEMBERS.map do |m|
       t("complete_internship.#{m}")
@@ -40,6 +34,16 @@ class InternshipsController < ApplicationResourceController
       # @header_names and @complete_internships are used in
       # app/views/internships/index.xlsx.axlsx
       format.xlsx
+    end
+  end
+
+  def set_internship_dto
+    internships = Internship.where(semester: @semester)
+    @internship_count = internships.count
+    # make rails load the file
+    InternshipsDto if @internship_count.zero?
+    @complete_internships = internships.map do |i|
+      InternshipsDto.from(i)
     end
   end
 
@@ -119,7 +123,6 @@ class InternshipsController < ApplicationResourceController
   end
 
   # PUT /internships/1
-  # PUT /internships/1.json
   def update
     attributes = internship_params
     @internship = @current_user.student
@@ -127,7 +130,7 @@ class InternshipsController < ApplicationResourceController
                                .internships
                                .find(params[:id])
     if @internship.update(attributes)
-      @internship.update(completed: true)
+      # @internship.update(completed: true)
       flash[:notice] = 'Internship was successfully updated.'
       respond_with(@current_user.student
                                  .complete_internship)

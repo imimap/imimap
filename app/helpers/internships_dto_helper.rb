@@ -1,6 +1,6 @@
 # frozen_string_literal: true
- #uninitialized constant InternshipsController::InternshipsDtoHelper
-#  Couldn't find InternshipsDtoHelper, expected it to be defined in helpers/internships_dto_helper.rb
+
+# uninitialized constant InternshipsController::InternshipsDtoHelper
 # Composes all Internship Information in one Class to pass to the view
 module InternshipsDtoHelper
   COMPLETE_INTERNSHIP_MEMBERS = %i[first_name
