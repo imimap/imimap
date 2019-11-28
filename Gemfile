@@ -46,7 +46,9 @@ gem 'paperclip', '~> 5.2'
 gem 'kaminari'
 
 gem 'd3-rails'
-gem 'net-ldap'
+gem 'net-ldap',
+    git: 'https://github.com/imimap/ruby-net-ldap',
+    tag: 'v0.16.2.deprecation.removed'
 
 # gem 'griddler'
 
