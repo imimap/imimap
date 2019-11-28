@@ -33,7 +33,7 @@ RSpec.describe InternshipsController, type: :controller, topic: :internship do
 
       it 'assigns @complete_internships' do
         expect(assigns(:complete_internships).first.attribute_array)
-          .to eq([CompleteInternshipDataHelper::CompleteInternshipData
+          .to eq([InternshipsDtoHelper::InternshipsDto
             .from(@internship)].first.attribute_array)
       end
       it 'assigns @internships' do

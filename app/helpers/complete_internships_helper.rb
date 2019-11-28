@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# maybe CompleteInternshipData moves here.
+# maybe InternshipsDto moves here.
 module CompleteInternshipsHelper
   def semester_select_options(show_all: false)
     semester = Semester.all.map { |s| [s.name, s.id] }

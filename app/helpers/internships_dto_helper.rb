@@ -1,7 +1,8 @@
 # frozen_string_literal: true
-
+ #uninitialized constant InternshipsController::InternshipsDtoHelper
+#  Couldn't find InternshipsDtoHelper, expected it to be defined in helpers/internships_dto_helper.rb
 # Composes all Internship Information in one Class to pass to the view
-module CompleteInternshipDataHelper
+module InternshipsDtoHelper
   COMPLETE_INTERNSHIP_MEMBERS = %i[first_name
                                    last_name
                                    enrolment_number
@@ -12,7 +13,7 @@ module CompleteInternshipDataHelper
                                    end_date
                                    internship_state].freeze
   # Data Class for the view.
-  class CompleteInternshipData
+  class InternshipsDto
     attr_accessor(*COMPLETE_INTERNSHIP_MEMBERS)
 
     def to_a
@@ -30,7 +31,7 @@ module CompleteInternshipDataHelper
       attribute_array <=> other.attribute_array
     end
 
-    # CompleteInternshipData = Struct.new(*COMPLETE_INTERNSHIP_MEMBERS) do
+    # InternshipsDto = Struct.new(*COMPLETE_INTERNSHIP_MEMBERS) do
     def add_student_info(int)
       ci = self
       if int.student.nil?
@@ -98,15 +99,15 @@ module CompleteInternshipDataHelper
     end
   end
 
-  def CompleteInternshipData.from(int)
-    ci = CompleteInternshipData.new
+  def InternshipsDto.from(int)
+    ci = InternshipsDto.new
     ci.add_student_info(int)
     ci.add_company_info(int)
     ci.add_status_info(int)
     ci
   end
 
-  def CompleteInternshipData.to_csv(complete_internships)
+  def InternshipsDto.to_csv(complete_internships)
     CSV.generate do |csv|
       csv << COMPLETE_INTERNSHIP_MEMBERS
       complete_internships.each do |ci|
