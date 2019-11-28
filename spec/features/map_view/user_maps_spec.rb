@@ -4,7 +4,7 @@ require 'rails_helper'
 
 describe 'Map Views' do
   context 'not logged in' do
-    it 'map is not shown' do
+    it 'redirects to login' do
       visit root_path
       expect(page).to have_content(t('welcome.login_with_hrz'))
     end
