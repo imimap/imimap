@@ -4,5 +4,4 @@
 class InternshipOffer < ApplicationRecord
   has_one :user
 
-  mount_uploader :pdf, InternshipReportUploader
 end
