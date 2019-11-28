@@ -25,8 +25,8 @@ class LDAPHTWAdapter
   end
 
   def create(ldap_password:)
-    ldap_host, ldap_port, ldap_htw = config
-    @netldap = Net::LDAP.new(ldap_conf(ldap_host, ldap_port, ldap_htw,
+    config
+    @netldap = Net::LDAP.new(ldap_conf(@host, @port, @connectstring,
                                        ldap_username(email), ldap_password))
     self
   end
