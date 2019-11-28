@@ -2,14 +2,14 @@
 
 require 'rails_helper'
 
-RSpec.describe CompleteInternshipDataHelper, type: :helper do
+RSpec.describe InternshipsDtoHelper, type: :helper do
   context 'with passed internship' do
     before :each do
       @internship = create :internship
     end
     describe 'internship_state' do
       it 'just uses passed' do
-        ci = CompleteInternshipDataHelper::CompleteInternshipData
+        ci = InternshipsDtoHelper::InternshipsDto
              .from(@internship)
         expect(ci.internship_state).to eq('passed')
       end
@@ -22,7 +22,7 @@ RSpec.describe CompleteInternshipDataHelper, type: :helper do
     end
     describe 'internship_state' do
       it "doesn't throw exceptions" do
-        ci = CompleteInternshipDataHelper::CompleteInternshipData
+        ci = InternshipsDtoHelper::InternshipsDto
              .from(@internship)
         expect(ci.internship_state).to eq('')
       end
