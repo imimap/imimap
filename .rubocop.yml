@@ -20,9 +20,6 @@ Metrics/AbcSize:
   Exclude:
     - 'db/seed/08_lib/08_internships.rb' #Internship
     - 'app/admin'
-#    - 'app/controllers/internships_controller.rb'
-  #  - 'app/models/ability.rb'
-#    - 'app/controllers/search_controller.rb'
 
 Metrics/BlockLength:
   Exclude:
@@ -39,13 +36,13 @@ Metrics/BlockLength:
 
 Metrics/MethodLength:
   Exclude:
-    - 'app/models/ability.rb'
+  #  - 'app/models/ability.rb'
     - 'db/seed/08_lib/08_internships.rb' #Internship
-    - 'app/controllers/favorite_controller.rb' # delete?
-    - 'app/controllers/finish_list_controller.rb' # delete?
+    #- 'app/controllers/favorite_controller.rb' # delete?
     - 'app/controllers/internships_controller.rb'
-    - 'app/controllers/search_controller.rb'
+  #  - 'app/controllers/search_controller.rb'
 
 Metrics/ClassLength:
   Exclude:
+    # waits for internship refactoring.
     - 'app/controllers/internships_controller.rb'
