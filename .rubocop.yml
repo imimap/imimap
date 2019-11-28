@@ -17,6 +17,7 @@ Metrics/LineLength:
 Metrics/AbcSize:
   Exclude:
     - 'app/admin'
+    - 'db/seed/08_lib/08_internships.rb' #Internship
 
 Metrics/BlockLength:
   Exclude:
@@ -29,7 +30,6 @@ Metrics/BlockLength:
     - 'app/admin/**/*.rb'
     - 'app/admin/internships/internships_show.rb'
     - 'app/controllers/internships_controller.rb'
-
 
 Metrics/MethodLength:
   Exclude:

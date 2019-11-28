@@ -19,7 +19,7 @@ describe 'Index of internship offers' do
       expect(page).to have_content(io.city)
       expect(page).to have_content(io.country)
       expect(page).to have_content(io.body[0..20].strip)
-      #expect(page).to have_content(io.pdf)
+      # expect(page).to have_content(io.pdf)
     end
   end
 end
