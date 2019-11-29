@@ -75,14 +75,14 @@ class CompanyAddressesController < ApplicationResourceController
     ), notice: 'Company Address was successfully saved.'
   end
 
-  # def update
-  #   if @company_address.update(company_address_params)
-  #     redirect_to update_target,
-  #                 notice: 'Company address was successfully updated.'
-  #   else
-  #     render :edit
-  #   end
-  # end
+  def update
+    if @company_address.update(company_address_params)
+      redirect_to update_target,
+                  notice: 'Company address was successfully updated.'
+    else
+      render :edit
+    end
+  end
 
   def destroy
     @company_address.destroy
@@ -101,13 +101,13 @@ class CompanyAddressesController < ApplicationResourceController
 
   private
 
-  # def update_target
-  #   if @current_user.student
-  #     @current_user.student.complete_internship
-  #   else
-  #     @company_address
-  #   end
-  # end
+  def update_target
+    if @current_user.student
+      @current_user.student.complete_internship
+    else
+      @company_address
+    end
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   # def set_company_address
