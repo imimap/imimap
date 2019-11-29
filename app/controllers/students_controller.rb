@@ -3,6 +3,7 @@
 # Student editing for Students
 class StudentsController < ApplicationResourceController
   before_action :set_student, only: %i[show update]
+  before_action :set_complete_internship, only: %i[show update]
   authorize_resource
   include StudentsHelper
   def self.permitted_params
@@ -19,7 +20,6 @@ class StudentsController < ApplicationResourceController
   def show
     @student = Student.find(params[:id])
     @user = @student.user
-    # TBD centralize logic for users that are not students
     assign_show_attributes(@student)
   end
 
@@ -35,6 +35,13 @@ class StudentsController < ApplicationResourceController
   def set_student
     # @student = current_user.student
     @student = Student.find(params[:id])
+  end
+  def set_complete_internship
+    if params[:complete_internship_id]
+      @complete_internship_id = params[:complete_internship_id]
+    else
+      @complete_internship_id = @student.complete_internship.id
+    end
   end
 
   def student_params

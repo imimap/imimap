@@ -10,6 +10,7 @@ class CompleteInternshipsController < ApplicationResourceController
   # before_action :set_complete_internship, only: %i[show edit update destroy]
   before_action :new_complete_internship, only: %i[create new]
   before_action :set_semesters, only: %i[create new edit internship_data]
+  before_action :set_student, only: %i[show]
 
   def index
     @semester = semester_from_params(params)
@@ -20,6 +21,7 @@ class CompleteInternshipsController < ApplicationResourceController
 
   def show
     @semester_name = @complete_internship.semester.try(:name)
+    #set_student(@complete_internship)
   end
 
   # If the user has no complete internship, the system asks him/her to create a
@@ -112,5 +114,14 @@ class CompleteInternshipsController < ApplicationResourceController
 
   def set_semesters
     @semesters = Semester.all.pluck(:name, :id)
+  end
+
+  def set_student
+    if current_user.student?
+      @student = current_user.student
+    else
+      student = @complete_internship.student
+      @student = (student if can?(:read, student))
+    end
   end
 end
