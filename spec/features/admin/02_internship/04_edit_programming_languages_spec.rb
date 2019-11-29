@@ -12,7 +12,7 @@ describe 'ActiveAdmin edit internship' do
     @programming_language = create(:programming_language)
     visit edit_admin_internship_path(id: @internship)
     select @programming_language.name,
-           from: Internship.human_attribute_name(:programming_languages)
+           from: t('internships.attributes.programming_languages')
     click_on t('helpers.submit.update', model: Internship.model_name.human)
     expect(page).to have_content @programming_language.name
   end
@@ -22,7 +22,7 @@ describe 'ActiveAdmin edit internship' do
     visit edit_admin_internship_path(id: @internship)
     pls.each do |pl|
       select pl.name,
-             from: Internship.human_attribute_name(:programming_languages)
+             from: t('internships.attributes.programming_languages')
     end
     click_on t('helpers.submit.update', model: Internship.model_name.human)
     pls.each { |pl| expect(page).to have_content pl.name }
