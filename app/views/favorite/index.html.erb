@@ -10,7 +10,7 @@
 	<% @favorites.each do |favorite| %>
 	  <tr class="<%= cycle("even_row2", "odd_row2") %>">
 		<td><%= check_box_tag "favorite_ids[]", favorite.internship.id %></td>
-	    <td><%= favorite.internship.title %></td>
+	   <!-- <td><%#= favorite.internship.title %></td>-->
 			<% if false # TBD ST %>
 	    <td><%= favorite.internship.company.address %></td>
 			<% end %>

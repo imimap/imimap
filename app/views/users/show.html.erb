@@ -67,7 +67,7 @@
 
 <% @internships.each do |internship| %>
   <div class="row_margin_bottom">
-    <%= "#{internship.title} #{t'helpers.at2'} #{internship.company_v2.name}" %>
+    <%#= "#{internship.title} #{t'helpers.at2'} #{internship.company_v2.name}" %>
     <%= link_to " "+(t "buttons.edit"), edit_internship_path(internship), class: "pull-right btn btn-success icon-white icon-edit icon-large" %>
     <%= link_to " "+(t "buttons.show"), internship, class: "pull-right btn btn-success icon-white icon-circle-arrow-right icon-large" %>
   </div>

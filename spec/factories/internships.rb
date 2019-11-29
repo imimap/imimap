@@ -21,7 +21,6 @@ FactoryBot.define do
     internship_rating
     # company
     user
-    title { 'The Main Example Intership' }
     recommend { true }
     orientation
     email_public { true }
@@ -73,7 +72,6 @@ FactoryBot.define do
     internship_rating
     # company
     user
-    title { 'The Main Example Intership' }
     recommend { true }
     orientation
     email_public { true }
@@ -128,7 +126,6 @@ FactoryBot.define do
     internship_rating
     # company
     user
-    title { 'The Main Example Intership' }
     recommend { true }
     orientation
     email_public { true }
@@ -184,7 +181,6 @@ FactoryBot.define do
     internship_rating
     # company
     user
-    title { 'The Main Example Intership' }
     recommend { true }
     orientation
     email_public { true }
@@ -231,7 +227,6 @@ FactoryBot.define do
     internship_rating
     # company
     user
-    title { 'The Fresh Intership' }
     recommend { true }
     orientation
     email_public { true }
@@ -260,7 +255,6 @@ FactoryBot.define do
     internship_rating
     # company
     user
-    title { 'A new Internship' }
     recommend { false }
     orientation
     email_public { false }
