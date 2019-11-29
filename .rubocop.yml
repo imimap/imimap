@@ -1,3 +1,5 @@
+# Internship refactoring dependent marked with #Internship
+# those should eventually be deleted or fixed: marked with #TBD
 
 AllCops:
   Exclude:
@@ -7,22 +9,15 @@ AllCops:
     - 'bin/setup'
     - 'bin/update'
     - 'app/pdfs/internship_pdf.rb' #Internship
-    - 'app/controllers/report_overview_controller.rb' # delete
-    - 'app/models/database_parser.rb' # delete
 
 Metrics/LineLength:
   Exclude:
     - 'config/initializers/new_framework_defaults_6_0.rb'
 
-# Internship refactoring dependent marked with #Internship
-# those should eventually be deleted or fixed: marked with #TBD
 Metrics/AbcSize:
   Exclude:
-    - 'db/seed/08_lib/08_internships.rb' #Internship
     - 'app/admin'
-#    - 'app/controllers/internships_controller.rb'
-  #  - 'app/models/ability.rb'
-#    - 'app/controllers/search_controller.rb'
+    - 'db/seed/08_lib/08_internships.rb' #Internship
 
 Metrics/BlockLength:
   Exclude:
@@ -36,16 +31,11 @@ Metrics/BlockLength:
     - 'app/admin/internships/internships_show.rb'
     - 'app/controllers/internships_controller.rb'
 
-
 Metrics/MethodLength:
   Exclude:
-    - 'app/models/ability.rb'
-    - 'db/seed/08_lib/08_internships.rb' #Internship
-    - 'app/controllers/favorite_controller.rb' # delete?
-    - 'app/controllers/finish_list_controller.rb' # delete?
     - 'app/controllers/internships_controller.rb'
-    - 'app/controllers/search_controller.rb'
+    - 'db/seed/08_lib/08_internships.rb' #Internship
 
 Metrics/ClassLength:
   Exclude:
-    - 'app/controllers/internships_controller.rb'
+    - 'app/controllers/internships_controller.rb' #Internship

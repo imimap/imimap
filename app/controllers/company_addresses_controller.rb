@@ -7,18 +7,18 @@ class CompanyAddressesController < ApplicationResourceController
   # before_action :set_company_address, only: %i[edit update destroy]
   before_action :set_company_id, only: %i[suggest_address]
 
-  def index
-    @company_addresses = CompanyAddress.all
-  end
+  # def index
+  #   @company_addresses = CompanyAddress.all
+  # end
 
   def show
     company = Company.find(params[:company_id])
     @company_address = company.company_addresses.find(params[:id])
   end
 
-  def new
-    @company_address = CompanyAddress.new
-  end
+  # def new
+  #   @company_address = CompanyAddress.new
+  # end
 
   def new_address
     @company_address = CompanyAddress.new
@@ -39,17 +39,18 @@ class CompanyAddressesController < ApplicationResourceController
     end
   end
 
-  def create
-    raise Exception 'deprecated?'
-    # @company_address = CompanyAddress.new(company_address_params)
-    # respond_to do |format|
-    #   if @company_address.save
-    #     redirect_to_ci(format)
-    #   else
-    #   format.html { render action: 'new', notice: 'Address creation failed.' }
-    #   end
-    # end
-  end
+  # def create
+  #   raise Exception 'deprecated?'
+  #   # @company_address = CompanyAddress.new(company_address_params)
+  #   # respond_to do |format|
+  #   #   if @company_address.save
+  #   #     redirect_to_ci(format)
+  #   #   else
+  #   #   format.html
+  #   #  { render action: 'new', notice: 'Address creation failed.' }
+  #   #   end
+  #   # end
+  # end
 
   # CodeReview: how do create and create_and_save differ? is create needed?
   def create_and_save
@@ -74,14 +75,14 @@ class CompanyAddressesController < ApplicationResourceController
     ), notice: 'Company Address was successfully saved.'
   end
 
-  def update
-    if @company_address.update(company_address_params)
-      redirect_to update_target,
-                  notice: 'Company address was successfully updated.'
-    else
-      render :edit
-    end
-  end
+  # def update
+  #   if @company_address.update(company_address_params)
+  #     redirect_to update_target,
+  #                 notice: 'Company address was successfully updated.'
+  #   else
+  #     render :edit
+  #   end
+  # end
 
   def destroy
     @company_address.destroy
@@ -100,21 +101,21 @@ class CompanyAddressesController < ApplicationResourceController
 
   private
 
-  def update_target
-    if @current_user.student
-      @current_user.student.complete_internship
-    else
-      @company_address
-    end
-  end
+  # def update_target
+  #   if @current_user.student
+  #     @current_user.student.complete_internship
+  #   else
+  #     @company_address
+  #   end
+  # end
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_company_address
-    @company_address = current_user
-                       .accessible_company_addresses
-                       .find(params[:id])
-    # @company_address = CompanyAddress.find(params[:id])
-  end
+  # def set_company_address
+  #  @company_address = current_user
+  #                     .accessible_company_addresses
+  #                     .find(params[:id])
+  #  # @company_address = CompanyAddress.find(params[:id])
+  # end
 
   def set_internship_group
     # The accessible_by call cannot be used with a block 'can' definition.

@@ -3,10 +3,6 @@
 # Helper Methods for Internship stuff
 module InternshipsHelper
   def student_name(internship:)
-    if internship.student.nil?
-      t('my_active_admin.no_student')
-    else
-      internship.student.name
-    end
+    internship.student.name
   end
 end

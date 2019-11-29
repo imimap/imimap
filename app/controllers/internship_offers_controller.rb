@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nocov:
 # Offers for Internship Positions
 class InternshipOffersController < ApplicationResourceController
   def index
@@ -43,3 +44,4 @@ class InternshipOffersController < ApplicationResourceController
     %i[title body pdf city country active]
   end
 end
+# :nocov:
