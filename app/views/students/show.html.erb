@@ -58,12 +58,13 @@
     <div class="row">
       <div class="col-md-4">
         <div class="field">
+          <%= checklist_hidden_form_fields(form: f) %>
           <%= f.submit t('helpers.submit.generic_update')%>
         </div>
       </div>
     </div>
     <br>
-    <%= link_to t('buttons.back'), 'javascript:history.back()' %> | <%= link_to t('buttons.back_to_overview'), complete_internship_path(@complete_internship_id) %>
+    <%= link_to t('buttons.back'), 'javascript:history.back()' %> | <%= checklist_back_to_overview_link(params: params[:student]) %>
   </div>
 
   <% end %>

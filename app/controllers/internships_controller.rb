@@ -4,6 +4,7 @@
 class InternshipsController < ApplicationResourceController
   include ApplicationHelper
   include CompleteInternshipsHelper
+  include CompleteInternshipsChecklistPageflow
 
   respond_to :html, :json
   before_action :programming_languages, :orientations, only: %i[new edit update]
@@ -119,6 +120,10 @@ class InternshipsController < ApplicationResourceController
                                .complete_internship
                                .internships
                                .find(params[:id])
+    checklist_set_back_params(
+      params: params,
+      complete_internship: @internship.complete_internship
+    )
     @profs = ReadingProf.order(:id).map { |p| [p.name, p.id] }
   end
 

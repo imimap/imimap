@@ -22,6 +22,7 @@ describe 'Student Profile' do
         visit student_path(locale, s)
         student_fields.each do |field|
           value = s.send(field)
+
           expect(page).to have_selector("input[value='#{value}']")
         end
       end

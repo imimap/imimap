@@ -1,5 +1,6 @@
 <table class="table table-striped text-left">
   <tbody>
+
       <tr>
         <td style="width:1%">
           <% if @student.all_personal_details_filled? %>
@@ -9,10 +10,12 @@
         <td>
           <label class="checkbox">
             <input class="invisible" type="checkbox" <%= 'checked' if @student.all_personal_details_filled? %> id="student_<%=internship.id%>">
-              <%= link_to t("complete_internships.checklist.personal_details"), @student %>
+              <%= link_to_student_details(student: @student) %>
           </label>
         </td>
       </tr>
+
+      <!-- CompanyAddress -->
       <tr>
         <td style="width:1%">
           <% if company_address?(internship) %>
@@ -30,6 +33,8 @@
           </label>
         </td>
       </tr>
+
+      <!-- Internship -->
       <tr>
         <td style="width:1%">
           <% if internship.all_internship_details_filled? %>
@@ -39,11 +44,12 @@
         <td>
           <label class="checkbox">
             <input class="invisible" type="checkbox" <%= 'checked' if internship.all_internship_details_filled? %> id="internship_<%=internship.id%>">
-              <%= link_to t("complete_internships.checklist.internship_details"),  edit_internship_path(internship.id)%>
+              <%= link_to_internship_details(internship: internship)%>
           </label>
         </td>
       </tr>
       <tr>
+
         <td style="width:1%">
           <i class="icon-ok icon-large text-success d-none" id="contract_<%=internship.id%>"></i>
           <% if internship.contract_original %>
