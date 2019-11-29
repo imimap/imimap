@@ -9,11 +9,11 @@ describe 'Complete Internship' do
         I18n.locale = locale
         allow_ldap_login(success: false)
       end
-      if ENV['WITH_ADMIN']
-        list = %w[student admin]
-      else
-        list = %w[student]
-      end
+      list = if ENV['WITH_ADMIN']
+               %w[student admin]
+             else
+               %w[student]
+             end
       list.each do |role|
         context 'with valid user credentials' do
           before :each do

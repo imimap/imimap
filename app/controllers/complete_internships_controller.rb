@@ -21,7 +21,7 @@ class CompleteInternshipsController < ApplicationResourceController
 
   def show
     @semester_name = @complete_internship.semester.try(:name)
-    #set_student(@complete_internship)
+    # set_student(@complete_internship)
   end
 
   # If the user has no complete internship, the system asks him/her to create a
