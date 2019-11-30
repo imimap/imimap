@@ -50,10 +50,8 @@ ActiveAdmin.register Internship do
       f.input :supervisor_name
       f.input :supervisor_email
       f.input :supervisor_phone
-      f.input :programming_languages,
-              label: t('internships.attributes.programming_languages')
-      f.input :orientation,
-              label: t('internships.attributes.orientation')
+      f.input :programming_languages
+      f.input :orientation
     end
     f.inputs 'Administration' do
       f.input :approved

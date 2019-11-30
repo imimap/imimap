@@ -99,12 +99,12 @@ de:
       internship_offer:
         one: Praktikumsangebot
         other: Praktikumsangebote
-      orientation:
-        one: Schwerpunkt
-        other: Schwerpunkte
       programming_language:
         one: Programmiersprache
         other: Programmiersprachen
+      orientation:
+        one: Schwerpunkt
+        other: Schwerpunkte
       reading_prof:
         one: Professor_in
         other: Professor_innen

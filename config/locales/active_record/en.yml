@@ -55,6 +55,12 @@ en:
       internship:
         one: Internship
         other: Internships
+      programming_language:
+        one: Programming Language
+        other: Programming Languages
+      orientation:
+        one: Main Focus
+        other: Main Focuses
     errors:
       messages:
         record_invalid: "Validation failed: %{errors}"
