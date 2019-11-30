@@ -1,6 +1,6 @@
 <thead>
   <tr class="search-table">
-    <th><%= t "activerecord.attributes.internship.title" %></th>
+    <!-- <th><%#= t "activerecord.attributes.internship.title" %></th> -->
     <th><%= t "activerecord.attributes.internshipcompany" %></th>
     <th><%= t "companies.attributes.city"%> </th>
     <th><%= t "companies.attributes.country" %></th>
@@ -15,7 +15,7 @@
 <tbody>
 <% @internships.each do |internship| %>
   <tr class="<%= cycle("even_row", "odd_row") %>">
-    <td><%= internship.title %></td>
+    <!-- <td><#%= internship.title %></td> -->
     <td><%= @company.name %></td>
     <td><%= @company.city %></td>
     <td><%= @company.country %></td>

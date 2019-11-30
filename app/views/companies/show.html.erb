@@ -63,7 +63,6 @@
 
 <table class="table">
   <tr>
-    <th><%= t "activerecord.attributes.internship.title" %></th>
     <th><%= t "activerecord.attributes.internship.orientation" %></th>
     <th><%= t "activerecord.attributes.internship.programming_language" %></th>
     <th><%= t "activerecord.attributes.internship.rating" %></th>
@@ -72,7 +71,6 @@
 
   <% @internships.each do |internship| %>
   <tr>
-    <td><%= internship.title %></td>
     <td><%= internship.orientation.try(:name) %></td>
     <td><%= internship.programming_languages.map { |n| n.name } %></td>
     <td><%= render_stars(internship.rating, self) %></td>

@@ -3,7 +3,6 @@
 def create_internship(complete_internship:, company_address:)
   intern_rating_id = InternshipRating.first
   Internship.create!(
-    title: Faker::Job.title,
     salary: Faker::Number.number(digits: 4),
     internship_rating_id: intern_rating_id,
     working_hours: Faker::Number.number(digits: 2),
