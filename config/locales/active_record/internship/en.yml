@@ -1,5 +1,7 @@
-de:
+en:
   activerecord:
     attributes:
       internship:
-        programming_language_ids: Programming languages
+        programming_languages: 'Programming languages'
+        programming_language_ids: 'Programming languages'
+        orientation_id: 'Focus'

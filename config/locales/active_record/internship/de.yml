@@ -8,7 +8,7 @@ de:
         student: Student_in
         company: Firma
         company_v2: Firma
-        programming_language: "Programmiersprache(n)"
+        programming_languages: "Programmiersprache(n)"
         programming_language_ids: Programmiersprachen
         start_date: Anfangsdatum
         end_date: Enddatum
@@ -21,7 +21,7 @@ de:
         supervisor_email: "Betreuer_in E-Mail"
         supervisor_phone: "Betreuer_in Telefonnummer"
         registration_state: Regisstrierungsstatus
-        orientation: "Orientierung"
+        orientation_id: "Schwerpunkt"
         payment_state: Bezahlungsstatus
         contract_state: Vertragsstatus
         internship_state: Praktikumsstatus

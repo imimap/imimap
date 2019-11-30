@@ -38,7 +38,7 @@
 
   <div class="col-md-6">
     <div class="field" id="field-titles">
-    <%= f.select :orientation_id, orientations, { label: t('internships.attributes.orientation'), include_blank: true }, required_application(f, :orientation, class: 'chzn-select')  %>
+    <%= f.select :orientation_id, orientations, { include_blank: true }, required_application(f, :orientation, class: 'chzn-select')  %>
     </div>
   </div>
 </div>
@@ -52,7 +52,7 @@
 
   <div class="col-md-6">
     <div class="field" id="field-titles">
-      <%= f.select :programming_language_ids, @programming_languages, { label: t('internships.attributes.programming_languages') }, required_application(f,:programming_language, { :multiple => true, class: 'chzn-select'}) %>
+      <%= f.select :programming_language_ids, @programming_languages, {}, required_application(f,:programming_language, { :multiple => true, class: 'chzn-select'}) %>
     </div>
   </div>
 </div>

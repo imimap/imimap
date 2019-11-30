@@ -104,8 +104,6 @@ en:
         longEnough: "Internship is long enough"
       reading_prof: "Reading professor"
       which_professor_should_read: "Which Professor would you prefer to read your Report?"
-      orientation: "Main focus"
-      programming_languages: "Programming languages"
     popup:
       missing1: "Some of the information that is needed for a complete registration for your internship seems to be missing. Check the following forms again:"
       missing2: "You can of course still print out your registration form and go to the consultation hour of the Professor in charge of the internships."
