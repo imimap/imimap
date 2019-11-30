@@ -2,7 +2,6 @@
 <%= bootstrap_form_for(@student) do |f| %>
 <div id="form-block4" class="text-left">
   <h3> <%= t "students.personal_details" %></h3>
-  <%= render 'required_attributes_legend' %>
 
   <div class="row">
     <div class="col-md-4">
@@ -46,25 +45,27 @@
       </div>
     </div>
 
-    <!--<div class="row">
-
-      <div class="col-md-4">
-        <div class="field">
-        <#%=# f.text_field :private_email %>
-        </div>
-      </div>
-    </div>-->
-
     <div class="row">
+
       <div class="col-md-4">
         <div class="field">
+          <br />
           <%= checklist_hidden_form_fields(form: f) %>
           <%= f.submit t('helpers.submit.generic_update')%>
         </div>
       </div>
+      
+      <div class="col-md-4">
+        <div class="field">
+        <%= f.text_field :private_email %>
+        </div>
+      </div>
     </div>
-    <br>
-    <%= link_to t('buttons.back'), 'javascript:history.back()' %> | <%= checklist_back_to_overview_link(params: params[:student]) %>
+    <div class="row">
+  <%= render 'required_attributes_legend' %>
+    </div>
+    <div class="row">
+    <%= checklist_back_to_overview_link(params: params[:student]) %>
   </div>
 
   <% end %>

@@ -2,17 +2,18 @@
 
 # link helpers for all views involved in the checklist pageflow
 module CompleteInternshipsChecklistPageflow
-  def link_to_student_details(student:)
-    link_to t('complete_internships.checklist.personal_details'), student
+  def link_to_student_details(student:, complete_internship_id:)
+    link_to t('complete_internships.checklist.personal_details'), student,
+            complete_internship_id: complete_internship_id
   end
 
   def checklist_set_back_params(params:, complete_internship:)
     if params[:complete_internship_id]
-      return @complete_internship_id = params[:complete_internship_id]
+      @complete_internship_id = params[:complete_internship_id]
     end
 
-    ci = complete_internship
-    return @complete_internship_id = ci.id if ci
+    # ci = complete_internship
+    # return @complete_internship_id = ci.id if ci
   end
 
   def checklist_hidden_form_fields(form:)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_21_180112) do
+ActiveRecord::Schema.define(version: 2019_11_29_123712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -191,7 +191,6 @@ ActiveRecord::Schema.define(version: 2019_11_21_180112) do
     t.integer "internship_rating_id", default: 1
     t.integer "x_company_id"
     t.integer "user_id"
-    t.string "title"
     t.boolean "recommend", default: true
     t.integer "orientation_id"
     t.boolean "email_public"

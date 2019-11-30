@@ -5,7 +5,7 @@ require 'rails_helper'
 describe 'Student Profile' do
   # I18n.available_locales.each do |locale|
   locale = :en
-  student_fields = %w[first_name last_name birthday birthplace]
+  student_fields = %w[first_name last_name birthday birthplace private_email]
   context "in locale #{locale}" do
     before :each do
       I18n.locale = locale

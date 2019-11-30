@@ -10,7 +10,7 @@
         <td>
           <label class="checkbox">
             <input class="invisible" type="checkbox" <%= 'checked' if @student.all_personal_details_filled? %> id="student_<%=internship.id%>">
-              <%= link_to_student_details(student: @student) %>
+              <%= link_to_student_details(student: @student, complete_internship_id: @complete_internship.id) %>
           </label>
         </td>
       </tr>
