@@ -40,6 +40,9 @@ ssh_staging:
 prod_dump:
 	mkdir -p dumps
 	ssh deployer@imi-map.f4.htw-berlin.de "docker exec postgresql pg_dump -h localhost -U imi_map  imi_map_production" > dumps/imi-map-$(shell date +%Y-%m-%d).pgdump
+set_env:
+	export RAILS_MASTER_KEY=asdfasfd
+	export LDAP=ALWAYS_RETURN_TRUE
 start_db:
 	docker-compose -f docker-compose-db.yml -f docker-compose.yml up -d
 start_db_ldap:
