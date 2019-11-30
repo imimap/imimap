@@ -59,8 +59,7 @@ module CheckListHelper
                 end
                 it 'after save' do
                   click_on t('save')
-                  # currently jumps back to overview immediately
-                  # click_on t('buttons.back')
+                  click_on t('buttons.back')
                   # click_on t('buttons.back_to_overview')
                   expect_to_be_on_my_internship_page
                 end
