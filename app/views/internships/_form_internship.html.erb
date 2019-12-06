@@ -15,13 +15,14 @@
   <div class="col-md-6">
     <div class="field" id="field-titles" onfocusout="validateDuration()">
       <%= f.date_field :start_date, required_application(f,:start_date, placeholder: t('date.formats.placeholder'))  %>
+      <small class="font-weight-light text-muted">  </small>
     </div>
   </div>
 
   <div class="col-md-6">
     <div class="field" id="field-titles" onfocusout="validateDuration()">
-        <small id="validation_notification" class="font-weight-light text-muted"> - <%= t("internship_duration_validation.#{@internship.duration.validation}")%></small>
       <%= f.date_field :end_date, required_application(f, :end_date, placeholder: t('date.formats.placeholder'))  %>
+      <small id="validation_notification" class="font-weight-light text-muted"> - <%= t("internship_duration_validation.#{@internship.duration.validation}")%></small>
     </div>
   </div>
 </div>
@@ -37,7 +38,7 @@
 
   <div class="col-md-6">
     <div class="field" id="field-titles">
-    <%= f.select :orientation_id, orientations, required_application(f, :orientation, class: 'chzn-select')  %>
+    <%= f.select :orientation_id, orientations, { include_blank: true }, required_application(f, :orientation, class: 'chzn-select')  %>
     </div>
   </div>
 </div>
@@ -50,9 +51,9 @@
   </div>
 
   <div class="col-md-6">
-  <div class="field" id="field-titles">
-    <%= f.select :programming_language_ids, @programming_languages, {}, required_application(f,:programming_language, { :multiple => true, class: 'chzn-select'}) %>
-</div>
+    <div class="field" id="field-titles">
+      <%= f.select :programming_language_ids, @programming_languages, {}, required_application(f,:programming_language, { :multiple => true, class: 'chzn-select'}) %>
+    </div>
   </div>
 </div>
 
@@ -131,6 +132,13 @@
 
 <script type="text/javascript">
   function validateDuration() {
+    var start_date = document.getElementById("internship_start_date").value;
+    var end_date = document.getElementById("internship_end_date").value;
+    start_date = parseEuropeanDate(start_date);
+    end_date = parseEuropeanDate(end_date);
+    var duration = weeksBetween(start_date, end_date);
+    var validation = validate(duration);
+    setValidationText(validation);
   }
   function parseEuropeanDate(dateString) {
     var date_ok = Date.parse(dateString);
