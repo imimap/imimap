@@ -73,7 +73,8 @@
   <tr>
     <td><%= internship.orientation.try(:name) %></td>
     <td><%= internship.programming_languages.map { |n| n.name } %></td>
-    <td><%= render_stars(internship.rating, self) %></td>
+    <td><% #render_stars(internship.rating, self)
+       %></td>
     <td><%= link_to (t "buttons.show"), internship, class: "btn btn-success" %></td>
   </tr>
   <% end %>

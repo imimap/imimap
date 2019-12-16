@@ -6,6 +6,8 @@ class InternshipsController < ApplicationResourceController
   include CompleteInternshipsHelper
   include CompleteInternshipsChecklistPageflow
 
+  load_and_authorize_resource
+
   respond_to :html, :json
   before_action :programming_languages, :orientations, only: %i[new edit update]
   before_action :set_internship,
@@ -127,18 +129,10 @@ class InternshipsController < ApplicationResourceController
     @profs = ReadingProf.order(:id).map { |p| [p.name, p.id] }
   end
 
-  # PUT /internships/1
   def update
-    attributes = internship_params
-    @internship = @current_user.student
-                               .complete_internship
-                               .internships
-                               .find(params[:id])
-    if @internship.update(attributes)
-      # @internship.update(completed: true)
+    if @internship.update(internship_params)
       flash[:notice] = 'Internship was successfully updated.'
-      respond_with(@current_user.student
-                                 .complete_internship)
+      respond_with(@internship.complete_internship)
     else
       @rating = @internship.build_internship_rating
       render :edit, notice: 'Please fill in all fields'
@@ -212,11 +206,11 @@ class InternshipsController < ApplicationResourceController
   private
 
   def set_internship
-    @internship = Internship.find_for(
-      id: params[:id],
-      action: :edit,
-      ability: current_ability
-    )
+  #  @internship = Internship.find_for(
+  #    id: params[:id],
+  #    action: :edit,
+  #    ability: current_ability
+  #  )
   end
 
   def internship_params
