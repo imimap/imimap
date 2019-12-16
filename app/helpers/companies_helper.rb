@@ -35,7 +35,7 @@ module CompaniesHelper
   end
 
   def redirect_successful_update
-    if true || @current_user.student # cidcontext
+    if @internship_id # cidcontext
       redirect_to edit_company_address_path(
         Internship.find(@internship_id).company_address
       ), notice: 'Company was successfully updated.'
