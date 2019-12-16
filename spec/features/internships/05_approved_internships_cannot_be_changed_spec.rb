@@ -40,7 +40,7 @@ describe 'Ability: Student edits Internship' do
       expect(page).to have_link(
         t('complete_internships.checklist.personal_details'), href:
       student_path(id: @complete_internship.student.id,
-                   locale: I18n.locale)
+                   locale: I18n.locale, cidcontext: @complete_internship.id)
       )
     end
 
@@ -49,14 +49,15 @@ describe 'Ability: Student edits Internship' do
         t('complete_internships.checklist.company_details'), href:
     edit_company_path(id: @internship.company_address.company,
                       internship_id: @internship.id,
-                      locale: I18n.locale)
+                      locale: I18n.locale,
+                      cidcontext: @complete_internship.id)
       )
     end
     it 'shows internship details as link' do
       expect(page).to have_link(
         href: edit_internship_path(
           id: @internship,
-          complete_internship_id: @complete_internship.id,
+          cidcontext: @complete_internship.id,
           locale: I18n.locale
         )
       )

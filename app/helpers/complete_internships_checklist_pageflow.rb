@@ -11,7 +11,7 @@ module CompleteInternshipsChecklistPageflow
     # raise ArgumentError, 'no complete_internship_id found'
   end
 
-  def checklist_hidden_form_fields(form:)
+  def checklist_hidden_form_fields(form:, params:, resource: nil)
     form.hidden_field(:cidcontext,
                       value: cidcontext_from(
                         params: params, resource: resource
@@ -26,18 +26,6 @@ module CompleteInternshipsChecklistPageflow
       link_to t('buttons.back_to_overview'),
               complete_internship_path(cid)
     end
-  end
-
-  def link_to_student_details(student:, cidcontext:)
-    # link to student#show
-    link_to t('complete_internships.checklist.personal_details'),
-            student,
-            cidcontext: cidcontext
-  end
-
-  def link_to_internship_details(internship:, cidcontext:)
-    # link to internship#edit
-    
   end
 
   private

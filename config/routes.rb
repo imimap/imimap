@@ -48,6 +48,7 @@ Rails.application.routes.draw do
     post 'select_company/', to: 'companies#suggest'
     get 'suggest_address/', to: 'company_addresses#suggest_address'
     patch 'show/', to: 'company_addresses#save_address'
+
     ActiveAdmin.routes(self)
   end
 end

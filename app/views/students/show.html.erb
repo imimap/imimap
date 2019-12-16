@@ -50,7 +50,7 @@
       <div class="col-md-4">
         <div class="field">
           <br />
-          <%= checklist_hidden_form_fields(form: f) %>
+          <%= checklist_hidden_form_fields(form: f, params: params, resource: :student) %>
           <%= f.submit t('helpers.submit.generic_update')%>
         </div>
       </div>
@@ -65,7 +65,7 @@
   <%= render 'required_attributes_legend' %>
     </div>
     <div class="row">
-    <%= checklist_back_to_overview_link(params: params resource: :student) %>
+    <%= checklist_back_to_overview_link(params: params, resource: :student) %>
   </div>
 </div>
 <% end %>
