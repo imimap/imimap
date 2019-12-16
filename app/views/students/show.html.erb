@@ -65,7 +65,7 @@
   <%= render 'required_attributes_legend' %>
     </div>
     <div class="row">
-    <%= checklist_back_to_overview_link(complete_internship_id: @complete_internship_id, params: params[:student]) %>
+    <%= checklist_back_to_overview_link(params: params resource: :student) %>
   </div>
-
-  <% end %>
+</div>
+<% end %>

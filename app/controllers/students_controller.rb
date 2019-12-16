@@ -17,18 +17,14 @@ class StudentsController < ApplicationResourceController
        private_email]
   end
 
+  # student#show
   def show
-    checklist_set_back_params(
-      params: params,
-      complete_internship: @student.complete_internship
-    )
-    @student = Student.find(params[:id])
+    set_checklist_context(params: params, resource: :student)
     @user = @student.user
     assign_show_attributes(@student)
   end
 
   def update
-    @student = Student.find(params[:id])
     @user = @student.user
     flash[:success] = 'Profil geupdated' if @student.update(student_params)
     render 'show'
@@ -37,7 +33,6 @@ class StudentsController < ApplicationResourceController
   private
 
   def set_student
-    # @student = current_user.student
     @student = Student.find(params[:id])
   end
 

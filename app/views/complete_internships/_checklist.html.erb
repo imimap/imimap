@@ -10,7 +10,7 @@
         <td>
           <label class="checkbox">
             <input class="invisible" type="checkbox" <%= 'checked' if @student.all_personal_details_filled? %> id="student_<%=internship.id%>">
-              <%= link_to_student_details(student: @student, complete_internship_id: @complete_internship.id) %>
+            <%= link_to t('complete_internships.checklist.personal_details'), @student, cidcontext: @complete_internship.id %>
           </label>
         </td>
       </tr>
@@ -26,9 +26,9 @@
           <label class="checkbox">
             <input class="invisible" type="checkbox" <%= 'checked' if company_address?(internship) %> id="company_<%=internship.id%>">
               <% if internship.company_address %>
-                <%= link_to t("complete_internships.checklist.company_details"), edit_company_path(internship.company_address.company, :internship_id => internship.id)%>
+                <%= link_to t("complete_internships.checklist.company_details"), edit_company_path(internship.company_address.company, internship_id: internship.id, cidcontext: @complete_internship.id)%>
               <% else %>
-                <%= link_to t("complete_internships.checklist.company_details"), select_company_path(:internship_id => internship.id)%>
+                <%= link_to t("complete_internships.checklist.company_details"), select_company_path(internship_id: internship.id, cidcontext: @complete_internship.id)%>
               <% end %>
           </label>
         </td>
@@ -44,7 +44,8 @@
         <td>
           <label class="checkbox">
             <input class="invisible" type="checkbox" <%= 'checked' if internship.all_internship_details_filled? %> id="internship_<%=internship.id%>">
-              <%= link_to_internship_details(internship: internship, complete_internship_id: @complete_internship.id)%>
+              <%= link_to t('complete_internships.checklist.internship_details'),
+                      edit_internship_path(internship,   cidcontext: @complete_internship.id  ) %>
           </label>
         </td>
       </tr>

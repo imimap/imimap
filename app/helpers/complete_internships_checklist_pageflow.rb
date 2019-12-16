@@ -1,46 +1,50 @@
 # frozen_string_literal: true
 
 # link helpers for all views involved in the checklist pageflow
+# context to my_internship / complete_internship checklist
+# is maintained by passing a 'cidcontext' parameter holding the
+# complete_internship id.
 module CompleteInternshipsChecklistPageflow
-  def checklist_set_back_params(params:, complete_internship:)
-    if params[:complete_internship_id]
-      @complete_internship_id = params[:complete_internship_id]
-    end
+  def set_checklist_context(params:, resource: nil)
+    @cidcontext = cidcontext_from(params: params, resource: resource)
 
-    # ci = complete_internship
-    # return @complete_internship_id = ci.id if ci
+    # raise ArgumentError, 'no complete_internship_id found'
   end
 
   def checklist_hidden_form_fields(form:)
-    form.hidden_field(:complete_internship_id,
-                      value: @complete_internship_id)
+    form.hidden_field(:cidcontext,
+                      value: cidcontext_from(
+                        params: params, resource: resource
+                      ))
   end
 
-  def checklist_back_to_overview_link(complete_internship_id:, params: {})
-# byebug
-    cid = @complete_internship_id \
-          || complete_internship_id  \
-          || params && params[:complete_internship_id]
-    if cid
+  def checklist_back_to_overview_link(params: {}, resource: nil)
+    cid = cidcontext_from(params: params, resource: resource)
+    if cid.nil?
+      'no cid'
+    else
       link_to t('buttons.back_to_overview'),
               complete_internship_path(cid)
-    else
-      ''
     end
   end
 
-  def link_to_student_details(student:, complete_internship_id:)
-#    byebug
+  def link_to_student_details(student:, cidcontext:)
+    # link to student#show
     link_to t('complete_internships.checklist.personal_details'),
             student,
-            complete_internship_id: complete_internship_id
+            cidcontext: cidcontext
   end
 
-  def link_to_internship_details(internship:, complete_internship_id:)
-    link_to t('complete_internships.checklist.internship_details'),
-            edit_internship_path(
-              internship,
-              complete_internship_id: complete_internship_id
-            )
+  def link_to_internship_details(internship:, cidcontext:)
+    # link to internship#edit
+    
+  end
+
+  private
+
+  def cidcontext_from(params:, resource: nil)
+    params && params[:cidcontext] \
+    || resource && params[resource] && params[resource][:cidcontext] \
+    || nil
   end
 end

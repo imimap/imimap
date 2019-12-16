@@ -101,7 +101,7 @@ class InternshipsController < ApplicationResourceController
     respond_to do |format|
       format.html
       student = @internship.student
-      authorize! :read, student
+      authorize! :show, student
       name = student.last_name
       format.pdf do
         pdf = InternshipPdf.new(@internship)
@@ -115,6 +115,7 @@ class InternshipsController < ApplicationResourceController
 
   def rating; end
 
+  # internship#edit
   def edit
     return unless @current_user.student
 
@@ -122,10 +123,7 @@ class InternshipsController < ApplicationResourceController
                                .complete_internship
                                .internships
                                .find(params[:id])
-    checklist_set_back_params(
-      params: params,
-      complete_internship: @internship.complete_internship
-    )
+    set_checklist_context(params: params, resource: :internship)
     @profs = ReadingProf.order(:id).map { |p| [p.name, p.id] }
   end
 
