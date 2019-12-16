@@ -6,6 +6,13 @@ module ApplicationHelper
     RatingRenderer.new(rating, template).render_star_fields
   end
 
+  def active_menu_item?(path)
+    # my_internship_path
+    return @active_path == path if @active_path
+
+    current_page?(path)
+  end
+
   def flash_class(level)
     case level
     when :notice then 'alert alert-info'
