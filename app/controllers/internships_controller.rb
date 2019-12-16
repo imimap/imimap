@@ -100,7 +100,9 @@ class InternshipsController < ApplicationResourceController
 
     respond_to do |format|
       format.html
-      name = @current_user.student.last_name
+      student = @internship.student
+      authorize! :read, student
+      name = student.last_name
       format.pdf do
         pdf = InternshipPdf.new(@internship)
         send_data pdf.render,

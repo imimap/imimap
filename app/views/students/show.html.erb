@@ -54,7 +54,7 @@
           <%= f.submit t('helpers.submit.generic_update')%>
         </div>
       </div>
-      
+
       <div class="col-md-4">
         <div class="field">
         <%= f.text_field :private_email %>
@@ -65,7 +65,7 @@
   <%= render 'required_attributes_legend' %>
     </div>
     <div class="row">
-    <%= checklist_back_to_overview_link(params: params[:student]) %>
+    <%= checklist_back_to_overview_link(complete_internship_id: @complete_internship_id, params: params[:student]) %>
   </div>
 
   <% end %>

@@ -44,7 +44,7 @@
         <td>
           <label class="checkbox">
             <input class="invisible" type="checkbox" <%= 'checked' if internship.all_internship_details_filled? %> id="internship_<%=internship.id%>">
-              <%= link_to_internship_details(internship: internship)%>
+              <%= link_to_internship_details(internship: internship, complete_internship_id: @complete_internship.id)%>
           </label>
         </td>
       </tr>
