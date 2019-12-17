@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-# maybe InternshipsDto moves here.
+# Helper for CompleteInternships
 module CompleteInternshipsHelper
+  include CompleteInternshipsChecklistPageflow
   def semester_select_options(show_all: false)
     semester = Semester.all.map { |s| [s.name, s.id] }
     if show_all

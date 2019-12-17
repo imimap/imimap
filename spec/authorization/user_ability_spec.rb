@@ -27,7 +27,7 @@ describe 'User Role' do
       # TBD: replace this with a factory creating user with student with
       # internship and just have an elegant let here
       before :each do
-        student = create(:student2)
+        @student = student = create(:student2)
         @own_internship = create(:internship, student: student)
         @other_internship = create(:internship, student: create(:student))
         @user = create(:user, student: student)
@@ -39,6 +39,7 @@ describe 'User Role' do
       end
       it { is_expected.to be_able_to(:show, @own_internship) }
       it { is_expected.not_to be_able_to(:show, @other_internship) }
+      it { is_expected.to be_able_to(:show, @student) }
     end
   end
 end

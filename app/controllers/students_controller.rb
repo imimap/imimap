@@ -5,6 +5,7 @@ class StudentsController < ApplicationResourceController
   before_action :set_student, only: %i[show update]
   authorize_resource
   include StudentsHelper
+  include CompleteInternshipsChecklistPageflow
   def self.permitted_params
     %i[first_name
        last_name
@@ -16,15 +17,14 @@ class StudentsController < ApplicationResourceController
        private_email]
   end
 
+  # student#show
   def show
-    @student = Student.find(params[:id])
+    set_checklist_context(params: params, resource: :student)
     @user = @student.user
-    # TBD centralize logic for users that are not students
     assign_show_attributes(@student)
   end
 
   def update
-    @student = Student.find(params[:id])
     @user = @student.user
     flash[:success] = 'Profil geupdated' if @student.update(student_params)
     render 'show'
@@ -33,7 +33,6 @@ class StudentsController < ApplicationResourceController
   private
 
   def set_student
-    # @student = current_user.student
     @student = Student.find(params[:id])
   end
 
