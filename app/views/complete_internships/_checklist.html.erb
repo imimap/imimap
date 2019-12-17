@@ -89,14 +89,14 @@
           <div class="accordion" id="accordionExample">
 
             <div class="card">
-              <div class="card-header m-0 p-0" id="headingOne">
+              <div class="card-header m-0 p-0" id="headingOne<%=internship.id%>">
                 <h2 class="mb-0">
-                  <button id="moduleHeading1" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                  <button id="moduleHeading1" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne<%=internship.id%>" aria-expanded="false" aria-controls="collapseOne<%=internship.id%>">
                     <%= t 'complete_internships.checklist.module_semester' %>
                   </button>
                 </h2>
               </div>
-              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div id="collapseOne<%=internship.id%>" class="collapse" aria-labelledby="headingOne<%=internship.id%>" data-parent="#accordionExample">
                 <div class="card-body">
                   <strong>1. Semester</strong>
                   <ul>
@@ -122,14 +122,14 @@
             </div>
 
             <div class="card">
-              <div class="card-header m-0 p-0" id="headingTwo">
+              <div class="card-header m-0 p-0" id="headingTwo<%=internship.id%>">
                 <h2 class="mb-0">
-                  <button id="moduleHeading2" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  <button id="moduleHeading2" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo<%=internship.id%>" aria-expanded="false" aria-controls="collapseTwo<%=internship.id%>">
                     <%= t 'complete_internships.checklist.module_fgr' %>
                   </button>
                 </h2>
               </div>
-              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div id="collapseTwo<%=internship.id%>" class="collapse" aria-labelledby="headingTwo<%=internship.id%>" data-parent="#accordionExample">
                 <div class="card-body">
                   <ul>
                     <li>Informatik 1</li>
