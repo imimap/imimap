@@ -20,15 +20,12 @@ function insertInfo(idParcial, internshipId, elementId) {
 function setMessage() {
   var missing1 = document.getElementById("missing1");
   var missing2 = document.getElementById("missing2");
-  var clear = document.getElementById("clear");
   if (count >= 3) {
     missing1.style.display = "none";
     missing2.style.display = "none";
-    clear.style.display = "block";
   } else {
     missing1.style.display = "block";
     missing2.style.display = "block";
-    clear.style.display = "none";
   }
 }
 
@@ -36,13 +33,10 @@ function contractInfo(internshipId) {
   var radioId = "original_" + internshipId;
   var rb = document.getElementById(radioId);
   var item = document.getElementById("no_original");
-  var clear = document.getElementById("clear");
   if (rb.checked === true) {
     item.style.display = "none";
-    clear.style.display = "block";
   } else {
     item.style.display = "block";
-    clear.style.display = "none";
   }
 }
 
@@ -52,7 +46,7 @@ function radiosActivated(internshipId) {
   var radioOriginalId = "original_" + internshipId;
   var radioCopyId = "copy_" + internshipId;
   var cb = document.getElementById(checkboxId);
-  var iconOk = document.getElementById(contract); 
+  var iconOk = document.getElementById(contract);
   var rdOriginal = document.getElementById(radioOriginalId);
   var rdCopy = document.getElementById(radioCopyId);
   if (rdOriginal.checked === true || rdCopy.checked === true) {
