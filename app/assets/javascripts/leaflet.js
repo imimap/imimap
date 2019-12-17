@@ -14011,7 +14011,7 @@ var oldL = window.L;
 exports.noConflict = function() {
 	window.L = oldL;
 	return this;
-}
+};
 
 // Always export us to window global (see #2364)
 window.L = exports;

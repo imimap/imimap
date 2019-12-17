@@ -49,6 +49,12 @@ def login_as_student
   user
 end
 
+def login_as_admin
+  user = FactoryBot.create :admin
+  sign_in user
+  user
+end
+
 # logins for controllers
 module ControllerTestHelper
   def login

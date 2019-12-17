@@ -14,7 +14,6 @@ describe 'ActiveAdmin InternshipOffer Edit' do
 
     internship_offer = create(:internship_offer)
     visit edit_admin_internship_offer_path(id: internship_offer)
-    #  save_and_open_page
     uncheck 'internship_offer_active'
     click_on I18n.t('helpers.submit.update',
                     model: InternshipOffer.model_name.human)

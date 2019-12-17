@@ -3,6 +3,7 @@
 require 'rails_helper'
 
 describe 'Ability: Student edits Internship' do
+  include CompleteInternshipsChecklistPageflow
   context 'not approved' do
     it 'ensure factories are working as expecting' do
       # this needs to work in order to assume the right associations used in
@@ -39,7 +40,7 @@ describe 'Ability: Student edits Internship' do
       expect(page).to have_link(
         t('complete_internships.checklist.personal_details'), href:
       student_path(id: @complete_internship.student.id,
-                   locale: I18n.locale)
+                   locale: I18n.locale, cidcontext: @complete_internship.id)
       )
     end
 
@@ -48,14 +49,17 @@ describe 'Ability: Student edits Internship' do
         t('complete_internships.checklist.company_details'), href:
     edit_company_path(id: @internship.company_address.company,
                       internship_id: @internship.id,
-                      locale: I18n.locale)
+                      locale: I18n.locale,
+                      cidcontext: @complete_internship.id)
       )
     end
     it 'shows internship details as link' do
       expect(page).to have_link(
-        t('complete_internships.checklist.internship_details'), href:
-      edit_internship_path(id: @internship.id,
-                           locale: I18n.locale)
+        href: edit_internship_path(
+          id: @internship,
+          cidcontext: @complete_internship.id,
+          locale: I18n.locale
+        )
       )
     end
     it 'shows contract radio buttons' do

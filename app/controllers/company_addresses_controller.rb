@@ -26,7 +26,9 @@ class CompanyAddressesController < ApplicationResourceController
     @internship = find_internship
   end
 
-  def edit; end
+  def edit
+    authorize! :edit, @company_address
+  end
 
   def suggest_address
     ok = UserCanSeeCompany.company_suggest(company_id: @company_id,
@@ -39,20 +41,7 @@ class CompanyAddressesController < ApplicationResourceController
     end
   end
 
-  # def create
-  #   raise Exception 'deprecated?'
-  #   # @company_address = CompanyAddress.new(company_address_params)
-  #   # respond_to do |format|
-  #   #   if @company_address.save
-  #   #     redirect_to_ci(format)
-  #   #   else
-  #   #   format.html
-  #   #  { render action: 'new', notice: 'Address creation failed.' }
-  #   #   end
-  #   # end
-  # end
-
-  # CodeReview: how do create and create_and_save differ? is create needed?
+  # should be create
   def create_and_save
     set_internship_group
     respond_to do |format|
@@ -75,14 +64,15 @@ class CompanyAddressesController < ApplicationResourceController
     ), notice: 'Company Address was successfully saved.'
   end
 
-  # def update
-  #   if @company_address.update(company_address_params)
-  #     redirect_to update_target,
-  #                 notice: 'Company address was successfully updated.'
-  #   else
-  #     render :edit
-  #   end
-  # end
+  def update
+    # authorize! :update, @company_address
+    if @company_address.update(company_address_params)
+      redirect_to update_target,
+                  notice: 'Company address was successfully updated.'
+    else
+      render :edit
+    end
+  end
 
   def destroy
     @company_address.destroy
@@ -101,21 +91,17 @@ class CompanyAddressesController < ApplicationResourceController
 
   private
 
-  # def update_target
-  #   if @current_user.student
-  #     @current_user.student.complete_internship
-  #   else
-  #     @company_address
-  #   end
+  # def set_company_address
+  #   @company_address = CompanyAddress.find(params[:company_id])
   # end
 
-  # Use callbacks to share common setup or constraints between actions.
-  # def set_company_address
-  #  @company_address = current_user
-  #                     .accessible_company_addresses
-  #                     .find(params[:id])
-  #  # @company_address = CompanyAddress.find(params[:id])
-  # end
+  def update_target
+    if @current_user.student
+      @current_user.student.complete_internship
+    else
+      @company_address
+    end
+  end
 
   def set_internship_group
     # The accessible_by call cannot be used with a block 'can' definition.
