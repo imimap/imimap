@@ -114,4 +114,9 @@ class Internship < ApplicationRecord
     end
     duration.valid_duration?(self)
   end
+
+  def number_of_comments
+    ActiveAdmin::Comment.where(resource_id: internship_id,
+                               resource_type: 'Internship').count
+  end
 end
