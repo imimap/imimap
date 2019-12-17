@@ -12,15 +12,15 @@
 
   <div class="collapse navbar-collapse navbar-expand-lg pr-3" id="imi-map-navbar-core">
     <ul class="navbar-nav ">
-      <li class="nav-item im-nav-item<%= 'active' if current_page?(root_path) %>"><%= link_to t("header.overview"), root_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
-      <li class="nav-item im-nav-item<%= 'active' if current_page?(internship_offers_path) %>"><%= link_to t("header.exchange"), internship_offers_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
-      <% if current_user.student? %>
-        <li class="nav-item im-nav-item<%= 'active' if current_page?(my_internship_path) %>"><%= link_to t("header.internship"),  my_internship_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
+      <li class="nav-item im-nav-item<%= 'active' if active_menu_item?(root_path) %>"><%= link_to t("header.overview"), root_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
+      <li class="nav-item im-nav-item<%= 'active' if active_menu_item?(internship_offers_path) %>"><%= link_to t("header.exchange"), internship_offers_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
+      <% if current_user.student?  %>
+        <li class="nav-item im-nav-item<%= 'active' if active_menu_item?(my_internship_path) %>"><%= link_to t("header.internship"),  my_internship_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
       <% end %>
 
       <% if can? :index, Internship %>
-        <li class="nav-item im-nav-item<%= 'active' if current_page?(internships_path) %>"><%= link_to t("header.current_internships"), internships_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
-        <li class="nav-item im-nav-item<%= 'active' if current_page?(complete_internships_path) %>"><%= link_to t("header.complete_internships"), complete_internships_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
+        <li class="nav-item im-nav-item<%= 'active' if active_menu_item?(internships_path) %>"><%= link_to t("header.current_internships"), internships_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
+        <li class="nav-item im-nav-item<%= 'active' if active_menu_item?(complete_internships_path) %>"><%= link_to t("header.complete_internships"), complete_internships_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
       <% end %>
 
       <% if current_user.admin? %>
@@ -29,8 +29,8 @@
 
       <% if false %>
       # to be reinstantiated later....
-      <li class="nav-item im-nav-item<%= 'active' if current_page?(internships_path) %>"><%= link_to t("header.search"), internships_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
-      <li class="nav-item im-nav-item<%= 'active' if current_page?(statistic_path) %>"><%= link_to t("header.statistic"), statistic_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
+      <li class="nav-item im-nav-item<%= 'active' if active_menu_item?(internships_path) %>"><%= link_to t("header.search"), internships_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
+      <li class="nav-item im-nav-item<%= 'active' if active_menu_item?(statistic_path) %>"><%= link_to t("header.statistic"), statistic_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
       <% end %>
     </ul>
   </div>
