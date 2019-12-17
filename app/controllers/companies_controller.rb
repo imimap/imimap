@@ -3,13 +3,14 @@
 # Companies Controller
 class CompaniesController < ApplicationResourceController
   include CompaniesHelper
-  before_action :set_company, only: %i[show edit update destroy]
+  # before_action :set_company, only: %i[show edit update destroy]
+  load_and_authorize_resource
   before_action :new_company, only: %i[new]
   before_action :new_company_params, only: %i[create create_and_save]
   before_action :set_internship_id, only: %i[create update]
 
   def index
-    @companies = Company.all
+    # @companies = Company.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -38,7 +39,7 @@ class CompaniesController < ApplicationResourceController
   end
 
   def edit
-    @company = Company.find(params[:id])
+    # @company = Company.find(params[:id])
     return unless @current_user.student
 
     @internship = @current_user.student
