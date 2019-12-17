@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-  <% if current_user.student? && FT.on?(:student_can_edit_internship, current_user) %>
+  <% if current_user.student?  %>
 <%= bootstrap_form_for @company_address, :url => {:action => "save_address", :internship_id => params[:internship_id], :id => params[:id] } do |f| %>
 <div id="form-block4" class="text-left">
   <h3> <%= t"activerecord.attributes.company_address.details"%></h3>
