@@ -19,7 +19,7 @@ class CompaniesController < ApplicationResourceController
   end
 
   def show
-    @internships = @company.internships
+    # @internships = @company.internships
     respond_to do |format|
       format.html
     end

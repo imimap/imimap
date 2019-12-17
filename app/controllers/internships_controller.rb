@@ -206,11 +206,11 @@ class InternshipsController < ApplicationResourceController
   private
 
   def set_internship
-  #  @internship = Internship.find_for(
-  #    id: params[:id],
-  #    action: :edit,
-  #    ability: current_ability
-  #  )
+    #  @internship = Internship.find_for(
+    #    id: params[:id],
+    #    action: :edit,
+    #    ability: current_ability
+    #  )
   end
 
   def internship_params
