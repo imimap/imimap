@@ -28,11 +28,12 @@ class CompleteInternshipsController < ApplicationResourceController
   # new one else the internship details are shown
   # my_internship_path
   def no; end
+
   def show_own
     @active_path = 'cidcontext'
     @ci = current_user.student.complete_internship
     if @ci.nil?
-      render :no_complete_internship_data
+      render :no
     else
       redirect_to @ci
     end
