@@ -26,7 +26,7 @@ module Abilities
     end
 
     def can_show_own_internship(user)
-      can %i[show_own], CompleteInternship
+      can %i[no show_own], CompleteInternship
       can %i[show],
           CompleteInternship,
           student: { user: { id: user.id } }

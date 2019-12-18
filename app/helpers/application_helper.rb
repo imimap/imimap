@@ -6,6 +6,14 @@ module ApplicationHelper
     RatingRenderer.new(rating, template).render_star_fields
   end
 
+  def path_to_complete_internship
+    if !(ci = @current_user.student.complete_internship).nil?
+      complete_internship_path(ci)
+    else
+      no_complete_internship_path
+    end
+  end
+
   def active_menu_item?(path)
     # my_internship_path
     return @active_path == path if @active_path

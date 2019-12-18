@@ -44,6 +44,9 @@ Rails.application.routes.draw do
     get 'my_internship',
         to: 'complete_internships#show_own',
         as: 'my_internship'
+    get 'no_complete_internship',
+        to: 'complete_internships#no',
+        as: 'no_complete_internship'
     post 'my_internship', to: 'company_addresses#create_and_save'
     post 'select_company/', to: 'companies#suggest'
     get 'suggest_address/', to: 'company_addresses#suggest_address'

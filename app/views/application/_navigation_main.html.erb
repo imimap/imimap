@@ -15,7 +15,7 @@
       <li class="nav-item im-nav-item<%= 'active' if active_menu_item?(root_path) %>"><%= link_to t("header.overview"), root_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
       <li class="nav-item im-nav-item<%= 'active' if active_menu_item?(internship_offers_path) %>"><%= link_to t("header.exchange"), internship_offers_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
       <% if current_user.student?  %>
-        <li class="nav-item im-nav-item<%= 'active' if active_menu_item?(my_internship_path) %>"><%= link_to t("header.internship"),  my_internship_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
+         <li class="nav-item im-nav-item<%= 'active' if active_menu_item?('cidcontext') %>"><%= link_to t("header.internship"),  path_to_complete_internship, class: 'nav-link im-nav-link imi-map-navlink' %></li>
       <% end %>
 
       <% if can? :index, Internship %>

@@ -21,14 +21,15 @@ class CompleteInternshipsController < ApplicationResourceController
 
   def show
     @semester_name = @complete_internship.semester.try(:name)
-    @active_path = my_internship_path
+    @active_path = 'cidcontext'
   end
 
   # If the user has no complete internship, the system asks him/her to create a
   # new one else the internship details are shown
   # my_internship_path
+  def no; end
   def show_own
-    @active_path = my_internship_path
+    @active_path = 'cidcontext'
     @ci = current_user.student.complete_internship
     if @ci.nil?
       render :no_complete_internship_data
