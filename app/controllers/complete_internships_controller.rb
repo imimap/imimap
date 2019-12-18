@@ -26,7 +26,6 @@ class CompleteInternshipsController < ApplicationResourceController
 
   # If the user has no complete internship, the system asks him/her to create a
   # new one else the internship details are shown
-  # my_internship_path
   def no; end
 
   def show_own

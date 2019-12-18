@@ -7,15 +7,13 @@ module ApplicationHelper
   end
 
   def path_to_complete_internship
-    if !(ci = @current_user.student.complete_internship).nil?
-      complete_internship_path(ci)
-    else
-      no_complete_internship_path
-    end
+    return no_complete_internship_path unless (s = @current_user.student)
+    return no_complete_internship_path unless (ci = s.complete_internship)
+
+    complete_internship_path(ci)
   end
 
   def active_menu_item?(path)
-    # my_internship_path
     return @active_path == path if @active_path
 
     current_page?(path)

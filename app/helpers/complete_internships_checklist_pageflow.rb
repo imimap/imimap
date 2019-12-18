@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # link helpers for all views involved in the checklist pageflow
-# context to my_internship / complete_internship checklist
+# context to the complete_internship checklist
 # is maintained by passing a 'cidcontext' parameter holding the
 # complete_internship id.
 module CompleteInternshipsChecklistPageflow
