@@ -36,6 +36,7 @@ describe 'Checklist Pageflow' do
       t('complete_internships.checklist.internal_comments')
     )
     expect_to_not_see_active_admin_links
+    expect_not_to_see_modules
   end
 
   def expect_to_not_see_active_admin_links
@@ -49,6 +50,14 @@ describe 'Checklist Pageflow' do
       t('complete_internships.checklist.internal_comments')
     )
     expect_to_see_active_admin_links
+    expect_to_see_modules
+  end
+
+  def expect_not_to_see_modules
+    expect(page).not_to have_content(
+                        t('complete_internships.checklist.module_semester')
+                    )
+    expect(page).not_to have_content t 'complete_internships.checklist.module_fgr'
   end
 
   def expect_to_see_active_admin_links
@@ -88,7 +97,6 @@ describe 'Checklist Pageflow' do
               it 'without save' do
                 click_on t('buttons.back_to_overview')
                 expect_to_be_on_my_internship_page
-                expect_to_see_modules
                 if @user.admin?
                   expect_to_see_admin_stuff
                 else
@@ -100,7 +108,6 @@ describe 'Checklist Pageflow' do
                 click_on t('buttons.back')
                 # click_on t('buttons.back_to_overview')
                 expect_to_be_on_my_internship_page
-                expect_to_see_modules
                 if @user.admin?
                   expect_to_see_admin_stuff
                 else
@@ -122,7 +129,6 @@ describe 'Checklist Pageflow' do
               it ' without save' do
                 click_on t('buttons.back_to_overview')
                 expect_to_be_on_my_internship_page
-                expect_to_see_modules
                 if @user.admin?
                   expect_to_see_admin_stuff
                 else
@@ -134,7 +140,6 @@ describe 'Checklist Pageflow' do
                 click_on t('helpers.submit.generic_update')
                 click_on t('buttons.back_to_overview')
                 expect_to_be_on_my_internship_page
-                expect_to_see_modules
                 if @user.admin?
                   expect_to_see_admin_stuff
                 else
