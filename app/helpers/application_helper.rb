@@ -64,4 +64,9 @@ module ApplicationHelper
     end
     required_application_impl(form, field, :class, options)
   end
+
+  def number_of_comments(resource_id, resource_type)
+    ActiveAdmin::Comment.where(resource_id: resource_id,
+                               resource_type: resource_type).count
+  end
 end
