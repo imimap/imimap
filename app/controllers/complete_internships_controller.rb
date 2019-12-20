@@ -21,15 +21,17 @@ class CompleteInternshipsController < ApplicationResourceController
 
   def show
     @semester_name = @complete_internship.semester.try(:name)
-    @active_path = 'cidcontext'
+    @active_menu_item = 'cidcontext'
   end
 
   # If the user has no complete internship, the system asks him/her to create a
   # new one else the internship details are shown
-  def no; end
+  def no
+    @active_menu_item = 'cidcontext'
+  end
 
   def show_own
-    @active_path = 'cidcontext'
+    @active_menu_item = 'cidcontext'
     @ci = current_user.student.complete_internship
     if @ci.nil?
       render :no
@@ -38,7 +40,9 @@ class CompleteInternshipsController < ApplicationResourceController
     end
   end
 
-  def new; end
+  def new
+    @active_menu_item = 'cidcontext'
+  end
 
   def edit; end
 

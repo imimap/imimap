@@ -28,7 +28,7 @@ describe 'Supply Company Details' do
           end
 
           it 'should create company' do
-            visit my_internship_path
+            visit my_internship_path_replacement
             click_on t('complete_internships.checklist.company_details')
             # fill_in :company_name_for_search, @company_name
             fill_in :name, with: @company_name

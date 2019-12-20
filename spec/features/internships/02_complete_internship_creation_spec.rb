@@ -24,7 +24,7 @@ describe 'Students can create their Internship information ' do
       click_on t('buttons.save')
 
       expect(page).to have_content 'B20'
-      click_on 'Praktikumsinformationen eintragen'
+      click_on t('complete_internships.new_tp0')
       expect(page).to have_content 'Neues Praktikum'
       click_on 'Speichern'
     end

@@ -14,7 +14,7 @@ module ApplicationHelper
   end
 
   def active_menu_item?(path)
-    return @active_path == path if @active_path
+    return @active_menu_item == path if @active_menu_item
 
     current_page?(path)
   end

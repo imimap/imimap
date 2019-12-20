@@ -48,7 +48,7 @@ en:
     details: "When do you want to do your internship?"
     name: "Internships"
     create: "Create Internship"
-    provide_now                                                                                                                                          : "Start now."
+    provide_now: "Start now."
     update: "Update Internship"
     company_fact: "Company Short Facts"
     createInternship: "You have not given us any information yet."

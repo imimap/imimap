@@ -1,6 +1,16 @@
 en:
   activerecord:
     attributes:
+      company:
+        internships: Internships
+        industry: Industry
+        number_employees: Number of Employees
+        website: URL
+        address: Address
+        main_language: Main Language
+        country: Land
+        phone: Telefon
+        excluded_from_search: ausgenommen von der Suche
       complete_internship:
         aep: "AEP"
         passed: "Passed"

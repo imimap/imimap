@@ -34,7 +34,7 @@ describe 'Company Suggestion' do
         create(:company_is24)
       ]
 
-      visit my_internship_path
+      visit my_internship_path_replacement
       click_link(t('internships.provide_now'))
       click_on t('save')
       click_on t('complete_internships.new_tp0')
