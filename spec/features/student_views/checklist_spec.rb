@@ -34,11 +34,11 @@ describe 'Checklist Pageflow' do
 
   def expect_not_to_see_modules
     expect(page).not_to have_content(
-                            t('complete_internships.checklist.module_semester')
-                        )
+      t('complete_internships.checklist.module_semester')
+    )
     expect(page).not_to have_content(
-                            t('complete_internships.checklist.module_fgr')
-                        )
+      t('complete_internships.checklist.module_fgr')
+    )
   end
 
   def expect_to_not_see_active_admin_links
