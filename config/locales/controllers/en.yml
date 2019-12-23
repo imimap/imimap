@@ -221,6 +221,7 @@ en:
       internal_comments: Internal comments
       see_aa: Show
       edit_aa: Edit
+      change: change
     icon-ok: " - If this sign appears the corresponding form is filled in completely"
     details:
       semester: Semester
