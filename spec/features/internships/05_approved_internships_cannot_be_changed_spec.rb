@@ -62,11 +62,11 @@ describe 'Ability: Student edits Internship' do
         )
       )
     end
-    it 'shows contract radio buttons' do
+    it 'shows contract version' do
       expect(page).to have_text(
         t('complete_internships.checklist.contract_original')
       )
-      expect(page).to have_text(
+      expect(page).not_to have_text(
         t('complete_internships.checklist.contract_copy')
       )
     end
