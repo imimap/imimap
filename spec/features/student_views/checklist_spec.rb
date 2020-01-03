@@ -5,6 +5,7 @@ describe 'Checklist Pageflow' do
   def create_internship
     create(:semester)
     visit my_internship_path_replacement
+    save_and_open_page
     click_on t('complete_internships.new_tp0')
     expect(page).to have_field('Semester')
     click_on t('save')
@@ -15,6 +16,7 @@ describe 'Checklist Pageflow' do
     expect(page).to have_content('Praktikumsdetails')
     click_link(t('internships.provide_now'))
     click_on t('save')
+    save_and_open_page
     expect(page).to have_content(@user.name)
   end
 
@@ -24,10 +26,10 @@ describe 'Checklist Pageflow' do
                                .strip)
   end
 
-  I18n.available_locales.each do |locale|
+#  I18n.available_locales.each do |locale|
     context 'locale' do
       before :each do
-        I18n.locale = locale
+      #  I18n.locale = locale
         allow_ldap_login(success: false)
       end
       list = if ENV['WITH_ADMIN']
@@ -35,11 +37,12 @@ describe 'Checklist Pageflow' do
              else
                %w[student]
              end
-      list.each do |role|
-        context 'as role' do
-          # context "as #{role}" do
-        end
+    #  list.each do |role|
+      #  context 'as role' do
+      #    # context "as #{role}" do
+      #  end
         before :each do
+          role = 'student'
           @user = send "login_as_#{role}"
           create_complete_internship
           create_internship
@@ -59,7 +62,9 @@ describe 'Checklist Pageflow' do
               save_and_open_page
               expect_to_be_on_my_internship_page
             end
-            it 'after save' do
+            it '
+
+after save' do
               click_on t('save')
               click_on t('buttons.back')
               # click_on t('buttons.back_to_overview')
@@ -91,5 +96,5 @@ describe 'Checklist Pageflow' do
         end
       end
     end
-  end
-end
+#  end
+# end

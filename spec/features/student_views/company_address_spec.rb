@@ -52,7 +52,8 @@ describe 'Supply Company Details' do
               fill_in "company_address_#{field}", with: @ca.send(field)
             end
             click_button t('save')
-            click_on 'Firmendetails'
+            save_and_open_page
+            click_on t('complete_internships.checklist.company_details')
             expect(page).to have_field('company_name', with: @company_name)
             click_on t('companies.continue_to_address')
             fields.each do |field|
