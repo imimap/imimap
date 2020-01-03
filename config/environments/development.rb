@@ -6,7 +6,7 @@ SeedData = Struct.new(:enrolment_number_range,
                       :with_student) do
   def initialize(*)
     super
-    self.with_student = true if self.with_student.nil?
+    self.with_student = true if with_student.nil?
   end
 end
 Rails.application.configure do

@@ -75,7 +75,7 @@ module MyInternshipHelper
   def current_user_in_test
     raise ArgumentError, 'test case without @user found' if @user.nil?
 
-    @user
+    @user.reload
   end
 
   def my_internship_path_replacement

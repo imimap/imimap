@@ -4,7 +4,7 @@ require_relative './08_internships.rb'
 
 def email_for_enrolment_number(enrolment_number:)
   User.email_for(enrolment_number)
-    # "s0#{enrolment_number}@htw-berlin.de"
+  # "s0#{enrolment_number}@htw-berlin.de"
 end
 
 def create_student(enrolment_number:)
