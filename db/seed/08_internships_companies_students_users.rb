@@ -53,8 +53,8 @@ range.each do |er|
   create_only_user(enrolment_number: er)
 end
 
-puts 's011 - internships: 1, user: false'
-puts 's012 - internships: 0, user: true'
-puts 's013 - internships: 0, user: false'
-puts 's014 - internships: 2, user: true'
-puts 's015 - internships: er mod 3, user: true'
+puts 's0110 - internships: 1, user: false'
+puts 's0120 - internships: 0, user: true'
+puts 's0130 - internships: 0, user: false'
+puts 's0140 - internships: 2, user: true'
+puts 's0150 - internships: er mod 3, user: true'
