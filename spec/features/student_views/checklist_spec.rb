@@ -30,11 +30,11 @@ describe 'Checklist Pageflow' do
       #  I18n.locale = locale
       allow_ldap_login(success: false)
     end
-    list = if ENV['WITH_ADMIN']
-             %w[student admin]
-           else
-             %w[student]
-           end
+    # list = if ENV['WITH_ADMIN']
+    #          %w[student admin]
+    #        else
+    #          %w[student]
+    #        end
     #  list.each do |role|
     #  context 'as role' do
     #    # context "as #{role}" do
