@@ -1,0 +1,29 @@
+<% if  Rails.env == "development" %>
+  <div class ="mt-10"></div>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Email</th>
+        <th>Description</th>
+        <th>Login</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% Rails.configuration.seed_data.each do | sd |
+        sd.enrolment_number_range.each do |er|
+          email = User.email_for(enrolment_number: er.to_s) %>
+      <%= form_for :user, url: session_path(:user), html: {class: "imimap-inverse"} do |f| %>
+        <%= f.hidden_field :email, value: email %>
+        <%= f.hidden_field :password, value: "geheim12"%>
+      <tr>
+        <td><%= email %></td>
+        <td><%= "internships: #{sd.with_internships}, user: #{sd.with_user}, student: #{sd.with_student}" %></td>
+        <td><%= f.submit t('devise.sessions.submit'), class: "btn" %></td>
+      </tr>
+      <% end
+         end
+      end %>
+      </tbody>
+    </table>
+
+<% end %>
