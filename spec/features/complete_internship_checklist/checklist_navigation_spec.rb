@@ -21,29 +21,30 @@ describe 'Checklist Pageflow' do
     context 'back to complete internship' do
       context ' from internship details' do
         before(:each) do
-          visit my_internship_path_replacement
           click_link(t('internships.internship_details'))
+        end
+        it 'is on internship details page' do
           expect(page).to have_content(
             t('activerecord.attributes.internship.supervisor_name')
           )
         end
-        it 'without save' do
+        it 'back without save without save' do
           click_on t('buttons.back_to_overview')
           expect_to_be_on_my_internship_page
         end
         it 'after save' do
           click_on t('save')
           click_on t('buttons.back')
-          # click_on t('buttons.back_to_overview')
           expect_to_be_on_my_internship_page
         end
       end
       context ' from personal details' do
         before(:each) do
-          visit my_internship_path_replacement
           click_link(
             t('complete_internships.checklist.personal_details')
           )
+        end
+        it 'is on personal details page' do
           expect(page)
             .to have_content(
               t('activerecord.attributes.student.birthday')
@@ -63,5 +64,3 @@ describe 'Checklist Pageflow' do
     end
   end
 end
-#  end
-# end
