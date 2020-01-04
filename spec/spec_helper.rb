@@ -49,6 +49,18 @@ def login_as_student
   user
 end
 
+def login_with(user_factory:)
+  user = FactoryBot.create user_factory
+  sign_in user
+  user
+end
+
+def login_as_student_with_internship
+  user = FactoryBot.create :student_with_internship
+  sign_in user
+  user
+end
+
 def login_as_admin
   user = FactoryBot.create :admin
   sign_in user
