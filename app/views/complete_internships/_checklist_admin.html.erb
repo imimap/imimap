@@ -1,0 +1,80 @@
+<div class="accordion" id="accordionExample">
+
+  <div class="card">
+    <div class="card-header m-0 p-0" id="headingOne<%=internship.id%>">
+      <h2 class="mb-0">
+        <button id="moduleHeading1" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne<%=internship.id%>" aria-expanded="false" aria-controls="collapseOne<%=internship.id%>">
+          <%= t 'complete_internships.checklist.module_semester' %>
+        </button>
+      </h2>
+    </div>
+    <div id="collapseOne<%=internship.id%>" class="collapse" aria-labelledby="headingOne<%=internship.id%>" data-parent="#accordionExample">
+      <div class="card-body">
+        <strong>1. Semester</strong>
+        <ul>
+          <li>Informatik 1</li>
+          <li>Computersysteme</li>
+          <li>Propädeutikum und Medientheorie</li>
+          <li>Mathematik für Medieninformatik 1</li>
+          <li>Grundlagen der Webprogrammierung</li>
+          <li>1. Fremdsprache</li>
+        </ul>
+
+        <strong>2. Semester</strong>
+        <ul>
+          <li>Informatik 2</li>
+          <li>Grundlagen Digitaler Medien</li>
+          <li>Netzwerke</li>
+          <li>Mathematik für Medieninformatik 2</li>
+          <li>Medienwirtschaft</li>
+          <li>2. Fremdsprache</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header m-0 p-0" id="headingTwo<%=internship.id%>">
+      <h2 class="mb-0">
+        <button id="moduleHeading2" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo<%=internship.id%>" aria-expanded="false" aria-controls="collapseTwo<%=internship.id%>">
+          <%= t 'complete_internships.checklist.module_fgr' %>
+        </button>
+      </h2>
+    </div>
+    <div id="collapseTwo<%=internship.id%>" class="collapse" aria-labelledby="headingTwo<%=internship.id%>" data-parent="#accordionExample">
+      <div class="card-body">
+        <ul>
+          <li>Informatik 1</li>
+          <li>Informatik 2</li>
+          <li>Mathematik für Medieninformatik 1</li>
+          <li>Mathematik für Medieninformatik 2</li>
+          <li>Grundlagen der Webprogrammierung</li>
+          <li>Grundlagen Digitaler Medien</li>
+          <li>Computersysteme</li>
+          <li>Netzwerke</li>
+          <li>Propädeutikum und Medientheorie</li>
+          <li>Medienwirtschaft</li>
+          <li>Fremdsprache 1</li>
+          <li>Fremdsprache 2</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</td>
+</tr>
+
+
+<tr>
+  <td>
+  </td>
+  <td>
+    <label class="checkbox" id="label_admin_comments_<%=internship.id%>">
+      <input class="invisible" type="checkbox" id="admin_comments_<%=internship.id%>">
+      <%= number_of_comments(internship.id, 'Internship') %> <%= t("complete_internships.checklist.internal_comments") %>
+    </label>
+    (In Active Admin <%= link_to t("complete_internships.checklist.see_aa"), admin_internship_path(internship.id) %>
+     | <%= link_to t("complete_internships.checklist.edit_aa"), edit_admin_internship_path(internship.id) %>)
+

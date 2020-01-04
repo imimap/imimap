@@ -212,10 +212,16 @@ en:
       contract: I have my contract as
       contract_original: an original
       contract_copy: a copy
-      lsf_ausdruck: Grade Printout from the LSF
+      lsf_ausdruck: Grade transscript of all passed modules from the first two semesters printed out from the
       print_form: Print Form (pdf)
       check_form: Check Form
       thank_you: Thank you
+      module_semester: Modules of the first two semesters by semester
+      module_fgr: Modules of the first two semesters by subjects
+      internal_comments: Internal comments
+      see_aa: Show
+      edit_aa: Edit
+      change: change
     icon-ok: " - If this sign appears the corresponding form is filled in completely"
     details:
       semester: Semester

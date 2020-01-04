@@ -24,6 +24,37 @@ describe 'Checklist Pageflow' do
                                .strip)
   end
 
+  def expect_to_not_see_admin_stuff
+    expect(page).not_to have_content(
+      t('complete_internships.checklist.internal_comments')
+    )
+    expect_to_not_see_active_admin_links
+    expect_not_to_see_modules
+  end
+
+  def expect_not_to_see_modules
+    expect(page).not_to have_content(
+      t('complete_internships.checklist.module_semester')
+    )
+    expect(page).not_to have_content(
+      t('complete_internships.checklist.module_fgr')
+    )
+  end
+
+  def expect_to_not_see_active_admin_links
+    expect(page).not_to have_content '(In Active Admin'
+    expect(page).not_to have_content t('complete_internships.checklist.see_aa')
+    expect(page).not_to have_content t('complete_internships.checklist.edit_aa')
+  end
+
+  def expect_admin_stuff_or_not
+    if @user.admin?
+      # expect_to_see_admin_stuff
+    else
+      expect_to_not_see_admin_stuff
+    end
+  end
+
   #  I18n.available_locales.each do |locale|
   context 'locale' do
     before :each do
