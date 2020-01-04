@@ -21,7 +21,7 @@ describe 'Complete Internship' do
           end
 
           it 'should create a new CI' do
-            visit my_internship_path
+            visit my_internship_path_replacement
             expect(page).to have_content('Praktikumsdetails')
             click_link(t('internships.provide_now'))
             expect(page).to have_field('Semester')
@@ -33,7 +33,7 @@ describe 'Complete Internship' do
           it 'should create a new partial internship' do
             create(:semester)
             semester = Semester.first
-            visit my_internship_path
+            visit my_internship_path_replacement
             click_link(t('internships.provide_now'))
             click_on t('save')
             click_on t('complete_internships.new_tp0')
@@ -54,7 +54,7 @@ describe 'Complete Internship' do
 
           it 'should delete a partial internship' do
             create(:semester)
-            visit my_internship_path
+            visit my_internship_path_replacement
             click_link(t('internships.provide_now'))
             click_on t('save')
             click_on t('complete_internships.new_tp0')
@@ -71,7 +71,7 @@ describe 'Complete Internship' do
           it 'should save changes made in internship datails form
               (example supervisor details)' do
             create(:semester)
-            visit my_internship_path
+            visit my_internship_path_replacement
             click_link(t('internships.provide_now'))
             click_on t('save')
             click_on t('complete_internships.new_tp0')

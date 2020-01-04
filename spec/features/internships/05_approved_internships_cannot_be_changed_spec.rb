@@ -23,7 +23,7 @@ describe 'Ability: Student edits Internship' do
       @complete_internship = @internship.complete_internship
       @user = @internship.complete_internship.student.user
       sign_in @user
-      visit my_internship_path
+      visit my_internship_path_replacement
     end
     it 'should have complete model' do
       ability = Ability.new(@user)
@@ -79,7 +79,7 @@ describe 'Ability: Student edits Internship' do
       sign_in @user
     end
     it ' shows link' do
-      visit my_internship_path
+      visit my_internship_path_replacement
       expect(page).not_to have_link(t('buttons.edit'), href:
       edit_complete_internship_path(id: @complete_internship.id,
                                     locale: I18n.locale))

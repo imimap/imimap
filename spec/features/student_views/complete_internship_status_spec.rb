@@ -20,7 +20,7 @@ describe 'Complete Internship' do
 
         context 'with no internship created' do
           before :each do
-            visit my_internship_path
+            visit my_internship_path_replacement
             click_link(t('internships.provide_now'))
             click_on t('save')
           end
@@ -38,7 +38,7 @@ describe 'Complete Internship' do
         context 'with 1 internship created' do
           before :each do
             create(:semester)
-            visit my_internship_path
+            visit my_internship_path_replacement
             click_link(t('internships.provide_now'))
             click_on t('save')
             click_on t('complete_internships.new_tp0')
@@ -102,7 +102,7 @@ describe 'Complete Internship' do
         context 'with two partial internships created' do
           before :each do
             create(:semester)
-            visit my_internship_path
+            visit my_internship_path_replacement
             click_link(t('internships.provide_now'))
             click_on t('save')
             click_on t('complete_internships.new_tp0')

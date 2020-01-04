@@ -3,17 +3,8 @@
 require_relative './08_internships.rb'
 
 def email_for_enrolment_number(enrolment_number:)
-  "s0#{enrolment_number}@htw-berlin.de"
-end
-
-def create_user_for_student(student:)
-  user = User.create(email: student.email,
-                     password: 'geheim12',
-                     password_confirmation: 'geheim12',
-                     role: :user,
-                     student: student)
-  puts "created user for student #{user.email}"
-  user
+  User.email_for(enrolment_number: enrolment_number.to_s)
+  # "s0#{enrolment_number}@htw-berlin.de"
 end
 
 def create_student(enrolment_number:)
@@ -63,6 +54,16 @@ def create_complete_internship(student:)
   )
 end
 
+def create_for_seed_data(enrolment_number:, seed_data:)
+  if seed_data.with_student
+    create_student_with(enrolment_number: enrolment_number,
+                        with_internships: seed_data.with_internships,
+                        with_user: seed_data.with_user)
+  else
+    create_only_user(enrolment_number: enrolment_number)
+  end
+end
+
 def create_student_with(enrolment_number:, with_internships:, with_user:)
   student = create_student(enrolment_number: enrolment_number)
   create_user_for_student(student: student) if with_user
@@ -83,6 +84,14 @@ def create_only_user(enrolment_number:)
     password_confirmation: 'geheim12',
     role: :user
   )
-  puts "created user without student #{user.email}"
+  user
+end
+
+def create_user_for_student(student:)
+  user = User.create(email: student.email,
+                     password: 'geheim12',
+                     password_confirmation: 'geheim12',
+                     role: :user,
+                     student: student)
   user
 end

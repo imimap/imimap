@@ -15,7 +15,7 @@ describe 'Complete Internship' do
         end
 
         it 'should mark complete internship as active' do
-          visit my_internship_path
+          visit my_internship_path_replacement
           expect(page).to have_css('.im-nav-itemactive')
         end
 

@@ -7,14 +7,16 @@ describe 'Complete Internship' do
     context "in locale #{locale}" do
       def log_in_with_unknown_email
         visit root_path
-        fill_in 'user_email', with: 's0987654@htw-berlin.de'
-        fill_in 'user_password', with: 'geheim12'
+        email = 's0987654@htw-berlin.de'
+        fill_in 'user_email', with: email
+        fill_in 'user_password', with: 'geheim13'
         click_on('Log in')
+        User.find_by(email: email)
       end
       before :each do
         I18n.locale = locale
         allow_ldap_login(success: true)
-        log_in_with_unknown_email
+        @user = log_in_with_unknown_email
       end
 
       context 'first login' do
@@ -24,7 +26,7 @@ describe 'Complete Internship' do
 
         it 'should save internship without student data' do
           create(:semester)
-          visit my_internship_path
+          visit my_internship_path_replacement
           click_link(t('internships.provide_now'))
           click_on t('save')
           click_on t('complete_internships.new_tp0')

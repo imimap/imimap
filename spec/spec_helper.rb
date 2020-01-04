@@ -2,7 +2,7 @@
 
 require 'simplecov'
 
-SimpleCov.minimum_coverage 98
+SimpleCov.minimum_coverage 97.8
 SimpleCov.start do
   # ignore active admin
   # add_filter 'app/admin'
@@ -49,6 +49,18 @@ def login_as_student
   user
 end
 
+def login_with(user_factory:)
+  user = FactoryBot.create user_factory
+  sign_in user
+  user
+end
+
+def login_as_student_with_internship
+  user = FactoryBot.create :student_with_internship
+  sign_in user
+  user
+end
+
 def login_as_admin
   user = FactoryBot.create :admin
   sign_in user
@@ -67,6 +79,22 @@ module ControllerTestHelper
     user = FactoryBot.create :admin
     sign_in user
     user
+  end
+end
+
+# temporary methods to refactor my_internship_path out of the application
+module MyInternshipHelper
+  def current_user_in_test
+    raise ArgumentError, 'test case without @user found' if @user.nil?
+
+    @user.reload
+  end
+
+  def my_internship_path_replacement
+    return no_complete_internship_path unless (s = current_user_in_test.student)
+    return no_complete_internship_path unless (ci = s.complete_internship)
+
+    complete_internship_path(ci, locale: I18n.locale)
   end
 end
 
@@ -218,4 +246,5 @@ RSpec.configure do |config|
   config.include ControllerTestHelper, type: :request
   config.include CapybaraLoginTestHelper, type: :feature
   config.include I18nTestHelper
+  config.include MyInternshipHelper
 end
