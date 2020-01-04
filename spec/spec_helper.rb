@@ -2,7 +2,7 @@
 
 require 'simplecov'
 
-SimpleCov.minimum_coverage 98
+SimpleCov.minimum_coverage 97.8
 SimpleCov.start do
   # ignore active admin
   # add_filter 'app/admin'
