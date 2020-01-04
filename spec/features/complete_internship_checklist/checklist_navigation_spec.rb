@@ -2,57 +2,10 @@
 
 require 'rails_helper'
 describe 'Checklist Pageflow' do
-  def create_complete_internship
-    visit my_internship_path_replacement
-    expect(page).to have_content('Praktikumsdetails')
-    click_link(t('internships.provide_now'))
-    click_on t('save')
-    expect(page).to have_content(@user.name)
-  end
-
-  def create_internship
-    create(:semester)
-    visit my_internship_path_replacement
-    click_on t('complete_internships.new_tp0')
-    expect(page).to have_field('Semester')
-    click_on t('save')
-  end
-
   def expect_to_be_on_my_internship_page
     expect(page).to have_content(@user.name)
     expect(page).to have_content(t('complete_internships.semester')
-                               .strip)
-  end
-
-  def expect_to_not_see_admin_stuff
-    expect(page).not_to have_content(
-      t('complete_internships.checklist.internal_comments')
-    )
-    expect_to_not_see_active_admin_links
-    expect_not_to_see_modules
-  end
-
-  def expect_not_to_see_modules
-    expect(page).not_to have_content(
-      t('complete_internships.checklist.module_semester')
-    )
-    expect(page).not_to have_content(
-      t('complete_internships.checklist.module_fgr')
-    )
-  end
-
-  def expect_to_not_see_active_admin_links
-    expect(page).not_to have_content '(In Active Admin'
-    expect(page).not_to have_content t('complete_internships.checklist.see_aa')
-    expect(page).not_to have_content t('complete_internships.checklist.edit_aa')
-  end
-
-  def expect_admin_stuff_or_not
-    if @user.admin?
-      # expect_to_see_admin_stuff
-    else
-      expect_to_not_see_admin_stuff
-    end
+                                     .strip)
   end
 
   #  I18n.available_locales.each do |locale|
@@ -60,27 +13,22 @@ describe 'Checklist Pageflow' do
     before :each do
       #  I18n.locale = locale
       allow_ldap_login(success: false)
+      @user = login_with(user_factory: :student_with_new_internship)
+      @internship = @user.student.internships.first
+      @internship.approved = false
+      @internship.passed = false
+      @internship.save
     end
-    # list = if ENV['WITH_ADMIN']
-    #          %w[student admin]
-    #        else
-    #          %w[student]
-    #        end
-    #  list.each do |role|
-    #  context 'as role' do
-    #    # context "as #{role}" do
-    #  end
-    before :each do
-      role = 'student'
-      @user = send "login_as_#{role}"
-      create_complete_internship
-      create_internship
+    it 'is on complete internship overview' do
+      visit my_internship_path_replacement
+      expect_to_be_on_my_internship_page
     end
 
     context 'back to complete internship' do
       context ' from internship details' do
         before(:each) do
           visit my_internship_path_replacement
+          save_and_open_page
           click_link(t('internships.internship_details'))
           expect(page).to have_content(
             t('activerecord.attributes.internship.supervisor_name')
@@ -90,9 +38,7 @@ describe 'Checklist Pageflow' do
           click_on t('buttons.back_to_overview')
           expect_to_be_on_my_internship_page
         end
-        it '
-
-after save' do
+        it 'after save' do
           click_on t('save')
           click_on t('buttons.back')
           # click_on t('buttons.back_to_overview')
