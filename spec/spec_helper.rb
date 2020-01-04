@@ -51,7 +51,6 @@ end
 
 def login_with(user_factory:)
   user = FactoryBot.create user_factory
-  byebug
   sign_in user
   user
 end

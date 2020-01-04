@@ -1,26 +1,20 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require_relative './checklist_helper.rb'
 describe 'Checklist Pageflow' do
-  def expect_to_be_on_my_internship_page
-    expect(page).to have_content(@user.name)
-    expect(page).to have_content(t('complete_internships.semester')
-                                     .strip)
-  end
-
+  include CompleteInternshipCheckListHelper
   #  I18n.available_locales.each do |locale|
   context 'locale' do
     before :each do
       #  I18n.locale = locale
       allow_ldap_login(success: false)
-      @user = login_with(user_factory: :student_with_new_internship)
-      @internship = @user.student.internships.first
-      @internship.approved = false
-      @internship.passed = false
-      @internship.save
+      @user = login_with(user_factory: :user)
+      create_complete_internship
+      create_internship
+      visit my_internship_path_replacement
     end
     it 'is on complete internship overview' do
-      visit my_internship_path_replacement
       expect_to_be_on_my_internship_page
     end
 
@@ -28,7 +22,6 @@ describe 'Checklist Pageflow' do
       context ' from internship details' do
         before(:each) do
           visit my_internship_path_replacement
-          save_and_open_page
           click_link(t('internships.internship_details'))
           expect(page).to have_content(
             t('activerecord.attributes.internship.supervisor_name')
