@@ -22,6 +22,7 @@ FactoryBot.define do
       )
     end
   end
+
   factory :complete_internship_no_aep, class: CompleteInternship do
     semester
     student
