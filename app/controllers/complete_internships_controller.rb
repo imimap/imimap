@@ -9,8 +9,9 @@ class CompleteInternshipsController < ApplicationResourceController
   load_and_authorize_resource
   # before_action :set_complete_internship, only: %i[show edit update destroy]
   before_action :new_complete_internship, only: %i[create new]
-  before_action :set_semesters, only: %i[create new edit internship_data]
+  before_action :set_semesters, only: %i[create new edit]
   before_action :set_student, only: %i[show]
+  before_action :set_active_menu_item, only: %i[show new no show_own]
 
   def index
     @semester = semester_from_params(params)
@@ -21,17 +22,13 @@ class CompleteInternshipsController < ApplicationResourceController
 
   def show
     @semester_name = @complete_internship.semester.try(:name)
-    @active_menu_item = 'cidcontext'
   end
 
   # If the user has no complete internship, the system asks him/her to create a
   # new one else the internship details are shown
-  def no
-    @active_menu_item = 'cidcontext'
-  end
+  def no; end
 
   def show_own
-    @active_menu_item = 'cidcontext'
     @ci = current_user.student.complete_internship
     if @ci.nil?
       render :no
@@ -40,9 +37,7 @@ class CompleteInternshipsController < ApplicationResourceController
     end
   end
 
-  def new
-    @active_menu_item = 'cidcontext'
-  end
+  def new; end
 
   def edit; end
 
@@ -124,5 +119,9 @@ class CompleteInternshipsController < ApplicationResourceController
       student = @complete_internship.student
       @student = (student if can?(:read, student))
     end
+  end
+
+  def set_active_menu_item
+    @active_menu_item = 'cidcontext'
   end
 end
