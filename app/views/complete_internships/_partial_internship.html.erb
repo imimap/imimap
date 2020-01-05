@@ -35,7 +35,7 @@
                 <%= t "complete_internships.details.duration" %>
               </td>
               <td>
-                <%= t "internship_duration_validation.#{internship.duration.validation}" %>
+                <%= t "internship_duration_validation.#{internship.duration.validation}" %> (<%= internship.duration.weeks %> <%= t "complete_internships.details.weeks" %>)
               </td>
             </tr>
             <tr>

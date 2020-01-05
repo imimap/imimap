@@ -237,6 +237,7 @@ de:
       start_date: Anfangsdatum
       end_date: Enddatum
       duration: Dauer
+      weeks: Wochen
       operational_area: Einsatzgebiet
       tasks: Aufgaben
       internship_report: Praktikumsbericht

@@ -104,7 +104,7 @@ en:
       company: "Company"
       start_date: "Start Date"
       end_date: "End Date"
-      duration: Duraione
+      duration: Duration
       operational_area: "Operational Area"
       placeholder_oa: "Virtual Reality, Website, 3D"
       tasks: "Tasks"
@@ -256,6 +256,8 @@ en:
       semester: Semester
       start_date: Start Date
       end_date: End Date
+      duration: Duration
+      weeks: weeks
       operational_area: Operational Area
       tasks: Tasks
       internship_report: Internship Report
