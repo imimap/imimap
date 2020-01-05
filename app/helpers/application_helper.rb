@@ -6,9 +6,15 @@ module ApplicationHelper
     RatingRenderer.new(rating, template).render_star_fields
   end
 
+  def path_to_complete_internship
+    return no_complete_internship_path unless (s = @current_user.student)
+    return no_complete_internship_path unless (ci = s.complete_internship)
+
+    complete_internship_path(ci)
+  end
+
   def active_menu_item?(path)
-    # my_internship_path
-    return @active_path == path if @active_path
+    return @active_menu_item == path if @active_menu_item
 
     current_page?(path)
   end
@@ -63,5 +69,10 @@ module ApplicationHelper
       options.merge!(class: 'required')
     end
     required_application_impl(form, field, :class, options)
+  end
+
+  def number_of_comments(resource_id, resource_type)
+    ActiveAdmin::Comment.where(resource_id: resource_id,
+                               resource_type: resource_type).count
   end
 end

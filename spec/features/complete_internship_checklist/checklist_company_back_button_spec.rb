@@ -32,7 +32,7 @@ module CheckListHelper
 
             context 'back to complete internship' do
               it ' from company details' do
-                visit my_internship_path
+                visit my_internship_path_replacement
                 click_link(t('complete_internships.checklist.company_details'))
                 expect(page)
                   .to have_content(

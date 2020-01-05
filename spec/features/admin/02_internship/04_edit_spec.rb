@@ -24,19 +24,30 @@ describe 'ActiveAdmin edit internship' do
     expect(page).to have_content @ca.company.name
     expect(page).not_to have_content old_ca.company.name
   end
-  it 'changes approved' do
-    approved_before = @internship.approved
+  it 'sets approved' do
+    [true, false].each do |set_to|
+      @internship.approved = !set_to
+      @internship.save
+      visit admin_internship_path(id: @internship)
+      click_on t('internships.edit.editinternship')
+      check_or_uncheck = set_to ? 'check' : 'uncheck'
+      send(check_or_uncheck, 'internship_approved')
+      click_on t('internships.update')
+      @internship.reload
+      expect(@internship.approved).to be set_to
+    end
+  end
+  it 'sets approved' do
+    @internship.approved = false
+    @internship.save
     visit admin_internship_path(id: @internship)
     click_on t('internships.edit.editinternship')
-    if approved_before
-      uncheck 'internship_approved'
-    else
-      check 'internship_approved'
-    end
+    check 'internship_approved'
     click_on t('internships.update')
     @internship.reload
-    expect(@internship.approved).to be !approved_before
+    expect(@internship.approved).to be true
   end
+
   it 'sets certificate_signed_by_internship_officer' do
     date = Date.new(2011, 11, 25)
     date_s = date.strftime('%d-%m-%Y')

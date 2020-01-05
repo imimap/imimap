@@ -200,10 +200,16 @@ de:
       contract: Ich habe meinen Praktikumsvertrag
       contract_original: im Original
       contract_copy: als Kopie
-      lsf_ausdruck: Noten ausgedruckt aus dem LSF
+      lsf_ausdruck: Leistungsnachweis über alle bestandenen Module des Basisjahrs ausgedruckt aus dem
       print_form: Formular ausdrucken (pdf)
       check_form: Formular überprüfen
       thank_you: Danke
+      module_semester: Module des Basisjahrs nach Semester
+      module_fgr: Module des Basisjahrs nach Fächergruppen
+      internal_comments: Interne Kommentare
+      see_aa: ansehen
+      edit_aa: bearbeiten
+      change: ändern
     icon-ok: " - Wenn dieses Symbol erscheint ist der betreffende Teil des Formulars komplett ausgefüllt"
     details:
       semester: Semester

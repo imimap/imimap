@@ -61,7 +61,7 @@ gem 'font-awesome-sass-rails'
 gem 'sass-rails'
 gem 'uglifier', '>= 1.0.3'
 
-gem 'factory_bot_rails'
+gem 'factory_bot_rails', '>= 5.1'
 
 group :development do
   gem 'brakeman'

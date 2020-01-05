@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 puts 'seeding database'
+
+UserCanSeeCompany.destroy_all
 User.destroy_all
 
 u = User.new(email: 'test@htw-berlin.de',

@@ -55,27 +55,22 @@
           <i class="icon-ok icon-large text-success d-none" id="contract_<%=internship.id%>"></i>
           <% if internship.contract_original %>
             <i class="icon-ok icon-large text-success"></i>
-          <%end%>
+          <% else %>
+            <div><i class="icon-ok icon-large" style="color: rgba(0, 0, 0, 0.2)"></i></div>
+          <% end %>
         </td>
         <td>
           <label class="checkbox">
-            <input class="invisible" type="checkbox" id="radio_contract_<%=internship.id%>"> <%= t("complete_internships.checklist.contract") %>
+            <input class="invisible" type="checkbox" id="radio_contract_<%=internship.id%>"> <%= t("complete_internships.checklist.contract") %>:
+            <strong>
+              <% if !internship.contract_original %>
+                <%= t("complete_internships.checklist.contract_copy") %>
+              <% else %>
+                <%= t("complete_internships.checklist.contract_original") %>
+              <%end%>
+            </strong>
+            (<%= link_to t('complete_internships.checklist.change'), edit_internship_path(internship,   cidcontext: @complete_internship.id  ) %>)
           </label>
-          <br>
-          <span class="ml-3">
-            <% if internship.contract_original %>
-            <input type="radio" name="contract<%=internship.id%>" id="original_<%=internship.id%>" value="original" checked= true disabled = true> <%= t("complete_internships.checklist.contract_original") %>
-            <% else %>
-            <input type="radio" name="contract<%=internship.id%>" id="original_<%=internship.id%>" value="original" disabled = true> <%= t("complete_internships.checklist.contract_original") %>
-            <%end%>
-          </span>
-          <span class="ml-3">
-            <% if !internship.contract_original %>
-            <input type="radio" name="contract<%=internship.id%>" id="copy_<%=internship.id%>" value="copy" checked = true disabled = true> <%= t("complete_internships.checklist.contract_copy") %>
-            <% else %>
-            <input type="radio" name="contract<%=internship.id%>" id="copy_<%=internship.id%>" value="copy" disabled = true > <%= t("complete_internships.checklist.contract_copy") %>
-            <%end%>
-          </span>
         </td>
       </tr>
       <tr>
@@ -83,10 +78,16 @@
         </td>
         <td>
           <label class="checkbox" id="grades_<%=internship.id%>">
-            <input class="invisible" type="checkbox" id="lsf_<%=internship.id%>"> <%= t("complete_internships.checklist.lsf_ausdruck") %>
+            <input class="invisible" type="checkbox" id="lsf_<%=internship.id%>">
+            <%=  t("complete_internships.checklist.lsf_ausdruck") %>
+            <%= link_to 'LSF', 'http://lsf.htw-berlin.de/', target: :blank %>
           </label>
+          <% if current_user.admin? %>
+            <%= render 'checklist_admin', internship: internship %>
+          <% end %>
         </td>
       </tr>
+
       <tr>
         <td colspan="2">
         <small><i class="icon-ok text-success"></i> <%= t 'complete_internships.icon-ok' %></small>
