@@ -1,52 +1,103 @@
-<table class="table table-striped text-left">
-  <tbody>
+<br><br>
+<div class="card mb-3 p-0">
+  <div class="card-body pt-3 pb-0">
+    <p class="card-text">
+      <strong> <%= t "complete_internships.information" %> </strong>
+    <table class="table table-striped table-sm table-borderless">
+      <tbody>
       <tr>
-        <td><%= t "complete_internships.details.semester" %></td>
+        <td style="width:20%"><%= t "complete_internships.details.semester" %></td>
         <td><%= internship.semester.try(:name) %></td>
       </tr>
       <tr>
-        <td><%= t "complete_internships.details.start_date" %></td>
-        <td><%= internship.start_date %></td>
+        <td style="width:20%"><%= t "complete_internships.details.start_date" %></td>
+        <td>
+          <%= I18n.l(internship.start_date, format: :default).to_s %>
+        </td>
       </tr>
       <tr>
-        <td><%= t "complete_internships.details.end_date" %></td>
-        <td><%= internship.end_date %></td>
+        <td style="width:20%"><%= t "complete_internships.details.end_date" %></td>
+        <td>
+          <%= I18n.l(internship.end_date, format: :default).to_s %>
+        </td>
       </tr>
       <tr>
-        <td><%= t "complete_internships.details.operational_area" %></td>
+        <td style="width:20%"><%= t "complete_internships.details.duration" %></td>
+        <td><%= t "internship_duration_validation.#{internship.duration.validation}" %></td>
+      </tr>
+      <tr>
+        <td style="width:20%"><%= t "complete_internships.details.operational_area" %></td>
         <td><%= internship.operational_area %></td>
       </tr>
       <tr>
-        <td><%= t "complete_internships.details.tasks" %></td>
+        <td style="width:20%"><%= t "complete_internships.details.tasks" %></td>
         <td><%= internship.tasks %></td>
       </tr>
       <tr>
-        <td><%= t "complete_internships.details.internship_report" %></td>
-        <td><%= internship.internship_report %></td>
-      </tr>
-      <tr>
-        <td><%= t "complete_internships.details.registration_state" %></td>
-        <td><%= internship.registration_state.try(:name) %></td>
-      </tr>
-      <tr>
-        <td><%= t "complete_internships.details.contract_state" %></td>
-        <td><%= internship.contract_state.try(:name) %></td>
-      </tr>
-      <tr>
-        <td><%= t "complete_internships.details.report_state" %></td>
-        <td><%= internship.report_state.try(:name) %></td>
-      </tr>
-      <tr>
-        <td><%= t "complete_internships.details.certificate_state" %></td>
-        <td><%= internship.certificate_state.try(:name) %></td>
-      </tr>
-      <tr>
-        <td><%= t "complete_internships.details.internship_state" %></td>
-        <td><%= internship.internship_state.try(:name) %></td>
-      </tr>
-      <tr>
-        <td><%= t "complete_internships.details.comment" %></td>
+        <td style="width:20%"><%= t "complete_internships.details.comment" %></td>
         <td><%= internship.comment %></td>
       </tr>
-  </tbody>
-</table>
+      </tbody>
+    </table>
+    </p>
+  </div>
+</div>
+
+
+<div class="card mb-3 p-0">
+  <div class="card-body pt-3 pb-0">
+    <p class="card-text">
+      <strong> <%= t "complete_internships.status_overview" %> </strong>
+    <table class="table table-striped table-sm table-borderless">
+      <tbody>
+      <tr>
+        <td style="width:20%"><%= t "complete_internships.details.registration_state" %></td>
+        <td>
+          <% if internship.registration_state %><%= internship.registration_state.try(:name) %>
+          <% else %><%= '-' %>
+            <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><%= t "complete_internships.details.contract_state" %></td>
+        <td>
+          <% if internship.contract_state %><%= internship.contract_state.try(:name) %>
+            <% else %><%= '-' %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><%= t "complete_internships.details.report_state" %></td>
+        <td>
+          <% if internship.report_state %>
+            <%= internship.report_state.try(:name) #TODO: I18n %>
+          <% else %>
+            <%= '-' %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><%= t "complete_internships.details.certificate_state" %></td>
+        <td>
+          <% if internship.certificate_state %>
+            <%= internship.certificate_state.try(:name) #TODO: I18n %>
+          <% else %>
+            <%= '-' %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><%= t "complete_internships.details.internship_state" %></td>
+        <td>
+          <% if internship.internship_state %>
+            <%= t "internships.state#{internship.internship_state.id}" %>
+          <% else %>
+            <%= '-' %>
+          <% end %>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    </p>
+  </div>
+</div>

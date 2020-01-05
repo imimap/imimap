@@ -39,6 +39,11 @@ en:
     too_many: "There are too many results. Please try searching more precisely."
     company_address: "Editing Company Address"
   internships:
+    approved:
+      true: 'Your internship has been approved by the internship officer.'
+    state1: 'Your internship is passed.'
+    state2: 'Your internship was abandoned.'
+    state3: 'You still have to pass other courses to pass your internship.'
     student: 'Student'
     company_v2: 'Company'
     statistic: "Overview per Semester"
@@ -78,6 +83,7 @@ en:
       company: "Company"
       start_date: "Start Date"
       end_date: "End Date"
+      duration: Duraione
       operational_area: "Operational Area"
       placeholder_oa: "Virtual Reality, Website, 3D"
       tasks: "Tasks"
@@ -178,6 +184,8 @@ en:
     modulnumber: "Modulname"
     modulname: "Modulnumber"
     status: "Status"
+    status_overview: "Status Overview"
+    information: Information
     aep:
       number: "B20.1"
       name: "Auswertung von Erfahrungen am Praxisplatz"
