@@ -48,10 +48,11 @@ en:
     details: "When do you want to do your internship?"
     name: "Internships"
     create: "Create Internship"
-    provide_now: "Start now."
+    provide_now: "Start now"
+    no_thank_you: "No Thank You"
     update: "Update Internship"
     company_fact: "Company Short Facts"
-    createInternship: "You have not given us any information yet."
+    createInternship: "You have not given us any information yet"
     index:
       title: "Internships in"
       show: 'Show me the internships of'
@@ -236,3 +237,18 @@ en:
       certificate_state: Certificate State
       internship_state: Internship State
       comment: Comment
+  consent:
+    title: 'Privacy Declaration'
+    what_data_title: 'Collection of Data'
+    what_data: 'Data processing is carried out on the grounds of Art. 6 I lit. b) of the GDPR.
+      In accordance with this regulation, the processing of data is necessary for the performance of a contract to which the data subject is party or in order to take steps prior to entering into a contract.
+      By using our website, you tacitly accept our offer to conclude a (free of charge) contract of use.
+      The processing of your data is lawful under Art. 6 I lit. f) of the GDPR, as we have a legitimate interest in processing your data and your interests, fundamental rights and freedoms are not overridden.
+      Our legitimate interest consists of ensuring the proper completion of your internship and its crediting and acknowledgement with the examination office.
+      Furthermore, our legitimate interest consists of helping future students of the International Media and Computing study program to find and get internships more easily.'
+    deleting_title: 'Deleting Data'
+    deleting: 'If you want to have your Data deleted please contact us at'
+    detailed_info_title: 'Detailed Information'
+    detailed_info: 'You can find more detailed information on the website of the'
+    no_thx: 'No - I do not consent to the processing of my data for the mentioned purposes.'
+    ok_cool: 'Yes - I consent to the processing of my data for the mentioned purposes.'

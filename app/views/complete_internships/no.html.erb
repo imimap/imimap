@@ -5,8 +5,43 @@
 	<div id="askForCreation">
 		<%= t "internships.create_internship" %>
 		<br />
-		<%= link_to t("internships.provide_now"),  new_complete_internship_path(@complete_internship) %>
-		<br />
+    <button type="button"
+            class="btn btn-outline-success"
+            data-toggle="modal"
+            data-target="#consent">
+      <%= t("internships.provide_now") %>
+    </button>
+    <br />
 	</div>
 	<% end %>
+</div>
+
+
+
+
+<!--Popup-->
+<div class="modal fade" id="consent" tabindex="-1" role="dialog" aria-labelledby="consent_title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="consent_title"><%=t("consent.title")%></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-left">
+        <h6><%=t("consent.what_data_title")%></h6>
+        <p><%=t("consent.what_data")%></p>
+        <h6><%=t("consent.deleting_title")%></h6>
+        <p><%=t("consent.deleting")%> <%= link_to 'imi-praktikum@htw-berlin.de', 'mailto:imi-praktikum@htw-berlin.de' %>.</p>
+        <h6><%=t("consent.detailed_info_title")%></h6>
+        <p><%=t("consent.detailed_info")%> <%= link_to 'HTW Berlin', 'https://www.htw-berlin.de/datenschutz/', target: :blank %>.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><%=t("consent.no_thx")%></button>
+        <br>
+        <%= link_to t('consent.ok_cool'), new_complete_internship_path(@complete_internship), :class => "btn btn-outline-success" %>
+      </div>
+    </div>
+  </div>
 </div>

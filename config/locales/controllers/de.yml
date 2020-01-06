@@ -48,7 +48,7 @@ de:
     provide_now: "Jetzt eintragen"
     update: "Praktikum aktualisieren"
     company_fact: "Arbeitsplatz Kurzinfo"
-    create_internship: "Du hast noch keine Informationen eingetragen."
+    create_internship: "Du hast noch keine Informationen eingetragen"
     index:
       title: "Praktika im"
       show: 'Zeige mir Praktika im'
@@ -217,3 +217,17 @@ de:
       certificate_state: Status des Zertifikats
       internship_state: Status des Praktikums
       comment: Kommentar
+  consent:
+    title: 'Einverständniserklärung Datenverarbeitung'
+    what_data_title: 'Datenerhebung'
+    what_data: 'Die Verarbeitung der Daten erfolgt auf Grundlage von Art. 6 I lit. b) DSGVO.
+      Nach dieser Vorschrift ist die Verarbeitung personenbezogener Daten zur Erfüllung eines Vertrags, dessen Vertragspartei Du bist, oder zur Durchführung vorvertraglicher Maßnahmen erforderlich.
+      Mit der Nutzung unserer Seite nimmst Du unser Angebot auf Abschluss eines entsprechenden (unentgeltlichen) Nutzungsvertrages an.
+      Die Verarbeitung ist über Art. 6 I lit. f) DSGVO gerechtfertigt, da wir ein berechtigtes Interesse an der Verarbeitung haben und Deine Interessen, Grundrechte und Grundfreiheiten nicht überwiegen.
+      Unser berechtigtes Interesse besteht darin, den reibungslosen Ablauf der Praktika und deren Anerkennung zu gewährleisten und künftigen Studierenden des Studienganges das Suchen und Finden eines Praktikumsplatzes zu erleichtern.'
+    deleting_title: 'Löschen von Daten'
+    deleting: 'Wenn Du deine Daten gelöscht haben möchtest, kontaktiere uns unter'
+    detailed_info_title: 'Detaillierte Informationen'
+    detailed_info: 'Detailliertere Informationen findest Du auf der Webseite der'
+    no_thx: 'Nein - Ich bin mit der Verarbeitung meiner Daten zu den genannten Zwecken nicht einverstanden.'
+    ok_cool: 'Ja - Ich bin mit der Verarbeitung meiner Daten zu den genannten Zwecken einverstanden.'
