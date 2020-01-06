@@ -16,6 +16,8 @@ describe 'Students can create their Internship information ' do
       expect(page).to have_content t('internships.create_internship')
 
       click_on t('internships.provide_now')
+      expect(page).to have_content t('consent.title')
+      click_link(t('consent.ok_cool'))
       expect(page).to have_content t('internships.details')
       fill_in(
         t('activerecord.attributes.complete_internship.semester_of_study'),

@@ -21,7 +21,8 @@ describe 'Complete Internship' do
         context 'with no internship created' do
           before :each do
             visit my_internship_path_replacement
-            click_link(t('internships.provide_now'))
+            click_button(t('internships.provide_now'))
+            click_link(t('consent.ok_cool'))
             click_on t('save')
           end
 
@@ -39,7 +40,8 @@ describe 'Complete Internship' do
           before :each do
             create(:semester)
             visit my_internship_path_replacement
-            click_link(t('internships.provide_now'))
+            click_button(t('internships.provide_now'))
+            click_link(t('consent.ok_cool'))
             click_on t('save')
             click_on t('complete_internships.new_tp0')
             click_on t('save')
@@ -103,7 +105,8 @@ describe 'Complete Internship' do
           before :each do
             create(:semester)
             visit my_internship_path_replacement
-            click_link(t('internships.provide_now'))
+            click_button(t('internships.provide_now'))
+            click_link(t('consent.ok_cool'))
             click_on t('save')
             click_on t('complete_internships.new_tp0')
             click_on t('save')
