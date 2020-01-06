@@ -35,15 +35,18 @@ def create_companies_exact
   6.times { create(:company, name: 'Match_7') }
 end
 
-def search_for(company_name:)
+def go_to_search
   visit my_internship_path_replacement
   click_button(t('internships.provide_now'))
   click_link(t('consent.ok_cool'))
   click_on t('save')
   click_on t('complete_internships.new_tp0')
-
   click_on t('save')
   click_on t('complete_internships.checklist.company_details')
+end
+
+def search_for(company_name:)
+  go_to_search
   fill_in(:name, with: company_name)
   click_on t('companies.continue2')
 end
