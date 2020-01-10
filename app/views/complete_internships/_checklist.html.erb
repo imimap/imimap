@@ -1,3 +1,5 @@
+<h6 class="pt-1">Antrag ausfüllen</h6>
+
 <table class="table table-striped text-left">
   <tbody>
 
@@ -49,8 +51,25 @@
           </label>
         </td>
       </tr>
-      <tr>
+    </tbody>
+  </table>
 
+  <h6 class="pt-1">Was du mitbringen musst</h6>
+
+  <table class="table table-striped text-left">
+    <tbody>
+      <tr>
+        <td>
+        </td>
+        <td>
+          <label class="checkbox" id="formprinted_<%=internship.id%>">
+            <input class="invisible" type="checkbox" id="formprinted_<%=internship.id%>">
+            <%=  t("complete_internships.checklist.print_form") %>
+            (<%= link_to "pdf", internship_path(internship.id, format: "pdf"), target: "_blank"%>)
+          </label>
+        </td>
+      </tr>
+      <tr>
         <td style="width:1%">
           <i class="icon-ok icon-large text-success d-none" id="contract_<%=internship.id%>"></i>
           <% if internship.contract_original %>
@@ -77,7 +96,7 @@
         <td>
         </td>
         <td>
-          <label class="checkbox" id="grades_<%=internship.id%>">
+          <label class="checkbox" id="lsf_<%=internship.id%>">
             <input class="invisible" type="checkbox" id="lsf_<%=internship.id%>">
             <%=  t("complete_internships.checklist.lsf_ausdruck") %>
             <%= link_to 'LSF', 'http://lsf.htw-berlin.de/', target: :blank %>
@@ -87,7 +106,6 @@
           <% end %>
         </td>
       </tr>
-
       <tr>
         <td colspan="2">
         <small><i class="icon-ok text-success"></i> <%= t 'complete_internships.icon-ok' %></small>
