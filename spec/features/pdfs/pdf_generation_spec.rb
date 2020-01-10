@@ -31,11 +31,11 @@ describe 'the generation of the application pdf does not produce errors' do
       create_internship
     end
     it 'entered no additional information' do
-      expect { click_link(t('complete_internships.checklist.print_form')) }
+      expect { click_link('pdf') }
         .not_to raise_error
     end
     it 'and generate a valid pdf containing student name' do
-      click_link(t('complete_internships.checklist.print_form'))
+      click_link('pdf')
       convert_pdf_to_page
       expect(page).to have_content(@user.student.first_name)
     end
