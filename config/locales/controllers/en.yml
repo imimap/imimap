@@ -236,14 +236,18 @@ en:
     edit: "Edit Internship"
     create: "Create"
     checklist:
+      fill_application: "1. Fill out the registration form"
       personal_details: Personal Details
       company_details: Company Details
       internship_details: Internship Details
-      contract: I have my contract as
+      contract: Printed contract as
       contract_original: an original
       contract_copy: a copy
+      what_to_bring: "2. What to bring to "
+      office_hours: office hours
+      please_bring_original: Please hand in your contract also as an original so your registration can be sent to the examination office (Prüfungsverwaltung)!
       lsf_ausdruck: Grade transscript of all passed modules from the first two semesters printed out from the
-      print_form: Print Form (pdf)
+      print_form: Printed Form
       check_form: Check Form
       thank_you: Thank you
       module_semester: Modules of the first two semesters by semester
