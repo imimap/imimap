@@ -38,6 +38,32 @@ de:
     too_many: "Es wurden zuviele Ergebnisse gefunden. Bitte führe eine genauere Suche durch."
     company_address: "Bearbeite die Firmenadresse"
   internships:
+    approved:
+      true: 'Dein Praktikum wurde von dem/der Praktikumsbeauftragten genehmigt.'
+    internship_state:
+      1: 'Fertig - Dein Praktikum ist bestanden.'
+      2: 'Dein Praktikum wurde abgebrochen.'
+      3: 'Du musst noch einige Kurse bestehen, bevor Dein Praktikum abgeschlossen werden kann.'
+    registration_state:
+      4: 'Deine Anmeldung ist eingetroffen, aber noch nicht an das Prüfungsamt verschickt.'
+      5: 'Fertig - Deine Anmeldung ist eingetroffen und an das Prüfungsamt verschickt.'
+      6: 'Dein Praktikum wurde von dem/der Praktikumsbeauftragten genehmigt.'
+      7: 'Dein Praktikum wurde von dem/der Praktikumsbeauftragten genehmigt. Allerdings musst Du noch einige Kurse bestehen, bevor Dein Praktikum abgeschlossen werden kann.'
+      8: 'Dein Praktikum wurde von dem/der Praktikumsbeauftragten genehmigt. Allerdings musst Du noch Deinen Originalvertrag nachhreichen.'
+    contract_state:
+      1: 'Dein Vertrag ist noch nicht im Original bei uns eingetroffen, also auch noch nicht an das Prüfungsamt geschickt.'
+      2: 'Dein Vertrag ist im Original bei uns eingetroffen, aber noch nicht an das Prüfungsamt geschickt.'
+      3: 'Fertig - Dein Vertrag ist im Original bei uns eingetroffen und an das Prüfungsamt geschickt.'
+    report_state:
+      1: 'Dein Bericht ist noch nicht bei uns eingetroffen.'
+      2: 'Dein Bericht ist bei uns eingetroffen und wird von einer/einem Professor_in gelesen.'
+      3: 'Fertig - Dein Bericht wurde gelesen.'
+    certificate_state:
+      1: 'Dein Zertifikat ist noch nicht bei uns eingetroffen.'
+      2: 'Dein Zertifikat ist bei uns eingetroffen und wird gemeinsam mit deinem Bericht bearbeitet.'
+      3: 'Dein Zertifikat wurde von dem/der Professor_in unterschrieben, der/die Deinen Bericht gelesen hat.'
+      4: 'Dein Zertifikat wurde von der/dem Praktikumsbeauftragten unterschrieben.'
+      5: 'Fertig - Dein Zertifikat wurde an die Prüfungsverwaltung geschickt.'
     statistic: "Übersicht über die Länder pro Semester"
     my: "Meine Praktika"
     others: "Andere Praktika bei dieser Firma"
@@ -159,6 +185,8 @@ de:
     modulnumber: "Modulname"
     modulname: "Modulnummer"
     status: "Status"
+    status_overview: "Status Übersicht"
+    information: Informationen
     aep:
       number: "B20.1"
       name: "Auswertung von Erfahrungen am Praxisplatz"
@@ -208,6 +236,8 @@ de:
       semester: Semester
       start_date: Anfangsdatum
       end_date: Enddatum
+      duration: Dauer
+      weeks: Wochen
       operational_area: Einsatzgebiet
       tasks: Aufgaben
       internship_report: Praktikumsbericht
