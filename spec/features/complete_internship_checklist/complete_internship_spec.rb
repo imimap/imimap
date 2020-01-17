@@ -23,7 +23,8 @@ describe 'Complete Internship' do
           it 'should create a new CI' do
             visit my_internship_path_replacement
             expect(page).to have_content('Praktikumsdetails')
-            click_link(t('internships.provide_now'))
+            click_button(t('internships.provide_now'))
+            click_link(t('consent.ok_cool'))
             expect(page).to have_field('Semester')
             expect(page).to have_field('Fachsemester')
             click_on t('save')
@@ -34,7 +35,8 @@ describe 'Complete Internship' do
             create(:semester)
             semester = Semester.first
             visit my_internship_path_replacement
-            click_link(t('internships.provide_now'))
+            click_button(t('internships.provide_now'))
+            click_link(t('consent.ok_cool'))
             click_on t('save')
             click_on t('complete_internships.new_tp0')
             expect(page).to have_field('Semester')
@@ -55,7 +57,8 @@ describe 'Complete Internship' do
           it 'should delete a partial internship' do
             create(:semester)
             visit my_internship_path_replacement
-            click_link(t('internships.provide_now'))
+            click_button(t('internships.provide_now'))
+            click_link(t('consent.ok_cool'))
             click_on t('save')
             click_on t('complete_internships.new_tp0')
             click_on t('save')
@@ -72,7 +75,8 @@ describe 'Complete Internship' do
               (example supervisor details)' do
             create(:semester)
             visit my_internship_path_replacement
-            click_link(t('internships.provide_now'))
+            click_button(t('internships.provide_now'))
+            click_link(t('consent.ok_cool'))
             click_on t('save')
             click_on t('complete_internships.new_tp0')
             click_on t('save')

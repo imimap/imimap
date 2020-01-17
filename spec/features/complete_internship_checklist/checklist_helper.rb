@@ -10,8 +10,8 @@ module CompleteInternshipCheckListHelper
 
   def create_complete_internship
     visit my_internship_path_replacement
-    expect(page).to have_content('Praktikumsdetails')
-    click_link(t('internships.provide_now'))
+    click_button(t('internships.provide_now'))
+    click_link(t('consent.ok_cool'))
     click_on t('save')
     expect(page).to have_content(@user.name)
   end
