@@ -20,8 +20,10 @@ module CompleteInternshipsChecklistPageflow
 
   def checklist_back_to_overview_link(params: {}, resource: nil)
     cid = cidcontext_from(params: params, resource: resource)
-    if cid.nil?
+    if cid.nil? && Rails.env.development?
       'no cid'
+    elsif cid.nil?
+      ''
     else
       link_to t('buttons.back_to_overview'),
               complete_internship_path(cid)
