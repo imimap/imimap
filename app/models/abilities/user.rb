@@ -16,6 +16,7 @@ module Abilities
       can :read, InternshipOffer
 
       can %i[read update], Student, user: { id: user.id }
+      can :create, InternshipOffer
 
       can %i[read update], User, id: user.id
     end

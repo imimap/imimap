@@ -9,6 +9,7 @@ class User < ApplicationRecord
   # validates :email, presence: true
   # validates :password, presence: true, length: { minimum: 5 }
   # validates :student, presence: true
+  has_many :internship_offers
 
   belongs_to :student
   has_many :favorites, dependent: :destroy
@@ -125,5 +126,10 @@ class User < ApplicationRecord
     else
       CompleteInternship.joins(student: :user).where('users.id' => id)
     end
+  end
+
+  # multiple recipients for action mailer
+  def self.student_user
+    User.where(role: "user")
   end
 end

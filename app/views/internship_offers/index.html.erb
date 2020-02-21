@@ -1,6 +1,8 @@
 <div class="margin_bottom_10">
   <div id="form-block4">
   <h3><%= t("header.exchange") %></h3>
+  <p> <%= @current_user.last_sign_in_at %>.</p>  
+  <p class = "text-info text-right"> <%= @size %> new internship offers</p>  
   <table class="table table-striped text-left">
     <thead>
       <tr>
@@ -11,11 +13,20 @@
     </thead>
     <tbody>
       <% @offers.each do |internship_offer| %>
+        <% if @current_user.last_sign_in_at < internship_offer.updated_at %>
+          <tr>
+            <td class = "font-weight-bold"><%= link_to internship_offer.title,
+            internship_offer %></td>
+            <td class = "font-weight-bold"><%= internship_offer.city %></td>
+            <td class = "font-weight-bold"><%= internship_offer.country %></td>
+          </tr>
+        <% else %>
         <tr>
-          <td><%= link_to internship_offer.title, internship_offer %></td>
-          <td><%= internship_offer.city %></td>
-          <td><%= internship_offer.country %></td>
-        </tr>
+            <td><%= link_to internship_offer.title, internship_offer %></td>
+            <td><%= internship_offer.city %></td>
+            <td><%= internship_offer.country %></td>
+          </tr>
+          <% end %>   
       <% end %>
     </tbody>
   </table>

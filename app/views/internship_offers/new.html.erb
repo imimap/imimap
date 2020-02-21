@@ -1,76 +1,72 @@
+<%= form_for(@offer_new, url: {action: "create"},
+ html: {class: "nifty_form"}) do |f| %>
 
+  <div class="row" id="form-block2">
+      <div class="row col-md-12" >
 
+        <div class="col-md-12">
+          <div class="field" id="field-titles">
+            <%= f.label "title" %><br />
+            <%= f.text_field :title, class: "form-control col-md-8", 
+            placeholder:  "Job Offer Title" %>
+          </div>
+        </div>
 
+        <div class="col-md-12">
+          <div class="field" id="field-titles">
+            <%= f.label "internship_description"  %><br />
+            <%= f.text_area :body, rows:5, class: "form-control", 
+            placeholder:  "Description Body" %>
+          </div>
+        </div>
+        
+        <div class="col-md-10">
+          <div class="field" id="field-titles">
+            <%= f.label  "internship_report"  %><br />
+            <%= f.file_field :pdf %>
+            <%= f.hidden_field :_destroy %>
+            <%= link_to "remove", '#', class: "remove_fields
+             btn btn-danger icon-white icon-remove" %>
+          </div>
+        </div>
+        <br/>
 
-  <%= form_for(@offer_new, url: {action: "create"}, html: {class: "nifty_form"}) do |f| %>
-
-      <div class="row" id="form-block2">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="field" id="field-titles">
-                <%= f.label "title"%><br />
-                <%= f.text_field :title, placeholder:  "Job Offer Title" %>
-              </div>
-            </div>
-
-                <div class="row">
-                  <div class="col-md-4">
-                    <div class="field" id="field-titles">
-                      <%= f.label "city"%><br />
-                      <%= f.text_field :city, placeholder:  "City" %>
-                    </div>
-                  </div>
-                </div>
-
-                      <div class="row">
-                        <div class="col-md-4">
-                          <div class="field" id="field-titles">
-                            <%= f.label "country"%><br />
-                            <%= f.text_field :country, placeholder:  "Country" %>
-                          </div>
-                        </div>
-                      </div>
-
-
-                <div class="row">
-                  <div class="col-md-10">
-                    <div class="field" id="field-titles">
-                      <%= f.label t "activerecord.attributes.internshipdescription"  %><br />
-                      <%= f.text_area :body %>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="row">
-                  <div class="col-md-10">
-
-                    <br/>
-
-                    <div class="field" id="field-titles">
-                      <%= f.label t "activerecord.attributes.internshipinternship_report"  %>
-                      <%= f.file_field :pdf %>
-                      <%= f.hidden_field :_destroy %>
-                      <%= link_to " remove", '#', class: "remove_fields btn btn-danger icon-white icon-remove" %>
-                    </div>
-                  </div>
-                </div>
-
-
-
-          <br>
-          <div class="row">
-            <div class="pull-right">
-              <div class="actions">
-                <%= button_tag(type: 'submit', class: "btn btn-success") do %>
-                    <i class="icon-ok icon-white"></i> <%= "create new internship offer"%>
-                <% end %>
-              </div>
-
+        <div class="col-md-6">
+        <div class="field" id="field-titles">
+          <%= f.label "city"%><br />
+          <%= f.text_field :city, class: "form-control", 
+          placeholder:  "City" %>
+        </div>
+      </div>
+          
+      <div class="col-md-6">
+        <div class="field" id="field-titles">
+          <%= f.label "country"%><br />
+          <%= f.text_field :country, class: "form-control", 
+          placeholder:  "Country" %>
+        </div>
       </div>
 
+      <% if !current_user.student? %>
+          <div class="col-md-10">
+          <div class="field" id="field-titles">
+            <%= f.check_box(:active) %>
+            <%= f.label "Show"  %><br />
+          </div>
+        </div>
+      <% end %>
+
+        <div class="pull-right">
+          <div class="actions">
+            <%= button_tag(type: 'submit', 
+            class: "btn btn-success") do %>
+                <i class="icon-ok icon-white"></i> 
+                <%= "create new internship offer"%>
+            <% end %>
+            <%= link_to t('buttons.back'), 'javascript:history.back()' %>
+          </div>
+        </div>
+      </div>
   </div>
-</div>
-      </div>
 
-  <% end %>
+<% end %>

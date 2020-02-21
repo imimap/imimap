@@ -10,6 +10,7 @@ module Abilities
       can :list, Internship
       can :read, :all
       can :map_internships, Internship
+      can :create, InternshipOffer
     end
   end
 end
