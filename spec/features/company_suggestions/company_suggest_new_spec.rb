@@ -47,6 +47,13 @@ def search_for(company_name:)
   click_on t('companies.continue2')
 end
 
+def search_for_with_existing_ci(company_name:)
+  visit my_internship_path_replacement
+  click_on t('complete_internships.checklist.company_details')
+  fill_in(:name, with: company_name)
+  click_on t('companies.continue2')
+end
+
 describe 'Company Suggestion Cases' do
   before :each do
     @user = login_as_student
@@ -97,8 +104,34 @@ describe 'Company Suggestion Cases' do
     search_for(company_name: 'Match_6')
     expect(page).to have_content(t('companies.suggestion'))
   end
-  it '5) too many where found for exact search.' do
+  it '5) too many were found for exact search.' do
     search_for(company_name: 'Match_7')
     expect(page).to have_content(t('companies.too_many'))
+  end
+
+  it 'should show me no suggestions when I have exceeded my search limit' do
+    search_for(company_name: 'Match_5_SomeMoreStuff_1')
+    search_for_with_existing_ci(company_name: 'Match_1')
+    search_for_with_existing_ci(company_name: 'Match_2')
+    search_for_with_existing_ci(company_name: 'Match_3')
+    search_for_with_existing_ci(company_name: 'Match_4')
+    search_for_with_existing_ci(company_name: 'Match_5_SomeMoreStuff_2')
+    search_for_with_existing_ci(company_name: 'Match_5_SomeMoreStuff_3')
+    expect(page).to have_content(t('companies.limit_exceeded'))
+  end
+
+  it 'should show me no suggestions when I have exceeded my suggest limit' do
+    search_for(company_name: 'Match_4_SomeMoreStuff_1')
+    click_link('Match_4_SomeMoreStuff_1', class: 'suggest')
+    search_for_with_existing_ci(company_name: 'Match_1_SomeMoreStuff')
+    click_link('Match_1_SomeMoreStuff', class: 'suggest')
+    search_for_with_existing_ci(company_name: 'Match_2_SomeMoreStuff_1')
+    click_link('Match_2_SomeMoreStuff_1', class: 'suggest')
+    search_for_with_existing_ci(company_name: 'Match_2_SomeMoreStuff_2')
+    click_link('Match_2_SomeMoreStuff_2', class: 'suggest')
+    search_for_with_existing_ci(company_name: 'Match_3_SomeMoreStuff_1')
+    click_link('Match_3_SomeMoreStuff_1', class: 'suggest')
+    search_for_with_existing_ci(company_name: 'Match_3_SomeMoreStuff_2')
+    expect(page).to have_content(t('companies.limit_exceeded'))
   end
 end

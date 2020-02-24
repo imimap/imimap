@@ -6,7 +6,7 @@
         <% @company_suggestion.each do |c|%>
           <ul class="list-group">
             <li class="list-group-item">
-              <%= link_to c.name, suggest_address_path(:company_id => c.id, :internship_id => params[:internship_id])%>
+              <%= link_to c.name, suggest_address_path(:company_id => c.id, :internship_id => params[:internship_id]), class: "suggest"%>
             </li>
           </ul>
         <% end %>
