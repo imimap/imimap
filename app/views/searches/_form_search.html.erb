@@ -1,0 +1,16 @@
+
+<div class="container">
+  <%= bootstrap_form_for @search do |f| %>
+
+  <%= t("search.filtertext.1")%>
+  <%= t("search.filtertext.2")%>
+  <%= t("search.filtertext.3")%><%= f.select :orientation_id, orientations, { include_blank: true }, {class: 'chzn-select', 'data-placeholder'=>'Gamedevelopment!!!'  } %>
+  <%= t("search.filtertext.4")%><%= f.select :programming_language_ids, @programming_languages, {}, {class: 'chzn-select', 'data-placeholder'=>'C#!!!'}%>.
+
+  
+    <div class="field" id="field-titles2">
+    <%= f.submit t("search.buttons.search"), class: 'btn btn-outline-success'%>
+    </div>
+
+<%end%>
+</div>

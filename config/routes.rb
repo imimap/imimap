@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :students, only: %i[show update]
     resources :complete_internships
     resources :user_can_see_companies
+    resources :searches
 
     get 'statistic', to: 'statistic#overview'
     delete 'destroy', to: 'devise/notifications#destroy'
@@ -51,6 +52,9 @@ Rails.application.routes.draw do
     post 'select_company/', to: 'companies#suggest'
     get 'suggest_address/', to: 'company_addresses#suggest_address'
     patch 'show/', to: 'company_addresses#save_address'
+    get 'search',
+        to: 'searches#start_search',
+        as: 'start_search'
 
     ActiveAdmin.routes(self)
   end

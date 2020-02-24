@@ -183,6 +183,22 @@ en:
     header: "Internship Offers"
     number_of: "There are currently"
 
+  search:
+    header: Internship Search
+    filtertext:
+      1: I am searching for
+      2: internships in
+      3: ", working in"
+      4: with the language
+    buttons:
+      search: Search
+      random: Generate random
+      save: Save search
+    tableheaders:
+      company: Company
+      location: Location
+      orientation: Orientation
+
   welcome:
     login_with_hrz: Please use your HRZ-Account for logging in.
     help:

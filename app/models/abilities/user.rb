@@ -18,6 +18,8 @@ module Abilities
       can %i[read update], Student, user: { id: user.id }
 
       can %i[read update], User, id: user.id
+
+      can :start_search, Search
     end
 
     def can_create_internship(_user)

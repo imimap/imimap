@@ -42,7 +42,7 @@
 <%= submit_tag t("search.title"), :name => nil, :class => "btn btn-success", :id => "search_button" %>
 
 <% end %>
-<script> 
+<script>
         $( "#salary_slider" ).slider({
             min: 0,
             max: <%= @salary_max %>,
@@ -53,10 +53,10 @@
             }
 
         });
-        
+
         $( "#salary" ).val( $( "#salary_slider" ).slider( "value" ) );
         $( "#salary_span")[0].innerHTML = ( $( "#salary_slider" ).slider( "value" ) + " €");
-        
+
          $( "#living_costs_slider" ).slider({
             min: 1,
             max: <%= @living_costs_max %>,
@@ -84,4 +84,4 @@
         $( "#rating" ).val( $( "#rating_slider" ).slider( "value" ) );
         $( "#rating_span")[0].innerHTML = ( $( "#rating_slider" ).slider( "value" ) )
 
-   </script> 
+   </script>

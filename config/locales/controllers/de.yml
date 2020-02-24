@@ -162,6 +162,22 @@ de:
     header: "Praktikumsangebote"
     number_of: "Es gibt im Moment"
 
+  search:
+    header: Praktikumssuche
+    filtertext:
+      1: Ich suche nach
+      2: Praktika in
+      3: im Bereich
+      4: mit der Programmiersprache
+    buttons:
+      search: Suchen
+      random: Zufallsvorschlag
+      save: Suche speichern
+    tableheaders:
+      company: Firma
+      location: Ort
+      orientation: Bereich
+
   welcome:
     login_with_hrz: Bitte melden Sie sich mit Ihrem HRZ-Account an.
     help:
