@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Controller
 class SearchesController < InheritedResources::Base
   load_and_authorize_resource
 
@@ -16,16 +17,32 @@ class SearchesController < InheritedResources::Base
   end
 
   def collect_cities
-    Internship.all.map { |i| i.company_address.try(:city) }
-              .reject!(&:nil?).uniq.sort
+    cities = Internship.all
+                       .map { |i| i.company_address.try(:city) }
+                       .reject!(&:nil?)
+    return if cities.nil?
+
+    cities.uniq.sort
   end
 
   def collect_countries
-    Internship.all.map { |i| i.company_address.try(:country) }
-              .reject!(&:nil?).uniq.sort
+    countries = Internship.all
+                          .map { |i| i.company_address.try(:country) }
+                          .reject!(&:nil?)
+    return if countries.nil?
+
+    countries.uniq.sort
   end
 
   def concat_countries_cities
-    collect_cities.concat(['------'], collect_countries)
+    cities = collect_cities
+    countries = collect_countries
+    if cities
+      cities.concat(['------'], collect_countries)
+    elsif countries
+      collect_countries
+    else
+      ['no locations']
+    end
   end
 end
