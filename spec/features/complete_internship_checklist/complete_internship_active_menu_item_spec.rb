@@ -19,11 +19,18 @@ describe 'Complete Internship' do
           expect(page).to have_css('.im-nav-itemactive')
         end
 
-        it 'should mark internship offers as active' do
-          visit internship_offers_path(locale: @locale)
+        # it 'should mark internship offers as active' do
+        #   visit internship_offers_path(locale: @locale)
+        #   expect(page).to have_css('.im-nav-itemactive')
+        #   n = find('li.im-nav-itemactive > a')
+        #   expect(n['href']).to eq internship_offers_path(locale: @locale)
+        # end
+
+        it 'should mark internship search as active' do
+          visit start_search_path(locale: @locale)
           expect(page).to have_css('.im-nav-itemactive')
           n = find('li.im-nav-itemactive > a')
-          expect(n['href']).to eq internship_offers_path(locale: @locale)
+          expect(n['href']).to eq start_search_path(locale: @locale)
         end
       end
     end

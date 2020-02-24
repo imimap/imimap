@@ -177,7 +177,14 @@ de:
       company: Firma
       location: Ort
       orientation: Bereich
-
+    placeholders:
+      paid: (un)bezahlten
+      location: einer schönen Location
+      orientation: der Spaß macht
+      programming_language: die ich kann
+    is_paid: bezahlten
+    is_not_paid: unbezahlten
+    
   welcome:
     login_with_hrz: Bitte melden Sie sich mit Ihrem HRZ-Account an.
     help:

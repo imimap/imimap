@@ -2,12 +2,17 @@
 <div class="container">
   <%= bootstrap_form_for @search do |f| %>
 
+<div class="row pl-3">
   <%= t("search.filtertext.1")%>
+  <%= f.select :paid, [[t('search.is_paid'), true], [t('search.is_not_paid'), false]], { include_blank: t('search.placeholders.paid'), hide_label: true }, class: 'chzn-select mx-2 w-auto h-auto' %>
   <%= t("search.filtertext.2")%>
-  <%= t("search.filtertext.3")%><%= f.select :orientation_id, orientations, { include_blank: true }, {class: 'chzn-select', 'data-placeholder'=>'Gamedevelopment!!!'  } %>
-  <%= t("search.filtertext.4")%><%= f.select :programming_language_ids, @programming_languages, {}, {class: 'chzn-select', 'data-placeholder'=>'C#!!!'}%>.
+  <%= f.select :location, @locations, { include_blank: t('search.placeholders.location'), hide_label: true, disabled: '------' }, class: 'chzn-select mx-2 w-auto h-auto' %>
+  <%= t("search.filtertext.3")%>
+  <%= f.select :orientation_id, orientations, { include_blank: t('search.placeholders.orientation'), hide_label: true }, class: 'chzn-select mx-2 w-auto h-auto' %>
+  <%= t("search.filtertext.4")%>
+  <%= f.select :programming_language_id, @programming_languages, { include_blank: t('search.placeholders.programming_language'), hide_label: true }, class: 'chzn-select mx-2 w-auto h-auto' %>.
+</div>
 
-  
     <div class="field" id="field-titles2">
     <%= f.submit t("search.buttons.search"), class: 'btn btn-outline-success'%>
     </div>
