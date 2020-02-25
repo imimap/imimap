@@ -196,15 +196,20 @@ en:
       save: Save search
     tableheaders:
       company: Company
+      paid: Payment
       location: Location
       orientation: Orientation
+      programming_languages: Programming languages
     placeholders:
       paid: (un)paid
       location: a nice location
       orientation: a fun industry
       programming_language: I know best
-    is_paid: bezahlten
-    is_not_paid: unbezahlten   
+    results_found:
+      start: There were
+      finish: results
+    is_paid: paid
+    is_not_paid: unpaid
 
   welcome:
     login_with_hrz: Please use your HRZ-Account for logging in.

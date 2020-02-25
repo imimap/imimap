@@ -175,16 +175,21 @@ de:
       save: Suche speichern
     tableheaders:
       company: Firma
+      paid: Bezahlung
       location: Ort
       orientation: Bereich
+      programming_languages: Programmiersprachen
     placeholders:
       paid: (un)bezahlten
       location: einer schönen Location
       orientation: der Spaß macht
       programming_language: die ich kann
+    results_found:
+      start: Es wurden
+      finish: Treffer gefunden
     is_paid: bezahlten
     is_not_paid: unbezahlten
-    
+
   welcome:
     login_with_hrz: Bitte melden Sie sich mit Ihrem HRZ-Account an.
     help:
