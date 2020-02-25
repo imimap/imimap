@@ -1,0 +1,22 @@
+<div class="container">
+  <% if @results.nil? %>
+    NO RESULTS
+  <% else %>
+    <% @results.each do |result| %>
+      <table class="table table-striped table-sm table-borderless text-left">
+        <tbody>
+          <tr>
+            <td class="font-weight-bold"><%=t('search.tableheaders.company')%></td>
+            <td class="font-weight-bold"><%=t('search.tableheaders.location')%></td>
+            <td class="font-weight-bold"><%=t('search.tableheaders.orientation')%></td>
+          </tr>
+          <tr>
+            <td><%=result.company.try(:name)%></td>
+            <td><%=result.company_address.try(:city)%>, <%=result.company_address.try(:country)%></td>
+            <td><%=result.orientation.try(:name)%></td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+  <% end %>
+</div>
