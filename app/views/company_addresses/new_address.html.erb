@@ -61,7 +61,7 @@
       <div class="col-md-6">
         <div class="field" id="field-titles">
           <%= f.label :country, required_application(f,:country, class: 'required') %> <br>
-          <%= f.country_select :country, ["United States"], class: 'chzn-select' %>
+          <%= f.country_select :country, include_blank: true, class: 'chzn-select' %>
         </div>
       </div>
       </div>

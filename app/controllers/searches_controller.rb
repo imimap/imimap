@@ -31,7 +31,7 @@ class SearchesController < InheritedResources::Base
   def collect_cities
     cities = Internship.all
                        .map { |i| i.company_address.try(:city) }
-                       .reject!(&:nil?)
+                       .reject(&:nil?).reject(&:empty?)
     return if cities.nil?
 
     cities.uniq.sort
@@ -39,8 +39,8 @@ class SearchesController < InheritedResources::Base
 
   def collect_countries
     countries = Internship.all
-                          .map { |i| i.company_address.try(:country) }
-                          .reject!(&:nil?)
+                          .map { |i| i.company_address.try(:country_name) }
+                          .reject(&:nil?).reject(&:empty?)
     return if countries.nil?
 
     countries.uniq.sort
@@ -58,20 +58,29 @@ class SearchesController < InheritedResources::Base
     end
   end
 
-  def filter_paid(internships)
-    return internships unless @search.paid.nil?
+  def filter_paid_true
+    internships = internships.select do |i|
+      # i.payment_state_id == 2 => "cash benefit"
+      i.payment_state_id == 2 || i.salary.try(:positive?)
+    end
+    internships
+  end
 
+  def filter_paid_false
+    internships = internships.select do |i|
+      i.payment_state_id != 2 && (i.salary.nil? || i.salary <= 0)
+    end
+    internships
+  end
+
+  def filter_paid(internships)
+    return internships if @search.paid.nil?
     return internships unless internships
 
     if @search.paid == true
-      # i.payment_state_id == 2 => "cash benefit"
-      internships = internships.select do |i|
-        i.payment_state_id == 2 || i.salary.try(:positive?)
-      end
+      internships = filter_paid_true
     elsif @search.paid == false
-      internships = internships.select do |i|
-        i.payment_state_id != 2 && (i.salary.nil? || i.salary <= 0)
-      end
+      internships = filter_paid_false
     end
     internships
   end
@@ -84,7 +93,8 @@ class SearchesController < InheritedResources::Base
     return internships unless internships
 
     internships = internships.select do |i|
-      i.company_address.try(:city) == loc || i.company_address.try(:country) == loc
+      address = i.company_address
+      address.try(:city) == loc || address.try(:country_name) == loc
     end
     internships
   end

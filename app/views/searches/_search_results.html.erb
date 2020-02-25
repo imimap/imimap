@@ -16,7 +16,11 @@
     <% @results.each do |result| %>
           <tr>
             <td><%=result.company_address.try(:company).try(:name)%></td>
-            <td><%=result.company_address.try(:city)%><%=", " + result.company_address.try(:country)%></td>
+            <td><%=result.company_address.try(:city)%>
+              <% if !result.company_address.try(:country_name).nil? %>
+                <%=", " + result.company_address.try(:country_name)%>
+              <% end %>
+            </td>
             <td><%=result.orientation.try(:name)%></td>
             <td><%=result.programming_languages.map { |x| x.name }.join(', ')%></td>
             <td><%=result.payment_state.try(:name)%></td>
