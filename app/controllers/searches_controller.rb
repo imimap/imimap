@@ -4,10 +4,21 @@
 class SearchesController < InheritedResources::Base
   load_and_authorize_resource
 
+  before_action :set_programming_languages, only: %i[start_search show_results]
+  before_action :set_locations, only: %i[start_search show_results]
+
   def start_search
     @search = Search.new
-    @programming_languages = ProgrammingLanguage.all.pluck(:name, :id)
-    @locations = concat_countries_cities
+  end
+
+  def show_results
+    @search =
+      Search
+      .new(paid: params[:search][:paid],
+           location: params[:search][:location],
+           orientation_id: params[:search][:orientation_id],
+           programming_language_id: params[:search][:programming_language_id])
+    render 'show_results'
   end
 
   private
@@ -44,5 +55,13 @@ class SearchesController < InheritedResources::Base
     else
       ['no locations']
     end
+  end
+
+  def set_programming_languages
+    @programming_languages = ProgrammingLanguage.all.pluck(:name, :id)
+  end
+
+  def set_locations
+    @locations = concat_countries_cities
   end
 end
