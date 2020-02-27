@@ -58,7 +58,7 @@ class SearchesController < InheritedResources::Base
     end
   end
 
-  def filter_paid_true
+  def filter_paid_true(internships)
     internships = internships.select do |i|
       # i.payment_state_id == 2 => "cash benefit"
       i.payment_state_id == 2 || i.salary.try(:positive?)
@@ -66,7 +66,7 @@ class SearchesController < InheritedResources::Base
     internships
   end
 
-  def filter_paid_false
+  def filter_paid_false(internships)
     internships = internships.select do |i|
       i.payment_state_id != 2 && (i.salary.nil? || i.salary <= 0)
     end
@@ -78,9 +78,9 @@ class SearchesController < InheritedResources::Base
     return internships unless internships
 
     if @search.paid == true
-      internships = filter_paid_true
+      internships = filter_paid_true(internships)
     elsif @search.paid == false
-      internships = filter_paid_false
+      internships = filter_paid_false(internships)
     end
     internships
   end
