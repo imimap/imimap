@@ -3,30 +3,6 @@
     NO RESULTS
   <% else %>
     <p class="text-center p-1"><%=t('search.results_found.start')%> <%= @results.count %> <%=t('search.results_found.finish')%></p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <table class="table table-striped table-sm table-borderless text-left">
     <tbody>
       <tr>
@@ -68,12 +44,14 @@
                   <%=result.payment_state.name%>
                 </p>
               <% end %>
-              <% if !result.company_address.company.website.empty? %>
+              <% if !result.company_address.company.website.nil? %>
+                <% if !result.company_address.company.website.empty? %>
                 <p class="pl-3">
                   <strong>Webseite: </strong>
-                  <%=link_to result.company_address.company.website%>
+                  <%= result.company_address.company.website %>
                 </p>
               <% end %>
+            <% end %>
               <% if !result.tasks.empty? %>
                 <p class="pl-3">
                   <strong>Tasks: </strong>

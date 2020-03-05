@@ -123,5 +123,16 @@ module Abilities
       can_show_company(user)
       can_show_limited_number_of_companies(user)
     end
+
+    def can_show_limited_number_of_internships(user)
+      can :show, Internship do |internship|
+        UserCanSeeInternship.where(user: user,
+                                   internship: internship).exists?
+      end
+    end
+
+    def internship(user)
+      can_show_limited_number_of_internships(user)
+    end
   end
 end
