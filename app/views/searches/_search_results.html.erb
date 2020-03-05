@@ -3,15 +3,37 @@
     NO RESULTS
   <% else %>
     <p class="text-center p-1"><%=t('search.results_found.start')%> <%= @results.count %> <%=t('search.results_found.finish')%></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <table class="table table-striped table-sm table-borderless text-left">
     <tbody>
       <tr>
         <td class="font-weight-bold"><%=t('search.tableheaders.company')%></td>
         <td class="font-weight-bold"><%=t('search.tableheaders.location')%></td>
         <td class="font-weight-bold"><%=t('search.tableheaders.orientation')%></td>
-        <td class="font-weight-bold"><%=t('search.tableheaders.programming_languages')%></td>
-        <td class="font-weight-bold"><%=t('search.tableheaders.paid')%></td>
-        <td class="font-weight-bold">Semester</td>
+        <td class="font-weight-bold"></td>
       </tr>
     <% @results.each do |result| %>
           <tr>
@@ -22,9 +44,43 @@
               <% end %>
             </td>
             <td><%=result.orientation.try(:name)%></td>
-            <td><%=result.programming_languages.map { |x| x.name }.join(', ')%></td>
-            <td><%=result.payment_state.try(:name)%></td>
-            <td><%=result.semester.try(:name)%></td>
+            <td><button class="btn btn-outline-success float-right" type="button" data-toggle="collapse" data-target="#collapse<%=result.id%>" aria-expanded="false" aria-controls="collapse<%=result.id%>">
+              Details
+            </button></td>
+          </tr>
+          <tr class="collapse" id="collapse<%=result.id%>">
+            <td colspan="7">
+              <% if result.semester %>
+                <p class="pl-3">
+                  <strong>Semester: </strong>
+                  <%=result.semester.name%>
+                </p>
+              <% end %>
+              <% if !result.programming_languages.empty? %>
+                <p class="pl-3">
+                  <strong><%=t('search.tableheaders.programming_languages')%>: </strong>
+                  <%=result.programming_languages.map { |x| x.name }.join(', ')%>
+                </p>
+              <% end %>
+              <% if !result.payment_state.nil? %>
+                <p class="pl-3">
+                  <strong><%=t('search.tableheaders.paid')%>: </strong>
+                  <%=result.payment_state.name%>
+                </p>
+              <% end %>
+              <% if !result.company_address.company.website.empty? %>
+                <p class="pl-3">
+                  <strong>Webseite: </strong>
+                  <%=link_to result.company_address.company.website%>
+                </p>
+              <% end %>
+              <% if !result.tasks.empty? %>
+                <p class="pl-3">
+                  <strong>Tasks: </strong>
+                  <%=result.tasks%>
+                </p>
+              <% end %>
+            </td>
           </tr>
     <% end %>
 
