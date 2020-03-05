@@ -175,10 +175,13 @@ de:
       save: Suche speichern
     tableheaders:
       company: Firma
-      paid: Bezahlung
       location: Ort
       orientation: Bereich
+    headers:
       programming_languages: Programmiersprachen
+      paid: Bezahlung
+      website: Webseite
+      tasks: Aufgaben
     placeholders:
       paid: (un)bezahlten
       location: einer schönen Location

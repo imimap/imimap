@@ -34,27 +34,29 @@
               <% end %>
               <% if !result.programming_languages.empty? %>
                 <p class="pl-3">
-                  <strong><%=t('search.tableheaders.programming_languages')%>: </strong>
+                  <strong><%=t('search.headers.programming_languages')%>: </strong>
                   <%=result.programming_languages.map { |x| x.name }.join(', ')%>
                 </p>
               <% end %>
               <% if !result.payment_state.nil? %>
                 <p class="pl-3">
-                  <strong><%=t('search.tableheaders.paid')%>: </strong>
+                  <strong><%=t('search.headers.paid')%>: </strong>
                   <%=result.payment_state.name%>
                 </p>
               <% end %>
               <% if !result.company_address.company.website.nil? %>
                 <% if !result.company_address.company.website.empty? %>
                 <p class="pl-3">
-                  <strong>Webseite: </strong>
-                  <%= result.company_address.company.website %>
+                  <strong><%=t('search.headers.website')%>: </strong>
+                  <a href="<%= result.company_address.company.website %>" target="_blank">
+                    <%= result.company_address.company.website %>
+                  </a>
                 </p>
               <% end %>
             <% end %>
               <% if !result.tasks.empty? %>
                 <p class="pl-3">
-                  <strong>Tasks: </strong>
+                  <strong><%=t('search.headers.tasks')%>: </strong>
                   <%=result.tasks%>
                 </p>
               <% end %>

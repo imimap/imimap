@@ -196,10 +196,13 @@ en:
       save: Save search
     tableheaders:
       company: Company
-      paid: Payment
       location: Location
       orientation: Orientation
+    headers:
       programming_languages: Programming languages
+      paid: Payment
+      website: Website
+      tasks: Tasks
     placeholders:
       paid: (un)paid
       location: a nice location
