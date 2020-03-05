@@ -58,6 +58,7 @@ Rails.application.routes.draw do
     post 'search_results',
          to: 'searches#show_results',
          as: 'show_results'
+    get 'search_results', to: 'searches#start_search'
     ActiveAdmin.routes(self)
   end
 end

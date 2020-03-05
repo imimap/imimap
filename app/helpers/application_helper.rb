@@ -14,6 +14,10 @@ module ApplicationHelper
     complete_internship_path(ci)
   end
 
+  def is_search_active_menu_item?
+    controller.controller_name == 'searches'
+  end
+
   def active_menu_item?(path)
     return @active_menu_item == path if @active_menu_item
 
