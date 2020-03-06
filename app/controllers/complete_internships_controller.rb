@@ -23,12 +23,10 @@ class CompleteInternshipsController < ApplicationResourceController
   def show
     @semester_name = @complete_internship.semester.try(:name)
     @user = CompleteInternship.find_by(id: params[:id]).student.try(:user)
-    @company_search_limit = UserCanSeeCompany.limit(created_by: 'company_search')
-    @wiewed_companies_search = viewed_comanies_search
-    @company_suggest_limit = UserCanSeeCompany.limit(created_by: 'company_suggest')
-    @wiewed_companies_suggest = viewed_comanies_suggest
-    @internship_search_limit = UserCanSeeInternship.limit
-    @wiewed_internships_search = wiewed_internships_search
+    set_limit_variables
+    @wiewed_companies_search = viewed_companies_search
+    @wiewed_companies_suggest = viewed_companies_suggest
+    @wiewed_internships_search = viewed_internships_search
   end
 
   # If the user has no complete internship, the system asks him/her to create a
@@ -101,20 +99,6 @@ class CompleteInternshipsController < ApplicationResourceController
     @complete_internship.student_id = si
   end
 
-  def complete_internship_from_params
-    if params[:complete_internship].nil?
-      CompleteInternship.new
-    else
-      CompleteInternship.new(complete_internship_params)
-    end
-  end
-
-  def complete_internship_params
-    params.require(:complete_internship).permit(
-      CompleteInternshipsController.permitted_params
-    )
-  end
-
   def set_semesters
     @semesters = Semester.all.pluck(:name, :id)
   end
@@ -132,33 +116,11 @@ class CompleteInternshipsController < ApplicationResourceController
     @active_menu_item = 'cidcontext'
   end
 
-  def viewed_comanies_search
-    if @user.nil?
-      0
-    else
-      UserCanSeeCompany.number_of_viewed_companies_for_user(
-        user: @user,
-        created_by: 'company_search'
-      )
-    end
-  end
-
-  def viewed_comanies_suggest
-    if @user.nil?
-      0
-    else
-      UserCanSeeCompany.number_of_viewed_companies_for_user(
-        user: @user,
-        created_by: 'company_suggest'
-      )
-    end
-  end
-
-  def wiewed_internships_search
-    if @user.nil?
-      0
-    else
-      UserCanSeeInternship.number_of_viewed_internships_for_user(user: @user)
-    end
+  def set_limit_variables
+    @company_search_limit = UserCanSeeCompany
+                            .limit(created_by: 'company_search')
+    @company_suggest_limit = UserCanSeeCompany
+                             .limit(created_by: 'company_suggest')
+    @internship_search_limit = UserCanSeeInternship.limit
   end
 end

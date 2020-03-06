@@ -3,6 +3,7 @@
 # Helper for CompleteInternships
 module CompleteInternshipsHelper
   include CompleteInternshipsChecklistPageflow
+
   def semester_select_options(show_all: false)
     semester = Semester.all.map { |s| [s.name, s.id] }
     if show_all
@@ -33,6 +34,50 @@ module CompleteInternshipsHelper
       internship.company_address.company.name
     else
       t 'complete_internships.company'
+    end
+  end
+
+  def complete_internship_from_params
+    if params[:complete_internship].nil?
+      CompleteInternship.new
+    else
+      CompleteInternship.new(complete_internship_params)
+    end
+  end
+
+  def complete_internship_params
+    params.require(:complete_internship).permit(
+      CompleteInternshipsController.permitted_params
+    )
+  end
+
+  def viewed_companies_search
+    if @user.nil?
+      0
+    else
+      UserCanSeeCompany.number_of_viewed_companies_for_user(
+        user: @user,
+        created_by: 'company_search'
+      )
+    end
+  end
+
+  def viewed_companies_suggest
+    if @user.nil?
+      0
+    else
+      UserCanSeeCompany.number_of_viewed_companies_for_user(
+        user: @user,
+        created_by: 'company_suggest'
+      )
+    end
+  end
+
+  def viewed_internships_search
+    if @user.nil?
+      0
+    else
+      UserCanSeeInternship.number_of_viewed_internships_for_user(user: @user)
     end
   end
 end

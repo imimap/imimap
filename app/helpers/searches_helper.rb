@@ -37,8 +37,9 @@ module SearchesHelper
     return internships unless internships
 
     internships = internships.select do |i|
-      address = i.company_address
-      address.try(:city) == loc || address.try(:country_name) == loc
+      city_matches = i.company_address.try(:city) == loc
+      country_matches = i.company_address.try(:country_name) == loc
+      city_matches || country_matches
     end
     internships
   end

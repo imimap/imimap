@@ -34,10 +34,7 @@ class User < ApplicationRecord
   end
 
   def string_to_array(some_list)
-    some_list.split(',')
-             .map { |s| s.gsub(/:/, '') }
-             .map(&:strip)
-             .map(&:to_sym)
+    some_list.split(',').map { |s| s.gsub(/:/, '') }.map(&:strip).map(&:to_sym)
   end
 
   def feature_toggles=(new_ft)
