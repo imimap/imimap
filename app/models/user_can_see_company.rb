@@ -62,4 +62,12 @@ class UserCanSeeCompany < ApplicationRecord
   def self.associated_users_for_company_address(company_address:)
     company_address.internships.map { |i| i.student.user }
   end
+
+  def self.number_of_viewed_companies_for_user(user:, created_by:)
+    UserCanSeeCompany.where(user: user, created_by: created_by).count
+  end
+
+  def self.limit(created_by:)
+    LIMITS[created_by.to_sym]
+  end
 end

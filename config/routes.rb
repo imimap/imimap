@@ -59,6 +59,12 @@ Rails.application.routes.draw do
          to: 'searches#show_results',
          as: 'show_results'
     get 'search_results', to: 'searches#start_search'
+    delete 'reset_company_search_limit',
+           to: 'user_can_see_companies#reset_limit_search'
+    delete 'reset_company_suggest_limit',
+           to: 'user_can_see_companies#reset_limit_suggest'
+    delete 'reset_internship_search_limit',
+           to: 'user_can_see_internships#reset_limit'
     ActiveAdmin.routes(self)
   end
 end

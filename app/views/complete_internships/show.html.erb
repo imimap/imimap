@@ -13,8 +13,13 @@
     </h4>
     <br>
 
+    <div class="mb-5">
+    <% if current_user.admin? %>
+      <%= render 'reset_limits_admin' %>
+    <% end %>
+    </div>
 
-    <div class="card mb-3">
+    <div class="card mt-3 mb-3">
       <div class="card-body">
         <p class="card-text">
 
@@ -64,16 +69,16 @@
           <% caneditinternship = can? :edit, internship %>
           <div class="card border-<%= caneditinternship ? 'secondary' : 'success' %>">
             <div class="card-header">
+              <% if caneditinternship %>
+                <%= button_to 'x', internship_path(internship.id), :method => :delete, data: {confirm: t('buttons.confirmation')}, :class => "deleteButton"  %>
+              <% end %>
               <% if internship.try(:approved) %>
                 <small><%= t "internships.approved.#{internship.approved}" %></small>
               <% end %>
             </div>
             <div class="card-body">
-              <h5 class="card-title " id="h5_inline" ><%= t "complete_internships.internship" %> @
+              <h5 class="card-title " id="h5_block" ><%= t "complete_internships.internship" %> @
                 <%= company_name_for_checklist(internship) %></h5>
-                <% if caneditinternship %>
-                 <%= button_to 'x', internship_path(internship.id), :method => :delete, data: {confirm: t('buttons.confirmation')}, :class => "deleteButton"  %>
-                <% end %>
               <p class="card-text">
                 <% if caneditinternship %>
                   <%= render 'checklist',internship: internship %>

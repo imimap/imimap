@@ -39,5 +39,13 @@ class UserCanSeeInternship < ApplicationRecord
     internship.user
   end
 
+  def self.number_of_viewed_internships_for_user(user:)
+    UserCanSeeInternship.where(user: user).count
+  end
+
+  def self.limit
+    INTERNSHIP_LIMIT
+  end
+
   # denken ist wichtig
 end
