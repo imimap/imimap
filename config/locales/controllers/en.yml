@@ -194,6 +194,12 @@ en:
       search: Search
       random: Generate random
       save: Save search
+    notice:
+      header: Notice
+      text1: Try starting with a very specific search because this feature is limited to showing
+      text2: results.
+             Companies, which you have seen once, stay visible even if you reach this limit.
+             If you have reached the limit but wish to continue your search, you can have the internship officer reset your limit during their office hours.
     tableheaders:
       company: Company
       location: Location

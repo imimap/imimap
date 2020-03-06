@@ -1,6 +1,12 @@
 <div class="margin_bottom_10">
 <div id="form-block4" class="text-left">
     <h4><%= t("search.header")%></h4>
-    <br>
+    <div class="card text-white bg-success  mt-3 mb-4 ml-3">
+      <div class="card-body p-1">
+        <p class="card-text"><strong><%= t 'search.notice.header' %>:</strong>
+          <%= t 'search.notice.text1' %> <%=UserCanSeeInternship.limit%> <%= t 'search.notice.text2' %>
+        </p>
+      </div>
+    </div>
     <%= render 'form_search'%>
 </div>

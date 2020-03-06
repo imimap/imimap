@@ -173,6 +173,12 @@ de:
       search: Suchen
       random: Zufallsvorschlag
       save: Suche speichern
+    notice:
+      header: Hinweis
+      text1: Starte am besten mit einer möglichst spezifischen Suche, da die Ergebnisanzeige auf
+      text2: Ergebnisse beschränkt ist.
+             Firmen, die Du einmal gesehen hast, bleiben auch nach dem erreichen des Limits sichtbar.
+             Solltest Du das Limit erreicht haben, kannst Du es in der Sprechstunde der/des Praktikumsbeauftragte_n zurücksetzen lassen.
     tableheaders:
       company: Firma
       location: Ort
