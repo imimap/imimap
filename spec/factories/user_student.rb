@@ -14,6 +14,18 @@ FactoryBot.define do
     end
   end
 
+  factory :student_admin, class: User do
+    email { 's012345@htw-berlin.de' }
+    password { 'geheim1234' }
+    password_confirmation { 'geheim1234' }
+    publicmail { true }
+    mailnotif { true }
+    role { :admin }
+    after(:build) do |user|
+      user.student ||= FactoryBot.build(:student, user: user)
+    end
+  end
+
   factory :student_user_with_fresh_complete_internship, class: User do
     email { 's012399@htw-berlin.de' }
     password { 'geheim12' }
