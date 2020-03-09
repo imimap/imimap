@@ -15,7 +15,7 @@ FactoryBot.define do
   end
 
   factory :student_admin, class: User do
-    email { 's012345@htw-berlin.de' }
+    email { 's012340@htw-berlin.de' }
     password { 'geheim1234' }
     password_confirmation { 'geheim1234' }
     publicmail { true }
