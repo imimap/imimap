@@ -10,7 +10,7 @@
         <td class="font-weight-bold"><%=t('search.tableheaders.location')%></td>
         <td class="font-weight-bold"><%=t('search.tableheaders.orientation')%></td>
         <td class="font-weight-bold"></td>
-      </tr>
+      </tr> 
     <% @results.each do |result| %>
           <tr>
             <td><%=result.company_address.try(:company).try(:name)%></td>

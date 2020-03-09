@@ -10,6 +10,7 @@ class SearchesController < InheritedResources::Base
 
   def start_search
     @search = Search.new
+    @internship_limit = UserCanSeeInternship.limit
   end
 
   def show_results
@@ -25,37 +26,31 @@ class SearchesController < InheritedResources::Base
   end
 
   def collect_cities
-    cities = Internship.all
-                       .map { |i| i.company_address.try(:city) }
-                       .reject(&:nil?).reject(&:empty?)
-    return if cities.nil?
-
-    cities.uniq.sort
+    Internship.includes(:company_address).pluck(:city).uniq
+              .reject(&:nil?).reject(&:empty?).sort
   end
 
   def collect_countries
-    countries = Internship.all
-                          .map { |i| i.company_address.try(:country_name) }
-                          .reject(&:nil?).reject(&:empty?)
-    return if countries.nil?
-
-    countries.uniq.sort
+    address_ids = Internship.pluck(:company_address_id).reject(&:nil?)
+    addresses = CompanyAddress.where(id: address_ids)
+    countries = addresses.map(&:country_name).uniq.sort
+    countries
   end
 
   def concat_countries_cities
     cities = collect_cities
     countries = collect_countries
-    if cities
-      cities.concat(['------'], collect_countries)
-    elsif countries
-      collect_countries
+    if countries
+      countries.concat(['------'], cities)
+    elsif cities
+      cities
     else
       ['no locations']
     end
   end
 
   def set_programming_languages
-    @programming_languages = ProgrammingLanguage.all.pluck(:name, :id)
+    @programming_languages = ProgrammingLanguage.pluck(:name, :id)
   end
 
   def set_locations
