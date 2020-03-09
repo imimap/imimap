@@ -70,7 +70,7 @@
           <div class="card border-<%= caneditinternship ? 'secondary' : 'success' %>">
             <div class="card-header">
               <% if caneditinternship %>
-                <%= button_to 'x', internship_path(internship.id), :method => :delete, data: {confirm: t('buttons.confirmation')}, :class => "deleteButton"  %>
+                <%= button_to 'x', internship_path(internship.id), :method => :delete, data: {confirm: t('buttons.confirmation')}, :class => 'deleteButton'  %>
               <% end %>
               <% if internship.try(:approved) %>
                 <small><%= t "internships.approved.#{internship.approved}" %></small>

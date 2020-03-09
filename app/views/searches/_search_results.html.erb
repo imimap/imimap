@@ -35,7 +35,7 @@
               <% if !result.programming_languages.empty? %>
                 <p class="pl-3">
                   <strong><%=t('search.headers.programming_languages')%>: </strong>
-                  <%=result.programming_languages.map { |x| x.name }.join(', ')%>
+                  <%=result.programming_languages.map(&:name).join(', ')%>
                 </p>
               <% end %>
               <% if !result.payment_state.nil? %>

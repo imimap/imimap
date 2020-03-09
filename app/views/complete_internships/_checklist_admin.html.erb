@@ -66,7 +66,13 @@
 </td>
 </tr>
 
-
+<tr>
+  <td>
+  </td>
+  <td>
+      <input class="invisible" type="checkbox" id="duration_<%=internship.id%>">
+      <%= t('complete_internships.details.duration') + ': ' + internship.duration.weeks.to_s + ' ' + t('complete_internships.details.weeks') %>
+  </td>
 <tr>
   <td>
   </td>
@@ -77,4 +83,3 @@
     </label>
     (In Active Admin <%= link_to t("complete_internships.checklist.see_aa"), admin_internship_path(internship.id) %>
      | <%= link_to t("complete_internships.checklist.edit_aa"), edit_admin_internship_path(internship.id) %>)
-
