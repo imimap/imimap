@@ -10,14 +10,11 @@
         <td class="font-weight-bold"><%=t('search.tableheaders.location')%></td>
         <td class="font-weight-bold"><%=t('search.tableheaders.orientation')%></td>
         <td class="font-weight-bold"></td>
-      </tr> 
+      </tr>
     <% @results.each do |result| %>
           <tr>
             <td><%=result.company_address.try(:company).try(:name)%></td>
-            <td><%=result.company_address.try(:city)%>
-              <% if !result.company_address.try(:country_name).nil? %>
-                <%=", " + result.company_address.try(:country_name)%>
-              <% end %>
+            <td><%=result.company_address.try(:address)%>
             </td>
             <td><%=result.orientation.try(:name)%></td>
             <td><button class="btn btn-outline-success float-right" type="button" data-toggle="collapse" data-target="#collapse<%=result.id%>" aria-expanded="false" aria-controls="collapse<%=result.id%>">
@@ -58,6 +55,12 @@
                 <p class="pl-3">
                   <strong><%=t('search.headers.tasks')%>: </strong>
                   <%=result.tasks%>
+                </p>
+              <% end %>
+              <% if !result.supervisor_name.empty? %>
+                <p class="pl-3">
+                  <strong><%=t('search.headers.supervisor')%>: </strong>
+                  <%=result.supervisor_name%>, <%=result.supervisor_email%>
                 </p>
               <% end %>
             </td>

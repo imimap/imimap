@@ -209,6 +209,7 @@ en:
       paid: Payment
       website: Website
       tasks: Tasks
+      supervisor: Contact
     placeholders:
       paid: (un)paid
       location: a nice location
