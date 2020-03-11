@@ -103,6 +103,24 @@ describe 'Internship search' do
               @internship.company_address.company.name
             )
           end
+
+          it 'company address' do
+            expect(page).to have_content(
+              @internship.company_address.try(:address)
+            )
+          end
+
+          it 'supervisor name and email' do
+            expect(page).to have_content(
+              t('search.headers.supervisor')
+            )
+            expect(page).to have_content(
+              @internship.supervisor_name
+            )
+            expect(page).to have_content(
+              @internship.supervisor_email
+            )
+          end
         end
       end
 
