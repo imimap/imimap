@@ -80,24 +80,38 @@ module SearchesHelper
     internships
   end
 
-  def check_limit(internships)
+  def pick_random_results(internships)
     return internships unless internships
+    return internships if current_user.admin?
 
+    internships = internships.sample(UserCanSeeInternship.limit)
     internships = internships.select do |i|
       UserCanSeeInternship.internship_search(internship_id: i.id,
                                              user: current_user)
     end
+    if internships.count < 12
+      internships += Internship.where(id:
+        UserCanSeeInternship
+        .where(user: current_user).map(&:internship_id)
+      )
+      internships = filter(internships)
+    end
+    internships = sort_results(internships)
+    internships
+  end
+
+  def filter(internships)
+    internships = filter_paid(internships)
+    internships = filter_location(internships)
+    internships = filter_orientation_id(internships)
+    internships = filter_pl(internships)
     internships
   end
 
   def collect_results
     internships = Internship.where('start_date < CURRENT_DATE')
-    internships = filter_paid(internships)
-    internships = filter_location(internships)
-    internships = filter_orientation_id(internships)
-    internships = filter_pl(internships)
+    filter(internships)
     internships = sort_results(internships)
-    internships = check_limit(internships)
     internships
   end
 end

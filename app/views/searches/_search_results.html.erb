@@ -51,13 +51,13 @@
                 </p>
               <% end %>
             <% end %>
-              <% if !result.tasks.empty? %>
+              <% if !result.tasks.nil? && !result.tasks.empty? %>
                 <p class="pl-3">
                   <strong><%=t('search.headers.tasks')%>: </strong>
                   <%=result.tasks%>
                 </p>
               <% end %>
-              <% if !result.supervisor_name.empty? %>
+              <% if !result.supervisor_name.nil? && !result.supervisor_name.empty? %>
                 <p class="pl-3">
                   <strong><%=t('search.headers.supervisor')%>: </strong>
                   <%=result.supervisor_name%>, <%=result.supervisor_email%>
