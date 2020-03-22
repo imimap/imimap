@@ -24,6 +24,11 @@
         <li class="nav-item im-nav-item<%= 'active' if active_menu_item?(complete_internships_path) %>"><%= link_to t("header.complete_internships"), complete_internships_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
       <% end %>
 
+
+      <% if can? :index, Postponement %>
+        <li class="nav-item im-nav-item<%= 'active' if active_menu_item?(postponements_path) %>"><%= link_to t("header.postponements"), postponements_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
+      <% end %>
+
       <% if current_user.admin? %>
         <li class="nav-item im-nav-item"><%= link_to t("header.admin"),  admin_root_path, class: 'nav-link im-nav-link imi-map-navlink' %></li>
       <% end %>

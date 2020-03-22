@@ -1,0 +1,78 @@
+<div class="margin_bottom_10">
+<div id="form-block4" class="text-left">
+<% postponement = @postponement %>
+<%= bootstrap_form_for(@postponement, local: true) do |form| %>
+
+<h3>Antrag auf Verschiebung des Praktikums</h3>
+
+<%= render 'application/model_errors', model: @postponement %>
+
+<div class="row">
+  <div class="col-md-6">
+    <%= complete_internship_title(complete_internship: @complete_internship) %>
+    <%= form.hidden_field :student_id, :value => @complete_internship.student.id %>
+  </div>
+</div>
+
+<div class="row"><div class="col-md-6">&nbsp;</div></div>
+
+<div class="row">
+  <div class="col-md-6">
+     <div class = "field">
+  Ich möchte mein Praktikum nicht im 4. Fachsemester absolvieren.
+</div>
+</div>
+
+<div class="row"><div class="col-md-6">&nbsp;</div></div>
+
+</div>
+<div class="row">
+  <div class="col-md-4">
+     <div class = "field">
+  Ich beantrage eine
+  Verschiebung auf das
+
+      </div>
+  </div>
+
+  <div class="col-md-2">
+     <div class = "field">
+    <%= select('postponement', :semester_id,
+                 options_for_select(@semester_options,@semester.id),
+                 class: 'chzn-select',
+                 id: 'semester_select') %>
+     </div>
+ </div>
+</div>
+
+<div class="row"><div class="col-md-6">&nbsp;</div></div>
+
+<div class="row">
+  <div class="col-md-4">
+  Dieses wird mein folgendes Fachsemester sein:
+</div>
+    <div class="col-md-2">
+    <%= form.number_field :semester_of_study, cols: 10 %>
+</div>
+</div>
+
+<div class="row"><div class="col-md-6">&nbsp;</div></div>
+
+
+<div class="row">
+    <div class="col-md-6">
+
+      <%= form.text_area :reasons, cols: 40, rows: 10 %>
+    </div>
+    </div>
+
+  <div class="row">
+    <div class="col-md-6">
+  <div class="actions">
+    <%= form.submit 'Verschiebung beantragen'%>
+  </div>
+</div>
+</div>
+
+<% end %>
+</div></div>

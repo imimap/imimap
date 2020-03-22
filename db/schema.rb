@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_03_05_164338) do
+=======
+ActiveRecord::Schema.define(version: 2020_03_22_110328) do
+>>>>>>> postponements first draft
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -263,6 +267,21 @@ ActiveRecord::Schema.define(version: 2020_03_05_164338) do
     t.datetime "updated_at"
   end
 
+  create_table "postponements", force: :cascade do |t|
+    t.bigint "student_id"
+    t.bigint "semester_id"
+    t.integer "semester_of_study"
+    t.text "reasons"
+    t.datetime "placed_at"
+    t.datetime "approved_at"
+    t.bigint "approved_by_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["approved_by_id"], name: "index_postponements_on_approved_by_id"
+    t.index ["semester_id"], name: "index_postponements_on_semester_id"
+    t.index ["student_id"], name: "index_postponements_on_student_id"
+  end
+
   create_table "posts", id: :serial, force: :cascade do |t|
     t.text "body"
     t.string "email"
@@ -376,6 +395,9 @@ ActiveRecord::Schema.define(version: 2020_03_05_164338) do
 
   add_foreign_key "internships", "company_addresses"
   add_foreign_key "internships", "complete_internships"
+  add_foreign_key "postponements", "semesters"
+  add_foreign_key "postponements", "students"
+  add_foreign_key "postponements", "users", column: "approved_by_id"
   add_foreign_key "user_can_see_companies", "companies"
   add_foreign_key "user_can_see_companies", "users"
   add_foreign_key "user_can_see_internships", "internships"

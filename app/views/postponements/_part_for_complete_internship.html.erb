@@ -1,0 +1,41 @@
+<% if complete_internship.semester_of_study != 4 %>
+<div class="card mb-3">
+  <div class="card-body">
+    <p class="card-text">
+
+Du hast für Dein Praktikum das
+<%= complete_internship.semester_of_study %>. Fachsemester angegeben.
+<br/><br/>
+<% unless @postponements.nil?
+     if @postponements.count == 0 %>
+Bitte stelle einen Antrag auf Verschiebung des Praktikums:
+<% else %>
+Ihr Antrag auf Verschiebung des Praktikums:
+
+<table>
+
+  <tbody>
+    <% @postponements.each do |postponement| %>
+      <tr>
+        <td>Antrag auf Verschiebung zum: </td>
+        <td><%= postponement.semester.name %></td>
+        <td>(<%= postponement.semester_of_study %>. Fachsemester)</td>
+        <td>Gestellt am: <%= postponement.placed_at.strftime('%d.%m.%Y') %></td>
+        <td>Begründung: <%= postponement.reasons %></td>
+        <% unless postponement.approved_at.nil? %>
+        <td>Genehmigt am <%= postponement.approved_at %></td>
+        <td>von <%= postponement.approved_by.try(:name) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% end
+end %>
+
+<%= link_to 'New Postponement', new_postponement_path(complete_internship: complete_internship) %>
+</p>
+</div>
+</div>
+<% end %>

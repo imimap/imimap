@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Postponements</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Complete internship</th>
+      <th>Semester</th>
+      <th>Semester of study</th>
+      <th>Placed at</th>
+      <th>Begründung</th>
+      <th>Approved at</th>
+      <th>Approved by</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @postponements.each do |postponement| %>
+      <tr>
+        <td><%= postponement.complete_internship.student.name %></td>
+        <td><%= postponement.semester.name %></td>
+        <td><%= postponement.semester_of_study %></td>
+        <td><%= postponement.placed_at %></td>
+        <td><%= postponement.reasons %></td>
+        <td><%= postponement.approved_at %></td>
+        <td><%= postponement.approved_by.try(:name) %></td>
+        <td><%= link_to 'Approve', approve_postponement_path(postponement) %></td>
+        <td><%= link_to 'Show', postponement %></td>
+        <td><%= link_to 'Edit', edit_postponement_path(postponement) %></td>
+        <td><%= link_to 'Destroy', postponement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Postponement', new_postponement_path %>

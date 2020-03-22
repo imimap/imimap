@@ -7,6 +7,7 @@ class Ability
     return unless user.present?
 
     merge Abilities::User.new(user)
+    merge Abilities::UserApplications.new(user)
     return unless user.prof? || user.examination_office? || user.admin?
 
     merge Abilities::Staff.new(user)
