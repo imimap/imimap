@@ -112,3 +112,7 @@ gem 'capistrano'
 
 gem 'bootsnap'
 gem 'listen'
+
+# action text
+gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
+gem 'image_processing', '~> 1.2'

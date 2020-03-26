@@ -8,8 +8,29 @@
 // $sidebar-width: 242px;
 
 // Active Admin's got SASS!
+@import "trix/dist/trix";
 @import "active_admin/mixins";
 @import "active_admin/base";
+
+.active_admin {
+    form trix-editor {
+        margin-left: 20%;
+    }
+    form trix-toolbar {
+        margin-left: 20%;
+      }
+      
+    .description {
+        display: block;
+        margin-left: 10px;
+        width: 20%;
+        float: left;
+        font-size: 1.0em;
+        font-weight: bold;
+        color: #5E6469;
+    }
+  }
+  
 
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:

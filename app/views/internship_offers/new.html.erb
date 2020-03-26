@@ -1,7 +1,7 @@
 <%= form_for(@offer_new, url: {action: "create"},
  html: {class: "nifty_form"}) do |f| %>
 
-  <div class="row" id="form-block2">
+  <div class="row h-auto" id="form-block2">
       <div class="row col-md-12" >
 
         <div class="col-md-12">
@@ -15,7 +15,7 @@
         <div class="col-md-12">
           <div class="field" id="field-titles">
             <%= f.label "internship_description"  %><br />
-            <%= f.text_area :body, rows:5, class: "form-control", 
+            <%= f.rich_text_area :body, rows:5, class: "form-control h-auto", 
             placeholder:  "Description Body" %>
           </div>
         </div>
@@ -56,7 +56,7 @@
         </div>
       <% end %>
 
-        <div class="pull-right">
+        <div class="col-md-10">
           <div class="actions">
             <%= button_tag(type: 'submit', 
             class: "btn btn-success") do %>

@@ -1,5 +1,4 @@
-<a href ="javascript:history.back()" class="btn btn-success btn-intern display_none icon-white icon-reply intern_button"></a>
-<div id="form-block4">
+<div id="form-block5">
 <h3> <%= @offer.title %></h3>
 <dl>
   <dt>Country</dt>
@@ -14,4 +13,5 @@
 <% if @offer.pdf.present? %>
 <%= link_to "Download PDF", "#{@offer.pdf}" %>
 <% end %>
+<%= link_to t('buttons.back'), 'javascript:history.back()' %>
 </div>
