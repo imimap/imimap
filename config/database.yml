@@ -11,7 +11,7 @@ if ENV['IMIMAPS_ENVIRONMENT'] == "docker"
   @database = ENV['POSTGRES_DB']
   @hostname = 'postgresql'
  else
-  @username = 'imi_map'
+  @username = 'postgres'
   @password = 'imimap'
   @database = 'imimap'
   @hostname = 'localhost'
@@ -26,6 +26,7 @@ development:
   username: <%= @username %>
   password: <%= @password %>
   database: <%= @database %>
+  port: 5433
 
 test:
   adapter: postgresql
