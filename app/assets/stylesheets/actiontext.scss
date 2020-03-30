@@ -8,6 +8,8 @@
 // We need to override trix.css’s image gallery styles to accommodate the
 // <action-text-attachment> element we wrap around attachments. Otherwise,
 // images in galleries will be squished by the max-width: 33%; rule.
+
+@import "trix/dist/trix";
 .trix-content {
   .attachment-gallery {
     > action-text-attachment,
@@ -32,5 +34,23 @@
       padding: 0 !important;
       max-width: 100% !important;
     }
+  }
+}
+.active_admin {
+  form trix-editor {
+    margin-left: 20%;
+  }
+  trix-toolbar .trix-input--dialog {
+    background-color: #fff;
+  }
+}
+
+// change background icon color and hide file attachtment
+trix-toolbar {
+  .trix-button--icon-attach {
+  display: none;
+  }
+  .trix-button--icon {
+    background-color: rgba(255, 255, 255, 0.7);
   }
 }

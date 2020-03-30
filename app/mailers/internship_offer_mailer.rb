@@ -9,9 +9,8 @@ class InternshipOfferMailer < ApplicationMailer
     @offer = offer
     @title = @offer.title
 
-    mail to: "asra.avisena@gmail.com",
-    subject: "New internship offer added"
-    # mail to: User.student_user.pluck(:email),
-    #      subject: "New internship offer added"
+    
+    mail to: User.student_user.pluck(:email),
+         subject: "New internship offer added"
   end
 end

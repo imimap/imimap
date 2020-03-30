@@ -25,6 +25,7 @@
   font-weight: 100;
   height: 96%;
   margin-left: 0;
+  margin-bottom: 50px;
   padding: 30px 5px 30px 50px;
   width: 90%;
   -moz-box-shadow:      4px 6px 1px 0px rgba(0, 0, 0, 0.3);
@@ -72,6 +73,22 @@
 #form-block4 {
   background-color: #FFFFFF;
   text-align: center;
+    color: #000000;
+    font-weight: 100;
+    height: 96%;
+    margin-bottom: 30px;
+    //margin-left: 130px;
+    margin-top: 50px;
+    padding: 30px 50px;
+    //width: 94%;
+  -moz-box-shadow:      4px 6px 1px 0px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow:   4px 6px 1px 0px rgba(0, 0, 0, 0.3);
+  box-shadow:           4px 6px 1px 0px rgba(0, 0, 0, 0.3);
+}
+
+#form-block5 {
+  background-color: #FFFFFF;
+  text-align: left;
     color: #000000;
     font-weight: 100;
     height: 96%;
