@@ -1,3 +1,23 @@
+// see https://github.com/rails/sprockets/blob/master/UPGRADING.md
 //= link_tree ../images
-//= link_directory ../javascripts .js
-//= link_directory ../stylesheets .css
+//= link application.css
+//= link application.js
+//
+//= link leaflet.css
+//= link leaflet.js
+//= link internships.js
+//= link internships.css
+//= link startpage.css
+//= link bootstrap-custom.css
+//= link custom.css
+//= link favorite.css
+//= link financing.css
+//= link internships.css
+//= link search.css
+//= link stylesheet_desktop.css
+//= link stylesheet_phone.css
+//= link stylesheet_tablet.css
+//= link users.css
+//= link viz.css
+//= link report_overview.js
+//= link report_overview.css
