@@ -98,7 +98,7 @@ h2 {
 }
 
 .rating_star {
-  background: url("<%= asset_url 'star.png' %>") 0 0;
+  background: image-url("star.png") 0 0;
   width: 16px;
   height: 16px;
   display: block;
@@ -207,7 +207,7 @@ h2 {
 
 #table_top{
   position: absolute;
-  background: url("<%= asset_url 'table-top.png' %>");
+  background: image-url("table-top.png");
   height: 64px;
   width: 38px;
   margin-left: -38px;
