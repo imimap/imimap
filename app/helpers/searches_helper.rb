@@ -94,6 +94,7 @@ module SearchesHelper
         UserCanSeeInternship
         .where(user: current_user).map(&:internship_id)
       )
+      internships = internships.uniq
       internships = filter(internships)
     end
     internships = sort_results(internships)
@@ -110,7 +111,7 @@ module SearchesHelper
 
   def collect_results
     internships = Internship.where('start_date < CURRENT_DATE')
-    filter(internships)
+    internships = filter(internships)
     internships = sort_results(internships)
     internships
   end

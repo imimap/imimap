@@ -22,13 +22,15 @@ describe 'Internship limit' do
           10.times do
             create(
               :internship,
-              start_date: Date.today.to_date - 7.days
+              start_date: Date.today.to_date - 7.days,
+              salary: 5
             )
           end
           10.times do
             create(
               :internship_1,
-              start_date: Date.today.to_date - 7.days
+              start_date: Date.today.to_date - 7.days,
+              salary: 5
             )
           end
 
