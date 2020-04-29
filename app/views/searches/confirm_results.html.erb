@@ -40,7 +40,7 @@
       <div class="modal-footer">
         <%= link_to "Ich möchte die Suche konkretisieren.", start_search_path, :class => "btn btn-outline-danger custom-danger-link" %>
         <br>
-        <%= link_to "Zeig mir trotzdem die Ergebnisse", {:controller => "searches", :action => "show_results", :search => params.permit(:search).merge(:search => @search) }, :class => "btn btn-outline-success", method: :post %>
+        <%= link_to "Zeig mir trotzdem die Ergebnisse", {:controller => "searches", :action => "show_results", :search => params[:search].to_unsafe_h }, :class => "btn btn-outline-success", method: :post %>
       </div>
     </div>
   </div>
