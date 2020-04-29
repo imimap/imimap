@@ -24,11 +24,10 @@ class SearchesController < InheritedResources::Base
 
   def confirm_results
     create_search_from_params
-
-    @internships = collect_results
+    @results = collect_results
     @internship_limit = UserCanSeeInternship.limit
-    if @internships.count < (UserCanSeeInternship.limit / 2)
-      render show_results
+    if @results.count < (@internship_limit / 2)
+      redirect_to action: "show_results", search: params[:search].to_unsafe_h
     end
   end
 
