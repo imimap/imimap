@@ -199,6 +199,11 @@ de:
       finish: Treffer gefunden
     is_paid: bezahlten
     is_not_paid: unbezahlten
+    modal:
+      warning_results: Es wurden mehr als 6 Ergebnisse gefunden, willst du deine Suche konkretisieren oder zufällige Treffer anzeigen lassen?
+      hint: "Hinweis: Bei der zweiten Option wird eventuell dein freier Speicher für die Suche verbraucht."
+      confirm: "Zeig mir trotzdem die Ergebnisse."
+      dismiss: "Ich möchte die Suche konkretisieren."
 
   welcome:
     login_with_hrz: Bitte melden Sie sich mit Ihrem HRZ-Account an.

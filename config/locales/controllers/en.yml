@@ -220,6 +220,11 @@ en:
       finish: results
     is_paid: paid
     is_not_paid: unpaid
+    modal:
+      warning_results: There were more than six results. Do you want to specify your search or show the results anyway?
+      hint: "Hint: If you show them anyway there might be the possibility that your search storage becomes full."
+      confirm: "Show the results anyway."
+      dismiss: "I want to specify the search."
 
   welcome:
     login_with_hrz: Please use your HRZ-Account for logging in.

@@ -34,13 +34,13 @@
         </button>
       </div>
       <div class="modal-body text-left">
-        <h5>Es wurden mehr als 6 Ergebnisse gefunden, willst du deine Suche konkretisieren oder zufällige Treffer anzeigen lassen?</h5>
-        <h6>Hinweis: Bei der zweiten Option wird eventuell dein freier Speicher für die Suche verbraucht.</h6>
+        <h5><%= t 'search.modal.warning_results' %></h5>
+        <h6><%= t 'search.modal.hint' %></h6>
       </div>
       <div class="modal-footer">
-        <%= link_to "Ich möchte die Suche konkretisieren.", start_search_path, :class => "btn btn-outline-danger custom-danger-link" %>
+        <%= link_to t('search.modal.dismiss') , start_search_path, :class => "btn btn-outline-danger custom-danger-link" %>
         <br>
-        <%= link_to "Zeig mir trotzdem die Ergebnisse", {:controller => "searches", :action => "show_results", :search => params[:search].to_unsafe_h }, :class => "btn btn-outline-success", method: :post %>
+        <%= link_to t('search.modal.confirm'), {:controller => "searches", :action => "show_results", :search => params[:search].to_unsafe_h }, :class => "btn btn-outline-success", method: :post %>
       </div>
     </div>
   </div>
