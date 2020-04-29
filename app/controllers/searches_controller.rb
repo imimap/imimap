@@ -29,7 +29,8 @@ class SearchesController < InheritedResources::Base
     @internship_limit = UserCanSeeInternship.limit
 
     unless @results.count > (@internship_limit / 2)
-    redirect_to action: 'show_results', search: params[:search].to_unsafe_h
+      redirect_to action: 'show_results', search: params[:search].to_unsafe_h
+    end
   end
 
   private
