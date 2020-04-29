@@ -5,8 +5,10 @@ class SearchesController < InheritedResources::Base
   include SearchesHelper
   load_and_authorize_resource
 
-  before_action :set_programming_languages, only: %i[start_search show_results confirm_results]
-  before_action :set_locations, only: %i[start_search show_results confirm_results]
+  before_action :set_programming_languages,
+                only: %i[start_search show_results confirm_results]
+  before_action :set_locations,
+                only: %i[start_search show_results confirm_results]
   before_action :search_params, only: %i[show_results confirm_results]
 
   def start_search
@@ -21,14 +23,13 @@ class SearchesController < InheritedResources::Base
     @results = pick_random_results(@results)
   end
 
-
   def confirm_results
     create_search_from_params
     @results = collect_results
     @internship_limit = UserCanSeeInternship.limit
-    if @results.count < (@internship_limit / 2)
-      redirect_to action: "show_results", search: params[:search].to_unsafe_h
-    end
+
+    unless @results.count > (@internship_limit / 2)
+    redirect_to action: 'show_results', search: params[:search].to_unsafe_h
   end
 
   private

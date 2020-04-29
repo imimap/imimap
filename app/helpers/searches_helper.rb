@@ -89,15 +89,19 @@ module SearchesHelper
       UserCanSeeInternship.internship_search(internship_id: i.id,
                                              user: current_user)
     end
+    internships = viewed_internships(internships)
+    internships = sort_results(internships)
+    internships
+  end
+
+  def viewed_internships(internships)
     if internships.count < 12
       internships += Internship.where(id:
         UserCanSeeInternship
-        .where(user: current_user).map(&:internship_id)
-      )
+        .where(user: current_user).map(&:internship_id))
       internships = internships.uniq
       internships = filter(internships)
     end
-    internships = sort_results(internships)
     internships
   end
 
