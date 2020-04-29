@@ -119,6 +119,14 @@ a:hover {
   margin-top: 25px;
 }
 
+.custom-danger-link {
+  color: #d9534f !important;
+}
+
+.custom-danger-link a:hover {
+  color: white !important;
+}
+
 .table {
   font-weight: 100;
 }

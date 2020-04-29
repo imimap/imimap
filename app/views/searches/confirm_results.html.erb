@@ -1,0 +1,47 @@
+<script>
+    $(document).ready(function(){
+        $(".modal").modal('show');
+    });
+</script>
+
+
+<div class="margin_bottom_10">
+  <div id="form-block4" class="text-left mb-auto">
+    <h4><%= t("search.header")%></h4>
+    <% unless @current_user.admin? %>
+    <div class="card text-white bg-success mt-2 mb-4 ml-3">
+      <div class="card-body p-1">
+        <p class="card-text"><strong><%= t 'search.notice.header' %>:</strong>
+            <%= t 'search.notice.text1' %> <%=@internship_limit%> <%= t 'search.notice.text2' %>
+        </p>
+      </div>
+    </div>
+    <% end %>
+    <br>
+    <%= render 'form_search'%>
+    <br>
+  </div>
+</div>
+
+<!--Popup-->
+<div class="modal fade" id="consent" tabindex="-1" role="dialog" aria-labelledby="consent_title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="consent_title">Achtung</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-left">
+        <h5>Es wurden mehr als 6 Ergebnisse gefunden, willst du deine Suche konkretisieren oder zufällige Treffer anzeigen lassen?</h5>
+        <h6>Hinweis: Bei der zweiten Option wird eventuell dein freier Speicher für die Suche verbraucht.</h6>
+      </div>
+      <div class="modal-footer">
+        <%= link_to "Ich möchte die Suche konkretisieren.", start_search_path, :class => "btn btn-outline-danger custom-danger-link" %>
+        <br>
+        <%= link_to "Zeig mir trotzdem die Ergebnisse", {:controller => "searches", :action => "show_results", :search => params.permit(:search).merge(:search => @search) }, :class => "btn btn-outline-success", method: :post %>
+      </div>
+    </div>
+  </div>
+</div>
