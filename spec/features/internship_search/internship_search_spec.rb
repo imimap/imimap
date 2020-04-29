@@ -256,6 +256,7 @@ describe 'Internship search' do
             login_as_student
             visit start_search_path
             click_on t('search.buttons.search')
+            click_on t('search.modal.confirm')
           end
 
           context 'for students:' do
@@ -283,6 +284,7 @@ describe 'Internship search' do
             login_as_admin
             visit start_search_path
             click_on t('search.buttons.search')
+            click_on t('search.modal.confirm')
           end
 
           context do

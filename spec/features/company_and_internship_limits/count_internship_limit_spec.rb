@@ -87,6 +87,7 @@ describe 'Internship limit' do
 
           it 'with loads of results' do
             click_on t('search.buttons.search')
+            click_on t('search.modal.confirm')
             expect(page).to have_content(
               t('search.results_found.start').to_s +
               ' ' + 12.to_s + ' ' +
@@ -96,6 +97,21 @@ describe 'Internship limit' do
               UserCanSeeInternship
               .number_of_viewed_internships_for_user(user: @current_user)
             ).to equal(12)
+          end
+
+          it 'with loads of results that the user resets' do
+            click_on t('search.buttons.search')
+            click_on t('search.modal.dismiss')
+            expect(page).not_to have_content(
+              t('search.results_found.start').to_s
+            )
+            expect(page).not_to have_content(
+              t('search.results_found.finish').to_s
+            )
+            expect(
+              UserCanSeeInternship
+              .number_of_viewed_internships_for_user(user: @current_user)
+            ).to equal(0)
           end
         end
 
@@ -156,6 +172,7 @@ describe 'Internship limit' do
 
             select t('search.is_paid'), from: 'search_paid'
             click_on t('search.buttons.search')
+            click_on t('search.modal.confirm')
             expect(page).to have_content(
               t('search.results_found.start').to_s +
               ' ' + 7.to_s + ' ' +
