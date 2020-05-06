@@ -40,6 +40,32 @@ de:
     limit_exceeded: "Das Limit an Firmenvorschlägen wurde überschritten."
     company_address: "Bearbeite die Firmenadresse"
   internships:
+    approved:
+      true: 'Dein Praktikum wurde von dem/der Praktikumsbeauftragten genehmigt.'
+    internship_state:
+      1: 'Fertig - Dein Praktikum ist bestanden.'
+      2: 'Dein Praktikum wurde abgebrochen.'
+      3: 'Du musst noch einige Kurse bestehen, bevor Dein Praktikum abgeschlossen werden kann.'
+    registration_state:
+      4: 'Deine Anmeldung ist eingetroffen, aber noch nicht an das Prüfungsamt verschickt.'
+      5: 'Fertig - Deine Anmeldung ist eingetroffen und an das Prüfungsamt verschickt.'
+      6: 'Dein Praktikum wurde von dem/der Praktikumsbeauftragten genehmigt.'
+      7: 'Dein Praktikum wurde von dem/der Praktikumsbeauftragten genehmigt. Allerdings musst Du noch einige Kurse bestehen, bevor Dein Praktikum abgeschlossen werden kann.'
+      8: 'Dein Praktikum wurde von dem/der Praktikumsbeauftragten genehmigt. Allerdings musst Du noch Deinen Originalvertrag nachhreichen.'
+    contract_state:
+      1: 'Dein Vertrag ist noch nicht im Original bei uns eingetroffen, also auch noch nicht an das Prüfungsamt geschickt.'
+      2: 'Dein Vertrag ist im Original bei uns eingetroffen, aber noch nicht an das Prüfungsamt geschickt.'
+      3: 'Fertig - Dein Vertrag ist im Original bei uns eingetroffen und an das Prüfungsamt geschickt.'
+    report_state:
+      1: 'Dein Bericht ist noch nicht bei uns eingetroffen.'
+      2: 'Dein Bericht ist bei uns eingetroffen und wird von einer/einem Professor_in gelesen.'
+      3: 'Fertig - Dein Bericht wurde gelesen.'
+    certificate_state:
+      1: 'Dein Zertifikat ist noch nicht bei uns eingetroffen.'
+      2: 'Dein Zertifikat ist bei uns eingetroffen und wird gemeinsam mit deinem Bericht bearbeitet.'
+      3: 'Dein Zertifikat wurde von dem/der Professor_in unterschrieben, der/die Deinen Bericht gelesen hat.'
+      4: 'Dein Zertifikat wurde von der/dem Praktikumsbeauftragten unterschrieben.'
+      5: 'Fertig - Dein Zertifikat wurde an die Prüfungsverwaltung geschickt.'
     statistic: "Übersicht über die Länder pro Semester"
     my: "Meine Praktika"
     others: "Andere Praktika bei dieser Firma"
@@ -50,7 +76,7 @@ de:
     provide_now: "Jetzt eintragen"
     update: "Praktikum aktualisieren"
     company_fact: "Arbeitsplatz Kurzinfo"
-    create_internship: "Du hast noch keine Informationen eingetragen."
+    create_internship: "Du hast noch keine Informationen eingetragen"
     index:
       title: "Praktika im"
       show: 'Zeige mir Praktika im'
@@ -161,6 +187,8 @@ de:
     modulnumber: "Modulname"
     modulname: "Modulnummer"
     status: "Status"
+    status_overview: "Status Übersicht"
+    information: Informationen
     aep:
       number: "B20.1"
       name: "Auswertung von Erfahrungen am Praxisplatz"
@@ -189,14 +217,18 @@ de:
     edit: "Praktikum Bearbeiten"
     create: "Erstellen"
     checklist:
+      fill_application: "1. Antragsformular ausfüllen"
       personal_details: Persönliche Details
       company_details: Firmendetails
       internship_details: Praktikumsdetails
-      contract: Ich habe meinen Praktikumsvertrag
+      contract: Ausgedruckten Praktikumsvertrag
       contract_original: im Original
       contract_copy: als Kopie
+      what_to_bring: "2. Was muss ich mitbringen zur "
+      office_hours: Sprechstunde
+      please_bring_original: Bitte reiche deinen Vertrag auch noch als Original nach, damit dein Antrag ordnungsgemäß an die Prüfungsverwaltung weitergeschickt werden kann!
       lsf_ausdruck: Leistungsnachweis über alle bestandenen Module des Basisjahrs ausgedruckt aus dem
-      print_form: Formular ausdrucken (pdf)
+      print_form: Ausgedrucktes Antragsformular
       check_form: Formular überprüfen
       thank_you: Danke
       module_semester: Module des Basisjahrs nach Semester
@@ -210,6 +242,8 @@ de:
       semester: Semester
       start_date: Anfangsdatum
       end_date: Enddatum
+      duration: Dauer
+      weeks: Wochen
       operational_area: Einsatzgebiet
       tasks: Aufgaben
       internship_report: Praktikumsbericht
@@ -219,3 +253,17 @@ de:
       certificate_state: Status des Zertifikats
       internship_state: Status des Praktikums
       comment: Kommentar
+  consent:
+    title: 'Einverständniserklärung Datenverarbeitung'
+    what_data_title: 'Datenerhebung'
+    what_data: 'Die Verarbeitung der Daten erfolgt auf Grundlage von Art. 6 I lit. b) DSGVO.
+      Nach dieser Vorschrift ist die Verarbeitung personenbezogener Daten zur Erfüllung eines Vertrags, dessen Vertragspartei Du bist, oder zur Durchführung vorvertraglicher Maßnahmen erforderlich.
+      Mit der Nutzung unserer Seite nimmst Du unser Angebot auf Abschluss eines entsprechenden (unentgeltlichen) Nutzungsvertrages an.
+      Die Verarbeitung ist über Art. 6 I lit. f) DSGVO gerechtfertigt, da wir ein berechtigtes Interesse an der Verarbeitung haben und Deine Interessen, Grundrechte und Grundfreiheiten nicht überwiegen.
+      Unser berechtigtes Interesse besteht darin, den reibungslosen Ablauf der Praktika und deren Anerkennung zu gewährleisten und künftigen Studierenden des Studienganges das Suchen und Finden eines Praktikumsplatzes zu erleichtern.'
+    deleting_title: 'Löschen von Daten'
+    deleting: 'Wenn Du deine Daten gelöscht haben möchtest, kontaktiere uns unter'
+    detailed_info_title: 'Detaillierte Informationen'
+    detailed_info: 'Detailliertere Informationen findest Du auf der Webseite der'
+    no_thx: 'Nein - Ich bin mit der Verarbeitung meiner Daten zu den genannten Zwecken nicht einverstanden.'
+    ok_cool: 'Ja - Ich bin mit der Verarbeitung meiner Daten zu den genannten Zwecken einverstanden.'

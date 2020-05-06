@@ -41,6 +41,32 @@ en:
     limit_exceeded: "You have exceeded the limit for company suggestions."
     company_address: "Editing Company Address"
   internships:
+    approved:
+      true: 'Your internship has been approved by the internship officer.'
+    internship_state:
+      1: 'Done - Your internship is passed.'
+      2: 'Your internship was abandoned.'
+      3: 'You still have to pass other courses to pass your internship.'
+    registration_state:
+      4: 'Your registration arrived at our office but has not been sent to the examination administration yet.'
+      5: 'Done - Your registration arrived at our office and has been sent to the examination administration.'
+      6: 'Your internship has been approved by the internship officer.'
+      7: 'Your internship has been approved by the internship officer, but you still have to pass other courses to pass your internship.'
+      8: 'Your internship has been approved by the internship officer, but you still have to hand in your original contract.'
+    contract_state:
+      1: 'Your contract has not been handed in as an original, so your application has not been sent to the examination administration yet.'
+      2: 'Your contract has been handed in as an original, but it has not been sent to the examination administration yet.'
+      3: 'Done - Your contract has been handed in as an original and it has been sent to the examination administration.'
+    report_state:
+      1: 'Your report has not been handed in yet.'
+      2: 'Your report has been handed in and is being read by a professor.'
+      3: 'Done - Your report has been read.'
+    certificate_state:
+      1: 'Your certificate has not been handed in yet.'
+      2: 'Your certificate has been handed in and is being processed alongside your report.'
+      3: 'Your certificate has been signed by the professor who read your report.'
+      4: 'Your certificate has been signed by the internship officer.'
+      5: 'Done - Your certificate has been sent to the examination administration.'
     student: 'Student'
     company_v2: 'Company'
     statistic: "Overview per Semester"
@@ -50,10 +76,11 @@ en:
     details: "When do you want to do your internship?"
     name: "Internships"
     create: "Create Internship"
-    provide_now: "Start now."
+    provide_now: "Start now"
+    no_thank_you: "No Thank You"
     update: "Update Internship"
     company_fact: "Company Short Facts"
-    createInternship: "You have not given us any information yet."
+    createInternship: "You have not given us any information yet"
     index:
       title: "Internships in"
       show: 'Show me the internships of'
@@ -80,6 +107,7 @@ en:
       company: "Company"
       start_date: "Start Date"
       end_date: "End Date"
+      duration: Duration
       operational_area: "Operational Area"
       placeholder_oa: "Virtual Reality, Website, 3D"
       tasks: "Tasks"
@@ -180,6 +208,8 @@ en:
     modulnumber: "Modulname"
     modulname: "Modulnumber"
     status: "Status"
+    status_overview: "Status Overview"
+    information: Information
     aep:
       number: "B20.1"
       name: "Auswertung von Erfahrungen am Praxisplatz"
@@ -208,14 +238,18 @@ en:
     edit: "Edit Internship"
     create: "Create"
     checklist:
+      fill_application: "1. Fill out the registration form"
       personal_details: Personal Details
       company_details: Company Details
       internship_details: Internship Details
-      contract: I have my contract as
+      contract: Printed contract as
       contract_original: an original
       contract_copy: a copy
+      what_to_bring: "2. What to bring to "
+      office_hours: office hours
+      please_bring_original: Please hand in your contract also as an original so your registration can be sent to the examination office (Prüfungsverwaltung)!
       lsf_ausdruck: Grade transscript of all passed modules from the first two semesters printed out from the
-      print_form: Print Form (pdf)
+      print_form: Printed Form
       check_form: Check Form
       thank_you: Thank you
       module_semester: Modules of the first two semesters by semester
@@ -229,6 +263,8 @@ en:
       semester: Semester
       start_date: Start Date
       end_date: End Date
+      duration: Duration
+      weeks: weeks
       operational_area: Operational Area
       tasks: Tasks
       internship_report: Internship Report
@@ -238,3 +274,18 @@ en:
       certificate_state: Certificate State
       internship_state: Internship State
       comment: Comment
+  consent:
+    title: 'Privacy Declaration'
+    what_data_title: 'Collection of Data'
+    what_data: 'Data processing is carried out on the grounds of Art. 6 I lit. b) of the GDPR.
+      In accordance with this regulation, the processing of data is necessary for the performance of a contract to which the data subject is party or in order to take steps prior to entering into a contract.
+      By using our website, you tacitly accept our offer to conclude a (free of charge) contract of use.
+      The processing of your data is lawful under Art. 6 I lit. f) of the GDPR, as we have a legitimate interest in processing your data and your interests, fundamental rights and freedoms are not overridden.
+      Our legitimate interest consists of ensuring the proper completion of your internship and its crediting and acknowledgement with the examination office.
+      Furthermore, our legitimate interest consists of helping future students of the International Media and Computing study program to find and get internships more easily.'
+    deleting_title: 'Deleting Data'
+    deleting: 'If you want to have your Data deleted please contact us at'
+    detailed_info_title: 'Detailed Information'
+    detailed_info: 'You can find more detailed information on the website of the'
+    no_thx: 'No - I do not consent to the processing of my data for the mentioned purposes.'
+    ok_cool: 'Yes - I consent to the processing of my data for the mentioned purposes.'

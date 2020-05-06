@@ -1,6 +1,6 @@
 // container for navigation
 .imi-map-header {
-  background: url("<%= asset_path 'topbar-over.png' %>"), #292929;
+  background: image-url("topbar-over.png"), #292929;
   background-repeat: no-repeat;
   background-size: 100%;
   width: 100%;
@@ -13,7 +13,7 @@
 
 // style for nav-brand within main navigation
 .imi-map-logo {
-  background: url("<%= asset_path 'logos.png' %>") no-repeat;
+  background: image-url("logos.png") no-repeat;
   background-size: 100%;
   margin-top: -20px;
   width: 130px;
@@ -184,7 +184,7 @@ s
 }
 
 .locale-en {
-  background-image: url("<%= asset_path 'en.png' %>");
+  background-image: image-url("en.png");
   height: 17px;
   background-size: contain;
   background-position: left; /* Center the image */
@@ -192,7 +192,7 @@ s
  }
 
 .locale-de {
-  background-image: url("<%= asset_path 'de.png' %>");
+  background-image: image-url("de.png");
   height: 17px;
   background-size: contain;
   background-position: left; /* Center the image */

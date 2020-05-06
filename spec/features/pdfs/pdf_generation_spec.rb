@@ -7,7 +7,8 @@ describe 'the generation of the application pdf does not produce errors' do
   def create_internship
     create(:semester)
     visit my_internship_path_replacement
-    click_link(t('internships.provide_now'))
+    click_button(t('internships.provide_now'))
+    click_link(t('consent.ok_cool'))
     click_on t('save')
     click_on t('complete_internships.new_tp0')
     click_on t('save')
@@ -31,11 +32,11 @@ describe 'the generation of the application pdf does not produce errors' do
       create_internship
     end
     it 'entered no additional information' do
-      expect { click_link(t('complete_internships.checklist.print_form')) }
+      expect { click_link('pdf') }
         .not_to raise_error
     end
     it 'and generate a valid pdf containing student name' do
-      click_link(t('complete_internships.checklist.print_form'))
+      click_link('pdf')
       convert_pdf_to_page
       expect(page).to have_content(@user.student.first_name)
     end

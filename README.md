@@ -29,6 +29,10 @@ by students of the Bachelor's Programme International Media Informatics at HTW B
 
     cd imimap
 
+- local database support with sqllite has been discontinued -
+  you need a postsql instance for dev and test. The default configuration uses
+  the one in the docker container, see below.
+  
 ## Local dev and test environment using Docker
 
 The IMI-Map runs in Docker Containers on production. To reproduce the production
@@ -55,8 +59,8 @@ was changed.
 
 ## Test Data for Development
 
-    make bash
-    rails db:seed
+    make db_migrate
+    make db_seed
 
 creates test data in the docker container.
 
