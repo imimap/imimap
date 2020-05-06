@@ -37,20 +37,6 @@ module CompleteInternshipsHelper
     end
   end
 
-  def complete_internship_from_params
-    if params[:complete_internship].nil?
-      CompleteInternship.new
-    else
-      CompleteInternship.new(complete_internship_params)
-    end
-  end
-
-  def complete_internship_params
-    params.require(:complete_internship).permit(
-      CompleteInternshipsController.permitted_params
-    )
-  end
-
   def viewed_companies_search
     if @user.nil?
       0

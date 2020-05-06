@@ -5,9 +5,7 @@
 class CompleteInternshipsController < ApplicationResourceController
   include ApplicationHelper
   include CompleteInternshipsHelper
-  # InheritedResources::Base
   load_and_authorize_resource
-  # before_action :set_complete_internship, only: %i[show edit update destroy]
   before_action :new_complete_internship, only: %i[create new]
   before_action :set_semesters, only: %i[create new edit]
   before_action :set_student, only: %i[show]
@@ -97,6 +95,20 @@ class CompleteInternshipsController < ApplicationResourceController
            @current_user.student.id
          end
     @complete_internship.student_id = si
+  end
+
+  def complete_internship_from_params
+    if params[:complete_internship].nil?
+      CompleteInternship.new
+    else
+      CompleteInternship.new(complete_internship_params)
+    end
+  end
+
+  def complete_internship_params
+    params.require(:complete_internship).permit(
+      CompleteInternshipsController.permitted_params
+    )
   end
 
   def set_semesters
