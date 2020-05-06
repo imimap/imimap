@@ -66,4 +66,29 @@ module CompleteInternshipsHelper
       UserCanSeeInternship.number_of_viewed_internships_for_user(user: @user)
     end
   end
+
+  def set_limit_variables
+    @company_search_limit = UserCanSeeCompany
+                            .limit(created_by: 'company_search')
+    @company_suggest_limit = UserCanSeeCompany
+                             .limit(created_by: 'company_suggest')
+    @internship_search_limit = UserCanSeeInternship.limit
+  end
+
+  def set_semesters
+    @semesters = Semester.all.pluck(:name, :id)
+  end
+
+  def set_student
+    if current_user.student?
+      @student = current_user.student
+    else
+      student = @complete_internship.student
+      @student = (student if can?(:read, student))
+    end
+  end
+
+  def set_active_menu_item
+    @active_menu_item = 'cidcontext'
+  end
 end

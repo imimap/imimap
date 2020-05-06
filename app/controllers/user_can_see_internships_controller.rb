@@ -21,7 +21,7 @@ class UserCanSeeInternshipsController < InheritedResources::Base
     params.require(:user_can_see_internship).permit(permitted_params)
   end
 
-  def self.permitted_params
+  def permitted_params
     %i[internship_id user_id]
   end
 end
