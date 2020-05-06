@@ -94,7 +94,7 @@ class CompaniesController < ApplicationResourceController
     suggestion = params[:name].downcase
     @case, @company_suggestion = company_suggestion(suggestion)
     # check search/suggest limit
-    under_limit?
+    under_limit?(user: current_user)
   end
 
   private
@@ -117,7 +117,7 @@ class CompaniesController < ApplicationResourceController
 
   def select_company; end
 
-  def under_limit?(user: current_user)
+  def under_limit?(user:)
     @under_limit = UserCanSeeCompany.under_limit?(user: user)
   end
 end
