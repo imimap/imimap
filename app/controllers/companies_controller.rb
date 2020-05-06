@@ -117,11 +117,7 @@ class CompaniesController < ApplicationResourceController
 
   def select_company; end
 
-  def under_limit?
-    @under_limit =
-      (UserCanSeeCompany.check_limit(user: current_user,
-                                     created_by: 'company_search') &&
-       UserCanSeeCompany.check_limit(user: current_user,
-                                     created_by: 'company_suggest'))
+  def under_limit?(user: current_user)
+    @under_limit = UserCanSeeCompany.under_limit?(user: user)
   end
 end

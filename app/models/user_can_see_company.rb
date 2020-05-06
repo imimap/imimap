@@ -62,4 +62,9 @@ class UserCanSeeCompany < ApplicationRecord
   def self.associated_users_for_company_address(company_address:)
     company_address.internships.map { |i| i.student.user }
   end
+
+  def self.under_limit?(user:)
+    (check_limit(user: user, created_by: 'company_search') &&
+     check_limit(user: user, created_by: 'company_suggest'))
+  end
 end
