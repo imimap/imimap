@@ -36,7 +36,11 @@ class SearchesController < InheritedResources::Base
   private
 
   def search_params
-    params.require(:search).permit
+    params.require(:search).permit(permitted_params)
+  end
+
+  def self.permitted_params
+    %i[search]
   end
 
   def collect_cities
