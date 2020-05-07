@@ -20,5 +20,4 @@ class UserCanSeeInternshipsController < InheritedResources::Base
   def user_can_see_internship_params
     params.require(:user_can_see_internship).permit(:internship_id, :user_id)
   end
-  
 end
