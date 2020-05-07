@@ -70,4 +70,9 @@ class UserCanSeeCompany < ApplicationRecord
   def self.limit(created_by:)
     LIMITS[created_by.to_sym]
   end
+
+  def self.under_limit?(user:)
+    (check_limit(user: user, created_by: 'company_search') &&
+     check_limit(user: user, created_by: 'company_suggest'))
+  end
 end

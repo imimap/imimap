@@ -1,22 +1,32 @@
 <% #  company search: acceptable number of companies found, offering addresses %>
   <div class="row">
     <div class="col-md-4">
+      <% if @under_limit %>
         <h3><%= t "companies.suggestion" %></h3>
         <% @company_suggestion.each do |c|%>
           <ul class="list-group">
             <li class="list-group-item">
-              <%= link_to c.name, suggest_address_path(:company_id => c.id, :internship_id => params[:internship_id])%>
-              </li>
-            </ul>
-          <% end %>
+              <%= link_to c.name, suggest_address_path(:company_id => c.id, :internship_id => params[:internship_id]), class: "suggest"%>
+            </li>
+          </ul>
+        <% end %>
+      <% else %>
+        <h3><%= t "companies.limit_exceeded" %></h3>
+      <% end %>
     </div>
   </div>
  <div class="row">
     <div class="col-md-8">
       <ul class="list-group">
+        <% if @under_limit %>
         <h3>
               <%= t("companies.create_new_company") %>
         </h3>
+        <% else %>
+        <h3>
+              <%= t("companies.create_new_company_2") %>
+        </h3>
+        <% end %>
           <li class="list-group-item">
             <% if @company_suggestion.pluck(:name).include?(params[:name]) %>
               <%= link_to params[:name], suggest_address_path(:company_id => Company.find_by(name: params[:name]), :internship_id => params[:internship_id])%>
