@@ -14,6 +14,8 @@ class SearchesController < InheritedResources::Base
   def start_search
     @search = Search.new
     @internship_limit = UserCanSeeInternship.limit
+    @previous_results =
+      UserCanSeeInternship.previous_associated_internships(user: current_user)
   end
 
   def show_results

@@ -298,6 +298,37 @@ describe 'Internship search' do
           end
         end
       end
+
+      describe 'student creates a new search' do
+        before :each do
+          create_internship_with_pl
+          @current_user = login_as_student
+          visit start_search_path
+        end
+        context 'and has previous search results'
+        it 'shows previous search results' do
+          click_on t('search.buttons.search')
+          visit start_search_path
+          expect(page).to have_content(
+            1.to_s + t('search.previous_results').to_s
+          )
+          expect(page).to have_content(
+            @internship.company_address.company.name
+          )
+        end
+        context 'and has no previous search results'
+        it 'shows no previous search results' do
+          select t('search.is_not_paid'), from: 'search_paid'
+          click_on t('search.buttons.search')
+          visit start_search_path
+          expect(page).not_to have_content(
+            1.to_s + t('search.previous_results').to_s
+          )
+          expect(page).not_to have_content(
+            @internship.company_address.company.name
+          )
+        end
+      end
     end
   end
 end
