@@ -91,4 +91,17 @@ module CompleteInternshipsHelper
   def set_active_menu_item
     @active_menu_item = 'cidcontext'
   end
+
+  def complete_internship_title(complete_internship:)
+    result = "#{complete_internship.student.try(:first_name)}" \
+             " #{complete_internship.student.try(:last_name)}" +
+             t('complete_internships.semester') +
+             complete_internship.semester.try(:name)
+    unless complete_internship.semester_of_study.nil?
+      fs = t('activerecord.attributes.complete_internship.semester_of_study')
+      result += " (#{complete_internship.semester_of_study}. " \
+                "#{fs})"
+    end
+    result
+  end
 end

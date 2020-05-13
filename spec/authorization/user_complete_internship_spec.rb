@@ -15,8 +15,8 @@ describe 'User Role' do
   describe 'abilities' do
     subject(:ability) do
       @ci = create(:complete_internship)
-      @user = complete_internship.student.user
-      Ability.new(@user)فله
+      @user = @ci.student.user
+      Ability.new(@user)
     end
 
     context 'when is a regular user' do
@@ -24,12 +24,10 @@ describe 'User Role' do
         @complete_internship = create(:complete_internship)
         @user = @complete_internship.student.user
       end
-
       it { is_expected.not_to be_able_to(:index, CompleteInternship) }
       it { is_expected.not_to be_able_to(:list, CompleteInternship) }
       it { is_expected.not_to be_able_to(:show, @complete_internship) }
       it { is_expected.to be_able_to(:create, CompleteInternship) }
     end
-
   end
 end

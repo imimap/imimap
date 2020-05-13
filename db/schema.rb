@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_03_05_164338) do
-=======
 ActiveRecord::Schema.define(version: 2020_03_22_110328) do
->>>>>>> postponements first draft
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
