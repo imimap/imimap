@@ -14,7 +14,8 @@ class SearchesController < InheritedResources::Base
   def start_search
     @search = Search.new
     @internship_limit = UserCanSeeInternship.limit
-    @previous_results = UserCanSeeInternship.previous_associated_internships(user: current_user)
+    @previous_results =
+      UserCanSeeInternship.previous_associated_internships(user: current_user)
   end
 
   def show_results
@@ -33,7 +34,6 @@ class SearchesController < InheritedResources::Base
 
     redirect_to action: 'show_results', search: params[:search].to_unsafe_h
   end
-
 
   private
 

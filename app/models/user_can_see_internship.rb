@@ -36,8 +36,9 @@ class UserCanSeeInternship < ApplicationRecord
   end
 
   def self.previous_associated_internships(user:)
-      return [] if (s = user.student).nil?
-      UserCanSeeInternship.where(user: user).map(&:internship)
+    return [] if user.student.nil?
+
+    UserCanSeeInternship.where(user: user).map(&:internship)
   end
 
   def self.associated_user_for_internship(internship:)
