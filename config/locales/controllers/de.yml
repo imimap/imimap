@@ -180,7 +180,7 @@ de:
       text1: Starte am besten mit einer möglichst spezifischen Suche, da die Ergebnisanzeige auf
       text2: Ergebnisse beschränkt ist.
              Firmen, die Du einmal gesehen hast, bleiben auch nach dem erreichen des Limits sichtbar.
-             Solltest Du das Limit erreicht haben, kannst Du es in der Sprechstunde der/des Praktikumsbeauftragte_n zurücksetzen lassen.
+             Solltest das Limit aus irgendeinem Grund nicht ausreichen, kannst du in Ausnahmefällen per Mail an imi-praktikum[at]htw-berlin.de um eine Zurücksetzung bitten.
     tableheaders:
       company: Firma
       location: Ort
@@ -199,6 +199,8 @@ de:
     results_found:
       start: Es wurden
       finish: Treffer gefunden
+    previous_results: " Ergebnisse vorheriger Suchen"
+    no_previous_results: Keine vorherigen Suchergebnisse zum Anzeigen
     is_paid: bezahlten
     is_not_paid: unbezahlten
     modal:

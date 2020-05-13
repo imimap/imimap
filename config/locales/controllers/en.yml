@@ -201,7 +201,7 @@ en:
       text1: Try starting with a very specific search because this feature is limited to showing
       text2: results.
              Companies, which you have seen once, stay visible even if you reach this limit.
-             If you have reached the limit but wish to continue your search, you can have the internship officer reset your limit during their office hours.
+             If for any reason you need to extend that limit, please write an email at imi-praktikum[at]htw-berlin.de 
     tableheaders:
       company: Company
       location: Location
@@ -220,6 +220,8 @@ en:
     results_found:
       start: There were
       finish: results
+    previous_results: " results of previous searches"
+    no_previous_results: No previous search results
     is_paid: paid
     is_not_paid: unpaid
     modal:
