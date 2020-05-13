@@ -341,13 +341,16 @@ h2 {
 
 .deleteButton{
   background: white;
-  color: red;
+  color: #dc3545;
   float: right;
-  border: 2px solid red;
+  border: 1px solid #dc3545;
+  border-radius: 0.25rem;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
   transition-duration: 0.4s;
 }
 
 .deleteButton:hover {
-  background-color: red;
+  background-color: #dc3545;
   color: white;
 }

@@ -7,10 +7,15 @@ module ApplicationHelper
   end
 
   def path_to_complete_internship
-    return no_complete_internship_path unless (s = @current_user.student)
+    return no_complete_internship_path unless (cu = @current_user)
+    return no_complete_internship_path unless (s = cu.student)
     return no_complete_internship_path unless (ci = s.complete_internship)
 
     complete_internship_path(ci)
+  end
+
+  def search_is_active_menu_item?
+    controller.controller_name == 'searches'
   end
 
   def active_menu_item?(path)

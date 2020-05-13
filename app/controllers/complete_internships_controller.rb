@@ -5,9 +5,7 @@
 class CompleteInternshipsController < ApplicationResourceController
   include ApplicationHelper
   include CompleteInternshipsHelper
-  # InheritedResources::Base
   load_and_authorize_resource
-  # before_action :set_complete_internship, only: %i[show edit update destroy]
   before_action :new_complete_internship, only: %i[create new]
   before_action :set_semesters, only: %i[create new edit]
   before_action :set_student, only: %i[show]
@@ -22,6 +20,11 @@ class CompleteInternshipsController < ApplicationResourceController
 
   def show
     @semester_name = @complete_internship.semester.try(:name)
+    @user = CompleteInternship.find_by(id: params[:id]).student.try(:user)
+    set_limit_variables
+    @wiewed_companies_search = viewed_companies_search
+    @wiewed_companies_suggest = viewed_companies_suggest
+    @wiewed_internships_search = viewed_internships_search
   end
 
   # If the user has no complete internship, the system asks him/her to create a
@@ -106,22 +109,5 @@ class CompleteInternshipsController < ApplicationResourceController
     params.require(:complete_internship).permit(
       CompleteInternshipsController.permitted_params
     )
-  end
-
-  def set_semesters
-    @semesters = Semester.all.pluck(:name, :id)
-  end
-
-  def set_student
-    if current_user.student?
-      @student = current_user.student
-    else
-      student = @complete_internship.student
-      @student = (student if can?(:read, student))
-    end
-  end
-
-  def set_active_menu_item
-    @active_menu_item = 'cidcontext'
   end
 end

@@ -34,6 +34,12 @@ class Internship < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :attachments, as: :attachable, dependent: :destroy
 
+  has_many :user_can_see_internship
+  has_many :seeing_users,
+           through: :user_can_see_internship,
+           source: :user,
+           inverse_of: :visible_internships
+
   # mount_uploader :internship_report, InternshipReportUploader
 
   accepts_nested_attributes_for :attachments, allow_destroy: true

@@ -1,5 +1,9 @@
 // @import "bootstrap-custom";
 
+.bg-success {
+  background-color: rgba(119, 185, 0, 0.3) !important;
+}
+
 #moduleHeading1, #moduleHeading2 {
   color: #80b900 !important;
   font-weight: normal !important;
@@ -113,6 +117,14 @@ a:hover {
   position: absolute;
   margin-left: 540px;
   margin-top: 25px;
+}
+
+.custom-danger-link {
+  color: #d9534f !important;
+}
+
+.custom-danger-link a:hover {
+  color: white !important;
 }
 
 .table {
@@ -425,9 +437,8 @@ footer {
 }
 
 .wrapper {
-  min-height: 100%;
+  min-height: 100% !important;
   height: auto !important;
-  height: 100%;
   margin: 0 auto -63px;
 }
 

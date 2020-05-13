@@ -18,6 +18,8 @@ module Abilities
       can %i[read update], Student, user: { id: user.id }
 
       can %i[read update], User, id: user.id
+
+      can %i[start_search show_results confirm_results], Search
     end
 
     def can_create_internship(_user)
@@ -27,8 +29,7 @@ module Abilities
 
     def can_show_own_internship(user)
       can %i[no show_own], CompleteInternship
-      can %i[show],
-          CompleteInternship,
+      can %i[show], CompleteInternship,
           student: { user: { id: user.id } }
       can %i[show], Internship, student: { user: user }
     end
@@ -65,8 +66,7 @@ module Abilities
       can %i[new create select_company suggest], [Company]
       can %i[create_and_save new create new_address
              suggest_address save_address], [CompanyAddress]
-      can %i[edit show update],
-          [Company, CompanyAddress],
+      can %i[edit show update], [Company, CompanyAddress],
           internships: { complete_internship: { student: { user: user } } }
     end
 
@@ -96,20 +96,17 @@ module Abilities
     end
 
     def can_show_company(user)
-      can :show,
-          [Company, CompanyAddress],
+      can :show, [Company, CompanyAddress],
           internships: { complete_internship: { student: { user: user } } }
     end
 
     def can_show_limited_number_of_companies(user)
       can :show, CompanyAddress do |company_address|
-        UserCanSeeCompany.where(user: user,
-                                company: company_address.company,
+        UserCanSeeCompany.where(user: user, company: company_address.company,
                                 created_by: 'company_suggest').exists?
       end
       can :show, Company do |company|
-        UserCanSeeCompany.where(user: user,
-                                company: company,
+        UserCanSeeCompany.where(user: user, company: company,
                                 created_by: 'company_suggest').exists?
       end
     end
@@ -120,6 +117,12 @@ module Abilities
       can_edit_associated_company_address(user)
       can_show_company(user)
       can_show_limited_number_of_companies(user)
+    end
+
+    def internship(user)
+      can :show, Internship do |internship|
+        UserCanSeeInternship.where(user: user, internship: internship).exists?
+      end
     end
   end
 end

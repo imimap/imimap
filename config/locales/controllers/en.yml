@@ -185,6 +185,49 @@ en:
     header: "Internship Offers"
     number_of: "There are currently"
 
+  search:
+    header: Internship Search
+    filtertext:
+      1: I am searching for
+      2: internships in
+      3: ", working in"
+      4: with the programming language
+    buttons:
+      search: Search
+      random: Generate random
+      save: Save search
+    notice:
+      header: Notice
+      text1: Try starting with a very specific search because this feature is limited to showing
+      text2: results.
+             Companies, which you have seen once, stay visible even if you reach this limit.
+             If you have reached the limit but wish to continue your search, you can have the internship officer reset your limit during their office hours.
+    tableheaders:
+      company: Company
+      location: Location
+      orientation: Orientation
+    headers:
+      programming_languages: Programming languages
+      paid: Payment
+      website: Website
+      tasks: Tasks
+      supervisor: Contact
+    placeholders:
+      paid: (un)paid
+      location: a nice location
+      orientation: a fun industry
+      programming_language: I am interested in
+    results_found:
+      start: There were
+      finish: results
+    is_paid: paid
+    is_not_paid: unpaid
+    modal:
+      warning_results: There were more than six results. Do you want to specify your search or show the results anyway?
+      hint: "Hint: If you show them anyway there might be the possibility that your search storage becomes full."
+      confirm: "Show the results anyway."
+      dismiss: "I want to specify the search."
+
   welcome:
     login_with_hrz: Please use your HRZ-Account for logging in.
     help:

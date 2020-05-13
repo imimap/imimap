@@ -14,7 +14,13 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
-  has_many :user_can_see_companies
+  has_many :user_can_see_internships, dependent: :destroy
+  has_many :visible_internships,
+           through: :user_can_see_internships,
+           source: :internship,
+           inverse_of: :seeing_users
+
+  has_many :user_can_see_companies, dependent: :destroy
   has_many :visible_companies,
            through: :user_can_see_companies,
            source: :company,
@@ -28,10 +34,7 @@ class User < ApplicationRecord
   end
 
   def string_to_array(some_list)
-    some_list.split(',')
-             .map { |s| s.gsub(/:/, '') }
-             .map(&:strip)
-             .map(&:to_sym)
+    some_list.split(',').map { |s| s.gsub(/:/, '') }.map(&:strip).map(&:to_sym)
   end
 
   def feature_toggles=(new_ft)

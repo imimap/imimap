@@ -164,6 +164,49 @@ de:
     header: "Praktikumsangebote"
     number_of: "Es gibt im Moment"
 
+  search:
+    header: Praktikumssuche
+    filtertext:
+      1: Ich suche nach
+      2: Praktika in
+      3: im Bereich
+      4: mit der Programmiersprache
+    buttons:
+      search: Suchen
+      random: Zufallsvorschlag
+      save: Suche speichern
+    notice:
+      header: Hinweis
+      text1: Starte am besten mit einer möglichst spezifischen Suche, da die Ergebnisanzeige auf
+      text2: Ergebnisse beschränkt ist.
+             Firmen, die Du einmal gesehen hast, bleiben auch nach dem erreichen des Limits sichtbar.
+             Solltest Du das Limit erreicht haben, kannst Du es in der Sprechstunde der/des Praktikumsbeauftragte_n zurücksetzen lassen.
+    tableheaders:
+      company: Firma
+      location: Ort
+      orientation: Bereich
+    headers:
+      programming_languages: Programmiersprachen
+      paid: Bezahlung
+      website: Webseite
+      tasks: Aufgaben
+      supervisor: Kontakt
+    placeholders:
+      paid: (un)bezahlten
+      location: einer schönen Location
+      orientation: der Spaß macht
+      programming_language: die mich interessiert
+    results_found:
+      start: Es wurden
+      finish: Treffer gefunden
+    is_paid: bezahlten
+    is_not_paid: unbezahlten
+    modal:
+      warning_results: Es wurden mehr als 6 Ergebnisse gefunden, willst du deine Suche konkretisieren oder zufällige Treffer anzeigen lassen?
+      hint: "Hinweis: Bei der zweiten Option wird eventuell dein freier Speicher für die Suche verbraucht."
+      confirm: "Zeig mir trotzdem die Ergebnisse."
+      dismiss: "Ich möchte die Suche konkretisieren."
+
   welcome:
     login_with_hrz: Bitte melden Sie sich mit Ihrem HRZ-Account an.
     help:
