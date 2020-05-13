@@ -8,9 +8,10 @@ class CompleteInternship < ApplicationRecord
   belongs_to :student
   belongs_to :semester
   has_many :internships
-  has_many :internships_new,
+  has_many :internships_new, # BK: what is this? TBD Delete
            class_name: 'Internship',
            foreign_key: :complete_internship_id
+  has_many :postponements, through: :student
   validates :student, presence: true
 
   def over?

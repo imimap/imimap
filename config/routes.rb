@@ -27,6 +27,10 @@ Rails.application.routes.draw do
     resources :complete_internships
     resources :user_can_see_companies
     resources :searches
+    resources :postponements # , only: [:index, :new, :create, :approve, :show]
+    get '/postponements/:id/approve',
+        to: 'postponements#approve',
+        as: 'approve_postponement'
 
     get 'statistic', to: 'statistic#overview'
     delete 'destroy', to: 'devise/notifications#destroy'

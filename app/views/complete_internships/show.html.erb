@@ -2,15 +2,7 @@
 <div class="margin_bottom_10">
 
 <div id="form-block4" class="text-left">
-    <h4><%= @complete_internship.student.try(:first_name) %>
-      <%= @complete_internship.student.try(:last_name) %>
-      <%= t "complete_internships.semester" %>
-      <%= @semester_name %>
-      <% if @complete_internship.semester_of_study %>
-        (<%= @complete_internship.semester_of_study %>.
-        <%= t 'activerecord.attributes.complete_internship.semester_of_study' %>)
-      <% end %>
-    </h4>
+    <h4><%= complete_internship_title(complete_internship: @complete_internship) %></h4>
     <br>
 
     <div class="mb-5">
@@ -18,7 +10,11 @@
       <%= render 'reset_limits_admin' %>
     <% end %>
     </div>
-
+    <% if FT.on?(:postponements, current_user) %>
+    <div class="card mt-3 mb-3">
+          <%= render 'postponements/part_for_complete_internship', complete_internship: @complete_internship %>
+    </div>
+    <% end %>
     <div class="card mt-3 mb-3">
       <div class="card-body">
         <p class="card-text">

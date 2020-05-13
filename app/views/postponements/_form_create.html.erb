@@ -1,0 +1,47 @@
+<%= form_with(model: postponement, local: true) do |form| %>
+  <% if postponement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(postponement.errors.count, "error") %> prohibited this postponement from being saved:</h2>
+
+      <ul>
+        <% postponement.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :complete_internship_id %>
+    <%= form.text_field :complete_internship_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :semester_id %>
+    <%= form.text_field :semester_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :semester_of_study %>
+    <%= form.number_field :semester_of_study %>
+  </div>
+
+  <div class="field">
+    <%= form.label :placed_at %>
+    <%= form.datetime_select :placed_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :approved_at %>
+    <%= form.datetime_select :approved_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :approved_by_id %>
+    <%= form.text_field :approved_by_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

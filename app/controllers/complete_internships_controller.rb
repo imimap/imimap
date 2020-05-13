@@ -25,6 +25,7 @@ class CompleteInternshipsController < ApplicationResourceController
     @wiewed_companies_search = viewed_companies_search
     @wiewed_companies_suggest = viewed_companies_suggest
     @wiewed_internships_search = viewed_internships_search
+    @postponements = @complete_internship.postponements
   end
 
   # If the user has no complete internship, the system asks him/her to create a

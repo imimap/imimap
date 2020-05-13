@@ -8,6 +8,7 @@ module Abilities
     def initialize(_user)
       can :index, Internship
       can :list, Internship
+      can :index, Postponement
       can :read, :all
       can :map_internships, Internship
     end

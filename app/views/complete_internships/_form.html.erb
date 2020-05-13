@@ -1,16 +1,6 @@
 <%= bootstrap_form_for(@complete_internship) do |f| %>
 
-<% if @complete_internship.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(complete_internship.errors.count, "error") %> prohibited this complete_internship from being saved:</h2>
-
-    <ul>
-    <% complete_internship.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render 'application/model_errors', model: @complete_internship %>
 
   <h3><%= t "internships.details" %></h3>
 
