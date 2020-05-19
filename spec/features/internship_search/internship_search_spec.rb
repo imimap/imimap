@@ -264,8 +264,8 @@ describe 'Internship search' do
               expect(page).to have_content(
                 t('search.results_found.start').to_s +
                 ' ' + 12.to_s + ' ' +
-                t('search.results_found.finish').to_s
-              )
+                t('search.results_found.finish').to_s)
+              expect(page).not_to have_content(t('search.headers.active_admin_link').to_s)
             end
 
             it 'same results in different searches' do
@@ -284,7 +284,6 @@ describe 'Internship search' do
             login_as_admin
             visit start_search_path
             click_on t('search.buttons.search')
-            click_on t('search.modal.confirm')
           end
 
           context do
@@ -327,6 +326,32 @@ describe 'Internship search' do
           expect(page).not_to have_content(
             @internship.company_address.company.name
           )
+        end
+      end
+
+      describe 'admin view for search' do
+        before :each do
+          20.times { create_internship_with_pl }
+          @current_user = login_as_admin
+          visit start_search_path
+        end
+        context 'admin has no search limitations' do
+          it 'shows no warning for search results that are more than 6' do
+            click_on t('search.buttons.search')
+            expect(page).to have_content(
+              t('search.results_found.start').to_s +
+              ' ' + 20.to_s + ' ' +
+              t('search.results_found.finish').to_s
+            )
+
+          end
+        end
+        context 'admin has a link to the internship in active admin' do
+          it 'shows a link on the detail card' do
+            click_on t('search.buttons.search')
+            expect(page).to have_content(t('search.headers.active_admin_link').to_s)
+
+          end
         end
       end
     end

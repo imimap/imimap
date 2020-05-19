@@ -191,6 +191,7 @@ de:
       website: Webseite
       tasks: Aufgaben
       supervisor: Kontakt
+      active_admin_link: Link zum Active Admin
     placeholders:
       paid: (un)bezahlten
       location: einer schönen Location

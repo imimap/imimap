@@ -64,9 +64,9 @@
                 </p>
               <% end %>
               <% if @current_user.admin? %>
-                <p class="pl-3">
-                  <%= link_to 'Show in Active Admin', admin_internship_path(result) %>
-                </p>
+              <p class="pl-3">
+                <%= link_to t('search.headers.active_admin_link'), admin_internship_path(result) %>
+              </p>
               <% end %>
             </td>
           </tr>
