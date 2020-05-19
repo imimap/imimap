@@ -264,8 +264,11 @@ describe 'Internship search' do
               expect(page).to have_content(
                 t('search.results_found.start').to_s +
                 ' ' + 12.to_s + ' ' +
-                t('search.results_found.finish').to_s)
-              expect(page).not_to have_content(t('search.headers.active_admin_link').to_s)
+                t('search.results_found.finish').to_s
+              )
+              expect(page).not_to have_content(
+                t('search.headers.active_admin_link').to_s
+              )
             end
 
             it 'same results in different searches' do
@@ -343,14 +346,14 @@ describe 'Internship search' do
               ' ' + 20.to_s + ' ' +
               t('search.results_found.finish').to_s
             )
-
           end
         end
         context 'admin has a link to the internship in active admin' do
           it 'shows a link on the detail card' do
             click_on t('search.buttons.search')
-            expect(page).to have_content(t('search.headers.active_admin_link').to_s)
-
+            expect(page).to have_content(
+              t('search.headers.active_admin_link').to_s
+            )
           end
         end
       end
