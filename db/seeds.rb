@@ -2,6 +2,7 @@
 
 puts 'seeding database'
 
+Postponement.destroy_all
 UserCanSeeCompany.destroy_all
 User.destroy_all
 
