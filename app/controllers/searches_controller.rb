@@ -6,9 +6,9 @@ class SearchesController < InheritedResources::Base
   load_and_authorize_resource
 
   before_action :set_programming_languages,
-                only: %i[start_search show_results confirm_results]
+                only: %i[start_search show_results confirm_results shuffle]
   before_action :set_locations,
-                only: %i[start_search show_results confirm_results]
+                only: %i[start_search show_results confirm_results shuffle]
   before_action :search_params, only: %i[show_results confirm_results]
 
   def start_search
@@ -33,6 +33,17 @@ class SearchesController < InheritedResources::Base
     return if @results.count > (@internship_limit / 2)
 
     redirect_to action: 'show_results', search: params[:search].to_unsafe_h
+  end
+
+  def shuffle
+    # create_search_from_params
+    internships = Internship.all.shuffle
+    @results = Array.new(1,internships[0])
+    @search =
+      Search
+      .new()
+
+    render 'searches/show_results'
   end
 
   private
