@@ -201,7 +201,7 @@ en:
       text1: Try starting with a very specific search because this feature is limited to showing
       text2: results.
              Companies, which you have seen once, stay visible even if you reach this limit.
-             If for any reason you need to extend that limit, please write an email at imi-praktikum[at]htw-berlin.de 
+             If for any reason you need to extend that limit, please write an email at imi-praktikum[at]htw-berlin.de
     tableheaders:
       company: Company
       location: Location
@@ -212,6 +212,7 @@ en:
       website: Website
       tasks: Tasks
       supervisor: Contact
+      active_admin_link: Link to Active Admin
     placeholders:
       paid: (un)paid
       location: a nice location

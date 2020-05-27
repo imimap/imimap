@@ -63,6 +63,11 @@
                   <%=result.supervisor_name%>, <%=result.supervisor_email%>
                 </p>
               <% end %>
+              <% if @current_user.admin? %>
+              <p class="pl-3">
+                <%= link_to t('search.headers.active_admin_link'), admin_internship_path(result) %>
+              </p>
+              <% end %>
             </td>
           </tr>
     <% end %>
