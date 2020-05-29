@@ -36,21 +36,18 @@ class SearchesController < InheritedResources::Base
   end
 
   def shuffle
-    @search = Search.new
-    internships = Internship.all.shuffle
-    @results = Array.new(1, internships[0])
+    pick_random_internship
     @results = show_one_random_result(@results)
     render 'searches/show_results'
   end
 
   def no_more_results
-    
-    @search = Search.new
-    internships = Internship.all.shuffle
-    @results = Array.new(1, internships[0])
-    #@results = show_one_random_result(@results)
-    return if UserCanSeeInternship.previous_associated_internships(user: current_user).count == 12
-    shuffle
+    pick_random_internship
+    return if UserCanSeeInternship
+              .previous_associated_internships(user: current_user).count == 12
+
+    @results = show_one_random_result(@results)
+    render 'searches/show_results'
   end
 
   private

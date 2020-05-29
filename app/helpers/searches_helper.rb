@@ -131,4 +131,10 @@ module SearchesHelper
     internships = sort_results(internships)
     internships
   end
+
+  def pick_random_internship
+    @search = Search.new
+    internships = Internship.all.shuffle
+    @results = Array.new(1, internships[0])
+  end
 end
