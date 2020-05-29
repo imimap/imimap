@@ -12,6 +12,7 @@ module Abilities
       can_edit_own_complete_internship(user)
       can_edit_destroy_own_internship(user)
       can_create_and_show_own_postponement(user)
+      can_create_search(user)
 
       map(user)
       can :read, InternshipOffer
@@ -19,8 +20,11 @@ module Abilities
       can %i[read update], Student, user: { id: user.id }
 
       can %i[read update], User, id: user.id
+    end
 
-      can %i[start_search show_results confirm_results shuffle no_more_results], Search
+    def can_create_search(_user)
+      can %i[start_search show_results confirm_results
+             shuffle no_more_results], Search
     end
 
     def can_create_and_show_own_postponement(_user)
