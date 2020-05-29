@@ -20,7 +20,7 @@ module Abilities
 
       can %i[read update], User, id: user.id
 
-      can %i[start_search show_results confirm_results shuffle], Search
+      can %i[start_search show_results confirm_results shuffle no_more_results], Search
     end
 
     def can_create_and_show_own_postponement(_user)

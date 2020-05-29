@@ -15,9 +15,12 @@
     <div class="field mr-2" id="field-titles2">
       <%= f.submit t("search.buttons.search"), class: 'btn btn-success'%>
     </div>
+    <%end%>
+    <%= bootstrap_form_for @search, :url => {:controller => 'searches', :action => (@current_user.admin? ? "random_result" : "no_more_results")} do |f| %>
     <div class="field" id="field-titles2">
-       <%= link_to t("search.buttons.random"), random_result_path, class: 'btn btn-success text-white' %>
+       <%= f.submit t("search.buttons.random"), class: 'btn btn-success text-white' %>
     </div>
+    <%end%>
   </div>
-  <%end%>
+
 </div>

@@ -30,5 +30,8 @@ services:
       - postgresql
     ports:
       - 8080:80
+    stdin_open: true
+    tty: true  
+
     #entrypoint:
     #  - ci-cd/stall.sh

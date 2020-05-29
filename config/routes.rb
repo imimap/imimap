@@ -65,6 +65,7 @@ Rails.application.routes.draw do
     get 'search_results', to: 'searches#show_results'
     get 'random_result', to: 'searches#shuffle'
     post 'confirm_results', to: 'searches#confirm_results'
+    post 'no_more_results', to: 'searches#no_more_results'
     delete 'reset_company_search_limit',
            to: 'user_can_see_companies#reset_limit_search'
     delete 'reset_company_suggest_limit',

@@ -94,6 +94,18 @@ module SearchesHelper
     internships
   end
 
+  def show_one_random_result(internship)
+    return internship unless internship
+    return internship if current_user.admin?
+
+    internships = internship.sample(UserCanSeeInternship.limit)
+    internships = internships.select do |i|
+      UserCanSeeInternship.internship_search(internship_id: i.id,
+                                             user: current_user)
+    end
+    internships
+  end
+
   def viewed_internships(internships)
     if internships.count < 12
       internships += Internship.where(id:

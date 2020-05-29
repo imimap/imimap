@@ -6,9 +6,9 @@ class SearchesController < InheritedResources::Base
   load_and_authorize_resource
 
   before_action :set_programming_languages,
-                only: %i[start_search show_results confirm_results shuffle]
+                only: %i[start_search show_results confirm_results shuffle no_more_results]
   before_action :set_locations,
-                only: %i[start_search show_results confirm_results shuffle]
+                only: %i[start_search show_results confirm_results shuffle no_more_results]
   before_action :search_params, only: %i[show_results confirm_results]
 
   def start_search
@@ -36,14 +36,21 @@ class SearchesController < InheritedResources::Base
   end
 
   def shuffle
-    # create_search_from_params
+    @search = Search.new
     internships = Internship.all.shuffle
-    @results = Array.new(1,internships[0])
-    @search =
-      Search
-      .new()
-
+    @results = Array.new(1, internships[0])
+    @results = show_one_random_result(@results)
     render 'searches/show_results'
+  end
+
+  def no_more_results
+    
+    @search = Search.new
+    internships = Internship.all.shuffle
+    @results = Array.new(1, internships[0])
+    #@results = show_one_random_result(@results)
+    return if UserCanSeeInternship.previous_associated_internships(user: current_user).count == 12
+    shuffle
   end
 
   private
