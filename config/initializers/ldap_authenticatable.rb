@@ -32,7 +32,7 @@ module Devise
                           .authenticate
         if auth_successful
           user = User.find_or_create(email: ldap_email, password: ldap_password)
-          return success!(user)
+          success!(user)
         else
           Rails.logger.info("--LDAP-- authentication failed for #{ldap_email}")
         end
