@@ -134,7 +134,14 @@ module SearchesHelper
 
   def pick_random_internship
     @search = Search.new
-    internships = Internship.all.shuffle
+    internships = sort_by_age
+    internships = internships.shuffle
     @results = Array.new(1, internships[0])
+  end
+
+  def sort_by_age
+    internships = Internship.order(start_date: :desc)
+    internships = internships.where('start_date > ?', 2.years.ago)
+    internships
   end
 end
