@@ -9,13 +9,13 @@ class SearchesController < InheritedResources::Base
                 only: %i[start_search show_results confirm_results shuffle no_more_results]
   before_action :set_locations,
                 only: %i[start_search show_results confirm_results shuffle no_more_results]
+  before_action :set_previous_results,
+                only: %i[start_search show_results confirm_results shuffle no_more_results]
   before_action :search_params, only: %i[show_results confirm_results]
 
   def start_search
     @search = Search.new
     @internship_limit = UserCanSeeInternship.limit
-    @previous_results =
-      UserCanSeeInternship.previous_associated_internships(user: current_user)
   end
 
   def show_results
@@ -90,6 +90,10 @@ class SearchesController < InheritedResources::Base
 
   def set_locations
     @locations = concat_countries_cities
+  end
+
+  def set_previous_results
+    @previous_results = UserCanSeeInternship.previous_associated_internships(user: current_user)
   end
 
   def create_search_from_params

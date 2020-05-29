@@ -231,7 +231,7 @@ en:
       hint: "Hint: If you show them anyway there might be the possibility that your search storage becomes full."
       confirm: "Show the results anyway."
       dismiss: "I want to specify the search."
-      no_more_results: You already used all of your free search slots and therefore are not allowed to create more random results.
+      no_more_results: You already used all of your free search slots and therefore are not allowed to create more results.
       return_to_search_results: Back to previous search results.
   welcome:
     login_with_hrz: Please use your HRZ-Account for logging in.

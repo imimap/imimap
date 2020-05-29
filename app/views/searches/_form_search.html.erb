@@ -1,6 +1,6 @@
 
 <div class="container">
-  <%= bootstrap_form_for @search, :url => {:controller => 'searches', :action => (@current_user.admin? ? "show_results" : "confirm_results")} do |f| %>
+  <%= bootstrap_form_for @search, :url => {:controller => 'searches', :action => (@current_user.admin? ? "show_results" : @previous_results.count == 12 ? "no_more_results" : "confirm_results")} do |f| %>
   <div class="row pl-3">
     <p class="mr-2 ml-2"><%= t("search.filtertext.1")%></p>
     <%= f.select :paid, [[t('search.is_paid'), true], [t('search.is_not_paid'), false]], { include_blank: t('search.placeholders.paid'), hide_label: true }, class: 'chzn-select mr-2 w-auto h-auto' %>

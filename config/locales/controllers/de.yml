@@ -210,7 +210,7 @@ de:
       hint: "Hinweis: Bei der zweiten Option wird eventuell dein freier Speicher für die Suche verbraucht."
       confirm: "Zeig mir trotzdem die Ergebnisse."
       dismiss: "Ich möchte die Suche konkretisieren."
-      no_more_results: Du hast bereits alle freien Suchen aufgebraucht und kannst somit keinen weiteren Zufallsvorschlag erstellen.
+      no_more_results: Du hast bereits alle freien Suchen aufgebraucht und kannst somit keine weitere Suche erstellen.
       return_to_search_results: Zurück zu den bisherigen Suchergebnissen.
 
   welcome:
