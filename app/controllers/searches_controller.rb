@@ -24,8 +24,8 @@ class SearchesController < InheritedResources::Base
   def show_results
     create_search_from_params
     @results = collect_results
-    @too_many_results = @results.count >= UserCanSeeInternship.limit
     @results = pick_random_results(@results)
+    set_previous_results
   end
 
   def confirm_results

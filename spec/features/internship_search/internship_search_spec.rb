@@ -329,7 +329,6 @@ describe 'Internship search' do
           visit start_search_path
           click_on t('search.buttons.search')
           click_on t('search.modal.confirm')
-          visit start_search_path
           click_on t('search.buttons.search')
           click_on t('search.modal.return_to_search_results')
           expect(page).to have_content(
