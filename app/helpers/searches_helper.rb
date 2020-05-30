@@ -94,6 +94,18 @@ module SearchesHelper
     internships
   end
 
+  def show_one_random_result(internship)
+    return internship unless internship
+    return internship if current_user.admin?
+
+    internships = internship.sample(UserCanSeeInternship.limit)
+    internships = internships.select do |i|
+      UserCanSeeInternship.internship_search(internship_id: i.id,
+                                             user: current_user)
+    end
+    internships
+  end
+
   def viewed_internships(internships)
     if internships.count < 12
       internships += Internship.where(id:
@@ -117,6 +129,19 @@ module SearchesHelper
     internships = Internship.where('start_date < CURRENT_DATE')
     internships = filter(internships)
     internships = sort_results(internships)
+    internships
+  end
+
+  def pick_random_internship
+    @search = Search.new
+    internships = sort_by_age
+    internships = internships.shuffle
+    @results = Array.new(1, internships[0])
+  end
+
+  def sort_by_age
+    internships = Internship.order(start_date: :desc)
+    internships = internships.where('start_date > ?', 2.years.ago)
     internships
   end
 end

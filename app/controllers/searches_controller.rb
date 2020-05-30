@@ -6,16 +6,19 @@ class SearchesController < InheritedResources::Base
   load_and_authorize_resource
 
   before_action :set_programming_languages,
-                only: %i[start_search show_results confirm_results]
+                only: %i[start_search show_results confirm_results shuffle
+                         no_more_results]
   before_action :set_locations,
-                only: %i[start_search show_results confirm_results]
+                only: %i[start_search show_results confirm_results shuffle
+                         no_more_results]
+  before_action :set_previous_results,
+                only: %i[start_search show_results confirm_results shuffle
+                         no_more_results]
   before_action :search_params, only: %i[show_results confirm_results]
 
   def start_search
     @search = Search.new
     @internship_limit = UserCanSeeInternship.limit
-    @previous_results =
-      UserCanSeeInternship.previous_associated_internships(user: current_user)
   end
 
   def show_results
@@ -33,6 +36,21 @@ class SearchesController < InheritedResources::Base
     return if @results.count > (@internship_limit / 2)
 
     redirect_to action: 'show_results', search: params[:search].to_unsafe_h
+  end
+
+  def shuffle
+    pick_random_internship
+    @results = show_one_random_result(@results)
+    render 'searches/show_results'
+  end
+
+  def no_more_results
+    pick_random_internship
+    return if UserCanSeeInternship
+              .previous_associated_internships(user: current_user).count == 12
+
+    @results = show_one_random_result(@results)
+    render 'searches/show_results'
   end
 
   private
@@ -75,6 +93,11 @@ class SearchesController < InheritedResources::Base
 
   def set_locations
     @locations = concat_countries_cities
+  end
+
+  def set_previous_results
+    @previous_results = UserCanSeeInternship
+                        .previous_associated_internships(user: current_user)
   end
 
   def create_search_from_params

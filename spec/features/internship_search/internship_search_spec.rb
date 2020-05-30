@@ -11,6 +11,12 @@ describe 'Internship search' do
     @internship.programming_languages = [@pl]
   end
 
+  def create_internship_older_than_2yrs
+    @internship2 = create(
+      :internship_1, start_date: Date.today.to_date - 3.years
+    )
+  end
+
   I18n.available_locales.each do |locale|
     context "in locale #{locale}" do
       before :each do
@@ -305,10 +311,10 @@ describe 'Internship search' do
         before :each do
           create_internship_with_pl
           @current_user = login_as_student
-          visit start_search_path
         end
         context 'and has previous search results'
         it 'shows previous search results' do
+          visit start_search_path
           click_on t('search.buttons.search')
           visit start_search_path
           expect(page).to have_content(
@@ -318,8 +324,24 @@ describe 'Internship search' do
             @internship.company_address.company.name
           )
         end
+        it 'shows warning modal when all slots are used' do
+          20.times { create_internship_with_pl }
+          visit start_search_path
+          click_on t('search.buttons.search')
+          click_on t('search.modal.confirm')
+          visit start_search_path
+          click_on t('search.buttons.search')
+          click_on t('search.modal.return_to_search_results')
+          expect(page).to have_content(
+            12.to_s + t('search.previous_results').to_s
+          )
+          expect(page).to have_content(
+            @internship.company_address.company.name
+          )
+        end
         context 'and has no previous search results'
         it 'shows no previous search results' do
+          visit start_search_path
           select t('search.is_not_paid'), from: 'search_paid'
           click_on t('search.buttons.search')
           visit start_search_path
@@ -327,6 +349,51 @@ describe 'Internship search' do
             1.to_s + t('search.previous_results').to_s
           )
           expect(page).not_to have_content(
+            @internship.company_address.company.name
+          )
+        end
+      end
+
+      describe 'student creates a new random search' do
+        before :each do
+          create_internship_older_than_2yrs
+          create_internship_with_pl
+          @current_user = login_as_student
+        end
+        context 'and has not used its 12 slots'
+        it 'shows one random result not older than 2 years and increases them
+         used slot size' do
+          visit start_search_path
+          click_on t('search.buttons.random')
+          expect(page).to have_content(
+            t('search.results_found.start').to_s +
+            ' ' + 1.to_s + ' ' +
+            t('search.results_found.finish').to_s
+          )
+          expect(page).to have_content(
+            @internship.company_address.company.name
+          )
+          expect(page).not_to have_content(
+            @internship2.company_address.company.name
+          )
+          expect(UserCanSeeInternship.previous_associated_internships(
+            user: @current_user
+          ).count).to eql(1)
+        end
+        context 'and has used its 12 slots'
+        it 'shows a modal with a warning and on dismiss returns to the page
+          with the previous search results' do
+          20.times { create_internship_with_pl }
+          visit start_search_path
+          click_on t('search.buttons.search')
+          click_on t('search.modal.confirm')
+          visit start_search_path
+          click_on t('search.buttons.random')
+          click_on t('search.modal.return_to_search_results')
+          expect(page).to have_content(
+            12.to_s + t('search.previous_results').to_s
+          )
+          expect(page).to have_content(
             @internship.company_address.company.name
           )
         end
@@ -345,6 +412,29 @@ describe 'Internship search' do
               t('search.results_found.start').to_s +
               ' ' + 20.to_s + ' ' +
               t('search.results_found.finish').to_s
+            )
+          end
+          it 'shows no warning when we had 12 previous results and create a
+           new search' do
+            click_on t('search.buttons.search')
+            visit start_search_path
+            click_on t('search.buttons.search')
+            expect(page).to have_content(
+              t('search.results_found.start').to_s +
+              ' ' + 20.to_s + ' ' +
+              t('search.results_found.finish').to_s
+            )
+          end
+          it 'shows no warning when we had 12 previous results and create
+           a random search' do
+            click_on t('search.buttons.random')
+            expect(page).to have_content(
+              t('search.results_found.start').to_s +
+              ' ' + 1.to_s + ' ' +
+              t('search.results_found.finish').to_s
+            )
+            expect(page).to have_content(
+              @internship.company_address.company.name
             )
           end
         end

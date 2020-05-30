@@ -1,18 +1,26 @@
 
 <div class="container">
-  <%= bootstrap_form_for @search, :url => {:controller => 'searches', :action => (@current_user.admin? ? "show_results" : "confirm_results")} do |f| %>
-<div class="row pl-3">
-  <p class="mr-2 ml-2"><%= t("search.filtertext.1")%></p>
-  <%= f.select :paid, [[t('search.is_paid'), true], [t('search.is_not_paid'), false]], { include_blank: t('search.placeholders.paid'), hide_label: true }, class: 'chzn-select mr-2 w-auto h-auto' %>
-  <p class="mr-2"><%= t("search.filtertext.2")%></p>
-  <%= f.select :location, @locations, { include_blank: t('search.placeholders.location'), hide_label: true, disabled: '------' }, class: 'chzn-select mr-2 w-auto h-auto' %>
-  <p class="mr-2"><%= t("search.filtertext.3")%></p>
-  <%= f.select :orientation_id, orientations, { include_blank: t('search.placeholders.orientation'), hide_label: true }, class: 'chzn-select mr-2 w-auto h-auto' %>
-  <p class="mr-2"><%= t("search.filtertext.4")%></p>
-  <%= f.select :programming_language_id, @programming_languages, { include_blank: t('search.placeholders.programming_language'), hide_label: true }, class: 'chzn-select w-auto h-auto' %>.
-</div>
-    <div class="field" id="field-titles2">
-    <%= f.submit t("search.buttons.search"), class: 'btn btn-success'%>
+  <%= bootstrap_form_for @search, :url => {:controller => 'searches', :action => (@current_user.admin? ? "show_results" : @previous_results.count == 12 ? "no_more_results" : "confirm_results")} do |f| %>
+  <div class="row pl-3">
+    <p class="mr-2 ml-2"><%= t("search.filtertext.1")%></p>
+    <%= f.select :paid, [[t('search.is_paid'), true], [t('search.is_not_paid'), false]], { include_blank: t('search.placeholders.paid'), hide_label: true }, class: 'chzn-select mr-2 w-auto h-auto' %>
+    <p class="mr-2"><%= t("search.filtertext.2")%></p>
+    <%= f.select :location, @locations, { include_blank: t('search.placeholders.location'), hide_label: true, disabled: '------' }, class: 'chzn-select mr-2 w-auto h-auto' %>
+    <p class="mr-2"><%= t("search.filtertext.3")%></p>
+    <%= f.select :orientation_id, orientations, { include_blank: t('search.placeholders.orientation'), hide_label: true }, class: 'chzn-select mr-2 w-auto h-auto' %>
+    <p class="mr-2"><%= t("search.filtertext.4")%></p>
+    <%= f.select :programming_language_id, @programming_languages, { include_blank: t('search.placeholders.programming_language'), hide_label: true }, class: 'chzn-select w-auto h-auto' %>.
+  </div>
+  <div class="btn-group" role="group">
+    <div class="field mr-2" id="field-titles2">
+      <%= f.submit t("search.buttons.search"), class: 'btn btn-success'%>
     </div>
-<%end%>
+    <%end%>
+    <%= bootstrap_form_for @search, :url => {:controller => 'searches', :action => (@current_user.admin? ? "shuffle" : "no_more_results")} do |f| %>
+    <div class="field" id="field-titles2">
+       <%= f.submit t("search.buttons.random"), class: 'btn btn-success text-white' %>
+    </div>
+    <%end%>
+  </div>
+
 </div>
