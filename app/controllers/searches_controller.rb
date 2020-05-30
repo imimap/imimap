@@ -2,7 +2,8 @@
 
 # Controller
 class SearchesController < InheritedResources::Base
-  include SearchesHelper
+  include Internship::InternshipSearch
+  include Internship::InternshipSort
   load_and_authorize_resource
 
   before_action :set_programming_languages,
