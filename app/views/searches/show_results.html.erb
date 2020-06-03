@@ -1,9 +1,36 @@
 <div class="margin_bottom_10">
-<div id="form-block4" class="text-left mb-auto">
+<div id="form-block4" class="text-left mt-5 mx-3">
     <h4><%= t("search.header")%></h4>
     <br>
     <%= render 'form_search'%>
     <br>
-    <%= render 'search_results'%>
+</div>
+    <br>
+    <div id="form-block4" class="m-3">
+    <button type="button" id="maptoggler" class="btn-maptoggle btn btn-success text-white mb-3">Karte zeigen</button>
+    <div id="search-results" class="search_results">
+      <%= render 'search_results'%>
+    </div>
+    <div id="map-results" class="">
+    <%= render 'maps/search_results_map_view'%>
+    </div>
+
+
+    <script>
+      $('#map-results').hide()
+
+      $('.btn-maptoggle').on('click', () => {
+        if ($('#map-results').is(':visible')){
+          $('#map-results').hide()
+          $('#search-results').show()
+          $('#maptoggler').text('Karte zeigen')
+        } else {
+          $('#map-results').show()
+          $('#search-results').hide()
+          $('#maptoggler').text('Liste zeigen')
+        }
+      })
+    </script>
+
 </div>
 </div>

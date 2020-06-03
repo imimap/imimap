@@ -40,15 +40,18 @@ var marker = L.marker([52.4569311, 13.5242551]).bindPopup("HTW Berlin").addTo(my
 
 	mymap.on('click', onMapClick);
 
-
+var full_internships = JSON.parse('<%= @full_internships %>');
   for (var i = 0; i < companiesInternship.length; i++) {
+
     if ((companiesInternship[i][1] != null ) && (companiesInternship[i][2] != null ))
       marker = new L.marker([companiesInternship[i][1], companiesInternship[i][2]])
-          .bindPopup(companiesInternship[i][0])
+          .bindPopup(full_internships[i][0] + " <br />" + full_internships[i][1] + " in " +companiesInternship[i][0])
           .addTo(mymap);
+
   }
 
 </script>
 <% if Rails.env.development? %>
 <p><%= @company_location_json %></p>
+
 <% end %>
