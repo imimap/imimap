@@ -213,6 +213,7 @@ de:
       no_more_results: Du hast bereits alle freien Suchen aufgebraucht und kannst somit keine weitere Suche erstellen.
       return_to_search_results: Zurück zu den bisherigen Suchergebnissen.
 
+
   welcome:
     login_with_hrz: Bitte melden Sie sich mit Ihrem HRZ-Account an.
     help:

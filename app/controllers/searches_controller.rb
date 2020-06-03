@@ -110,13 +110,12 @@ class SearchesController < InheritedResources::Base
 
     @zoom = 11
     @map_view = true
-    @map_results = Internship.where(id: internships.map(&:id))
-    @map_results = @map_results.joins(:company_address)
-    @full_internships = get_info(@map_results).to_json.html_safe
-    @map_results = @map_results.where.not(company_addresses: { latitude: nil })
-                               .pluck(:city, :country, :latitude, :longitude)
+    @map_r = Internship.where(id: internships.map(&:id)).joins(:company_address)
+    @full_internships = get_info(@map_r).to_json.html_safe
+    @map_results = @map_r.where.not(company_addresses: { latitude: nil })
+                         .pluck(:city, :country, :latitude, :longitude)
     @company_location_json = company_locations_json(
-      company_locations: @map_results
+      company_locations: @map_r
     )
   end
 
@@ -125,7 +124,8 @@ class SearchesController < InheritedResources::Base
 
     @full_internships = []
     internships.each do |i|
-      @full_internships.push([i.company_address.try(:company).try(:name), i.try(:orientation).try(:name)])
+      @full_internships.push([i.company_address.try(:company).try(:name),
+                              i.try(:orientation).try(:name)])
     end
     @full_internships
   end

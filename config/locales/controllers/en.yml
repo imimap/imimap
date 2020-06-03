@@ -233,6 +233,7 @@ en:
       dismiss: "I want to specify the search."
       no_more_results: You already used all of your free search slots and therefore are not allowed to create more results.
       return_to_search_results: Back to previous search results.
+
   welcome:
     login_with_hrz: Please use your HRZ-Account for logging in.
     help:
