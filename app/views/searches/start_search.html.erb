@@ -12,12 +12,25 @@
   <% end %>
     <%= render 'form_search'%>
 
-
+<button type="button" class="btn btn-primary">Primary</button>
 
 </div>
-<div id="form-block4">
+<div id="" class="previous_results">
   <%= render 'previous_search_results' %>
 </div>
-
-<%= render 'maps/search_results_map_view',  locals: {company_location_json: @company_location_json} %>
+<div id="map-results">
+<%= render 'maps/search_results_map_view'%>
 </div>
+</div>
+
+<script>
+  $('.btn').on('click', () => {
+    if ($('#map-results').is(':visible')){
+      $('#map-results').hide()
+      $('.previous-results').show()
+  } else {
+    $('#map-results').show()
+    $('.previous-results').hide()
+  }
+  })
+</script>
