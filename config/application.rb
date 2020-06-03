@@ -8,17 +8,15 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-
-
 module ImiMaps
   # The Rails Application.
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.0
 
-config.before_configuration do
-  ENV["RAILS_INBOUND_EMAIL_PASSWORD"] = 'KHattori21'
-end
+    config.before_configuration do
+      ENV['RAILS_INBOUND_EMAIL_PASSWORD'] = 'KHattori21'
+    end
 
     # Settings in config/environments/* take precedence over those specified
     # here.

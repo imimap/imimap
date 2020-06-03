@@ -130,6 +130,6 @@ class User < ApplicationRecord
 
   # multiple recipients for action mailer
   def self.student_user
-    User.where(role: "user")
+    User.where(role: 'user')
   end
 end

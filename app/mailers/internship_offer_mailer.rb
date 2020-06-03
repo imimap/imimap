@@ -1,5 +1,6 @@
-class InternshipOfferMailer < ApplicationMailer
+# frozen_string_literal: true
 
+class InternshipOfferMailer < ApplicationMailer
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -9,8 +10,7 @@ class InternshipOfferMailer < ApplicationMailer
     @offer = offer
     @title = @offer.title
 
-    
     mail to: User.student_user.pluck(:email),
-         subject: "New internship offer added"
+         subject: 'New internship offer added'
   end
 end

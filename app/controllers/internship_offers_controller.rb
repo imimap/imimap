@@ -46,8 +46,8 @@ class InternshipOffersController < ApplicationResourceController
   end
 
   def internship_offer_params
-    params.require(:internship_offer).permit(:title, :body, :pdf, :city, :country, 
-    :active, :user_id)
+    params.require(:internship_offer).permit(:title, :body, :pdf, :city, :country,
+                                             :active, :user_id)
     # params.require(:internship_offer).permit(permitted_params)
   end
 

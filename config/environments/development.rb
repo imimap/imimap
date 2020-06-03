@@ -88,6 +88,6 @@ Rails.application.configure do
 
   config.assets.unknown_asset_fallback = false
   Rails.application.routes.default_url_options[:host] = 'localhost:3000'
- 
+
   # IMI-Maps specific end
 end
