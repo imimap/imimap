@@ -2,6 +2,7 @@
 
 # Controller
 class SearchesController < InheritedResources::Base
+  include MapsHelper
   include SearchesHelper
   load_and_authorize_resource
 
@@ -13,12 +14,13 @@ class SearchesController < InheritedResources::Base
                          no_more_results]
   before_action :set_previous_results,
                 only: %i[start_search show_results confirm_results shuffle
-                         no_more_results]
+                         no_more_results map_results]
   before_action :search_params, only: %i[show_results confirm_results]
 
   def start_search
     @search = Search.new
     @internship_limit = UserCanSeeInternship.limit
+    map_results
   end
 
   def show_results
@@ -98,6 +100,18 @@ class SearchesController < InheritedResources::Base
   def set_previous_results
     @previous_results = UserCanSeeInternship
                         .previous_associated_internships(user: current_user)
+  end
+
+  def map_results
+    @zoom = 11
+    @map_view = true
+    @map_results = Internship.where(id: @previous_results.map(&:id))
+    @map_results = @map_results.joins(:company_address)
+    @map_results = @map_results.where.not(company_addresses: { latitude: nil })
+                               .pluck(:city, :country, :latitude, :longitude)
+    @company_location_json = company_locations_json(
+      company_locations: @map_results
+    )
   end
 
   def create_search_from_params
