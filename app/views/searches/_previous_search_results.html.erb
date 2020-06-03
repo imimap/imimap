@@ -1,8 +1,7 @@
-<div class="container mt-3">
+<div class="container mt-3" style="max-width: 100vw;">
   <% if @previous_results.nil? || @previous_results.count == 0 %>
   <%= t('search.no_previous_results' )%>
   <% else %>
-  <p class="text-center p-1"><%= @previous_results.count %><%=t('search.previous_results')%> </p>
   <table class="table table-striped table-sm table-borderless text-left">
     <tbody>
       <tr>

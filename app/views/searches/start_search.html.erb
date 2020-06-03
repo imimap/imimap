@@ -1,5 +1,5 @@
 <div class="margin_bottom_10">
-<div id="form-block4" class="text-left">
+<div id="form-block4" class="text-left mt-5 mx-3">
     <h4 class="mb-3"><%= t("search.header")%></h4>
     <% unless @current_user.admin? %>
     <div class="card text-white bg-success mt-2 mb-4 ml-3">
@@ -12,25 +12,30 @@
   <% end %>
     <%= render 'form_search'%>
 
-<button type="button" class="btn btn-primary">Primary</button>
-
 </div>
-<div id="" class="previous_results">
+<div id="form-block4" class="m-3">
+<button type="button" id="maptoggler" class="btn-maptoggle btn btn-success text-white mb-3">Karte zeigen</button>
+<p class="text-center p-1"><%= @previous_results.count %><%=t('search.previous_results')%> </p>
+<div id="previous-results" class="previous_results">
   <%= render 'previous_search_results' %>
 </div>
-<div id="map-results">
+<div id="map-results" class="">
 <%= render 'maps/search_results_map_view'%>
 </div>
-</div>
+</div></div>
 
 <script>
-  $('.btn').on('click', () => {
+  $('#map-results').hide()
+
+  $('.btn-maptoggle').on('click', () => {
     if ($('#map-results').is(':visible')){
       $('#map-results').hide()
-      $('.previous-results').show()
-  } else {
-    $('#map-results').show()
-    $('.previous-results').hide()
-  }
+      $('#previous-results').show()
+      $('#maptoggler').text('Karte zeigen')
+    } else {
+      $('#map-results').show()
+      $('#previous-results').hide()
+      $('#maptoggler').text('Liste zeigen')
+    }
   })
 </script>
