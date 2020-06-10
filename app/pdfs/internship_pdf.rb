@@ -60,14 +60,14 @@ class InternshipPdf < Prawn::Document
              at: [15, 679]
     bounding_box([110, 682], :width => 170, :height => 15) do
       move_down 3
-      draw_text "#{@student.first_name}", at: [bounds.left+2, bounds.top-11]
+      draw_text "#{@student.try(:first_name)}", at: [bounds.left+2, bounds.top-11]
       stroke_bounds
     end
     text_box 'Nachname',
              at: [290, 679]
     bounding_box([350, 682], :width => 170, :height => 15) do
       move_down 3
-      draw_text "#{@student.last_name}", at: [bounds.left+2, bounds.top-11]
+      draw_text "#{@student.try(:last_name)}", at: [bounds.left+2, bounds.top-11]
       stroke_bounds
     end
 
@@ -75,14 +75,16 @@ class InternshipPdf < Prawn::Document
              at: [15, 661]
     bounding_box([110, 664], :width => 170, :height => 15) do
       move_down 3
-      draw_text I18n.l(@student.birthday, format: :default).to_s, at: [bounds.left+2, bounds.top-11]
+      if @student.birthday
+        draw_text I18n.l(@student.try(:birthday), format: :default).to_s, at: [bounds.left+2, bounds.top-11]
+      end
       stroke_bounds
     end
     text_box 'Geburtsort',
              at: [290, 661]
     bounding_box([350, 664], :width => 170, :height => 15) do
       move_down 3
-      draw_text "#{@student.birthplace}", at: [bounds.left+2, bounds.top-11]
+      draw_text "#{@student.try(:birthplace)}", at: [bounds.left+2, bounds.top-11]
       stroke_bounds
     end
 
@@ -90,7 +92,7 @@ class InternshipPdf < Prawn::Document
              at: [15, 643]
     bounding_box([110, 646], :width => 410, :height => 15) do
       move_down 3
-      draw_text "#{@student.email}", at: [bounds.left+2, bounds.top-11]
+      draw_text "#{@student.try(:email)}", at: [bounds.left+2, bounds.top-11]
       stroke_bounds
     end
   end
