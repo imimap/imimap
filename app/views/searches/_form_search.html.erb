@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container" style="max-width: 100vw;">
   <%= bootstrap_form_for @search, :url => {:controller => 'searches', :action => (@current_user.admin? ? "show_results" : @previous_results.count == 12 ? "no_more_results" : "confirm_results")} do |f| %>
   <div class="row pl-3">
     <p class="mr-2 ml-2"><%= t("search.filtertext.1")%></p>
@@ -16,7 +16,7 @@
       <%= f.submit t("search.buttons.search"), class: 'btn btn-success'%>
     </div>
     <%end%>
-    <%= bootstrap_form_for @search, :url => {:controller => 'searches', :action => (@current_user.admin? ? "shuffle" : "no_more_results")} do |f| %>
+    <%= bootstrap_form_for @search, :url => {:controller => 'searches', :action => (@current_user.admin? ? "shuffle" : @previous_results.count == 12 ? "no_more_results" : "shuffle")} do |f| %>
     <div class="field" id="field-titles2">
        <%= f.submit t("search.buttons.random"), class: 'btn btn-success text-white' %>
     </div>

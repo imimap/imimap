@@ -2,7 +2,6 @@
 
 # Helper Methods for Maps Views
 module MapsHelper
-  include ActionView::Helpers::UrlHelper
   def company_locations_json(company_locations:)
     companies = company_locations.reject { |c| c.include?(nil) }
     company_location_json_raw = companies_to_array(companies)

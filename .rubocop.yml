@@ -39,6 +39,7 @@ Metrics/MethodLength:
 Metrics/ClassLength:
   Exclude:
     - 'app/controllers/internships_controller.rb' #Internship
+    - 'app/controllers/searches_controller.rb' #Search
 
 Metrics/ModuleLength:
   Exclude:
