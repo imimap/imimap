@@ -2,6 +2,7 @@
 
 # Controller
 class SearchesController < InheritedResources::Base
+  include ApplicationHelper
   include MapsHelper
   include SearchesHelper
   load_and_authorize_resource
@@ -112,8 +113,8 @@ class SearchesController < InheritedResources::Base
     @map_view = true
     @map_r = Internship.where(id: internships.map(&:id)).joins(:company_address)
     @full_internships = get_info(@map_r).to_json.html_safe
-    @map_results = @map_r.where.not(company_addresses: { latitude: nil })
-                         .pluck(:city, :country, :latitude, :longitude)
+    @map_r = @map_r.where.not(company_addresses: { latitude: nil })
+                   .pluck(:city, :country, :latitude, :longitude)
     @company_location_json = company_locations_json(
       company_locations: @map_r
     )
