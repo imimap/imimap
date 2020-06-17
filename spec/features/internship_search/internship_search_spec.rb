@@ -148,14 +148,12 @@ describe 'Internship search' do
             internship = create(
               :internship,
               start_date: Date.today.to_date - 7.days,
-              payment_state: nil,
-              salary: 500
+              payment_state_id: 6
             )
             internship1 = create(
               :internship_1,
               start_date: Date.today.to_date - 7.days,
-              payment_state: nil,
-              salary: -5
+              payment_state_id: 5
             )
 
             login_as_student
@@ -341,7 +339,7 @@ describe 'Internship search' do
         context 'and has no previous search results'
         it 'shows no previous search results' do
           visit start_search_path
-          select t('search.is_not_paid'), from: 'search_paid'
+          select t('search.is_paid'), from: 'search_paid'
           click_on t('search.buttons.search')
           visit start_search_path
           expect(page).not_to have_content(
