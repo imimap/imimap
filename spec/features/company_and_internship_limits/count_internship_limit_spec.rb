@@ -23,14 +23,14 @@ describe 'Internship limit' do
             create(
               :internship,
               start_date: Date.today.to_date - 7.days,
-              salary: 5
+              payment_state_id: 6
             )
           end
           10.times do
             create(
               :internship_1,
               start_date: Date.today.to_date - 7.days,
-              salary: 5
+              payment_state_id: 6 # 6 equals paid
             )
           end
 
@@ -52,8 +52,7 @@ describe 'Internship limit' do
             internship = create(
               :internship_1,
               start_date: Date.today.to_date - 7.days,
-              payment_state: nil,
-              salary: -5
+              payment_state_id: 5, # 5 equals uncharted
             )
             select t('search.is_not_paid'), from: 'search_paid'
             click_on t('search.buttons.search')
