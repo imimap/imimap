@@ -9,7 +9,7 @@ class InternshipsController < ApplicationResourceController
   load_and_authorize_resource
 
   respond_to :html, :json
-  before_action :programming_languages, :orientations, only: %i[new edit update]
+  before_action :programming_languages, :payment_states, :orientations, only: %i[new edit update]
   before_action :set_internship,
                 only: %i[edit show update rating destroy]
   before_action :set_semesters, only: %i[new edit create]
@@ -198,7 +198,8 @@ class InternshipsController < ApplicationResourceController
                          internship_rating_id
                          email_public].freeze
 
-  NESTED_ATTRIBUTES = { programming_language_ids: [] }.freeze
+  NESTED_ATTRIBUTES = { programming_language_ids: [],
+                        payment_state_id: [] }.freeze
 
   # title (job title, usually not used, not part of active admin)
   # orientation_id (not used)
