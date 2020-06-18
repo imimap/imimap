@@ -52,7 +52,7 @@ describe 'Internship limit' do
             internship = create(
               :internship_1,
               start_date: Date.today.to_date - 7.days,
-              payment_state_id: 5, # 5 equals uncharted
+              payment_state_id: 5 # 5 equals uncharted
             )
             select t('search.is_not_paid'), from: 'search_paid'
             click_on t('search.buttons.search')

@@ -9,7 +9,8 @@ class InternshipsController < ApplicationResourceController
   load_and_authorize_resource
 
   respond_to :html, :json
-  before_action :programming_languages, :payment_states, :orientations, only: %i[new edit update]
+  before_action :programming_languages, :payment_states, :orientations,
+                only: %i[new edit update]
   before_action :set_internship,
                 only: %i[edit show update rating destroy]
   before_action :set_semesters, only: %i[new edit create]
