@@ -4,15 +4,15 @@
 module SearchesHelper
   def filter_paid_true(internships)
     internships = internships.select do |i|
-      # i.payment_state_id == 2 => "cash benefit"
-      i.payment_state_id == 2 || i.salary.try(:positive?)
+      # i.payment_state_id == 2 => "cash benefit" (6 in testing)
+      i.payment_state_id == 2 || i.payment_state_id == 6
     end
     internships
   end
 
   def filter_paid_false(internships)
     internships = internships.select do |i|
-      i.payment_state_id != 2 && (i.salary.nil? || i.salary <= 0)
+      i.payment_state_id != 2 && i.payment_state_id != 6
     end
     internships
   end

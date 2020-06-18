@@ -66,7 +66,7 @@
 
   <div class="col-md-6">
     <div class="field" id="field-titles">
-      <%= f.text_field :salary, required_application(f, :salary)  %>
+      <%= f.select :payment_state_id, @payment_states, {}, required_application(f, :payment_state_id, { class: 'chzn-select'})  %>
     </div>
   </div>
 </div>

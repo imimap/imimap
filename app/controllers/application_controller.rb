@@ -36,6 +36,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def payment_states
+    @payment_states ||= PaymentState.order(:name).map do |ps|
+      [ps.name, ps.id]
+    end
+  end
+
   helper_method :get_programming_languages
 
   def orientations

@@ -15,7 +15,7 @@ de:
         weekValidation: Validierung
         operational_area: Einsatzgebiet
         tasks: Aufgaben
-        salary: "Gehalt in € pro Monat"
+        payment_state_id: "Bezahlstatus"
         supervisor_name: "Betriebliche_r Betreuer_in"
         supervisor_email: "Betreuer_in E-Mail"
         supervisor_phone: "Betreuer_in Telefonnummer"
