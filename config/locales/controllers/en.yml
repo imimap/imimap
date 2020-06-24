@@ -47,15 +47,16 @@ en:
       1: 'Done - Your internship is passed.'
       2: 'Your internship was abandoned.'
       3: 'You still have to pass other courses to pass your internship.'
+      4: 'The module B20.1 is still open.'
     registration_state:
-      4: 'Your registration arrived at our office but has not been sent to the examination administration yet.'
-      5: 'Done - Your registration arrived at our office and has been sent to the examination administration.'
-      6: 'Your internship has been approved by the internship officer.'
-      7: 'Your internship has been approved by the internship officer, but you still have to pass other courses to pass your internship.'
-      8: 'Your internship has been approved by the internship officer, but you still have to hand in your original contract.'
+      1: 'Your registration arrived at our office but has not been sent to the examination administration yet.'
+      2: 'Done - Your registration arrived at our office and has been sent to the examination administration.'
+      3: 'Your internship has been approved by the internship officer.'
+      4: 'Your internship has been approved by the internship officer, but you still have to pass other courses to pass your internship.'
+      5: 'Your internship has been approved by the internship officer, but you still have to hand in your original contract.'
     contract_state:
-      1: 'Your contract has not been handed in as an original, so your application has not been sent to the examination administration yet.'
-      2: 'Your contract has been handed in as an original, but it has not been sent to the examination administration yet.'
+      1: 'Your contract has not been handed in, so your application has not been sent to the examination administration yet.'
+      2: 'Your contract has been handed in as an original, so it has not been sent to the examination administration yet.'
       3: 'Done - Your contract has been handed in as an original and it has been sent to the examination administration.'
     report_state:
       1: 'Your report has not been handed in yet.'

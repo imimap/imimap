@@ -46,15 +46,16 @@ de:
       1: 'Fertig - Dein Praktikum ist bestanden.'
       2: 'Dein Praktikum wurde abgebrochen.'
       3: 'Du musst noch einige Kurse bestehen, bevor Dein Praktikum abgeschlossen werden kann.'
+      4: 'Das Modul B20.1 steht noch aus.'
     registration_state:
-      4: 'Deine Anmeldung ist eingetroffen, aber noch nicht an das Prüfungsamt verschickt.'
-      5: 'Fertig - Deine Anmeldung ist eingetroffen und an das Prüfungsamt verschickt.'
-      6: 'Dein Praktikum wurde von dem/der Praktikumsbeauftragten genehmigt.'
-      7: 'Dein Praktikum wurde von dem/der Praktikumsbeauftragten genehmigt. Allerdings musst Du noch einige Kurse bestehen, bevor Dein Praktikum abgeschlossen werden kann.'
-      8: 'Dein Praktikum wurde von dem/der Praktikumsbeauftragten genehmigt. Allerdings musst Du noch Deinen Originalvertrag nachhreichen.'
+      1: 'Deine Anmeldung ist eingetroffen, aber noch nicht an das Prüfungsamt verschickt.'
+      2: 'Fertig - Deine Anmeldung ist eingetroffen und an das Prüfungsamt verschickt.'
+      3: 'Dein Praktikum wurde von dem/der Praktikumsbeauftragten genehmigt.'
+      4: 'Dein Praktikum wurde von dem/der Praktikumsbeauftragten genehmigt. Allerdings musst Du noch einige Kurse bestehen, bevor Dein Praktikum abgeschlossen werden kann.'
+      5: 'Dein Praktikum wurde von dem/der Praktikumsbeauftragten genehmigt. Allerdings musst Du noch Deinen Originalvertrag nachhreichen.'
     contract_state:
-      1: 'Dein Vertrag ist noch nicht im Original bei uns eingetroffen, also auch noch nicht an das Prüfungsamt geschickt.'
-      2: 'Dein Vertrag ist im Original bei uns eingetroffen, aber noch nicht an das Prüfungsamt geschickt.'
+      1: 'Dein Vertrag ist noch nicht bei uns eingetroffen, also auch noch nicht an das Prüfungsamt geschickt.'
+      2: 'Dein Vertrag ist noch nicht im Original bei uns eingetroffen, also auch noch nicht an das Prüfungsamt geschickt.'
       3: 'Fertig - Dein Vertrag ist im Original bei uns eingetroffen und an das Prüfungsamt geschickt.'
     report_state:
       1: 'Dein Bericht ist noch nicht bei uns eingetroffen.'
