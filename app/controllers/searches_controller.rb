@@ -17,6 +17,7 @@ class SearchesController < InheritedResources::Base
                 only: %i[start_search show_results confirm_results shuffle
                          no_more_results]
   before_action :search_params, only: %i[show_results confirm_results]
+  before_action :searched_before, only: %i[show_results confirm_results]
 
   def start_search
     @search = Search.new
@@ -138,5 +139,9 @@ class SearchesController < InheritedResources::Base
            location: params[:search][:location],
            orientation_id: params[:search][:orientation_id],
            programming_language_id: params[:search][:programming_language_id])
+  end
+
+  def searched_before
+    @searched_before = !params[:search].nil?
   end
 end
