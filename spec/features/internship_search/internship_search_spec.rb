@@ -95,7 +95,9 @@ describe 'Internship search' do
           end
 
           it 'semester' do
-            expect(page).to have_content('Semester')
+            expect(page).to have_content(
+              t('search.headers.semester')
+            )
             expect(page).to have_content(
               @internship.semester.name
             )
