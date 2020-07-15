@@ -186,6 +186,7 @@ de:
       location: Ort
       orientation: Bereich
     headers:
+      semester: Fand statt im
       programming_languages: Programmiersprachen
       paid: Bezahlung
       website: Webseite
