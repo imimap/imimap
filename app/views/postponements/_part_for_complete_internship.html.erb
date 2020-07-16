@@ -3,28 +3,28 @@
   <div class="card-body">
     <p class="card-text">
 
-Du hast für Dein Praktikum das
-<%= complete_internship.semester_of_study %>. Fachsemester angegeben.
+<%= t "postponements.information_part1" %>
+<%= complete_internship.semester_of_study %><%= t "postponements.information_part2" %>
 <br/><br/>
 <% unless @postponements.nil?
      if @postponements.count == 0 %>
-Bitte stelle einen Antrag auf Verschiebung des Praktikums:
+<%= t "postponements.request" %>
 <% else %>
-Ihr Antrag auf Verschiebung des Praktikums:
+<%= t "postponements.status" %>
 
 <table>
 
   <tbody>
     <% @postponements.each do |postponement| %>
       <tr>
-        <td>Antrag auf Verschiebung zum: </td>
+        <td><%= t 'postponements.statusreport.semester'%></td>
         <td><%= postponement.semester.name %></td>
-        <td>(<%= postponement.semester_of_study %>. Fachsemester)</td>
-        <td>Gestellt am: <%= postponement.placed_at.strftime('%d.%m.%Y') %></td>
-        <td>Begründung: <%= postponement.reasons %></td>
+        <td>(<%= postponement.semester_of_study %>. <%= t 'complete_internships.semester_of_study'%>)</td>
+        <td><%= t 'postponements.statusreport.application_date' %> <%= postponement.placed_at.strftime('%d.%m.%Y') %></td>
+        <td><%= t 'postponements.application.reasons' %>: <%= postponement.reasons %></td>
         <% unless postponement.approved_at.nil? %>
-        <td>Genehmigt am <%= postponement.approved_at %></td>
-        <td>von <%= postponement.approved_by.try(:name) %></td>
+        <td><%= t 'postponements.statusreport.approval_date' %> <%= postponement.approved_at %></td>
+        <td><%= t 'postponements.statusreport.by' %> <%= postponement.approved_by.try(:name) %></td>
         <% end %>
       </tr>
     <% end %>
@@ -34,7 +34,7 @@ Ihr Antrag auf Verschiebung des Praktikums:
 <% end
 end %>
 
-<%= link_to 'New Postponement', new_postponement_path(complete_internship: complete_internship) %>
+<%= link_to t("postponements.new"), new_postponement_path(complete_internship: complete_internship) %>
 </p>
 </div>
 </div>

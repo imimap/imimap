@@ -318,3 +318,23 @@ de:
     detailed_info: 'Detailliertere Informationen findest Du auf der Webseite der'
     no_thx: 'Nein - Ich bin mit der Verarbeitung meiner Daten zu den genannten Zwecken nicht einverstanden.'
     ok_cool: 'Ja - Ich bin mit der Verarbeitung meiner Daten zu den genannten Zwecken einverstanden.'
+
+  postponements:
+    new: Neue Verschiebung
+    successfully_created: Verschiebung wurde erfolgreich erstellt.
+    information_part1: Du hast für Dein Praktikum das
+    information_part2: . Fachsemester angegeben.
+    request: 'Bitte stelle einen Antrag auf Verschiebung des Praktikums:'
+    status: 'Ihr Antrag auf Verschiebung des Praktikums:'
+    application:
+      header: Antrag auf Verschiebung des Praktikums
+      explanatory_text_part1: Ich möchte mein Praktikum nicht im 4. Fachsemester absolvieren.
+      explanatory_text_part2: Ich beantrage eine Verschiebung auf das
+      explanatory_text_part3: 'Dieses wird mein folgendes Fachsemester sein:'
+      reasons: Begründung
+      send: Verschiebung beantragen
+    statusreport:
+      semester: 'Antrag auf Verschiebung zum:'
+      application_date: 'Gestellt am:'
+      approval_date: 'Genehmigt am:'
+      by: von

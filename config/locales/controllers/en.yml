@@ -339,3 +339,23 @@ en:
     detailed_info: 'You can find more detailed information on the website of the'
     no_thx: 'No - I do not consent to the processing of my data for the mentioned purposes.'
     ok_cool: 'Yes - I consent to the processing of my data for the mentioned purposes.'
+
+  postponements:
+    new: New Postponement
+    successfully_created: Postponement was successfully created.
+    information_part1: You have specified the
+    information_part2: . semester of study for your internship.
+    request: 'Please file an application for postponing your internship:'
+    status: 'Your application for postponing your internship:'
+    application:
+      header: Application for postponing your internship
+      explanatory_text_part1: I don't want to absolve my internship in my 4. semester of study
+      explanatory_text_part2: I am applying for a postponement to the
+      explanatory_text_part3: 'This will be my semester of study then:'
+      reasons: Reasons
+      send: Apply for postponement
+    statusreport:
+      semester: 'Application for postponing to the:'
+      application_date: 'Applied on:'
+      approval_date: 'Approved on:'
+      by: 'by'
