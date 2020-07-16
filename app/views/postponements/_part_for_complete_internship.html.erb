@@ -12,7 +12,7 @@
 <% else %>
 <%= t "postponements.status" %>
 
-<table>
+<table class="table table-sm table-borderless" style="table-layout: fixed; width: 100%">
 
   <tbody>
     <% @postponements.each do |postponement| %>
@@ -21,7 +21,7 @@
         <td><%= postponement.semester.name %></td>
         <td>(<%= postponement.semester_of_study %>. <%= t 'complete_internships.semester_of_study'%>)</td>
         <td><%= t 'postponements.statusreport.application_date' %> <%= postponement.placed_at.strftime('%d.%m.%Y') %></td>
-        <td><%= t 'postponements.application.reasons' %>: <%= postponement.reasons %></td>
+        <td style="word-wrap: break-word"><%= t 'postponements.application.reasons' %>: <%= postponement.reasons %></td>
         <% unless postponement.approved_at.nil? %>
         <td><%= t 'postponements.statusreport.approval_date' %> <%= postponement.approved_at %></td>
         <td><%= t 'postponements.statusreport.by' %> <%= postponement.approved_by.try(:name) %></td>

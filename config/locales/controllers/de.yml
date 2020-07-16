@@ -328,7 +328,7 @@ de:
     information_part1: Du hast für Dein Praktikum das
     information_part2: . Fachsemester angegeben.
     request: 'Bitte stelle einen Antrag auf Verschiebung des Praktikums:'
-    status: 'Ihr Antrag auf Verschiebung des Praktikums:'
+    status: 'Dein Antrag auf Verschiebung des Praktikums:'
     application:
       header: Antrag auf Verschiebung des Praktikums
       explanatory_text_part1: Ich möchte mein Praktikum nicht im 4. Fachsemester absolvieren.
