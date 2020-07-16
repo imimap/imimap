@@ -1,32 +1,32 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Complete internship:</strong>
-  <%= @postponement.complete_internship_id %>
+  <strong><%= t 'complete_internships.singular' %> ID:</strong>
+  <%= @postponement.complete_internship.id %>
 </p>
 
 <p>
-  <strong>Semester:</strong>
+  <strong><%= t 'complete_internships.details.semester' %> ID:</strong>
   <%= @postponement.semester_id %>
 </p>
 
 <p>
-  <strong>Semester of study:</strong>
+  <strong><%= t 'complete_internships.semester_of_study' %>:</strong>
   <%= @postponement.semester_of_study %>
 </p>
 
 <p>
-  <strong>Placed at:</strong>
+  <strong><%= t 'postponements.statusreport.application_date' %></strong>
   <%= @postponement.placed_at %>
 </p>
 
 <p>
-  <strong>Approved at:</strong>
+  <strong><%= t 'postponements.statusreport.approval_date' %></strong>
   <%= @postponement.approved_at %>
 </p>
 
 <p>
-  <strong>Approved by:</strong>
+  <strong><%= t 'postponements.statusreport.by' %> ID:</strong>
   <%= @postponement.approved_by_id %>
 </p>
 
