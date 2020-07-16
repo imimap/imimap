@@ -228,6 +228,7 @@ de:
       answer2_contact: "Wenn deine Frage sich dadurch nicht geklärt hat schicke eine E-Mail an das Team der Praktikumsverwaltung."
 
   complete_internships:
+    singular: Praktikumsübersicht
     header: "Praktikumsübersichten"
     student: "Student_In"
     header_semester: "Praktikum"
@@ -320,8 +321,10 @@ de:
     ok_cool: 'Ja - Ich bin mit der Verarbeitung meiner Daten zu den genannten Zwecken einverstanden.'
 
   postponements:
+    header: Verschiebungen
     new: Neue Verschiebung
     successfully_created: Verschiebung wurde erfolgreich erstellt.
+    successfully_approved: Verschiebung wurde erfolgreich genehmigt.
     information_part1: Du hast für Dein Praktikum das
     information_part2: . Fachsemester angegeben.
     request: 'Bitte stelle einen Antrag auf Verschiebung des Praktikums:'
@@ -338,3 +341,7 @@ de:
       application_date: 'Gestellt am:'
       approval_date: 'Genehmigt am:'
       by: von
+    approve: Genehmigen
+    show: Anzeigen
+    edit: Bearbeiten
+    destroy: Löschen

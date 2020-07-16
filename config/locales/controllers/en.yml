@@ -248,6 +248,7 @@ en:
       answer2_contact: "If you couln't find an answer to your question, send an E-Mail to the team of the internship administration."
 
   complete_internships:
+    singular: Complete Internship
     header: "Internships Overviews"
     student: "Student"
     header_semester: "Internship"
@@ -341,8 +342,10 @@ en:
     ok_cool: 'Yes - I consent to the processing of my data for the mentioned purposes.'
 
   postponements:
+    header: Postponements
     new: New Postponement
     successfully_created: Postponement was successfully created.
+    successfully_approved: Postponement was successfully approved.
     information_part1: You have specified the
     information_part2: . semester of study for your internship.
     request: 'Please file an application for postponing your internship:'
@@ -359,3 +362,7 @@ en:
       application_date: 'Applied on:'
       approval_date: 'Approved on:'
       by: 'by'
+    approve: Approve
+    show: Show
+    edit: Edit
+    destroy: Destroy
