@@ -6,6 +6,7 @@
   semester_id = option_is_all ? -1 :  @semester.id
   select_tag(:semester_id,
                options_for_select(@semester_options,semester_id),
+               onchange: "this.form.submit();", 
                class: 'chzn-select',
                id: 'semester_select') %>
   </div>
