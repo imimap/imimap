@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require_relative './mock_path_helper.rb'
+require_relative './mock_path_helper'
 
 RSpec.describe 'complete_internships/show', type: :view do
   before(:each) do

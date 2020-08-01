@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require_relative '../helpers/active_admin_spec_helpers.rb'
+require_relative '../helpers/active_admin_spec_helpers'
 
 describe 'ActiveAdmin create internship' do
   before :each do

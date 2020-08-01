@@ -61,34 +61,34 @@ Lint/RaiseException:
 Lint/StructNewOverride:
   Enabled: true
 Style/AccessorGrouping:
-  Enabled: false
+  Enabled: true
 Style/ArrayCoercion:
-  Enabled: false
+  Enabled: true
 Style/BisectedAttrAccessor:
-  Enabled: false
+  Enabled: true
 Style/CaseLikeIf:
-  Enabled: false
+  Enabled: true
 Style/ExponentialNotation:
-  Enabled: false
+  Enabled: true
 Style/HashAsLastArrayItem:
-  Enabled: false
+  Enabled: true
 Style/HashEachMethods:
-  Enabled: false
+  Enabled: true
 Style/HashLikeCase:
-  Enabled: false
+  Enabled: true
 Style/HashTransformKeys:
-  Enabled: false
+  Enabled: true
 Style/HashTransformValues:
-  Enabled: false
+  Enabled: true
 Style/RedundantAssignment:
-  Enabled: false
+  Enabled: true
 Style/RedundantFetchBlock:
-  Enabled: false
+  Enabled: true
 Style/RedundantFileExtensionInRequire:
-  Enabled: false
+  Enabled: true
 Style/RedundantRegexpCharacterClass:
-  Enabled: false
+  Enabled: true
 Style/RedundantRegexpEscape:
-  Enabled: false
+  Enabled: true
 Style/SlicingWithRange:
-  Enabled: false
+  Enabled: true

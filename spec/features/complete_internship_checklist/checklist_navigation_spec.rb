@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require_relative './checklist_helper.rb'
+require_relative './checklist_helper'
 describe 'Checklist Pageflow' do
   include CompleteInternshipCheckListHelper
   #  I18n.available_locales.each do |locale|

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require_relative '../helpers/active_admin_spec_helpers.rb'
+require_relative '../helpers/active_admin_spec_helpers'
 # country
 describe 'ActiveAdmin CompanyAddress Edit' do
   before :each do
