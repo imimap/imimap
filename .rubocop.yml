@@ -49,9 +49,9 @@ Metrics/ModuleLength:
 Layout/EmptyLinesAroundAttributeAccessor:
   Enabled: true
 Layout/SpaceAroundMethodCallOperator:
-  Enabled: false
+  Enabled: true
 Lint/DeprecatedOpenSSLConstant:
-  Enabled: false
+  Enabled: true
 Lint/DuplicateElsifCondition:
   Enabled: false
 Lint/MixedRegexpCaptureTypes:
