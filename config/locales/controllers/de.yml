@@ -228,6 +228,7 @@ de:
       answer2_contact: "Wenn deine Frage sich dadurch nicht geklärt hat schicke eine E-Mail an das Team der Praktikumsverwaltung."
 
   complete_internships:
+    singular: Praktikumsübersicht
     header: "Praktikumsübersichten"
     student: "Student_In"
     header_semester: "Praktikum"
@@ -318,3 +319,29 @@ de:
     detailed_info: 'Detailliertere Informationen findest Du auf der Webseite der'
     no_thx: 'Nein - Ich bin mit der Verarbeitung meiner Daten zu den genannten Zwecken nicht einverstanden.'
     ok_cool: 'Ja - Ich bin mit der Verarbeitung meiner Daten zu den genannten Zwecken einverstanden.'
+
+  postponements:
+    header: Verschiebungen
+    new: Verschiebung beantragen
+    successfully_created: Antrag auf Verschiebung des Praktikums wurde gespeichert.
+    successfully_approved: Verschiebung wurde erfolgreich genehmigt.
+    information_part1: Du hast für Dein Praktikum das
+    information_part2: . Fachsemester angegeben.
+    request: 'Bitte stelle einen Antrag auf Verschiebung des Praktikums:'
+    status: 'Dein Antrag auf Verschiebung des Praktikums:'
+    application:
+      header: Antrag auf Verschiebung des Praktikums
+      explanatory_text_part1: Ich möchte mein Praktikum nicht im 4. Fachsemester absolvieren.
+      explanatory_text_part2: Ich beantrage eine Verschiebung auf das
+      explanatory_text_part3: 'Dieses wird mein folgendes Fachsemester sein:'
+      reasons: Begründung
+      send: Verschiebung beantragen
+    statusreport:
+      semester: 'Antrag auf Verschiebung zum:'
+      application_date: 'Gestellt am:'
+      approval_date: 'Genehmigt am:'
+      by: von
+    approve: Genehmigen
+    show: Anzeigen
+    edit: Bearbeiten
+    destroy: Löschen

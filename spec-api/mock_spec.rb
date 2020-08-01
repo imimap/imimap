@@ -3,6 +3,7 @@
 # litte example class
 class Die
   attr_accessor :default
+
   def roll
     default || 6
   end

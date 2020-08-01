@@ -29,7 +29,10 @@ TEST_EMAIL_REGEXP = /s01[1-4]\d*@htw-berlin.de/.freeze
 
 FT = FeatureToggle.new.tap do |ft|
   ft.for(:postponement) do |current_user|
-    current_user.feature_on?(:student_can_edit_internship)
+    Rails.env.development? ||
+      Rails.env.test? ||
+      TEST_EMAIL_REGEXP.match?(current_user.email) ||
+      current_user.feature_on?(:postponement)
   end
 end
 #  ft.for(:student_can_edit_internship) do |_current_user|

@@ -17,7 +17,7 @@ class PostponementsController < ApplicationResourceController
       if success
         format.html do
           redirect_to postponement.complete_internship,
-                      notice: 'Postponement was successfully created.'
+                      notice: I18n.t('postponements.successfully_created')
         end
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class PostponementsController < ApplicationResourceController
       if success
         format.html do
           redirect_to :postponements,
-                      notice: 'Postponement was successfully approved.'
+                      notice: I18n.t('postponements.successfully_approved')
         end
       else
         format.html { render :edit }

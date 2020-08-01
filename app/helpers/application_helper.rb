@@ -39,14 +39,15 @@ module ApplicationHelper
 
   def locale_picker
     I18n.available_locales.each do |loc|
+      # permitted_params
+      pp = %i[locale internship_id company_id cidcontext complete_internship]
       # CodeReviewSS17
       # this seems to be a necessary workaround because of the current
       # url structure, maybe adapt the routes/paths?
       locale_param = if request.path == root_path
                        root_path(locale: loc)
                      else
-                       params.permit(%i[locale internship_id company_id])
-                             .merge(locale: loc)
+                       params.permit(pp).merge(locale: loc)
                      end
       concat content_tag(:li, (link_to_unless_current loc, locale_param),
                          class: "locale-#{loc}")
@@ -70,9 +71,8 @@ module ApplicationHelper
   # this would only be needed in other (non-bootstrap) forms.
   def required_save_and_application(form, field, options = {})
     model = form.object.class
-    if model.attributes_required_for_save.include? field
-      options.merge!(class: 'required')
-    end
+    options.merge!(class: 'required') \
+      if model.attributes_required_for_save.include? field
     required_application_impl(form, field, :class, options)
   end
 

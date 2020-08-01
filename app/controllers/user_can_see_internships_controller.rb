@@ -8,9 +8,8 @@ class UserCanSeeInternshipsController < InheritedResources::Base
     user = Student.find_by(id: params[:student_id]).try(:user)
     return if user.nil?
 
-    if UserCanSeeInternship.where(user_id: user.id).destroy_all
-      flash[:success] = 'Reset successful'
-    end
+    flash[:success] = 'Reset successful' \
+      if UserCanSeeInternship.where(user_id: user.id).destroy_all
     ci = CompleteInternship.find_by(student_id: params[:student_id])
     redirect_to ci
   end

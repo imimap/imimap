@@ -3,7 +3,7 @@
 <% postponement = @postponement %>
 <%= bootstrap_form_for(@postponement, local: true) do |form| %>
 
-<h3>Antrag auf Verschiebung des Praktikums</h3>
+<h3><%= t "postponements.application.header" %></h3>
 
 <%= render 'application/model_errors', model: @postponement %>
 
@@ -19,9 +19,9 @@
 <div class="row">
   <div class="col-md-6">
      <div class = "field">
-  Ich möchte mein Praktikum nicht im 4. Fachsemester absolvieren.
-</div>
-</div>
+       <%= t "postponements.application.explanatory_text_part1" %>
+     </div>
+   </div>
 
 <div class="row"><div class="col-md-6">&nbsp;</div></div>
 
@@ -29,8 +29,7 @@
 <div class="row">
   <div class="col-md-4">
      <div class = "field">
-  Ich beantrage eine
-  Verschiebung auf das
+       <%= t "postponements.application.explanatory_text_part2" %>
 
       </div>
   </div>
@@ -49,10 +48,10 @@
 
 <div class="row">
   <div class="col-md-4">
-  Dieses wird mein folgendes Fachsemester sein:
+    <%= t "postponements.application.explanatory_text_part3" %>
 </div>
     <div class="col-md-2">
-    <%= form.number_field :semester_of_study, cols: 10 %>
+    <%= form.number_field :semester_of_study, cols: 10, hide_label: true %>
 </div>
 </div>
 
@@ -62,14 +61,15 @@
 <div class="row">
     <div class="col-md-6">
 
-      <%= form.text_area :reasons, cols: 40, rows: 10 %>
+      <%= form.text_area :reasons, cols: 40, rows: 10,
+          label: t('postponements.application.reasons') %>
     </div>
     </div>
 
   <div class="row">
     <div class="col-md-6">
   <div class="actions">
-    <%= form.submit 'Verschiebung beantragen'%>
+    <%= form.submit t 'postponements.application.send'%>
   </div>
 </div>
 </div>
