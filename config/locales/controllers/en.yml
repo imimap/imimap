@@ -207,6 +207,7 @@ en:
       location: Location
       orientation: Orientation
     headers:
+      semester: Took place in
       programming_languages: Programming languages
       paid: Payment
       website: Website
