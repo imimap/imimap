@@ -47,7 +47,7 @@ Metrics/ModuleLength:
 
 
 Layout/EmptyLinesAroundAttributeAccessor:
-  Enabled: false
+  Enabled: true
 Layout/SpaceAroundMethodCallOperator:
   Enabled: false
 Lint/DeprecatedOpenSSLConstant:
