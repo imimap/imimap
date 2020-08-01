@@ -343,7 +343,7 @@ en:
 
   postponements:
     header: Postponements
-    new: New Postponement
+    new: Apply for Postponement
     successfully_created: Postponement was successfully created.
     successfully_approved: Postponement was successfully approved.
     information_part1: You have specified the

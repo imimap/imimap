@@ -322,8 +322,8 @@ de:
 
   postponements:
     header: Verschiebungen
-    new: Neue Verschiebung
-    successfully_created: Verschiebung wurde erfolgreich erstellt.
+    new: Verschiebung beantragen
+    successfully_created: Antrag auf Verschiebung des Praktikums wurde gespeichert.
     successfully_approved: Verschiebung wurde erfolgreich genehmigt.
     information_part1: Du hast für Dein Praktikum das
     information_part2: . Fachsemester angegeben.
