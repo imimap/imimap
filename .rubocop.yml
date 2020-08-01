@@ -53,13 +53,13 @@ Layout/SpaceAroundMethodCallOperator:
 Lint/DeprecatedOpenSSLConstant:
   Enabled: true
 Lint/DuplicateElsifCondition:
-  Enabled: false
+  Enabled: true
 Lint/MixedRegexpCaptureTypes:
-  Enabled: false
+  Enabled: true
 Lint/RaiseException:
-  Enabled: false
+  Enabled: true
 Lint/StructNewOverride:
-  Enabled: false
+  Enabled: true
 Style/AccessorGrouping:
   Enabled: false
 Style/ArrayCoercion:
