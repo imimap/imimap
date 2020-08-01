@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './08_lib/08_lib.rb'
+require_relative './08_lib/08_lib'
 
 Student.destroy_all
 Internship.destroy_all

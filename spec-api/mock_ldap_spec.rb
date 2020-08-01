@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './../spec/rails_helper.rb'
+require_relative './../spec/rails_helper'
 
 describe 'mock ldap' do
   it 'this spec needs LDAP environment variable to be set' do

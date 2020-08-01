@@ -25,12 +25,8 @@ module ApplicationHelper
   end
 
   def flash_class(level)
-    case level
-    when :notice then 'alert alert-info'
-    when :success then 'alert alert-success'
-    when :error then 'alert alert-danger'
-    when :alert then 'alert alert-info'
-    end
+    { notice: 'alert alert-info', success: 'alert alert-success',
+      error: 'alert alert-danger', alert: 'alert alert-info' }[level]
   end
 
   def notifications

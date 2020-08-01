@@ -3,27 +3,26 @@
 # Searches Helper
 module SearchesHelper
   def filter_paid_true(internships)
-    internships = internships.select do |i|
+    internships.select do |i|
       # i.payment_state_id == 2 => "cash benefit" (6 in testing)
       i.payment_state_id == 2 || i.payment_state_id == 6
     end
-    internships
   end
 
   def filter_paid_false(internships)
-    internships = internships.select do |i|
+    internships.select do |i|
       i.payment_state_id != 2 && i.payment_state_id != 6
     end
-    internships
   end
 
   def filter_paid(internships)
     return internships if @search.paid.nil?
     return internships unless internships
 
-    if @search.paid == true
+    case @search.paid
+    when true
       internships = filter_paid_true(internships)
-    elsif @search.paid == false
+    when false
       internships = filter_paid_false(internships)
     end
     internships
@@ -36,12 +35,11 @@ module SearchesHelper
 
     return internships unless internships
 
-    internships = internships.select do |i|
+    internships.select do |i|
       city_matches = i.company_address.try(:city) == loc
       country_matches = i.company_address.try(:country_name) == loc
       city_matches || country_matches
     end
-    internships
   end
 
   def filter_orientation_id(internships)
@@ -49,10 +47,9 @@ module SearchesHelper
 
     return internships unless internships
 
-    internships = internships.select do |i|
+    internships.select do |i|
       i.orientation_id == @search.orientation_id
     end
-    internships
   end
 
   def filter_pl(internships)
@@ -60,10 +57,9 @@ module SearchesHelper
 
     return internships unless internships
 
-    internships = internships.select do |i|
+    internships.select do |i|
       i.programming_language_ids.include?(@search.programming_language_id)
     end
-    internships
   end
 
   def sort_results(internships)
@@ -76,8 +72,7 @@ module SearchesHelper
         i.start_date
       end
     end
-    internships = internships.reverse
-    internships
+    internships.reverse
   end
 
   def pick_random_results(internships)
@@ -90,8 +85,7 @@ module SearchesHelper
                                              user: current_user)
     end
     internships = viewed_internships(internships)
-    internships = sort_results(internships)
-    internships
+    sort_results(internships)
   end
 
   def show_one_random_result(internship)
@@ -99,11 +93,10 @@ module SearchesHelper
     return internship if current_user.admin?
 
     internships = internship.sample(UserCanSeeInternship.limit)
-    internships = internships.select do |i|
+    internships.select do |i|
       UserCanSeeInternship.internship_search(internship_id: i.id,
                                              user: current_user)
     end
-    internships
   end
 
   def viewed_internships(internships)
@@ -121,15 +114,13 @@ module SearchesHelper
     internships = filter_paid(internships)
     internships = filter_location(internships)
     internships = filter_orientation_id(internships)
-    internships = filter_pl(internships)
-    internships
+    filter_pl(internships)
   end
 
   def collect_results
     internships = Internship.where('start_date < CURRENT_DATE')
     internships = filter(internships)
-    internships = sort_results(internships)
-    internships
+    sort_results(internships)
   end
 
   def pick_random_internship
@@ -141,7 +132,6 @@ module SearchesHelper
 
   def sort_by_age
     internships = Internship.order(start_date: :desc)
-    internships = internships.where('start_date > ?', 2.years.ago)
-    internships
+    internships.where('start_date > ?', 2.years.ago)
   end
 end

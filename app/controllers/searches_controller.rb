@@ -77,8 +77,7 @@ class SearchesController < InheritedResources::Base
   def collect_countries
     address_ids = Internship.pluck(:company_address_id).reject(&:nil?)
     addresses = CompanyAddress.where(id: address_ids)
-    countries = addresses.map(&:country_name).uniq.sort
-    countries
+    addresses.map(&:country_name).uniq.sort
   end
 
   def concat_countries_cities

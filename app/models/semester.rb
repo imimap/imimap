@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'semester_helper.rb'
+require 'semester_helper'
 
 # The Semester the Internship is assigned to
 class Semester < ApplicationRecord

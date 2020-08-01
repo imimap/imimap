@@ -25,7 +25,7 @@ RSpec.describe InternshipRating, type: :model do
     it 'does not accept ratings less than 0' do
       expect do
         create :internship_rating, tasks: -1
-      end      .to raise_error(ActiveRecord::RecordInvalid)
+      end.to raise_error(ActiveRecord::RecordInvalid)
       expect { create :internship_rating, training_success: -1 }
         .to raise_error(ActiveRecord::RecordInvalid)
       expect { create :internship_rating, atmosphere: -1 }
@@ -39,7 +39,7 @@ RSpec.describe InternshipRating, type: :model do
     it 'does not accept ratings greater than 5 ' do
       expect do
         create :internship_rating, tasks: 6
-      end      .to raise_error(ActiveRecord::RecordInvalid)
+      end.to raise_error(ActiveRecord::RecordInvalid)
       expect { create :internship_rating, training_success: 6 }
         .to raise_error(ActiveRecord::RecordInvalid)
       expect { create :internship_rating, atmosphere: 6 }

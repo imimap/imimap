@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './08_internships.rb'
+require_relative './08_internships'
 
 def email_for_enrolment_number(enrolment_number:)
   User.email_for(enrolment_number: enrolment_number.to_s)
@@ -78,20 +78,18 @@ def create_student_with(enrolment_number:, with_internships:, with_user:)
 end
 
 def create_only_user(enrolment_number:)
-  user = User.create(
+  User.create(
     email: email_for_enrolment_number(enrolment_number: enrolment_number),
     password: 'geheim12',
     password_confirmation: 'geheim12',
     role: :user
   )
-  user
 end
 
 def create_user_for_student(student:)
-  user = User.create(email: student.email,
-                     password: 'geheim12',
-                     password_confirmation: 'geheim12',
-                     role: :user,
-                     student: student)
-  user
+  User.create(email: student.email,
+              password: 'geheim12',
+              password_confirmation: 'geheim12',
+              role: :user,
+              student: student)
 end

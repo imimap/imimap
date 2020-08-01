@@ -10,13 +10,13 @@ describe 'Ability: Student edits Internship' do
       # the views by the tests below
       expect { create(:internship_not_approved) }.to change {
                                                        CompleteInternship.count
-                                                     } .by(1)
+                                                     }.by(1)
       expect { create(:internship_not_approved) }.to change {
                                                        Company.count
-                                                     } .by(1)
+                                                     }.by(1)
       expect { create(:internship_not_approved) }.to change {
                                                        CompanyAddress.count
-                                                     } .by(1)
+                                                     }.by(1)
     end
     before :each do
       @internship = create(:internship_not_approved)

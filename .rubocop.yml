@@ -49,46 +49,46 @@ Metrics/ModuleLength:
 Layout/EmptyLinesAroundAttributeAccessor:
   Enabled: true
 Layout/SpaceAroundMethodCallOperator:
-  Enabled: false
+  Enabled: true
 Lint/DeprecatedOpenSSLConstant:
-  Enabled: false
+  Enabled: true
 Lint/DuplicateElsifCondition:
-  Enabled: false
+  Enabled: true
 Lint/MixedRegexpCaptureTypes:
-  Enabled: false
+  Enabled: true
 Lint/RaiseException:
-  Enabled: false
+  Enabled: true
 Lint/StructNewOverride:
-  Enabled: false
+  Enabled: true
 Style/AccessorGrouping:
-  Enabled: false
+  Enabled: true
 Style/ArrayCoercion:
-  Enabled: false
+  Enabled: true
 Style/BisectedAttrAccessor:
-  Enabled: false
+  Enabled: true
 Style/CaseLikeIf:
-  Enabled: false
+  Enabled: true
 Style/ExponentialNotation:
-  Enabled: false
+  Enabled: true
 Style/HashAsLastArrayItem:
-  Enabled: false
+  Enabled: true
 Style/HashEachMethods:
-  Enabled: false
+  Enabled: true
 Style/HashLikeCase:
-  Enabled: false
+  Enabled: true
 Style/HashTransformKeys:
-  Enabled: false
+  Enabled: true
 Style/HashTransformValues:
-  Enabled: false
+  Enabled: true
 Style/RedundantAssignment:
-  Enabled: false
+  Enabled: true
 Style/RedundantFetchBlock:
-  Enabled: false
+  Enabled: true
 Style/RedundantFileExtensionInRequire:
-  Enabled: false
+  Enabled: true
 Style/RedundantRegexpCharacterClass:
-  Enabled: false
+  Enabled: true
 Style/RedundantRegexpEscape:
-  Enabled: false
+  Enabled: true
 Style/SlicingWithRange:
-  Enabled: false
+  Enabled: true

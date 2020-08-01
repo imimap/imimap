@@ -36,7 +36,7 @@ module SemesterHelper
   end
 
   def name2sid(name)
-    m = %r{(WS|SS) (\d\d)(\/\d\d)?}.match(name)
+    m = %r{(WS|SS) (\d\d)(/\d\d)?}.match(name)
     raise "couldn't match #{name}" unless m
 
     year = 2000 + m[2].to_i
