@@ -28,9 +28,8 @@ namespace :imimap do
     puts "Going to check #{internships.count} internships"
     internships.each do |i|
       print '.'
-      unless i.student_new == i.student
-        puts "student association broke in internship #{i.id}"
-      end
+      puts "student association broke in internship #{i.id}" \
+        unless i.student_new == i.student
       student = i.student_new
       if student.nil?
         puts "found internship without student: #{i.id}"

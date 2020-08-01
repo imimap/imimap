@@ -71,9 +71,8 @@ module ApplicationHelper
   # this would only be needed in other (non-bootstrap) forms.
   def required_save_and_application(form, field, options = {})
     model = form.object.class
-    if model.attributes_required_for_save.include? field
-      options.merge!(class: 'required')
-    end
+    options.merge!(class: 'required') \
+      if model.attributes_required_for_save.include? field
     required_application_impl(form, field, :class, options)
   end
 
