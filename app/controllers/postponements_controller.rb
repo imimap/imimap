@@ -34,11 +34,9 @@ class PostponementsController < ApplicationResourceController
     if params[:complete_internship]
       @complete_internship = CompleteInternship.find(params[:complete_internship])
       @semester = @complete_internship.semester || Semester.next
-      @semester_options = semester_select_options
       @postponement.semester_of_study = @complete_internship.semester_of_study
-    else
+     end
       @semester_options = semester_select_options
-    end
   end
 
   def approve
