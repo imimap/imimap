@@ -10,9 +10,7 @@
       <%= render 'reset_limits_admin' %>
     <% end %>
     </div>
-    <% if true || FT.on?(:postponements, current_user) %>
-          <%= render 'postponements/part_for_complete_internship', complete_internship: @complete_internship %>
-    <% end %>
+    <%= render 'postponements/part_for_complete_internship', complete_internship: @complete_internship %>
     <div class="card mt-3 mb-3">
       <div class="card-body">
         <p class="card-text">

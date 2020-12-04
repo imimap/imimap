@@ -9,8 +9,10 @@
 
 <div class="row">
   <div class="col-md-6">
+    <% if @complete_internship %>
     <%= complete_internship_title(complete_internship: @complete_internship) %>
-    <%= form.hidden_field :student_id, :value => @complete_internship.student.id %>
+    <% end %>
+    <%= form.hidden_field :student_id, :value => @current_user.student.id %>
   </div>
 </div>
 
@@ -36,10 +38,18 @@
 
   <div class="col-md-2">
      <div class = "field">
+       <% if @semester %>
     <%= select('postponement', :semester_id,
                  options_for_select(@semester_options,@semester.id),
                  class: 'chzn-select',
                  id: 'semester_select') %>
+      <% else %>
+      <%= select('postponement', :semester_id,
+                   options_for_select(@semester_options),
+                   class: 'chzn-select',
+                   id: 'semester_select') %>
+
+      <% end %>
      </div>
  </div>
 </div>
