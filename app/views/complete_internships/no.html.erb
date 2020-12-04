@@ -2,6 +2,7 @@
 	<h2 class="intern-head"> <%= t"internships.internship_details" %></h2>
 
 	<% if current_user.student? %>
+
 	<div id="askForCreation">
 		<%= t "internships.create_internship" %>
 		<br />
@@ -13,6 +14,8 @@
     </button>
     <br />
 	</div>
+
+	<%= render 'postponements/part_no_complete_internship', complete_internship: @complete_internship %>
 	<% end %>
 </div>
 

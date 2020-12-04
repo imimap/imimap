@@ -14,9 +14,14 @@ class PostponementsController < ApplicationResourceController
 
   def create_respond(success:, postponement:)
     respond_to do |format|
-      if success
+      if success && postponement.complete_internship
         format.html do
           redirect_to postponement.complete_internship,
+                      notice: I18n.t('postponements.successfully_created')
+        end
+      elsif success
+        format.html do
+          redirect_to no_complete_internship_path,
                       notice: I18n.t('postponements.successfully_created')
         end
       else
@@ -26,10 +31,12 @@ class PostponementsController < ApplicationResourceController
   end
 
   def new
-    @complete_internship = CompleteInternship.find(params[:complete_internship])
-    @semester = @complete_internship.semester || Semester.next
-    @semester_options = semester_select_options
-    @postponement.semester_of_study = @complete_internship.semester_of_study
+    if params[:complete_internship]
+      @complete_internship = CompleteInternship.find(params[:complete_internship])
+      @semester = @complete_internship.semester || Semester.next
+      @postponement.semester_of_study = @complete_internship.semester_of_study
+     end
+      @semester_options = semester_select_options
   end
 
   def approve
