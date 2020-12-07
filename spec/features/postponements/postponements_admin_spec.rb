@@ -20,6 +20,14 @@ describe 'internship postponement' do
     expect(page).to have_content(@postponement.semester.id)
     expect(page).to have_content(@postponement.semester.name)
   end
+  # it 'edits one postponement' do
+  #   visit postponements_path
+  #   click_on first(:link, t('postponements.edit'))
+  #   reasons = 'The Reasons...'
+  #   #fill_in :reasons, with: reasons
+  #   #click_on t('update')
+  #   expect(page).to have_content(reasons)
+  # end
   it 'destroys one postponement' do
     visit postponements_path
     expect(page).to have_content(@postponement.semester.name)

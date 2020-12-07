@@ -65,7 +65,24 @@ class PostponementsController < ApplicationResourceController
     # @postponement = Postponement.find(params[:id])
     @postponement.approved_by_id = current_user.id
     @postponement.approved_at = DateTime.now
-    approve_respond(success: @postponement.save)
+    if params[:admin]
+      admin_approve_respond(success: @postponement.save)
+    else
+      approve_respond(success: @postponement.save)
+    end
+  end
+
+  def admin_approve_respond(success:)
+    respond_to do |format|
+      if success
+        format.html do
+          redirect_to :admin_postponements,
+                      notice: I18n.t('postponements.successfully_approved')
+        end
+      else
+        format.html { render :edit_admin_postponement }
+      end
+    end
   end
 
   def approve_respond(success:)
@@ -79,6 +96,10 @@ class PostponementsController < ApplicationResourceController
         format.html { render :edit }
       end
     end
+  end
+
+  def self.permitted_params
+    %i[student_id semester_id semester_of_study placed_at reasons admin]
   end
 
   private
