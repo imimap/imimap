@@ -1,6 +1,14 @@
-<h1>Editing Postponement</h1>
+<div class="margin_bottom_10">
 
-<%= render 'form', postponement: @postponement %>
+  <div id="form-block4">
+    <div class="text-left">
+      <h3><%= t "postponements.application.header" %></h3>
+      <div class="pl-3">
 
-<%= link_to 'Show', @postponement %> |
-<%= link_to 'Back', postponements_path %>
+        <%= render 'form', postponement: @postponement %>
+      </div>
+      <%= link_to 'Show', @postponement %> |
+      <%= link_to 'Back', postponements_path %>
+    </div>
+  </div>
+</div>

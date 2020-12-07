@@ -7,6 +7,28 @@ class PostponementsController < ApplicationResourceController
   # < InheritedResources::Base
   load_and_authorize_resource
 
+  def index
+    @postponements = Postponement.all.order('postponements.created_at DESC')
+  end
+
+  def destroy
+    @postponement.destroy
+    redirect_to postponements_url,
+                notice: 'Postponement was successfully destroyed.'
+  end
+
+  def update
+    respond_to do |format|
+      if @postponement.update(postponement_params)
+        format.html do
+          redirect_to @postponement, notice: 'Postponement was successfully updated.'
+        end
+      else
+        format.html { render action: 'edit' }
+      end
+    end
+  end
+
   def create
     @postponement.placed_at = DateTime.now
     create_respond(success: @postponement.save, postponement: @postponement)

@@ -323,6 +323,7 @@ de:
   postponements:
     header: Verschiebungen
     new: Verschiebung beantragen
+    another: weitere Verschiebung beantragen
     successfully_created: Antrag auf Verschiebung des Praktikums wurde gespeichert.
     successfully_approved: Verschiebung wurde erfolgreich genehmigt.
     information_part1: Du hast für Dein Praktikum das
@@ -333,7 +334,8 @@ de:
       header: Antrag auf Verschiebung des Praktikums
       explanatory_text_part1: Ich möchte mein Praktikum nicht im 4. Fachsemester absolvieren.
       explanatory_text_part2: Ich beantrage eine Verschiebung auf das
-      explanatory_text_part3: 'Dieses wird mein folgendes Fachsemester sein:'
+      explanatory_text_part3: 'Dieses wird mein '
+      explanatory_text_part4: '. Fachsemester sein.'
       reasons: Begründung
       send: Verschiebung beantragen
     statusreport:
@@ -341,6 +343,8 @@ de:
       application_date: 'Gestellt am:'
       approval_date: 'Genehmigt am:'
       by: von
+      student: Student_In
+      reasons: 'Begründung: '
     approve: Genehmigen
     show: Anzeigen
     edit: Bearbeiten

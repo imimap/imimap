@@ -1,36 +1,39 @@
 
-<p class="text-center">
-  <% if @postponements.nil?
-  if @postponements.count == 0  %>
-	<p class="text-center"> ODER </p>
-  <% end
-  end %>
 
-  <% unless @postponements.nil?
-  if @postponements.count > 0  %>
+<br>
+<% if @postponements.nil? || @postponements.count == 0  %>
+<p class="text-center">ODER </p>
+<% end %>
+
+<% unless @postponements.nil?
+if @postponements.count > 0  %>
 <%= t "postponements.status" %>
 
 <table class="table table-sm table-borderless" style="table-layout: fixed; width: 100%">
 
   <tbody>
     <% @postponements.each do |postponement| %>
-      <tr>
-        <td><%= t 'postponements.statusreport.semester'%></td>
-        <td><%= postponement.semester.name %></td>
-        <td>(<%= postponement.semester_of_study %>. <%= t 'complete_internships.semester_of_study'%>)</td>
-        <td><%= t 'postponements.statusreport.application_date' %> <%= postponement.placed_at.strftime('%d.%m.%Y') %></td>
-        <td style="word-wrap: break-word"><%= t 'postponements.application.reasons' %>: <%= postponement.reasons %></td>
-        <% unless postponement.approved_at.nil? %>
-        <td><%= t 'postponements.statusreport.approval_date' %> <%= postponement.approved_at %></td>
-        <td><%= t 'postponements.statusreport.by' %> <%= postponement.approved_by.try(:name) %></td>
-        <% end %>
-      </tr>
+    <tr>
+      <td><%= t 'postponements.statusreport.semester'%></td>
+      <td><%= postponement.semester.name %></td>
+      <td>(<%= postponement.semester_of_study %>. <%= t 'complete_internships.semester_of_study'%>)</td>
+      <td><%= t 'postponements.statusreport.application_date' %> <%= postponement.placed_at.strftime('%d.%m.%Y') %></td>
+      <td style="word-wrap: break-word"><%= t 'postponements.application.reasons' %>: <%= postponement.reasons %></td>
+      <% unless postponement.approved_at.nil? %>
+      <td><%= t 'postponements.statusreport.approval_date' %> <%= postponement.approved_at %></td>
+      <td><%= t 'postponements.statusreport.by' %> <%= postponement.approved_by.try(:name) %></td>
+      <% end %>
+    </tr>
     <% end %>
   </tbody>
 </table>
-
+<p class="text-center">
+  <%= link_to t("postponements.another"), new_postponement_path(complete_internship: complete_internship), class: "m-0 btn btn-outline-success", method: :get %>
+</p>
 <% end
 end %>
-
-<%= link_to t("postponements.new"), new_postponement_path(complete_internship: complete_internship) %>
+<% if @postponements.nil? || @postponements.count <= 0  %>
+<p class="text-center">
+  <%= link_to t("postponements.new"), new_postponement_path(complete_internship: complete_internship), class: "m-0 btn btn-outline-success", method: :get %>
 </p>
+<% end %>

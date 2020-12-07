@@ -1,88 +1,72 @@
 <div class="margin_bottom_10">
-<div id="form-block4" class="text-left">
-<% postponement = @postponement %>
-<%= bootstrap_form_for(@postponement, local: true) do |form| %>
+  <div id="form-block4" class="text-left">
+    <% postponement = @postponement %>
+    <%= bootstrap_form_for(@postponement, local: true) do |form| %>
 
-<h3><%= t "postponements.application.header" %></h3>
+    <h3><%= t "postponements.application.header" %></h3>
+    <div class="pl-5">
+      <%= render 'application/model_errors', model: @postponement %>
 
-<%= render 'application/model_errors', model: @postponement %>
+      <div class="row">
+        <% if @complete_internship %>
+        <%= complete_internship_title(complete_internship: @complete_internship) %>
+        <% end %>
+        <%= form.hidden_field :student_id, :value => @current_user.student.id %>
+      </div>
 
-<div class="row">
-  <div class="col-md-6">
-    <% if @complete_internship %>
-    <%= complete_internship_title(complete_internship: @complete_internship) %>
-    <% end %>
-    <%= form.hidden_field :student_id, :value => @current_user.student.id %>
-  </div>
-</div>
+      <div class="row">&nbsp;</div>
 
-<div class="row"><div class="col-md-6">&nbsp;</div></div>
+      <div class="row">
+        <div class = "field">
+          <%= t "postponements.application.explanatory_text_part1" %>
+        </div>
+      </div>
 
-<div class="row">
-  <div class="col-md-6">
-     <div class = "field">
-       <%= t "postponements.application.explanatory_text_part1" %>
-     </div>
-   </div>
+      <div class="row">&nbsp;</div>
 
-<div class="row"><div class="col-md-6">&nbsp;</div></div>
+      <div class="row">
+        <div class = "field">
+          <%= t "postponements.application.explanatory_text_part2" %>
+          <% if @semester %>
+          <%= select('postponement', :semester_id,
+          options_for_select(@semester_options,@semester.id),
+          class: 'chzn-select',
+          id: 'semester_select') %>
+          <% else %>
+          <%= select('postponement', :semester_id,
+          options_for_select(@semester_options),
+          class: 'chzn-select',
+          id: 'semester_select') %>
 
-</div>
-<div class="row">
-  <div class="col-md-4">
-     <div class = "field">
-       <%= t "postponements.application.explanatory_text_part2" %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row">&nbsp;</div>
+
+      <div class="row">
+        <%= t "postponements.application.explanatory_text_part3" %>
+        <%= form.number_field :semester_of_study, cols: 5, hide_label: true %>
+        <%= t "postponements.application.explanatory_text_part4" %>
+      </div>
+
+      <div class="row">&nbsp;</div>
+
+
+      <div class="row">
+
+        <%= form.text_area :reasons, cols: 50, rows: 10,
+        label: t('postponements.application.reasons') %>
 
       </div>
-  </div>
 
-  <div class="col-md-2">
-     <div class = "field">
-       <% if @semester %>
-    <%= select('postponement', :semester_id,
-                 options_for_select(@semester_options,@semester.id),
-                 class: 'chzn-select',
-                 id: 'semester_select') %>
-      <% else %>
-      <%= select('postponement', :semester_id,
-                   options_for_select(@semester_options),
-                   class: 'chzn-select',
-                   id: 'semester_select') %>
+      <div class="row">
+        <div class="actions">
+          <%= form.submit t 'postponements.application.send'%>
+        </div>
+      </div>
 
       <% end %>
-     </div>
- </div>
-</div>
-
-<div class="row"><div class="col-md-6">&nbsp;</div></div>
-
-<div class="row">
-  <div class="col-md-4">
-    <%= t "postponements.application.explanatory_text_part3" %>
-</div>
-    <div class="col-md-2">
-    <%= form.number_field :semester_of_study, cols: 10, hide_label: true %>
-</div>
-</div>
-
-<div class="row"><div class="col-md-6">&nbsp;</div></div>
-
-
-<div class="row">
-    <div class="col-md-6">
-
-      <%= form.text_area :reasons, cols: 40, rows: 10,
-          label: t('postponements.application.reasons') %>
     </div>
-    </div>
-
-  <div class="row">
-    <div class="col-md-6">
-  <div class="actions">
-    <%= form.submit t 'postponements.application.send'%>
   </div>
 </div>
-</div>
-
-<% end %>
-</div></div>

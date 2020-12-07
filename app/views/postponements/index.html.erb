@@ -1,35 +1,37 @@
 <!-- <p id="notice"><%= notice %></p> -->
+<div class="margin_bottom_10">
 
-<h1><%= t 'postponements.header' %></h1>
+<div id="form-block4">
+<h3><%= t 'postponements.header' %></h3>
 
-<table>
+<table class="table table-striped text-left">
   <thead>
     <tr>
-      <th><%= t 'complete_internships.singular' %></th>
+      <th><%= t 'postponements.statusreport.student' %></th>
       <th><%= t 'complete_internships.details.semester' %></th>
       <th><%= t 'complete_internships.semester_of_study' %></th>
       <th><%= t 'postponements.statusreport.application_date' %></th>
       <th><%= t 'postponements.application.reasons' %></th>
       <th><%= t 'postponements.statusreport.approval_date' %></th>
       <th><%= t 'postponements.statusreport.by' %></th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @postponements.each do |postponement| %>
       <tr>
-        <td><%= postponement.complete_internship.student.name %></td>
-        <td><%= postponement.semester.name %></td>
+        <td><%= postponement.student.try(:name) || postponement.student.try(:email) %></td>
+        <td><%= postponement.semester.try(:name) %></td>
         <td><%= postponement.semester_of_study %></td>
         <td><%= postponement.placed_at %></td>
         <td><%= postponement.reasons %></td>
         <td><%= postponement.approved_at %></td>
         <td><%= postponement.approved_by.try(:name) %></td>
         <td><%= link_to t('postponements.approve'), approve_postponement_path(postponement) %></td>
-        <td><%= link_to t('postponements.show'), postponement %></td>
-        <td><%= link_to t('postponements.edit'), edit_postponement_path(postponement) %></td>
-        <td><%= link_to t('postponements.destroy'), postponement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('postponements.show'), postponement %>
+          | <%= link_to t('postponements.edit'), edit_postponement_path(postponement) %>
+          | <%= link_to t('postponements.destroy'), postponement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -38,3 +40,5 @@
 <br>
 
 <%= link_to t('postponements.new'), new_postponement_path %>
+
+</div> </div>
