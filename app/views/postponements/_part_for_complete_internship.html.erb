@@ -26,6 +26,9 @@
         <td><%= t 'postponements.statusreport.approval_date' %> <%= postponement.approved_at %></td>
         <td><%= t 'postponements.statusreport.by' %> <%= postponement.approved_by.try(:name) %></td>
         <% end %>
+        <% if @current_user.admin? %>
+        <td><%= link_to t('postponements.approve'), approve_postponement_path(postponement) %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
