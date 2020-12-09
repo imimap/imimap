@@ -344,6 +344,7 @@ en:
   postponements:
     header: Postponements
     new: Apply for Postponement
+    another: Apply for another Postponement
     successfully_created: Postponement was successfully created.
     successfully_approved: Postponement was successfully approved.
     information_part1: You have specified the
@@ -354,14 +355,17 @@ en:
       header: Application for postponing your internship
       explanatory_text_part1: I don't want to absolve my internship in my 4. semester of study
       explanatory_text_part2: I am applying for a postponement to the
-      explanatory_text_part3: 'This will be my semester of study then:'
-      reasons: Reasons
+      explanatory_text_part3: 'This will be my '
+      explanatory_text_part4: '. semester of study then.'
+      reasons: 'Reasons: '
       send: Apply for postponement
     statusreport:
       semester: 'Application for postponing to the:'
       application_date: 'Applied on:'
       approval_date: 'Approved on:'
       by: 'by'
+      student: 'Student'
+      reasons: Reasons
     approve: Approve
     show: Show
     edit: Edit

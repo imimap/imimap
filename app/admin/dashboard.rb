@@ -13,6 +13,20 @@ ActiveAdmin.register_page 'Dashboard' do
 
     columns do
       column do
+        panel 'Recent Postponements' do
+          ul do
+            Postponement.last(10).reverse.map do |pp|
+              li link_to(
+                format('%<name>s',
+                       name: pp.student.name || pp.student.email),
+                admin_postponement_path(pp)
+              )
+            end
+          end
+        end
+      end
+
+      column do
         panel 'Recent Internships' do
           ul do
             Internship.last(10).reverse.map do |internship|

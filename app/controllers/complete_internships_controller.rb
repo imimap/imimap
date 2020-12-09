@@ -26,12 +26,14 @@ class CompleteInternshipsController < ApplicationResourceController
     @wiewed_companies_suggest = viewed_companies_suggest
     @wiewed_internships_search = viewed_internships_search
     @postponements = Postponement.where(student_id: @user.student.id)
+                                 .order('postponements.created_at DESC')
   end
 
   # If the user has no complete internship, the system asks him/her to create a
   # new one else the internship details are shown
   def no
     @postponements = Postponement.where(student_id: @current_user.student.id)
+                                 .order('postponements.created_at DESC')
   end
 
   def show_own

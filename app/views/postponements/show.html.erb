@@ -1,34 +1,54 @@
 <p id="notice"><%= notice %></p>
+<div class="margin_bottom_10">
 
-<p>
-  <strong><%= t 'complete_internships.singular' %> ID:</strong>
-  <%= @postponement.complete_internship.id %>
-</p>
+  <div id="form-block4">
+    <div class="text-left">
+      <h3><%= t "postponements.application.header" %></h3>
+      <div class="pl-3">
+        <p>
+          <strong><%= t 'postponements.statusreport.student' %></strong>
+          <%= @postponement.student.try(:name) || @postponement.student.try(:email) %>
+        </p>
 
-<p>
-  <strong><%= t 'complete_internships.details.semester' %> ID:</strong>
-  <%= @postponement.semester_id %>
-</p>
+        <% if @postponement.complete_internship %>
+        <p>
+          <strong><%= t 'complete_internships.singular' %> ID:</strong>
+          <%= @postponement.complete_internship.id %>
+        </p>
+        <% end %>
 
-<p>
-  <strong><%= t 'complete_internships.semester_of_study' %>:</strong>
-  <%= @postponement.semester_of_study %>
-</p>
+        <p>
+          <strong><%= t 'complete_internships.details.semester' %> ID:</strong>
+          <%= @postponement.semester_id %> (<%= @postponement.semester.name %>)
+        </p>
 
-<p>
-  <strong><%= t 'postponements.statusreport.application_date' %></strong>
-  <%= @postponement.placed_at %>
-</p>
+        <p>
+          <strong><%= t 'complete_internships.semester_of_study' %>:</strong>
+          <%= @postponement.semester_of_study %>
+        </p>
 
-<p>
-  <strong><%= t 'postponements.statusreport.approval_date' %></strong>
-  <%= @postponement.approved_at %>
-</p>
+        <p>
+          <strong><%= t 'postponements.statusreport.application_date' %></strong>
+          <%= @postponement.placed_at %>
+        </p>
 
-<p>
-  <strong><%= t 'postponements.statusreport.by' %> ID:</strong>
-  <%= @postponement.approved_by_id %>
-</p>
+        <p>
+          <strong><%= t 'postponements.statusreport.approval_date' %></strong>
+          <%= @postponement.approved_at %>
+        </p>
 
-<%= link_to 'Edit', edit_postponement_path(@postponement) %> |
-<%= link_to 'Back', postponements_path %>
+        <p>
+          <strong><%= t 'postponements.statusreport.by' %> ID:</strong>
+          <%= @postponement.approved_by_id %>
+        </p>
+
+        <p>
+          <strong><%= t 'postponements.statusreport.reasons' %></strong>
+          <%= @postponement.reasons %>
+        </p>
+      </div>
+      <%= link_to 'Edit', edit_postponement_path(@postponement) %> |
+      <%= link_to 'Back', postponements_path %>
+    </div>
+  </div>
+</div>
