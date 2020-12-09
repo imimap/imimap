@@ -10,8 +10,10 @@
       <div class="row">
         <% if @complete_internship %>
         <%= complete_internship_title(complete_internship: @complete_internship) %>
-        <% end %>
+        <%= form.hidden_field :student_id, :value => @complete_internship.student.id %>
+        <% else %>
         <%= form.hidden_field :student_id, :value => @current_user.student.id %>
+        <% end %>
       </div>
 
       <div class="row">&nbsp;</div>
