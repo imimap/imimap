@@ -1,5 +1,11 @@
-start:
+# call this before start if you want a mock ldap
+set_env:
+	export RAILS_MASTER_KEY=asdfasfd
+	export LDAP=ALWAYS_RETURN_TRUE
+start: # start with db in container
 	docker-compose up -d
+start_db: # start with locally persisted db
+	docker-compose -f docker-compose-db.yml -f docker-compose.yml up -d
 down:
 	docker-compose down
 stop:
@@ -40,25 +46,6 @@ ssh_staging:
 prod_dump:
 	mkdir -p dumps
 	ssh deployer@imi-map.f4.htw-berlin.de "docker exec postgresql pg_dump -h localhost -U imi_map  imi_map_production" > dumps/imi-map-$(shell date +%Y-%m-%d).pgdump
-set_env:
-	export RAILS_MASTER_KEY=asdfasfd
-	export LDAP=ALWAYS_RETURN_TRUE
-start_db:
-	docker-compose -f docker-compose-db.yml -f docker-compose.yml up -d
-start_db_ldap:
-	# does not work, env variable needs to be set before calling make:
-	export LDAP=ALWAYS_RETURN_TRUE
-	docker-compose -f docker-compose-db.yml -f docker-compose.yml up -d
-start_dump: $(file)
-	rm -rf postgres
-	docker-compose -f docker-compose-db.yml -f docker-compose.yml up -d
-	cat $(file) | docker-compose exec -T postgresql psql --set ON_ERROR_STOP=on -h localhost -U imi_map imimap -f -
-	docker-compose exec imimap rails db:migrate
-import_dump: $(file)
-	docker-compose exec -T imimap rails db:drop
-	docker-compose exec -T imimap rails db:create
-	cat $(file) | docker-compose exec -T postgresql psql --set ON_ERROR_STOP=on -h localhost -U imi_map imimap -f -
-	docker-compose exec imimap rails db:migrate
 bash:
 	docker-compose exec imimap bash
 c:
