@@ -1,3 +1,6 @@
+# This crontab will be overwritten by the imimap deployment!
+# https://github.com/imimap/imimap/blob/master/ci-cd/deploy05-docker-deploy.sh
 # Delete old docker-containers, -volumes, -networks and -images
 0 5 * * 1 /usr/bin/docker system prune --all --force
+0,15,30,45 * * * * cd /home/deployer/htw-corona-update && /bin/bash update.sh
 # letzte Zeile muss kommentarzeile oder leer sein
