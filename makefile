@@ -28,6 +28,8 @@ travis:
 	docker-compose exec imimap rails db:seed
 # make file=dumps/dump-xs import
 import: $(file)
+	docker-compose down
+	docker-compose -f docker-compose-db.yml -f docker-compose.yml up -d
 	docker-compose exec imimap sh -c "rails db:drop ; rails db:create"
 	cat $(file) | docker-compose exec -T postgresql psql --set ON_ERROR_STOP=on -h localhost -U imi_map imimap -f -
 	docker-compose exec imimap rails db:migrate
