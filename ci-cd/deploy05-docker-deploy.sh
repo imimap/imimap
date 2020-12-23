@@ -37,7 +37,7 @@ echo "+++ sshing to $DEPLOYMENT_HOST and calling deployment-steps-on-production-
 if [ -z ${RAILS_MASTER_KEY} ]; then echo RAILS_MASTER_KEY missing ; else echo RAILS_MASTER_KEY exists; fi
 if [ -z ${LDAP} ]; then echo LDAP missing ; else echo LDAP exists; fi
 
-ssh  -i id_rsa_$DEPLOYMENT_ENVIRONMENT -o StrictHostKeyChecking=no $DEPLOMENT_USER@$DEPLOYMENT_HOST "export set TAG=$DEPLOYMENT_TAG; export set LDAP=${LDAP}; export set RAILS_MASTER_KEY=$RAILS_MASTER_KEY; export set GOOGLE_API_KEY=$GOOGLE_API_KEY; . ./deployment-steps-on-production-machine.sh"
+ssh  -i id_rsa_$DEPLOYMENT_ENVIRONMENT -o StrictHostKeyChecking=no $DEPLOMENT_USER@$DEPLOYMENT_HOST "export set TAG=$DEPLOYMENT_TAG; export set LDAP=${LDAP}; export set RAILS_MASTER_KEY=$RAILS_MASTER_KEY; export set GOOGLE_API_KEY=$GOOGLE_API_KEY; . ./deployment-steps-on-production-machine.sh" 2>&1
 exit_on_error $?
 
 echo "+++ copying crontab file file to $DEPLOYMENT_HOST"
