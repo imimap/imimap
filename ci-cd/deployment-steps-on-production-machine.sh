@@ -56,5 +56,6 @@ docker-compose -f docker-compose-production.yml exec imimap ./ci-cd/wait-for-db-
 exit_on_error $?
 
 echo "+++++ Database Migration"
-docker-compose -f docker-compose-production.yml exec imimap bundle exec rake db:migrate
+docker-compose -f docker-compose-production.yml exec imimap bundle exec rails db:migrate
 exit_on_error $?
+echo "+++++ done with deployment steps on production machene for TAG:[${TAG}]"
