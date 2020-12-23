@@ -55,9 +55,10 @@ echo "+++++ Wait for postgres"
 docker-compose -f docker-compose-production.yml exec imimap ./ci-cd/wait-for-db-connection.sh
 exit_on_error $?
 
-echo "+++++ MIGRATION_ON_DEPLOYMENT_NOT_WORKING"
+echo "+++++ Database Migration Status"
+docker-compose -f docker-compose-production.yml exec imimap rails db:migrate:status
 echo "+++++ Database Migration"
-docker-compose -f docker-compose-production.yml exec imimap bundle exec rails db:migrate
+docker-compose -f docker-compose-production.yml exec imimap rails db:migrate
 exit_on_error $?
 
 echo "+++++ done with deployment steps on production machene for TAG:[${TAG}]"
