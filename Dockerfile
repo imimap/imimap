@@ -1,4 +1,4 @@
-FROM ruby:2.6.3-alpine3.9
+FROM ruby:2.7.2-alpine3.12
 
 ENV APP_HOME /usr/src/app
 ENV IMIMAPS_ENVIRONMENT docker
@@ -12,7 +12,8 @@ COPY Gemfile* $APP_HOME/
 # general dependencies
 RUN apk update
 RUN set -ex \
-  && apk add --no-cache libpq imagemagick nodejs bash gcompat git
+  && apk add --no-cache libpq imagemagick nodejs bash gcompat git \
+  && gem install bundler:2.1.4
 
 # poltergeist, see https://github.com/Overbryd/docker-phantomjs-alpine/releases
 ENV PHANHOME /usr/share
@@ -24,13 +25,14 @@ RUN apk add --no-cache fontconfig curl && \
 
 # build dependencies
 RUN set -ex \
-   && apk add --no-cache --virtual builddependencies \
-       linux-headers \
-       libpq \
-       tzdata \
-       build-base \
-       postgresql-dev \
-       imagemagick-dev \
-   && bundle install \
-   && apk del builddependencies
+  && apk add --no-cache --virtual builddependencies \
+      linux-headers \
+      libpq \
+      tzdata \
+      build-base \
+      postgresql-dev \
+      imagemagick-dev \
+ && bundle install \
+ && apk del builddependencies
+
 CMD ["bundle", "exec", "unicorn", "--port", "80"]
