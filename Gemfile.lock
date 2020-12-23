@@ -1,29 +1,9 @@
 GIT
-  remote: https://github.com/imimap/axlsx_rails.git
-  revision: f391bef4d9cdcb07459bb79311e322dddcfb963f
-  tag: 0.5.2_rails6_patch
-  specs:
-    axlsx_rails (0.5.2)
-      actionpack (>= 3.1)
-      axlsx (>= 2.0.1)
-
-GIT
   remote: https://github.com/imimap/ruby-net-ldap
   revision: dd87f0ff3134edfec44b569c69855310545fcbea
   tag: v0.16.2.deprecation.removed
   specs:
     net-ldap (0.16.2)
-
-GIT
-  remote: https://github.com/randym/axlsx.git
-  revision: c8ac844572b25fda358cc01d2104720c4c42f450
-  ref: c8ac844
-  specs:
-    axlsx (2.1.0.pre)
-      htmlentities (~> 4.3.4)
-      mimemagic (~> 0.3)
-      nokogiri (>= 1.6.6)
-      rubyzip (>= 1.2.1)
 
 GEM
   remote: https://rubygems.org/
@@ -146,6 +126,14 @@ GEM
       image_processing (~> 1.1)
       mimemagic (>= 0.3.0)
       mini_mime (>= 0.1.3)
+    caxlsx (3.0.3)
+      htmlentities (~> 4.3, >= 4.3.4)
+      mimemagic (~> 0.3)
+      nokogiri (~> 1.10, >= 1.10.4)
+      rubyzip (>= 1.3.0, < 3)
+    caxlsx_rails (0.6.2)
+      actionpack (>= 3.1)
+      caxlsx (>= 3.0)
     climate_control (0.2.0)
     cliver (0.3.2)
     coderay (1.1.3)
@@ -437,8 +425,6 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin (~> 2.2)
-  axlsx!
-  axlsx_rails!
   bcrypt (~> 3)
   better_errors
   binding_of_caller
@@ -452,6 +438,8 @@ DEPENDENCIES
   capistrano
   capybara
   carrierwave
+  caxlsx
+  caxlsx_rails
   coffee-rails
   country_select
   d3-rails
