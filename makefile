@@ -54,3 +54,22 @@ docker_radical_cleanup:
 	docker-compose down
 	docker rm $(docker ps -qa)
 	docker rmi $(docker images -qa)
+# targets to test the production build. set a tag before running them:
+# export TAG=sometesttag
+# export DEPLOYMENT_TAG=
+# export RAILS_MASTER_KEY=this has to be the real master key.
+build_prod:
+	docker build -f Dockerfile.production --build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY}  -t imimap/imimap:${DEPLOYMENT_TAG} .
+start_prod: # start with db in container
+	docker-compose -f docker-compose-production.yml up -d
+start_db_prod: # start with locally persisted db
+	docker-compose -f docker-compose-db.yml -f docker-compose-production.yml up -d
+down_prod:
+	docker-compose -f docker-compose-production.yml down
+stop_prod:
+	docker-compose -f docker-compose-production.yml down --rmi all -v --remove-orphans
+restart_prod:
+	docker-compose -f docker-compose-production.yml down --rmi all -v --remove-orphans
+	docker-compose -f docker-compose-production.yml up -d
+rebuild_prod:
+	docker-compose -f docker-compose-production.yml up -d --build --force-recreate imimap

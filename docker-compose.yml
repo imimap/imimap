@@ -1,7 +1,7 @@
 version: '3'
 services:
   postgresql:
-    image: postgres:9.6.2-alpine
+    image: postgres:13.1-alpine
     container_name: postgresql-dev
     environment:
       - APPLICATION=imimap
@@ -26,12 +26,10 @@ services:
     volumes:
       - ./logc:/usr/src/app/log
       - .:/usr/src/app
+      - /usr/src/app/node_modules/
     links:
       - postgresql
     ports:
       - 8080:80
     stdin_open: true
-    tty: true  
-
-    #entrypoint:
-    #  - ci-cd/stall.sh
+    tty: true
