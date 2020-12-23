@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'rails', '~> 6.0.3'
+gem 'rails', '~> 6.1.0'
 
 gem 'carrierwave'
 gem 'caxlsx'
@@ -21,7 +21,7 @@ gem 'prawn-table'
 # see https://github.com/tzinfo/tzinfo/wiki/Resolving-TZInfo::DataSourceNotFound-Errors
 gem 'tzinfo-data'
 
-gem 'activeadmin', '~> 2.2'
+gem 'activeadmin', '~> 2.9'
 gem 'cancancan', '~> 3.0'
 gem 'devise', '>= 4.7.1'
 gem 'formtastic', '~> 3'
@@ -73,7 +73,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'rspec-mocks'
-  gem 'rspec-rails', '~> 3'
+  gem 'rspec-rails'
 
   gem 'capybara'
   gem 'launchy'
