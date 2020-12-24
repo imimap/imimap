@@ -15,7 +15,7 @@ COPY Gemfile* $APP_HOME/
 # general dependencies
 RUN apk update
 RUN set -ex \
-  && apk add --no-cache libpq imagemagick nodejs bash gcompat \
+  && apk add --no-cache libpq nodejs bash gcompat \
   && gem install bundler:2.1.4
 
 ADD . $APP_HOME
@@ -28,7 +28,6 @@ RUN set -ex \
   libpq \
   build-base \
   postgresql-dev \
-  imagemagick-dev \
   && bundle install --without development test \
   && mkdir nginx-assets \
   && bundle exec rails assets:precompile \

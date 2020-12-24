@@ -12,7 +12,7 @@ COPY Gemfile* $APP_HOME/
 # general dependencies
 RUN apk update
 RUN set -ex \
-  && apk add --no-cache libpq imagemagick nodejs bash gcompat git \
+  && apk add --no-cache libpq nodejs bash gcompat git \
   && gem install bundler:2.1.4
 
 # poltergeist, see https://github.com/Overbryd/docker-phantomjs-alpine/releases
@@ -31,7 +31,6 @@ RUN set -ex \
       tzdata \
       build-base \
       postgresql-dev \
-      imagemagick-dev \
  && bundle install \
  && apk del builddependencies
 
