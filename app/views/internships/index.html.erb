@@ -2,7 +2,7 @@
 <div id="form-block-wide">
 <h3><%= t('internships.index.title')%> <%= @semester.name %></h3>
 <%= form_tag(internships_path, method: "get") do %>
-<%= render 'semester_select' %>
+<%= render 'semester_select_with_status' %>
 <% end %>
 <br>
 <table class="table table-striped">

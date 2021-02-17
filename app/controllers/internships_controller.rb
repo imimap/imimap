@@ -22,8 +22,9 @@ class InternshipsController < ApplicationResourceController
   # GET /internships.csv
   def index
     @semester = semester_from_params(params)
-    @semester_options = semester_select_options
+    @status  =  status_from_params(params)
 
+    @semester_options = semester_select_options
     set_internship_dto
     @field_names = COMPLETE_INTERNSHIP_MEMBERS
     @header_names = COMPLETE_INTERNSHIP_MEMBERS.map do |m|
@@ -42,7 +43,7 @@ class InternshipsController < ApplicationResourceController
   end
 
   def set_internship_dto
-    internships = Internship.where(semester: @semester)
+    internships = Internship.where(semester: @semester )
     @internship_count = internships.count
     # make rails load the file
     InternshipsDto if @internship_count.zero?
@@ -168,7 +169,8 @@ class InternshipsController < ApplicationResourceController
 
   MODEL_ATTRIBUTES = %i[company_address_id complete_internship_id].freeze
   BASIC_ATTRIBUTES = %i[semester_id start_date end_date].freeze
-  STATE_ATTRIBUTES = %i[approved
+  STATE_ATTRIBUTES = %i[status
+                        approved
                         internship_state_id
                         contract_state_id
                         registration_state_id
