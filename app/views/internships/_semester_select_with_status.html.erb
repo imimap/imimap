@@ -16,26 +16,27 @@
   <div class="mt-1">
     <%= t 'internships.index.show' %>
   <%=
+  @registration_state.nil? ? registration_state_id = -1 : registration_state_id  = @registration_state.id
+  select_tag(:registration_state_id,
+               options_for_select(@registration_state_options, registration_state_id),
+               #onchange: "this.form.submit();",
+               class: 'chzn-select',
+               id: 'registration_state_select') %>
+  </div>
+
+
+</div>
+<div class="d-flex justify-content-center pb-3">
+  <div class="mt-1">
+    <%= t 'internships.index.show' %>
+  <%=
   @internship_state.nil? ? state_id = -1 : state_id = @internship_state.id
   select_tag(:internship_state_id,
                #raw("<option>alle</option><option>Bestanden</option><option>Akzeptiert</option><option>nicht Akzeptiert</option>"),
                options_for_select(@internship_state_options, state_id),
                #onchange: "this.form.submit();",
                class: 'chzn-select',
-               id: 'status_select') %>
+               id: 'internship_state_select') %>
   </div>
-</div>
-<div class="d-flex justify-content-center pb-3">
-  <div class="mt-1">
-    <%= t 'internships.index.show' %>
-  <%=
-  @registration_state.nil? ? registration_state_id = 6 : registration_state_id  = @registration_state.id
-  select_tag(:registration_state_id,
-               options_for_select(@registration_state_options, state_id),
-               #onchange: "this.form.submit();",
-               class: 'chzn-select',
-               id: 'status_select') %>
-  </div>
-  <%= submit_tag t('internships.index.select'), class: "btn btn-sm btn-outline-success ml-2" %>
-
+    <%= submit_tag t('internships.index.select'), class: "btn btn-sm btn-outline-success ml-2" %>
 </div>

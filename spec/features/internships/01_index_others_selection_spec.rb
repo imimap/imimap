@@ -17,7 +17,8 @@ describe 'internship - index selection' do
     [@internship1, @internship2].each do |internship|
       expect(page).not_to have_content(internship.start_date)
       expect(page).not_to have_content(internship.company_address.country_name)
-      expect(page).not_to have_content(internship.internship_state.name)
+      #expect(page).to have_content(task.title, count: 1)
+      expect(page).to have_content(internship.internship_state.name, count: 1)
     end
   end
   it 'semester can be selected' do
