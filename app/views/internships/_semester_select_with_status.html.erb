@@ -6,25 +6,36 @@
   semester_id = option_is_all ? -1 :  @semester.id
   select_tag(:semester_id,
                options_for_select(@semester_options,semester_id),
-               onchange: "this.form.submit();",
+               #onchange: "this.form.submit();",
                class: 'chzn-select',
                id: 'semester_select') %>
   </div>
-  <%= submit_tag t('internships.index.select'), class: "btn btn-sm btn-outline-success ml-2" %>
 
 </div>
 <div class="d-flex justify-content-center pb-3">
   <div class="mt-1">
     <%= t 'internships.index.show' %>
   <%=
-  option_is_all = !(@semester_options_all.nil? || !@semester_options_all)
-  semester_id = option_is_all ? -1 :  @semester.id
-  select_tag(:status,
-               raw("<option>alle</option><option>Bestanden</option><option>Akzeptiert</option><option>nicht Akzeptiert</option>"),
-               onchange: "this.form.submit();",
+  @internship_state.nil? ? state_id = -1 : state_id = @internship_state.id
+  select_tag(:internship_state_id,
+               #raw("<option>alle</option><option>Bestanden</option><option>Akzeptiert</option><option>nicht Akzeptiert</option>"),
+               options_for_select(@internship_state_options, state_id),
+               #onchange: "this.form.submit();",
+               class: 'chzn-select',
+               id: 'status_select') %>
+  </div>
+</div>
+<div class="d-flex justify-content-center pb-3">
+  <div class="mt-1">
+    <%= t 'internships.index.show' %>
+  <%=
+  @registration_state.nil? ? registration_state_id = 6 : registration_state_id  = @registration_state.id
+  select_tag(:registration_state_id,
+               options_for_select(@registration_state_options, state_id),
+               #onchange: "this.form.submit();",
                class: 'chzn-select',
                id: 'status_select') %>
   </div>
   <%= submit_tag t('internships.index.select'), class: "btn btn-sm btn-outline-success ml-2" %>
-  <%= debug(@status) %>
+
 </div>

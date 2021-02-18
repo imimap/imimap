@@ -13,20 +13,21 @@ module CompleteInternshipsHelper
     end
   end
   def status_from_params(params)
+    hash = {}
     if params && params['status']
       status = params['status']
-      if status.equal?("Bestanden")
-        hash = { :approved => true, :completed => true }
-      elseif status.equal?("alle")
+      if status == "Bestanden"
+        internship_status = InternshipState.find(1)
+        hash = { :internship_state =>  internship_status }
+      elsif status == "alle"
         hash = {}
-      elseif status.equal?("Akzeptiert")
-      hash = { :approved => true, :completed => false }
+      elsif status == "Akzeptiert"
+        hash = { :approved => true}
       else
-      hash = { :approved => false, :completed => false }
+        hash = { :approved => false }
       end
-      return hash
     end
-
+    return hash
   end
   def semester_from_params(params)
     if params && params['semester_id'] && params['semester_id'] != '-1'
@@ -35,7 +36,21 @@ module CompleteInternshipsHelper
       Semester.current
     end
   end
+  def registration_state_from_params(params)
+    if params && params['registration_state_id'] && params['registration_state_id'] != '-1'
+      RegistrationState.find(params['registration_state_id'])
+    else
+      return nil
+    end
+  end
+  def internship_state_from_params(params)
+    if params && params['internship_state_id'] && params['internship_state_id'] != '-1'
+      InternshipState.find(params['internship_state_id'])
+    else
+      return nil
+    end
 
+  end
   def company_address?(internship)
     if internship.company_address.nil?
       false
