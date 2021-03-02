@@ -12,23 +12,7 @@ module CompleteInternshipsHelper
       semester
     end
   end
-  def status_from_params(params)
-    hash = {}
-    if params && params['status']
-      status = params['status']
-      if status == "Bestanden"
-        internship_status = InternshipState.find(1)
-        hash = { :internship_state =>  internship_status }
-      elsif status == "alle"
-        hash = {}
-      elsif status == "Akzeptiert"
-        hash = { :approved => true}
-      else
-        hash = { :approved => false }
-      end
-    end
-    return hash
-  end
+
   def semester_from_params(params)
     if params && params['semester_id'] && params['semester_id'] != '-1'
       Semester.find(params['semester_id'])
