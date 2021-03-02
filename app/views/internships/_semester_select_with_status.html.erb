@@ -10,11 +10,11 @@
                class: 'chzn-select',
                id: 'semester_select') %>
   </div>
-
+<%= submit_tag t('internships.index.select'), class: "btn btn-sm btn-outline-success ml-2" %>
 </div>
 <div class="d-flex justify-content-center pb-3">
   <div class="mt-1">
-    Zeige mir praktika im Registrationstatus:
+    Zeige mir praktika mit Registrationstatus:
   <%=
   @registration_state.nil? ? registration_state_id = -1 : registration_state_id  = @registration_state.id
   select_tag(:registration_state_id,
@@ -28,7 +28,7 @@
 </div>
 <div class="d-flex justify-content-center pb-3">
   <div class="mt-1">
-    Zeige mir Praktika im Status:
+    Zeige mir Praktika mit dem Status:
   <%=
   @internship_state.nil? ? state_id = -1 : state_id = @internship_state.id
   select_tag(:internship_state_id,
@@ -38,5 +38,6 @@
                class: 'chzn-select',
                id: 'internship_state_select') %>
   </div>
-    <%= submit_tag t('internships.index.select'), class: "btn btn-sm btn-outline-success ml-2" %>
+
+
 </div>
