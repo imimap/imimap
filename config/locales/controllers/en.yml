@@ -84,8 +84,8 @@ en:
     index:
       title: "Internships in"
       show: 'Show me the internships of'
-      show_registration_state: 'Show me the internships with the registration state'
-      show_internship_state: 'Show me the internships with the internship state'
+      show_registration_state: 'with the registration state '
+      show_internship_state: 'and the internship state '
       select: 'Select'
       export:
         csv: 'CSV'
