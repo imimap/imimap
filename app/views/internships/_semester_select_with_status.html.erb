@@ -14,7 +14,7 @@
 </div>
 <div class="d-flex justify-content-center pb-3">
   <div class="mt-1">
-    Zeige mir praktika mit Registrationstatus:
+    <%= t 'internships.index.show_registration_state' %>
   <%=
   @registration_state.nil? ? registration_state_id = -1 : registration_state_id  = @registration_state.id
   select_tag(:registration_state_id,
@@ -28,7 +28,7 @@
 </div>
 <div class="d-flex justify-content-center pb-3">
   <div class="mt-1">
-    Zeige mir Praktika mit dem Status:
+    <%= t 'internships.index.show_internship_state' %>
   <%=
   @internship_state.nil? ? state_id = -1 : state_id = @internship_state.id
   select_tag(:internship_state_id,
