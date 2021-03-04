@@ -80,6 +80,8 @@ de:
     index:
       title: "Praktika im"
       show: 'Zeige mir Praktika im'
+      show_registration_state: 'mit dem Registrationstatus '
+      show_internship_state: 'und dem Praktikumsstatus '
       select: 'anzeigen'
       export:
         csv: 'CSV'

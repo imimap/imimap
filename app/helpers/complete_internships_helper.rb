@@ -20,7 +20,21 @@ module CompleteInternshipsHelper
       Semester.current
     end
   end
+  def registration_state_from_params(params)
+    if params && params['registration_state_id'] && params['registration_state_id'] != '-1'
+      RegistrationState.find(params['registration_state_id'])
+    else
+      return nil
+    end
+  end
+  def internship_state_from_params(params)
+    if params && params['internship_state_id'] && params['internship_state_id'] != '-1'
+      InternshipState.find(params['internship_state_id'])
+    else
+      return nil
+    end
 
+  end
   def company_address?(internship)
     if internship.company_address.nil?
       false
