@@ -2,6 +2,8 @@ language: generic
 sudo: required
 services:
 - docker
+before_install:
+- sudo apt-get -y install jq
 before_script:
 - sudo /etc/init.d/postgresql stop
 script:

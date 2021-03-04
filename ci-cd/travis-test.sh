@@ -6,7 +6,13 @@ echo "$0: starting build for IMIMAPS_ENVIRONMENT ${IMIMAPS_ENVIRONMENT}"
 
   echo "--------- sudo netstat -nlp | grep 5432"
   sudo netstat -nlp | grep 5432
+
+  export DOCKER_API_TOKEN=$(curl "https://auth.docker.io/token?service=registry.docker.io&scope=repository:imimap/imimap:pull" | jq -r .token)
+  curl --head -H "Authorization: Bearer $DOCKER_API_TOKEN" https://registry-1.docker.io/v2/imimap/imimap/manifests/latest
+
   docker-compose up -d
+
+  curl --head -H "Authorization: Bearer $DOCKER_API_TOKEN" https://registry-1.docker.io/v2/imimap/imimap/manifests/latest
 
   if [ $? != 0 ]; then
     echo "ERROR: docker-compose up -d FAILED"
