@@ -417,90 +417,90 @@ describe 'Internship search' do
         context 'and has not used its 12 slots'
         it 'shows one random result not older than 2 years and increases them
         used slot size' do
-        visit start_search_path
-        click_on t('search.buttons.random')
-        expect(page).to have_content(
-          t('search.results_found.start').to_s +
-          ' ' + 1.to_s + ' ' +
-          t('search.results_found.finish').to_s
-        )
-        expect(page).to have_content(
-          @internship.company_address.company.name
-        )
-        expect(page).not_to have_content(
-          @internship2.company_address.company.name
-        )
-        expect(UserCanSeeInternship.previous_associated_internships(
-          user: @current_user
-        ).count).to eql(1)
+          visit start_search_path
+          click_on t('search.buttons.random')
+          expect(page).to have_content(
+            t('search.results_found.start').to_s +
+            ' ' + 1.to_s + ' ' +
+            t('search.results_found.finish').to_s
+          )
+          expect(page).to have_content(
+            @internship.company_address.company.name
+          )
+          expect(page).not_to have_content(
+            @internship2.company_address.company.name
+          )
+          expect(UserCanSeeInternship.previous_associated_internships(
+            user: @current_user
+          ).count).to eql(1)
+        end
+        context 'and has used its 12 slots'
+        it 'shows a modal with a warning and on dismiss returns to the page
+        with the previous search results' do
+          20.times { create_internship_with_pl }
+          visit start_search_path
+          click_on t('search.buttons.search')
+          click_on t('search.modal.confirm')
+          visit start_search_path
+          click_on t('search.buttons.random')
+          click_on t('search.modal.return_to_search_results')
+          expect(page).to have_content(
+            12.to_s + t('search.previous_results').to_s
+          )
+          expect(page).to have_content(
+            @internship.company_address.company.name
+          )
+        end
       end
-      context 'and has used its 12 slots'
-      it 'shows a modal with a warning and on dismiss returns to the page
-      with the previous search results' do
-      20.times { create_internship_with_pl }
-      visit start_search_path
-      click_on t('search.buttons.search')
-      click_on t('search.modal.confirm')
-      visit start_search_path
-      click_on t('search.buttons.random')
-      click_on t('search.modal.return_to_search_results')
-      expect(page).to have_content(
-        12.to_s + t('search.previous_results').to_s
-      )
-      expect(page).to have_content(
-        @internship.company_address.company.name
-      )
-    end
-  end
 
-  describe 'admin view for search' do
-    before :each do
-      20.times { create_internship_with_pl }
-      @current_user = login_as_admin
-      visit start_search_path
-    end
-    context 'admin has no search limitations' do
-      it 'shows no warning for search results that are more than 6' do
-        click_on t('search.buttons.search')
-        expect(page).to have_content(
-          t('search.results_found.start').to_s +
-          ' ' + 20.to_s + ' ' +
-          t('search.results_found.finish').to_s
-        )
+      describe 'admin view for search' do
+        before :each do
+          20.times { create_internship_with_pl }
+          @current_user = login_as_admin
+          visit start_search_path
+        end
+        context 'admin has no search limitations' do
+          it 'shows no warning for search results that are more than 6' do
+            click_on t('search.buttons.search')
+            expect(page).to have_content(
+              t('search.results_found.start').to_s +
+              ' ' + 20.to_s + ' ' +
+              t('search.results_found.finish').to_s
+            )
+          end
+          it 'shows no warning when we had 12 previous results and create a
+          new search' do
+            click_on t('search.buttons.search')
+            visit start_search_path
+            click_on t('search.buttons.search')
+            expect(page).to have_content(
+              t('search.results_found.start').to_s +
+              ' ' + 20.to_s + ' ' +
+              t('search.results_found.finish').to_s
+            )
+          end
+          it 'shows no warning when we had 12 previous results and create
+          a random search' do
+            click_on t('search.buttons.random')
+            expect(page).to have_content(
+              t('search.results_found.start').to_s +
+              ' ' + 1.to_s + ' ' +
+              t('search.results_found.finish').to_s
+            )
+            expect(page).to have_content(
+              @internship.company_address.company.name
+            )
+          end
+        end
+        context 'admin has a link to the internship in active admin' do
+          it 'shows a link on the detail card' do
+            click_on t('search.buttons.search')
+            expect(page).to have_content(
+              t('search.headers.active_admin_link').to_s
+            )
+          end
+        end
       end
-      it 'shows no warning when we had 12 previous results and create a
-      new search' do
-      click_on t('search.buttons.search')
-      visit start_search_path
-      click_on t('search.buttons.search')
-      expect(page).to have_content(
-        t('search.results_found.start').to_s +
-        ' ' + 20.to_s + ' ' +
-        t('search.results_found.finish').to_s
-      )
     end
-    it 'shows no warning when we had 12 previous results and create
-    a random search' do
-    click_on t('search.buttons.random')
-    expect(page).to have_content(
-      t('search.results_found.start').to_s +
-      ' ' + 1.to_s + ' ' +
-      t('search.results_found.finish').to_s
-    )
-    expect(page).to have_content(
-      @internship.company_address.company.name
-    )
   end
-end
-context 'admin has a link to the internship in active admin' do
-  it 'shows a link on the detail card' do
-    click_on t('search.buttons.search')
-    expect(page).to have_content(
-      t('search.headers.active_admin_link').to_s
-    )
-  end
-end
-end
-end
-end
 end
