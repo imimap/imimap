@@ -9,12 +9,19 @@ Each build pulls various images from docker hub, this is done unauthorized.
 Step 1: Build in output of limits in ci-cd/travis-test.sh as described in
 https://docs.docker.com/docker-hub/download-rate-limit/
 
+Pricing and subscriptions
+https://www.docker.com/pricing
 
 RateLimit-Limit: 100;w=21600
 RateLimit-Remaining: 65;w=21600
 
 RateLimit-Limit: 100;w=21600
 RateLimit-Remaining: 68;w=21600
+
+
+
+TOKEN=$(curl "https://auth.docker.io/token?service=registry.docker.io&scope=repository:ratelimitpreview/test:pull" | jq -r .token)
+
 
 ## Tools/New Dependency
 
@@ -27,6 +34,7 @@ Local installation on MacOS:
 
 ### JWT
 
+Command line utility for JWT:
 https://github.com/mike-engel/jwt-cli
 
 Local installation on MacOS:
