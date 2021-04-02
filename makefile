@@ -75,3 +75,5 @@ restart_prod:
 	docker-compose -f docker-compose-production.yml up -d
 rebuild_prod:
 	docker-compose -f docker-compose-production.yml up -d --build --force-recreate imimap
+loc_db_test:
+	 rails db:drop db:create db:migrate RAILS_ENV=test

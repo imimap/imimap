@@ -12,7 +12,12 @@ module ImiMaps
   # The Rails Application.
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    # puts "config.load_defaults 5.0"
     config.load_defaults 5.0
+    # this overrides things set in new_framework_defaults.rb - thus this ugly hack:
+    Rails.application.config.active_record.belongs_to_required_by_default = false
+    config.use_transactional_tests = true
+    # TBD: needs to be cleaned up
 
     # Settings in config/environments/* take precedence over those specified
     # here.

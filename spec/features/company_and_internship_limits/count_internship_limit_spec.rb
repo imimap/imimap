@@ -172,6 +172,7 @@ describe 'Internship limit' do
             select t('search.is_paid'), from: 'search_paid'
             click_on t('search.buttons.search')
             click_on t('search.modal.confirm')
+            save_and_open_page
             expect(page).to have_content(
               t('search.results_found.start').to_s +
               ' ' + 7.to_s + ' ' +
