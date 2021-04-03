@@ -22,15 +22,15 @@ module CompleteInternshipsHelper
   end
 
   def registration_state_from_params(params)
-    if params && params['registration_state_id'] && params['registration_state_id'] != '-1'
-      RegistrationState.find(params['registration_state_id'])
-    end
+    return unless params && params['registration_state_id'] && params['registration_state_id'] != '-1'
+
+    RegistrationState.find(params['registration_state_id'])
   end
 
   def internship_state_from_params(params)
-    if params && params['internship_state_id'] && params['internship_state_id'] != '-1'
-      InternshipState.find(params['internship_state_id'])
-    end
+    return unless params && params['internship_state_id'] && params['internship_state_id'] != '-1'
+
+    InternshipState.find(params['internship_state_id'])
   end
 
   def company_address?(internship)

@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe InternshipsDtoHelper, type: :helper do
   before :each do
-    @internship = create :internship_1
+    @internship = create :internship01
   end
   describe 'internship_state' do
     it 'lists the individual states' do

@@ -26,11 +26,11 @@ describe 'Company Suggestion' do
     it 'should show a limited number of companies altogether' do
       create(:semester)
       companies = [
-        create(:company_1),
-        create(:company_2),
-        create(:company_3),
-        create(:company_4),
-        create(:company_5),
+        create(:company01),
+        create(:company02),
+        create(:company03),
+        create(:company04),
+        create(:company05),
         create(:company_is24)
       ]
 

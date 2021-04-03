@@ -42,7 +42,7 @@ describe 'ActiveAdmin Student / Index' do
   end
 
   it 'link to internship works for student with 2 internships' do
-    create(:internship_2, student: @student)
+    create(:internship02, student: @student)
     visit admin_students_path
     @student.internships.map(&:id).each do |internship_id|
       click_on "internship-#{internship_id}"

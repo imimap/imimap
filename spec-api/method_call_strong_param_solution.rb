@@ -7,11 +7,12 @@
 # and especially
 # https://github.com/activeadmin/activeadmin/blob/master/docs/
 # 2-resource-customization.md#setting-up-strong-parameters
+NESTED_ATTRIBUTES = { programming_language_ids: [] }.freeze
 describe 'method call with array and hash' do
   def the_method(*params)
     params
   end
-  NESTED_ATTRIBUTES = { programming_language_ids: [] }.freeze
+
   def method2_returning_params
     a = [1, 2]
     a << NESTED_ATTRIBUTES

@@ -13,7 +13,7 @@ describe 'Internship search' do
 
   def create_internship_older_than_2yrs
     @internship2 = create(
-      :internship_1, start_date: Date.today.to_date - 3.years
+      :internship01, start_date: Date.today.to_date - 3.years
     )
   end
 
@@ -135,7 +135,7 @@ describe 'Internship search' do
       context 'displays' do
         context 'selected filters' do
           before :each do
-            @internship = create(:internship_2)
+            @internship = create(:internship02)
             @current_user = login_as_student
           end
           it '- none selected before search' do
@@ -206,7 +206,7 @@ describe 'Internship search' do
               payment_state_id: 6
             )
             internship1 = create(
-              :internship_1,
+              :internship01,
               start_date: Date.today.to_date - 7.days,
               payment_state_id: 5
             )
@@ -228,11 +228,11 @@ describe 'Internship search' do
 
           it 'matches location' do
             internship = create(
-              :internship_1,
+              :internship01,
               start_date: Date.today.to_date - 7.days
             )
             internship1 = create(
-              :internship_2,
+              :internship02,
               start_date: Date.today.to_date - 7.days
             )
             login_as_student

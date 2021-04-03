@@ -28,7 +28,7 @@ describe 'Internship limit' do
           end
           10.times do
             create(
-              :internship_1,
+              :internship01,
               start_date: Date.today.to_date - 7.days,
               payment_state_id: 6 # 6 equals paid
             )
@@ -50,7 +50,7 @@ describe 'Internship limit' do
         context 'when making one query' do
           it 'with one result' do
             internship = create(
-              :internship_1,
+              :internship01,
               start_date: Date.today.to_date - 7.days,
               payment_state_id: 5 # 5 equals uncharted
             )
@@ -112,7 +112,7 @@ describe 'Internship limit' do
           it 'with same results' do
             5.times do
               create(
-                :internship_1,
+                :internship01,
                 start_date: Date.today.to_date - 7.days,
                 payment_state: nil,
                 salary: -5
@@ -141,7 +141,7 @@ describe 'Internship limit' do
           it 'with different results' do
             5.times do
               create(
-                :internship_1,
+                :internship01,
                 start_date: Date.today.to_date - 7.days,
                 payment_state: nil,
                 salary: -5

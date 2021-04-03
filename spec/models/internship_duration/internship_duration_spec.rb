@@ -2,12 +2,11 @@
 
 require 'rails_helper'
 require_relative './dummy_internship'
+TC = Struct.new(:message, :internship, :weeks, :validation)
 
 RSpec.describe InternshipDuration, type: :model do
   @semester_old_stupo = Semester.for_date(Date.new(2019, 4, 1))
   @semester_new_stupo = Semester.for_date(Date.new(2020, 4, 1))
-
-  TC = Struct.new(:message, :internship, :weeks, :validation)
 
   testcases = [
     TC.new('for an internship with 2 weeks',

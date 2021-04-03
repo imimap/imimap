@@ -12,7 +12,6 @@ class PostponementsController < ApplicationResourceController
   end
 
   def destroy
-    byebug
     @postponement.destroy
     redirect_to postponements_url,
                 notice: 'Postponement was successfully destroyed.'
@@ -37,14 +36,9 @@ class PostponementsController < ApplicationResourceController
 
   def create_respond(success:, postponement:)
     respond_to do |format|
-      if success && postponement.complete_internship
+      if success
         format.html do
-          redirect_to postponement.complete_internship,
-                      notice: I18n.t('postponements.successfully_created')
-        end
-      elsif success
-        format.html do
-          redirect_to no_complete_internship_path,
+          redirect_to postponement.complete_internship || no_complete_internship_path,
                       notice: I18n.t('postponements.successfully_created')
         end
       else

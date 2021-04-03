@@ -34,7 +34,7 @@ FactoryBot.define do
     # end
     comment { 'this says something about the company' }
   end
-  factory :company_3, class: Company do
+  factory :company03, class: Company do
     name { 'Just a name' }
     number_employees { 500 }
     industry { 'IT' }
@@ -43,14 +43,14 @@ FactoryBot.define do
     excluded_from_search { false }
     import_id { 2 }
     after(:build) do |company, _evaluator|
-      create(:company_address_2, company: company)
+      create(:company_address02, company: company)
     end
     # after(:create) do |company, _evaluator|
     #  create(:company_address_is24, company: company)
     # end
     comment { 'this says something about the company' }
   end
-  factory :company_4, class: Company do
+  factory :company04, class: Company do
     name { 'Another One' }
     number_employees { 500 }
     industry { 'IT' }
@@ -59,14 +59,14 @@ FactoryBot.define do
     excluded_from_search { false }
     import_id { 2 }
     after(:build) do |company, _evaluator|
-      create(:company_address_1, company: company)
+      create(:company_address01, company: company)
     end
     # after(:create) do |company, _evaluator|
     #  create(:company_address_is24, company: company)
     # end
     comment { 'this says something about the company' }
   end
-  factory :company_5, class: Company do
+  factory :company05, class: Company do
     name { 'Fifth Avenue' }
     number_employees { 500 }
     industry { 'IT' }
@@ -75,14 +75,14 @@ FactoryBot.define do
     excluded_from_search { false }
     import_id { 2 }
     after(:build) do |company, _evaluator|
-      create(:company_address_1, company: company)
+      create(:company_address01, company: company)
     end
     # after(:create) do |company, _evaluator|
     #  create(:company_address_is24, company: company)
     # end
     comment { 'this says something about the company' }
   end
-  factory :company_1, class: Company do
+  factory :company01, class: Company do
     name { 'Company 1' }
     number_employees { 500 }
     industry { 'IT' }
@@ -91,15 +91,15 @@ FactoryBot.define do
     excluded_from_search { false }
     import_id { 2 }
     after(:build) do |company, _evaluator|
-      create(:company_address_1, company: company)
+      create(:company_address01, company: company)
     end
     #  after(:create) do |company, _evaluator|
-    #    create(:company_address_1, company: company)
+    #    create(:company_address01, company: company)
     #  end
     comment { 'this says something about the company' }
   end
 
-  factory :company_2, class: Company do
+  factory :company02, class: Company do
     name { 'Company 2' }
     number_employees { 500 }
     industry { 'IT' }
@@ -108,10 +108,10 @@ FactoryBot.define do
     excluded_from_search { false }
     import_id { 2 }
     after(:build) do |company, _evaluator|
-      create(:company_address_2, company: company)
+      create(:company_address02, company: company)
     end
     #  after(:create) do |company, _evaluator|
-    #    create(:company_address_2, company: company)
+    #    create(:company_address02, company: company)
     #  end
     comment { 'this says something about the company' }
   end

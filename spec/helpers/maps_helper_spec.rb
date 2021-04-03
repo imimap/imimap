@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe MapsHelper, type: :helper do
   it 'generates data for leaflet' do
     @internship = create(:internship)
-    # cas = [ca1 = create(:company_address_1), ca2 = create(:company_address_2)]
+    # cas = [ca1 = create(:company_address01), ca2 = create(:company_address02)]
     cas =
       Internship.joins(:company_address)
                 .where.not(company_addresses: { latitude: nil })
