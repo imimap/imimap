@@ -18,7 +18,7 @@ RSpec.describe InternshipOffersController, type: :controller do
 
     it 'assigns @offers' do
       get :index
-      expect(assigns(:offers)).to eq([@internship_offer])
+      expect(assigns(:offers)).to eq(InternshipOffer.all)
     end
   end
 

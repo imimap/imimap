@@ -10,9 +10,7 @@ FactoryBot.define do
     role { :admin }
   end
   factory :admin, class: User do
-    sequence :email do |n|
-      "admin#{n}@htw-berlin.de"
-    end
+    sequence(:email) { |n| "admin#{n}@htw-berlin.de" }
     password { 'geheim12' }
     password_confirmation { 'geheim12' }
     publicmail { true }
