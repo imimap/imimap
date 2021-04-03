@@ -248,14 +248,28 @@ describe 'Internship search' do
               ' ' + 1.to_s + ' ' +
               t('search.results_found.finish').to_s
             )
+            # This was way too brittle - "Berlin" turned up in other edges of the page
+            # this sort of functionality test should be on controller level for the search.
+            # expect(page).to have_content(
+            #   internship1.company_address.city,
+            #   count: 3
+            # )
+            # expect(page).to have_content(
+            #   internship.company_address.city,
+            #   count: 1
+            # )
+            save_and_open_page
+            # internship1 should be found
             expect(page).to have_content(
-              internship1.company_address.city,
-              count: 3
-            )
-            expect(page).to have_content(
-              internship.company_address.city,
-              count: 1
-            )
+               internship1.company_address.street,
+               count: 1
+             )
+             # internship should not be found
+              expect(page).to have_content(
+                internship.company_address.street,
+                count: 0
+              )
+
           end
 
           it 'match orientation' do
