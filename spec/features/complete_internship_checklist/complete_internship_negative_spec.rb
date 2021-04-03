@@ -10,7 +10,7 @@ describe 'Complete Internship' do
         email = 's0987654@htw-berlin.de'
         fill_in 'user_email', with: email
         fill_in 'user_password', with: 'geheim13'
-        click_on('Log in')
+        click_on 'login_button'
         User.find_by(email: email)
       end
       before :each do

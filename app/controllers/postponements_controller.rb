@@ -12,6 +12,7 @@ class PostponementsController < ApplicationResourceController
   end
 
   def destroy
+    byebug
     @postponement.destroy
     redirect_to postponements_url,
                 notice: 'Postponement was successfully destroyed.'
