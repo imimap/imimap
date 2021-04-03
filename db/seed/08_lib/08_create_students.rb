@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # if users are created, the password is geheim12
 require_relative './08_lib'
 

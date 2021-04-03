@@ -9,16 +9,16 @@ describe 'internship - index selection' do
     @semester1 = Semester.for_date('2015-05-08')
     @semester2 = Semester.for_date('2016-11-08')
 
-    @registration_state1 = create(:registration_state, name: "accepted")
-    @registration_state2 = create(:registration_state, name: "in examination office")
+    @registration_state1 = create(:registration_state, name: 'accepted')
+    @registration_state2 = create(:registration_state, name: 'in examination office')
 
-    @internship_state1 = create(:internship_state, name: "passed")
-    @internship_state2 = create(:internship_state, name: "the student still has to pass the following courses")
+    @internship_state1 = create(:internship_state, name: 'passed')
+    @internship_state2 = create(:internship_state, name: 'the student still has to pass the following courses')
 
     @internship1 = create(:internship_1, semester: @semester1, registration_state: @registration_state1,
-    internship_state:  @internship_state1)
+                                         internship_state: @internship_state1)
     @internship2 = create(:internship_2, semester: @semester2, registration_state: @registration_state2,
-    internship_state: @internship_state2)
+                                         internship_state: @internship_state2)
   end
   it 'semester can be selected' do
     visit internships_path

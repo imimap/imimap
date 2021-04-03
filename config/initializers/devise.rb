@@ -7,7 +7,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with
   # default "from" parameter.
-  config.mailer_sender = 'please-change-me@example.com'
+  config.mailer_sender = 'praktimi@htw-berlin.de'
   # TDB: create really secret key and handle it better than putting it in a
   # public repository.
   config.secret_key = '1e5f3eecd9af2a0eae15c0e873aa8b47e7e235a951cb'

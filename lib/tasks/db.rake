@@ -10,8 +10,8 @@ namespace :db do
     Rake::Task['db:seed'].execute
   end
   desc 'add test students to existing db'
-    task addSome: :environment do
-      #load '../../db/seed/08_lib/08_create_students.rb'
-      load 'db/seed/08_lib/08_create_students.rb'
-    end
+  task addSome: :environment do
+    # load '../../db/seed/08_lib/08_create_students.rb'
+    load 'db/seed/08_lib/08_create_students.rb'
+  end
 end

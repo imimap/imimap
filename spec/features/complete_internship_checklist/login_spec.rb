@@ -18,7 +18,7 @@ describe 'Student Login' do
           visit root_path
           fill_in 'user_email', with: @user.email
           fill_in 'user_password', with: @user.password
-          click_on('Log in')
+          click_on 'login_button'
           expect(page).to have_content I18n.t('devise.sessions.signed_in')
         end
 
@@ -26,7 +26,7 @@ describe 'Student Login' do
           visit root_path
           fill_in 'user_email', with: @user.email
           fill_in 'user_password', with: @user.password
-          click_on('Log in')
+          click_on 'login_button'
           visit student_path(id: @user.student_id)
           expect(page).to have_content(@user.enrolment_number)
         end

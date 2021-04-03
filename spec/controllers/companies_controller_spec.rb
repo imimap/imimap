@@ -10,7 +10,7 @@ RSpec.describe CompaniesController, type: :controller do
   end
 
   describe 'GET #index' do
-    before :each do
+    before :example do
       @company = create :company
       @company2 = create :company_is24
     end
@@ -28,12 +28,14 @@ RSpec.describe CompaniesController, type: :controller do
 
     it 'assigns @companies' do
       get :index
-      expect(assigns(:companies)).to eq([@company, @company2])
+      #  expect(assigns(:companies).size).to eq(2)
+      #  expect(assigns(:companies)).to eq([@company, @company2])
+      expect(assigns(:companies)).to eq(Company.all)
     end
   end
 
   describe 'GET #show' do
-    before :each do
+    before :example do
       @company = create :company
       @company2 = create :company_is24
     end

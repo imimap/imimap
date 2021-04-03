@@ -23,16 +23,16 @@ class InternshipsController < ApplicationResourceController
   def index
     @search_query = {}
     @semester = semester_from_params(params)
-    @internship_state  =  internship_state_from_params(params)
+    @internship_state = internship_state_from_params(params)
     @registration_state = registration_state_from_params(params)
     @search_query[:internship_state] = @internship_state unless @internship_state.nil?
     @search_query[:semester] = @semester
     @search_query[:registration_state] = @registration_state unless @registration_state.nil?
     @semester_options = semester_select_options
     @internship_state_options = InternshipState.all.map { |s| [s.name, s.id] }
-    @internship_state_options << ["alle", -1]
+    @internship_state_options << ['alle', -1]
     @registration_state_options = RegistrationState.all.map { |s| [s.name, s.id] }
-    @registration_state_options << ["alle", -1]
+    @registration_state_options << ['alle', -1]
     set_internship_dto
     @field_names = COMPLETE_INTERNSHIP_MEMBERS
     @header_names = COMPLETE_INTERNSHIP_MEMBERS.map do |m|
@@ -51,7 +51,7 @@ class InternshipsController < ApplicationResourceController
   end
 
   def set_internship_dto
-    internships = Internship.where( @search_query )
+    internships = Internship.where(@search_query)
     @internship_count = internships.count
     # make rails load the file
     InternshipsDto if @internship_count.zero?

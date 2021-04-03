@@ -16,7 +16,7 @@ class Semester < ApplicationRecord
   end
 
   def self.for_date(date)
-    date = Date.iso8601(date) if date.class == String
+    date = Date.iso8601(date) if date.instance_of?(String)
     sid = SemesterHelper.date2sid(date)
     s = Semester.where(sid: sid).first
     return s unless s.nil?

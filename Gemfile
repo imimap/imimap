@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'rails', '~> 6.1.0'
+gem 'rails', '~> 6.1.3'
 
 gem 'carrierwave'
 gem 'caxlsx'
@@ -26,7 +26,6 @@ gem 'devise', '>= 4.7.1'
 gem 'formtastic', '~> 3'
 # database gem
 gem 'pg'
-
 
 gem 'net-ldap',
     git: 'https://github.com/imimap/ruby-net-ldap',
@@ -53,7 +52,6 @@ group :development do
 end
 
 group :development, :test do
-
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'faker'

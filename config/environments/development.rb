@@ -67,5 +67,6 @@ Rails.application.configure do
   # IMI-Maps specific begin
   config.assets.unknown_asset_fallback = false
   Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+  config.hosts << 'www.example.com'
   # IMI-Maps specific end
 end

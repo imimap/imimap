@@ -32,7 +32,7 @@ module CapybaraLoginTestHelper
     visit root_path
     fill_in 'user_email', with: email
     fill_in 'user_password', with: password
-    click_on I18n.t('devise.sessions.submit')
+    click_on 'login_button'
     expect(page).to have_content t('devise.sessions.signed_in')
   end
 

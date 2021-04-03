@@ -16,6 +16,7 @@ restart:
 rebuild:
 	docker-compose up -d --build --force-recreate imimap
 test_db:
+	docker-compose exec imimap rails db:migrate RAILS_ENV=development # dev has to be up to date too for some reason
 	docker-compose exec imimap rails db:create RAILS_ENV=test
 	docker-compose exec imimap rails db:migrate RAILS_ENV=test
 test:
@@ -75,3 +76,5 @@ restart_prod:
 	docker-compose -f docker-compose-production.yml up -d
 rebuild_prod:
 	docker-compose -f docker-compose-production.yml up -d --build --force-recreate imimap
+loc_db_test:
+	 rails db:drop db:create db:migrate RAILS_ENV=test
