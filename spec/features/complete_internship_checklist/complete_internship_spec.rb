@@ -63,11 +63,11 @@ describe 'Complete Internship' do
             click_on t('complete_internships.new_tp0')
             click_on t('save')
             expect(page).to have_content(
-              t('complete_internships.internship') + ' @'
+              "#{t('complete_internships.internship')} @"
             )
             click_button 'x'
             expect(page).not_to have_content(
-              t('complete_internships.internship') + ' @'
+              "#{t('complete_internships.internship')} @"
             )
           end
 

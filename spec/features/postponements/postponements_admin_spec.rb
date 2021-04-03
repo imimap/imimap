@@ -29,13 +29,12 @@ describe 'internship postponement' do
   #   expect(page).to have_content(reasons)
   # end
   it 'destroys one postponement' do
-    skip "csrf fails on rails 6.1"
+    skip 'csrf fails on rails 6.1'
     visit postponements_path
     expect(page).to have_content(@postponement.semester.name)
-    save_and_open_page
     expect do
       click_on t('postponements.destroy')
-      #save_and_open_page
+      # save_and_open_page
     end.to change(Postponement, :count).by(-1)
     expect(page).not_to have_content(@postponement.semester.name)
   end

@@ -34,6 +34,7 @@ module ActiveAdmin
     class IndexAsTable
       include ActiveAdminHelper
     end
+
     module Pages
       # reopen class. this was the only way I found to include a helper
       # in ActiveAdmin

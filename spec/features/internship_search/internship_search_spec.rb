@@ -195,9 +195,7 @@ describe 'Internship search' do
             visit start_search_path
             click_on t('search.buttons.search')
             expect(page).to have_content(
-              t('search.results_found.start').to_s +
-              ' ' + 0.to_s + ' ' +
-              t('search.results_found.finish').to_s
+              "#{t('search.results_found.start')} 0 #{t('search.results_found.finish')}"
             )
           end
 
@@ -218,9 +216,7 @@ describe 'Internship search' do
             select t('search.is_paid'), from: 'search_paid'
             click_on t('search.buttons.search')
             expect(page).to have_content(
-              t('search.results_found.start').to_s +
-              ' ' + 1.to_s + ' ' +
-              t('search.results_found.finish').to_s
+              "#{t('search.results_found.start')} 1 #{t('search.results_found.finish')}"
             )
             expect(page).to have_content(
               internship.company_address.company.name
@@ -244,9 +240,7 @@ describe 'Internship search' do
             select internship1.company_address.city, from: 'search_location'
             click_on t('search.buttons.search')
             expect(page).to have_content(
-              t('search.results_found.start').to_s +
-              ' ' + 1.to_s + ' ' +
-              t('search.results_found.finish').to_s
+              "#{t('search.results_found.start')} 1 #{t('search.results_found.finish')}"
             )
             # This was way too brittle - "Berlin" turned up in other edges of the page
             # this sort of functionality test should be on controller level for the search.
@@ -258,18 +252,17 @@ describe 'Internship search' do
             #   internship.company_address.city,
             #   count: 1
             # )
-            save_and_open_page
+
             # internship1 should be found
             expect(page).to have_content(
-               internship1.company_address.street,
-               count: 1
-             )
-             # internship should not be found
-              expect(page).to have_content(
-                internship.company_address.street,
-                count: 0
-              )
-
+              internship1.company_address.street,
+              count: 1
+            )
+            # internship should not be found
+            expect(page).to have_content(
+              internship.company_address.street,
+              count: 0
+            )
           end
 
           it 'match orientation' do
@@ -291,9 +284,7 @@ describe 'Internship search' do
             select orientation.name, from: 'search_orientation_id'
             click_on t('search.buttons.search')
             expect(page).to have_content(
-              t('search.results_found.start').to_s +
-              ' ' + 1.to_s + ' ' +
-              t('search.results_found.finish').to_s
+              "#{t('search.results_found.start')} 1 #{t('search.results_found.finish')}"
             )
             expect(page).to have_content(orientation.name, count: 2)
             expect(page).to have_content(orientation1.name, count: 1)
@@ -316,9 +307,7 @@ describe 'Internship search' do
             select pl1.name, from: 'search_programming_language_id'
             click_on t('search.buttons.search')
             expect(page).to have_content(
-              t('search.results_found.start').to_s +
-              ' ' + 1.to_s + ' ' +
-              t('search.results_found.finish').to_s
+              "#{t('search.results_found.start')} 1 #{t('search.results_found.finish')}"
             )
             expect(page).to have_content(pl1.name, count: 2)
             expect(page).to have_content(pl.name, count: 1)
@@ -337,9 +326,7 @@ describe 'Internship search' do
           context 'for students:' do
             it '12 results' do
               expect(page).to have_content(
-                t('search.results_found.start').to_s +
-                ' ' + 12.to_s + ' ' +
-                t('search.results_found.finish').to_s
+                "#{t('search.results_found.start')} 12 #{t('search.results_found.finish')}"
               )
               expect(page).not_to have_content(
                 t('search.headers.active_admin_link').to_s
@@ -367,9 +354,7 @@ describe 'Internship search' do
           context do
             it 'for admins' do
               expect(page).to have_content(
-                t('search.results_found.start').to_s +
-                ' ' + 20.to_s + ' ' +
-                t('search.results_found.finish').to_s
+                "#{t('search.results_found.start')} 20 #{t('search.results_found.finish')}"
               )
             end
           end
@@ -436,9 +421,7 @@ describe 'Internship search' do
           visit start_search_path
           click_on t('search.buttons.random')
           expect(page).to have_content(
-            t('search.results_found.start').to_s +
-            ' ' + 1.to_s + ' ' +
-            t('search.results_found.finish').to_s
+            "#{t('search.results_found.start')} 1 #{t('search.results_found.finish')}"
           )
           expect(page).to have_content(
             @internship.company_address.company.name
@@ -479,9 +462,7 @@ describe 'Internship search' do
           it 'shows no warning for search results that are more than 6' do
             click_on t('search.buttons.search')
             expect(page).to have_content(
-              t('search.results_found.start').to_s +
-              ' ' + 20.to_s + ' ' +
-              t('search.results_found.finish').to_s
+              "#{t('search.results_found.start')} 20 #{t('search.results_found.finish')}"
             )
           end
           it 'shows no warning when we had 12 previous results and create a
@@ -490,18 +471,14 @@ describe 'Internship search' do
             visit start_search_path
             click_on t('search.buttons.search')
             expect(page).to have_content(
-              t('search.results_found.start').to_s +
-              ' ' + 20.to_s + ' ' +
-              t('search.results_found.finish').to_s
+              "#{t('search.results_found.start')} 20 #{t('search.results_found.finish')}"
             )
           end
           it 'shows no warning when we had 12 previous results and create
           a random search' do
             click_on t('search.buttons.random')
             expect(page).to have_content(
-              t('search.results_found.start').to_s +
-              ' ' + 1.to_s + ' ' +
-              t('search.results_found.finish').to_s
+              "#{t('search.results_found.start')} 1 #{t('search.results_found.finish')}"
             )
             expect(page).to have_content(
               @internship.company_address.company.name

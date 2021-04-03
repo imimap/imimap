@@ -10,7 +10,7 @@ FactoryBot.define do
     role { :admin }
   end
   factory :admin, class: User do
-    email { 'admin#{n}@htw-berlin.de' }
+    email { "admin#{n}@htw-berlin.de" }
     password { 'geheim12' }
     password_confirmation { 'geheim12' }
     publicmail { true }

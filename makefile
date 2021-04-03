@@ -16,6 +16,7 @@ restart:
 rebuild:
 	docker-compose up -d --build --force-recreate imimap
 test_db:
+	docker-compose exec imimap rails db:migrate RAILS_ENV=development # dev has to be up to date too for some reason
 	docker-compose exec imimap rails db:create RAILS_ENV=test
 	docker-compose exec imimap rails db:migrate RAILS_ENV=test
 test:

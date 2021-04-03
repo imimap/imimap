@@ -27,7 +27,6 @@ gem 'formtastic', '~> 3'
 # database gem
 gem 'pg'
 
-
 gem 'net-ldap',
     git: 'https://github.com/imimap/ruby-net-ldap',
     tag: 'v0.16.2.deprecation.removed'
@@ -53,7 +52,6 @@ group :development do
 end
 
 group :development, :test do
-
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'faker'

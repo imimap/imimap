@@ -31,7 +31,7 @@ module SemesterHelper
   def sid2yearname(a_sid, winter)
     year2 = sid2year(a_sid) % 100
     year_s =  year2.to_s.rjust(2, '0')
-    year_s += '/' + (year2 + 1).to_s.rjust(2, '0') if winter
+    year_s += "/#{(year2 + 1).to_s.rjust(2, '0')}" if winter
     year_s
   end
 

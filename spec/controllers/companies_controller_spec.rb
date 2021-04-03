@@ -28,8 +28,8 @@ RSpec.describe CompaniesController, type: :controller do
 
     it 'assigns @companies' do
       get :index
-    #  expect(assigns(:companies).size).to eq(2)
-    #  expect(assigns(:companies)).to eq([@company, @company2])
+      #  expect(assigns(:companies).size).to eq(2)
+      #  expect(assigns(:companies)).to eq([@company, @company2])
       expect(assigns(:companies)).to eq(Company.all)
     end
   end

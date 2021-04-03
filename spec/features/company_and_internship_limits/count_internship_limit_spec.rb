@@ -57,9 +57,7 @@ describe 'Internship limit' do
             select t('search.is_not_paid'), from: 'search_paid'
             click_on t('search.buttons.search')
             expect(page).to have_content(
-              t('search.results_found.start').to_s +
-              ' ' + 1.to_s + ' ' +
-              t('search.results_found.finish').to_s
+              "#{t('search.results_found.start')} 1 #{t('search.results_found.finish')}"
             )
             expect(page).to have_content(
               internship.company_address.company.name
@@ -74,9 +72,7 @@ describe 'Internship limit' do
             select t('search.is_not_paid'), from: 'search_paid'
             click_on t('search.buttons.search')
             expect(page).to have_content(
-              t('search.results_found.start').to_s +
-              ' ' + 0.to_s + ' ' +
-              t('search.results_found.finish').to_s
+              "#{t('search.results_found.start')} 0 #{t('search.results_found.finish')}"
             )
             expect(
               UserCanSeeInternship
@@ -88,9 +84,7 @@ describe 'Internship limit' do
             click_on t('search.buttons.search')
             click_on t('search.modal.confirm')
             expect(page).to have_content(
-              t('search.results_found.start').to_s +
-              ' ' + 12.to_s + ' ' +
-              t('search.results_found.finish').to_s
+              "#{t('search.results_found.start')} 12 #{t('search.results_found.finish')}"
             )
             expect(
               UserCanSeeInternship
@@ -127,9 +121,7 @@ describe 'Internship limit' do
             select t('search.is_not_paid'), from: 'search_paid'
             click_on t('search.buttons.search')
             expect(page).to have_content(
-              t('search.results_found.start').to_s +
-              ' ' + 5.to_s + ' ' +
-              t('search.results_found.finish').to_s
+              "#{t('search.results_found.start')} 5 #{t('search.results_found.finish')}"
             )
             expect(
               UserCanSeeInternship
@@ -138,9 +130,7 @@ describe 'Internship limit' do
 
             click_on t('search.buttons.search')
             expect(page).to have_content(
-              t('search.results_found.start').to_s +
-              ' ' + 5.to_s + ' ' +
-              t('search.results_found.finish').to_s
+              "#{t('search.results_found.start')} 5 #{t('search.results_found.finish')}"
             )
             expect(
               UserCanSeeInternship
@@ -160,9 +150,7 @@ describe 'Internship limit' do
             select t('search.is_not_paid'), from: 'search_paid'
             click_on t('search.buttons.search')
             expect(page).to have_content(
-              t('search.results_found.start').to_s +
-              ' ' + 5.to_s + ' ' +
-              t('search.results_found.finish').to_s
+              "#{t('search.results_found.start')} 5 #{t('search.results_found.finish')}"
             )
             expect(
               UserCanSeeInternship
@@ -173,9 +161,7 @@ describe 'Internship limit' do
             click_on t('search.buttons.search')
             click_on t('search.modal.confirm')
             expect(page).to have_content(
-              t('search.results_found.start').to_s +
-              ' ' + 7.to_s + ' ' +
-              t('search.results_found.finish').to_s
+              "#{t('search.results_found.start')} 7 #{t('search.results_found.finish')}"
             )
             expect(
               UserCanSeeInternship

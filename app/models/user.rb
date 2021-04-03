@@ -72,7 +72,7 @@ class User < ApplicationRecord
     self.role ||= :user
   end
 
-  # note that student is not a role.
+  # NOTE: that student is not a role.
   def student?
     return true if student
 

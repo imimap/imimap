@@ -72,7 +72,7 @@ describe 'Additions to Checklist for admins' do
           context 'the number of internal comments' do
             it '' do
               expect(page).to have_content(
-                '0 ' + t('complete_internships.checklist.internal_comments')
+                "0 #{t('complete_internships.checklist.internal_comments')}"
               )
             end
           end
