@@ -10,8 +10,8 @@ RSpec.describe Student, type: :model do
 
   it 'returns the last created internship' do
     student2 = create(:student2)
-    internship1 = create(:internship_1, student: student2)
-    internship2 = create(:internship_2, student: student2)
+    internship1 = create(:internship01, student: student2)
+    internship2 = create(:internship02, student: student2)
     internship1.student = student2
     internship2.student = student2
     internship1.save

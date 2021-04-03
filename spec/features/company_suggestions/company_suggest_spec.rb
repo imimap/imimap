@@ -54,7 +54,7 @@ describe 'Company Suggestion' do
         it 'should show me only similar matches' do
           create(:semester)
 
-          create(:company_2)
+          create(:company02)
           create(:company_is24)
           visit my_internship_path_replacement
           click_button(t('internships.provide_now'))
@@ -111,8 +111,8 @@ describe 'Company Suggestion' do
         it "shouldn't show the link for creating a new company when theres one
             with the exact same name" do
           create(:semester)
-          create(:company_1)
-          create(:company_2)
+          create(:company01)
+          create(:company02)
           visit my_internship_path_replacement
           click_button(t('internships.provide_now'))
           click_link(t('consent.ok_cool'))
@@ -138,8 +138,8 @@ describe 'Company Suggestion' do
 
         it 'no match when too many results and no exact match' do
           create(:semester)
-          create(:company_1)
-          create(:company_2)
+          create(:company01)
+          create(:company02)
           create(:company_is24)
           create(:company_is24)
           create(:company_is24)
@@ -168,8 +168,8 @@ describe 'Company Suggestion' do
         context 'with company match' do
           before :each do
             create(:semester)
-            create(:company_1)
-            create(:company_2)
+            create(:company01)
+            create(:company02)
             create(:company_m)
             @company = create(:company_is24)
 

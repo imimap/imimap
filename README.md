@@ -1,16 +1,6 @@
 [![Build Status](https://travis-ci.org/imimap/imimap.svg?branch=master)](https://travis-ci.org/imimap/imimap)
  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d9901844daae46f3aceea4dbf493d034)](https://www.codacy.com/app/kleinen/imimap?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=imimap/imimap&amp;utm_campaign=Badge_Grade)
 
-## Pending updates
-
-* https://rubygems.org/gems/net-ldap/versions/0.15.0
-* https://github.com/bootstrap-ruby/bootstrap_form
-
-Please check your Rails app for 'config.i18n.fallbacks = true'.
-If you're using I18n (>= 1.1.0) and Rails (< 5.2.2), this should be
-'config.i18n.fallbacks = [I18n.default_locale]'.
-If not, fallbacks will be broken in your app by I18n 1.1.x.
-
 ## Repositories & Travis CI
 
 ### Current Main Repository with CI/CD:

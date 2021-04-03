@@ -4,18 +4,19 @@
 # country select now uses ISO Codes by default.
 # this task migrates the old data.
 # see https://github.com/stefanpenner/country_select/blob/master/UPGRADING.md
+CC = ISO3166::Country
 
 namespace :imimap do
   desc 'migrate county data to ISO3166-2'
   task mcc: :environment do
     cas = CompanyAddress.all
-    CC = ISO3166::Country
-         .codes
-         .map { |c| [ISO3166::Country.new(c).name, c] }
-         .to_h
-         .merge('United States' => 'US',
-                'United Kingdom' => 'GB',
-                'Czech Republic' => 'CZ')
+                        # CC = ISO3166::Country
+                        .codes
+                        .map { |c| [ISO3166::Country.new(c).name, c] }
+                        .to_h
+                        .merge('United States' => 'US',
+                               'United Kingdom' => 'GB',
+                               'Czech Republic' => 'CZ')
     # puts CC.inspect
 
     puts "Going to update #{cas.count} CompanyAddresses"

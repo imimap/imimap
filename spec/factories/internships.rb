@@ -61,9 +61,9 @@ FactoryBot.define do
     end
   end
 
-  factory :internship_1, class: Internship do
+  factory :internship01, class: Internship do
     before(:create) do |i|
-      c = FactoryBot.create(:company_1)
+      c = FactoryBot.create(:company01)
       i.company_address = c.company_addresses.first
     end
 
@@ -106,18 +106,18 @@ FactoryBot.define do
       )
     end
     after(:build) do |i|
-      c = FactoryBot.build(:company_1)
+      c = FactoryBot.build(:company01)
       i.company_address = c.company_addresses.first
     end
     after(:create) do |i|
-      c = FactoryBot.create(:company_1)
+      c = FactoryBot.create(:company01)
       i.company_address = c.company_addresses.first
     end
   end
 
-  factory :internship_2, class: Internship do
+  factory :internship02, class: Internship do
     before(:create) do |i|
-      c = FactoryBot.create(:company_2)
+      c = FactoryBot.create(:company02)
       i.company_address = c.company_addresses.first
     end
 
@@ -161,18 +161,18 @@ FactoryBot.define do
     end
 
     after(:build) do |i|
-      c = FactoryBot.build(:company_2)
+      c = FactoryBot.build(:company02)
       i.company_address = c.company_addresses.first
     end
     after(:create) do |i|
-      c = FactoryBot.create(:company_2)
+      c = FactoryBot.create(:company02)
       i.company_address = c.company_addresses.first
     end
   end
 
   factory :internship_without_states, class: Internship do
     before(:create) do |i|
-      c = FactoryBot.create(:company_2)
+      c = FactoryBot.create(:company02)
       i.company_address = c.company_addresses.first
     end
 
@@ -211,11 +211,11 @@ FactoryBot.define do
     end
 
     after(:build) do |i|
-      c = FactoryBot.build(:company_2)
+      c = FactoryBot.build(:company02)
       i.company_address = c.company_addresses.first
     end
     after(:create) do |i|
-      c = FactoryBot.create(:company_2)
+      c = FactoryBot.create(:company02)
       i.company_address = c.company_addresses.first
     end
   end

@@ -75,11 +75,11 @@ module ControllerTestHelper
     user
   end
 
-  def login_as_admin
-    user = FactoryBot.create :admin
-    sign_in user
-    user
-  end
+  #  def login_as_admin
+  #    user = FactoryBot.create :admin
+  #    sign_in user
+  #    user
+  #  end
 end
 
 # temporary methods to refactor my_internship_path out of the application

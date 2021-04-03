@@ -53,24 +53,24 @@ FactoryBot.define do
   end
 
   # github
-  factory :company_address_1, class: CompanyAddress do
+  factory :company_address01, class: CompanyAddress do
     city { 'San Francisco' }
     country { 'US' }
     street { '88 Colin P Kelly Junior St' }
     zip { '94107' }
     phone { '+187345847' }
     fax { '+187345888' }
-    company { create(:company_1) }
+    company { create(:company01) }
   end
   # amazon locker lasse
-  factory :company_address_2, class: CompanyAddress do
+  factory :company_address02, class: CompanyAddress do
     city { 'Berlin' }
     country { 'DE' }
     street { 'Karl-Marx-Straße 267' }
     zip { '12057' }
     phone { '+187345847' }
     fax { '+187345888' }
-    company { create(:company_2) }
+    company { create(:company02) }
   end
 
   factory :company_address_with_changing_country, class: CompanyAddress do

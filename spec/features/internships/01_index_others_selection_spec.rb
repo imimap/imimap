@@ -15,9 +15,9 @@ describe 'internship - index selection' do
     @internship_state1 = create(:internship_state, name: 'passed')
     @internship_state2 = create(:internship_state, name: 'the student still has to pass the following courses')
 
-    @internship1 = create(:internship_1, semester: @semester1, registration_state: @registration_state1,
+    @internship1 = create(:internship01, semester: @semester1, registration_state: @registration_state1,
                                          internship_state: @internship_state1)
-    @internship2 = create(:internship_2, semester: @semester2, registration_state: @registration_state2,
+    @internship2 = create(:internship02, semester: @semester2, registration_state: @registration_state2,
                                          internship_state: @internship_state2)
   end
 

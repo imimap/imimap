@@ -20,7 +20,7 @@ describe 'Map View' do
       @ws19 = ws19 = create(:ws2019)
       @ss19 = ss19 = create(:ss2019)
       @ca1 = ca1 = create(:company_address_for_edit)
-      @ca2 = ca2 = create(:company_address_1)
+      @ca2 = ca2 = create(:company_address01)
       @internship1 = create(:internship_without_company_address,
                             semester: ws19, company_address: ca1)
       @internship2 = create(:internship_without_company_address,

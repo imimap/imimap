@@ -13,7 +13,6 @@ RSpec.describe MapsController, type: :controller do
     end
     context 'when logged in' do
       it 'redirects to overview#index' do
-        # login_as_admin
         login
 
         expect(response).to have_http_status(:success)

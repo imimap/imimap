@@ -11,8 +11,8 @@ describe 'ActiveAdmin CompanyAddress / index' do
   end
 
   it 'shows company_address details' do
-    ca1 = create(:company_address_1)
-    ca2 = create(:company_address_2)
+    ca1 = create(:company_address01)
+    ca2 = create(:company_address02)
     visit admin_company_addresses_path
     [ca1, ca2].each do |ca|
       %w[street
