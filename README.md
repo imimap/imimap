@@ -98,7 +98,7 @@ see db/seeds for details.
 
 For adding a feature, follow the development workflow:
 
-0. usually, you work on an issue. create one to document your work if not there.
+0. Usually, you work on an issue. Create one to document your work if not there.
 1. checkout head of master (e.g. git checkout master; git pull origin master)
 2. Create a branch, eg. bug_123 or i_123_somename to make the connection to issue
 3. push the branch
