@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/imimap/imimap.svg?branch=master)](https://travis-ci.org/imimap/imimap)
+[![Build Status](https://travis-ci.com/imimap/imimap.svg?branch=master)](https://travis-ci.com/imimap/imimap)
  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d9901844daae46f3aceea4dbf493d034)](https://www.codacy.com/app/kleinen/imimap?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=imimap/imimap&amp;utm_campaign=Badge_Grade)
 
 ## Repositories & Travis CI
@@ -7,7 +7,7 @@
 
 * [Travis Build History](https://travis-ci.org/imimap/imimap/builds)
 * [https://github.com/imimap/imimap](https://github.com/imimap/imimap)
-* [Branch and Stages Overview on Travis CI](https://travis-ci.org/imimap/imimap/branches)
+* [Branch and Stages Overview on Travis CI](https://travis-ci.com/imimap/imimap/branches)
 
 ## Servers
 * [Production](http://imi-map.f4.htw-berlin.de)
