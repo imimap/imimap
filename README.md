@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/imimap/imimap.svg?branch=master)](https://travis-ci.org/imimap/imimap)
+[![Build Status](https://travis-ci.com/imimap/imimap.svg?branch=master)](https://travis-ci.com/imimap/imimap)
  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d9901844daae46f3aceea4dbf493d034)](https://www.codacy.com/app/kleinen/imimap?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=imimap/imimap&amp;utm_campaign=Badge_Grade)
 
 ## Repositories & Travis CI
@@ -7,7 +7,7 @@
 
 * [Travis Build History](https://travis-ci.org/imimap/imimap/builds)
 * [https://github.com/imimap/imimap](https://github.com/imimap/imimap)
-* [Branch and Stages Overview on Travis CI](https://travis-ci.org/imimap/imimap/branches)
+* [Branch and Stages Overview on Travis CI](https://travis-ci.com/imimap/imimap/branches)
 
 ## Servers
 * [Production](http://imi-map.f4.htw-berlin.de)
@@ -98,7 +98,7 @@ see db/seeds for details.
 
 For adding a feature, follow the development workflow:
 
-0. usually, you work on an issue. create one to document your work if not there.
+0. Usually, you work on an issue. Create one to document your work if not there.
 1. checkout head of master (e.g. git checkout master; git pull origin master)
 2. Create a branch, eg. bug_123 or i_123_somename to make the connection to issue
 3. push the branch
