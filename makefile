@@ -48,7 +48,7 @@ ssh_staging:
 	ssh deployer@imi-map-staging.f4.htw-berlin.de
 prod_dump:
 	mkdir -p dumps
-	ssh deployer@imi-map.f4.htw-berlin.de "docker exec postgresql pg_dump -h localhost -U imi_map  imi_map_production" > dumps/imi-map-$(shell date +%Y-%m-%d).pgdump
+	ssh deployer@imi-map.f4.htw-berlin.de "docker exec postgresql pg_dump -h localhost -U imi_map  imi_map_production" > dumps/imi-map-$(shell date +%Y-%m-%d--%H-%M-%S).pgdump
 bash:
 	docker-compose exec imimap bash
 c:
