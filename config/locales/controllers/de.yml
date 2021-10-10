@@ -121,7 +121,7 @@ de:
       personal_details: "- Persönliche Details"
       company_details: "- Firmendetails"
       internship_details: "- Praktikumsdetails"
-      lsf_ausdruck: "Bitte vergewissere dich, ob du deine Notenübersicht aus dem LSF ausgedruckt hast."
+      lsf_ausdruck: "Bitte vergewissere dich, ob du deine Notenübersicht aus dem LSF als PDF in der Mail angehangen hast."
       clear: "Möchtest du deinen Antrag jetzt wirklich ausdrucken?"
 
   users:
@@ -275,14 +275,14 @@ de:
       personal_details: Persönliche Details
       company_details: Firmendetails
       internship_details: Praktikumsdetails
-      contract: Ausgedruckten Praktikumsvertrag
+      contract: Praktikumsvertrag (als PDF)
       contract_original: im Original
       contract_copy: als Kopie
       what_to_bring: "2. Was muss ich mitbringen zur "
       office_hours: Sprechstunde
       please_bring_original: Bitte reiche deinen Vertrag auch noch als Original nach, damit dein Antrag ordnungsgemäß an die Prüfungsverwaltung weitergeschickt werden kann!
-      lsf_ausdruck: Leistungsnachweis über alle bestandenen Module des Basisjahrs ausgedruckt aus dem
-      print_form: Ausgedrucktes Antragsformular
+      lsf_ausdruck: Leistungsnachweis über alle bestandenen Module des Basisjahrs als PDF aus dem
+      print_form: Antragsformular (als PDF)
       check_form: Formular überprüfen
       thank_you: Danke
       module_semester: Module des Basisjahrs nach Semester
