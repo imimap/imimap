@@ -138,13 +138,13 @@ en:
       which_professor_should_read: "Which Professor would you prefer to read your Report?"
     popup:
       missing1: "Some of the information that is needed for a complete registration for your internship seems to be missing. Check the following forms again:"
-      missing2: "You can of course still print out your registration form and go to the consultation hour of the Professor in charge of the internships."
+      missing2: "You can of course still save your registration form and go to the consultation hour of the Professor in charge of the internships."
       no_original: "Please note, that if you can not provide an original version of your contract at this time you can still register your internship during the consultation hour of the Professor in charge of the internships. But in order for us to be able to forward your registration to the administration you need to hand in a compy of the contract that is originally signed by both parties as soon as you can."
       personal_details: "- Personal Details"
       company_details: "- Company Details"
       internship_details: "- Internship Details"
-      lsf_ausdruck: "Please make sure, that you have your grades printed out from the LSF."
-      clear: "Do you want to print out your registration now?"
+      lsf_ausdruck: "Please make sure, that you have your grades as PDF from the LSF."
+      clear: "Do you want to save your registration now?"
   users:
     name: "Users"
     create: "Create User"
@@ -244,7 +244,7 @@ en:
       description: "The IMI-Map's purpose is to make the application for your mandatory internship in international media and computing with the internship officer a little easier. You can register when you want to enroll for the entire module B20 under the tab 'My Internship'. The module B20 consists of the modules B20.1, 'Auswertung von Erfahrungen am Praxisplatz', and B20.2, the internship itself. Once you have specified the semester you can register one internship or multiple partial internships. This information is mostly the same that will be required for the application form itself. You giving us this information will allow the internship officer to go into more detail with you when you visit his/her office hours to hand in your application."
       questions: "Here are some frequently asked questions:"
       question1: "I don't know what to enter in a field of the internship application form."
-      answer1: "Leave those fields blank where you are unsure about what to enter. Print the application form anyway and discuss the missing fields with the internship officer when handing in the form. If there are any fields that you can not leave blank because they are required, you can put dummy values in for now and talk about them when you visit the internship officers office hours."
+      answer1: "Leave those fields blank where you are unsure about what to enter. Save the application form anyway and discuss the missing fields with the internship officer when handing in the form. If there are any fields that you can not leave blank because they are required, you can put dummy values in for now and talk about them when you visit the internship officers office hours."
       question2: "I have another question. What should I do?"
       answer2_checklist: "Look at the Checklist again."
       answer2_contact: "If you couln't find an answer to your question, send an E-Mail to the team of the internship administration."
@@ -295,14 +295,14 @@ en:
       personal_details: Personal Details
       company_details: Company Details
       internship_details: Internship Details
-      contract: Printed contract as
+      contract: PDF contract as
       contract_original: an original
       contract_copy: a copy
       what_to_bring: "2. What to bring to "
       office_hours: office hours
       please_bring_original: Please hand in your contract also as an original so your registration can be sent to the examination office (Prüfungsverwaltung)!
-      lsf_ausdruck: Grade transscript of all passed modules from the first two semesters printed out from the
-      print_form: Printed Form
+      lsf_ausdruck: Grade transscript of all passed modules from the first two semesters as PDF from the
+      print_form: PDF Form
       check_form: Check Form
       thank_you: Thank you
       module_semester: Modules of the first two semesters by semester
