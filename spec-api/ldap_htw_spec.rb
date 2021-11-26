@@ -54,6 +54,11 @@ describe LDAPHTWAdapter do
       expect(authenticated).to be false
     end
 
+    it 'empty password' do
+      authenticated = @ldap_adapter.create(ldap_password: '').authenticate
+      expect(authenticated).to be false
+    end
+
     it 'LDAP env missing' do
       restore = ENV['LDAP']
       ENV['LDAP'] = nil

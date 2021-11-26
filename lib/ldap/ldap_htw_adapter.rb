@@ -26,6 +26,7 @@ class LDAPHTWAdapter
 
   def create(ldap_password:)
     config
+    @ldap_password = ldap_password
     @netldap = Net::LDAP.new(ldap_conf(@host, @port, @connectstring,
                                        ldap_username(email), ldap_password))
     self
@@ -86,7 +87,7 @@ class LDAPHTWAdapter
 
   def authenticate
     return true if always_return_true
-
+    return false if @ldap_password == ''
     begin
       success = netldap.bind
     rescue StandardError => e
